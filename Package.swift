@@ -25,12 +25,18 @@ let package = Package(
         .target(
             name: "AppStoreConnect",
             dependencies: [
+                "_Specification",
                 .product(name: "Crypto", package: "swift-crypto"),
-                .product(name: "URLQueryEncoder", package: "URLQueryEncoder"),
+            ]
+        ),
+        .target(
+            name: "_Specification",
+            dependencies: [
+                .product(name: "URLQueryEncoder", package: "URLQueryEncoder")
             ],
             exclude: [
-                "Specification/.create-api.yml",
-                "Specification/app_store_connect_api_2.1_openapi.json",
+                ".create-api.yml",
+                "app_store_connect_api_2.1_openapi.json",
             ]
         ),
         .testTarget(

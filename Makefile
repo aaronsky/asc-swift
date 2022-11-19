@@ -1,7 +1,7 @@
 # Facts
 GIT_REPO_TOPLEVEL := $(shell git rev-parse --show-toplevel)
 OPENAPI_SPEC_URL := https://developer.apple.com/sample-code/app-store-connect/app-store-connect-openapi-specification.zip
-OPENAPI_SPEC_OUTDIR := $(GIT_REPO_TOPLEVEL)/Sources/AppStoreConnect/Specification
+OPENAPI_SPEC_OUTDIR := $(GIT_REPO_TOPLEVEL)/Sources/_Specification
 OPENAPI_SPEC_OUTFILE := $(OPENAPI_SPEC_OUTDIR)/app_store_connect_api_2.1_openapi.json
 
 # Apple Platform Destinations
