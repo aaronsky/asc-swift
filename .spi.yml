@@ -1,0 +1,12 @@
+version: 1
+builder:
+  configs:
+    - platform: ios
+      scheme: AppStoreConnect
+    - platform: macos-xcodebuild
+      scheme: AppStoreConnect
+    - platform: tvos
+      scheme: AppStoreConnect
+    - platform: watchos
+      scheme: AppStoreConnect
+    - documentation_targets: [AppStoreConnect]

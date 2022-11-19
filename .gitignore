@@ -1,0 +1,9 @@
+.DS_Store
+/.build
+/.vscode
+/Examples/.build
+/Packages
+/*.xcodeproj
+xcuserdata/
+Package.resolved
+*.env*
