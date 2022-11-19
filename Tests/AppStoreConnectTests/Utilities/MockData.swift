@@ -7,149 +7,87 @@ import FoundationNetworking
 #endif
 
 struct MockResources {
-    struct Body: Codable, Equatable {
-        var name: String
-        var age: Int
-    }
-
     struct Content: Codable, Equatable {
         var name: String
         var age: Int
     }
 
-    struct NoContentNoBody: Resource {
-        let path = "mock"
+    var content = Content(name: "test", age: 10)
+
+    struct PagedContent: Codable, Equatable {
+        var name: String
+        var age: Int
+        var links: PagedDocumentLinks?
     }
 
-    var noContentNoBodyResource = NoContentNoBody()
+    var pagedContentFirst = PagedContent(
+        name: "test",
+        age: 10,
+        links: PagedDocumentLinks(this: "test", first: "test", next: "test2")
+    )
+    var pagedContentNext = PagedContent(
+        name: "test",
+        age: 10,
+        links: PagedDocumentLinks(this: "test2", first: "test", next: "test3")
+    )
+    var pagedContentLast = PagedContent(
+        name: "test",
+        age: 10,
+        links: PagedDocumentLinks(this: "test3", first: "test", next: nil)
+    )
 
-    struct HasContent: Resource {
-        typealias Content = MockResources.Content
-        let path = "mock"
-    }
-
-    var contentResource = HasContent()
-    var content = HasContent.Content(name: "Jeff", age: 35)
-
-    struct HasPaginatedContent: PaginatedResource {
-        typealias Content = MockResources.Content
-        let path = "mock"
-    }
-
-    var paginatedContentResource = HasPaginatedContent()
-    var paginatedContent = HasPaginatedContent.Content(name: "Jeff", age: 35)
-
-    struct HasBody: Resource {
-        var body: MockResources.Body
-        let path = "mock"
-    }
-
-    var bodyResource = HasBody(body: HasBody.Body(name: "Jeff", age: 35))
-
-    struct HasBodyAndContent: Resource {
-        typealias Content = MockResources.Content
-
-        var body: MockResources.Body
-        let path = "mock"
-    }
-
-    var bodyAndContentResource = HasBodyAndContent(body: HasBodyAndContent.Body(name: "Jeff", age: 35))
-    var bodyAndContent = HasBodyAndContent.Content(name: "Jeff", age: 35)
-
-    struct HasBodyAndPaginated: PaginatedResource {
-        typealias Content = MockResources.Content
-
-        var body: MockResources.Body
-
-        let path = "mock"
-    }
-
-    var bodyAndPaginatedResource = HasBodyAndPaginated(body: HasBodyAndPaginated.Body(name: "Jeff", age: 35))
-    var bodyAndPaginatedContent = HasBodyAndPaginated.Content(name: "Jeff", age: 35)
-
-    struct IsAPIIncompatible: Resource {
-        var version: APIVersion {
-            APIVersion(baseURL: URL(), version: "v99999")
-        }
-        let path = "mock"
-    }
-
-    var graphQLResource: GraphQL<Content> = GraphQL(rawQuery: "", variables: [:])
-    var graphQLContent = Content(name: "Jeff", age: 35)
-    var graphQLIntermediary: GraphQL<Content>.Intermediary = .init(data: Content(name: "Jeff", age: 35))
-}
-
-extension GraphQL {
-    struct Intermediary: Codable where T: Encodable {
-        var data: T
-    }
+    init() {}
 }
 
 enum MockData {
     static let encoder: JSONEncoder = {
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .iso8601
-        encoder.keyEncodingStrategy = .convertToSnakeCase
         return encoder
     }()
 }
 
 extension MockData {
-    static func mockingSuccess<Content: Codable>(with content: Content, url: URL) throws -> (Data, URLResponse) {
-        let data = try encoder.encode(content)
-        return (data, urlResponse(for: url, status: .ok))
+    static func mockingSuccess<Content: Codable>(with content: Content, url: URL = URL()) throws -> Response<Data> {
+        let data = try MockData.encoder.encode(content)
+        return .init(data: data, response: urlResponse(for: url, statusCode: 200), statusCode: 200)
     }
 
-    static func mockingSuccessNoContent(url: URL) -> (Data, URLResponse) {
-        return (Data(), urlResponse(for: url, status: .ok))
+    static func mockingSuccessNoContent(url: URL = URL()) -> Response<Data> {
+        return .init(data: nil, response: urlResponse(for: url, statusCode: 200), statusCode: 200)
     }
 
-    static func mockingIncompatibleResponse(for url: URL) -> (Data, URLResponse) {
-        return (Data(), urlResponse(for: url, rawStatus: -128))
+    static func mockingSuccessNoContent(for request: URLRequest) -> Response<Data> {
+        return .init(data: nil, response: urlResponse(for: request.url!, statusCode: 200), statusCode: 200)
     }
 
-    static func mockingUnsuccessfulResponse(for url: URL) -> (Data, URLResponse) {
+    static func mockingIncompatibleResponse(for url: URL = URL()) -> Response<Data> {
+        return .init(data: nil, response: urlResponse(for: url, statusCode: -128), statusCode: -128)
+    }
+
+    static func mockingUnsuccessfulResponse(for url: URL = URL()) -> Response<Data> {
         let json = """
-            {"message":"not found","errors": ["go away"]}
+            {"errors":[{"code":"test","status":400,"title":"test","detail":"test"}]}
             """
-            .data(using: .utf8)!
+            .data(using: .utf8)
 
-        return (json, urlResponse(for: url, status: .notFound))
+        return .init(data: json, response: urlResponse(for: url, statusCode: 400), statusCode: 400)
     }
 
-    static func mockingSuccessNoContent(for request: URLRequest) throws -> (Data, URLResponse) {
-        return mockingSuccessNoContent(url: request.url!)
-    }
-
-    static func mockingError(for request: URLRequest) throws -> (Data, URLResponse) {
+    static func mockingError(for request: URLRequest) throws -> Response<Data> {
         throw URLError(.notConnectedToInternet)
     }
 
-    static func mockingError(_ error: Error) throws -> (Data, URLResponse) {
+    static func mockingError(_ error: Error) throws -> Response<Data> {
         throw error
     }
 
-    static func mockingUnrecognizedBuildkiteError(for url: URL) -> (Data, URLResponse) {
-        let json = """
-            {"message":-1000}
-            """
-            .data(using: .utf8)!
-        return (json, urlResponse(for: url, status: .notFound))
-    }
-
-    private static func urlResponse(for url: URL, status: StatusCode) -> URLResponse {
-        urlResponse(for: url, rawStatus: status.rawValue)
-    }
-
-    private static func urlResponse(for url: URL, rawStatus status: Int) -> URLResponse {
+    private static func urlResponse(for url: URL, statusCode: Int) -> URLResponse {
         HTTPURLResponse(
             url: url,
-            statusCode: status,
+            statusCode: statusCode,
             httpVersion: "HTTP/1.1",
-            headerFields: [
-                "Link":
-                    #"<https://api.buildkite.com/v2/organizations/my-great-org/pipelines/my-pipeline/builds?api_key=f8582f070276d764ce3dd4c6d57be92574dccf86&page=3>; rel="prev",<https://api.buildkite.com/v2/organizations/my-great-org/pipelines/my-pipeline/builds?api_key=f8582f070276d764ce3dd4c6d57be92574dccf86&page=5>; rel="next",<https://api.buildkite.com/v2/organizations/my-great-org/pipelines/my-pipeline/builds?api_key=f8582f070276d764ce3dd4c6d57be92574dccf86&page=1>; rel="first", <https://api.buildkite.com/v2/organizations/my-great-org/pipelines/my-pipeline/builds?api_key=f8582f070276d764ce3dd4c6d57be92574dccf86&page=10>; rel="last""#
-            ]
+            headerFields: [:]
         )!
     }
 }

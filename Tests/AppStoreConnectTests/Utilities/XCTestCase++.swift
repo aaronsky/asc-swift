@@ -5,6 +5,7 @@ import XCTest
 import FoundationNetworking
 #endif
 
+// swift-format-ignore: AlwaysUseLowerCamelCase
 func XCTAssertThrowsError<T, E: Equatable & Error>(
     _ expression: @autoclosure () throws -> T,
     error: @autoclosure () -> E,
@@ -22,6 +23,7 @@ func XCTAssertThrowsError<T, E: Equatable & Error>(
     }
 }
 
+// swift-format-ignore: AlwaysUseLowerCamelCase
 func XCTAssertThrowsError<T>(
     _ expression: @autoclosure () async throws -> T,
     _ message: @autoclosure () -> String = "",
@@ -37,6 +39,7 @@ func XCTAssertThrowsError<T>(
     }
 }
 
+// swift-format-ignore: AlwaysUseLowerCamelCase
 func XCTAssertThrowsError<T, E: Equatable & Error>(
     _ expression: @autoclosure () async throws -> T,
     error: @autoclosure () -> E,

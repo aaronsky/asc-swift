@@ -13,19 +13,25 @@ let package = Package(
     products: [
         .library(
             name: "AppStoreConnect",
-            targets: ["AppStoreConnect"]),
+            targets: ["AppStoreConnect"]
+        )
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-crypto.git", .upToNextMajor(from: "2.0.0")),
+        .package(url: "https://github.com/CreateAPI/URLQueryEncoder.git", .upToNextMajor(from: "0.2.0")),
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
     ],
     targets: [
         .target(
             name: "AppStoreConnect",
             dependencies: [
-                .product(name: "Crypto", package: "swift-crypto")
+                .product(name: "Crypto", package: "swift-crypto"),
+                .product(name: "URLQueryEncoder", package: "URLQueryEncoder"),
             ],
-            exclude: [".create-api.yml", "app_store_connect_api_2.1_openapi.json"]
+            exclude: [
+                "Specification/.create-api.yml",
+                "Specification/app_store_connect_api_2.1_openapi.json",
+            ]
         ),
         .testTarget(
             name: "AppStoreConnectTests",
@@ -50,6 +56,6 @@ let package = Package(
             dependencies: [
                 .target(name: "create-api")
             ]
-        )
+        ),
     ]
 )

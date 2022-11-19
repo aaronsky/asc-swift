@@ -1,8 +1,8 @@
 # Facts
 GIT_REPO_TOPLEVEL := $(shell git rev-parse --show-toplevel)
 OPENAPI_SPEC_URL := https://developer.apple.com/sample-code/app-store-connect/app-store-connect-openapi-specification.zip
-OPENAPI_SPEC_OUTDIR := $(GIT_REPO_TOPLEVEL)/Sources/AppStoreConnect
-OPENAPI_SPEC_OUTFILE := app_store_connect_api_2.1_openapi.json
+OPENAPI_SPEC_OUTDIR := $(GIT_REPO_TOPLEVEL)/Sources/AppStoreConnect/Specification
+OPENAPI_SPEC_OUTFILE := $(OPENAPI_SPEC_OUTDIR)/app_store_connect_api_2.1_openapi.json
 
 # Apple Platform Destinations
 DESTINATION_PLATFORM_IOS_SIMULATOR = platform=iOS Simulator,name=iPhone 13 Pro Max
@@ -23,10 +23,12 @@ spec: spec-download spec-generate
 
 spec-download:
 	curl --fail --silent --show-error --location --output - $(OPENAPI_SPEC_URL) \
-		| tar --extract --directory $(OPENAPI_SPEC_OUTDIR) --file -
+		| tar --extract --to-stdout --file - \
+		| jq '.components.schemas.BundleIdPlatform.enum |= [ "IOS", "MAC_OS", "UNIVERSAL" ] | del(.["x-important"]) | del(.. |."enum"? | select(. != null and length == 0))' \
+		> $(OPENAPI_SPEC_OUTFILE)
 
 spec-generate:
-	swift package --allow-writing-to-package-directory generate-openapi
+	swift package --allow-writing-to-package-directory generate-openapi $(OPENAPI_SPEC_OUTFILE)
 
 test-all: test-library test-library-xcode test-examples
 

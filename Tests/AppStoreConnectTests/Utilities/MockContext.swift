@@ -7,14 +7,13 @@ import FoundationNetworking
 
 struct MockContext {
     var client: AppStoreConnectClient
-    var resources = MockResources()
+    var transport: MockTransport
+    var authenticator: MockAuthenticator
 
     init() {
-        let configuration = Configuration.default
         self.init(
-            configuration: configuration,
             responses: [
-                MockData.mockingSuccessNoContent(url: configuration.version.baseURL)
+                .data(MockData.mockingSuccessNoContent())
             ]
         )
     }
@@ -22,23 +21,25 @@ struct MockContext {
     init<Content: Codable>(
         content: Content...
     ) throws {
-        let configuration = Configuration.default
         try self.init(
-            configuration: configuration,
             responses: content.map {
-                try MockData.mockingSuccess(with: $0, url: configuration.version.baseURL)
+                try .data(MockData.mockingSuccess(with: $0))
             }
         )
     }
 
-    private init(
-        configuration: Configuration,
-        responses: [(Data, URLResponse)]
+    init(
+        responses: [MockTransport.Output]
     ) {
-        let transport = MockTransport(responses: responses)
-        client = AppStoreConnectClient(
-            configuration: configuration,
-            transport: transport
+        self.transport = MockTransport(responses: responses)
+        self.authenticator = MockAuthenticator()
+        self.client = AppStoreConnectClient(
+            transport: transport,
+            authenticator: authenticator
         )
+    }
+
+    func request<T>() -> Request<T> {
+        transport.request()
     }
 }

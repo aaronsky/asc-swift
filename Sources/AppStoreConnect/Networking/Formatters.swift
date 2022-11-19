@@ -48,7 +48,9 @@ enum Formatters {
 }
 
 extension Date {
-    init?(iso8601String: String) {
+    init?(
+        iso8601String: String
+    ) {
         if let date = Formatters.iso8601WithFractionalSeconds.date(from: iso8601String) {
             self = date
         } else if let date = Formatters.iso8601.date(from: iso8601String) {

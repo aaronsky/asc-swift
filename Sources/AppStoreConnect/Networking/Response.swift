@@ -4,58 +4,72 @@ import Foundation
 import FoundationNetworking
 #endif
 
-/// Response from sending a ``Resource``.
-public struct Response<T> {
-    /// Data returned by an API.
-    public let content: T
-    /// The response metadata and headers from the network.
-    public let response: URLResponse
-    /// The page of the response, if paginated.
-    public let page: Page?
+enum ResponseError: Error {
+    case requestFailure(Response.StatusCode, ErrorResponse?, URLResponse)
+    case dataAssertionFailed
+}
 
-    init(
-        content: T,
-        response: URLResponse
+public struct Response<T: Equatable>: Equatable {
+    public typealias StatusCode = Int
+
+    public let data: T?
+    public let response: URLResponse
+    public let statusCode: StatusCode
+    public let errorResponse: ErrorResponse?
+
+    public init(
+        data: T?,
+        response: URLResponse,
+        statusCode: StatusCode,
+        decoder: JSONDecoder
+    ) throws where T == Data {
+        var errorResponse: ErrorResponse?
+        if let data = data {
+            errorResponse = try decoder.decode(ErrorResponse.self, from: data)
+        }
+
+        self.init(data: data, response: response, statusCode: statusCode, errorResponse: errorResponse)
+    }
+
+    public init(
+        fileURL: T?,
+        response: URLResponse,
+        statusCode: StatusCode
+    ) where T == URL {
+        self.init(data: fileURL, response: response, statusCode: statusCode)
+    }
+
+    public init(
+        data: T?,
+        response: URLResponse,
+        statusCode: StatusCode,
+        errorResponse: ErrorResponse? = nil
     ) {
-        self.content = content
+        self.data = data
         self.response = response
-        if let response = response as? HTTPURLResponse, let link = response.allHeaderFields["Link"] as? String {
-            page = Page(for: link)
-        } else {
-            page = nil
+        self.statusCode = statusCode
+        self.errorResponse = errorResponse
+    }
+
+    func check() throws {
+        guard 200..<300 ~= statusCode else {
+            throw ResponseError.requestFailure(statusCode, errorResponse, response)
         }
     }
-}
 
-extension Response: Equatable where T: Equatable {}
-extension Response: Hashable where T: Hashable {}
-extension Response: Sendable where T: Sendable {}
+    func decode<Output>(using decoder: JSONDecoder) throws -> Output where Output: Decodable, T == Data {
+        guard let data = data else {
+            throw ResponseError.dataAssertionFailed
+        }
 
-/// Error thrown when the response from the ``Transport`` cannot be interpreted.
-public enum ResponseError: Error {
-    case incompatibleResponse(URLResponse)
-}
-
-/// Buildkite-specific error returned from the REST API.
-public struct BuildkiteError: Error {
-    /// Symbolized status code from the response.
-    public var statusCode: StatusCode
-    /// Overview message describing the errors.
-    public var message: String
-    /// List of sub-errors to contextualize the reasons for failure.
-    public var errors: [String]
-
-    init(
-        statusCode: StatusCode,
-        intermediary: Intermediary
-    ) {
-        self.statusCode = statusCode
-        self.message = intermediary.message ?? ""
-        self.errors = intermediary.errors ?? []
+        return try decoder.decode(Output.self, from: data)
     }
 
-    struct Intermediary: Codable {
-        var message: String?
-        var errors: [String]?
+    func decode() throws -> URL where T == URL {
+        guard let data = data else {
+            throw ResponseError.dataAssertionFailed
+        }
+
+        return data
     }
 }
