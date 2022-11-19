@@ -5,7 +5,11 @@ import Foundation
 import FoundationNetworking
 #endif
 
-struct JWT {
+public protocol Authenticator {
+    mutating func token() throws -> String
+}
+
+public struct JWT: Authenticator {
     struct Header: Codable {
         let type: String = "JWT"
         let algorithm: String = "ES256"
@@ -21,12 +25,16 @@ struct JWT {
     struct Payload: Codable {
         let audience: String = "appstoreconnect-v1"
         var issuer: String
+        var issuedAt: TimeInterval?
         var expiry: TimeInterval
+        var scope: [String]?
 
         private enum CodingKeys: String, CodingKey {
             case audience = "aud"
             case issuer = "iss"
+            case issuedAt = "iat"
             case expiry = "exp"
+            case scope
         }
     }
 
@@ -34,7 +42,7 @@ struct JWT {
         var data: Data
 
         init(
-            contentsOf data: Data
+            _ data: Data
         ) {
             self.data = data
         }
@@ -51,22 +59,58 @@ struct JWT {
 
     var header: Header
     var issuer: String
+    var issuedAt: TimeInterval?
     var expiryDuration: TimeInterval
+    var scopes: [String]?
+    var privateKey: PrivateKey
+
+    private var cachedToken: String?
 
     public init(
         keyID: String,
         issuerID: String,
-        expiryDuration: TimeInterval
+        issuedAt: TimeInterval? = nil,
+        expiryDuration: TimeInterval,
+        scopes: [String]? = nil,
+        privateKey: Data
     ) {
         self.header = Header(key: keyID)
         self.issuer = issuerID
+        self.issuedAt = issuedAt
         self.expiryDuration = expiryDuration
+        self.scopes = scopes
+        self.privateKey = PrivateKey(privateKey)
     }
 
-    func encode(secret: PrivateKey, date: () -> Date = Date.init) throws -> String {
+    public mutating func token() throws -> String {
+        try token(now: Date.init)
+    }
+
+    public mutating func token(now: () -> Date) throws -> String {
+        if let cachedToken = cachedToken, !JWT.isExpired(cachedToken) {
+            return cachedToken
+        }
+
+        let newToken = try encode(now: now)
+        cachedToken = newToken
+        print(newToken)
+
+        return newToken
+    }
+
+    func encode(now: () -> Date) throws -> String {
+        let digest = try self.digest(now: now)
+        let signature = try privateKey.sign(digest)
+
+        return "\(digest).\(signature)"
+    }
+
+    func digest(now: () -> Date) throws -> String {
         let payload = Payload(
             issuer: issuer,
-            expiry: date().addingTimeInterval(expiryDuration).timeIntervalSince1970
+            issuedAt: issuedAt,
+            expiry: now().addingTimeInterval(expiryDuration).timeIntervalSince1970,
+            scope: scopes
         )
 
         let encoder = JSONEncoder()
@@ -74,13 +118,11 @@ struct JWT {
         let payloadEncoded = try String(base64Encode: encoder.encode(payload))
         let digest = "\(headerEncoded).\(payloadEncoded)"
 
-        let signature = try secret.sign(digest)
-
-        return "\(digest).\(signature)"
+        return digest
     }
 
     static func isExpired(_ token: String) -> Bool {
-        true
+        true  // TODO: stub
     }
 }
 
