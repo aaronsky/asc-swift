@@ -28,6 +28,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1.0.0
       - name: Install make
-        run: sudo apt update && sudo apt install make -y
+        run: apt install make
       - name: Run tests
         run: make test-library
