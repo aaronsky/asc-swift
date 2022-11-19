@@ -9,20 +9,11 @@ import FoundationNetworking
 
 class TransportTests: XCTestCase {
     private func createSession(testCase: MockURLProtocol.Case = .success) -> URLSession {
-        switch testCase {
-        case .success:
-            MockURLProtocol.requestHandler = { request in
-                let resp = MockData.mockingSuccessNoContent(for: request)
-                return (resp.data ?? Data(), resp.response)
-            }
-        case .error:
-            MockURLProtocol.requestHandler = { request in
-                let resp = try MockData.mockingError(for: request)
-                return (resp.data!, resp.response)
-            }
-        }
+        MockURLProtocol.requestHandler = testCase.requestHandler
+
         let config = URLSessionConfiguration.ephemeral
         config.protocolClasses = [MockURLProtocol.self]
+
         return URLSession(configuration: config)
     }
 
@@ -30,6 +21,19 @@ class TransportTests: XCTestCase {
         enum Case {
             case success
             case error
+
+            var requestHandler: RequestHandler {
+                { request in
+                    let resp: Response<Data>
+                    switch self {
+                    case .success:
+                        resp = MockData.mockingSuccessNoContent(for: request)
+                    case .error:
+                        resp = try MockData.mockingError(for: request)
+                    }
+                    return (resp.data ?? Data(), resp.response)
+                }
+            }
         }
 
         typealias RequestHandler = (URLRequest) throws -> (Data, URLResponse)
@@ -67,14 +71,14 @@ extension TransportTests {
     func testURLSessionSendRequest() async throws {
         let request = URLRequest(url: URL())
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
+        decoder.dateDecodingStrategy = .custom(Formatters.decodeISO8601)
         _ = try await createSession().send(request: request, decoder: decoder)
     }
 
     func testURLSessionSendRequestFailure() async {
         let request = URLRequest(url: URL())
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
+        decoder.dateDecodingStrategy = .custom(Formatters.decodeISO8601)
         try await XCTAssertThrowsError(
             await createSession(testCase: .error).send(request: request, decoder: decoder)
         )

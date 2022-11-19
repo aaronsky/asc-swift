@@ -38,22 +38,20 @@ public struct JWT: Authenticator {
         }
     }
 
-    struct PrivateKey {
-        var data: Data
+    public struct PrivateKey {
+        var key: P256.Signing.PrivateKey
 
-        init(
-            _ data: Data
-        ) {
-            self.data = data
+        public init(
+            contentsOf url: URL
+        ) throws {
+            let pemRepresentation = try String(contentsOf: url, encoding: .utf8)
+            self.key = try P256.Signing.PrivateKey(pemRepresentation: pemRepresentation)
         }
 
         func sign(_ digest: String) throws -> String {
-            let signature = HMAC<SHA256>
-                .authenticationCode(
-                    for: Data(digest.utf8),
-                    using: SymmetricKey(data: data)
-                )
-            return String(base64Encode: Data(signature))
+            let signature = try key.signature(for: Data(digest.utf8))
+
+            return String(base64Encode: signature.rawRepresentation)
         }
     }
 
@@ -63,6 +61,7 @@ public struct JWT: Authenticator {
     var expiryDuration: TimeInterval
     var scopes: [String]?
     var privateKey: PrivateKey
+    var date: (() -> Date)?
 
     private var cachedToken: String?
 
@@ -72,44 +71,42 @@ public struct JWT: Authenticator {
         issuedAt: TimeInterval? = nil,
         expiryDuration: TimeInterval,
         scopes: [String]? = nil,
-        privateKey: Data
+        privateKey: PrivateKey,
+        date: (() -> Date)? = nil
     ) {
         self.header = Header(key: keyID)
         self.issuer = issuerID
         self.issuedAt = issuedAt
         self.expiryDuration = expiryDuration
         self.scopes = scopes
-        self.privateKey = PrivateKey(privateKey)
+        self.privateKey = privateKey
+        self.date = date
     }
 
     public mutating func token() throws -> String {
-        try token(now: Date.init)
-    }
-
-    public mutating func token(now: () -> Date) throws -> String {
         if let cachedToken = cachedToken, !JWT.isExpired(cachedToken) {
             return cachedToken
         }
 
-        let newToken = try encode(now: now)
+        let newToken = try encode()
         cachedToken = newToken
-        print(newToken)
 
         return newToken
     }
 
-    func encode(now: () -> Date) throws -> String {
-        let digest = try self.digest(now: now)
+    func encode() throws -> String {
+        let digest = try self.digest()
         let signature = try privateKey.sign(digest)
 
         return "\(digest).\(signature)"
     }
 
-    func digest(now: () -> Date) throws -> String {
+    func digest() throws -> String {
+        let now = date?() ?? Date()
         let payload = Payload(
             issuer: issuer,
             issuedAt: issuedAt,
-            expiry: now().addingTimeInterval(expiryDuration).timeIntervalSince1970,
+            expiry: now.addingTimeInterval(expiryDuration).timeIntervalSince1970,
             scope: scopes
         )
 

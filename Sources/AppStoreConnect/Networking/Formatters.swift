@@ -7,23 +7,13 @@ import FoundationNetworking
 enum Formatters {
     static let iso8601WithFractionalSeconds: ISO8601DateFormatter = {
         let formatter = ISO8601DateFormatter()
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        formatter.formatOptions.insert(.withFractionalSeconds)
         return formatter
     }()
     static let iso8601: ISO8601DateFormatter = {
         let formatter = ISO8601DateFormatter()
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.formatOptions = [.withInternetDateTime]
         return formatter
     }()
-    static let iso8601Permissive: ISO8601DateFormatter = {
-        let formatter = ISO8601DateFormatter()
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.formatOptions = []
-        return formatter
-    }()
-
     @Sendable
     static func encodeISO8601(date: Date, encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
@@ -39,7 +29,7 @@ enum Formatters {
             throw DecodingError.dataCorrupted(
                 DecodingError.Context(
                     codingPath: container.codingPath,
-                    debugDescription: "Expected date string \"\(dateString)\" to be ISO8601-formatted."
+                    debugDescription: "Expected date string \(dateString) to be ISO8601-formatted."
                 )
             )
         }
@@ -55,9 +45,10 @@ extension Date {
             self = date
         } else if let date = Formatters.iso8601.date(from: iso8601String) {
             self = date
-        } else if let date = Formatters.iso8601Permissive.date(from: iso8601String) {
+        } else if let date = Formatters.iso8601.date(from: iso8601String) {
             self = date
+        } else {
+            return nil
         }
-        return nil
     }
 }

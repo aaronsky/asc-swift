@@ -25,7 +25,7 @@ public struct Response<T: Equatable>: Equatable {
     ) throws where T == Data {
         var errorResponse: ErrorResponse?
         if let data = data {
-            errorResponse = try decoder.decode(ErrorResponse.self, from: data)
+            errorResponse = try? decoder.decode(ErrorResponse.self, from: data)
         }
 
         self.init(data: data, response: response, statusCode: statusCode, errorResponse: errorResponse)

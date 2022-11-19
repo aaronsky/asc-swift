@@ -13,7 +13,7 @@ import FoundationNetworking
         let keyID = env["ASC_KEY_ID", default: "..."]
         let issuerID = env["ASC_ISSUER_ID", default: "..."]
         let privateKeyPath = env["ASC_PRIVATE_KEY_PATH", default: "..."]
-        let privateKey = try Data(contentsOf: URL(filePath: privateKeyPath))
+        let privateKey = try JWT.PrivateKey(contentsOf: URL(filePath: privateKeyPath))
         let client = AppStoreConnectClient(
             authenticator: JWT(
                 keyID: keyID,
@@ -24,6 +24,6 @@ import FoundationNetworking
         )
 
         let apps = try await client.send(Resources.v1.apps.get())
-        print(apps)
+        print(apps.data.map(\.attributes?.name))
     }
 }
