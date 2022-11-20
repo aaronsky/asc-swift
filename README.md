@@ -37,9 +37,43 @@ dependencies: [
 
 ### Authentication
 
+The App Store Connect API has no methods that allow for unauthorized requests. To make it easy to authenticate with App Store Connect, this library offers the aforementioned `JWT` type to handle signing and rotating JSON Web Tokens automatically when they expire. For example:
+
+```swift
+import AppStoreConnect
+
+let privateKey = try JWT.PrivateKey(contentsOf: URL(filePath: "..."))
+let client = AppStoreConnectClient(
+    authenticator: JWT(
+        keyID: "...",
+        issuerID: "...",
+        expiryDuration: 20 * 60, // 20 minutes
+        privateKey: privateKey
+    )
+)
+```
+
+You can learn more about creating the necessary credentials for the App Store Connect API at Apple's documentation page via [Creating API Keys for App Store Connect API](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api). All App Store Connect APIs are scoped to the credentials of the pre-configured key, so you can't use this API to make queries against the entire App Store.
+
 ### Rate Limiting
 
+Apple imposes a rate limit on all users of the API. If the API produces a rate limit error, `AppStoreConnectClient` will throw `Response.Error.rateLimitExceeded` for your convenience. This error contains the `ErrorResponse` returned from the API, a `Response.Rate` containing call limit and remaining call information, and the underlying response.
+
+You can learn more about rate limiting at Apple's documentation page via [Identifying Rate Limits](https://developer.apple.com/documentation/appstoreconnectapi/identifying_rate_limits).
+
 ### Pagination
+
+All requests for resource collections (apps, builds, beta groups, etc.) support pagination. Responses for paginated resources will contain a `links` property of type `PagedDocumentLinks`, with "reference" URLs for `first`, `next`, and `self`. You can also find more information about the per-page limit and total count of resources in the response's `meta` field of type `PagingInformation`. You typically shouldn't require any of this information for typical pagination.
+
+The most common application for pagination is paging forward from the first "page". For example:
+
+```swift
+for try await appsPage in await client.pages(Resources.v1.apps.get()) {
+    print(appsPage)
+}
+```
+
+You can also page forward manually using the `send(_:pageAfter:)` method on `AppStoreConnectClient`.
 
 ## Contributing
 
@@ -49,7 +83,7 @@ This project's primary goal is to cover the entire API surface exposed by the of
 
 This library is released under the BSD-2 license.
 
-See [LICENSE](https://github.com/aaronsky/buildkite-swift/blob/master/LICENSE) for the full text.
+See [LICENSE](https://github.com/aaronsky/asc-swift/blob/master/LICENSE) for the full text.
 
 ## Credits
 

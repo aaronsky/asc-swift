@@ -16,6 +16,7 @@ SWIFT_FORMAT_CONFIG_FILE := $(GIT_REPO_TOPLEVEL)/.swift-format.json
 FORMAT_PATHS := $(GIT_REPO_TOPLEVEL)/Examples $(GIT_REPO_TOPLEVEL)/Package.swift $(GIT_REPO_TOPLEVEL)/Sources $(GIT_REPO_TOPLEVEL)/Tests
 
 # Tasks
+
 .PHONY: default
 default: test-all
 
@@ -84,20 +85,6 @@ test-examples-simple:
 		-scheme simple \
 		-destination "$(DESTINATION_PLATFORM_MACOS)" \
 		-quiet
-
-.PHONY: test-docs
-DOC_WARNINGS := $(shell xcodebuild clean docbuild \
-	-scheme AppStoreConnect \
-	-destination "$(DESTINATION_PLATFORM_MACOS)" \
-	-quiet \
-	2>&1 \
-	| grep "couldn't be resolved to known documentation" \
-	| sed 's|$(PWD)|.|g' \
-	| tr '\n' '\1')
-test-docs:
-	@test "$(DOC_WARNINGS)" = "" \
-		|| (echo "xcodebuild docbuild failed:\n\n$(DOC_WARNINGS)" | tr '\1' '\n' \
-		&& exit 1)
 
 .PHONY: format
 format:

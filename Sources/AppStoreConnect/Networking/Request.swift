@@ -13,6 +13,8 @@ extension URLRequest {
     ///   - request: A request.
     ///   - encoder: An encoder.
     ///   - authenticator: Authorization provider.
+    /// - Throws: An error if the URL constructed from the request is invalid
+    ///           or if there is a problem retrieving an authentication token.
     init<Response>(
         request: Request<Response>,
         encoder: JSONEncoder,
@@ -32,18 +34,25 @@ extension URLRequest {
     /// - Parameters:
     ///   - url: Request URL.
     ///   - method: Request method.
+    ///   - headers: Request headers.
     ///   - body: Request body.
     ///   - encoder: An encoder.
     ///   - authenticator: Authorization provider.
+    /// - Throws: An error if there is a problem retrieving an authentication token.
     init(
         url: URL,
         method: String? = nil,
+        headers: [(String, String?)] = [],
         body: (any Encodable)? = nil,
         encoder: JSONEncoder,
         authenticator: inout Authenticator
     ) throws {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method
+
+        for header in headers {
+            urlRequest.setValue(header.1, forHTTPHeaderField: header.0)
+        }
 
         if let body = body {
             urlRequest.httpBody = try encoder.encode(body)
@@ -59,8 +68,9 @@ extension URLRequest {
 
 extension URL {
     /// Creates a ``URL`` out of a ``Request``.
-    /// - Parameters:
-    ///   - request: A request.
+    /// - Parameter request: A request.
+    /// - Throws: An error if the URL could not be constructed out of the path
+    ///           or queries declared in the request.
     fileprivate init<Response>(
         request: Request<Response>
     ) throws {

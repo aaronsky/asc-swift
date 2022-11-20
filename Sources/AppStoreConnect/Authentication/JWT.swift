@@ -69,6 +69,7 @@ public struct JWT: Authenticator {
 
         /// Creates a private key representation from a URL to a PKCS#8 private key.
         /// - Parameter url: URL to the PKCS#8 private key on disk.
+        /// - Throws: An error if the private key could not be parsed as a PEM.
         public init(
             contentsOf url: URL
         ) throws {
@@ -77,6 +78,7 @@ public struct JWT: Authenticator {
         }
 
         /// Sign the digest using the private key and base64 encode the result.
+        /// - Parameter digest: The digest of the header and payload.
         /// - Returns: The signature component of the JWT.
         /// - Throws: An error if the digest data could not be signed with the private key.
         func sign(_ digest: String) throws -> String {
@@ -212,8 +214,9 @@ public struct JWT: Authenticator {
     }
 
     /// Check if the given token is expired based on its encoded expiration timestamp. Does not account for illegitimate expiration durations forbidden by the App Store Connect API.
-    /// - Parameter token: A constructed JWT.
-    /// - Parameter date: Dependency on the current date. Useful in testing.
+    /// - Parameters:
+    ///   - token: A constructed JWT.
+    ///   - date: Dependency on the current date. Useful in testing.
     /// - Returns: Whether or not the token has expired past its stated duration.
     static func isExpired(_ token: String, date: (() -> Date)?) -> Bool {
         do {
@@ -222,7 +225,7 @@ public struct JWT: Authenticator {
 
             return expiryDate >= (date?() ?? Date())
         } catch {
-            return true // If the token cannot be decoded, we will always treat it as expired.
+            return true  // If the token cannot be decoded, we will always treat it as expired.
         }
     }
 

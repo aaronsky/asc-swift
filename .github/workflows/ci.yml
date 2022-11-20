@@ -27,9 +27,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run tests
-        run: make test-library-xcode-ios
-      - name: Compile documentation
-        run: make test-docs
+        run: make test-library-xcode
 
   library-linux:
     runs-on: ubuntu-latest
