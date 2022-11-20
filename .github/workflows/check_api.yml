@@ -1,7 +1,7 @@
 name: Check for new App Store Connect API versions
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: ~
   schedule:
     - cron: '0 12 * * *'
 
