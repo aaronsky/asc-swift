@@ -2,7 +2,20 @@ name: CI
 
 on:
   push:
+    paths:
+      - AppStoreConnect.xcworkspace/**/*
+      - Examples/**/*
+      - Plugins/**/*
+      - Sources/**/*
+      - Tests/**/*
+      - Package.swift
   pull_request:
+      - AppStoreConnect.xcworkspace/**/*
+      - Examples/**/*
+      - Plugins/**/*
+      - Sources/**/*
+      - Tests/**/*
+      - Package.swift
   workflow_dispatch:
 
 jobs:
