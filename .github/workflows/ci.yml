@@ -10,6 +10,7 @@ on:
       - 'Tests/**/*'
       - 'Package.swift'
   pull_request:
+    paths:
       - 'AppStoreConnect.xcworkspace/**/*'
       - 'Examples/**/*'
       - 'Plugins/**/*'
