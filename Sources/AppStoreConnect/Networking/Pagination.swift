@@ -4,23 +4,30 @@ import Foundation
 import FoundationNetworking
 #endif
 
-public struct PagedResponses<T>: AsyncSequence, AsyncIteratorProtocol where T: Decodable {
-    public typealias Element = T
+/// A structure for iterating on paged resources asynchronously.
+public struct PagedResponses<Response>: AsyncSequence, AsyncIteratorProtocol where Response: Decodable {
+    public typealias Element = Response
 
-    let request: Request<T>
+    /// The initial request. Used for the initial request, and to shape the type of future requests.
+    let request: Request<Response>
+    /// A reference to the API client.
     let client: AppStoreConnectClient
 
+    /// Creates the sequence.
+    /// - Parameters:
+    ///   - request: The initial request.
+    ///   - client: The API client.
     init(
-        request: Request<T>,
+        request: Request<Response>,
         client: AppStoreConnectClient
     ) {
         self.request = request
         self.client = client
     }
 
-    private var currentElement: T?
+    private var currentElement: Element?
 
-    public mutating func next() async throws -> T? {
+    public mutating func next() async throws -> Element? {
         guard !Task.isCancelled else {
             return nil
         }

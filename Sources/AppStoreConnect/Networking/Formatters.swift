@@ -4,48 +4,51 @@ import Foundation
 import FoundationNetworking
 #endif
 
-enum Formatters {
-    static let iso8601WithFractionalSeconds: ISO8601DateFormatter = {
-        let formatter = ISO8601DateFormatter()
-        formatter.formatOptions.insert(.withFractionalSeconds)
-        return formatter
-    }()
-    static let iso8601: ISO8601DateFormatter = {
-        let formatter = ISO8601DateFormatter()
-        return formatter
-    }()
-    @Sendable
-    static func encodeISO8601(date: Date, encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        let dateString = iso8601WithFractionalSeconds.string(from: date)
-        try container.encode(dateString)
-    }
+/// ISO 8601 date formatter with fractional seconds support.
+let iso8601WithFractionalSecondsFormatter: ISO8601DateFormatter = {
+    let formatter = ISO8601DateFormatter()
+    formatter.formatOptions.insert(.withFractionalSeconds)
+    return formatter
+}()
 
-    @Sendable
-    static func decodeISO8601(decoder: Decoder) throws -> Date {
-        let container = try decoder.singleValueContainer()
-        let dateString = try container.decode(String.self)
-        guard let date = Date(iso8601String: dateString) else {
-            throw DecodingError.dataCorrupted(
-                DecodingError.Context(
-                    codingPath: container.codingPath,
-                    debugDescription: "Expected date string \(dateString) to be ISO8601-formatted."
-                )
+/// ISO 8601 date formatter with default options.
+let iso8601Formatter: ISO8601DateFormatter = {
+    let formatter = ISO8601DateFormatter()
+    return formatter
+}()
+
+/// Helper to encode an ISO 8601 date permissively.
+@Sendable
+func encodeISO8601Date(_ date: Date, encoder: Encoder) throws {
+    var container = encoder.singleValueContainer()
+    let dateString = iso8601WithFractionalSecondsFormatter.string(from: date)
+    try container.encode(dateString)
+}
+
+/// Helper to decode an ISO 8601 date string permissively.
+@Sendable
+func decodeISO8601Date(with decoder: Decoder) throws -> Date {
+    let container = try decoder.singleValueContainer()
+    let dateString = try container.decode(String.self)
+    guard let date = Date(iso8601String: dateString) else {
+        throw DecodingError.dataCorrupted(
+            DecodingError.Context(
+                codingPath: container.codingPath,
+                debugDescription: "Expected date string \(dateString) to be ISO8601-formatted."
             )
-        }
-        return date
+        )
     }
+    return date
 }
 
 extension Date {
+    /// Helper to decode an ISO 8601 date string permissively.
     init?(
         iso8601String: String
     ) {
-        if let date = Formatters.iso8601WithFractionalSeconds.date(from: iso8601String) {
+        if let date = iso8601WithFractionalSecondsFormatter.date(from: iso8601String) {
             self = date
-        } else if let date = Formatters.iso8601.date(from: iso8601String) {
-            self = date
-        } else if let date = Formatters.iso8601.date(from: iso8601String) {
+        } else if let date = iso8601Formatter.date(from: iso8601String) {
             self = date
         } else {
             return nil

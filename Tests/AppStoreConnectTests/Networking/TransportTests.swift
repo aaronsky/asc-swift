@@ -71,14 +71,14 @@ extension TransportTests {
     func testURLSessionSendRequest() async throws {
         let request = URLRequest(url: URL())
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom(Formatters.decodeISO8601)
+        decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
         _ = try await createSession().send(request: request, decoder: decoder)
     }
 
     func testURLSessionSendRequestFailure() async {
         let request = URLRequest(url: URL())
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom(Formatters.decodeISO8601)
+        decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
         try await XCTAssertThrowsError(
             await createSession(testCase: .error).send(request: request, decoder: decoder)
         )

@@ -8,6 +8,11 @@ import FoundationNetworking
 private let appStoreConnectBaseURL = URL(string: "https://api.appstoreconnect.apple.com")!
 
 extension URLRequest {
+    /// Creates a ``URLRequest`` out of a ``Request``.
+    /// - Parameters:
+    ///   - request: A request.
+    ///   - encoder: An encoder.
+    ///   - authenticator: Authorization provider.
     init<Response>(
         request: Request<Response>,
         encoder: JSONEncoder,
@@ -23,6 +28,13 @@ extension URLRequest {
         )
     }
 
+    /// Creates a ``URLRequest`` out of a ``Request``.
+    /// - Parameters:
+    ///   - url: Request URL.
+    ///   - method: Request method.
+    ///   - body: Request body.
+    ///   - encoder: An encoder.
+    ///   - authenticator: Authorization provider.
     init(
         url: URL,
         method: String? = nil,
@@ -46,19 +58,26 @@ extension URLRequest {
 }
 
 extension URL {
+    /// Creates a ``URL`` out of a ``Request``.
+    /// - Parameters:
+    ///   - request: A request.
     fileprivate init<Response>(
         request: Request<Response>
     ) throws {
         let url = appStoreConnectBaseURL.appendingPathComponent(request.url)
+
         guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
             throw URLError(.badURL)
         }
+
         if let query = request.query, !query.isEmpty {
             components.queryItems = query.map(URLQueryItem.init)
         }
+
         guard let url = components.url else {
             throw URLError(.badURL)
         }
+
         self = url
     }
 }

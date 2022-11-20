@@ -9,9 +9,9 @@ import FoundationNetworking
 
 final class FormattersTests: XCTestCase {
     func testFormatters() {
-        XCTAssertNotNil(Formatters.iso8601WithFractionalSeconds.date(from: "2022-11-19T12:00:01.111Z")) // yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX
-        XCTAssertNotNil(Formatters.iso8601.date(from: "2022-11-19T12:00:01 -04:00"))                    // yyyy-MM-dd'T'HH:mm:ssZZZZZ
-        XCTAssertNotNil(Formatters.iso8601.date(from: "2022-11-19T12:00:01Z"))                          // yyyy-MM-dd'T'HH:mm:ssXXXXX
+        XCTAssertNotNil(iso8601WithFractionalSecondsFormatter.date(from: "2022-11-19T12:00:01.111Z"))  // yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX
+        XCTAssertNotNil(iso8601Formatter.date(from: "2022-11-19T12:00:01 -04:00"))  // yyyy-MM-dd'T'HH:mm:ssZZZZZ
+        XCTAssertNotNil(iso8601Formatter.date(from: "2022-11-19T12:00:01Z"))  // yyyy-MM-dd'T'HH:mm:ssXXXXX
     }
 
     func testFormattersCodable() throws {
@@ -22,11 +22,11 @@ final class FormattersTests: XCTestCase {
         let expected = Foo(date: Date(timeIntervalSince1970: 1584216283.567))
 
         let encoder = JSONEncoder()
-        encoder.dateEncodingStrategy = .custom(Formatters.encodeISO8601)
+        encoder.dateEncodingStrategy = .custom(encodeISO8601Date(_:encoder:))
         let data = try encoder.encode(expected)
 
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom(Formatters.decodeISO8601)
+        decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
         let actual = try decoder.decode(Foo.self, from: data)
 
         XCTAssertEqual(expected, actual)
@@ -43,7 +43,7 @@ final class FormattersTests: XCTestCase {
             .data(using: .utf8)!
 
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom(Formatters.decodeISO8601)
+        decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
         XCTAssertThrowsError(try decoder.decode(Foo.self, from: data))
     }
 }

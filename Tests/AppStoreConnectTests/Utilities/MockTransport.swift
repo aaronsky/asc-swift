@@ -58,4 +58,19 @@ final class MockTransport: Transport {
             throw Error.unexpectedResponse(.data(data))
         }
     }
+
+    func upload(request: URLRequest, data: Data, decoder: JSONDecoder) async throws -> Response<Data> {
+        history.append(request)
+
+        if responses.isEmpty {
+            throw Error.tooManyRequests
+        }
+
+        switch responses.removeFirst() {
+        case .fileURL(let url):
+            throw Error.unexpectedResponse(.fileURL(url))
+        case .data(let data):
+            return data
+        }
+    }
 }

@@ -4,25 +4,40 @@ import Foundation
 import FoundationNetworking
 #endif
 
-enum ResponseError: Error {
-    case requestFailure(Response.StatusCode, ErrorResponse?, URLResponse)
-    case dataAssertionFailed
-}
+/// Response from sending a ``Request``.
+public struct Response<Received: Equatable>: Equatable {
+    /// Error thrown when the response from the ``Transport`` fails to meet expectations.
+    public enum Error: Swift.Error {
+        /// The response as requested was unsuccessful, as described by the ``statusCode`` and ``error``.
+        case requestFailure(statusCode: StatusCode, error: ErrorResponse?, response: URLResponse)
+        /// Data was expected to exist or conform to some format but failed.
+        case dataAssertionFailed
+    }
 
-public struct Response<T: Equatable>: Equatable {
+    /// Typealias for the status code returned by the App Store Connect API.
     public typealias StatusCode = Int
 
-    public let data: T?
-    public let response: URLResponse
-    public let statusCode: StatusCode
-    public let errorResponse: ErrorResponse?
+    /// Raw data returned by the ``Transport``.
+    let data: Received?
+    /// Response returned by the ``Transport``.
+    let response: URLResponse
+    /// Status code found on the ``response``.
+    let statusCode: StatusCode
+    /// ``ErrorResponse`` object that could be extracted from the data, if possible.
+    let errorResponse: ErrorResponse?
 
-    public init(
-        data: T?,
+    /// Creates a response that contains ``Data``.
+    /// - Parameters:
+    ///   - data: Data from the ``Transport``.
+    ///   - response: Response from the ``Transport``.
+    ///   - statusCode: Status code found on the ``response``.
+    ///   - decoder: A decoder that can be used to parse an ``ErrorResponse`` object, in case one exists.
+    init(
+        data: Received?,
         response: URLResponse,
         statusCode: StatusCode,
         decoder: JSONDecoder
-    ) throws where T == Data {
+    ) where Received == Data {
         var errorResponse: ErrorResponse?
         if let data = data {
             errorResponse = try? decoder.decode(ErrorResponse.self, from: data)
@@ -31,16 +46,27 @@ public struct Response<T: Equatable>: Equatable {
         self.init(data: data, response: response, statusCode: statusCode, errorResponse: errorResponse)
     }
 
-    public init(
-        fileURL: T?,
+    /// Creates a response that contains a ``URL``.
+    /// - Parameters:
+    ///   - fileURL: URL to an on-disk file downloaded by the ``Transport``.
+    ///   - response: Response from the ``Transport``.
+    ///   - statusCode: Status code found on the ``response``.
+    init(
+        fileURL: Received?,
         response: URLResponse,
         statusCode: StatusCode
-    ) where T == URL {
+    ) where Received == URL {
         self.init(data: fileURL, response: response, statusCode: statusCode)
     }
 
-    public init(
-        data: T?,
+    /// Creates a response.
+    /// - Parameters:
+    ///   - data: Data from the ``Transport``.
+    ///   - response: Response from the ``Transport``.
+    ///   - statusCode: Status code found on the ``response``.
+    ///   - errorResponse: ``ErrorResponse`` object that could be extracted from the data, if possible.
+    init(
+        data: Received?,
         response: URLResponse,
         statusCode: StatusCode,
         errorResponse: ErrorResponse? = nil
@@ -51,23 +77,28 @@ public struct Response<T: Equatable>: Equatable {
         self.errorResponse = errorResponse
     }
 
+    /// Checks the response for any unacceptable properties, such as a non-2XX status code, in order to verify integrity.
     func check() throws {
         guard 200..<300 ~= statusCode else {
-            throw ResponseError.requestFailure(statusCode, errorResponse, response)
+            throw Error.requestFailure(statusCode: statusCode, error: errorResponse, response: response)
         }
     }
 
-    func decode<Output>(using decoder: JSONDecoder) throws -> Output where Output: Decodable, T == Data {
+    /// Decodes the ``data`` into the intended container type.
+    /// - Returns: The decoded data.
+    func decode<Output>(using decoder: JSONDecoder) throws -> Output where Output: Decodable, Received == Data {
         guard let data = data else {
-            throw ResponseError.dataAssertionFailed
+            throw Error.dataAssertionFailed
         }
 
         return try decoder.decode(Output.self, from: data)
     }
 
-    func decode() throws -> URL where T == URL {
+    /// Unwraps the stored ``URL`` and returns it.
+    /// - Returns: URL to a downloaded file on-disk.
+    func decode() throws -> URL where Received == URL {
         guard let data = data else {
-            throw ResponseError.dataAssertionFailed
+            throw Error.dataAssertionFailed
         }
 
         return data
