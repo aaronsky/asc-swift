@@ -293,8 +293,11 @@ extension String {
 }
 
 extension Data {
-    init?(base64Decode string: String) {
-        var base64 = string
+    init?(
+        base64Decode string: String
+    ) {
+        var base64 =
+            string
             .replacingOccurrences(of: "-", with: "+")
             .replacingOccurrences(of: "_", with: "/")
         let length = Double(base64.lengthOfBytes(using: String.Encoding.utf8))

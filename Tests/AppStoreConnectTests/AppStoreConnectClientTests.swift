@@ -67,9 +67,11 @@ final class AppStoreConnectTests: XCTestCase {
         let pages = [
             testData.resources.pagedContentFirst,
             testData.resources.pagedContentNext,
-            testData.resources.pagedContentLast
+            testData.resources.pagedContentLast,
         ]
-        for try await response: MockResources.PagedContent in await testData.context.client.pages(testData.context.request()) {
+        for try await response: MockResources.PagedContent in await testData.context.client.pages(
+            testData.context.request()
+        ) {
             defer { page += 1 }
             XCTAssertEqual(response, pages[page])
         }

@@ -24,15 +24,15 @@ final class JWTTests: XCTestCase {
         var jwt = try JWT(
             keyID: "TEST",
             issuerID: "TEST",
-            expiryDuration: 20 * 60, // 20 minutes
+            expiryDuration: 20 * 60,  // 20 minutes
             privateKey: .init(
                 pemRepresentation: """
-                -----BEGIN PRIVATE KEY-----
-                MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgg2wUxVlKtf88twNw
-                86ZrWxuzZtwOeYylHJsF4mPE4qOhRANCAAS/zi5KmzpwSba4j3y/LjgkC7hzOmez
-                gNlQxzOA98JVvq0k3iE3UtY0mBovKEW2T30AQ5VXhZh011wFgfze1xBx
-                -----END PRIVATE KEY-----
-                """
+                    -----BEGIN PRIVATE KEY-----
+                    MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgg2wUxVlKtf88twNw
+                    86ZrWxuzZtwOeYylHJsF4mPE4qOhRANCAAS/zi5KmzpwSba4j3y/LjgkC7hzOmez
+                    gNlQxzOA98JVvq0k3iE3UtY0mBovKEW2T30AQ5VXhZh011wFgfze1xBx
+                    -----END PRIVATE KEY-----
+                    """
             ),
             date: { Date(timeIntervalSince1970: 1000) }
         )
@@ -50,7 +50,7 @@ final class JWTTests: XCTestCase {
             try JWT(
                 keyID: "TEST",
                 issuerID: "TEST",
-                expiryDuration: 20 * 60, // 20 minutes
+                expiryDuration: 20 * 60,  // 20 minutes
                 privateKey: .init(
                     pemRepresentation: "TEST"
                 ),
