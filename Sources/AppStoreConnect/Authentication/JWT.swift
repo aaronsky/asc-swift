@@ -67,6 +67,12 @@ public struct JWT: Authenticator {
         /// Private key used to sign the digest of the header and payload.
         var key: P256.Signing.PrivateKey
 
+        public init(
+            pemRepresentation: String
+        ) throws {
+            self.key = try P256.Signing.PrivateKey(pemRepresentation: pemRepresentation)
+        }
+
         /// Creates a private key representation from a URL to a PKCS#8 private key.
         /// - Parameter url: URL to the PKCS#8 private key on disk.
         /// - Throws: An error if the private key could not be parsed as a PEM.
@@ -74,7 +80,7 @@ public struct JWT: Authenticator {
             contentsOf url: URL
         ) throws {
             let pemRepresentation = try String(contentsOf: url, encoding: .utf8)
-            self.key = try P256.Signing.PrivateKey(pemRepresentation: pemRepresentation)
+            try self.init(pemRepresentation: pemRepresentation)
         }
 
         /// Sign the digest using the private key and base64 encode the result.
@@ -222,8 +228,9 @@ public struct JWT: Authenticator {
         do {
             let (_, payload) = try decode(from: token)
             let expiryDate = Date(timeIntervalSince1970: payload.expiry)
+            let now = date?() ?? Date()
 
-            return expiryDate >= (date?() ?? Date())
+            return expiryDate < now
         } catch {
             return true  // If the token cannot be decoded, we will always treat it as expired.
         }
@@ -247,12 +254,28 @@ public struct JWT: Authenticator {
             )
         }
 
+        guard let headerData = Data(base64Decode: parts[0]) else {
+            throw DecodingError.dataCorrupted(
+                .init(
+                    debugDescription: "Header data could not be base64-decoded"
+                )
+            )
+        }
+
+        guard let payloadData = Data(base64Decode: parts[1]) else {
+            throw DecodingError.dataCorrupted(
+                .init(
+                    debugDescription: "Payload data could not be base64-decoded"
+                )
+            )
+        }
+
         let decoder = JSONDecoder()
 
-        let headerDecoded = try decoder.decode(Header.self, from: Data(String(base64Decode: parts[0]).utf8))
-        let payloadDecoded = try decoder.decode(Payload.self, from: Data(String(base64Decode: parts[1]).utf8))
-
-        return (headerDecoded, payloadDecoded)
+        return try (
+            decoder.decode(Header.self, from: headerData),
+            decoder.decode(Payload.self, from: payloadData)
+        )
     }
 }
 
@@ -267,20 +290,21 @@ extension String {
             .replacingOccurrences(of: "+", with: "-")
             .replacingOccurrences(of: "/", with: "_")
     }
+}
 
-    /// Decode the given base64 URL encoded string into an unencoded string.
-    /// - Parameter string: The string to decode.
-    init(
-        base64Decode string: String
-    ) {
-        var base64 =
-            string
+extension Data {
+    init?(base64Decode string: String) {
+        var base64 = string
             .replacingOccurrences(of: "-", with: "+")
             .replacingOccurrences(of: "_", with: "/")
-        if base64.count % 4 != 0 {
-            base64.append(String(repeating: "=", count: 4 - base64.count % 4))
+        let length = Double(base64.lengthOfBytes(using: String.Encoding.utf8))
+        let requiredLength = 4 * ceil(length / 4.0)
+        let paddingLength = requiredLength - length
+        if paddingLength > 0 {
+            let padding = "".padding(toLength: Int(paddingLength), withPad: "=", startingAt: 0)
+            base64 += padding
         }
 
-        self = base64
+        self.init(base64Encoded: base64, options: .ignoreUnknownCharacters)
     }
 }

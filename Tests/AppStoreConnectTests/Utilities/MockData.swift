@@ -36,6 +36,8 @@ struct MockResources {
         links: PagedDocumentLinks(this: "test3", first: "test", next: nil)
     )
 
+    var downloadURL = URL(string: "https://apple.com/hello-app-store")!
+
     init() {}
 }
 
@@ -59,6 +61,10 @@ extension MockData {
 
     static func mockingSuccessNoContent(for request: URLRequest) -> Response<Data> {
         return .init(data: nil, response: urlResponse(for: request.url!, statusCode: 200), statusCode: 200, rate: nil)
+    }
+
+    static func mockingSuccessDownload(to fileURL: URL, for url: URL = URL()) -> Response<URL> {
+        return .init(fileURL: fileURL, response: urlResponse(for: url, statusCode: 200), statusCode: 200, rate: nil)
     }
 
     static func mockingIncompatibleResponse(for url: URL = URL()) -> Response<Data> {
@@ -87,7 +93,9 @@ extension MockData {
             url: url,
             statusCode: statusCode,
             httpVersion: "HTTP/1.1",
-            headerFields: [:]
+            headerFields: [
+                "X-Rate-Limit": "user-hour-lim:2500;user-hour-rem:10;a:b:c;d:e;;"
+            ]
         )!
     }
 }
