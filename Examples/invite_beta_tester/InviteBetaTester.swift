@@ -71,7 +71,9 @@ import FoundationNetworking
                     )
                 )
 
-                print("Sent an invitation to \(tester.attributes!.firstName!) \(tester.attributes!.lastName!) at \(tester.attributes!.email!).")
+                print(
+                    "Sent an invitation to \(tester.attributes!.firstName!) \(tester.attributes!.lastName!) at \(tester.attributes!.email!)."
+                )
             }
         }
     }
