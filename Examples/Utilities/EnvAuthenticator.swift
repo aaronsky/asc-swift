@@ -50,7 +50,7 @@ public struct EnvAuthenticator: Authenticator {
             throw Error.missingEnvironmentVariable(privateKeyPathVariableName)
         }
 
-        let privateKey = try JWT.PrivateKey(contentsOf: URL(filePath: privateKeyPath))
+        let privateKey = try JWT.PrivateKey(contentsOf: URL(fileURLWithPath: privateKeyPath))
 
         self.jwt = JWT(
             keyID: keyID,
