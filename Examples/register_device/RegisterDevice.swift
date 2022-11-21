@@ -31,7 +31,7 @@ import FoundationNetworking
         )
 
         print(
-            "Successfully registered \(device.data.attributes!.name!) (\(device.data.attributes!.model!)) at \(device.data.attributes!.addedDate!.formatted())"
+            "Successfully registered \(device.data.attributes!.name!) (\(device.data.attributes!.model!)) at \(device.data.attributes!.addedDate!)"
         )
     }
 }

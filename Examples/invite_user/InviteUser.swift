@@ -44,7 +44,7 @@ import FoundationNetworking
         )
 
         print(
-            "Sent an invitation to \(localizedName(firstName: invitation.data.attributes?.firstName, lastName: invitation.data.attributes?.lastName)) at \(invitation.data.attributes!.email!). They should check their email and confirm the invitation before it expires at \(invitation.data.attributes!.expirationDate!.formatted())."
+            "Sent an invitation to \(localizedName(firstName: invitation.data.attributes?.firstName, lastName: invitation.data.attributes?.lastName)) at \(invitation.data.attributes!.email!). They should check their email and confirm the invitation before it expires at \(invitation.data.attributes!.expirationDate!)."
         )
     }
 
