@@ -43,7 +43,6 @@ public struct Environment {
     ///   - url: URL to the local file.
     ///   - processInfo: The current process.
     /// - Throws: ``FileParserError`` if the file could not be loaded or parsed.
-    @discardableResult
     public init(
         contentsOf url: URL? = nil,
         processInfo: ProcessInfo = .processInfo

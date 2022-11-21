@@ -11,26 +11,91 @@ let package = Package(
         .watchOS(.v9),
     ],
     products: [
-        .executable(name: "simple", targets: ["simple"])
+        .executable(name: "invite_beta_tester", targets: ["invite_beta_tester"]),
+        .executable(name: "invite_user", targets: ["invite_user"]),
+        .executable(name: "list_builds", targets: ["list_builds"]),
+        .executable(name: "register_devices", targets: ["register_devices"]),
+        .executable(name: "sales_finance_reports", targets: ["sales_finance_reports"]),
+        .executable(name: "upload_preview", targets: ["upload_preview"]),
+        .executable(name: "upload_screenshot", targets: ["upload_screenshot"]),
     ],
     dependencies: [
-        .package(name: "AppStoreConnect", path: "../")
+        .package(name: "AppStoreConnect", path: "../"),
+        .package(url: "https://github.com/apple/swift-argument-parser", from: "1.0.0"),
+        .package(url: "https://github.com/apple/swift-crypto.git", .upToNextMajor(from: "2.0.0")),
     ],
     targets: [
         .executableTarget(
-            name: "simple",
+            name: "invite_beta_tester",
             dependencies: [
-                "ExamplesCore",
+                "Utilities",
                 .product(name: "AppStoreConnect", package: "AppStoreConnect"),
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
             ],
-            path: "simple"
+            path: "invite_beta_tester"
+        ),
+        .executableTarget(
+            name: "invite_user",
+            dependencies: [
+                "Utilities",
+                .product(name: "AppStoreConnect", package: "AppStoreConnect"),
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+            ],
+            path: "invite_user"
+        ),
+        .executableTarget(
+            name: "list_builds",
+            dependencies: [
+                "Utilities",
+                .product(name: "AppStoreConnect", package: "AppStoreConnect"),
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+            ],
+            path: "list_builds"
+        ),
+        .executableTarget(
+            name: "register_devices",
+            dependencies: [
+                "Utilities",
+                .product(name: "AppStoreConnect", package: "AppStoreConnect"),
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+            ],
+            path: "register_devices"
+        ),
+        .executableTarget(
+            name: "sales_finance_reports",
+            dependencies: [
+                "Utilities",
+                .product(name: "AppStoreConnect", package: "AppStoreConnect"),
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+            ],
+            path: "sales_finance_reports"
+        ),
+        .executableTarget(
+            name: "upload_preview",
+            dependencies: [
+                "Utilities",
+                .product(name: "AppStoreConnect", package: "AppStoreConnect"),
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                .product(name: "Crypto", package: "swift-crypto"),
+            ],
+            path: "upload_preview"
+        ),
+        .executableTarget(
+            name: "upload_screenshot",
+            dependencies: [
+                "Utilities",
+                .product(name: "AppStoreConnect", package: "AppStoreConnect"),
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                .product(name: "Crypto", package: "swift-crypto"),
+            ],
+            path: "upload_screenshot"
         ),
         .target(
-            name: "ExamplesCore",
+            name: "Utilities",
             dependencies: [
                 .product(name: "AppStoreConnect", package: "AppStoreConnect")
             ],
-            path: "ExamplesCore"
+            path: "Utilities"
         ),
     ]
 )

@@ -5,8 +5,6 @@ import _Specification
 import FoundationNetworking
 #endif
 
-private let appStoreConnectBaseURL = URL(string: "https://api.appstoreconnect.apple.com")!
-
 extension URLRequest {
     /// Creates a ``URLRequest`` out of a ``Request``.
     /// - Parameters:
@@ -98,7 +96,7 @@ extension URL {
     fileprivate init<Response>(
         request: Request<Response>
     ) throws {
-        let url = appStoreConnectBaseURL.appendingPathComponent(request.url)
+        let url = request.baseURL.appendingPathComponent(request.path)
 
         guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
             throw URLError(.badURL)
