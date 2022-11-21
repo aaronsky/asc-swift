@@ -29,7 +29,7 @@ To add AppStoreConnect to your project, add a package dependency in Xcode as you
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/mergesort/Boutique.git", .upToNextMajor(from: "1.0.0"))
+    .package(url: "https://github.com/aaronsky/asc-swift.git", .upToNextMajor(from: "0.1.0"))
 ]
 ```
 
