@@ -46,12 +46,6 @@ import FoundationNetworking
         }
 
         for tester in testers {
-            let nameFormatter = PersonNameComponentsFormatter()
-            var nameComponents = PersonNameComponents()
-            nameComponents.givenName = tester.attributes?.firstName
-            nameComponents.familyName = tester.attributes?.lastName
-            let testerName = nameFormatter.string(from: nameComponents)
-
             for app in apps {
                 _ = try await client.send(
                     Resources.v1.betaTesterInvitations.post(
@@ -77,7 +71,7 @@ import FoundationNetworking
                     )
                 )
 
-                print("Sent an invitation to \(testerName) at \(tester.attributes!.email!).")
+                print("Sent an invitation to \(tester.attributes!.firstName!) \(tester.attributes!.lastName!) at \(tester.attributes!.email!).")
             }
         }
     }

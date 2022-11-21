@@ -44,7 +44,7 @@ import FoundationNetworking
         )
 
         print(
-            "Sent an invitation to \(localizedName(firstName: invitation.data.attributes?.firstName, lastName: invitation.data.attributes?.lastName)) at \(invitation.data.attributes!.email!). They should check their email and confirm the invitation before it expires at \(invitation.data.attributes!.expirationDate!)."
+            "Sent an invitation to \(invitation.data.attributes!.firstName!) \(invitation.data.attributes!.lastName!) at \(invitation.data.attributes!.email!). They should check their email and confirm the invitation before it expires at \(invitation.data.attributes!.expirationDate!)."
         )
     }
 
@@ -55,16 +55,8 @@ import FoundationNetworking
         try await client.send(Resources.v1.userInvitations.id(invitation.id).delete)
 
         print(
-            "Cancelled the invitation issued for \(localizedName(firstName: invitation.attributes?.firstName, lastName: invitation.attributes?.lastName)) at \(invitation.attributes!.email!)"
+            "Cancelled the invitation issued for \(invitation.attributes!.firstName!) \(invitation.attributes!.lastName!) at \(invitation.attributes!.email!)"
         )
-    }
-
-    private func localizedName(firstName: String?, lastName: String?) -> String {
-        let nameFormatter = PersonNameComponentsFormatter()
-        var nameComponents = PersonNameComponents()
-        nameComponents.givenName = firstName
-        nameComponents.familyName = lastName
-        return nameFormatter.string(from: nameComponents)
     }
 }
 
