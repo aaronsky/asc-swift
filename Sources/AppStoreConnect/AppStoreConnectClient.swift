@@ -6,11 +6,18 @@ import FoundationNetworking
 
 // MARK: -
 
-/// Client used to interface with all available App Store Connect APIs. The primary mechanism of this library.
+/// Client used to interface with all available App Store Connect APIs.
+///
+/// The primary mechanism of this library.
 public actor AppStoreConnectClient {
-    /// The network (or whatever) transport layer. Implemented by ``URLSession`` by default.
+    /// The network (or whatever) transport layer.
+    ///
+    /// Implemented by ``URLSession`` by default.
     var transport: Transport
-    /// Authorization provider. Used to authenticate with the App Store Connect API. Implemented by ``JWT`` by default.
+
+    /// Authorization provider.
+    ///
+    /// Used to authenticate with the App Store Connect API. Implemented by ``JWT`` by default.
     var authenticator: Authenticator
 
     nonisolated var encoder: JSONEncoder {
@@ -26,6 +33,7 @@ public actor AppStoreConnectClient {
     }
 
     /// Creates a session with the specified configuration, transport layer, and token provider.
+    ///
     /// - Parameters:
     ///   - transport: Transport layer used for API communication. Uses the shared `URLSession` by default.
     ///   - authenticator: Responsible for generating and managing access tokens. ``JWT`` is the default implementation.
@@ -70,6 +78,7 @@ public actor AppStoreConnectClient {
     }
 
     /// Performs the request that was used to fetch the current object to fetch the next page asynchronously.
+    ///
     /// - Parameters:
     ///   - request: A request.
     ///   - currentPage: The API object representing the current page.

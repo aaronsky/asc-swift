@@ -14,16 +14,20 @@ public protocol Authenticator {
 }
 
 /// An implementation of an ``Authenticator`` that produces JWTs ([JSON Web Tokens](https://jwt.io/)).
+///
 /// Uses [swift-crypto](https://github.com/apple/swift-crypto) to assist signing the Apple-provided
 /// PKCS#8 private key.
-///
 /// - SeeAlso: https://developer.apple.com/documentation/appstoreconnectapi/generating_tokens_for_api_requests
 public struct JWT: Authenticator {
     /// The header of the token, which contains the token type, signing algorithm, and an ID for the private key provided by Apple.
     struct Header: Codable {
-        /// Token type. Should always be `"JWT"`.
+        /// Token type.
+        ///
+        /// Should always be `"JWT"`.
         let type: String = "JWT"
-        /// Signing algorithm type. Should always be `"ES256"`, unless Apple changes their requirements.
+        /// Signing algorithm type.
+        ///
+        /// Should always be `"ES256"`, unless Apple changes their requirements.
         let algorithm: String = "ES256"
         /// Your private key ID from App Store Connect.
         var key: String
@@ -37,9 +41,13 @@ public struct JWT: Authenticator {
 
     /// Claims about the authenticating user.
     struct Payload: Codable {
-        /// Audience of the token. Should always be `"appstoreconnect-v1"`.
+        /// Audience of the token.
+        ///
+        /// Should always be `"appstoreconnect-v1"`.
         let audience: String = "appstoreconnect-v1"
-        /// Your issuer ID from the API Keys page in App Store Connect. Unique to an App Store Connect team.
+        /// Your issuer ID from the API Keys page in App Store Connect.
+        ///
+        /// Unique to an App Store Connect team.
         var issuer: String
         /// The token’s creation time, in Unix epoch time.
         var issuedAt: TimeInterval?
@@ -67,6 +75,9 @@ public struct JWT: Authenticator {
         /// Private key used to sign the digest of the header and payload.
         var key: P256.Signing.PrivateKey
 
+        /// Creates a private key representation from the String contents of a PKCS#8 private key.
+        /// - Parameter pemRepresentation: The PEM representation of a private key.
+        /// - Throws: An error if the private key could not be parsed as a PEM.
         public init(
             pemRepresentation: String
         ) throws {
@@ -119,12 +130,15 @@ public struct JWT: Authenticator {
     var scopes: [String]?
     /// The private key.
     var privateKey: PrivateKey
-    /// Dependency on the current date. Useful in testing.
-    var date: (() -> Date)?
+    /// Dependency on the current date.
+    ///
+    /// Useful in testing.
+    private var date: (() -> Date)?
     /// The last token generated.
     private var cachedToken: String?
 
     /// Create a JWT authenticator for ``AppStoreConnectClient``.
+    ///
     /// - Parameters:
     ///   - keyID: Private key ID from App Store Connect.
     ///   - issuerID: ID of the App Store Connect team, issued by Apple.
@@ -152,6 +166,7 @@ public struct JWT: Authenticator {
     }
 
     /// Create a JWT authenticator for ``AppStoreConnectClient``.
+    ///
     /// - Parameters:
     ///   - keyID: Private key ID from App Store Connect.
     ///   - issuerID: ID of the App Store Connect team, issued by Apple.
@@ -178,6 +193,9 @@ public struct JWT: Authenticator {
         self.date = date
     }
 
+    /// Returns the token to use for authentication with the App Store Connect API.
+    /// - Returns: The token to use for authentication.
+    /// - Throws: An error if an issue was encountered during token signing.
     public mutating func token() throws -> String {
         if let cachedToken = cachedToken, !JWT.isExpired(cachedToken, date: date) {
             return cachedToken
@@ -219,7 +237,10 @@ public struct JWT: Authenticator {
         return digest
     }
 
-    /// Check if the given token is expired based on its encoded expiration timestamp. Does not account for illegitimate expiration durations forbidden by the App Store Connect API.
+    /// Check if the given token is expired based on its encoded expiration timestamp.
+    ///
+    /// Does not account for illegitimate expiration durations forbidden by the App Store Connect API.
+    ///
     /// - Parameters:
     ///   - token: A constructed JWT.
     ///   - date: Dependency on the current date. Useful in testing.

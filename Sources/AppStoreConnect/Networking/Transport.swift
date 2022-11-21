@@ -39,6 +39,12 @@ public protocol Transport {
 }
 
 extension URLSession: Transport {
+    /// Send the request and receive a ``Response`` asynchronously.
+    /// - Parameters:
+    ///   - request: A request.
+    ///   - decoder: A decoder object capable of decoding an ``ErrorResponse`` object, in case one is received.
+    /// - Returns: The response from the App Store Connect API.
+    /// - Throws: An error describing the manner in which the request failed to complete.
     public func send(request: URLRequest, decoder: JSONDecoder) async throws -> Response<Data> {
         // These depend on swift-corelibs-foundation, which have not implemented the
         // Task-based API for URLSession.
@@ -90,6 +96,10 @@ extension URLSession: Transport {
         task.resume()
     }
 
+    /// Download the requested resource and store it on-disk.
+    /// - Parameter request: A request.
+    /// - Returns: A ``Response`` that describes the location of the downloaded file.
+    /// - Throws: An error describing the manner in which the request failed to complete.
     public func download(request: URLRequest) async throws -> Response<URL> {
         // These depend on swift-corelibs-foundation, which have not implemented the
         // Task-based API for URLSession.
@@ -138,6 +148,13 @@ extension URLSession: Transport {
         task.resume()
     }
 
+    /// Upload the data using the request and receive a ``Response`` asynchronously.
+    /// - Parameters:
+    ///   - request: A request.
+    ///   - data: The data to upload.
+    ///   - decoder: A decoder object capable of decoding an ``ErrorResponse`` object, in case one is received.
+    /// - Returns: The response from the App Store Connect API.
+    /// - Throws: An error describing the manner in which the request failed to complete.
     public func upload(request: URLRequest, data: Data, decoder: JSONDecoder) async throws -> Response<Data> {
         // These depend on swift-corelibs-foundation, which have not implemented the
         // Task-based API for URLSession.

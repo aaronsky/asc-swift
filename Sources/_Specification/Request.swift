@@ -8,18 +8,23 @@ import FoundationNetworking
 public struct Request<Response> {
     /// HTTP method.
     public var method: String
-    /// URL path to the resource. Base URL (hostname, scheme and port) must be provided separately.
+    /// URL path to the resource.
+    ///
+    /// Base URL (hostname, scheme and port) must be provided separately.
     public var url: String
     /// Query string encoded parameters.
     public var query: [(String, String?)]?
-    /// Body of the request
+    /// Body of the request.
     public var body: (any Encodable)?
     /// Request headers.
     public var headers: [String: String]?
-    /// Operation ID. Not used by the library, but required by the generated paths.
+    /// Operation ID.
+    ///
+    /// Not used by the library, but required by the generated paths.
     public var id: String?
 
-    /// Create a Request model
+    /// Create a Request model.
+    ///
     /// - Parameters:
     ///   - method: HTTP method.
     ///   - url: Path to the resource. No base URL should be provided to this initializer.
@@ -46,6 +51,7 @@ public struct Request<Response> {
 
 extension Request {
     /// Construct a "GET" request.
+    ///
     /// - Parameters:
     ///   - url: Path to the resource. No base URL should be provided to this method.
     ///   - query: Query string encoded parameters.
@@ -60,6 +66,7 @@ extension Request {
     }
 
     /// Construct a "POST" request.
+    ///
     /// - Parameters:
     ///   - url: Path to the resource. No base URL should be provided to this method.
     ///   - query: Query string encoded parameters.
@@ -76,6 +83,7 @@ extension Request {
     }
 
     /// Construct a "PUT" request.
+    ///
     /// - Parameters:
     ///   - url: Path to the resource. No base URL should be provided to this method.
     ///   - query: Query string encoded parameters.
@@ -92,6 +100,7 @@ extension Request {
     }
 
     /// Construct a "PATCH" request.
+    ///
     /// - Parameters:
     ///   - url: Path to the resource. No base URL should be provided to this method.
     ///   - query: Query string encoded parameters.
@@ -108,6 +117,7 @@ extension Request {
     }
 
     /// Construct a "DELETE" request.
+    ///
     /// - Parameters:
     ///   - url: Path to the resource. No base URL should be provided to this method.
     ///   - query: Query string encoded parameters.
@@ -124,6 +134,7 @@ extension Request {
     }
 
     /// Construct a "OPTIONS" request.
+    ///
     /// - Parameters:
     ///   - url: Path to the resource. No base URL should be provided to this method.
     ///   - query: Query string encoded parameters.
@@ -138,6 +149,7 @@ extension Request {
     }
 
     /// Construct a "HEAD" request.
+    ///
     /// - Parameters:
     ///   - url: Path to the resource. No base URL should be provided to this method.
     ///   - query: Query string encoded parameters.
@@ -152,6 +164,7 @@ extension Request {
     }
 
     /// Construct a "TRACE" request.
+    ///
     /// - Parameters:
     ///   - url: Path to the resource. No base URL should be provided to this method.
     ///   - query: Query string encoded parameters.
