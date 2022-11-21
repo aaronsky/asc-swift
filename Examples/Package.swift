@@ -14,7 +14,7 @@ let package = Package(
         .executable(name: "invite_beta_tester", targets: ["invite_beta_tester"]),
         .executable(name: "invite_user", targets: ["invite_user"]),
         .executable(name: "list_builds", targets: ["list_builds"]),
-        .executable(name: "register_devices", targets: ["register_devices"]),
+        .executable(name: "register_device", targets: ["register_device"]),
         .executable(name: "sales_finance_reports", targets: ["sales_finance_reports"]),
         .executable(name: "upload_preview", targets: ["upload_preview"]),
         .executable(name: "upload_screenshot", targets: ["upload_screenshot"]),
@@ -53,13 +53,13 @@ let package = Package(
             path: "list_builds"
         ),
         .executableTarget(
-            name: "register_devices",
+            name: "register_device",
             dependencies: [
                 "Utilities",
                 .product(name: "AppStoreConnect", package: "AppStoreConnect"),
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
             ],
-            path: "register_devices"
+            path: "register_device"
         ),
         .executableTarget(
             name: "sales_finance_reports",

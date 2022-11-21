@@ -76,15 +76,40 @@ test-library-xcode-watchos:
 		-destination "$(DESTINATION_PLATFORM_WATCHOS_SIMULATOR)" \
 		-quiet
 
-.PHONY: test-examples
-test-examples: test-examples-simple
+.PHONY: build-examples
+build-examples: build-examples-all
 
-.PHONY: test-examples-simple
-test-examples-simple:
-	xcodebuild build \
-		-scheme simple \
-		-destination "$(DESTINATION_PLATFORM_MACOS)" \
-		-quiet
+.PHONY: build-examples-all
+build-examples-all:
+	swift build --package-path Examples
+
+.PHONY: build-examples-invite-beta-tester
+build-examples-invite-beta-tester:
+	swift build --package-path Examples --product invite_beta_tester
+
+.PHONY: build-examples-invite-user
+build-examples-invite-user:
+	swift build --package-path Examples --product invite_user
+
+.PHONY: build-examples-list-builds
+build-examples-list-builds:
+	swift build --package-path Examples --product list_builds
+
+.PHONY: build-examples-register-device
+build-examples-register-device:
+	swift build --package-path Examples --product register_device
+
+.PHONY: build-examples-sales-finance-reports
+build-examples-sales-finance-reports:
+	swift build --package-path Examples --product sales_finance_reports
+
+.PHONY: build-examples-upload-preview
+build-examples-upload-preview:
+	swift build --package-path Examples --product upload_preview
+
+.PHONY: build-examples-upload-screenshot
+build-examples-upload-screenshot:
+	swift build --package-path Examples --product upload_screenshot
 
 .PHONY: format
 format:

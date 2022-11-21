@@ -7,7 +7,7 @@ import Utilities
 import FoundationNetworking
 #endif
 
-@main struct RegisterDevices: AsyncParsableCommand {
+@main struct RegisterDevice: AsyncParsableCommand {
     @Option var name: String
     @Option var udid: String
     @Option var platform: BundleIDPlatform

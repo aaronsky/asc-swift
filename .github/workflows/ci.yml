@@ -48,3 +48,14 @@ jobs:
         run: apt update && apt install make -y
       - name: Run tests
         run: make test-library
+
+  examples-linux:
+    runs-on: ubuntu-latest
+    container:
+      image: swift:5.7
+    steps:
+      - uses: actions/checkout@v1.0.0
+      - name: Install make
+        run: apt update && apt install make -y
+      - name: Run tests
+        run: make build-examples
