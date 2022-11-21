@@ -47,7 +47,15 @@ public struct Environment {
         contentsOf url: URL? = nil,
         processInfo: ProcessInfo = .processInfo
     ) throws {
-        self.url = url ?? .currentDirectory().appending(path: ".env")
+        self.url =
+            url
+            ?? URL(
+                fileURLWithPath: ".env",
+                relativeTo: URL(
+                    fileURLWithPath: FileManager.default.currentDirectoryPath,
+                    isDirectory: true
+                )
+            )
         self.processInfo = processInfo
         do {
             try reloadEnvironmentFile()
