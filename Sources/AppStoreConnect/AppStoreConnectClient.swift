@@ -77,11 +77,11 @@ public actor AppStoreConnectClient {
     /// - Throws: An error describing the manner in which the request failed to complete.
     public func send<Response>(_ request: Request<Response>, pageAfter currentPage: Response) async throws -> Response?
     where Response: Decodable {
-        guard let nextPage = pagedDocumentLinks(currentPage)?.next, let url = URL(string: nextPage) else {
+        guard let nextPage = pagedDocumentLinks(currentPage)?.next else {
             return nil
         }
 
-        let urlRequest = try URLRequest(url: url, encoder: encoder, authenticator: &authenticator)
+        let urlRequest = try URLRequest(url: nextPage, encoder: encoder, authenticator: &authenticator)
         let response = try await transport.send(request: urlRequest, decoder: decoder)
         try response.check()
 
@@ -123,23 +123,9 @@ public actor AppStoreConnectClient {
             throw UploadOperation.Error.chunkBoundsMismatch(offset: operation.offset, length: operation.length)
         }
 
-        let dataChunk = data[offset..<length]
-
-        guard let url = operation.url.flatMap(URL.init), let method = operation.method else {
-            throw UploadOperation.Error.missingDestination(url: operation.url, method: operation.method)
-        }
-
-        let headers: [(String, String?)] =
-            operation.requestHeaders?
-            .compactMap { header in
-                guard let name = header.name else { return nil }
-                return (name, header.value)
-            } ?? []
-
+        let dataChunk = data[offset..<(length + offset)]
         let urlRequest = try URLRequest(
-            url: url,
-            method: method,
-            headers: headers,
+            uploadOperation: operation,
             encoder: encoder,
             authenticator: &authenticator
         )

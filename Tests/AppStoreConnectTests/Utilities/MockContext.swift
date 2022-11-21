@@ -9,6 +9,7 @@ struct MockContext {
     var client: AppStoreConnectClient
     var transport: MockTransport
     var authenticator: MockAuthenticator
+    var uploadOperations: [UploadOperation]
 
     init() {
         self.init(
@@ -29,7 +30,8 @@ struct MockContext {
     }
 
     init(
-        responses: [MockTransport.Output]
+        responses: [MockTransport.Output],
+        uploadOperations: [UploadOperation] = []
     ) {
         self.transport = MockTransport(responses: responses)
         self.authenticator = MockAuthenticator()
@@ -37,6 +39,7 @@ struct MockContext {
             transport: transport,
             authenticator: authenticator
         )
+        self.uploadOperations = uploadOperations
     }
 
     func request<T>() -> Request<T> {

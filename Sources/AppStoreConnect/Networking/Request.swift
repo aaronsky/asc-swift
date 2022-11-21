@@ -18,13 +18,37 @@ extension URLRequest {
     init<Response>(
         request: Request<Response>,
         encoder: JSONEncoder,
-        authenticator: inout Authenticator
+        authenticator: inout any Authenticator
     ) throws {
         let url = try URL(request: request)
         try self.init(
             url: url,
             method: request.method,
             body: request.body,
+            encoder: encoder,
+            authenticator: &authenticator
+        )
+    }
+
+    init(
+        uploadOperation: UploadOperation,
+        encoder: JSONEncoder,
+        authenticator: inout any Authenticator
+    ) throws {
+        guard let url = uploadOperation.url.flatMap(URL.init), let method = uploadOperation.method else {
+            throw UploadOperation.Error.missingDestination(url: uploadOperation.url, method: uploadOperation.method)
+        }
+        let headers: [(String, String?)] =
+            uploadOperation.requestHeaders?
+            .compactMap { header in
+                guard let name = header.name else { return nil }
+                return (name, header.value)
+            } ?? []
+        try self.init(
+            url: url,
+            method: method,
+            headers: headers,
+            body: nil,
             encoder: encoder,
             authenticator: &authenticator
         )
@@ -45,7 +69,7 @@ extension URLRequest {
         headers: [(String, String?)] = [],
         body: (any Encodable)? = nil,
         encoder: JSONEncoder,
-        authenticator: inout Authenticator
+        authenticator: inout any Authenticator
     ) throws {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method

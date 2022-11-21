@@ -83,4 +83,36 @@ extension TransportTests {
             await createSession(testCase: .error).send(request: request, decoder: decoder)
         )
     }
+
+    func testURLSessionDownloadRequest() async throws {
+        let request = URLRequest(url: URL())
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
+        _ = try await createSession().download(request: request)
+    }
+
+    func testURLSessionDownloadRequestFailure() async {
+        let request = URLRequest(url: URL())
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
+        try await XCTAssertThrowsError(
+            await createSession(testCase: .error).download(request: request)
+        )
+    }
+
+    func testURLSessionUploadRequest() async throws {
+        let request = URLRequest(url: URL())
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
+        _ = try await createSession().upload(request: request, data: Data(), decoder: decoder)
+    }
+
+    func testURLSessionUploadRequestFailure() async {
+        let request = URLRequest(url: URL())
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
+        try await XCTAssertThrowsError(
+            await createSession(testCase: .error).upload(request: request, data: Data(), decoder: decoder)
+        )
+    }
 }

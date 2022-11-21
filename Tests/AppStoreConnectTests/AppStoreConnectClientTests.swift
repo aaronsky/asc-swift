@@ -14,6 +14,8 @@ final class AppStoreConnectTests: XCTestCase {
             case successPaginated
             case successNoContent
             case successDownload
+            case successUploadSingle
+            case successUploadMultipart
             case badResponse
             case unsuccessfulResponse
             case noData
@@ -40,6 +42,24 @@ final class AppStoreConnectTests: XCTestCase {
                 context = MockContext(responses: [
                     .fileURL(MockData.mockingSuccessDownload(to: resources.downloadURL))
                 ])
+            case .successUploadSingle:
+                context = MockContext(
+                    responses: [
+                        .data(MockData.mockingSuccessUpload())
+                    ],
+                    uploadOperations: [
+                        resources.uploadOperationSingle
+                    ]
+                )
+            case .successUploadMultipart:
+                context = MockContext(
+                    responses: [
+                        .data(MockData.mockingSuccessUpload()),
+                        .data(MockData.mockingSuccessUpload()),
+                        .data(MockData.mockingSuccessUpload()),
+                    ],
+                    uploadOperations: resources.uploadOperationMultipart
+                )
             case .badResponse:
                 context = MockContext(responses: [
                     .data(MockData.mockingIncompatibleResponse())
@@ -114,5 +134,51 @@ final class AppStoreConnectTests: XCTestCase {
         let testData = try TestData(testCase: .successDownload)
         let response: URL = try await testData.context.client.download(testData.context.request())
         XCTAssertEqual(testData.resources.downloadURL, response)
+    }
+
+    func testRequestUploadSingle() async throws {
+        let someData = Data(repeating: .random(in: UInt8.min...UInt8.max), count: 64)
+        let testData = try TestData(testCase: .successUploadSingle)
+        var authenticator = await testData.context.client.authenticator
+        let operation = try XCTUnwrap(testData.context.uploadOperations.first)
+        try XCTAssertEqual(XCTUnwrap(operation.offset) + XCTUnwrap(operation.length), someData.count)
+
+        try await testData.context.client.upload(operation: operation, from: someData)
+
+        XCTAssertEqual(testData.context.transport.history.count, testData.context.uploadOperations.count)
+        try XCTAssertEqual(
+            testData.context.transport.history.first,
+            URLRequest(
+                uploadOperation: operation,
+                encoder: testData.context.client.encoder,
+                authenticator: &authenticator
+            )
+        )
+    }
+
+    func testRequestUploadMultipart() async throws {
+        let someData = Data(repeating: .random(in: UInt8.min...UInt8.max), count: 80)
+        let testData = try TestData(testCase: .successUploadMultipart)
+        var authenticator = await testData.context.client.authenticator
+        XCTAssertEqual(testData.context.uploadOperations.count, 3)
+        let totalLength = testData.context.uploadOperations.reduce(0) { acc, op in
+            acc + (op.length ?? 0)
+        }
+        XCTAssertEqual(totalLength, someData.count)
+
+        for operation in testData.context.uploadOperations {
+            try await testData.context.client.upload(operation: operation, from: someData)
+        }
+
+        try XCTAssertEqual(
+            testData.context.transport.history,
+            testData.context.uploadOperations.map {
+                try URLRequest(
+                    uploadOperation: $0,
+                    encoder: testData.context.client.encoder,
+                    authenticator: &authenticator
+                )
+            }
+        )
     }
 }

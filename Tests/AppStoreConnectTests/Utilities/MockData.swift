@@ -23,20 +23,63 @@ struct MockResources {
     var pagedContentFirst = PagedContent(
         name: "test",
         age: 10,
-        links: PagedDocumentLinks(this: "test", first: "test", next: "test2")
+        links: PagedDocumentLinks(
+            this: URL(string: "test")!,
+            first: URL(string: "test")!,
+            next: URL(string: "test2")!
+        )
     )
     var pagedContentNext = PagedContent(
         name: "test",
         age: 10,
-        links: PagedDocumentLinks(this: "test2", first: "test", next: "test3")
+        links: PagedDocumentLinks(
+            this: URL(string: "test2")!,
+            first: URL(string: "test")!,
+            next: URL(string: "test3")!
+        )
     )
     var pagedContentLast = PagedContent(
         name: "test",
         age: 10,
-        links: PagedDocumentLinks(this: "test3", first: "test", next: nil)
+        links: PagedDocumentLinks(
+            this: URL(string: "test3")!,
+            first: URL(string: "test")!,
+            next: nil
+        )
     )
 
     var downloadURL = URL(string: "https://apple.com/hello-app-store")!
+
+    var uploadOperationSingle = UploadOperation(
+        method: "POST",
+        url: "test",
+        length: 64,
+        offset: 0,
+        requestHeaders: nil
+    )
+    var uploadOperationMultipart = [
+        UploadOperation(
+            method: "POST",
+            url: "test",
+            length: 32,
+            offset: 0,
+            requestHeaders: nil
+        ),
+        UploadOperation(
+            method: "POST",
+            url: "test",
+            length: 32,
+            offset: 32,
+            requestHeaders: nil
+        ),
+        UploadOperation(
+            method: "POST",
+            url: "test",
+            length: 16,
+            offset: 64,
+            requestHeaders: nil
+        ),
+    ]
 
     init() {}
 }
@@ -65,6 +108,10 @@ extension MockData {
 
     static func mockingSuccessDownload(to fileURL: URL, for url: URL = URL()) -> Response<URL> {
         return .init(fileURL: fileURL, response: urlResponse(for: url, statusCode: 200), statusCode: 200, rate: nil)
+    }
+
+    static func mockingSuccessUpload(for url: URL = URL()) -> Response<Data> {
+        return .init(data: nil, response: urlResponse(for: url, statusCode: 200), statusCode: 200, rate: nil)
     }
 
     static func mockingIncompatibleResponse(for url: URL = URL()) -> Response<Data> {
