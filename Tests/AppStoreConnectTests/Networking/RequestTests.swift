@@ -12,7 +12,6 @@ final class RequestTests: XCTestCase {
         let baseURL = URL()
         let mockBody = MockResources.Body(name: "test3", age: 88)
         let encoder = JSONEncoder()
-        let mockBodyEncoded = try encoder.encode(mockBody)
         var mockAuthenticator: Authenticator = MockAuthenticator()
 
         let request = Request<MockResources.Content>
@@ -28,7 +27,9 @@ final class RequestTests: XCTestCase {
                 "Test": "test",
             ]
         )
-        XCTAssertEqual(urlRequest.httpBody, mockBodyEncoded)
+        let decoder = JSONDecoder()
+        let requestBody = try decoder.decode(MockResources.Body.self, from: XCTUnwrap(urlRequest.httpBody))
+        XCTAssertEqual(requestBody, mockBody)
     }
 
     func testURLRequestInitUploadOperation() throws {
