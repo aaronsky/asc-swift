@@ -134,7 +134,7 @@ extension MockData {
     }
 
     static func mockingError(for request: URLRequest) throws -> Response<Data> {
-        throw URLError(.notConnectedToInternet)
+        throw URLError(.badURL)
     }
 
     static func mockingError(_ error: any Error) throws -> Response<Data> {

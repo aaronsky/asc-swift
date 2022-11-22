@@ -72,6 +72,10 @@ extension URLSession: Transport {
     /// Use the old URLSessionDataTask API with a completion handler.
     ///
     /// Only used for backwards compatibility on swift-corelibs-foundation platforms. Made internal for testing.
+    /// - Parameters:
+    ///   - request: A request.
+    ///   - decoder: A decoder object capable of decoding an ``ErrorResponse`` object, in case one is received.
+    ///   - completion: A completion handler. Executed on an arbitrary queue.
     func send(
         request: URLRequest,
         decoder: JSONDecoder,
@@ -129,6 +133,9 @@ extension URLSession: Transport {
     /// Use the old URLSessionDownloadTask API with a completion handler.
     ///
     /// Only used for backwards compatibility on swift-corelibs-foundation platforms. Made internal for testing.
+    /// - Parameters:
+    ///   - request: A request.
+    ///   - completion: A completion handler. Executed on an arbitrary queue.
     func download(
         request: URLRequest,
         completion: @escaping (Result<Response<URL>, Error>) -> Void
@@ -188,6 +195,11 @@ extension URLSession: Transport {
     /// Use the old URLSessionUploadTask API with a completion handler.
     ///
     /// Only used for backwards compatibility on swift-corelibs-foundation platforms. Made internal for testing.
+    /// - Parameters:
+    ///   - request: A request.
+    ///   - data: The data to upload.
+    ///   - decoder: A decoder object capable of decoding an ``ErrorResponse`` object, in case one is received.
+    ///   - completion: A completion handler. Executed on an arbitrary queue.
     func upload(
         request: URLRequest,
         data: Data,
