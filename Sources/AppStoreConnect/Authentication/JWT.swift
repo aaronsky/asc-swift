@@ -20,7 +20,7 @@ public protocol Authenticator {
 /// - SeeAlso: https://developer.apple.com/documentation/appstoreconnectapi/generating_tokens_for_api_requests
 public struct JWT: Authenticator {
     /// The header of the token, which contains the token type, signing algorithm, and an ID for the private key provided by Apple.
-    struct Header: Codable {
+    struct Header: Codable, Equatable {
         /// Token type.
         ///
         /// Should always be `"JWT"`.
@@ -40,7 +40,7 @@ public struct JWT: Authenticator {
     }
 
     /// Claims about the authenticating user.
-    struct Payload: Codable {
+    struct Payload: Codable, Equatable {
         /// Audience of the token.
         ///
         /// Should always be `"appstoreconnect-v1"`.
@@ -105,10 +105,9 @@ public struct JWT: Authenticator {
         }
     }
 
-    enum DecodingError: Error {
-        struct Context {
+    enum DecodingError: Error, Equatable {
+        struct Context: Equatable, CustomDebugStringConvertible {
             var debugDescription: String
-            var underlyingError: Error?
         }
 
         ///
@@ -133,7 +132,7 @@ public struct JWT: Authenticator {
     /// Dependency on the current date.
     ///
     /// Useful in testing.
-    private var date: (() -> Date)?
+    private var date: () -> Date
     /// The last token generated.
     private var cachedToken: String?
 
@@ -161,7 +160,7 @@ public struct JWT: Authenticator {
             expiryDuration: expiryDuration,
             scopes: scopes,
             privateKey: privateKey,
-            date: nil
+            date: Date.init()
         )
     }
 
@@ -182,7 +181,7 @@ public struct JWT: Authenticator {
         expiryDuration: TimeInterval,
         scopes: [String]? = nil,
         privateKey: PrivateKey,
-        date: (() -> Date)?
+        date: @autoclosure @escaping () -> Date
     ) {
         self.header = Header(key: keyID)
         self.issuer = issuerID
@@ -197,7 +196,7 @@ public struct JWT: Authenticator {
     /// - Returns: The token to use for authentication.
     /// - Throws: An error if an issue was encountered during token signing.
     public mutating func token() throws -> String {
-        if let cachedToken = cachedToken, !JWT.isExpired(cachedToken, date: date) {
+        if let cachedToken = cachedToken, !JWT.isExpired(cachedToken, date: date()) {
             return cachedToken
         }
 
@@ -221,7 +220,7 @@ public struct JWT: Authenticator {
     /// - Returns: A string representation of the header and payload, each encoded as JSON strings then base64 URL encoded, then concatenated together.
     /// - Throws: An error encountered during encoding.
     func digest() throws -> String {
-        let now = date?() ?? Date()
+        let now = date()
         let payload = Payload(
             issuer: issuer,
             issuedAt: issuedAt,
@@ -245,11 +244,11 @@ public struct JWT: Authenticator {
     ///   - token: A constructed JWT.
     ///   - date: Dependency on the current date. Useful in testing.
     /// - Returns: Whether or not the token has expired past its stated duration.
-    static func isExpired(_ token: String, date: (() -> Date)?) -> Bool {
+    static func isExpired(_ token: String, date: @autoclosure () -> Date) -> Bool {
         do {
             let (_, payload) = try decode(from: token)
             let expiryDate = Date(timeIntervalSince1970: payload.expiry)
-            let now = date?() ?? Date()
+            let now = date()
 
             return expiryDate < now
         } catch {

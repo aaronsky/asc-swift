@@ -48,6 +48,12 @@ struct MockResources {
         )
     )
 
+    struct Body: Codable, Equatable {
+        var name: String
+        var age: Int
+    }
+    var body = Body(name: "testIn", age: 45)
+
     var downloadURL = URL(string: "https://apple.com/hello-app-store")!
 
     var uploadOperationSingle = UploadOperation(
@@ -131,7 +137,7 @@ extension MockData {
         throw URLError(.notConnectedToInternet)
     }
 
-    static func mockingError(_ error: Error) throws -> Response<Data> {
+    static func mockingError(_ error: any Error) throws -> Response<Data> {
         throw error
     }
 

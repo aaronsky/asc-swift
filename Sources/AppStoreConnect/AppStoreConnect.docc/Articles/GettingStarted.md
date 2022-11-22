@@ -33,9 +33,3 @@ To send a request, use one of the `send` methods on the client.
 ```swift
 let apps = try await client.send(Resources.v1.apps.get())
 ```
-
-## See Also
-
-- <doc:Authentication>
-- <doc:RateLimits>
-- <doc:UploadingFiles>

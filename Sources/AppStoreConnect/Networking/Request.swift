@@ -22,6 +22,7 @@ extension URLRequest {
         try self.init(
             url: url,
             method: request.method,
+            headers: request.headers?.map { ($0.key, $0.value) } ?? [],
             body: request.body,
             encoder: encoder,
             authenticator: &authenticator
@@ -93,7 +94,7 @@ extension URL {
     /// - Parameter request: A request.
     /// - Throws: An error if the URL could not be constructed out of the path
     ///           or queries declared in the request.
-    fileprivate init<Response>(
+    init<Response>(
         request: Request<Response>
     ) throws {
         let url = request.baseURL.appendingPathComponent(request.path)
@@ -111,5 +112,281 @@ extension URL {
         }
 
         self = url
+    }
+}
+
+extension Request {
+    /// Construct a "GET" request.
+    ///
+    /// - Parameters:
+    ///   - path: Path to the resource.
+    ///   - baseURL: Base URL of the resource.
+    ///   - query: Query string encoded parameters.
+    ///   - headers: Request headers.
+    /// - Returns: The request.
+    public static func get(
+        _ path: String,
+        baseURL: URL? = nil,
+        query: [(String, String?)]? = nil,
+        headers: [String: String]? = nil
+    ) -> Request {
+        .init(method: "GET", url: path, baseURL: baseURL, query: query, headers: headers)
+    }
+
+    /// Construct a "POST" request.
+    ///
+    /// - Parameters:
+    ///   - path: Path to the resource.
+    ///   - baseURL: Base URL of the resource.
+    ///   - query: Query string encoded parameters.
+    ///   - body: Body of the request.
+    ///   - headers: Request headers.
+    /// - Returns: The request.
+    public static func post(
+        _ path: String,
+        baseURL: URL? = nil,
+        query: [(String, String?)]? = nil,
+        body: Encodable? = nil,
+        headers: [String: String]? = nil
+    ) -> Request {
+        .init(method: "POST", url: path, baseURL: baseURL, query: query, body: body, headers: headers)
+    }
+
+    /// Construct a "PUT" request.
+    ///
+    /// - Parameters:
+    ///   - path: Path to the resource.
+    ///   - baseURL: Base URL of the resource.
+    ///   - query: Query string encoded parameters.
+    ///   - body: Body of the request.
+    ///   - headers: Request headers.
+    /// - Returns: The request.
+    public static func put(
+        _ path: String,
+        baseURL: URL? = nil,
+        query: [(String, String?)]? = nil,
+        body: (any Encodable)? = nil,
+        headers: [String: String]? = nil
+    ) -> Request {
+        .init(method: "PUT", url: path, baseURL: baseURL, query: query, body: body, headers: headers)
+    }
+
+    /// Construct a "PATCH" request.
+    ///
+    /// - Parameters:
+    ///   - path: Path to the resource.
+    ///   - baseURL: Base URL of the resource.
+    ///   - query: Query string encoded parameters.
+    ///   - body: Body of the request.
+    ///   - headers: Request headers.
+    /// - Returns: The request.
+    public static func patch(
+        _ path: String,
+        baseURL: URL? = nil,
+        query: [(String, String?)]? = nil,
+        body: (any Encodable)? = nil,
+        headers: [String: String]? = nil
+    ) -> Request {
+        .init(method: "PATCH", url: path, baseURL: baseURL, query: query, body: body, headers: headers)
+    }
+
+    /// Construct a "DELETE" request.
+    ///
+    /// - Parameters:
+    ///   - path: Path to the resource.
+    ///   - baseURL: Base URL of the resource.
+    ///   - query: Query string encoded parameters.
+    ///   - body: Body of the request.
+    ///   - headers: Request headers.
+    /// - Returns: The request.
+    public static func delete(
+        _ path: String,
+        baseURL: URL? = nil,
+        query: [(String, String?)]? = nil,
+        body: (any Encodable)? = nil,
+        headers: [String: String]? = nil
+    ) -> Request {
+        .init(method: "DELETE", url: path, baseURL: baseURL, query: query, body: body, headers: headers)
+    }
+
+    /// Construct a "OPTIONS" request.
+    ///
+    /// - Parameters:
+    ///   - path: Path to the resource.
+    ///   - baseURL: Base URL of the resource.
+    ///   - query: Query string encoded parameters.
+    ///   - headers: Request headers.
+    /// - Returns: The request.
+    public static func options(
+        _ path: String,
+        baseURL: URL? = nil,
+        query: [(String, String?)]? = nil,
+        headers: [String: String]? = nil
+    ) -> Request {
+        .init(method: "OPTIONS", url: path, baseURL: baseURL, query: query, headers: headers)
+    }
+
+    /// Construct a "HEAD" request.
+    ///
+    /// - Parameters:
+    ///   - path: Path to the resource.
+    ///   - baseURL: Base URL of the resource.
+    ///   - query: Query string encoded parameters.
+    ///   - headers: Request headers.
+    /// - Returns: The request.
+    public static func head(
+        _ path: String,
+        baseURL: URL? = nil,
+        query: [(String, String?)]? = nil,
+        headers: [String: String]? = nil
+    ) -> Request {
+        .init(method: "HEAD", url: path, baseURL: baseURL, query: query, headers: headers)
+    }
+
+    /// Construct a "TRACE" request.
+    ///
+    /// - Parameters:
+    ///   - path: Path to the resource.
+    ///   - baseURL: Base URL of the resource.
+    ///   - query: Query string encoded parameters.
+    ///   - headers: Request headers.
+    /// - Returns: The request.
+    public static func trace(
+        _ path: String,
+        baseURL: URL? = nil,
+        query: [(String, String?)]? = nil,
+        headers: [String: String]? = nil
+    ) -> Request {
+        .init(method: "TRACE", url: path, baseURL: baseURL, query: query, headers: headers)
+    }
+}
+
+extension Request {
+    /// Construct a "GET" request.
+    ///
+    /// - Parameters:
+    ///   - url: Fully qualified URL to the resource.
+    ///   - query: Query string encoded parameters.
+    ///   - headers: Request headers.
+    /// - Returns: The request.
+    public static func get(
+        _ url: URL,
+        query: [(String, String?)]? = nil,
+        headers: [String: String]? = nil
+    ) -> Request {
+        .init(method: "GET", url: "", baseURL: url, query: query, headers: headers)
+    }
+
+    /// Construct a "POST" request.
+    ///
+    /// - Parameters:
+    ///   - url: Fully qualified URL to the resource.
+    ///   - query: Query string encoded parameters.
+    ///   - body: Body of the request.
+    ///   - headers: Request headers.
+    /// - Returns: The request.
+    public static func post(
+        _ url: URL,
+        query: [(String, String?)]? = nil,
+        body: Encodable? = nil,
+        headers: [String: String]? = nil
+    ) -> Request {
+        .init(method: "POST", url: "", baseURL: url, query: query, body: body, headers: headers)
+    }
+
+    /// Construct a "PUT" request.
+    ///
+    /// - Parameters:
+    ///   - url: Fully qualified URL to the resource.
+    ///   - query: Query string encoded parameters.
+    ///   - body: Body of the request.
+    ///   - headers: Request headers.
+    /// - Returns: The request.
+    public static func put(
+        _ url: URL,
+        query: [(String, String?)]? = nil,
+        body: (any Encodable)? = nil,
+        headers: [String: String]? = nil
+    ) -> Request {
+        .init(method: "PUT", url: "", baseURL: url, query: query, body: body, headers: headers)
+    }
+
+    /// Construct a "PATCH" request.
+    ///
+    /// - Parameters:
+    ///   - url: Fully qualified URL to the resource.
+    ///   - query: Query string encoded parameters.
+    ///   - body: Body of the request.
+    ///   - headers: Request headers.
+    /// - Returns: The request.
+    public static func patch(
+        _ url: URL,
+        query: [(String, String?)]? = nil,
+        body: (any Encodable)? = nil,
+        headers: [String: String]? = nil
+    ) -> Request {
+        .init(method: "PATCH", url: "", baseURL: url, query: query, body: body, headers: headers)
+    }
+
+    /// Construct a "DELETE" request.
+    ///
+    /// - Parameters:
+    ///   - url: Fully qualified URL to the resource.
+    ///   - query: Query string encoded parameters.
+    ///   - body: Body of the request.
+    ///   - headers: Request headers.
+    /// - Returns: The request.
+    public static func delete(
+        _ url: URL,
+        query: [(String, String?)]? = nil,
+        body: (any Encodable)? = nil,
+        headers: [String: String]? = nil
+    ) -> Request {
+        .init(method: "DELETE", url: "", baseURL: url, query: query, body: body, headers: headers)
+    }
+
+    /// Construct a "OPTIONS" request.
+    ///
+    /// - Parameters:
+    ///   - url: Fully qualified URL to the resource.
+    ///   - query: Query string encoded parameters.
+    ///   - headers: Request headers.
+    /// - Returns: The request.
+    public static func options(
+        _ url: URL,
+        query: [(String, String?)]? = nil,
+        headers: [String: String]? = nil
+    ) -> Request {
+        .init(method: "OPTIONS", url: "", baseURL: url, query: query, headers: headers)
+    }
+
+    /// Construct a "HEAD" request.
+    ///
+    /// - Parameters:
+    ///   - url: Fully qualified URL to the resource.
+    ///   - query: Query string encoded parameters.
+    ///   - headers: Request headers.
+    /// - Returns: The request.
+    public static func head(
+        _ url: URL,
+        query: [(String, String?)]? = nil,
+        headers: [String: String]? = nil
+    ) -> Request {
+        .init(method: "HEAD", url: "", baseURL: url, query: query, headers: headers)
+    }
+
+    /// Construct a "TRACE" request.
+    ///
+    /// - Parameters:
+    ///   - url: Fully qualified URL to the resource.
+    ///   - query: Query string encoded parameters.
+    ///   - headers: Request headers.
+    /// - Returns: The request.
+    public static func trace(
+        _ url: URL,
+        query: [(String, String?)]? = nil,
+        headers: [String: String]? = nil
+    ) -> Request {
+        .init(method: "TRACE", url: "", baseURL: url, query: query, headers: headers)
     }
 }

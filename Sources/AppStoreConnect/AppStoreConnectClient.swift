@@ -145,7 +145,7 @@ public actor AppStoreConnectClient {
 
 extension UploadOperation {
     /// Describes missing required information about the ``UploadOperation``.
-    public enum Error: Swift.Error {
+    public enum Error: Swift.Error, Equatable {
         case missingDestination(url: String?, method: String?)
         case chunkBoundsMismatch(offset: Int?, length: Int?)
     }
