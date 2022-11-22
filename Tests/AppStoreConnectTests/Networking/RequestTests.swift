@@ -17,16 +17,13 @@ final class RequestTests: XCTestCase {
 
         let request = Request<MockResources.Content>
             .post("test", baseURL: baseURL, body: mockBody, headers: ["test": "test"])
-        let urlRequest = try URLRequest(request: request, encoder: encoder, authenticator: &mockAuthenticator)
+        var urlRequest = try URLRequest(request: request, encoder: encoder, authenticator: &mockAuthenticator)
+        urlRequest.setValue(nil, forHTTPHeaderField: "Authorization")
         XCTAssertEqual(urlRequest.url, baseURL.appendingPathComponent("test"))
         XCTAssertEqual(urlRequest.httpMethod, "POST")
         XCTAssertEqual(
             urlRequest.allHTTPHeaderFields,
-            [
-                "Content-Type": "application/json",
-                "Authorization": "Bearer TEST",
-                "test": "test",
-            ]
+            ["Content-Type": "application/json", "test": "test"]
         )
         XCTAssertEqual(urlRequest.httpBody, mockBodyEncoded)
     }
@@ -51,19 +48,21 @@ final class RequestTests: XCTestCase {
         )
         let badUploadOperation = UploadOperation()
 
-        let goodRequest = try URLRequest(
+        var goodRequest = try URLRequest(
             uploadOperation: goodUploadOperation,
             encoder: encoder,
             authenticator: &mockAuthenticator
         )
-        XCTAssertEqual(goodRequest.allHTTPHeaderFields, ["test": "test", "Authorization": "Bearer TEST"])
+        goodRequest.setValue(nil, forHTTPHeaderField: "Authorization")
+        XCTAssertEqual(goodRequest.allHTTPHeaderFields, ["test": "test"])
 
-        let goodRequestNoHeaders = try URLRequest(
+        var goodRequestNoHeaders = try URLRequest(
             uploadOperation: goodUploadOperationNoHeaders,
             encoder: encoder,
             authenticator: &mockAuthenticator
         )
-        XCTAssertEqual(goodRequestNoHeaders.allHTTPHeaderFields, ["Authorization": "Bearer TEST"])
+        goodRequestNoHeaders.setValue(nil, forHTTPHeaderField: "Authorization")
+        XCTAssertEqual(goodRequestNoHeaders.allHTTPHeaderFields, [:])
 
         XCTAssertThrowsError(
             try URLRequest(
