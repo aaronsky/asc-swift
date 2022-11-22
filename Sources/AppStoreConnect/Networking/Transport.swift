@@ -7,7 +7,7 @@ import FoundationNetworking
 let rateLimitHeader = "X-Rate-Limit"
 
 /// Error thrown when the transport resolves a data transfer and encounters an incompatibility.
-public enum TransportError: Error {
+public enum TransportError: Error, Equatable {
     /// The response that was received was not in a recognized format.
     case unrecognizedResponse
 }
@@ -69,7 +69,14 @@ extension URLSession: Transport {
         #endif
     }
 
-    private func send(
+    /// Use the old URLSessionDataTask API with a completion handler.
+    ///
+    /// Only used for backwards compatibility on swift-corelibs-foundation platforms. Made internal for testing.
+    /// - Parameters:
+    ///   - request: A request.
+    ///   - decoder: A decoder object capable of decoding an ``ErrorResponse`` object, in case one is received.
+    ///   - completion: A completion handler. Executed on an arbitrary queue.
+    func send(
         request: URLRequest,
         decoder: JSONDecoder,
         completion: @escaping (Result<Response<Data>, Error>) -> Void
@@ -115,7 +122,7 @@ extension URLSession: Transport {
         }
 
         return Response(
-            data: fileURL,
+            fileURL: fileURL,
             response: response,
             statusCode: response.statusCode,
             rate: Response.Rate(from: response.value(forHTTPHeaderField: rateLimitHeader))
@@ -123,7 +130,13 @@ extension URLSession: Transport {
         #endif
     }
 
-    private func download(
+    /// Use the old URLSessionDownloadTask API with a completion handler.
+    ///
+    /// Only used for backwards compatibility on swift-corelibs-foundation platforms. Made internal for testing.
+    /// - Parameters:
+    ///   - request: A request.
+    ///   - completion: A completion handler. Executed on an arbitrary queue.
+    func download(
         request: URLRequest,
         completion: @escaping (Result<Response<URL>, Error>) -> Void
     ) {
@@ -137,7 +150,7 @@ extension URLSession: Transport {
                         throw TransportError.unrecognizedResponse
                     }
                     return Response(
-                        data: fileURL,
+                        fileURL: fileURL,
                         response: response,
                         statusCode: response.statusCode,
                         rate: Response.Rate(from: response.value(forHTTPHeaderField: rateLimitHeader))
@@ -179,7 +192,15 @@ extension URLSession: Transport {
         #endif
     }
 
-    private func upload(
+    /// Use the old URLSessionUploadTask API with a completion handler.
+    ///
+    /// Only used for backwards compatibility on swift-corelibs-foundation platforms. Made internal for testing.
+    /// - Parameters:
+    ///   - request: A request.
+    ///   - data: The data to upload.
+    ///   - decoder: A decoder object capable of decoding an ``ErrorResponse`` object, in case one is received.
+    ///   - completion: A completion handler. Executed on an arbitrary queue.
+    func upload(
         request: URLRequest,
         data: Data,
         decoder: JSONDecoder,

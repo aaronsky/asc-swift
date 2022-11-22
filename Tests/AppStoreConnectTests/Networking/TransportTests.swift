@@ -8,8 +8,11 @@ import FoundationNetworking
 #endif
 
 class TransportTests: XCTestCase {
-    private func createSession(testCase: MockURLProtocol.Case = .success) -> URLSession {
-        MockURLProtocol.requestHandler = testCase.requestHandler
+    private func createSession(request: URLRequest, response: (URLRequest) throws -> Response<Data>) -> URLSession {
+        MockURLProtocol.results[request] = Result {
+            let resp = try response(request)
+            return (resp.data ?? Data(), resp.response)
+        }
 
         let config = URLSessionConfiguration.ephemeral
         config.protocolClasses = [MockURLProtocol.self]
@@ -18,29 +21,10 @@ class TransportTests: XCTestCase {
     }
 
     private class MockURLProtocol: URLProtocol {
-        enum Case {
-            case success
-            case error
-
-            var requestHandler: RequestHandler {
-                { request in
-                    let resp: Response<Data>
-                    switch self {
-                    case .success:
-                        resp = MockData.mockingSuccessNoContent(for: request)
-                    case .error:
-                        resp = try MockData.mockingError(for: request)
-                    }
-                    return (resp.data ?? Data(), resp.response)
-                }
-            }
-        }
-
-        typealias RequestHandler = (URLRequest) throws -> (Data, URLResponse)
-        static var requestHandler: RequestHandler?
+        static var results: [URLRequest: Result<(Data, URLResponse), Error>] = [:]
 
         override class func canInit(with request: URLRequest) -> Bool {
-            return true
+            results.keys.contains(request)
         }
 
         override class func canonicalRequest(for request: URLRequest) -> URLRequest {
@@ -48,71 +32,131 @@ class TransportTests: XCTestCase {
         }
 
         override func startLoading() {
-            guard let handler = MockURLProtocol.requestHandler else {
-                return
-            }
+            let result = MockURLProtocol.results[request]!
             do {
-                let (data, response) = try handler(request)
-                client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
-                client?.urlProtocol(self, didLoad: data)
-                client?.urlProtocolDidFinishLoading(self)
+                let (data, response) = try result.get()
+                self.client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+                self.client?.urlProtocol(self, didLoad: data)
+                self.client?.urlProtocolDidFinishLoading(self)
             } catch {
-                client?.urlProtocol(self, didFailWithError: error)
+                self.client?.urlProtocol(self, didFailWithError: error)
             }
         }
 
         override func stopLoading() {}
     }
-}
 
-// MARK: - Async/Await-based Requests
-
-extension TransportTests {
     func testURLSessionSendRequest() async throws {
-        let request = URLRequest(url: URL())
+        let request = URLRequest(url: URL(string: "https://example.com/test-send-async")!)
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
-        _ = try await createSession().send(request: request, decoder: decoder)
+        _ = try await createSession(request: request, response: MockData.mockingSuccessNoContent(for:))
+            .send(request: request, decoder: decoder)
     }
 
-    func testURLSessionSendRequestFailure() async {
-        let request = URLRequest(url: URL())
+    func testURLSessionSendRequestFailure() async throws {
+        let request = URLRequest(url: URL(string: "https://example.com/test-send-async-error")!)
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
         try await XCTAssertThrowsError(
-            await createSession(testCase: .error).send(request: request, decoder: decoder)
+            await createSession(request: request, response: MockData.mockingError(for:))
+                .send(request: request, decoder: decoder)
         )
+    }
+
+    func testURLSessionSendRequestCompletion() {
+        let request = URLRequest(url: URL(string: "https://example.com/test-send-closure")!)
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
+        let expectation = XCTestExpectation(description: "test-send-closure")
+        createSession(request: request, response: MockData.mockingSuccessNoContent(for:))
+            .send(request: request, decoder: decoder) { result in
+                XCTAssertNoThrow({ try result.get() })
+                expectation.fulfill()
+            }
+    }
+
+    func testURLSessionSendRequestCompletionFailure() {
+        let request = URLRequest(url: URL(string: "https://example.com/test-send-closure-error")!)
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
+        let expectation = XCTestExpectation(description: "test-send-closure-error")
+        createSession(request: request, response: MockData.mockingError(for:))
+            .send(request: request, decoder: decoder) { result in
+                expectation.fulfill()
+            }
     }
 
     func testURLSessionDownloadRequest() async throws {
-        let request = URLRequest(url: URL())
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
-        _ = try await createSession().download(request: request)
+        let request = URLRequest(url: URL(string: "https://example.com/test-download-async")!)
+        _ = try await createSession(request: request, response: MockData.mockingSuccessNoContent(for:))
+            .download(request: request)
     }
 
-    func testURLSessionDownloadRequestFailure() async {
-        let request = URLRequest(url: URL())
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
+    func testURLSessionDownloadRequestFailure() async throws {
+        let request = URLRequest(url: URL(string: "https://example.com/test-download-async-error")!)
         try await XCTAssertThrowsError(
-            await createSession(testCase: .error).download(request: request)
+            await createSession(request: request, response: MockData.mockingError(for:)).download(request: request)
         )
+    }
+
+    func testURLSessionDownloadRequestCompletion() {
+        let request = URLRequest(url: URL(string: "https://example.com/test-download-closure")!)
+        let expectation = XCTestExpectation(description: "test-download-closure")
+        createSession(request: request, response: MockData.mockingSuccessNoContent(for:))
+            .download(request: request) { result in
+                XCTAssertNoThrow({ try result.get() })
+                expectation.fulfill()
+            }
+    }
+
+    func testURLSessionDownloadRequestCompletionFailure() {
+        let request = URLRequest(url: URL(string: "https://example.com/test-download-closure-error")!)
+        let expectation = XCTestExpectation(description: "test-download-closure-error")
+        createSession(request: request, response: MockData.mockingError(for:))
+            .download(request: request) { result in
+                expectation.fulfill()
+            }
     }
 
     func testURLSessionUploadRequest() async throws {
-        let request = URLRequest(url: URL())
+        let request = URLRequest(url: URL(string: "https://example.com/test-upload-async")!)
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
-        _ = try await createSession().upload(request: request, data: Data(), decoder: decoder)
+        _ = try await createSession(request: request, response: MockData.mockingSuccessNoContent(for:))
+            .upload(request: request, data: Data(), decoder: decoder)
     }
 
-    func testURLSessionUploadRequestFailure() async {
-        let request = URLRequest(url: URL())
+    func testURLSessionUploadRequestFailure() async throws {
+        let request = URLRequest(url: URL(string: "https://example.com/test-upload-async-error")!)
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
         try await XCTAssertThrowsError(
-            await createSession(testCase: .error).upload(request: request, data: Data(), decoder: decoder)
+            await createSession(request: request, response: MockData.mockingError(for:))
+                .upload(request: request, data: Data(), decoder: decoder)
         )
+    }
+
+    func testURLSessionUploadRequestCompletion() {
+        let request = URLRequest(url: URL(string: "https://example.com/test-upload-closure")!)
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
+        let expectation = XCTestExpectation(description: "test-upload-closure")
+        createSession(request: request, response: MockData.mockingSuccessNoContent(for:))
+            .upload(request: request, data: Data(), decoder: decoder) { result in
+                XCTAssertNoThrow({ try result.get() })
+                expectation.fulfill()
+            }
+    }
+
+    func testURLSessionUploadRequestCompletionFailure() {
+        let request = URLRequest(url: URL(string: "https://example.com/test-upload-closure-error")!)
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
+        let expectation = XCTestExpectation(description: "test-upload-closure-error")
+        createSession(request: request, response: MockData.mockingError(for:))
+            .upload(request: request, data: Data(), decoder: decoder) { result in
+                expectation.fulfill()
+            }
     }
 }

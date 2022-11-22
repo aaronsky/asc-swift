@@ -7,7 +7,7 @@ import FoundationNetworking
 /// Response from sending a ``Request``.
 public struct Response<Received: Equatable>: Equatable {
     /// Error thrown when the response from the ``Transport`` fails to meet expectations.
-    public enum Error: Swift.Error {
+    public enum Error: Swift.Error, Equatable {
         /// The response as requested was unsuccessful, as described by the `statusCode` and `error`.
         case requestFailure(error: ErrorResponse?, statusCode: StatusCode, response: URLResponse)
         /// The client has exceeded the rate limit for the current period.

@@ -35,7 +35,7 @@ entities:
 paths:
   style: rest
   imports: []
-  namespace: "Resources"
+  namespace: Resources
   includeResponseHeaders: true
   inlineSimpleRequests: true
   inlineSimpleQueryParameters: true

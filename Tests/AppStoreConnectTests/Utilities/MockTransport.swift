@@ -11,7 +11,7 @@ final class MockTransport: Transport {
         case fileURL(Response<URL>)
     }
 
-    enum Error: Swift.Error {
+    enum Error: Swift.Error, Equatable {
         case tooManyRequests
         case unexpectedResponse(Output)
     }
@@ -60,17 +60,6 @@ final class MockTransport: Transport {
     }
 
     func upload(request: URLRequest, data: Data, decoder: JSONDecoder) async throws -> Response<Data> {
-        history.append(request)
-
-        if responses.isEmpty {
-            throw Error.tooManyRequests
-        }
-
-        switch responses.removeFirst() {
-        case .fileURL(let url):
-            throw Error.unexpectedResponse(.fileURL(url))
-        case .data(let data):
-            return data
-        }
+        try await send(request: request, decoder: decoder)
     }
 }

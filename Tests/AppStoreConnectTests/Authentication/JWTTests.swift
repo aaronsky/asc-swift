@@ -34,7 +34,7 @@ final class JWTTests: XCTestCase {
                     -----END PRIVATE KEY-----
                     """
             ),
-            date: { Date(timeIntervalSince1970: 1000) }
+            date: Date(timeIntervalSince1970: 1000)
         )
 
         let token = try jwt.token()
@@ -54,8 +54,48 @@ final class JWTTests: XCTestCase {
                 privateKey: .init(
                     pemRepresentation: "TEST"
                 ),
-                date: { Date(timeIntervalSince1970: 1000) }
+                date: Date(timeIntervalSince1970: 1000)
             )
         )
+    }
+
+    func testDecoding() throws {
+        let (header, payload) = try JWT.decode(
+            from:
+                "eyJ0eXAiOiJKV1QiLCJraWQiOiJURVNUIiwiYWxnIjoiRVMyNTYifQ.eyJhdWQiOiJhcHBzdG9yZWNvbm5lY3QtdjEiLCJpc3MiOiJURVNUIiwiZXhwIjoyMjAwfQ.8miqcPXzOqo1IP-mi86yb6LBJq4UHWd9jm5W7H64gEoHfVgExT5-qq3WqPYhIq8ZHHXivUUGco6O6I9o35kVAw"
+        )
+        XCTAssertEqual(header, JWT.Header(key: "TEST"))
+        XCTAssertEqual(payload, JWT.Payload(issuer: "TEST", issuedAt: nil, expiry: 2200, scope: nil))
+
+        XCTAssertThrowsError(
+            try JWT.decode(
+                from:
+                    "eyJ0eXAiOiJKV1QiLCJraWQiOiJURVNUIiwiYWxnIjoiRVMyNTYifQ.eyJhdWQiOiJhcHBzdG9yZWNvbm5lY3QtdjEiLCJpc3MiOiJURVNUIiwiZXhwIjoyMjAwfQ"
+            )
+        ) { error in
+            XCTAssertEqual(
+                error as? JWT.DecodingError,
+                JWT.DecodingError.dataCorrupted(
+                    .init(
+                        debugDescription: "Invalid part count: expected 3, found 2"
+                    )
+                )
+            )
+        }
+
+        XCTAssertThrowsError(
+            try JWT.decode(
+                from:
+                    "h.eyJhdWQiOiJhcHBzdG9yZWNvbm5lY3QtdjEiLCJpc3MiOiJURVNUIiwiZXhwIjoyMjAwfQ.8miqcPXzOqo1IP-mi86yb6LBJq4UHWd9jm5W7H64gEoHfVgExT5-qq3WqPYhIq8ZHHXivUUGco6O6I9o35kVAw"
+            )
+        )
+        XCTAssertThrowsError(
+            try JWT.decode(
+                from:
+                    "eyJ0eXAiOiJKV1QiLCJraWQiOiJURVNUIiwiYWxnIjoiRVMyNTYifQ.h.8miqcPXzOqo1IP-mi86yb6LBJq4UHWd9jm5W7H64gEoHfVgExT5-qq3WqPYhIq8ZHHXivUUGco6O6I9o35kVAw"
+            )
+        )
+
+        XCTAssertTrue(JWT.isExpired("e.e.e", date: Date(timeIntervalSince1970: 1000)))
     }
 }

@@ -2,21 +2,11 @@ name: CI
 
 on:
   push:
-    paths:
-      - 'AppStoreConnect.xcworkspace/**/*'
-      - 'Examples/**/*'
-      - 'Plugins/**/*'
-      - 'Sources/**/*'
-      - 'Tests/**/*'
-      - 'Package.swift'
+    branches:
+      - main
   pull_request:
-    paths:
-      - 'AppStoreConnect.xcworkspace/**/*'
-      - 'Examples/**/*'
-      - 'Plugins/**/*'
-      - 'Sources/**/*'
-      - 'Tests/**/*'
-      - 'Package.swift'
+    branches:
+      - '*'
   workflow_dispatch: ~
 
 jobs:
