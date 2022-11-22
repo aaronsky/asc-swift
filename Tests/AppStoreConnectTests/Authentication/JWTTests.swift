@@ -88,32 +88,13 @@ final class JWTTests: XCTestCase {
                 from:
                     "h.eyJhdWQiOiJhcHBzdG9yZWNvbm5lY3QtdjEiLCJpc3MiOiJURVNUIiwiZXhwIjoyMjAwfQ.8miqcPXzOqo1IP-mi86yb6LBJq4UHWd9jm5W7H64gEoHfVgExT5-qq3WqPYhIq8ZHHXivUUGco6O6I9o35kVAw"
             )
-        ) { error in
-            XCTAssertEqual(
-                error as? JWT.DecodingError,
-                JWT.DecodingError.dataCorrupted(
-                    .init(
-                        debugDescription: "Header data could not be base64-decoded"
-                    )
-                )
-            )
-        }
-
+        )
         XCTAssertThrowsError(
             try JWT.decode(
                 from:
                     "eyJ0eXAiOiJKV1QiLCJraWQiOiJURVNUIiwiYWxnIjoiRVMyNTYifQ.h.8miqcPXzOqo1IP-mi86yb6LBJq4UHWd9jm5W7H64gEoHfVgExT5-qq3WqPYhIq8ZHHXivUUGco6O6I9o35kVAw"
             )
-        ) { error in
-            XCTAssertEqual(
-                error as? JWT.DecodingError,
-                JWT.DecodingError.dataCorrupted(
-                    .init(
-                        debugDescription: "Payload data could not be base64-decoded"
-                    )
-                )
-            )
-        }
+        )
 
         XCTAssertTrue(JWT.isExpired("e.e.e", date: Date(timeIntervalSince1970: 1000)))
     }
