@@ -16,14 +16,17 @@ final class RequestTests: XCTestCase {
         var mockAuthenticator: Authenticator = MockAuthenticator()
 
         let request = Request<MockResources.Content>
-            .post("test", baseURL: baseURL, body: mockBody, headers: ["test": "test"])
-        var urlRequest = try URLRequest(request: request, encoder: encoder, authenticator: &mockAuthenticator)
-        urlRequest.setValue(nil, forHTTPHeaderField: "Authorization")
+            .post("test", baseURL: baseURL, body: mockBody, headers: ["Test": "test"])
+        let urlRequest = try URLRequest(request: request, encoder: encoder, authenticator: &mockAuthenticator)
         XCTAssertEqual(urlRequest.url, baseURL.appendingPathComponent("test"))
         XCTAssertEqual(urlRequest.httpMethod, "POST")
         XCTAssertEqual(
             urlRequest.allHTTPHeaderFields,
-            ["Content-Type": "application/json", "test": "test"]
+            [
+                "Authorization": "Bearer TEST",
+                "Content-Type": "application/json",
+                "Test": "test",
+            ]
         )
         XCTAssertEqual(urlRequest.httpBody, mockBodyEncoded)
     }
@@ -37,32 +40,44 @@ final class RequestTests: XCTestCase {
             url: "test",
             length: 64,
             offset: 0,
-            requestHeaders: [.init(name: "test", value: "test"), .init(name: "test2", value: nil)]
+            requestHeaders: [
+                .init(name: "Test", value: "test"),
+                .init(name: "Test2", value: nil),
+            ]
         )
         let goodUploadOperationNoHeaders = UploadOperation(
             method: "GET",
             url: "test",
             length: 64,
             offset: 0,
-            requestHeaders: [.init(name: nil, value: "test")]
+            requestHeaders: [
+                .init(name: nil, value: "test")
+            ]
         )
         let badUploadOperation = UploadOperation()
 
-        var goodRequest = try URLRequest(
+        let goodRequest = try URLRequest(
             uploadOperation: goodUploadOperation,
             encoder: encoder,
             authenticator: &mockAuthenticator
         )
-        goodRequest.setValue(nil, forHTTPHeaderField: "Authorization")
-        XCTAssertEqual(goodRequest.allHTTPHeaderFields, ["test": "test"])
+        XCTAssertEqual(
+            goodRequest.allHTTPHeaderFields,
+            [
+                "Authorization": "Bearer TEST",
+                "Test": "test",
+            ]
+        )
 
-        var goodRequestNoHeaders = try URLRequest(
+        let goodRequestNoHeaders = try URLRequest(
             uploadOperation: goodUploadOperationNoHeaders,
             encoder: encoder,
             authenticator: &mockAuthenticator
         )
-        goodRequestNoHeaders.setValue(nil, forHTTPHeaderField: "Authorization")
-        XCTAssertEqual(goodRequestNoHeaders.allHTTPHeaderFields, [:])
+        XCTAssertEqual(
+            goodRequestNoHeaders.allHTTPHeaderFields,
+            ["Authorization": "Bearer TEST"]
+        )
 
         XCTAssertThrowsError(
             try URLRequest(
