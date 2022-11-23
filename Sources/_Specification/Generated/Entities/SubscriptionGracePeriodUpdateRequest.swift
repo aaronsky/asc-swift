@@ -43,10 +43,41 @@ public struct SubscriptionGracePeriodUpdateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, id: String, attributes: Attributes? = nil) {
+        public struct Relationships: Codable, Hashable {
+            public var app: App?
+
+            public struct App: Codable, Hashable {
+                public var data: Data?
+
+                public struct Data: Codable, Hashable, Identifiable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, Codable, CaseIterable {
+                        case apps
+                    }
+
+                    public init(type: `Type` = .apps, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: Data? = nil) {
+                    self.data = data
+                }
+            }
+
+            public init(app: App? = nil) {
+                self.app = app
+            }
+        }
+
+        public init(type: `Type` = .subscriptionGracePeriods, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil) {
             self.type = type
             self.id = id
             self.attributes = attributes
+            self.relationships = relationships
         }
     }
 
