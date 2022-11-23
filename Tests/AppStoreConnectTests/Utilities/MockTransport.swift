@@ -26,7 +26,7 @@ final class MockTransport: Transport {
     }
 
     func request<T>() -> Request<T> {
-        .init(method: "GET", url: "test")
+        .init(path: "test", method: "GET")
     }
 
     func send(request: URLRequest, decoder: JSONDecoder) async throws -> Response<Data> {
