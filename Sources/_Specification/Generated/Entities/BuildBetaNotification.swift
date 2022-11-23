@@ -14,9 +14,16 @@ public struct BuildBetaNotification: Codable, Hashable, Identifiable {
         case buildBetaNotifications
     }
 
-    public init(type: `Type`, id: String, links: ResourceLinks) {
+    public init(type: `Type` = .buildBetaNotifications, id: String, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.links = links
+    }
+
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        self.type = try values.decode(`Type`.self, forKey: .type)
+        self.id = try values.decode(String.self, forKey: .id)
+        self.links = try values.decode(ResourceLinks.self, forKey: .links)
     }
 }

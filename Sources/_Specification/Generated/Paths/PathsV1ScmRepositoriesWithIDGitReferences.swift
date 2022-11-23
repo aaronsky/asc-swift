@@ -16,7 +16,7 @@ extension Resources.V1.ScmRepositories.WithID {
         public let path: String
 
         public func get(fieldsScmGitReferences: [FieldsScmGitReferences]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<_Specification.ScmGitReferencesResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsScmGitReferences, fieldsScmRepositories, limit, include), id: "scmRepositories-gitReferences-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsScmGitReferences, fieldsScmRepositories, limit, include), id: "scmRepositories-gitReferences-get_to_many_related")
         }
 
         private func makeGetQuery(_ fieldsScmGitReferences: [FieldsScmGitReferences]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {

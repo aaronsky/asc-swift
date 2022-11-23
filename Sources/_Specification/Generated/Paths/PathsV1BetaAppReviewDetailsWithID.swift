@@ -16,7 +16,7 @@ extension Resources.V1.BetaAppReviewDetails {
         public let path: String
 
         public func get(fieldsBetaAppReviewDetails: [FieldsBetaAppReviewDetails]? = nil, include: [Include]? = nil, fieldsApps: [FieldsApps]? = nil) -> Request<_Specification.BetaAppReviewDetailResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsBetaAppReviewDetails, include, fieldsApps), id: "betaAppReviewDetails-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaAppReviewDetails, include, fieldsApps), id: "betaAppReviewDetails-get_instance")
         }
 
         private func makeGetQuery(_ fieldsBetaAppReviewDetails: [FieldsBetaAppReviewDetails]?, _ include: [Include]?, _ fieldsApps: [FieldsApps]?) -> [(String, String?)] {
@@ -85,7 +85,7 @@ extension Resources.V1.BetaAppReviewDetails {
         }
 
         public func patch(_ body: _Specification.BetaAppReviewDetailUpdateRequest) -> Request<_Specification.BetaAppReviewDetailResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "betaAppReviewDetails-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "betaAppReviewDetails-update_instance")
         }
     }
 }

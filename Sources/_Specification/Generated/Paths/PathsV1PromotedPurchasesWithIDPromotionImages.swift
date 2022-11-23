@@ -16,7 +16,7 @@ extension Resources.V1.PromotedPurchases.WithID {
         public let path: String
 
         public func get(fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsPromotedPurchaseImages: [FieldsPromotedPurchaseImages]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<_Specification.PromotedPurchaseImagesResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsPromotedPurchases, fieldsPromotedPurchaseImages, limit, include), id: "promotedPurchases-promotionImages-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsPromotedPurchases, fieldsPromotedPurchaseImages, limit, include), id: "promotedPurchases-promotionImages-get_to_many_related")
         }
 
         private func makeGetQuery(_ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsPromotedPurchaseImages: [FieldsPromotedPurchaseImages]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {

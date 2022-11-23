@@ -16,7 +16,7 @@ extension Resources.V1.BuildBundles.WithID {
         public let path: String
 
         public func get(fieldsBetaAppClipInvocations: [FieldsBetaAppClipInvocations]? = nil, fieldsBetaAppClipInvocationLocalizations: [FieldsBetaAppClipInvocationLocalizations]? = nil, limit: Int? = nil, limitBetaAppClipInvocationLocalizations: Int? = nil, include: [Include]? = nil) -> Request<_Specification.BetaAppClipInvocationsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsBetaAppClipInvocations, fieldsBetaAppClipInvocationLocalizations, limit, limitBetaAppClipInvocationLocalizations, include), id: "buildBundles-betaAppClipInvocations-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaAppClipInvocations, fieldsBetaAppClipInvocationLocalizations, limit, limitBetaAppClipInvocationLocalizations, include), id: "buildBundles-betaAppClipInvocations-get_to_many_related")
         }
 
         private func makeGetQuery(_ fieldsBetaAppClipInvocations: [FieldsBetaAppClipInvocations]?, _ fieldsBetaAppClipInvocationLocalizations: [FieldsBetaAppClipInvocationLocalizations]?, _ limit: Int?, _ limitBetaAppClipInvocationLocalizations: Int?, _ include: [Include]?) -> [(String, String?)] {

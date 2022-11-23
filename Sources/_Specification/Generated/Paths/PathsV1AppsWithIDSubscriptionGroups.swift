@@ -16,7 +16,7 @@ extension Resources.V1.Apps.WithID {
         public let path: String
 
         public func get(filterReferenceName: [String]? = nil, filterSubscriptionsState: [FilterSubscriptionsState]? = nil, sort: [Sort]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionGroups: [FieldsSubscriptionGroups]? = nil, fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]? = nil, limit: Int? = nil, limitSubscriptions: Int? = nil, limitSubscriptionGroupLocalizations: Int? = nil, include: [Include]? = nil) -> Request<_Specification.SubscriptionGroupsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterReferenceName, filterSubscriptionsState, sort, fieldsSubscriptions, fieldsSubscriptionGroups, fieldsSubscriptionGroupLocalizations, limit, limitSubscriptions, limitSubscriptionGroupLocalizations, include), id: "apps-subscriptionGroups-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterReferenceName, filterSubscriptionsState, sort, fieldsSubscriptions, fieldsSubscriptionGroups, fieldsSubscriptionGroupLocalizations, limit, limitSubscriptions, limitSubscriptionGroupLocalizations, include), id: "apps-subscriptionGroups-get_to_many_related")
         }
 
         private func makeGetQuery(_ filterReferenceName: [String]?, _ filterSubscriptionsState: [FilterSubscriptionsState]?, _ sort: [Sort]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionGroups: [FieldsSubscriptionGroups]?, _ fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]?, _ limit: Int?, _ limitSubscriptions: Int?, _ limitSubscriptionGroupLocalizations: Int?, _ include: [Include]?) -> [(String, String?)] {

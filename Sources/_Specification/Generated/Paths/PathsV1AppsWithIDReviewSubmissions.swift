@@ -16,7 +16,7 @@ extension Resources.V1.Apps.WithID {
         public let path: String
 
         public func get(filterPlatform: [FilterPlatform]? = nil, filterState: [FilterState]? = nil, fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsReviewSubmissions: [FieldsReviewSubmissions]? = nil, limit: Int? = nil, limitItems: Int? = nil, include: [Include]? = nil) -> Request<_Specification.ReviewSubmissionsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterPlatform, filterState, fieldsReviewSubmissionItems, fieldsAppStoreVersions, fieldsApps, fieldsReviewSubmissions, limit, limitItems, include), id: "apps-reviewSubmissions-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterPlatform, filterState, fieldsReviewSubmissionItems, fieldsAppStoreVersions, fieldsApps, fieldsReviewSubmissions, limit, limitItems, include), id: "apps-reviewSubmissions-get_to_many_related")
         }
 
         private func makeGetQuery(_ filterPlatform: [FilterPlatform]?, _ filterState: [FilterState]?, _ fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsApps: [FieldsApps]?, _ fieldsReviewSubmissions: [FieldsReviewSubmissions]?, _ limit: Int?, _ limitItems: Int?, _ include: [Include]?) -> [(String, String?)] {

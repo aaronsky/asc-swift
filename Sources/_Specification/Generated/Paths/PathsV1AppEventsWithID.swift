@@ -16,7 +16,7 @@ extension Resources.V1.AppEvents {
         public let path: String
 
         public func get(fieldsAppEvents: [FieldsAppEvents]? = nil, include: [Include]? = nil, fieldsAppEventLocalizations: [FieldsAppEventLocalizations]? = nil, limitLocalizations: Int? = nil) -> Request<_Specification.AppEventResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppEvents, include, fieldsAppEventLocalizations, limitLocalizations), id: "appEvents-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEvents, include, fieldsAppEventLocalizations, limitLocalizations), id: "appEvents-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppEvents: [FieldsAppEvents]?, _ include: [Include]?, _ fieldsAppEventLocalizations: [FieldsAppEventLocalizations]?, _ limitLocalizations: Int?) -> [(String, String?)] {
@@ -58,11 +58,11 @@ extension Resources.V1.AppEvents {
         }
 
         public func patch(_ body: _Specification.AppEventUpdateRequest) -> Request<_Specification.AppEventResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "appEvents-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appEvents-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "appEvents-delete_instance")
+            Request(path: path, method: "DELETE", id: "appEvents-delete_instance")
         }
     }
 }

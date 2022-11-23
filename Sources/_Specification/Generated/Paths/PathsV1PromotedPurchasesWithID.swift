@@ -16,7 +16,7 @@ extension Resources.V1.PromotedPurchases {
         public let path: String
 
         public func get(fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, include: [Include]? = nil, fieldsPromotedPurchaseImages: [FieldsPromotedPurchaseImages]? = nil, limitPromotionImages: Int? = nil) -> Request<_Specification.PromotedPurchaseResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsPromotedPurchases, include, fieldsPromotedPurchaseImages, limitPromotionImages), id: "promotedPurchases-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsPromotedPurchases, include, fieldsPromotedPurchaseImages, limitPromotionImages), id: "promotedPurchases-get_instance")
         }
 
         private func makeGetQuery(_ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ include: [Include]?, _ fieldsPromotedPurchaseImages: [FieldsPromotedPurchaseImages]?, _ limitPromotionImages: Int?) -> [(String, String?)] {
@@ -58,11 +58,11 @@ extension Resources.V1.PromotedPurchases {
         }
 
         public func patch(_ body: _Specification.PromotedPurchaseUpdateRequest) -> Request<_Specification.PromotedPurchaseResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "promotedPurchases-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "promotedPurchases-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "promotedPurchases-delete_instance")
+            Request(path: path, method: "DELETE", id: "promotedPurchases-delete_instance")
         }
     }
 }

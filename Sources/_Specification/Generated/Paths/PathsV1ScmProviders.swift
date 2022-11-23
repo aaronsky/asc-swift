@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(fieldsScmProviders: [FieldsScmProviders]? = nil, limit: Int? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil) -> Request<_Specification.ScmProvidersResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsScmProviders, limit, fieldsScmRepositories), id: "scmProviders-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsScmProviders, limit, fieldsScmRepositories), id: "scmProviders-get_collection")
         }
 
         private func makeGetQuery(_ fieldsScmProviders: [FieldsScmProviders]?, _ limit: Int?, _ fieldsScmRepositories: [FieldsScmRepositories]?) -> [(String, String?)] {

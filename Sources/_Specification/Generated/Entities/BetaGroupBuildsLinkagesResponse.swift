@@ -18,9 +18,15 @@ public struct BetaGroupBuildsLinkagesResponse: Codable, Hashable {
             case builds
         }
 
-        public init(type: `Type`, id: String) {
+        public init(type: `Type` = .builds, id: String) {
             self.type = type
             self.id = id
+        }
+
+        public init(from decoder: Decoder) throws {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            self.type = try values.decode(`Type`.self, forKey: .type)
+            self.id = try values.decode(String.self, forKey: .id)
         }
     }
 

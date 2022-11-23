@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(filterEmail: [String]? = nil, filterRoles: [FilterRoles]? = nil, filterVisibleApps: [String]? = nil, sort: [Sort]? = nil, fieldsUserInvitations: [FieldsUserInvitations]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsApps: [FieldsApps]? = nil, limitVisibleApps: Int? = nil) -> Request<_Specification.UserInvitationsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterEmail, filterRoles, filterVisibleApps, sort, fieldsUserInvitations, limit, include, fieldsApps, limitVisibleApps), id: "userInvitations-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(filterEmail, filterRoles, filterVisibleApps, sort, fieldsUserInvitations, limit, include, fieldsApps, limitVisibleApps), id: "userInvitations-get_collection")
         }
 
         private func makeGetQuery(_ filterEmail: [String]?, _ filterRoles: [FilterRoles]?, _ filterVisibleApps: [String]?, _ sort: [Sort]?, _ fieldsUserInvitations: [FieldsUserInvitations]?, _ limit: Int?, _ include: [Include]?, _ fieldsApps: [FieldsApps]?, _ limitVisibleApps: Int?) -> [(String, String?)] {
@@ -113,7 +113,7 @@ extension Resources.V1 {
         }
 
         public func post(_ body: _Specification.UserInvitationCreateRequest) -> Request<_Specification.UserInvitationResponse> {
-            Request(method: "POST", url: path, body: body, id: "userInvitations-create_instance")
+            Request(path: path, method: "POST", body: body, id: "userInvitations-create_instance")
         }
     }
 }

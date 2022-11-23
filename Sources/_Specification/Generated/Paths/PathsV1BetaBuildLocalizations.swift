@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(filterLocale: [String]? = nil, filterBuild: [String]? = nil, fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsBuilds: [FieldsBuilds]? = nil) -> Request<_Specification.BetaBuildLocalizationsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterLocale, filterBuild, fieldsBetaBuildLocalizations, limit, include, fieldsBuilds), id: "betaBuildLocalizations-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(filterLocale, filterBuild, fieldsBetaBuildLocalizations, limit, include, fieldsBuilds), id: "betaBuildLocalizations-get_collection")
         }
 
         private func makeGetQuery(_ filterLocale: [String]?, _ filterBuild: [String]?, _ fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]?, _ limit: Int?, _ include: [Include]?, _ fieldsBuilds: [FieldsBuilds]?) -> [(String, String?)] {
@@ -68,7 +68,7 @@ extension Resources.V1 {
         }
 
         public func post(_ body: _Specification.BetaBuildLocalizationCreateRequest) -> Request<_Specification.BetaBuildLocalizationResponse> {
-            Request(method: "POST", url: path, body: body, id: "betaBuildLocalizations-create_instance")
+            Request(path: path, method: "POST", body: body, id: "betaBuildLocalizations-create_instance")
         }
     }
 }

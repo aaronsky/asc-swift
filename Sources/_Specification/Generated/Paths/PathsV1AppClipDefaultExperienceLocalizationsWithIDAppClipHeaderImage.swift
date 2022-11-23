@@ -16,7 +16,7 @@ extension Resources.V1.AppClipDefaultExperienceLocalizations.WithID {
         public let path: String
 
         public func get(fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]? = nil, fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]? = nil, include: [Include]? = nil) -> Request<_Specification.AppClipHeaderImageResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppClipHeaderImages, fieldsAppClipDefaultExperienceLocalizations, include), id: "appClipDefaultExperienceLocalizations-appClipHeaderImage-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipHeaderImages, fieldsAppClipDefaultExperienceLocalizations, include), id: "appClipDefaultExperienceLocalizations-appClipHeaderImage-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]?, _ fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]?, _ include: [Include]?) -> [(String, String?)] {

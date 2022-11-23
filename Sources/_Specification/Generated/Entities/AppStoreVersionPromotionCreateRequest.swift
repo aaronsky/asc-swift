@@ -31,9 +31,15 @@ public struct AppStoreVersionPromotionCreateRequest: Codable, Hashable {
                         case appStoreVersions
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appStoreVersions, id: String) {
                         self.type = type
                         self.id = id
+                    }
+
+                    public init(from decoder: Decoder) throws {
+                        let values = try decoder.container(keyedBy: CodingKeys.self)
+                        self.type = try values.decode(`Type`.self, forKey: .type)
+                        self.id = try values.decode(String.self, forKey: .id)
                     }
                 }
 
@@ -53,9 +59,15 @@ public struct AppStoreVersionPromotionCreateRequest: Codable, Hashable {
                         case appStoreVersionExperimentTreatments
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appStoreVersionExperimentTreatments, id: String) {
                         self.type = type
                         self.id = id
+                    }
+
+                    public init(from decoder: Decoder) throws {
+                        let values = try decoder.container(keyedBy: CodingKeys.self)
+                        self.type = try values.decode(`Type`.self, forKey: .type)
+                        self.id = try values.decode(String.self, forKey: .id)
                     }
                 }
 
@@ -70,9 +82,15 @@ public struct AppStoreVersionPromotionCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, relationships: Relationships) {
+        public init(type: `Type` = .appStoreVersionPromotions, relationships: Relationships) {
             self.type = type
             self.relationships = relationships
+        }
+
+        public init(from decoder: Decoder) throws {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            self.type = try values.decode(`Type`.self, forKey: .type)
+            self.relationships = try values.decode(Relationships.self, forKey: .relationships)
         }
     }
 

@@ -16,7 +16,7 @@ extension Resources.V1.Apps.WithID {
         public let path: String
 
         public func get(filterEventState: [FilterEventState]? = nil, filterID: [String]? = nil, fieldsAppEventLocalizations: [FieldsAppEventLocalizations]? = nil, fieldsAppEvents: [FieldsAppEvents]? = nil, limit: Int? = nil, limitLocalizations: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppEventsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterEventState, filterID, fieldsAppEventLocalizations, fieldsAppEvents, limit, limitLocalizations, include), id: "apps-appEvents-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterEventState, filterID, fieldsAppEventLocalizations, fieldsAppEvents, limit, limitLocalizations, include), id: "apps-appEvents-get_to_many_related")
         }
 
         private func makeGetQuery(_ filterEventState: [FilterEventState]?, _ filterID: [String]?, _ fieldsAppEventLocalizations: [FieldsAppEventLocalizations]?, _ fieldsAppEvents: [FieldsAppEvents]?, _ limit: Int?, _ limitLocalizations: Int?, _ include: [Include]?) -> [(String, String?)] {

@@ -16,7 +16,7 @@ extension Resources.V1.BetaGroups {
         public let path: String
 
         public func get(fieldsBetaGroups: [FieldsBetaGroups]? = nil, include: [Include]? = nil, fieldsBetaTesters: [FieldsBetaTesters]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, limitBetaTesters: Int? = nil, limitBuilds: Int? = nil) -> Request<_Specification.BetaGroupResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsBetaGroups, include, fieldsBetaTesters, fieldsApps, fieldsBuilds, limitBetaTesters, limitBuilds), id: "betaGroups-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaGroups, include, fieldsBetaTesters, fieldsApps, fieldsBuilds, limitBetaTesters, limitBuilds), id: "betaGroups-get_instance")
         }
 
         private func makeGetQuery(_ fieldsBetaGroups: [FieldsBetaGroups]?, _ include: [Include]?, _ fieldsBetaTesters: [FieldsBetaTesters]?, _ fieldsApps: [FieldsApps]?, _ fieldsBuilds: [FieldsBuilds]?, _ limitBetaTesters: Int?, _ limitBuilds: Int?) -> [(String, String?)] {
@@ -133,11 +133,11 @@ extension Resources.V1.BetaGroups {
         }
 
         public func patch(_ body: _Specification.BetaGroupUpdateRequest) -> Request<_Specification.BetaGroupResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "betaGroups-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "betaGroups-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "betaGroups-delete_instance")
+            Request(path: path, method: "DELETE", id: "betaGroups-delete_instance")
         }
     }
 }

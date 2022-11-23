@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(filterIsInternalGroup: [String]? = nil, filterName: [String]? = nil, filterPublicLink: [String]? = nil, filterPublicLinkEnabled: [String]? = nil, filterPublicLinkLimitEnabled: [String]? = nil, filterApp: [String]? = nil, filterBuilds: [String]? = nil, filterID: [String]? = nil, sort: [Sort]? = nil, fieldsBetaGroups: [FieldsBetaGroups]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsBetaTesters: [FieldsBetaTesters]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, limitBetaTesters: Int? = nil, limitBuilds: Int? = nil) -> Request<_Specification.BetaGroupsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterIsInternalGroup, filterName, filterPublicLink, filterPublicLinkEnabled, filterPublicLinkLimitEnabled, filterApp, filterBuilds, filterID, sort, fieldsBetaGroups, limit, include, fieldsBetaTesters, fieldsApps, fieldsBuilds, limitBetaTesters, limitBuilds), id: "betaGroups-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(filterIsInternalGroup, filterName, filterPublicLink, filterPublicLinkEnabled, filterPublicLinkLimitEnabled, filterApp, filterBuilds, filterID, sort, fieldsBetaGroups, limit, include, fieldsBetaTesters, fieldsApps, fieldsBuilds, limitBetaTesters, limitBuilds), id: "betaGroups-get_collection")
         }
 
         private func makeGetQuery(_ filterIsInternalGroup: [String]?, _ filterName: [String]?, _ filterPublicLink: [String]?, _ filterPublicLinkEnabled: [String]?, _ filterPublicLinkLimitEnabled: [String]?, _ filterApp: [String]?, _ filterBuilds: [String]?, _ filterID: [String]?, _ sort: [Sort]?, _ fieldsBetaGroups: [FieldsBetaGroups]?, _ limit: Int?, _ include: [Include]?, _ fieldsBetaTesters: [FieldsBetaTesters]?, _ fieldsApps: [FieldsApps]?, _ fieldsBuilds: [FieldsBuilds]?, _ limitBetaTesters: Int?, _ limitBuilds: Int?) -> [(String, String?)] {
@@ -154,7 +154,7 @@ extension Resources.V1 {
         }
 
         public func post(_ body: _Specification.BetaGroupCreateRequest) -> Request<_Specification.BetaGroupResponse> {
-            Request(method: "POST", url: path, body: body, id: "betaGroups-create_instance")
+            Request(path: path, method: "POST", body: body, id: "betaGroups-create_instance")
         }
     }
 }

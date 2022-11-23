@@ -16,7 +16,7 @@ extension Resources.V1.Apps.WithID {
         public let path: String
 
         public func get(fieldsTerritories: [FieldsTerritories]? = nil, limit: Int? = nil) -> Request<_Specification.TerritoriesResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsTerritories, limit), id: "apps-availableTerritories-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsTerritories, limit), id: "apps-availableTerritories-get_to_many_related")
         }
 
         private func makeGetQuery(_ fieldsTerritories: [FieldsTerritories]?, _ limit: Int?) -> [(String, String?)] {

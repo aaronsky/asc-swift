@@ -16,7 +16,7 @@ extension Resources.V1.PromotedPurchaseImages {
         public let path: String
 
         public func get(fieldsPromotedPurchaseImages: [FieldsPromotedPurchaseImages]? = nil, include: [Include]? = nil) -> Request<_Specification.PromotedPurchaseImageResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsPromotedPurchaseImages, include), id: "promotedPurchaseImages-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsPromotedPurchaseImages, include), id: "promotedPurchaseImages-get_instance")
         }
 
         private func makeGetQuery(_ fieldsPromotedPurchaseImages: [FieldsPromotedPurchaseImages]?, _ include: [Include]?) -> [(String, String?)] {
@@ -44,11 +44,11 @@ extension Resources.V1.PromotedPurchaseImages {
         }
 
         public func patch(_ body: _Specification.PromotedPurchaseImageUpdateRequest) -> Request<_Specification.PromotedPurchaseImageResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "promotedPurchaseImages-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "promotedPurchaseImages-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "promotedPurchaseImages-delete_instance")
+            Request(path: path, method: "DELETE", id: "promotedPurchaseImages-delete_instance")
         }
     }
 }

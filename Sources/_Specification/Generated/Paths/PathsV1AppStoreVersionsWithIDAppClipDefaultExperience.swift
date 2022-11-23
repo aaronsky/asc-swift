@@ -16,7 +16,7 @@ extension Resources.V1.AppStoreVersions.WithID {
         public let path: String
 
         public func get(fieldsAppClips: [FieldsAppClips]? = nil, fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]? = nil, limitAppClipDefaultExperienceLocalizations: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppClipDefaultExperienceResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppClips, fieldsAppClipAppStoreReviewDetails, fieldsAppStoreVersions, fieldsAppClipDefaultExperiences, fieldsAppClipDefaultExperienceLocalizations, limitAppClipDefaultExperienceLocalizations, include), id: "appStoreVersions-appClipDefaultExperience-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClips, fieldsAppClipAppStoreReviewDetails, fieldsAppStoreVersions, fieldsAppClipDefaultExperiences, fieldsAppClipDefaultExperienceLocalizations, limitAppClipDefaultExperienceLocalizations, include), id: "appStoreVersions-appClipDefaultExperience-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsAppClips: [FieldsAppClips]?, _ fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]?, _ limitAppClipDefaultExperienceLocalizations: Int?, _ include: [Include]?) -> [(String, String?)] {

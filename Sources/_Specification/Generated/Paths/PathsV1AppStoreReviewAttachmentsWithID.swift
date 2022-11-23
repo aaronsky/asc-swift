@@ -16,7 +16,7 @@ extension Resources.V1.AppStoreReviewAttachments {
         public let path: String
 
         public func get(fieldsAppStoreReviewAttachments: [FieldsAppStoreReviewAttachments]? = nil, include: [Include]? = nil) -> Request<_Specification.AppStoreReviewAttachmentResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppStoreReviewAttachments, include), id: "appStoreReviewAttachments-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreReviewAttachments, include), id: "appStoreReviewAttachments-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppStoreReviewAttachments: [FieldsAppStoreReviewAttachments]?, _ include: [Include]?) -> [(String, String?)] {
@@ -41,11 +41,11 @@ extension Resources.V1.AppStoreReviewAttachments {
         }
 
         public func patch(_ body: _Specification.AppStoreReviewAttachmentUpdateRequest) -> Request<_Specification.AppStoreReviewAttachmentResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "appStoreReviewAttachments-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appStoreReviewAttachments-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "appStoreReviewAttachments-delete_instance")
+            Request(path: path, method: "DELETE", id: "appStoreReviewAttachments-delete_instance")
         }
     }
 }

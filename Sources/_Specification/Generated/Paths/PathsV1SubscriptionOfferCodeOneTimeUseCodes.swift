@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: _Specification.SubscriptionOfferCodeOneTimeUseCodeCreateRequest) -> Request<_Specification.SubscriptionOfferCodeOneTimeUseCodeResponse> {
-            Request(method: "POST", url: path, body: body, id: "subscriptionOfferCodeOneTimeUseCodes-create_instance")
+            Request(path: path, method: "POST", body: body, id: "subscriptionOfferCodeOneTimeUseCodes-create_instance")
         }
     }
 }

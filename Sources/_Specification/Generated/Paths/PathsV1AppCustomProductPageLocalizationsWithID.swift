@@ -16,7 +16,7 @@ extension Resources.V1.AppCustomProductPageLocalizations {
         public let path: String
 
         public func get(fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]? = nil, include: [Include]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, limitAppPreviewSets: Int? = nil, limitAppScreenshotSets: Int? = nil) -> Request<_Specification.AppCustomProductPageLocalizationResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppCustomProductPageLocalizations, include, fieldsAppScreenshotSets, fieldsAppPreviewSets, limitAppPreviewSets, limitAppScreenshotSets), id: "appCustomProductPageLocalizations-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppCustomProductPageLocalizations, include, fieldsAppScreenshotSets, fieldsAppPreviewSets, limitAppPreviewSets, limitAppScreenshotSets), id: "appCustomProductPageLocalizations-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]?, _ include: [Include]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ limitAppPreviewSets: Int?, _ limitAppScreenshotSets: Int?) -> [(String, String?)] {
@@ -61,11 +61,11 @@ extension Resources.V1.AppCustomProductPageLocalizations {
         }
 
         public func patch(_ body: _Specification.AppCustomProductPageLocalizationUpdateRequest) -> Request<_Specification.AppCustomProductPageLocalizationResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "appCustomProductPageLocalizations-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appCustomProductPageLocalizations-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "appCustomProductPageLocalizations-delete_instance")
+            Request(path: path, method: "DELETE", id: "appCustomProductPageLocalizations-delete_instance")
         }
     }
 }

@@ -17,9 +17,15 @@ public struct AppStoreVersionAppClipDefaultExperienceLinkageResponse: Codable, H
             case appClipDefaultExperiences
         }
 
-        public init(type: `Type`, id: String) {
+        public init(type: `Type` = .appClipDefaultExperiences, id: String) {
             self.type = type
             self.id = id
+        }
+
+        public init(from decoder: Decoder) throws {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            self.type = try values.decode(`Type`.self, forKey: .type)
+            self.id = try values.decode(String.self, forKey: .id)
         }
     }
 

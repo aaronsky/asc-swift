@@ -16,7 +16,7 @@ extension Resources.V1.Builds.WithID {
         public let path: String
 
         public func get(fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]? = nil) -> Request<_Specification.AppEncryptionDeclarationResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppEncryptionDeclarations), id: "builds-appEncryptionDeclaration-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEncryptionDeclarations), id: "builds-appEncryptionDeclaration-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]?) -> [(String, String?)] {

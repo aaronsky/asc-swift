@@ -16,7 +16,7 @@ extension Resources.V2.InAppPurchases {
         public let path: String
 
         public func get(fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, include: [Include]? = nil, fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]? = nil, fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsInAppPurchasePricePoints: [FieldsInAppPurchasePricePoints]? = nil, fieldsInAppPurchaseLocalizations: [FieldsInAppPurchaseLocalizations]? = nil, fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]? = nil, fieldsInAppPurchaseContents: [FieldsInAppPurchaseContents]? = nil, limitInAppPurchaseLocalizations: Int? = nil, limitPricePoints: Int? = nil) -> Request<_Specification.InAppPurchaseV2Response> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsInAppPurchases, include, fieldsInAppPurchaseAppStoreReviewScreenshots, fieldsPromotedPurchases, fieldsInAppPurchasePricePoints, fieldsInAppPurchaseLocalizations, fieldsInAppPurchasePriceSchedules, fieldsInAppPurchaseContents, limitInAppPurchaseLocalizations, limitPricePoints), id: "inAppPurchases-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchases, include, fieldsInAppPurchaseAppStoreReviewScreenshots, fieldsPromotedPurchases, fieldsInAppPurchasePricePoints, fieldsInAppPurchaseLocalizations, fieldsInAppPurchasePriceSchedules, fieldsInAppPurchaseContents, limitInAppPurchaseLocalizations, limitPricePoints), id: "inAppPurchases-get_instance")
         }
 
         private func makeGetQuery(_ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ include: [Include]?, _ fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]?, _ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsInAppPurchasePricePoints: [FieldsInAppPurchasePricePoints]?, _ fieldsInAppPurchaseLocalizations: [FieldsInAppPurchaseLocalizations]?, _ fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]?, _ fieldsInAppPurchaseContents: [FieldsInAppPurchaseContents]?, _ limitInAppPurchaseLocalizations: Int?, _ limitPricePoints: Int?) -> [(String, String?)] {
@@ -114,11 +114,11 @@ extension Resources.V2.InAppPurchases {
         }
 
         public func patch(_ body: _Specification.InAppPurchaseV2UpdateRequest) -> Request<_Specification.InAppPurchaseV2Response> {
-            Request(method: "PATCH", url: path, body: body, id: "inAppPurchases-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "inAppPurchases-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "inAppPurchases-delete_instance")
+            Request(path: path, method: "DELETE", id: "inAppPurchases-delete_instance")
         }
     }
 }

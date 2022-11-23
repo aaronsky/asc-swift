@@ -94,9 +94,15 @@ public struct CiWorkflow: Codable, Hashable, Identifiable {
                     case ciProducts
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .ciProducts, id: String) {
                     self.type = type
                     self.id = id
+                }
+
+                public init(from decoder: Decoder) throws {
+                    let values = try decoder.container(keyedBy: CodingKeys.self)
+                    self.type = try values.decode(`Type`.self, forKey: .type)
+                    self.id = try values.decode(String.self, forKey: .id)
                 }
             }
 
@@ -133,9 +139,15 @@ public struct CiWorkflow: Codable, Hashable, Identifiable {
                     case scmRepositories
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .scmRepositories, id: String) {
                     self.type = type
                     self.id = id
+                }
+
+                public init(from decoder: Decoder) throws {
+                    let values = try decoder.container(keyedBy: CodingKeys.self)
+                    self.type = try values.decode(`Type`.self, forKey: .type)
+                    self.id = try values.decode(String.self, forKey: .id)
                 }
             }
 
@@ -172,9 +184,15 @@ public struct CiWorkflow: Codable, Hashable, Identifiable {
                     case ciXcodeVersions
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .ciXcodeVersions, id: String) {
                     self.type = type
                     self.id = id
+                }
+
+                public init(from decoder: Decoder) throws {
+                    let values = try decoder.container(keyedBy: CodingKeys.self)
+                    self.type = try values.decode(`Type`.self, forKey: .type)
+                    self.id = try values.decode(String.self, forKey: .id)
                 }
             }
 
@@ -211,9 +229,15 @@ public struct CiWorkflow: Codable, Hashable, Identifiable {
                     case ciMacOsVersions
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .ciMacOsVersions, id: String) {
                     self.type = type
                     self.id = id
+                }
+
+                public init(from decoder: Decoder) throws {
+                    let values = try decoder.container(keyedBy: CodingKeys.self)
+                    self.type = try values.decode(`Type`.self, forKey: .type)
+                    self.id = try values.decode(String.self, forKey: .id)
                 }
             }
 
@@ -231,11 +255,20 @@ public struct CiWorkflow: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .ciWorkflows, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.attributes = attributes
         self.relationships = relationships
         self.links = links
+    }
+
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        self.type = try values.decode(`Type`.self, forKey: .type)
+        self.id = try values.decode(String.self, forKey: .id)
+        self.attributes = try values.decodeIfPresent(Attributes.self, forKey: .attributes)
+        self.relationships = try values.decodeIfPresent(Relationships.self, forKey: .relationships)
+        self.links = try values.decode(ResourceLinks.self, forKey: .links)
     }
 }

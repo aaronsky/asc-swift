@@ -16,7 +16,7 @@ extension Resources.V1.AppStoreVersions.WithID {
         public let path: String
 
         public func get(filterState: [FilterState]? = nil, fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, limit: Int? = nil, limitAppStoreVersionExperimentTreatments: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppStoreVersionExperimentsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterState, fieldsAppStoreVersionExperiments, fieldsAppStoreVersionExperimentTreatments, fieldsAppStoreVersions, limit, limitAppStoreVersionExperimentTreatments, include), id: "appStoreVersions-appStoreVersionExperiments-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterState, fieldsAppStoreVersionExperiments, fieldsAppStoreVersionExperimentTreatments, fieldsAppStoreVersions, limit, limitAppStoreVersionExperimentTreatments, include), id: "appStoreVersions-appStoreVersionExperiments-get_to_many_related")
         }
 
         private func makeGetQuery(_ filterState: [FilterState]?, _ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ limit: Int?, _ limitAppStoreVersionExperimentTreatments: Int?, _ include: [Include]?) -> [(String, String?)] {

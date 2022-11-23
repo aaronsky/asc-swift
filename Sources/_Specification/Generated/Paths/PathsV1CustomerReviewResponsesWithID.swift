@@ -16,7 +16,7 @@ extension Resources.V1.CustomerReviewResponses {
         public let path: String
 
         public func get(fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]? = nil, include: [Include]? = nil) -> Request<_Specification.CustomerReviewResponseV1Response> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsCustomerReviewResponses, include), id: "customerReviewResponses-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCustomerReviewResponses, include), id: "customerReviewResponses-get_instance")
         }
 
         private func makeGetQuery(_ fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]?, _ include: [Include]?) -> [(String, String?)] {
@@ -38,7 +38,7 @@ extension Resources.V1.CustomerReviewResponses {
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "customerReviewResponses-delete_instance")
+            Request(path: path, method: "DELETE", id: "customerReviewResponses-delete_instance")
         }
     }
 }

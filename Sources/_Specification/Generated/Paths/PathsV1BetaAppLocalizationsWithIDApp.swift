@@ -16,7 +16,7 @@ extension Resources.V1.BetaAppLocalizations.WithID {
         public let path: String
 
         public func get(fieldsApps: [FieldsApps]? = nil) -> Request<_Specification.AppResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsApps), id: "betaAppLocalizations-app-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsApps), id: "betaAppLocalizations-app-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsApps: [FieldsApps]?) -> [(String, String?)] {

@@ -16,7 +16,7 @@ extension Resources.V1.Apps.WithID {
         public let path: String
 
         public func get(filterBundleID: [String]? = nil, fieldsAppClips: [FieldsAppClips]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, limit: Int? = nil, limitAppClipDefaultExperiences: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppClipsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterBundleID, fieldsAppClips, fieldsApps, fieldsAppClipDefaultExperiences, limit, limitAppClipDefaultExperiences, include), id: "apps-appClips-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterBundleID, fieldsAppClips, fieldsApps, fieldsAppClipDefaultExperiences, limit, limitAppClipDefaultExperiences, include), id: "apps-appClips-get_to_many_related")
         }
 
         private func makeGetQuery(_ filterBundleID: [String]?, _ fieldsAppClips: [FieldsAppClips]?, _ fieldsApps: [FieldsApps]?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ limit: Int?, _ limitAppClipDefaultExperiences: Int?, _ include: [Include]?) -> [(String, String?)] {

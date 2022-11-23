@@ -47,9 +47,15 @@ public struct BuildUpdateRequest: Codable, Hashable {
                         case appEncryptionDeclarations
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appEncryptionDeclarations, id: String) {
                         self.type = type
                         self.id = id
+                    }
+
+                    public init(from decoder: Decoder) throws {
+                        let values = try decoder.container(keyedBy: CodingKeys.self)
+                        self.type = try values.decode(`Type`.self, forKey: .type)
+                        self.id = try values.decode(String.self, forKey: .id)
                     }
                 }
 
@@ -63,11 +69,19 @@ public struct BuildUpdateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil) {
+        public init(type: `Type` = .builds, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil) {
             self.type = type
             self.id = id
             self.attributes = attributes
             self.relationships = relationships
+        }
+
+        public init(from decoder: Decoder) throws {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            self.type = try values.decode(`Type`.self, forKey: .type)
+            self.id = try values.decode(String.self, forKey: .id)
+            self.attributes = try values.decodeIfPresent(Attributes.self, forKey: .attributes)
+            self.relationships = try values.decodeIfPresent(Relationships.self, forKey: .relationships)
         }
     }
 

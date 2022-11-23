@@ -35,10 +35,17 @@ public struct AppPreviewUpdateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, id: String, attributes: Attributes? = nil) {
+        public init(type: `Type` = .appPreviews, id: String, attributes: Attributes? = nil) {
             self.type = type
             self.id = id
             self.attributes = attributes
+        }
+
+        public init(from decoder: Decoder) throws {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            self.type = try values.decode(`Type`.self, forKey: .type)
+            self.id = try values.decode(String.self, forKey: .id)
+            self.attributes = try values.decodeIfPresent(Attributes.self, forKey: .attributes)
         }
     }
 

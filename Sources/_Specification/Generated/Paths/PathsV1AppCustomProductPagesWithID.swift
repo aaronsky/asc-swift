@@ -16,7 +16,7 @@ extension Resources.V1.AppCustomProductPages {
         public let path: String
 
         public func get(fieldsAppCustomProductPages: [FieldsAppCustomProductPages]? = nil, include: [Include]? = nil, fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]? = nil, limitAppCustomProductPageVersions: Int? = nil) -> Request<_Specification.AppCustomProductPageResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppCustomProductPages, include, fieldsAppCustomProductPageVersions, limitAppCustomProductPageVersions), id: "appCustomProductPages-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppCustomProductPages, include, fieldsAppCustomProductPageVersions, limitAppCustomProductPageVersions), id: "appCustomProductPages-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppCustomProductPages: [FieldsAppCustomProductPages]?, _ include: [Include]?, _ fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]?, _ limitAppCustomProductPageVersions: Int?) -> [(String, String?)] {
@@ -51,11 +51,11 @@ extension Resources.V1.AppCustomProductPages {
         }
 
         public func patch(_ body: _Specification.AppCustomProductPageUpdateRequest) -> Request<_Specification.AppCustomProductPageResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "appCustomProductPages-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appCustomProductPages-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "appCustomProductPages-delete_instance")
+            Request(path: path, method: "DELETE", id: "appCustomProductPages-delete_instance")
         }
     }
 }

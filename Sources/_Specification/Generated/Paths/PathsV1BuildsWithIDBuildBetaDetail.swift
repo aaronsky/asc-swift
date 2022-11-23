@@ -16,7 +16,7 @@ extension Resources.V1.Builds.WithID {
         public let path: String
 
         public func get(fieldsBuildBetaDetails: [FieldsBuildBetaDetails]? = nil) -> Request<_Specification.BuildBetaDetailResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsBuildBetaDetails), id: "builds-buildBetaDetail-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBuildBetaDetails), id: "builds-buildBetaDetail-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsBuildBetaDetails: [FieldsBuildBetaDetails]?) -> [(String, String?)] {

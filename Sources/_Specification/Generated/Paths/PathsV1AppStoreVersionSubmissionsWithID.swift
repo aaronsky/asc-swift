@@ -17,7 +17,7 @@ extension Resources.V1.AppStoreVersionSubmissions {
 
         @available(*, deprecated, message: "Deprecated")
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "appStoreVersionSubmissions-delete_instance")
+            Request(path: path, method: "DELETE", id: "appStoreVersionSubmissions-delete_instance")
         }
     }
 }

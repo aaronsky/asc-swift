@@ -17,7 +17,7 @@ extension Resources.V1.AppStoreVersions.WithID {
 
         @available(*, deprecated, message: "Deprecated")
         public func get(fieldsAppStoreVersionSubmissions: [FieldsAppStoreVersionSubmissions]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, include: [Include]? = nil) -> Request<_Specification.AppStoreVersionSubmissionResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppStoreVersionSubmissions, fieldsAppStoreVersions, include), id: "appStoreVersions-appStoreVersionSubmission-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionSubmissions, fieldsAppStoreVersions, include), id: "appStoreVersions-appStoreVersionSubmission-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsAppStoreVersionSubmissions: [FieldsAppStoreVersionSubmissions]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ include: [Include]?) -> [(String, String?)] {

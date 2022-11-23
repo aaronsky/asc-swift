@@ -16,7 +16,7 @@ extension Resources.V1.AppScreenshotSets.WithID {
         public let path: String
 
         public func get(fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppScreenshots: [FieldsAppScreenshots]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppScreenshotsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppScreenshotSets, fieldsAppScreenshots, limit, include), id: "appScreenshotSets-appScreenshots-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppScreenshotSets, fieldsAppScreenshots, limit, include), id: "appScreenshotSets-appScreenshots-get_to_many_related")
         }
 
         private func makeGetQuery(_ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppScreenshots: [FieldsAppScreenshots]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {

@@ -16,7 +16,7 @@ extension Resources.V1.Builds.WithID {
         public let path: String
 
         public func get(filterDiagnosticType: [FilterDiagnosticType]? = nil, fieldsDiagnosticSignatures: [FieldsDiagnosticSignatures]? = nil, limit: Int? = nil) -> Request<_Specification.DiagnosticSignaturesResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterDiagnosticType, fieldsDiagnosticSignatures, limit), id: "builds-diagnosticSignatures-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterDiagnosticType, fieldsDiagnosticSignatures, limit), id: "builds-diagnosticSignatures-get_to_many_related")
         }
 
         private func makeGetQuery(_ filterDiagnosticType: [FilterDiagnosticType]?, _ fieldsDiagnosticSignatures: [FieldsDiagnosticSignatures]?, _ limit: Int?) -> [(String, String?)] {

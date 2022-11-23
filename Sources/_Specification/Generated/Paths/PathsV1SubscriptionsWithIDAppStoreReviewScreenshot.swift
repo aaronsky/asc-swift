@@ -16,7 +16,7 @@ extension Resources.V1.Subscriptions.WithID {
         public let path: String
 
         public func get(fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, include: [Include]? = nil) -> Request<_Specification.SubscriptionAppStoreReviewScreenshotResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsSubscriptionAppStoreReviewScreenshots, fieldsSubscriptions, include), id: "subscriptions-appStoreReviewScreenshot-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionAppStoreReviewScreenshots, fieldsSubscriptions, include), id: "subscriptions-appStoreReviewScreenshot-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ include: [Include]?) -> [(String, String?)] {

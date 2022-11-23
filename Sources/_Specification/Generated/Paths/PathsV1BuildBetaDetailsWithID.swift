@@ -16,7 +16,7 @@ extension Resources.V1.BuildBetaDetails {
         public let path: String
 
         public func get(fieldsBuildBetaDetails: [FieldsBuildBetaDetails]? = nil, include: [Include]? = nil, fieldsBuilds: [FieldsBuilds]? = nil) -> Request<_Specification.BuildBetaDetailResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsBuildBetaDetails, include, fieldsBuilds), id: "buildBetaDetails-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBuildBetaDetails, include, fieldsBuilds), id: "buildBetaDetails-get_instance")
         }
 
         private func makeGetQuery(_ fieldsBuildBetaDetails: [FieldsBuildBetaDetails]?, _ include: [Include]?, _ fieldsBuilds: [FieldsBuilds]?) -> [(String, String?)] {
@@ -66,7 +66,7 @@ extension Resources.V1.BuildBetaDetails {
         }
 
         public func patch(_ body: _Specification.BuildBetaDetailUpdateRequest) -> Request<_Specification.BuildBetaDetailResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "buildBetaDetails-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "buildBetaDetails-update_instance")
         }
     }
 }

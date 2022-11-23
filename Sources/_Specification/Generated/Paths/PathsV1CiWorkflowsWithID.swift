@@ -16,7 +16,7 @@ extension Resources.V1.CiWorkflows {
         public let path: String
 
         public func get(fieldsCiWorkflows: [FieldsCiWorkflows]? = nil, include: [Include]? = nil, fieldsCiBuildRuns: [FieldsCiBuildRuns]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil) -> Request<_Specification.CiWorkflowResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsCiWorkflows, include, fieldsCiBuildRuns, fieldsScmRepositories), id: "ciWorkflows-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiWorkflows, include, fieldsCiBuildRuns, fieldsScmRepositories), id: "ciWorkflows-get_instance")
         }
 
         private func makeGetQuery(_ fieldsCiWorkflows: [FieldsCiWorkflows]?, _ include: [Include]?, _ fieldsCiBuildRuns: [FieldsCiBuildRuns]?, _ fieldsScmRepositories: [FieldsScmRepositories]?) -> [(String, String?)] {
@@ -92,11 +92,11 @@ extension Resources.V1.CiWorkflows {
         }
 
         public func patch(_ body: _Specification.CiWorkflowUpdateRequest) -> Request<_Specification.CiWorkflowResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "ciWorkflows-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "ciWorkflows-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "ciWorkflows-delete_instance")
+            Request(path: path, method: "DELETE", id: "ciWorkflows-delete_instance")
         }
     }
 }

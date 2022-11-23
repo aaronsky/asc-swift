@@ -32,9 +32,15 @@ public struct SubscriptionPromotionalOfferUpdateRequest: Codable, Hashable {
                         case subscriptionPromotionalOfferPrices
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .subscriptionPromotionalOfferPrices, id: String) {
                         self.type = type
                         self.id = id
+                    }
+
+                    public init(from decoder: Decoder) throws {
+                        let values = try decoder.container(keyedBy: CodingKeys.self)
+                        self.type = try values.decode(`Type`.self, forKey: .type)
+                        self.id = try values.decode(String.self, forKey: .id)
                     }
                 }
 
@@ -48,10 +54,17 @@ public struct SubscriptionPromotionalOfferUpdateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, id: String, relationships: Relationships? = nil) {
+        public init(type: `Type` = .subscriptionPromotionalOffers, id: String, relationships: Relationships? = nil) {
             self.type = type
             self.id = id
             self.relationships = relationships
+        }
+
+        public init(from decoder: Decoder) throws {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            self.type = try values.decode(`Type`.self, forKey: .type)
+            self.id = try values.decode(String.self, forKey: .id)
+            self.relationships = try values.decodeIfPresent(Relationships.self, forKey: .relationships)
         }
     }
 

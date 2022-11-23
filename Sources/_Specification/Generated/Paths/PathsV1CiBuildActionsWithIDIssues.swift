@@ -16,7 +16,7 @@ extension Resources.V1.CiBuildActions.WithID {
         public let path: String
 
         public func get(fieldsCiIssues: [FieldsCiIssues]? = nil, limit: Int? = nil) -> Request<_Specification.CiIssuesResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsCiIssues, limit), id: "ciBuildActions-issues-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiIssues, limit), id: "ciBuildActions-issues-get_to_many_related")
         }
 
         private func makeGetQuery(_ fieldsCiIssues: [FieldsCiIssues]?, _ limit: Int?) -> [(String, String?)] {

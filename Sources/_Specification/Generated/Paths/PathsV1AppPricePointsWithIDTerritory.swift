@@ -17,7 +17,7 @@ extension Resources.V1.AppPricePoints.WithID {
 
         @available(*, deprecated, message: "Deprecated")
         public func get(fieldsTerritories: [FieldsTerritories]? = nil) -> Request<_Specification.TerritoryResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsTerritories), id: "appPricePoints-territory-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsTerritories), id: "appPricePoints-territory-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsTerritories: [FieldsTerritories]?) -> [(String, String?)] {

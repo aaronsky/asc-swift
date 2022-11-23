@@ -16,7 +16,7 @@ extension Resources.V1.BetaTesters {
         public let path: String
 
         public func get(fieldsBetaTesters: [FieldsBetaTesters]? = nil, include: [Include]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsBetaGroups: [FieldsBetaGroups]? = nil, limitApps: Int? = nil, limitBetaGroups: Int? = nil, limitBuilds: Int? = nil) -> Request<_Specification.BetaTesterResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsBetaTesters, include, fieldsApps, fieldsBuilds, fieldsBetaGroups, limitApps, limitBetaGroups, limitBuilds), id: "betaTesters-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaTesters, include, fieldsApps, fieldsBuilds, fieldsBetaGroups, limitApps, limitBetaGroups, limitBuilds), id: "betaTesters-get_instance")
         }
 
         private func makeGetQuery(_ fieldsBetaTesters: [FieldsBetaTesters]?, _ include: [Include]?, _ fieldsApps: [FieldsApps]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsBetaGroups: [FieldsBetaGroups]?, _ limitApps: Int?, _ limitBetaGroups: Int?, _ limitBuilds: Int?) -> [(String, String?)] {
@@ -134,7 +134,7 @@ extension Resources.V1.BetaTesters {
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "betaTesters-delete_instance")
+            Request(path: path, method: "DELETE", id: "betaTesters-delete_instance")
         }
     }
 }

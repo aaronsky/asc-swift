@@ -16,7 +16,7 @@ extension Resources.V1.CiArtifacts {
         public let path: String
 
         public func get(fieldsCiArtifacts: [FieldsCiArtifacts]? = nil) -> Request<_Specification.CiArtifactResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsCiArtifacts), id: "ciArtifacts-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiArtifacts), id: "ciArtifacts-get_instance")
         }
 
         private func makeGetQuery(_ fieldsCiArtifacts: [FieldsCiArtifacts]?) -> [(String, String?)] {

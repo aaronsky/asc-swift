@@ -41,9 +41,15 @@ public struct AppPreviewSetCreateRequest: Codable, Hashable {
                         case appStoreVersionLocalizations
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appStoreVersionLocalizations, id: String) {
                         self.type = type
                         self.id = id
+                    }
+
+                    public init(from decoder: Decoder) throws {
+                        let values = try decoder.container(keyedBy: CodingKeys.self)
+                        self.type = try values.decode(`Type`.self, forKey: .type)
+                        self.id = try values.decode(String.self, forKey: .id)
                     }
                 }
 
@@ -63,9 +69,15 @@ public struct AppPreviewSetCreateRequest: Codable, Hashable {
                         case appCustomProductPageLocalizations
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appCustomProductPageLocalizations, id: String) {
                         self.type = type
                         self.id = id
+                    }
+
+                    public init(from decoder: Decoder) throws {
+                        let values = try decoder.container(keyedBy: CodingKeys.self)
+                        self.type = try values.decode(`Type`.self, forKey: .type)
+                        self.id = try values.decode(String.self, forKey: .id)
                     }
                 }
 
@@ -85,9 +97,15 @@ public struct AppPreviewSetCreateRequest: Codable, Hashable {
                         case appStoreVersionExperimentTreatmentLocalizations
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appStoreVersionExperimentTreatmentLocalizations, id: String) {
                         self.type = type
                         self.id = id
+                    }
+
+                    public init(from decoder: Decoder) throws {
+                        let values = try decoder.container(keyedBy: CodingKeys.self)
+                        self.type = try values.decode(`Type`.self, forKey: .type)
+                        self.id = try values.decode(String.self, forKey: .id)
                     }
                 }
 
@@ -103,10 +121,17 @@ public struct AppPreviewSetCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships? = nil) {
+        public init(type: `Type` = .appPreviewSets, attributes: Attributes, relationships: Relationships? = nil) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships
+        }
+
+        public init(from decoder: Decoder) throws {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            self.type = try values.decode(`Type`.self, forKey: .type)
+            self.attributes = try values.decode(Attributes.self, forKey: .attributes)
+            self.relationships = try values.decodeIfPresent(Relationships.self, forKey: .relationships)
         }
     }
 

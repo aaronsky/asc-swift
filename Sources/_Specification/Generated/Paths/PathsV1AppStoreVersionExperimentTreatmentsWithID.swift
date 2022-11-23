@@ -16,7 +16,7 @@ extension Resources.V1.AppStoreVersionExperimentTreatments {
         public let path: String
 
         public func get(fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]? = nil, include: [Include]? = nil, fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]? = nil, limitAppStoreVersionExperimentTreatmentLocalizations: Int? = nil) -> Request<_Specification.AppStoreVersionExperimentTreatmentResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppStoreVersionExperimentTreatments, include, fieldsAppStoreVersionExperimentTreatmentLocalizations, limitAppStoreVersionExperimentTreatmentLocalizations), id: "appStoreVersionExperimentTreatments-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionExperimentTreatments, include, fieldsAppStoreVersionExperimentTreatmentLocalizations, limitAppStoreVersionExperimentTreatmentLocalizations), id: "appStoreVersionExperimentTreatments-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]?, _ include: [Include]?, _ fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]?, _ limitAppStoreVersionExperimentTreatmentLocalizations: Int?) -> [(String, String?)] {
@@ -50,11 +50,11 @@ extension Resources.V1.AppStoreVersionExperimentTreatments {
         }
 
         public func patch(_ body: _Specification.AppStoreVersionExperimentTreatmentUpdateRequest) -> Request<_Specification.AppStoreVersionExperimentTreatmentResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "appStoreVersionExperimentTreatments-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appStoreVersionExperimentTreatments-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "appStoreVersionExperimentTreatments-delete_instance")
+            Request(path: path, method: "DELETE", id: "appStoreVersionExperimentTreatments-delete_instance")
         }
     }
 }

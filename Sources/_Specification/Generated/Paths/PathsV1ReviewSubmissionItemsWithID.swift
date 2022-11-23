@@ -16,11 +16,11 @@ extension Resources.V1.ReviewSubmissionItems {
         public let path: String
 
         public func patch(_ body: _Specification.ReviewSubmissionItemUpdateRequest) -> Request<_Specification.ReviewSubmissionItemResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "reviewSubmissionItems-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "reviewSubmissionItems-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "reviewSubmissionItems-delete_instance")
+            Request(path: path, method: "DELETE", id: "reviewSubmissionItems-delete_instance")
         }
     }
 }

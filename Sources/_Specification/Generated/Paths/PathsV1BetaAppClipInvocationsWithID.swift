@@ -16,7 +16,7 @@ extension Resources.V1.BetaAppClipInvocations {
         public let path: String
 
         public func get(fieldsBetaAppClipInvocations: [FieldsBetaAppClipInvocations]? = nil, include: [Include]? = nil, limitBetaAppClipInvocationLocalizations: Int? = nil) -> Request<_Specification.BetaAppClipInvocationResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsBetaAppClipInvocations, include, limitBetaAppClipInvocationLocalizations), id: "betaAppClipInvocations-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaAppClipInvocations, include, limitBetaAppClipInvocationLocalizations), id: "betaAppClipInvocations-get_instance")
         }
 
         private func makeGetQuery(_ fieldsBetaAppClipInvocations: [FieldsBetaAppClipInvocations]?, _ include: [Include]?, _ limitBetaAppClipInvocationLocalizations: Int?) -> [(String, String?)] {
@@ -38,11 +38,11 @@ extension Resources.V1.BetaAppClipInvocations {
         }
 
         public func patch(_ body: _Specification.BetaAppClipInvocationUpdateRequest) -> Request<_Specification.BetaAppClipInvocationResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "betaAppClipInvocations-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "betaAppClipInvocations-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "betaAppClipInvocations-delete_instance")
+            Request(path: path, method: "DELETE", id: "betaAppClipInvocations-delete_instance")
         }
     }
 }

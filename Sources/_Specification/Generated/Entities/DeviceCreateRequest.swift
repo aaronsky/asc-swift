@@ -28,9 +28,15 @@ public struct DeviceCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes) {
+        public init(type: `Type` = .devices, attributes: Attributes) {
             self.type = type
             self.attributes = attributes
+        }
+
+        public init(from decoder: Decoder) throws {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            self.type = try values.decode(`Type`.self, forKey: .type)
+            self.attributes = try values.decode(Attributes.self, forKey: .attributes)
         }
     }
 

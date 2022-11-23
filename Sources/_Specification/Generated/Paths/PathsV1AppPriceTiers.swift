@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(filterID: [String]? = nil, fieldsAppPriceTiers: [FieldsAppPriceTiers]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsAppPricePoints: [FieldsAppPricePoints]? = nil, limitPricePoints: Int? = nil) -> Request<_Specification.AppPriceTiersResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterID, fieldsAppPriceTiers, limit, include, fieldsAppPricePoints, limitPricePoints), id: "appPriceTiers-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(filterID, fieldsAppPriceTiers, limit, include, fieldsAppPricePoints, limitPricePoints), id: "appPriceTiers-get_collection")
         }
 
         private func makeGetQuery(_ filterID: [String]?, _ fieldsAppPriceTiers: [FieldsAppPriceTiers]?, _ limit: Int?, _ include: [Include]?, _ fieldsAppPricePoints: [FieldsAppPricePoints]?, _ limitPricePoints: Int?) -> [(String, String?)] {

@@ -16,7 +16,7 @@ extension Resources.V1.AppEventLocalizations {
         public let path: String
 
         public func get(fieldsAppEventLocalizations: [FieldsAppEventLocalizations]? = nil, include: [Include]? = nil, fieldsAppEventScreenshots: [FieldsAppEventScreenshots]? = nil, fieldsAppEventVideoClips: [FieldsAppEventVideoClips]? = nil, limitAppEventScreenshots: Int? = nil, limitAppEventVideoClips: Int? = nil) -> Request<_Specification.AppEventLocalizationResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppEventLocalizations, include, fieldsAppEventScreenshots, fieldsAppEventVideoClips, limitAppEventScreenshots, limitAppEventVideoClips), id: "appEventLocalizations-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEventLocalizations, include, fieldsAppEventScreenshots, fieldsAppEventVideoClips, limitAppEventScreenshots, limitAppEventVideoClips), id: "appEventLocalizations-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppEventLocalizations: [FieldsAppEventLocalizations]?, _ include: [Include]?, _ fieldsAppEventScreenshots: [FieldsAppEventScreenshots]?, _ fieldsAppEventVideoClips: [FieldsAppEventVideoClips]?, _ limitAppEventScreenshots: Int?, _ limitAppEventVideoClips: Int?) -> [(String, String?)] {
@@ -72,11 +72,11 @@ extension Resources.V1.AppEventLocalizations {
         }
 
         public func patch(_ body: _Specification.AppEventLocalizationUpdateRequest) -> Request<_Specification.AppEventLocalizationResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "appEventLocalizations-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appEventLocalizations-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "appEventLocalizations-delete_instance")
+            Request(path: path, method: "DELETE", id: "appEventLocalizations-delete_instance")
         }
     }
 }

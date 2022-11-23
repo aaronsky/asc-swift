@@ -13,8 +13,14 @@ public struct SubscriptionPricePointInlineCreate: Codable, Hashable, Identifiabl
         case subscriptionPricePoints
     }
 
-    public init(type: `Type`, id: String? = nil) {
+    public init(type: `Type` = .subscriptionPricePoints, id: String? = nil) {
         self.type = type
         self.id = id
+    }
+
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        self.type = try values.decode(`Type`.self, forKey: .type)
+        self.id = try values.decodeIfPresent(String.self, forKey: .id)
     }
 }

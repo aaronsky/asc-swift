@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(filterIdentifier: [String]? = nil, filterName: [String]? = nil, filterPlatform: [FilterPlatform]? = nil, filterSeedID: [String]? = nil, filterID: [String]? = nil, sort: [Sort]? = nil, fieldsBundleIDs: [FieldsBundleIDs]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsBundleIDCapabilities: [FieldsBundleIDCapabilities]? = nil, fieldsProfiles: [FieldsProfiles]? = nil, fieldsApps: [FieldsApps]? = nil, limitBundleIDCapabilities: Int? = nil, limitProfiles: Int? = nil) -> Request<_Specification.BundleIDsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterIdentifier, filterName, filterPlatform, filterSeedID, filterID, sort, fieldsBundleIDs, limit, include, fieldsBundleIDCapabilities, fieldsProfiles, fieldsApps, limitBundleIDCapabilities, limitProfiles), id: "bundleIds-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(filterIdentifier, filterName, filterPlatform, filterSeedID, filterID, sort, fieldsBundleIDs, limit, include, fieldsBundleIDCapabilities, fieldsProfiles, fieldsApps, limitBundleIDCapabilities, limitProfiles), id: "bundleIds-get_collection")
         }
 
         private func makeGetQuery(_ filterIdentifier: [String]?, _ filterName: [String]?, _ filterPlatform: [FilterPlatform]?, _ filterSeedID: [String]?, _ filterID: [String]?, _ sort: [Sort]?, _ fieldsBundleIDs: [FieldsBundleIDs]?, _ limit: Int?, _ include: [Include]?, _ fieldsBundleIDCapabilities: [FieldsBundleIDCapabilities]?, _ fieldsProfiles: [FieldsProfiles]?, _ fieldsApps: [FieldsApps]?, _ limitBundleIDCapabilities: Int?, _ limitProfiles: Int?) -> [(String, String?)] {
@@ -134,7 +134,7 @@ extension Resources.V1 {
         }
 
         public func post(_ body: _Specification.BundleIDCreateRequest) -> Request<_Specification.BundleIDResponse> {
-            Request(method: "POST", url: path, body: body, id: "bundleIds-create_instance")
+            Request(path: path, method: "POST", body: body, id: "bundleIds-create_instance")
         }
     }
 }

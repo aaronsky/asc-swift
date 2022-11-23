@@ -16,7 +16,7 @@ extension Resources.V1.AppPreviews {
         public let path: String
 
         public func get(fieldsAppPreviews: [FieldsAppPreviews]? = nil, include: [Include]? = nil) -> Request<_Specification.AppPreviewResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppPreviews, include), id: "appPreviews-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPreviews, include), id: "appPreviews-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppPreviews: [FieldsAppPreviews]?, _ include: [Include]?) -> [(String, String?)] {
@@ -45,11 +45,11 @@ extension Resources.V1.AppPreviews {
         }
 
         public func patch(_ body: _Specification.AppPreviewUpdateRequest) -> Request<_Specification.AppPreviewResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "appPreviews-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appPreviews-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "appPreviews-delete_instance")
+            Request(path: path, method: "DELETE", id: "appPreviews-delete_instance")
         }
     }
 }

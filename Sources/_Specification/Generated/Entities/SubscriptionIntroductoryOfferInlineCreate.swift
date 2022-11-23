@@ -47,9 +47,15 @@ public struct SubscriptionIntroductoryOfferInlineCreate: Codable, Hashable, Iden
                     case subscriptions
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptions, id: String) {
                     self.type = type
                     self.id = id
+                }
+
+                public init(from decoder: Decoder) throws {
+                    let values = try decoder.container(keyedBy: CodingKeys.self)
+                    self.type = try values.decode(`Type`.self, forKey: .type)
+                    self.id = try values.decode(String.self, forKey: .id)
                 }
             }
 
@@ -69,9 +75,15 @@ public struct SubscriptionIntroductoryOfferInlineCreate: Codable, Hashable, Iden
                     case territories
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .territories, id: String) {
                     self.type = type
                     self.id = id
+                }
+
+                public init(from decoder: Decoder) throws {
+                    let values = try decoder.container(keyedBy: CodingKeys.self)
+                    self.type = try values.decode(`Type`.self, forKey: .type)
+                    self.id = try values.decode(String.self, forKey: .id)
                 }
             }
 
@@ -91,9 +103,15 @@ public struct SubscriptionIntroductoryOfferInlineCreate: Codable, Hashable, Iden
                     case subscriptionPricePoints
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptionPricePoints, id: String) {
                     self.type = type
                     self.id = id
+                }
+
+                public init(from decoder: Decoder) throws {
+                    let values = try decoder.container(keyedBy: CodingKeys.self)
+                    self.type = try values.decode(`Type`.self, forKey: .type)
+                    self.id = try values.decode(String.self, forKey: .id)
                 }
             }
 
@@ -109,10 +127,18 @@ public struct SubscriptionIntroductoryOfferInlineCreate: Codable, Hashable, Iden
         }
     }
 
-    public init(type: `Type`, id: String? = nil, attributes: Attributes, relationships: Relationships? = nil) {
+    public init(type: `Type` = .subscriptionIntroductoryOffers, id: String? = nil, attributes: Attributes, relationships: Relationships? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes
         self.relationships = relationships
+    }
+
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        self.type = try values.decode(`Type`.self, forKey: .type)
+        self.id = try values.decodeIfPresent(String.self, forKey: .id)
+        self.attributes = try values.decode(Attributes.self, forKey: .attributes)
+        self.relationships = try values.decodeIfPresent(Relationships.self, forKey: .relationships)
     }
 }

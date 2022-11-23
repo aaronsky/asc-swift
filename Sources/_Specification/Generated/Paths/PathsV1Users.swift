@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(filterRoles: [FilterRoles]? = nil, filterUsername: [String]? = nil, filterVisibleApps: [String]? = nil, sort: [Sort]? = nil, fieldsUsers: [FieldsUsers]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsApps: [FieldsApps]? = nil, limitVisibleApps: Int? = nil) -> Request<_Specification.UsersResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterRoles, filterUsername, filterVisibleApps, sort, fieldsUsers, limit, include, fieldsApps, limitVisibleApps), id: "users-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(filterRoles, filterUsername, filterVisibleApps, sort, fieldsUsers, limit, include, fieldsApps, limitVisibleApps), id: "users-get_collection")
         }
 
         private func makeGetQuery(_ filterRoles: [FilterRoles]?, _ filterUsername: [String]?, _ filterVisibleApps: [String]?, _ sort: [Sort]?, _ fieldsUsers: [FieldsUsers]?, _ limit: Int?, _ include: [Include]?, _ fieldsApps: [FieldsApps]?, _ limitVisibleApps: Int?) -> [(String, String?)] {

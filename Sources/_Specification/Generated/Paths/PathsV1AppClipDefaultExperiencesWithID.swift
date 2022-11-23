@@ -16,7 +16,7 @@ extension Resources.V1.AppClipDefaultExperiences {
         public let path: String
 
         public func get(fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, include: [Include]? = nil, fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]? = nil, limitAppClipDefaultExperienceLocalizations: Int? = nil) -> Request<_Specification.AppClipDefaultExperienceResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppClipDefaultExperiences, include, fieldsAppClipAppStoreReviewDetails, fieldsAppStoreVersions, fieldsAppClipDefaultExperienceLocalizations, limitAppClipDefaultExperienceLocalizations), id: "appClipDefaultExperiences-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipDefaultExperiences, include, fieldsAppClipAppStoreReviewDetails, fieldsAppStoreVersions, fieldsAppClipDefaultExperienceLocalizations, limitAppClipDefaultExperienceLocalizations), id: "appClipDefaultExperiences-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ include: [Include]?, _ fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]?, _ limitAppClipDefaultExperienceLocalizations: Int?) -> [(String, String?)] {
@@ -81,11 +81,11 @@ extension Resources.V1.AppClipDefaultExperiences {
         }
 
         public func patch(_ body: _Specification.AppClipDefaultExperienceUpdateRequest) -> Request<_Specification.AppClipDefaultExperienceResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "appClipDefaultExperiences-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appClipDefaultExperiences-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "appClipDefaultExperiences-delete_instance")
+            Request(path: path, method: "DELETE", id: "appClipDefaultExperiences-delete_instance")
         }
     }
 }

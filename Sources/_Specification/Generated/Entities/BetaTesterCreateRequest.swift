@@ -44,9 +44,15 @@ public struct BetaTesterCreateRequest: Codable, Hashable {
                         case betaGroups
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .betaGroups, id: String) {
                         self.type = type
                         self.id = id
+                    }
+
+                    public init(from decoder: Decoder) throws {
+                        let values = try decoder.container(keyedBy: CodingKeys.self)
+                        self.type = try values.decode(`Type`.self, forKey: .type)
+                        self.id = try values.decode(String.self, forKey: .id)
                     }
                 }
 
@@ -66,9 +72,15 @@ public struct BetaTesterCreateRequest: Codable, Hashable {
                         case builds
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .builds, id: String) {
                         self.type = type
                         self.id = id
+                    }
+
+                    public init(from decoder: Decoder) throws {
+                        let values = try decoder.container(keyedBy: CodingKeys.self)
+                        self.type = try values.decode(`Type`.self, forKey: .type)
+                        self.id = try values.decode(String.self, forKey: .id)
                     }
                 }
 
@@ -83,10 +95,17 @@ public struct BetaTesterCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships? = nil) {
+        public init(type: `Type` = .betaTesters, attributes: Attributes, relationships: Relationships? = nil) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships
+        }
+
+        public init(from decoder: Decoder) throws {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            self.type = try values.decode(`Type`.self, forKey: .type)
+            self.attributes = try values.decode(Attributes.self, forKey: .attributes)
+            self.relationships = try values.decodeIfPresent(Relationships.self, forKey: .relationships)
         }
     }
 

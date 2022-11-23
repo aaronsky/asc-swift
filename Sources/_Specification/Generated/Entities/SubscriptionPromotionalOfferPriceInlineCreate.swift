@@ -29,9 +29,15 @@ public struct SubscriptionPromotionalOfferPriceInlineCreate: Codable, Hashable, 
                     case territories
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .territories, id: String) {
                     self.type = type
                     self.id = id
+                }
+
+                public init(from decoder: Decoder) throws {
+                    let values = try decoder.container(keyedBy: CodingKeys.self)
+                    self.type = try values.decode(`Type`.self, forKey: .type)
+                    self.id = try values.decode(String.self, forKey: .id)
                 }
             }
 
@@ -51,9 +57,15 @@ public struct SubscriptionPromotionalOfferPriceInlineCreate: Codable, Hashable, 
                     case subscriptionPricePoints
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptionPricePoints, id: String) {
                     self.type = type
                     self.id = id
+                }
+
+                public init(from decoder: Decoder) throws {
+                    let values = try decoder.container(keyedBy: CodingKeys.self)
+                    self.type = try values.decode(`Type`.self, forKey: .type)
+                    self.id = try values.decode(String.self, forKey: .id)
                 }
             }
 
@@ -68,9 +80,16 @@ public struct SubscriptionPromotionalOfferPriceInlineCreate: Codable, Hashable, 
         }
     }
 
-    public init(type: `Type`, id: String? = nil, relationships: Relationships? = nil) {
+    public init(type: `Type` = .subscriptionPromotionalOfferPrices, id: String? = nil, relationships: Relationships? = nil) {
         self.type = type
         self.id = id
         self.relationships = relationships
+    }
+
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        self.type = try values.decode(`Type`.self, forKey: .type)
+        self.id = try values.decodeIfPresent(String.self, forKey: .id)
+        self.relationships = try values.decodeIfPresent(Relationships.self, forKey: .relationships)
     }
 }

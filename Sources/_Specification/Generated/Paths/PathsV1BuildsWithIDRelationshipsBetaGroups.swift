@@ -16,11 +16,11 @@ extension Resources.V1.Builds.WithID.Relationships {
         public let path: String
 
         public func post(_ body: _Specification.BuildBetaGroupsLinkagesRequest) -> Request<Void> {
-            Request(method: "POST", url: path, body: body, id: "builds-betaGroups-create_to_many_relationship")
+            Request(path: path, method: "POST", body: body, id: "builds-betaGroups-create_to_many_relationship")
         }
 
         public func delete(_ body: _Specification.BuildBetaGroupsLinkagesRequest) -> Request<Void> {
-            Request(method: "DELETE", url: path, body: body, id: "builds-betaGroups-delete_to_many_relationship")
+            Request(path: path, method: "DELETE", body: body, id: "builds-betaGroups-delete_to_many_relationship")
         }
     }
 }

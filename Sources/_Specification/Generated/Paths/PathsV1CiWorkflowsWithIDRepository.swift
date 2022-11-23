@@ -16,7 +16,7 @@ extension Resources.V1.CiWorkflows.WithID {
         public let path: String
 
         public func get(fieldsScmGitReferences: [FieldsScmGitReferences]? = nil, fieldsScmProviders: [FieldsScmProviders]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, include: [Include]? = nil) -> Request<_Specification.ScmRepositoryResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsScmGitReferences, fieldsScmProviders, fieldsScmRepositories, include), id: "ciWorkflows-repository-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsScmGitReferences, fieldsScmProviders, fieldsScmRepositories, include), id: "ciWorkflows-repository-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsScmGitReferences: [FieldsScmGitReferences]?, _ fieldsScmProviders: [FieldsScmProviders]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ include: [Include]?) -> [(String, String?)] {

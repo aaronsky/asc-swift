@@ -16,7 +16,7 @@ extension Resources.V1.InAppPurchaseLocalizations {
         public let path: String
 
         public func get(fieldsInAppPurchaseLocalizations: [FieldsInAppPurchaseLocalizations]? = nil, include: [Include]? = nil) -> Request<_Specification.InAppPurchaseLocalizationResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsInAppPurchaseLocalizations, include), id: "inAppPurchaseLocalizations-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchaseLocalizations, include), id: "inAppPurchaseLocalizations-get_instance")
         }
 
         private func makeGetQuery(_ fieldsInAppPurchaseLocalizations: [FieldsInAppPurchaseLocalizations]?, _ include: [Include]?) -> [(String, String?)] {
@@ -39,11 +39,11 @@ extension Resources.V1.InAppPurchaseLocalizations {
         }
 
         public func patch(_ body: _Specification.InAppPurchaseLocalizationUpdateRequest) -> Request<_Specification.InAppPurchaseLocalizationResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "inAppPurchaseLocalizations-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "inAppPurchaseLocalizations-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "inAppPurchaseLocalizations-delete_instance")
+            Request(path: path, method: "DELETE", id: "inAppPurchaseLocalizations-delete_instance")
         }
     }
 }

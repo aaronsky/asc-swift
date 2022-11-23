@@ -16,11 +16,11 @@ extension Resources.V1.SubscriptionIntroductoryOffers {
         public let path: String
 
         public func patch(_ body: _Specification.SubscriptionIntroductoryOfferUpdateRequest) -> Request<_Specification.SubscriptionIntroductoryOfferResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "subscriptionIntroductoryOffers-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "subscriptionIntroductoryOffers-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "subscriptionIntroductoryOffers-delete_instance")
+            Request(path: path, method: "DELETE", id: "subscriptionIntroductoryOffers-delete_instance")
         }
     }
 }

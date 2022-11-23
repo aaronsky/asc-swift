@@ -16,7 +16,7 @@ extension Resources.V1.AppEncryptionDeclarations.WithID.Relationships {
         public let path: String
 
         public func post(_ body: _Specification.AppEncryptionDeclarationBuildsLinkagesRequest) -> Request<Void> {
-            Request(method: "POST", url: path, body: body, id: "appEncryptionDeclarations-builds-create_to_many_relationship")
+            Request(path: path, method: "POST", body: body, id: "appEncryptionDeclarations-builds-create_to_many_relationship")
         }
     }
 }
