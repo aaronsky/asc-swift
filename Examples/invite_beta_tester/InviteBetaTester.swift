@@ -29,7 +29,6 @@ import FoundationNetworking
                 Resources.v1.betaTesters.post(
                     .init(
                         data: .init(
-                            type: .betaTesters,
                             attributes: .init(
                                 firstName: firstName,
                                 lastName: lastName,
@@ -51,20 +50,9 @@ import FoundationNetworking
                     Resources.v1.betaTesterInvitations.post(
                         .init(
                             data: .init(
-                                type: .betaTesterInvitations,
                                 relationships: .init(
-                                    betaTester: .init(
-                                        data: .init(
-                                            type: .betaTesters,
-                                            id: tester.id
-                                        )
-                                    ),
-                                    app: .init(
-                                        data: .init(
-                                            type: .apps,
-                                            id: app.id
-                                        )
-                                    )
+                                    betaTester: .init(data: .init(id: tester.id)),
+                                    app: .init(data: .init(id: app.id))
                                 )
                             )
                         )

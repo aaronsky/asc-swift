@@ -31,7 +31,6 @@ import FoundationNetworking
             Resources.v1.userInvitations.post(
                 .init(
                     data: .init(
-                        type: .userInvitations,
                         attributes: .init(
                             email: email,
                             firstName: firstName,

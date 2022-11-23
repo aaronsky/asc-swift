@@ -61,11 +61,8 @@ import FoundationNetworking
                 Resources.v1.appStoreVersionLocalizations.post(
                     .init(
                         data: .init(
-                            type: .appStoreVersionLocalizations,
                             attributes: .init(locale: locale),
-                            relationships: .init(
-                                appStoreVersion: .init(data: .init(type: .appStoreVersions, id: version.id))
-                            )
+                            relationships: .init(appStoreVersion: .init(data: .init(id: version.id)))
                         )
                     )
                 )
@@ -91,13 +88,8 @@ import FoundationNetworking
                     Resources.v1.appScreenshotSets.post(
                         .init(
                             data: .init(
-                                type: .appScreenshotSets,
                                 attributes: .init(screenshotDisplayType: screenshotType),
-                                relationships: .init(
-                                    appStoreVersionLocalization: .init(
-                                        data: .init(type: .appStoreVersionLocalizations, id: localization.id)
-                                    )
-                                )
+                                relationships: .init(appStoreVersionLocalization: .init(data: .init(id: localization.id)))
                             )
                         )
                     )
@@ -113,16 +105,11 @@ import FoundationNetworking
                         Resources.v1.appScreenshots.post(
                             .init(
                                 data: .init(
-                                    type: .appScreenshots,
                                     attributes: .init(
                                         fileSize: screenshotFile.count,
                                         fileName: screenshotFileURL.lastPathComponent
                                     ),
-                                    relationships: .init(
-                                        appScreenshotSet: .init(
-                                            data: .init(type: .appScreenshotSets, id: screenshotSet.id)
-                                        )
-                                    )
+                                    relationships: .init(appScreenshotSet: .init(data: .init(id: screenshotSet.id)))
                                 )
                             )
                         )
@@ -150,7 +137,6 @@ import FoundationNetworking
                         .patch(
                             .init(
                                 data: .init(
-                                    type: .appScreenshots,
                                     id: screenshot.id,
                                     attributes: .init(sourceFileChecksum: screenshotFileChecksum, isUploaded: true)
                                 )

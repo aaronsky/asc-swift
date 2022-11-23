@@ -19,7 +19,6 @@ import FoundationNetworking
             Resources.v1.devices.post(
                 .init(
                     data: .init(
-                        type: .devices,
                         attributes: .init(
                             name: name,
                             platform: platform,
