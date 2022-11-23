@@ -74,12 +74,6 @@ public struct ReviewSubmission: Codable, Hashable, Identifiable {
                     self.type = type
                     self.id = id
                 }
-
-                public init(from decoder: Decoder) throws {
-                    let values = try decoder.container(keyedBy: CodingKeys.self)
-                    self.type = try values.decode(`Type`.self, forKey: .type)
-                    self.id = try values.decode(String.self, forKey: .id)
-                }
             }
 
             public init(links: Links? = nil, data: Data? = nil) {
@@ -119,12 +113,6 @@ public struct ReviewSubmission: Codable, Hashable, Identifiable {
                 public init(type: `Type` = .reviewSubmissionItems, id: String) {
                     self.type = type
                     self.id = id
-                }
-
-                public init(from decoder: Decoder) throws {
-                    let values = try decoder.container(keyedBy: CodingKeys.self)
-                    self.type = try values.decode(`Type`.self, forKey: .type)
-                    self.id = try values.decode(String.self, forKey: .id)
                 }
             }
 
@@ -166,12 +154,6 @@ public struct ReviewSubmission: Codable, Hashable, Identifiable {
                     self.type = type
                     self.id = id
                 }
-
-                public init(from decoder: Decoder) throws {
-                    let values = try decoder.container(keyedBy: CodingKeys.self)
-                    self.type = try values.decode(`Type`.self, forKey: .type)
-                    self.id = try values.decode(String.self, forKey: .id)
-                }
             }
 
             public init(links: Links? = nil, data: Data? = nil) {
@@ -193,14 +175,5 @@ public struct ReviewSubmission: Codable, Hashable, Identifiable {
         self.attributes = attributes
         self.relationships = relationships
         self.links = links
-    }
-
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        self.type = try values.decode(`Type`.self, forKey: .type)
-        self.id = try values.decode(String.self, forKey: .id)
-        self.attributes = try values.decodeIfPresent(Attributes.self, forKey: .attributes)
-        self.relationships = try values.decodeIfPresent(Relationships.self, forKey: .relationships)
-        self.links = try values.decode(ResourceLinks.self, forKey: .links)
     }
 }

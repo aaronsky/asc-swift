@@ -62,12 +62,6 @@ public struct InAppPurchaseV2CreateRequest: Codable, Hashable {
                         self.type = type
                         self.id = id
                     }
-
-                    public init(from decoder: Decoder) throws {
-                        let values = try decoder.container(keyedBy: CodingKeys.self)
-                        self.type = try values.decode(`Type`.self, forKey: .type)
-                        self.id = try values.decode(String.self, forKey: .id)
-                    }
                 }
 
                 public init(data: Data) {
@@ -84,13 +78,6 @@ public struct InAppPurchaseV2CreateRequest: Codable, Hashable {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships
-        }
-
-        public init(from decoder: Decoder) throws {
-            let values = try decoder.container(keyedBy: CodingKeys.self)
-            self.type = try values.decode(`Type`.self, forKey: .type)
-            self.attributes = try values.decode(Attributes.self, forKey: .attributes)
-            self.relationships = try values.decode(Relationships.self, forKey: .relationships)
         }
     }
 

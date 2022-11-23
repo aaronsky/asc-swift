@@ -20,12 +20,6 @@ public struct AppStoreVersionAppClipDefaultExperienceLinkageRequest: Codable, Ha
             self.type = type
             self.id = id
         }
-
-        public init(from decoder: Decoder) throws {
-            let values = try decoder.container(keyedBy: CodingKeys.self)
-            self.type = try values.decode(`Type`.self, forKey: .type)
-            self.id = try values.decode(String.self, forKey: .id)
-        }
     }
 
     public init(data: Data) {

@@ -41,12 +41,4 @@ public struct Certificate: Codable, Hashable, Identifiable {
         self.attributes = attributes
         self.links = links
     }
-
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        self.type = try values.decode(`Type`.self, forKey: .type)
-        self.id = try values.decode(String.self, forKey: .id)
-        self.attributes = try values.decodeIfPresent(Attributes.self, forKey: .attributes)
-        self.links = try values.decode(ResourceLinks.self, forKey: .links)
-    }
 }

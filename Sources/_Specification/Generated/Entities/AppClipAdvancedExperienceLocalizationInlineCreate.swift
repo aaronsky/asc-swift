@@ -31,11 +31,4 @@ public struct AppClipAdvancedExperienceLocalizationInlineCreate: Codable, Hashab
         self.id = id
         self.attributes = attributes
     }
-
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        self.type = try values.decode(`Type`.self, forKey: .type)
-        self.id = try values.decodeIfPresent(String.self, forKey: .id)
-        self.attributes = try values.decodeIfPresent(Attributes.self, forKey: .attributes)
-    }
 }

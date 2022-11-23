@@ -45,12 +45,6 @@ public struct AppScreenshotSetCreateRequest: Codable, Hashable {
                         self.type = type
                         self.id = id
                     }
-
-                    public init(from decoder: Decoder) throws {
-                        let values = try decoder.container(keyedBy: CodingKeys.self)
-                        self.type = try values.decode(`Type`.self, forKey: .type)
-                        self.id = try values.decode(String.self, forKey: .id)
-                    }
                 }
 
                 public init(data: Data? = nil) {
@@ -72,12 +66,6 @@ public struct AppScreenshotSetCreateRequest: Codable, Hashable {
                     public init(type: `Type` = .appCustomProductPageLocalizations, id: String) {
                         self.type = type
                         self.id = id
-                    }
-
-                    public init(from decoder: Decoder) throws {
-                        let values = try decoder.container(keyedBy: CodingKeys.self)
-                        self.type = try values.decode(`Type`.self, forKey: .type)
-                        self.id = try values.decode(String.self, forKey: .id)
                     }
                 }
 
@@ -101,12 +89,6 @@ public struct AppScreenshotSetCreateRequest: Codable, Hashable {
                         self.type = type
                         self.id = id
                     }
-
-                    public init(from decoder: Decoder) throws {
-                        let values = try decoder.container(keyedBy: CodingKeys.self)
-                        self.type = try values.decode(`Type`.self, forKey: .type)
-                        self.id = try values.decode(String.self, forKey: .id)
-                    }
                 }
 
                 public init(data: Data? = nil) {
@@ -125,13 +107,6 @@ public struct AppScreenshotSetCreateRequest: Codable, Hashable {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships
-        }
-
-        public init(from decoder: Decoder) throws {
-            let values = try decoder.container(keyedBy: CodingKeys.self)
-            self.type = try values.decode(`Type`.self, forKey: .type)
-            self.attributes = try values.decode(Attributes.self, forKey: .attributes)
-            self.relationships = try values.decodeIfPresent(Relationships.self, forKey: .relationships)
         }
     }
 

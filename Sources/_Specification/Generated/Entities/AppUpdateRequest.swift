@@ -76,12 +76,6 @@ public struct AppUpdateRequest: Codable, Hashable {
                         self.type = type
                         self.id = id
                     }
-
-                    public init(from decoder: Decoder) throws {
-                        let values = try decoder.container(keyedBy: CodingKeys.self)
-                        self.type = try values.decode(`Type`.self, forKey: .type)
-                        self.id = try values.decode(String.self, forKey: .id)
-                    }
                 }
 
                 public init(data: [Datum]? = nil) {
@@ -104,12 +98,6 @@ public struct AppUpdateRequest: Codable, Hashable {
                         self.type = type
                         self.id = id
                     }
-
-                    public init(from decoder: Decoder) throws {
-                        let values = try decoder.container(keyedBy: CodingKeys.self)
-                        self.type = try values.decode(`Type`.self, forKey: .type)
-                        self.id = try values.decode(String.self, forKey: .id)
-                    }
                 }
 
                 public init(data: [Datum]? = nil) {
@@ -128,14 +116,6 @@ public struct AppUpdateRequest: Codable, Hashable {
             self.id = id
             self.attributes = attributes
             self.relationships = relationships
-        }
-
-        public init(from decoder: Decoder) throws {
-            let values = try decoder.container(keyedBy: CodingKeys.self)
-            self.type = try values.decode(`Type`.self, forKey: .type)
-            self.id = try values.decode(String.self, forKey: .id)
-            self.attributes = try values.decodeIfPresent(Attributes.self, forKey: .attributes)
-            self.relationships = try values.decodeIfPresent(Relationships.self, forKey: .relationships)
         }
     }
 
