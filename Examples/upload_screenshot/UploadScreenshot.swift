@@ -89,7 +89,9 @@ import FoundationNetworking
                         .init(
                             data: .init(
                                 attributes: .init(screenshotDisplayType: screenshotType),
-                                relationships: .init(appStoreVersionLocalization: .init(data: .init(id: localization.id)))
+                                relationships: .init(
+                                    appStoreVersionLocalization: .init(data: .init(id: localization.id))
+                                )
                             )
                         )
                     )
