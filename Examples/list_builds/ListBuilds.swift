@@ -21,7 +21,7 @@ import FoundationNetworking
             )
             .data.first!
 
-        for try await builds in await client.pages(Resources.v1.builds.get(filterApp: [app.id])) {
+        for try await builds in client.pages(Resources.v1.builds.get(filterApp: [app.id])) {
             for build in builds.data {
                 print(build.attributes!.version!)
             }

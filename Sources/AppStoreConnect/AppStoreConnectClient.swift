@@ -73,7 +73,7 @@ public actor AppStoreConnectClient {
     /// Convenience method for accessing a series of paged resources in a sequence asynchronously.
     /// - Parameter request: The initial request of the sequence.
     /// - Returns: A ``PagedResponses`` sequence which will provide with each page's response asynchronously.
-    public func pages<Response>(_ request: Request<Response>) -> PagedResponses<Response> {
+    public nonisolated func pages<Response>(_ request: Request<Response>) -> PagedResponses<Response> {
         PagedResponses(request: request, client: self)
     }
 
@@ -100,7 +100,7 @@ public actor AppStoreConnectClient {
     /// Performs the given request asynchronously.
     /// - Parameter object: Some object that may contain a property of the type ``PagedDocumentLinks``.
     /// - Returns: The ``PagedDocumentLinks`` instance, if one exists.
-    private func pagedDocumentLinks<Entity>(_ object: Entity) -> PagedDocumentLinks? {
+    private nonisolated func pagedDocumentLinks<Entity>(_ object: Entity) -> PagedDocumentLinks? {
         let mirror = Mirror(reflecting: object)
         return mirror.children.first(where: { $0.value is PagedDocumentLinks })
             .flatMap { $0.value as? PagedDocumentLinks }

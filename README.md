@@ -63,7 +63,7 @@ Additionally, Apple imposes a rate limit on all API clients. If the API produces
 
 For example:
 
-```
+```swift
 do {
     let apps = try await client.send(Resources.v1.apps.get())
 } catch Response.Error.requestFailure(let error, let statusCode, let response) {
@@ -84,7 +84,7 @@ All requests for resource collections (apps, builds, beta groups, etc.) support 
 The most common application for pagination is paging forward from the first "page". For example:
 
 ```swift
-for try await appsPage in await client.pages(Resources.v1.apps.get()) {
+for try await appsPage in client.pages(Resources.v1.apps.get()) {
     print(appsPage)
 }
 ```
