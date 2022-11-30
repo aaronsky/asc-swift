@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: _Specification.SubscriptionOfferCodeCreateRequest) -> Request<_Specification.SubscriptionOfferCodeResponse> {
-            Request(method: "POST", url: path, body: body, id: "subscriptionOfferCodes-create_instance")
+            Request(path: path, method: "POST", body: body, id: "subscriptionOfferCodes-create_instance")
         }
     }
 }

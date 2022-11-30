@@ -16,7 +16,7 @@ public struct AppPromotedPurchasesLinkagesRequest: Codable, Hashable {
             case promotedPurchases
         }
 
-        public init(type: `Type`, id: String) {
+        public init(type: `Type` = .promotedPurchases, id: String) {
             self.type = type
             self.id = id
         }

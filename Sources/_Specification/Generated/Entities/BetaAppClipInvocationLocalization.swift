@@ -25,7 +25,7 @@ public struct BetaAppClipInvocationLocalization: Codable, Hashable, Identifiable
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .betaAppClipInvocationLocalizations, id: String, attributes: Attributes? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.attributes = attributes

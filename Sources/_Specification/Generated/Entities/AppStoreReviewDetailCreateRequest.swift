@@ -64,7 +64,7 @@ public struct AppStoreReviewDetailCreateRequest: Codable, Hashable {
                         case appStoreVersions
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appStoreVersions, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -80,7 +80,7 @@ public struct AppStoreReviewDetailCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes? = nil, relationships: Relationships) {
+        public init(type: `Type` = .appStoreReviewDetails, attributes: Attributes? = nil, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

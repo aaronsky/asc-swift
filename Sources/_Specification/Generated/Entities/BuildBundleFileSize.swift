@@ -29,7 +29,7 @@ public struct BuildBundleFileSize: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .buildBundleFileSizes, id: String, attributes: Attributes? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.attributes = attributes

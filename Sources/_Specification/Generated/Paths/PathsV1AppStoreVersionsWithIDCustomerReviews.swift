@@ -16,7 +16,7 @@ extension Resources.V1.AppStoreVersions.WithID {
         public let path: String
 
         public func get(filterRating: [String]? = nil, filterTerritory: [FilterTerritory]? = nil, isExistsPublishedResponse: Bool? = nil, sort: [Sort]? = nil, fieldsCustomerReviews: [FieldsCustomerReviews]? = nil, fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<_Specification.CustomerReviewsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterRating, filterTerritory, isExistsPublishedResponse, sort, fieldsCustomerReviews, fieldsCustomerReviewResponses, limit, include), id: "appStoreVersions-customerReviews-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterRating, filterTerritory, isExistsPublishedResponse, sort, fieldsCustomerReviews, fieldsCustomerReviewResponses, limit, include), id: "appStoreVersions-customerReviews-get_to_many_related")
         }
 
         private func makeGetQuery(_ filterRating: [String]?, _ filterTerritory: [FilterTerritory]?, _ isExistsPublishedResponse: Bool?, _ sort: [Sort]?, _ fieldsCustomerReviews: [FieldsCustomerReviews]?, _ fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {

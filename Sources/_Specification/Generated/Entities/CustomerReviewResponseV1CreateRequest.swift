@@ -39,7 +39,7 @@ public struct CustomerReviewResponseV1CreateRequest: Codable, Hashable {
                         case customerReviews
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .customerReviews, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -55,7 +55,7 @@ public struct CustomerReviewResponseV1CreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .customerReviewResponses, attributes: Attributes, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

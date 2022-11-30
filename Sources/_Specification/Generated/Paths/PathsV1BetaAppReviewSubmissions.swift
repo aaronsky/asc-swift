@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(filterBetaReviewState: [FilterBetaReviewState]? = nil, filterBuild: [String], fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsBuilds: [FieldsBuilds]? = nil) -> Request<_Specification.BetaAppReviewSubmissionsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterBetaReviewState, filterBuild, fieldsBetaAppReviewSubmissions, limit, include, fieldsBuilds), id: "betaAppReviewSubmissions-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(filterBetaReviewState, filterBuild, fieldsBetaAppReviewSubmissions, limit, include, fieldsBuilds), id: "betaAppReviewSubmissions-get_collection")
         }
 
         private func makeGetQuery(_ filterBetaReviewState: [FilterBetaReviewState]?, _ filterBuild: [String], _ fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]?, _ limit: Int?, _ include: [Include]?, _ fieldsBuilds: [FieldsBuilds]?) -> [(String, String?)] {
@@ -75,7 +75,7 @@ extension Resources.V1 {
         }
 
         public func post(_ body: _Specification.BetaAppReviewSubmissionCreateRequest) -> Request<_Specification.BetaAppReviewSubmissionResponse> {
-            Request(method: "POST", url: path, body: body, id: "betaAppReviewSubmissions-create_instance")
+            Request(path: path, method: "POST", body: body, id: "betaAppReviewSubmissions-create_instance")
         }
     }
 }

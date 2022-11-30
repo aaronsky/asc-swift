@@ -16,7 +16,7 @@ extension Resources.V1.CiProducts {
         public let path: String
 
         public func get(fieldsCiProducts: [FieldsCiProducts]? = nil, include: [Include]? = nil, fieldsCiBuildRuns: [FieldsCiBuildRuns]? = nil, fieldsCiWorkflows: [FieldsCiWorkflows]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, limitPrimaryRepositories: Int? = nil) -> Request<_Specification.CiProductResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsCiProducts, include, fieldsCiBuildRuns, fieldsCiWorkflows, fieldsApps, fieldsScmRepositories, limitPrimaryRepositories), id: "ciProducts-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiProducts, include, fieldsCiBuildRuns, fieldsCiWorkflows, fieldsApps, fieldsScmRepositories, limitPrimaryRepositories), id: "ciProducts-get_instance")
         }
 
         private func makeGetQuery(_ fieldsCiProducts: [FieldsCiProducts]?, _ include: [Include]?, _ fieldsCiBuildRuns: [FieldsCiBuildRuns]?, _ fieldsCiWorkflows: [FieldsCiWorkflows]?, _ fieldsApps: [FieldsApps]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ limitPrimaryRepositories: Int?) -> [(String, String?)] {
@@ -147,7 +147,7 @@ extension Resources.V1.CiProducts {
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "ciProducts-delete_instance")
+            Request(path: path, method: "DELETE", id: "ciProducts-delete_instance")
         }
     }
 }

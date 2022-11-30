@@ -47,7 +47,7 @@ public struct BuildUpdateRequest: Codable, Hashable {
                         case appEncryptionDeclarations
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appEncryptionDeclarations, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -63,7 +63,7 @@ public struct BuildUpdateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil) {
+        public init(type: `Type` = .builds, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil) {
             self.type = type
             self.id = id
             self.attributes = attributes

@@ -13,7 +13,7 @@ public struct SubscriptionPricePointInlineCreate: Codable, Hashable, Identifiabl
         case subscriptionPricePoints
     }
 
-    public init(type: `Type`, id: String? = nil) {
+    public init(type: `Type` = .subscriptionPricePoints, id: String? = nil) {
         self.type = type
         self.id = id
     }

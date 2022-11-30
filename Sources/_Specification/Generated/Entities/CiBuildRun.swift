@@ -144,7 +144,7 @@ public struct CiBuildRun: Codable, Hashable, Identifiable {
                     case builds
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .builds, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -184,7 +184,7 @@ public struct CiBuildRun: Codable, Hashable, Identifiable {
                     case ciWorkflows
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .ciWorkflows, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -223,7 +223,7 @@ public struct CiBuildRun: Codable, Hashable, Identifiable {
                     case ciProducts
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .ciProducts, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -262,7 +262,7 @@ public struct CiBuildRun: Codable, Hashable, Identifiable {
                     case scmGitReferences
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .scmGitReferences, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -301,7 +301,7 @@ public struct CiBuildRun: Codable, Hashable, Identifiable {
                     case scmGitReferences
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .scmGitReferences, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -340,7 +340,7 @@ public struct CiBuildRun: Codable, Hashable, Identifiable {
                     case scmPullRequests
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .scmPullRequests, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -362,7 +362,7 @@ public struct CiBuildRun: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .ciBuildRuns, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.attributes = attributes

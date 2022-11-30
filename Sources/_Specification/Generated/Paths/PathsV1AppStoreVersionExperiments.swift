@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: _Specification.AppStoreVersionExperimentCreateRequest) -> Request<_Specification.AppStoreVersionExperimentResponse> {
-            Request(method: "POST", url: path, body: body, id: "appStoreVersionExperiments-create_instance")
+            Request(path: path, method: "POST", body: body, id: "appStoreVersionExperiments-create_instance")
         }
     }
 }

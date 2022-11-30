@@ -16,7 +16,7 @@ extension Resources.V1.Certificates {
         public let path: String
 
         public func get(fieldsCertificates: [FieldsCertificates]? = nil) -> Request<_Specification.CertificateResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsCertificates), id: "certificates-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCertificates), id: "certificates-get_instance")
         }
 
         private func makeGetQuery(_ fieldsCertificates: [FieldsCertificates]?) -> [(String, String?)] {
@@ -37,7 +37,7 @@ extension Resources.V1.Certificates {
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "certificates-delete_instance")
+            Request(path: path, method: "DELETE", id: "certificates-delete_instance")
         }
     }
 }

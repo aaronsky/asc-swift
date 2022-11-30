@@ -58,7 +58,7 @@ public struct UserInvitationCreateRequest: Codable, Hashable {
                         case apps
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .apps, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -74,7 +74,7 @@ public struct UserInvitationCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships? = nil) {
+        public init(type: `Type` = .userInvitations, attributes: Attributes, relationships: Relationships? = nil) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

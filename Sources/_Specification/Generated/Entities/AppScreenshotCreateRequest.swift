@@ -41,7 +41,7 @@ public struct AppScreenshotCreateRequest: Codable, Hashable {
                         case appScreenshotSets
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appScreenshotSets, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -57,7 +57,7 @@ public struct AppScreenshotCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .appScreenshots, attributes: Attributes, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

@@ -54,7 +54,7 @@ public struct BetaLicenseAgreement: Codable, Hashable, Identifiable {
                     case apps
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .apps, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -71,7 +71,7 @@ public struct BetaLicenseAgreement: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .betaLicenseAgreements, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.attributes = attributes

@@ -26,7 +26,7 @@ public struct CertificateCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes) {
+        public init(type: `Type` = .certificates, attributes: Attributes) {
             self.type = type
             self.attributes = attributes
         }

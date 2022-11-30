@@ -41,7 +41,7 @@ public struct AppClipDefaultExperienceLocalizationCreateRequest: Codable, Hashab
                         case appClipDefaultExperiences
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appClipDefaultExperiences, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -57,7 +57,7 @@ public struct AppClipDefaultExperienceLocalizationCreateRequest: Codable, Hashab
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .appClipDefaultExperienceLocalizations, attributes: Attributes, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

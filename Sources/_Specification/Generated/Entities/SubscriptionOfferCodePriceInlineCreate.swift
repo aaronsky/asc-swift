@@ -29,7 +29,7 @@ public struct SubscriptionOfferCodePriceInlineCreate: Codable, Hashable, Identif
                     case territories
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .territories, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -51,7 +51,7 @@ public struct SubscriptionOfferCodePriceInlineCreate: Codable, Hashable, Identif
                     case subscriptionPricePoints
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptionPricePoints, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -68,7 +68,7 @@ public struct SubscriptionOfferCodePriceInlineCreate: Codable, Hashable, Identif
         }
     }
 
-    public init(type: `Type`, id: String? = nil, relationships: Relationships? = nil) {
+    public init(type: `Type` = .subscriptionOfferCodePrices, id: String? = nil, relationships: Relationships? = nil) {
         self.type = type
         self.id = id
         self.relationships = relationships

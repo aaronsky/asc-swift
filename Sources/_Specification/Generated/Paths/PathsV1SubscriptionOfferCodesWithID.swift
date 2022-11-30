@@ -16,7 +16,7 @@ extension Resources.V1.SubscriptionOfferCodes {
         public let path: String
 
         public func get(fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, include: [Include]? = nil, fieldsSubscriptionOfferCodeCustomCodes: [FieldsSubscriptionOfferCodeCustomCodes]? = nil, fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]? = nil, fieldsSubscriptionOfferCodePrices: [FieldsSubscriptionOfferCodePrices]? = nil, limitCustomCodes: Int? = nil, limitOneTimeUseCodes: Int? = nil, limitPrices: Int? = nil) -> Request<_Specification.SubscriptionOfferCodeResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsSubscriptionOfferCodes, include, fieldsSubscriptionOfferCodeCustomCodes, fieldsSubscriptionOfferCodeOneTimeUseCodes, fieldsSubscriptionOfferCodePrices, limitCustomCodes, limitOneTimeUseCodes, limitPrices), id: "subscriptionOfferCodes-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionOfferCodes, include, fieldsSubscriptionOfferCodeCustomCodes, fieldsSubscriptionOfferCodeOneTimeUseCodes, fieldsSubscriptionOfferCodePrices, limitCustomCodes, limitOneTimeUseCodes, limitPrices), id: "subscriptionOfferCodes-get_instance")
         }
 
         private func makeGetQuery(_ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ include: [Include]?, _ fieldsSubscriptionOfferCodeCustomCodes: [FieldsSubscriptionOfferCodeCustomCodes]?, _ fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]?, _ fieldsSubscriptionOfferCodePrices: [FieldsSubscriptionOfferCodePrices]?, _ limitCustomCodes: Int?, _ limitOneTimeUseCodes: Int?, _ limitPrices: Int?) -> [(String, String?)] {
@@ -78,7 +78,7 @@ extension Resources.V1.SubscriptionOfferCodes {
         }
 
         public func patch(_ body: _Specification.SubscriptionOfferCodeUpdateRequest) -> Request<_Specification.SubscriptionOfferCodeResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "subscriptionOfferCodes-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "subscriptionOfferCodes-update_instance")
         }
     }
 }

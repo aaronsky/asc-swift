@@ -76,7 +76,7 @@ public struct CiWorkflowCreateRequest: Codable, Hashable {
                         case ciProducts
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .ciProducts, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -98,7 +98,7 @@ public struct CiWorkflowCreateRequest: Codable, Hashable {
                         case scmRepositories
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .scmRepositories, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -120,7 +120,7 @@ public struct CiWorkflowCreateRequest: Codable, Hashable {
                         case ciXcodeVersions
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .ciXcodeVersions, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -142,7 +142,7 @@ public struct CiWorkflowCreateRequest: Codable, Hashable {
                         case ciMacOsVersions
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .ciMacOsVersions, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -161,7 +161,7 @@ public struct CiWorkflowCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .ciWorkflows, attributes: Attributes, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

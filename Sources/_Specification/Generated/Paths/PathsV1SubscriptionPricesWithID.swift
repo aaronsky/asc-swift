@@ -16,7 +16,7 @@ extension Resources.V1.SubscriptionPrices {
         public let path: String
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "subscriptionPrices-delete_instance")
+            Request(path: path, method: "DELETE", id: "subscriptionPrices-delete_instance")
         }
     }
 }

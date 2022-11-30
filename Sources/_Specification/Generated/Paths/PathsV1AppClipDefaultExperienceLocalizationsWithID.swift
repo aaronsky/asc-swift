@@ -16,7 +16,7 @@ extension Resources.V1.AppClipDefaultExperienceLocalizations {
         public let path: String
 
         public func get(fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]? = nil, include: [Include]? = nil, fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]? = nil) -> Request<_Specification.AppClipDefaultExperienceLocalizationResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppClipDefaultExperienceLocalizations, include, fieldsAppClipHeaderImages), id: "appClipDefaultExperienceLocalizations-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipDefaultExperienceLocalizations, include, fieldsAppClipHeaderImages), id: "appClipDefaultExperienceLocalizations-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]?, _ include: [Include]?, _ fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]?) -> [(String, String?)] {
@@ -51,11 +51,11 @@ extension Resources.V1.AppClipDefaultExperienceLocalizations {
         }
 
         public func patch(_ body: _Specification.AppClipDefaultExperienceLocalizationUpdateRequest) -> Request<_Specification.AppClipDefaultExperienceLocalizationResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "appClipDefaultExperienceLocalizations-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appClipDefaultExperienceLocalizations-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "appClipDefaultExperienceLocalizations-delete_instance")
+            Request(path: path, method: "DELETE", id: "appClipDefaultExperienceLocalizations-delete_instance")
         }
     }
 }

@@ -16,7 +16,7 @@ extension Resources.V1.Users {
         public let path: String
 
         public func get(fieldsUsers: [FieldsUsers]? = nil, include: [Include]? = nil, fieldsApps: [FieldsApps]? = nil, limitVisibleApps: Int? = nil) -> Request<_Specification.UserResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsUsers, include, fieldsApps, limitVisibleApps), id: "users-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsUsers, include, fieldsApps, limitVisibleApps), id: "users-get_instance")
         }
 
         private func makeGetQuery(_ fieldsUsers: [FieldsUsers]?, _ include: [Include]?, _ fieldsApps: [FieldsApps]?, _ limitVisibleApps: Int?) -> [(String, String?)] {
@@ -84,11 +84,11 @@ extension Resources.V1.Users {
         }
 
         public func patch(_ body: _Specification.UserUpdateRequest) -> Request<_Specification.UserResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "users-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "users-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "users-delete_instance")
+            Request(path: path, method: "DELETE", id: "users-delete_instance")
         }
     }
 }

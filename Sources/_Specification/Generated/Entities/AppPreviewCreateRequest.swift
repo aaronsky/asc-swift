@@ -45,7 +45,7 @@ public struct AppPreviewCreateRequest: Codable, Hashable {
                         case appPreviewSets
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appPreviewSets, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -61,7 +61,7 @@ public struct AppPreviewCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .appPreviews, attributes: Attributes, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

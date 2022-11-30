@@ -16,7 +16,7 @@ extension Resources.V1.Devices {
         public let path: String
 
         public func get(fieldsDevices: [FieldsDevices]? = nil) -> Request<_Specification.DeviceResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsDevices), id: "devices-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsDevices), id: "devices-get_instance")
         }
 
         private func makeGetQuery(_ fieldsDevices: [FieldsDevices]?) -> [(String, String?)] {
@@ -36,7 +36,7 @@ extension Resources.V1.Devices {
         }
 
         public func patch(_ body: _Specification.DeviceUpdateRequest) -> Request<_Specification.DeviceResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "devices-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "devices-update_instance")
         }
     }
 }

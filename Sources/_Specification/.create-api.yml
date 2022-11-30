@@ -25,6 +25,8 @@ dataTypes:
     uri-reference: URL
 
 entities:
+  alwaysIncludeDecodableImplementation: false
+  alwaysIncludeEncodableImplementation: false
   includeIdentifiableConformance: true
   includeInitializer: true
   optimizeCodingKeys: false

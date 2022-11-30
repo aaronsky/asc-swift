@@ -32,7 +32,7 @@ public struct PromotedPurchaseUpdateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, id: String, attributes: Attributes? = nil) {
+        public init(type: `Type` = .promotedPurchases, id: String, attributes: Attributes? = nil) {
             self.type = type
             self.id = id
             self.attributes = attributes

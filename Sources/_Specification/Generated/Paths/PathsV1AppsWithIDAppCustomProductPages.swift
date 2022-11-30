@@ -16,7 +16,7 @@ extension Resources.V1.Apps.WithID {
         public let path: String
 
         public func get(filterVisible: [String]? = nil, fieldsAppCustomProductPages: [FieldsAppCustomProductPages]? = nil, fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]? = nil, fieldsApps: [FieldsApps]? = nil, limit: Int? = nil, limitAppCustomProductPageVersions: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppCustomProductPagesResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterVisible, fieldsAppCustomProductPages, fieldsAppCustomProductPageVersions, fieldsApps, limit, limitAppCustomProductPageVersions, include), id: "apps-appCustomProductPages-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterVisible, fieldsAppCustomProductPages, fieldsAppCustomProductPageVersions, fieldsApps, limit, limitAppCustomProductPageVersions, include), id: "apps-appCustomProductPages-get_to_many_related")
         }
 
         private func makeGetQuery(_ filterVisible: [String]?, _ fieldsAppCustomProductPages: [FieldsAppCustomProductPages]?, _ fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]?, _ fieldsApps: [FieldsApps]?, _ limit: Int?, _ limitAppCustomProductPageVersions: Int?, _ include: [Include]?) -> [(String, String?)] {

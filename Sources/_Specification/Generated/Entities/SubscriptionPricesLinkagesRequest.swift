@@ -16,7 +16,7 @@ public struct SubscriptionPricesLinkagesRequest: Codable, Hashable {
             case subscriptionPrices
         }
 
-        public init(type: `Type`, id: String) {
+        public init(type: `Type` = .subscriptionPrices, id: String) {
             self.type = type
             self.id = id
         }

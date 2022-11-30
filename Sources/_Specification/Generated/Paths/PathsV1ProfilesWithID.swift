@@ -16,7 +16,7 @@ extension Resources.V1.Profiles {
         public let path: String
 
         public func get(fieldsProfiles: [FieldsProfiles]? = nil, include: [Include]? = nil, fieldsCertificates: [FieldsCertificates]? = nil, fieldsDevices: [FieldsDevices]? = nil, fieldsBundleIDs: [FieldsBundleIDs]? = nil, limitCertificates: Int? = nil, limitDevices: Int? = nil) -> Request<_Specification.ProfileResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsProfiles, include, fieldsCertificates, fieldsDevices, fieldsBundleIDs, limitCertificates, limitDevices), id: "profiles-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsProfiles, include, fieldsCertificates, fieldsDevices, fieldsBundleIDs, limitCertificates, limitDevices), id: "profiles-get_instance")
         }
 
         private func makeGetQuery(_ fieldsProfiles: [FieldsProfiles]?, _ include: [Include]?, _ fieldsCertificates: [FieldsCertificates]?, _ fieldsDevices: [FieldsDevices]?, _ fieldsBundleIDs: [FieldsBundleIDs]?, _ limitCertificates: Int?, _ limitDevices: Int?) -> [(String, String?)] {
@@ -83,7 +83,7 @@ extension Resources.V1.Profiles {
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "profiles-delete_instance")
+            Request(path: path, method: "DELETE", id: "profiles-delete_instance")
         }
     }
 }

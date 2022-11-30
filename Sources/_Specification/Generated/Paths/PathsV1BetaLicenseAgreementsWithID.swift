@@ -16,7 +16,7 @@ extension Resources.V1.BetaLicenseAgreements {
         public let path: String
 
         public func get(fieldsBetaLicenseAgreements: [FieldsBetaLicenseAgreements]? = nil, include: [Include]? = nil, fieldsApps: [FieldsApps]? = nil) -> Request<_Specification.BetaLicenseAgreementResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsBetaLicenseAgreements, include, fieldsApps), id: "betaLicenseAgreements-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaLicenseAgreements, include, fieldsApps), id: "betaLicenseAgreements-get_instance")
         }
 
         private func makeGetQuery(_ fieldsBetaLicenseAgreements: [FieldsBetaLicenseAgreements]?, _ include: [Include]?, _ fieldsApps: [FieldsApps]?) -> [(String, String?)] {
@@ -78,7 +78,7 @@ extension Resources.V1.BetaLicenseAgreements {
         }
 
         public func patch(_ body: _Specification.BetaLicenseAgreementUpdateRequest) -> Request<_Specification.BetaLicenseAgreementResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "betaLicenseAgreements-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "betaLicenseAgreements-update_instance")
         }
     }
 }

@@ -58,7 +58,7 @@ public struct SubscriptionPricePoint: Codable, Hashable, Identifiable {
                     case territories
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .territories, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -75,7 +75,7 @@ public struct SubscriptionPricePoint: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .subscriptionPricePoints, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.attributes = attributes

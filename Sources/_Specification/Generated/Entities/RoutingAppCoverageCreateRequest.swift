@@ -41,7 +41,7 @@ public struct RoutingAppCoverageCreateRequest: Codable, Hashable {
                         case appStoreVersions
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appStoreVersions, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -57,7 +57,7 @@ public struct RoutingAppCoverageCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .routingAppCoverages, attributes: Attributes, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

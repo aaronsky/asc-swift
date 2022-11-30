@@ -68,7 +68,7 @@ public struct AppScreenshot: Codable, Hashable, Identifiable {
                     case appScreenshotSets
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appScreenshotSets, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -85,7 +85,7 @@ public struct AppScreenshot: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .appScreenshots, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.attributes = attributes

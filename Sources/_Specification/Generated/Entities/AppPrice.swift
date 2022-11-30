@@ -46,7 +46,7 @@ public struct AppPrice: Codable, Hashable, Identifiable {
                     case apps
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .apps, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -85,7 +85,7 @@ public struct AppPrice: Codable, Hashable, Identifiable {
                     case appPriceTiers
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appPriceTiers, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -103,7 +103,7 @@ public struct AppPrice: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .appPrices, id: String, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.relationships = relationships

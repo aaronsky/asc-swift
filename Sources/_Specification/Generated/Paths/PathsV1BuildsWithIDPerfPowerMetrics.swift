@@ -16,7 +16,7 @@ extension Resources.V1.Builds.WithID {
         public let path: String
 
         public func get(filterDeviceType: [String]? = nil, filterMetricType: [FilterMetricType]? = nil, filterPlatform: [FilterPlatform]? = nil) -> Request<Data> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterDeviceType, filterMetricType, filterPlatform), id: "builds-perfPowerMetrics-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterDeviceType, filterMetricType, filterPlatform), id: "builds-perfPowerMetrics-get_to_many_related")
         }
 
         private func makeGetQuery(_ filterDeviceType: [String]?, _ filterMetricType: [FilterMetricType]?, _ filterPlatform: [FilterPlatform]?) -> [(String, String?)] {

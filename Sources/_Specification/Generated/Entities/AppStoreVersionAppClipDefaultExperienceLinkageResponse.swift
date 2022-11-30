@@ -17,7 +17,7 @@ public struct AppStoreVersionAppClipDefaultExperienceLinkageResponse: Codable, H
             case appClipDefaultExperiences
         }
 
-        public init(type: `Type`, id: String) {
+        public init(type: `Type` = .appClipDefaultExperiences, id: String) {
             self.type = type
             self.id = id
         }

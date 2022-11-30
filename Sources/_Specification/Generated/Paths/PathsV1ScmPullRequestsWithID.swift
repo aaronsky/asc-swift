@@ -16,7 +16,7 @@ extension Resources.V1.ScmPullRequests {
         public let path: String
 
         public func get(fieldsScmPullRequests: [FieldsScmPullRequests]? = nil, include: [Include]? = nil) -> Request<_Specification.ScmPullRequestResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsScmPullRequests, include), id: "scmPullRequests-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsScmPullRequests, include), id: "scmPullRequests-get_instance")
         }
 
         private func makeGetQuery(_ fieldsScmPullRequests: [FieldsScmPullRequests]?, _ include: [Include]?) -> [(String, String?)] {

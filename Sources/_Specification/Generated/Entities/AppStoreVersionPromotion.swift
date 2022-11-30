@@ -14,7 +14,7 @@ public struct AppStoreVersionPromotion: Codable, Hashable, Identifiable {
         case appStoreVersionPromotions
     }
 
-    public init(type: `Type`, id: String, links: ResourceLinks) {
+    public init(type: `Type` = .appStoreVersionPromotions, id: String, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.links = links

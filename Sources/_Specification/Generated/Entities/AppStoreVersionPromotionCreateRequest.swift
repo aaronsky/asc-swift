@@ -31,7 +31,7 @@ public struct AppStoreVersionPromotionCreateRequest: Codable, Hashable {
                         case appStoreVersions
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appStoreVersions, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -53,7 +53,7 @@ public struct AppStoreVersionPromotionCreateRequest: Codable, Hashable {
                         case appStoreVersionExperimentTreatments
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appStoreVersionExperimentTreatments, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -70,7 +70,7 @@ public struct AppStoreVersionPromotionCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, relationships: Relationships) {
+        public init(type: `Type` = .appStoreVersionPromotions, relationships: Relationships) {
             self.type = type
             self.relationships = relationships
         }

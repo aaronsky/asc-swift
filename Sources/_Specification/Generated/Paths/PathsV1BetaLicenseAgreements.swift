@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(filterApp: [String]? = nil, fieldsBetaLicenseAgreements: [FieldsBetaLicenseAgreements]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsApps: [FieldsApps]? = nil) -> Request<_Specification.BetaLicenseAgreementsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterApp, fieldsBetaLicenseAgreements, limit, include, fieldsApps), id: "betaLicenseAgreements-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(filterApp, fieldsBetaLicenseAgreements, limit, include, fieldsApps), id: "betaLicenseAgreements-get_collection")
         }
 
         private func makeGetQuery(_ filterApp: [String]?, _ fieldsBetaLicenseAgreements: [FieldsBetaLicenseAgreements]?, _ limit: Int?, _ include: [Include]?, _ fieldsApps: [FieldsApps]?) -> [(String, String?)] {

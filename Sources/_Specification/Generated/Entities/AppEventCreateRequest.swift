@@ -97,7 +97,7 @@ public struct AppEventCreateRequest: Codable, Hashable {
                         case apps
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .apps, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -113,7 +113,7 @@ public struct AppEventCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .appEvents, attributes: Attributes, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

@@ -58,7 +58,7 @@ public struct AppCustomProductPageLocalization: Codable, Hashable, Identifiable 
                     case appCustomProductPageVersions
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appCustomProductPageVersions, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -98,7 +98,7 @@ public struct AppCustomProductPageLocalization: Codable, Hashable, Identifiable 
                     case appScreenshotSets
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appScreenshotSets, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -139,7 +139,7 @@ public struct AppCustomProductPageLocalization: Codable, Hashable, Identifiable 
                     case appPreviewSets
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appPreviewSets, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -159,7 +159,7 @@ public struct AppCustomProductPageLocalization: Codable, Hashable, Identifiable 
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .appCustomProductPageLocalizations, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.attributes = attributes

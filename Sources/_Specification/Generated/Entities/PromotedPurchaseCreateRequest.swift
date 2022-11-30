@@ -48,7 +48,7 @@ public struct PromotedPurchaseCreateRequest: Codable, Hashable {
                         case apps
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .apps, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -70,7 +70,7 @@ public struct PromotedPurchaseCreateRequest: Codable, Hashable {
                         case inAppPurchases
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .inAppPurchases, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -92,7 +92,7 @@ public struct PromotedPurchaseCreateRequest: Codable, Hashable {
                         case subscriptions
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .subscriptions, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -110,7 +110,7 @@ public struct PromotedPurchaseCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .promotedPurchases, attributes: Attributes, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

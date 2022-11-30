@@ -16,7 +16,7 @@ extension Resources.V1.AppStoreReviewDetails {
         public let path: String
 
         public func get(fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]? = nil, include: [Include]? = nil, fieldsAppStoreReviewAttachments: [FieldsAppStoreReviewAttachments]? = nil, limitAppStoreReviewAttachments: Int? = nil) -> Request<_Specification.AppStoreReviewDetailResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppStoreReviewDetails, include, fieldsAppStoreReviewAttachments, limitAppStoreReviewAttachments), id: "appStoreReviewDetails-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreReviewDetails, include, fieldsAppStoreReviewAttachments, limitAppStoreReviewAttachments), id: "appStoreReviewDetails-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]?, _ include: [Include]?, _ fieldsAppStoreReviewAttachments: [FieldsAppStoreReviewAttachments]?, _ limitAppStoreReviewAttachments: Int?) -> [(String, String?)] {
@@ -57,7 +57,7 @@ extension Resources.V1.AppStoreReviewDetails {
         }
 
         public func patch(_ body: _Specification.AppStoreReviewDetailUpdateRequest) -> Request<_Specification.AppStoreReviewDetailResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "appStoreReviewDetails-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appStoreReviewDetails-update_instance")
         }
     }
 }

@@ -16,7 +16,7 @@ extension Resources.V1.AppEventVideoClips {
         public let path: String
 
         public func get(fieldsAppEventVideoClips: [FieldsAppEventVideoClips]? = nil, include: [Include]? = nil) -> Request<_Specification.AppEventVideoClipResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppEventVideoClips, include), id: "appEventVideoClips-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEventVideoClips, include), id: "appEventVideoClips-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppEventVideoClips: [FieldsAppEventVideoClips]?, _ include: [Include]?) -> [(String, String?)] {
@@ -44,11 +44,11 @@ extension Resources.V1.AppEventVideoClips {
         }
 
         public func patch(_ body: _Specification.AppEventVideoClipUpdateRequest) -> Request<_Specification.AppEventVideoClipResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "appEventVideoClips-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appEventVideoClips-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "appEventVideoClips-delete_instance")
+            Request(path: path, method: "DELETE", id: "appEventVideoClips-delete_instance")
         }
     }
 }

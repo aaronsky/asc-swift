@@ -16,7 +16,7 @@ extension Resources.V2.InAppPurchases.WithID {
         public let path: String
 
         public func get(fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, fieldsInAppPurchaseContents: [FieldsInAppPurchaseContents]? = nil, include: [Include]? = nil) -> Request<_Specification.InAppPurchaseContentResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsInAppPurchases, fieldsInAppPurchaseContents, include), id: "inAppPurchases-content-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchases, fieldsInAppPurchaseContents, include), id: "inAppPurchases-content-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ fieldsInAppPurchaseContents: [FieldsInAppPurchaseContents]?, _ include: [Include]?) -> [(String, String?)] {

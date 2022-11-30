@@ -57,7 +57,7 @@ public struct AppScreenshotSet: Codable, Hashable, Identifiable {
                     case appStoreVersionLocalizations
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appStoreVersionLocalizations, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -96,7 +96,7 @@ public struct AppScreenshotSet: Codable, Hashable, Identifiable {
                     case appCustomProductPageLocalizations
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appCustomProductPageLocalizations, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -135,7 +135,7 @@ public struct AppScreenshotSet: Codable, Hashable, Identifiable {
                     case appStoreVersionExperimentTreatmentLocalizations
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appStoreVersionExperimentTreatmentLocalizations, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -175,7 +175,7 @@ public struct AppScreenshotSet: Codable, Hashable, Identifiable {
                     case appScreenshots
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appScreenshots, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -196,7 +196,7 @@ public struct AppScreenshotSet: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .appScreenshotSets, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.attributes = attributes

@@ -16,7 +16,7 @@ extension Resources.V1.BundleIDs {
         public let path: String
 
         public func get(fieldsBundleIDs: [FieldsBundleIDs]? = nil, include: [Include]? = nil, fieldsBundleIDCapabilities: [FieldsBundleIDCapabilities]? = nil, fieldsProfiles: [FieldsProfiles]? = nil, fieldsApps: [FieldsApps]? = nil, limitBundleIDCapabilities: Int? = nil, limitProfiles: Int? = nil) -> Request<_Specification.BundleIDResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsBundleIDs, include, fieldsBundleIDCapabilities, fieldsProfiles, fieldsApps, limitBundleIDCapabilities, limitProfiles), id: "bundleIds-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBundleIDs, include, fieldsBundleIDCapabilities, fieldsProfiles, fieldsApps, limitBundleIDCapabilities, limitProfiles), id: "bundleIds-get_instance")
         }
 
         private func makeGetQuery(_ fieldsBundleIDs: [FieldsBundleIDs]?, _ include: [Include]?, _ fieldsBundleIDCapabilities: [FieldsBundleIDCapabilities]?, _ fieldsProfiles: [FieldsProfiles]?, _ fieldsApps: [FieldsApps]?, _ limitBundleIDCapabilities: Int?, _ limitProfiles: Int?) -> [(String, String?)] {
@@ -109,11 +109,11 @@ extension Resources.V1.BundleIDs {
         }
 
         public func patch(_ body: _Specification.BundleIDUpdateRequest) -> Request<_Specification.BundleIDResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "bundleIds-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "bundleIds-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "bundleIds-delete_instance")
+            Request(path: path, method: "DELETE", id: "bundleIds-delete_instance")
         }
     }
 }

@@ -26,7 +26,7 @@ public struct AppClipAdvancedExperienceLocalizationInlineCreate: Codable, Hashab
         }
     }
 
-    public init(type: `Type`, id: String? = nil, attributes: Attributes? = nil) {
+    public init(type: `Type` = .appClipAdvancedExperienceLocalizations, id: String? = nil, attributes: Attributes? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

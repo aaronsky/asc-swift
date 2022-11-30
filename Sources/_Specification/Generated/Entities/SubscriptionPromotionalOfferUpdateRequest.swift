@@ -32,7 +32,7 @@ public struct SubscriptionPromotionalOfferUpdateRequest: Codable, Hashable {
                         case subscriptionPromotionalOfferPrices
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .subscriptionPromotionalOfferPrices, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -48,7 +48,7 @@ public struct SubscriptionPromotionalOfferUpdateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, id: String, relationships: Relationships? = nil) {
+        public init(type: `Type` = .subscriptionPromotionalOffers, id: String, relationships: Relationships? = nil) {
             self.type = type
             self.id = id
             self.relationships = relationships

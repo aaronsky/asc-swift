@@ -41,7 +41,7 @@ public struct PromotedPurchaseImageCreateRequest: Codable, Hashable {
                         case promotedPurchases
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .promotedPurchases, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -57,7 +57,7 @@ public struct PromotedPurchaseImageCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .promotedPurchaseImages, attributes: Attributes, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

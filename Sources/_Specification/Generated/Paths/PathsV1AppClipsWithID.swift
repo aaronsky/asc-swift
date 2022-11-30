@@ -16,7 +16,7 @@ extension Resources.V1.AppClips {
         public let path: String
 
         public func get(fieldsAppClips: [FieldsAppClips]? = nil, include: [Include]? = nil, fieldsAppClipAdvancedExperiences: [FieldsAppClipAdvancedExperiences]? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, limitAppClipDefaultExperiences: Int? = nil) -> Request<_Specification.AppClipResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppClips, include, fieldsAppClipAdvancedExperiences, fieldsAppClipDefaultExperiences, limitAppClipDefaultExperiences), id: "appClips-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClips, include, fieldsAppClipAdvancedExperiences, fieldsAppClipDefaultExperiences, limitAppClipDefaultExperiences), id: "appClips-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppClips: [FieldsAppClips]?, _ include: [Include]?, _ fieldsAppClipAdvancedExperiences: [FieldsAppClipAdvancedExperiences]?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ limitAppClipDefaultExperiences: Int?) -> [(String, String?)] {

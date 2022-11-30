@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(filterPlatform: [FilterPlatform]? = nil, filterState: [FilterState]? = nil, filterApp: [String], fieldsReviewSubmissions: [FieldsReviewSubmissions]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]? = nil, limitItems: Int? = nil) -> Request<_Specification.ReviewSubmissionsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterPlatform, filterState, filterApp, fieldsReviewSubmissions, limit, include, fieldsReviewSubmissionItems, limitItems), id: "reviewSubmissions-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(filterPlatform, filterState, filterApp, fieldsReviewSubmissions, limit, include, fieldsReviewSubmissionItems, limitItems), id: "reviewSubmissions-get_collection")
         }
 
         private func makeGetQuery(_ filterPlatform: [FilterPlatform]?, _ filterState: [FilterState]?, _ filterApp: [String], _ fieldsReviewSubmissions: [FieldsReviewSubmissions]?, _ limit: Int?, _ include: [Include]?, _ fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]?, _ limitItems: Int?) -> [(String, String?)] {
@@ -77,7 +77,7 @@ extension Resources.V1 {
         }
 
         public func post(_ body: _Specification.ReviewSubmissionCreateRequest) -> Request<_Specification.ReviewSubmissionResponse> {
-            Request(method: "POST", url: path, body: body, id: "reviewSubmissions-create_instance")
+            Request(path: path, method: "POST", body: body, id: "reviewSubmissions-create_instance")
         }
     }
 }

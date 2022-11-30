@@ -114,7 +114,7 @@ public struct BuildBundle: Codable, Hashable, Identifiable {
                     case appClipDomainStatuses
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appClipDomainStatuses, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -153,7 +153,7 @@ public struct BuildBundle: Codable, Hashable, Identifiable {
                     case appClipDomainStatuses
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appClipDomainStatuses, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -193,7 +193,7 @@ public struct BuildBundle: Codable, Hashable, Identifiable {
                     case betaAppClipInvocations
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .betaAppClipInvocations, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -234,7 +234,7 @@ public struct BuildBundle: Codable, Hashable, Identifiable {
                     case buildBundleFileSizes
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .buildBundleFileSizes, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -255,7 +255,7 @@ public struct BuildBundle: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .buildBundles, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.attributes = attributes

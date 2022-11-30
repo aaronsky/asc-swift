@@ -16,7 +16,7 @@ extension Resources.V1.PreReleaseVersions {
         public let path: String
 
         public func get(fieldsPreReleaseVersions: [FieldsPreReleaseVersions]? = nil, include: [Include]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, limitBuilds: Int? = nil) -> Request<_Specification.PrereleaseVersionResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsPreReleaseVersions, include, fieldsApps, fieldsBuilds, limitBuilds), id: "preReleaseVersions-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsPreReleaseVersions, include, fieldsApps, fieldsBuilds, limitBuilds), id: "preReleaseVersions-get_instance")
         }
 
         private func makeGetQuery(_ fieldsPreReleaseVersions: [FieldsPreReleaseVersions]?, _ include: [Include]?, _ fieldsApps: [FieldsApps]?, _ fieldsBuilds: [FieldsBuilds]?, _ limitBuilds: Int?) -> [(String, String?)] {

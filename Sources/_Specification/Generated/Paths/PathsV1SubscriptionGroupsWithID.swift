@@ -16,7 +16,7 @@ extension Resources.V1.SubscriptionGroups {
         public let path: String
 
         public func get(fieldsSubscriptionGroups: [FieldsSubscriptionGroups]? = nil, include: [Include]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]? = nil, limitSubscriptionGroupLocalizations: Int? = nil, limitSubscriptions: Int? = nil) -> Request<_Specification.SubscriptionGroupResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsSubscriptionGroups, include, fieldsSubscriptions, fieldsSubscriptionGroupLocalizations, limitSubscriptionGroupLocalizations, limitSubscriptions), id: "subscriptionGroups-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionGroups, include, fieldsSubscriptions, fieldsSubscriptionGroupLocalizations, limitSubscriptionGroupLocalizations, limitSubscriptions), id: "subscriptionGroups-get_instance")
         }
 
         private func makeGetQuery(_ fieldsSubscriptionGroups: [FieldsSubscriptionGroups]?, _ include: [Include]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]?, _ limitSubscriptionGroupLocalizations: Int?, _ limitSubscriptions: Int?) -> [(String, String?)] {
@@ -71,11 +71,11 @@ extension Resources.V1.SubscriptionGroups {
         }
 
         public func patch(_ body: _Specification.SubscriptionGroupUpdateRequest) -> Request<_Specification.SubscriptionGroupResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "subscriptionGroups-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "subscriptionGroups-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "subscriptionGroups-delete_instance")
+            Request(path: path, method: "DELETE", id: "subscriptionGroups-delete_instance")
         }
     }
 }

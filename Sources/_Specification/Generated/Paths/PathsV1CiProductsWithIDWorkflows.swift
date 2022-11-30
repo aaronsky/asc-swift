@@ -16,7 +16,7 @@ extension Resources.V1.CiProducts.WithID {
         public let path: String
 
         public func get(fieldsCiXcodeVersions: [FieldsCiXcodeVersions]? = nil, fieldsCiWorkflows: [FieldsCiWorkflows]? = nil, fieldsCiMacOsVersions: [FieldsCiMacOsVersions]? = nil, fieldsCiProducts: [FieldsCiProducts]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<_Specification.CiWorkflowsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsCiXcodeVersions, fieldsCiWorkflows, fieldsCiMacOsVersions, fieldsCiProducts, fieldsScmRepositories, limit, include), id: "ciProducts-workflows-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiXcodeVersions, fieldsCiWorkflows, fieldsCiMacOsVersions, fieldsCiProducts, fieldsScmRepositories, limit, include), id: "ciProducts-workflows-get_to_many_related")
         }
 
         private func makeGetQuery(_ fieldsCiXcodeVersions: [FieldsCiXcodeVersions]?, _ fieldsCiWorkflows: [FieldsCiWorkflows]?, _ fieldsCiMacOsVersions: [FieldsCiMacOsVersions]?, _ fieldsCiProducts: [FieldsCiProducts]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {

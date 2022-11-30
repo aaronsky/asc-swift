@@ -64,7 +64,7 @@ public struct AppClipHeaderImage: Codable, Hashable, Identifiable {
                     case appClipDefaultExperienceLocalizations
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appClipDefaultExperienceLocalizations, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -81,7 +81,7 @@ public struct AppClipHeaderImage: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .appClipHeaderImages, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.attributes = attributes

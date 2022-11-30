@@ -32,7 +32,7 @@ public struct InAppPurchasePriceScheduleCreateRequest: Codable, Hashable {
                         case inAppPurchases
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .inAppPurchases, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -54,7 +54,7 @@ public struct InAppPurchasePriceScheduleCreateRequest: Codable, Hashable {
                         case inAppPurchasePrices
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .inAppPurchasePrices, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -71,7 +71,7 @@ public struct InAppPurchasePriceScheduleCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, relationships: Relationships) {
+        public init(type: `Type` = .inAppPurchasePriceSchedules, relationships: Relationships) {
             self.type = type
             self.relationships = relationships
         }

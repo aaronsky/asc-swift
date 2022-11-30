@@ -56,7 +56,7 @@ public struct SubscriptionGroup: Codable, Hashable, Identifiable {
                     case subscriptions
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptions, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -97,7 +97,7 @@ public struct SubscriptionGroup: Codable, Hashable, Identifiable {
                     case subscriptionGroupLocalizations
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptionGroupLocalizations, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -116,7 +116,7 @@ public struct SubscriptionGroup: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .subscriptionGroups, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.attributes = attributes

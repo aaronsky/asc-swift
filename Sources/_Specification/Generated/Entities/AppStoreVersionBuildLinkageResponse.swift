@@ -17,7 +17,7 @@ public struct AppStoreVersionBuildLinkageResponse: Codable, Hashable {
             case builds
         }
 
-        public init(type: `Type`, id: String) {
+        public init(type: `Type` = .builds, id: String) {
             self.type = type
             self.id = id
         }

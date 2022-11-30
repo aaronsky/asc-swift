@@ -70,7 +70,7 @@ public struct SubscriptionOfferCodeCustomCode: Codable, Hashable, Identifiable {
                     case subscriptionOfferCodes
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptionOfferCodes, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -87,7 +87,7 @@ public struct SubscriptionOfferCodeCustomCode: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .subscriptionOfferCodeCustomCodes, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.attributes = attributes

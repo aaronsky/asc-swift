@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: _Specification.AppCustomProductPageVersionCreateRequest) -> Request<_Specification.AppCustomProductPageVersionResponse> {
-            Request(method: "POST", url: path, body: body, id: "appCustomProductPageVersions-create_instance")
+            Request(path: path, method: "POST", body: body, id: "appCustomProductPageVersions-create_instance")
         }
     }
 }

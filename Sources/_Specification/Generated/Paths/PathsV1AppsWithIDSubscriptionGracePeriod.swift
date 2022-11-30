@@ -16,7 +16,7 @@ extension Resources.V1.Apps.WithID {
         public let path: String
 
         public func get(fieldsSubscriptionGracePeriods: [FieldsSubscriptionGracePeriods]? = nil) -> Request<_Specification.SubscriptionGracePeriodResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsSubscriptionGracePeriods), id: "apps-subscriptionGracePeriod-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionGracePeriods), id: "apps-subscriptionGracePeriod-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsSubscriptionGracePeriods: [FieldsSubscriptionGracePeriods]?) -> [(String, String?)] {

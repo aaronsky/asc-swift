@@ -64,7 +64,7 @@ public struct CustomerReview: Codable, Hashable, Identifiable {
                     case customerReviewResponses
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .customerReviewResponses, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -81,7 +81,7 @@ public struct CustomerReview: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .customerReviews, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.attributes = attributes

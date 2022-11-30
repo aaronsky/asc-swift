@@ -43,7 +43,7 @@ public struct InAppPurchaseLocalizationCreateRequest: Codable, Hashable {
                         case inAppPurchases
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .inAppPurchases, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -59,7 +59,7 @@ public struct InAppPurchaseLocalizationCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .inAppPurchaseLocalizations, attributes: Attributes, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

@@ -29,7 +29,7 @@ public struct AppEventScreenshotUpdateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, id: String, attributes: Attributes? = nil) {
+        public init(type: `Type` = .appEventScreenshots, id: String, attributes: Attributes? = nil) {
             self.type = type
             self.id = id
             self.attributes = attributes

@@ -16,7 +16,7 @@ extension Resources.V1.BetaBuildLocalizations {
         public let path: String
 
         public func get(fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]? = nil, include: [Include]? = nil, fieldsBuilds: [FieldsBuilds]? = nil) -> Request<_Specification.BetaBuildLocalizationResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsBetaBuildLocalizations, include, fieldsBuilds), id: "betaBuildLocalizations-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaBuildLocalizations, include, fieldsBuilds), id: "betaBuildLocalizations-get_instance")
         }
 
         private func makeGetQuery(_ fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]?, _ include: [Include]?, _ fieldsBuilds: [FieldsBuilds]?) -> [(String, String?)] {
@@ -65,11 +65,11 @@ extension Resources.V1.BetaBuildLocalizations {
         }
 
         public func patch(_ body: _Specification.BetaBuildLocalizationUpdateRequest) -> Request<_Specification.BetaBuildLocalizationResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "betaBuildLocalizations-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "betaBuildLocalizations-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "betaBuildLocalizations-delete_instance")
+            Request(path: path, method: "DELETE", id: "betaBuildLocalizations-delete_instance")
         }
     }
 }

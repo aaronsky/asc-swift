@@ -43,7 +43,7 @@ public struct SubscriptionGroupLocalizationCreateRequest: Codable, Hashable {
                         case subscriptionGroups
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .subscriptionGroups, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -59,7 +59,7 @@ public struct SubscriptionGroupLocalizationCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .subscriptionGroupLocalizations, attributes: Attributes, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

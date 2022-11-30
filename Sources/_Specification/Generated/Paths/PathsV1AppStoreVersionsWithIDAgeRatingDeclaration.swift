@@ -17,7 +17,7 @@ extension Resources.V1.AppStoreVersions.WithID {
 
         @available(*, deprecated, message: "Deprecated")
         public func get(fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]? = nil) -> Request<_Specification.AgeRatingDeclarationResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAgeRatingDeclarations), id: "appStoreVersions-ageRatingDeclaration-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAgeRatingDeclarations), id: "appStoreVersions-ageRatingDeclaration-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]?) -> [(String, String?)] {

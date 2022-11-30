@@ -14,7 +14,7 @@ public struct SubscriptionGroupSubmission: Codable, Hashable, Identifiable {
         case subscriptionGroupSubmissions
     }
 
-    public init(type: `Type`, id: String, links: ResourceLinks) {
+    public init(type: `Type` = .subscriptionGroupSubmissions, id: String, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.links = links

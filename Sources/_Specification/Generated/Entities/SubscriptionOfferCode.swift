@@ -82,7 +82,7 @@ public struct SubscriptionOfferCode: Codable, Hashable, Identifiable {
                     case subscriptions
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptions, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -122,7 +122,7 @@ public struct SubscriptionOfferCode: Codable, Hashable, Identifiable {
                     case subscriptionOfferCodeOneTimeUseCodes
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptionOfferCodeOneTimeUseCodes, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -163,7 +163,7 @@ public struct SubscriptionOfferCode: Codable, Hashable, Identifiable {
                     case subscriptionOfferCodeCustomCodes
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptionOfferCodeCustomCodes, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -204,7 +204,7 @@ public struct SubscriptionOfferCode: Codable, Hashable, Identifiable {
                     case subscriptionOfferCodePrices
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptionOfferCodePrices, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -225,7 +225,7 @@ public struct SubscriptionOfferCode: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .subscriptionOfferCodes, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.attributes = attributes

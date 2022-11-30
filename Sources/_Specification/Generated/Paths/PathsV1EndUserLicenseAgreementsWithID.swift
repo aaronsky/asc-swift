@@ -16,7 +16,7 @@ extension Resources.V1.EndUserLicenseAgreements {
         public let path: String
 
         public func get(fieldsEndUserLicenseAgreements: [FieldsEndUserLicenseAgreements]? = nil, include: [Include]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limitTerritories: Int? = nil) -> Request<_Specification.EndUserLicenseAgreementResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsEndUserLicenseAgreements, include, fieldsTerritories, limitTerritories), id: "endUserLicenseAgreements-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsEndUserLicenseAgreements, include, fieldsTerritories, limitTerritories), id: "endUserLicenseAgreements-get_instance")
         }
 
         private func makeGetQuery(_ fieldsEndUserLicenseAgreements: [FieldsEndUserLicenseAgreements]?, _ include: [Include]?, _ fieldsTerritories: [FieldsTerritories]?, _ limitTerritories: Int?) -> [(String, String?)] {
@@ -44,11 +44,11 @@ extension Resources.V1.EndUserLicenseAgreements {
         }
 
         public func patch(_ body: _Specification.EndUserLicenseAgreementUpdateRequest) -> Request<_Specification.EndUserLicenseAgreementResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "endUserLicenseAgreements-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "endUserLicenseAgreements-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "endUserLicenseAgreements-delete_instance")
+            Request(path: path, method: "DELETE", id: "endUserLicenseAgreements-delete_instance")
         }
     }
 }

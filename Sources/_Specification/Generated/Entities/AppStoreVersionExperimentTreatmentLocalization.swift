@@ -56,7 +56,7 @@ public struct AppStoreVersionExperimentTreatmentLocalization: Codable, Hashable,
                     case appStoreVersionExperimentTreatments
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appStoreVersionExperimentTreatments, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -96,7 +96,7 @@ public struct AppStoreVersionExperimentTreatmentLocalization: Codable, Hashable,
                     case appScreenshotSets
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appScreenshotSets, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -137,7 +137,7 @@ public struct AppStoreVersionExperimentTreatmentLocalization: Codable, Hashable,
                     case appPreviewSets
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appPreviewSets, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -157,7 +157,7 @@ public struct AppStoreVersionExperimentTreatmentLocalization: Codable, Hashable,
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .appStoreVersionExperimentTreatmentLocalizations, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.attributes = attributes

@@ -60,7 +60,7 @@ public struct ProfileCreateRequest: Codable, Hashable {
                         case bundleIDs = "bundleIds"
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .bundleIDs, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -82,7 +82,7 @@ public struct ProfileCreateRequest: Codable, Hashable {
                         case devices
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .devices, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -104,7 +104,7 @@ public struct ProfileCreateRequest: Codable, Hashable {
                         case certificates
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .certificates, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -128,7 +128,7 @@ public struct ProfileCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .profiles, attributes: Attributes, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

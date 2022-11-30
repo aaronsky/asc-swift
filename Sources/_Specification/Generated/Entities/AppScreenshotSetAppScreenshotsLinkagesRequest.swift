@@ -16,7 +16,7 @@ public struct AppScreenshotSetAppScreenshotsLinkagesRequest: Codable, Hashable {
             case appScreenshots
         }
 
-        public init(type: `Type`, id: String) {
+        public init(type: `Type` = .appScreenshots, id: String) {
             self.type = type
             self.id = id
         }

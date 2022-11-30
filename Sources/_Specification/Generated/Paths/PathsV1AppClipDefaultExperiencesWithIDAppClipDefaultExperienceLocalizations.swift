@@ -16,7 +16,7 @@ extension Resources.V1.AppClipDefaultExperiences.WithID {
         public let path: String
 
         public func get(filterLocale: [String]? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]? = nil, fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppClipDefaultExperienceLocalizationsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterLocale, fieldsAppClipDefaultExperiences, fieldsAppClipDefaultExperienceLocalizations, fieldsAppClipHeaderImages, limit, include), id: "appClipDefaultExperiences-appClipDefaultExperienceLocalizations-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterLocale, fieldsAppClipDefaultExperiences, fieldsAppClipDefaultExperienceLocalizations, fieldsAppClipHeaderImages, limit, include), id: "appClipDefaultExperiences-appClipDefaultExperienceLocalizations-get_to_many_related")
         }
 
         private func makeGetQuery(_ filterLocale: [String]?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]?, _ fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {

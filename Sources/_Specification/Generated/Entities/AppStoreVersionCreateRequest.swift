@@ -55,7 +55,7 @@ public struct AppStoreVersionCreateRequest: Codable, Hashable {
                         case apps
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .apps, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -77,7 +77,7 @@ public struct AppStoreVersionCreateRequest: Codable, Hashable {
                         case appStoreVersionLocalizations
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appStoreVersionLocalizations, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -99,7 +99,7 @@ public struct AppStoreVersionCreateRequest: Codable, Hashable {
                         case builds
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .builds, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -117,7 +117,7 @@ public struct AppStoreVersionCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .appStoreVersions, attributes: Attributes, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

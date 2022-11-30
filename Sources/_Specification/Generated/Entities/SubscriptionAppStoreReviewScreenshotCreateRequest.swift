@@ -41,7 +41,7 @@ public struct SubscriptionAppStoreReviewScreenshotCreateRequest: Codable, Hashab
                         case subscriptions
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .subscriptions, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -57,7 +57,7 @@ public struct SubscriptionAppStoreReviewScreenshotCreateRequest: Codable, Hashab
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .subscriptionAppStoreReviewScreenshots, attributes: Attributes, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

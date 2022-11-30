@@ -60,7 +60,7 @@ public struct InAppPurchaseContent: Codable, Hashable, Identifiable {
                     case inAppPurchases
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .inAppPurchases, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -77,7 +77,7 @@ public struct InAppPurchaseContent: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .inAppPurchaseContents, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.attributes = attributes

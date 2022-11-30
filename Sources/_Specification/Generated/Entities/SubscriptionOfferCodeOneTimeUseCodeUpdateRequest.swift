@@ -29,7 +29,7 @@ public struct SubscriptionOfferCodeOneTimeUseCodeUpdateRequest: Codable, Hashabl
             }
         }
 
-        public init(type: `Type`, id: String, attributes: Attributes? = nil) {
+        public init(type: `Type` = .subscriptionOfferCodeOneTimeUseCodes, id: String, attributes: Attributes? = nil) {
             self.type = type
             self.id = id
             self.attributes = attributes

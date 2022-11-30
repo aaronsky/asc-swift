@@ -16,7 +16,7 @@ extension Resources.V1.AppStoreVersions.WithID {
         public let path: String
 
         public func get(fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppStoreReviewAttachments: [FieldsAppStoreReviewAttachments]? = nil, limitAppStoreReviewAttachments: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppStoreReviewDetailResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppStoreReviewDetails, fieldsAppStoreVersions, fieldsAppStoreReviewAttachments, limitAppStoreReviewAttachments, include), id: "appStoreVersions-appStoreReviewDetail-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreReviewDetails, fieldsAppStoreVersions, fieldsAppStoreReviewAttachments, limitAppStoreReviewAttachments, include), id: "appStoreVersions-appStoreReviewDetail-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppStoreReviewAttachments: [FieldsAppStoreReviewAttachments]?, _ limitAppStoreReviewAttachments: Int?, _ include: [Include]?) -> [(String, String?)] {

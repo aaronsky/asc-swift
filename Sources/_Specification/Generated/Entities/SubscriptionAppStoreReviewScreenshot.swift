@@ -68,7 +68,7 @@ public struct SubscriptionAppStoreReviewScreenshot: Codable, Hashable, Identifia
                     case subscriptions
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptions, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -85,7 +85,7 @@ public struct SubscriptionAppStoreReviewScreenshot: Codable, Hashable, Identifia
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .subscriptionAppStoreReviewScreenshots, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.attributes = attributes

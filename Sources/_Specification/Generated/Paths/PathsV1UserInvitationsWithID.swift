@@ -16,7 +16,7 @@ extension Resources.V1.UserInvitations {
         public let path: String
 
         public func get(fieldsUserInvitations: [FieldsUserInvitations]? = nil, include: [Include]? = nil, fieldsApps: [FieldsApps]? = nil, limitVisibleApps: Int? = nil) -> Request<_Specification.UserInvitationResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsUserInvitations, include, fieldsApps, limitVisibleApps), id: "userInvitations-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsUserInvitations, include, fieldsApps, limitVisibleApps), id: "userInvitations-get_instance")
         }
 
         private func makeGetQuery(_ fieldsUserInvitations: [FieldsUserInvitations]?, _ include: [Include]?, _ fieldsApps: [FieldsApps]?, _ limitVisibleApps: Int?) -> [(String, String?)] {
@@ -85,7 +85,7 @@ extension Resources.V1.UserInvitations {
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "userInvitations-delete_instance")
+            Request(path: path, method: "DELETE", id: "userInvitations-delete_instance")
         }
     }
 }

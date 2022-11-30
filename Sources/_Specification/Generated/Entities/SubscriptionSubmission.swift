@@ -45,7 +45,7 @@ public struct SubscriptionSubmission: Codable, Hashable, Identifiable {
                     case subscriptions
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptions, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -62,7 +62,7 @@ public struct SubscriptionSubmission: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .subscriptionSubmissions, id: String, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.relationships = relationships

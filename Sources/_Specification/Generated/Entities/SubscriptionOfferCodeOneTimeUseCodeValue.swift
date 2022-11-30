@@ -14,7 +14,7 @@ public struct SubscriptionOfferCodeOneTimeUseCodeValue: Codable, Hashable, Ident
         case subscriptionOfferCodeOneTimeUseCodeValues
     }
 
-    public init(type: `Type`, id: String, links: ResourceLinks) {
+    public init(type: `Type` = .subscriptionOfferCodeOneTimeUseCodeValues, id: String, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.links = links

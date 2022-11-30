@@ -68,7 +68,7 @@ public struct CiBuildAction: Codable, Hashable, Identifiable {
                     case ciBuildRuns
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .ciBuildRuns, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -85,7 +85,7 @@ public struct CiBuildAction: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .ciBuildActions, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.attributes = attributes

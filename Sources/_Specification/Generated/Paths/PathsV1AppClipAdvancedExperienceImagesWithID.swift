@@ -16,7 +16,7 @@ extension Resources.V1.AppClipAdvancedExperienceImages {
         public let path: String
 
         public func get(fieldsAppClipAdvancedExperienceImages: [FieldsAppClipAdvancedExperienceImages]? = nil) -> Request<_Specification.AppClipAdvancedExperienceImageResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppClipAdvancedExperienceImages), id: "appClipAdvancedExperienceImages-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipAdvancedExperienceImages), id: "appClipAdvancedExperienceImages-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppClipAdvancedExperienceImages: [FieldsAppClipAdvancedExperienceImages]?) -> [(String, String?)] {
@@ -36,7 +36,7 @@ extension Resources.V1.AppClipAdvancedExperienceImages {
         }
 
         public func patch(_ body: _Specification.AppClipAdvancedExperienceImageUpdateRequest) -> Request<_Specification.AppClipAdvancedExperienceImageResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "appClipAdvancedExperienceImages-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appClipAdvancedExperienceImages-update_instance")
         }
     }
 }

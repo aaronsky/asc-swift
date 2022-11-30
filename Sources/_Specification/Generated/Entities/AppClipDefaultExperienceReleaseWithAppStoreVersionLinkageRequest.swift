@@ -16,7 +16,7 @@ public struct AppClipDefaultExperienceReleaseWithAppStoreVersionLinkageRequest: 
             case appStoreVersions
         }
 
-        public init(type: `Type`, id: String) {
+        public init(type: `Type` = .appStoreVersions, id: String) {
             self.type = type
             self.id = id
         }

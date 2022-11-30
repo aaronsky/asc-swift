@@ -16,7 +16,7 @@ extension Resources.V1.CiTestResults {
         public let path: String
 
         public func get(fieldsCiTestResults: [FieldsCiTestResults]? = nil) -> Request<_Specification.CiTestResultResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsCiTestResults), id: "ciTestResults-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiTestResults), id: "ciTestResults-get_instance")
         }
 
         private func makeGetQuery(_ fieldsCiTestResults: [FieldsCiTestResults]?) -> [(String, String?)] {

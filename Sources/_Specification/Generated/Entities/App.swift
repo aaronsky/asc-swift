@@ -116,7 +116,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case ciProducts
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .ciProducts, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -156,7 +156,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case betaGroups
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .betaGroups, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -197,7 +197,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case appStoreVersions
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appStoreVersions, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -238,7 +238,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case preReleaseVersions
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .preReleaseVersions, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -279,7 +279,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case betaAppLocalizations
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .betaAppLocalizations, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -320,7 +320,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case builds
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .builds, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -360,7 +360,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case betaLicenseAgreements
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .betaLicenseAgreements, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -399,7 +399,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case betaAppReviewDetails
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .betaAppReviewDetails, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -439,7 +439,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case appInfos
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appInfos, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -480,7 +480,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case appClips
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appClips, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -520,7 +520,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case endUserLicenseAgreements
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .endUserLicenseAgreements, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -559,7 +559,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case appPreOrders
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appPreOrders, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -599,7 +599,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case appPrices
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appPrices, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -640,7 +640,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case territories
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .territories, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -682,7 +682,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case inAppPurchases
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .inAppPurchases, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -723,7 +723,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case subscriptionGroups
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptionGroups, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -764,7 +764,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case gameCenterEnabledVersions
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterEnabledVersions, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -805,7 +805,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case appCustomProductPages
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appCustomProductPages, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -846,7 +846,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case inAppPurchases
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .inAppPurchases, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -887,7 +887,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case promotedPurchases
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .promotedPurchases, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -928,7 +928,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case appEvents
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appEvents, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -969,7 +969,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case reviewSubmissions
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .reviewSubmissions, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -1009,7 +1009,7 @@ public struct App: Codable, Hashable, Identifiable {
                     case subscriptionGracePeriods
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptionGracePeriods, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -1048,7 +1048,7 @@ public struct App: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .apps, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.attributes = attributes

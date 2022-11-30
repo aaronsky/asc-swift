@@ -41,7 +41,7 @@ public struct AppCustomProductPageLocalizationCreateRequest: Codable, Hashable {
                         case appCustomProductPageVersions
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appCustomProductPageVersions, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -57,7 +57,7 @@ public struct AppCustomProductPageLocalizationCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .appCustomProductPageLocalizations, attributes: Attributes, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

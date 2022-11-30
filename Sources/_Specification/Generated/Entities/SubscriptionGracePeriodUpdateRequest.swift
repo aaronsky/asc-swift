@@ -45,7 +45,7 @@ public struct SubscriptionGracePeriodUpdateRequest: Codable, Hashable {
                         case apps
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .apps, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -61,7 +61,7 @@ public struct SubscriptionGracePeriodUpdateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil) {
+        public init(type: `Type` = .subscriptionGracePeriods, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil) {
             self.type = type
             self.id = id
             self.attributes = attributes

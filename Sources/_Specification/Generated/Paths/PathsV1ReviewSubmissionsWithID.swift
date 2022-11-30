@@ -16,7 +16,7 @@ extension Resources.V1.ReviewSubmissions {
         public let path: String
 
         public func get(fieldsReviewSubmissions: [FieldsReviewSubmissions]? = nil, include: [Include]? = nil, fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]? = nil, limitItems: Int? = nil) -> Request<_Specification.ReviewSubmissionResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsReviewSubmissions, include, fieldsReviewSubmissionItems, limitItems), id: "reviewSubmissions-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsReviewSubmissions, include, fieldsReviewSubmissionItems, limitItems), id: "reviewSubmissions-get_instance")
         }
 
         private func makeGetQuery(_ fieldsReviewSubmissions: [FieldsReviewSubmissions]?, _ include: [Include]?, _ fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]?, _ limitItems: Int?) -> [(String, String?)] {
@@ -57,7 +57,7 @@ extension Resources.V1.ReviewSubmissions {
         }
 
         public func patch(_ body: _Specification.ReviewSubmissionUpdateRequest) -> Request<_Specification.ReviewSubmissionResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "reviewSubmissions-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "reviewSubmissions-update_instance")
         }
     }
 }

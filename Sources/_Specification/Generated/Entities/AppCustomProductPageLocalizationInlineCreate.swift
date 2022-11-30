@@ -39,7 +39,7 @@ public struct AppCustomProductPageLocalizationInlineCreate: Codable, Hashable, I
                     case appCustomProductPageVersions
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appCustomProductPageVersions, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -55,7 +55,7 @@ public struct AppCustomProductPageLocalizationInlineCreate: Codable, Hashable, I
         }
     }
 
-    public init(type: `Type`, id: String? = nil, attributes: Attributes, relationships: Relationships? = nil) {
+    public init(type: `Type` = .appCustomProductPageLocalizations, id: String? = nil, attributes: Attributes, relationships: Relationships? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

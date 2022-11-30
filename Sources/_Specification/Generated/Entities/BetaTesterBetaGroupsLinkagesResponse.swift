@@ -18,7 +18,7 @@ public struct BetaTesterBetaGroupsLinkagesResponse: Codable, Hashable {
             case betaGroups
         }
 
-        public init(type: `Type`, id: String) {
+        public init(type: `Type` = .betaGroups, id: String) {
             self.type = type
             self.id = id
         }

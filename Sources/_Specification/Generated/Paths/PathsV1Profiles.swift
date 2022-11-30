@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(filterName: [String]? = nil, filterProfileState: [FilterProfileState]? = nil, filterProfileType: [FilterProfileType]? = nil, filterID: [String]? = nil, sort: [Sort]? = nil, fieldsProfiles: [FieldsProfiles]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsCertificates: [FieldsCertificates]? = nil, fieldsDevices: [FieldsDevices]? = nil, fieldsBundleIDs: [FieldsBundleIDs]? = nil, limitCertificates: Int? = nil, limitDevices: Int? = nil) -> Request<_Specification.ProfilesResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterName, filterProfileState, filterProfileType, filterID, sort, fieldsProfiles, limit, include, fieldsCertificates, fieldsDevices, fieldsBundleIDs, limitCertificates, limitDevices), id: "profiles-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(filterName, filterProfileState, filterProfileType, filterID, sort, fieldsProfiles, limit, include, fieldsCertificates, fieldsDevices, fieldsBundleIDs, limitCertificates, limitDevices), id: "profiles-get_collection")
         }
 
         private func makeGetQuery(_ filterName: [String]?, _ filterProfileState: [FilterProfileState]?, _ filterProfileType: [FilterProfileType]?, _ filterID: [String]?, _ sort: [Sort]?, _ fieldsProfiles: [FieldsProfiles]?, _ limit: Int?, _ include: [Include]?, _ fieldsCertificates: [FieldsCertificates]?, _ fieldsDevices: [FieldsDevices]?, _ fieldsBundleIDs: [FieldsBundleIDs]?, _ limitCertificates: Int?, _ limitDevices: Int?) -> [(String, String?)] {
@@ -122,7 +122,7 @@ extension Resources.V1 {
         }
 
         public func post(_ body: _Specification.ProfileCreateRequest) -> Request<_Specification.ProfileResponse> {
-            Request(method: "POST", url: path, body: body, id: "profiles-create_instance")
+            Request(path: path, method: "POST", body: body, id: "profiles-create_instance")
         }
     }
 }

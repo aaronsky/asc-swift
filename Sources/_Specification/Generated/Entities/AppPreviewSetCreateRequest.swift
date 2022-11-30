@@ -41,7 +41,7 @@ public struct AppPreviewSetCreateRequest: Codable, Hashable {
                         case appStoreVersionLocalizations
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appStoreVersionLocalizations, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -63,7 +63,7 @@ public struct AppPreviewSetCreateRequest: Codable, Hashable {
                         case appCustomProductPageLocalizations
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appCustomProductPageLocalizations, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -85,7 +85,7 @@ public struct AppPreviewSetCreateRequest: Codable, Hashable {
                         case appStoreVersionExperimentTreatmentLocalizations
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appStoreVersionExperimentTreatmentLocalizations, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -103,7 +103,7 @@ public struct AppPreviewSetCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships? = nil) {
+        public init(type: `Type` = .appPreviewSets, attributes: Attributes, relationships: Relationships? = nil) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

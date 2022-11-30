@@ -16,7 +16,7 @@ extension Resources.V1.Apps.WithID {
         public let path: String
 
         public func get(fieldsCiProducts: [FieldsCiProducts]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, fieldsBundleIDs: [FieldsBundleIDs]? = nil, limitPrimaryRepositories: Int? = nil, include: [Include]? = nil) -> Request<_Specification.CiProductResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsCiProducts, fieldsApps, fieldsScmRepositories, fieldsBundleIDs, limitPrimaryRepositories, include), id: "apps-ciProduct-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiProducts, fieldsApps, fieldsScmRepositories, fieldsBundleIDs, limitPrimaryRepositories, include), id: "apps-ciProduct-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsCiProducts: [FieldsCiProducts]?, _ fieldsApps: [FieldsApps]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ fieldsBundleIDs: [FieldsBundleIDs]?, _ limitPrimaryRepositories: Int?, _ include: [Include]?) -> [(String, String?)] {

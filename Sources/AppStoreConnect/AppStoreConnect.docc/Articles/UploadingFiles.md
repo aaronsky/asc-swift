@@ -35,19 +35,11 @@ let reserveScreenshot = try await client.send(
     Resources.v1.appScreenshots.post(
         .init(
             data: .init(
-                type: .appScreenshots,
                 attributes: .init(
                     fileSize: screenshotData.count,
                     fileName: basename
                 ),
-                relationships: .init(
-                    appScreenshotSet: .init(
-                        data: .init(
-                            type: .appScreenshotSets,
-                            id: screenshotSet.data.id
-                        )
-                    )
-                )
+                relationships: .init(appScreenshotSet: .init(data: .init(id: screenshotSet.data.id)))
             )
         )
     )
@@ -71,7 +63,6 @@ let committedScreenshot = try await client.send(
     Resources.v1.appScreenshots.id(reserveScreenshot.data.id).patch(
         .init(
             data: .init(
-                type: .appScreenshots, 
                 id: reserveScreenshot.data.id, 
                 attributes: .init(
                     sourceFileChecksum: checksum, 

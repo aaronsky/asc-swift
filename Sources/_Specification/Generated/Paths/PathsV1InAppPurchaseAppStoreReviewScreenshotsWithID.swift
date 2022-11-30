@@ -16,7 +16,7 @@ extension Resources.V1.InAppPurchaseAppStoreReviewScreenshots {
         public let path: String
 
         public func get(fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]? = nil, include: [Include]? = nil) -> Request<_Specification.InAppPurchaseAppStoreReviewScreenshotResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsInAppPurchaseAppStoreReviewScreenshots, include), id: "inAppPurchaseAppStoreReviewScreenshots-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchaseAppStoreReviewScreenshots, include), id: "inAppPurchaseAppStoreReviewScreenshots-get_instance")
         }
 
         private func makeGetQuery(_ fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]?, _ include: [Include]?) -> [(String, String?)] {
@@ -44,11 +44,11 @@ extension Resources.V1.InAppPurchaseAppStoreReviewScreenshots {
         }
 
         public func patch(_ body: _Specification.InAppPurchaseAppStoreReviewScreenshotUpdateRequest) -> Request<_Specification.InAppPurchaseAppStoreReviewScreenshotResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "inAppPurchaseAppStoreReviewScreenshots-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "inAppPurchaseAppStoreReviewScreenshots-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "inAppPurchaseAppStoreReviewScreenshots-delete_instance")
+            Request(path: path, method: "DELETE", id: "inAppPurchaseAppStoreReviewScreenshots-delete_instance")
         }
     }
 }

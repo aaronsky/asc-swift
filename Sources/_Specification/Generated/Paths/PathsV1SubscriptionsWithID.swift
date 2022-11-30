@@ -16,7 +16,7 @@ extension Resources.V1.Subscriptions {
         public let path: String
 
         public func get(fieldsSubscriptions: [FieldsSubscriptions]? = nil, include: [Include]? = nil, fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]? = nil, fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]? = nil, fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]? = nil, fieldsSubscriptionPrices: [FieldsSubscriptionPrices]? = nil, fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]? = nil, fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]? = nil, limitIntroductoryOffers: Int? = nil, limitOfferCodes: Int? = nil, limitPrices: Int? = nil, limitPromotionalOffers: Int? = nil, limitSubscriptionLocalizations: Int? = nil) -> Request<_Specification.SubscriptionResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsSubscriptions, include, fieldsPromotedPurchases, fieldsSubscriptionPricePoints, fieldsSubscriptionPromotionalOffers, fieldsSubscriptionOfferCodes, fieldsSubscriptionAppStoreReviewScreenshots, fieldsSubscriptionPrices, fieldsSubscriptionIntroductoryOffers, fieldsSubscriptionLocalizations, limitIntroductoryOffers, limitOfferCodes, limitPrices, limitPromotionalOffers, limitSubscriptionLocalizations), id: "subscriptions-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptions, include, fieldsPromotedPurchases, fieldsSubscriptionPricePoints, fieldsSubscriptionPromotionalOffers, fieldsSubscriptionOfferCodes, fieldsSubscriptionAppStoreReviewScreenshots, fieldsSubscriptionPrices, fieldsSubscriptionIntroductoryOffers, fieldsSubscriptionLocalizations, limitIntroductoryOffers, limitOfferCodes, limitPrices, limitPromotionalOffers, limitSubscriptionLocalizations), id: "subscriptions-get_instance")
         }
 
         private func makeGetQuery(_ fieldsSubscriptions: [FieldsSubscriptions]?, _ include: [Include]?, _ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]?, _ fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]?, _ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]?, _ fieldsSubscriptionPrices: [FieldsSubscriptionPrices]?, _ fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]?, _ fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]?, _ limitIntroductoryOffers: Int?, _ limitOfferCodes: Int?, _ limitPrices: Int?, _ limitPromotionalOffers: Int?, _ limitSubscriptionLocalizations: Int?) -> [(String, String?)] {
@@ -156,11 +156,11 @@ extension Resources.V1.Subscriptions {
         }
 
         public func patch(_ body: _Specification.SubscriptionUpdateRequest) -> Request<_Specification.SubscriptionResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "subscriptions-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "subscriptions-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "subscriptions-delete_instance")
+            Request(path: path, method: "DELETE", id: "subscriptions-delete_instance")
         }
     }
 }

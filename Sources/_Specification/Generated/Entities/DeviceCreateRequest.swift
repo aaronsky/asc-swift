@@ -28,7 +28,7 @@ public struct DeviceCreateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes) {
+        public init(type: `Type` = .devices, attributes: Attributes) {
             self.type = type
             self.attributes = attributes
         }

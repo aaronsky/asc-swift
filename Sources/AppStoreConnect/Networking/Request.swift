@@ -130,7 +130,7 @@ extension Request {
         query: [(String, String?)]? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(method: "GET", url: path, baseURL: baseURL, query: query, headers: headers)
+        .init(path: path, baseURL: baseURL, method: "GET", query: query, headers: headers)
     }
 
     /// Construct a "POST" request.
@@ -149,7 +149,7 @@ extension Request {
         body: Encodable? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(method: "POST", url: path, baseURL: baseURL, query: query, body: body, headers: headers)
+        .init(path: path, baseURL: baseURL, method: "POST", query: query, body: body, headers: headers)
     }
 
     /// Construct a "PUT" request.
@@ -168,7 +168,7 @@ extension Request {
         body: (any Encodable)? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(method: "PUT", url: path, baseURL: baseURL, query: query, body: body, headers: headers)
+        .init(path: path, baseURL: baseURL, method: "PUT", query: query, body: body, headers: headers)
     }
 
     /// Construct a "PATCH" request.
@@ -187,7 +187,7 @@ extension Request {
         body: (any Encodable)? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(method: "PATCH", url: path, baseURL: baseURL, query: query, body: body, headers: headers)
+        .init(path: path, baseURL: baseURL, method: "PATCH", query: query, body: body, headers: headers)
     }
 
     /// Construct a "DELETE" request.
@@ -206,7 +206,7 @@ extension Request {
         body: (any Encodable)? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(method: "DELETE", url: path, baseURL: baseURL, query: query, body: body, headers: headers)
+        .init(path: path, baseURL: baseURL, method: "DELETE", query: query, body: body, headers: headers)
     }
 
     /// Construct a "OPTIONS" request.
@@ -223,7 +223,7 @@ extension Request {
         query: [(String, String?)]? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(method: "OPTIONS", url: path, baseURL: baseURL, query: query, headers: headers)
+        .init(path: path, baseURL: baseURL, method: "OPTIONS", query: query, headers: headers)
     }
 
     /// Construct a "HEAD" request.
@@ -240,7 +240,7 @@ extension Request {
         query: [(String, String?)]? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(method: "HEAD", url: path, baseURL: baseURL, query: query, headers: headers)
+        .init(path: path, baseURL: baseURL, method: "HEAD", query: query, headers: headers)
     }
 
     /// Construct a "TRACE" request.
@@ -257,7 +257,7 @@ extension Request {
         query: [(String, String?)]? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(method: "TRACE", url: path, baseURL: baseURL, query: query, headers: headers)
+        .init(path: path, baseURL: baseURL, method: "TRACE", query: query, headers: headers)
     }
 }
 
@@ -274,7 +274,7 @@ extension Request {
         query: [(String, String?)]? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(method: "GET", url: "", baseURL: url, query: query, headers: headers)
+        .init(path: "", baseURL: url, method: "GET", query: query, headers: headers)
     }
 
     /// Construct a "POST" request.
@@ -291,7 +291,7 @@ extension Request {
         body: Encodable? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(method: "POST", url: "", baseURL: url, query: query, body: body, headers: headers)
+        .init(path: "", baseURL: url, method: "POST", query: query, body: body, headers: headers)
     }
 
     /// Construct a "PUT" request.
@@ -308,7 +308,7 @@ extension Request {
         body: (any Encodable)? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(method: "PUT", url: "", baseURL: url, query: query, body: body, headers: headers)
+        .init(path: "", baseURL: url, method: "PUT", query: query, body: body, headers: headers)
     }
 
     /// Construct a "PATCH" request.
@@ -325,7 +325,7 @@ extension Request {
         body: (any Encodable)? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(method: "PATCH", url: "", baseURL: url, query: query, body: body, headers: headers)
+        .init(path: "", baseURL: url, method: "PATCH", query: query, body: body, headers: headers)
     }
 
     /// Construct a "DELETE" request.
@@ -342,7 +342,7 @@ extension Request {
         body: (any Encodable)? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(method: "DELETE", url: "", baseURL: url, query: query, body: body, headers: headers)
+        .init(path: "", baseURL: url, method: "DELETE", query: query, body: body, headers: headers)
     }
 
     /// Construct a "OPTIONS" request.
@@ -357,7 +357,7 @@ extension Request {
         query: [(String, String?)]? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(method: "OPTIONS", url: "", baseURL: url, query: query, headers: headers)
+        .init(path: "", baseURL: url, method: "OPTIONS", query: query, headers: headers)
     }
 
     /// Construct a "HEAD" request.
@@ -372,7 +372,7 @@ extension Request {
         query: [(String, String?)]? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(method: "HEAD", url: "", baseURL: url, query: query, headers: headers)
+        .init(path: "", baseURL: url, method: "HEAD", query: query, headers: headers)
     }
 
     /// Construct a "TRACE" request.
@@ -387,6 +387,6 @@ extension Request {
         query: [(String, String?)]? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(method: "TRACE", url: "", baseURL: url, query: query, headers: headers)
+        .init(path: "", baseURL: url, method: "TRACE", query: query, headers: headers)
     }
 }

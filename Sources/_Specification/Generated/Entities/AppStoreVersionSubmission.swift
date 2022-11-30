@@ -46,7 +46,7 @@ public struct AppStoreVersionSubmission: Codable, Hashable, Identifiable {
                     case appStoreVersions
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appStoreVersions, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -63,7 +63,7 @@ public struct AppStoreVersionSubmission: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type` = .appStoreVersionSubmissions, id: String, relationships: Relationships? = nil, links: ResourceLinks) {
         self.type = type
         self.id = id
         self.relationships = relationships

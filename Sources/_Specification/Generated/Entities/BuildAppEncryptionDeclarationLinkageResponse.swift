@@ -17,7 +17,7 @@ public struct BuildAppEncryptionDeclarationLinkageResponse: Codable, Hashable {
             case appEncryptionDeclarations
         }
 
-        public init(type: `Type`, id: String) {
+        public init(type: `Type` = .appEncryptionDeclarations, id: String) {
             self.type = type
             self.id = id
         }
