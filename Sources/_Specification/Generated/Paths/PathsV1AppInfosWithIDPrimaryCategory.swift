@@ -15,19 +15,26 @@ extension Resources.V1.AppInfos.WithID {
         /// Path: `/v1/appInfos/{id}/primaryCategory`
         public let path: String
 
-        public func get(fieldsAppCategories: [FieldsAppCategories]? = nil) -> Request<_Specification.AppCategoryResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppCategories), id: "appInfos-primaryCategory-get_to_one_related")
+        public func get(fieldsAppCategories: [FieldsAppCategories]? = nil, limitSubcategories: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppCategoryResponse> {
+            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppCategories, limitSubcategories, include), id: "appInfos-primaryCategory-get_to_one_related")
         }
 
-        private func makeGetQuery(_ fieldsAppCategories: [FieldsAppCategories]?) -> [(String, String?)] {
-            let encoder = URLQueryEncoder()
-            encoder.encode(fieldsAppCategories, forKey: "fields[appCategories]", explode: false)
+        private func makeGetQuery(_ fieldsAppCategories: [FieldsAppCategories]?, _ limitSubcategories: Int?, _ include: [Include]?) -> [(String, String?)] {
+            let encoder = URLQueryEncoder(explode: false)
+            encoder.encode(fieldsAppCategories, forKey: "fields[appCategories]")
+            encoder.encode(limitSubcategories, forKey: "limit[subcategories]")
+            encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
         public enum FieldsAppCategories: String, Codable, CaseIterable {
             case parent
             case platforms
+            case subcategories
+        }
+
+        public enum Include: String, Codable, CaseIterable {
+            case parent
             case subcategories
         }
     }

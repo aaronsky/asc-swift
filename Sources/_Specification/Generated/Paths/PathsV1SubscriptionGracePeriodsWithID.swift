@@ -26,8 +26,10 @@ extension Resources.V1.SubscriptionGracePeriods {
         }
 
         public enum FieldsSubscriptionGracePeriods: String, Codable, CaseIterable {
-            case app
+            case duration
             case optIn
+            case renewalType
+            case sandboxOptIn
         }
 
         public func patch(_ body: _Specification.SubscriptionGracePeriodUpdateRequest) -> Request<_Specification.SubscriptionGracePeriodResponse> {

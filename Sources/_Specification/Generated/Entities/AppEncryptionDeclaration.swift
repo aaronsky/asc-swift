@@ -17,20 +17,29 @@ public struct AppEncryptionDeclaration: Codable, Hashable, Identifiable {
     }
 
     public struct Attributes: Codable, Hashable {
+        public var appDescription: String?
+        public var createdDate: Date?
+        /// - warning: Deprecated.
         public var usesEncryption: Bool?
         public var isExempt: Bool?
         public var containsProprietaryCryptography: Bool?
         public var containsThirdPartyCryptography: Bool?
         public var isAvailableOnFrenchStore: Bool?
         public var platform: Platform?
+        /// - warning: Deprecated.
         public var uploadedDate: Date?
+        /// - warning: Deprecated.
         public var documentURL: String?
+        /// - warning: Deprecated.
         public var documentName: String?
+        /// - warning: Deprecated.
         public var documentType: String?
         public var appEncryptionDeclarationState: AppEncryptionDeclarationState?
         public var codeValue: String?
 
-        public init(usesEncryption: Bool? = nil, isExempt: Bool? = nil, containsProprietaryCryptography: Bool? = nil, containsThirdPartyCryptography: Bool? = nil, isAvailableOnFrenchStore: Bool? = nil, platform: Platform? = nil, uploadedDate: Date? = nil, documentURL: String? = nil, documentName: String? = nil, documentType: String? = nil, appEncryptionDeclarationState: AppEncryptionDeclarationState? = nil, codeValue: String? = nil) {
+        public init(appDescription: String? = nil, createdDate: Date? = nil, usesEncryption: Bool? = nil, isExempt: Bool? = nil, containsProprietaryCryptography: Bool? = nil, containsThirdPartyCryptography: Bool? = nil, isAvailableOnFrenchStore: Bool? = nil, platform: Platform? = nil, uploadedDate: Date? = nil, documentURL: String? = nil, documentName: String? = nil, documentType: String? = nil, appEncryptionDeclarationState: AppEncryptionDeclarationState? = nil, codeValue: String? = nil) {
+            self.appDescription = appDescription
+            self.createdDate = createdDate
             self.usesEncryption = usesEncryption
             self.isExempt = isExempt
             self.containsProprietaryCryptography = containsProprietaryCryptography
@@ -46,6 +55,8 @@ public struct AppEncryptionDeclaration: Codable, Hashable, Identifiable {
         }
 
         private enum CodingKeys: String, CodingKey {
+            case appDescription
+            case createdDate
             case usesEncryption
             case isExempt = "exempt"
             case containsProprietaryCryptography
@@ -63,6 +74,8 @@ public struct AppEncryptionDeclaration: Codable, Hashable, Identifiable {
 
     public struct Relationships: Codable, Hashable {
         public var app: App?
+        public var builds: Builds?
+        public var appEncryptionDeclarationDocument: AppEncryptionDeclarationDocument?
 
         public struct App: Codable, Hashable {
             public var links: Links?
@@ -103,8 +116,90 @@ public struct AppEncryptionDeclaration: Codable, Hashable, Identifiable {
             }
         }
 
-        public init(app: App? = nil) {
+        public struct Builds: Codable, Hashable {
+            public var links: Links?
+            public var meta: PagingInformation?
+            public var data: [Datum]?
+
+            public struct Links: Codable, Hashable {
+                public var this: URL?
+                public var related: URL?
+
+                public init(this: URL? = nil, related: URL? = nil) {
+                    self.this = this
+                    self.related = related
+                }
+
+                private enum CodingKeys: String, CodingKey {
+                    case this = "self"
+                    case related
+                }
+            }
+
+            public struct Datum: Codable, Hashable, Identifiable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, Codable, CaseIterable {
+                    case builds
+                }
+
+                public init(type: `Type`, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: Links? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+                self.links = links
+                self.meta = meta
+                self.data = data
+            }
+        }
+
+        public struct AppEncryptionDeclarationDocument: Codable, Hashable {
+            public var links: Links?
+            public var data: Data?
+
+            public struct Links: Codable, Hashable {
+                public var this: URL?
+                public var related: URL?
+
+                public init(this: URL? = nil, related: URL? = nil) {
+                    self.this = this
+                    self.related = related
+                }
+
+                private enum CodingKeys: String, CodingKey {
+                    case this = "self"
+                    case related
+                }
+            }
+
+            public struct Data: Codable, Hashable, Identifiable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, Codable, CaseIterable {
+                    case appEncryptionDeclarationDocuments
+                }
+
+                public init(type: `Type`, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: Links? = nil, data: Data? = nil) {
+                self.links = links
+                self.data = data
+            }
+        }
+
+        public init(app: App? = nil, builds: Builds? = nil, appEncryptionDeclarationDocument: AppEncryptionDeclarationDocument? = nil) {
             self.app = app
+            self.builds = builds
+            self.appEncryptionDeclarationDocument = appEncryptionDeclarationDocument
         }
     }
 
