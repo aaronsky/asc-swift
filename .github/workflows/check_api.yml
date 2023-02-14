@@ -9,6 +9,6 @@ jobs:
   diff_spec:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: make spec-download
       - run: git diff --ignore-all-space --exit-code
