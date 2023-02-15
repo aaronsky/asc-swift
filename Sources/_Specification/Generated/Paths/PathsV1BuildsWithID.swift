@@ -156,12 +156,15 @@ extension Resources.V1.Builds {
 
         public enum FieldsAppEncryptionDeclarations: String, Codable, CaseIterable {
             case app
+            case appDescription
+            case appEncryptionDeclarationDocument
             case appEncryptionDeclarationState
             case availableOnFrenchStore
             case builds
             case codeValue
             case containsProprietaryCryptography
             case containsThirdPartyCryptography
+            case createdDate
             case documentName
             case documentType
             case documentURL = "documentUrl"

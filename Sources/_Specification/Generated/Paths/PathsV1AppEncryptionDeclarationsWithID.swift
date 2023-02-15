@@ -15,26 +15,31 @@ extension Resources.V1.AppEncryptionDeclarations {
         /// Path: `/v1/appEncryptionDeclarations/{id}`
         public let path: String
 
-        public func get(fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]? = nil, include: [Include]? = nil, fieldsApps: [FieldsApps]? = nil) -> Request<_Specification.AppEncryptionDeclarationResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppEncryptionDeclarations, include, fieldsApps), id: "appEncryptionDeclarations-get_instance")
+        public func get(fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]? = nil, include: [Include]? = nil, fieldsAppEncryptionDeclarationDocuments: [FieldsAppEncryptionDeclarationDocuments]? = nil, fieldsApps: [FieldsApps]? = nil, limitBuilds: Int? = nil) -> Request<_Specification.AppEncryptionDeclarationResponse> {
+            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppEncryptionDeclarations, include, fieldsAppEncryptionDeclarationDocuments, fieldsApps, limitBuilds), id: "appEncryptionDeclarations-get_instance")
         }
 
-        private func makeGetQuery(_ fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]?, _ include: [Include]?, _ fieldsApps: [FieldsApps]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]?, _ include: [Include]?, _ fieldsAppEncryptionDeclarationDocuments: [FieldsAppEncryptionDeclarationDocuments]?, _ fieldsApps: [FieldsApps]?, _ limitBuilds: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppEncryptionDeclarations, forKey: "fields[appEncryptionDeclarations]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(fieldsAppEncryptionDeclarationDocuments, forKey: "fields[appEncryptionDeclarationDocuments]")
             encoder.encode(fieldsApps, forKey: "fields[apps]")
+            encoder.encode(limitBuilds, forKey: "limit[builds]")
             return encoder.items
         }
 
         public enum FieldsAppEncryptionDeclarations: String, Codable, CaseIterable {
             case app
+            case appDescription
+            case appEncryptionDeclarationDocument
             case appEncryptionDeclarationState
             case availableOnFrenchStore
             case builds
             case codeValue
             case containsProprietaryCryptography
             case containsThirdPartyCryptography
+            case createdDate
             case documentName
             case documentType
             case documentURL = "documentUrl"
@@ -46,6 +51,20 @@ extension Resources.V1.AppEncryptionDeclarations {
 
         public enum Include: String, Codable, CaseIterable {
             case app
+            case appEncryptionDeclarationDocument
+            case builds
+        }
+
+        public enum FieldsAppEncryptionDeclarationDocuments: String, Codable, CaseIterable {
+            case appEncryptionDeclaration
+            case assetDeliveryState
+            case assetToken
+            case downloadURL = "downloadUrl"
+            case fileName
+            case fileSize
+            case sourceFileChecksum
+            case uploadOperations
+            case uploaded
         }
 
         public enum FieldsApps: String, Codable, CaseIterable {

@@ -36,7 +36,7 @@ let package = Package(
             ],
             exclude: [
                 ".create-api.yml",
-                "app_store_connect_api_2.1_openapi.json",
+                "app_store_connect_api_2.2_openapi.json",
             ]
         ),
         .testTarget(

@@ -106,6 +106,7 @@ extension Resources.V1.CiProducts.WithID {
             case appStoreAgeRating
             case appStoreState
             case brazilAgeRating
+            case brazilAgeRatingV2
             case kidsAgeBand
             case primaryCategory
             case primarySubcategoryOne
@@ -197,8 +198,10 @@ extension Resources.V1.CiProducts.WithID {
         }
 
         public enum FieldsSubscriptionGracePeriods: String, Codable, CaseIterable {
-            case app
+            case duration
             case optIn
+            case renewalType
+            case sandboxOptIn
         }
 
         public enum FieldsPromotedPurchases: String, Codable, CaseIterable {

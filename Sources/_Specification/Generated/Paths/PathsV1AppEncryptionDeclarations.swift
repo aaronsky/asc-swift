@@ -15,11 +15,11 @@ extension Resources.V1 {
         /// Path: `/v1/appEncryptionDeclarations`
         public let path: String
 
-        public func get(filterPlatform: [FilterPlatform]? = nil, filterApp: [String]? = nil, filterBuilds: [String]? = nil, fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsApps: [FieldsApps]? = nil) -> Request<_Specification.AppEncryptionDeclarationsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterPlatform, filterApp, filterBuilds, fieldsAppEncryptionDeclarations, limit, include, fieldsApps), id: "appEncryptionDeclarations-get_collection")
+        public func get(filterPlatform: [FilterPlatform]? = nil, filterApp: [String]? = nil, filterBuilds: [String]? = nil, fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsAppEncryptionDeclarationDocuments: [FieldsAppEncryptionDeclarationDocuments]? = nil, fieldsApps: [FieldsApps]? = nil, limitBuilds: Int? = nil) -> Request<_Specification.AppEncryptionDeclarationsResponse> {
+            Request(method: "GET", url: path, query: makeGetQuery(filterPlatform, filterApp, filterBuilds, fieldsAppEncryptionDeclarations, limit, include, fieldsAppEncryptionDeclarationDocuments, fieldsApps, limitBuilds), id: "appEncryptionDeclarations-get_collection")
         }
 
-        private func makeGetQuery(_ filterPlatform: [FilterPlatform]?, _ filterApp: [String]?, _ filterBuilds: [String]?, _ fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]?, _ limit: Int?, _ include: [Include]?, _ fieldsApps: [FieldsApps]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterPlatform: [FilterPlatform]?, _ filterApp: [String]?, _ filterBuilds: [String]?, _ fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]?, _ limit: Int?, _ include: [Include]?, _ fieldsAppEncryptionDeclarationDocuments: [FieldsAppEncryptionDeclarationDocuments]?, _ fieldsApps: [FieldsApps]?, _ limitBuilds: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterPlatform, forKey: "filter[platform]")
             encoder.encode(filterApp, forKey: "filter[app]")
@@ -27,7 +27,9 @@ extension Resources.V1 {
             encoder.encode(fieldsAppEncryptionDeclarations, forKey: "fields[appEncryptionDeclarations]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
+            encoder.encode(fieldsAppEncryptionDeclarationDocuments, forKey: "fields[appEncryptionDeclarationDocuments]")
             encoder.encode(fieldsApps, forKey: "fields[apps]")
+            encoder.encode(limitBuilds, forKey: "limit[builds]")
             return encoder.items
         }
 
@@ -39,12 +41,15 @@ extension Resources.V1 {
 
         public enum FieldsAppEncryptionDeclarations: String, Codable, CaseIterable {
             case app
+            case appDescription
+            case appEncryptionDeclarationDocument
             case appEncryptionDeclarationState
             case availableOnFrenchStore
             case builds
             case codeValue
             case containsProprietaryCryptography
             case containsThirdPartyCryptography
+            case createdDate
             case documentName
             case documentType
             case documentURL = "documentUrl"
@@ -56,6 +61,20 @@ extension Resources.V1 {
 
         public enum Include: String, Codable, CaseIterable {
             case app
+            case appEncryptionDeclarationDocument
+            case builds
+        }
+
+        public enum FieldsAppEncryptionDeclarationDocuments: String, Codable, CaseIterable {
+            case appEncryptionDeclaration
+            case assetDeliveryState
+            case assetToken
+            case downloadURL = "downloadUrl"
+            case fileName
+            case fileSize
+            case sourceFileChecksum
+            case uploadOperations
+            case uploaded
         }
 
         public enum FieldsApps: String, Codable, CaseIterable {
