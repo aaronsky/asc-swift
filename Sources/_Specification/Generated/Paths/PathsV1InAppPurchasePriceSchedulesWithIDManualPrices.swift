@@ -39,8 +39,10 @@ extension Resources.V1.InAppPurchasePriceSchedules.WithID {
         }
 
         public enum FieldsInAppPurchasePrices: String, Codable, CaseIterable {
+            case endDate
             case inAppPurchasePricePoint
             case inAppPurchaseV2
+            case manual
             case startDate
             case territory
         }

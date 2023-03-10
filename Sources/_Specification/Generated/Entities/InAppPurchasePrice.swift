@@ -18,9 +18,19 @@ public struct InAppPurchasePrice: Codable, Hashable, Identifiable {
 
     public struct Attributes: Codable, Hashable {
         public var startDate: String?
+        public var endDate: String?
+        public var isManual: Bool?
 
-        public init(startDate: String? = nil) {
+        public init(startDate: String? = nil, endDate: String? = nil, isManual: Bool? = nil) {
             self.startDate = startDate
+            self.endDate = endDate
+            self.isManual = isManual
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case startDate
+            case endDate
+            case isManual = "manual"
         }
     }
 

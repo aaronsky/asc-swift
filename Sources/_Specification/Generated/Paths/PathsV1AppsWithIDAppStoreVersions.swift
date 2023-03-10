@@ -143,10 +143,13 @@ extension Resources.V1.Apps.WithID {
         }
 
         public enum FieldsApps: String, Codable, CaseIterable {
+            case appAvailability
             case appClips
             case appCustomProductPages
             case appEvents
             case appInfos
+            case appPricePoints
+            case appPriceSchedule
             case appStoreVersions
             case availableInNewTerritories
             case availableTerritories
