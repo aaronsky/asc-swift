@@ -17,9 +17,11 @@ public struct InAppPurchasePriceInlineCreate: Codable, Hashable, Identifiable {
 
     public struct Attributes: Codable, Hashable {
         public var startDate: String?
+        public var endDate: String?
 
-        public init(startDate: String? = nil) {
+        public init(startDate: String? = nil, endDate: String? = nil) {
             self.startDate = startDate
+            self.endDate = endDate
         }
     }
 

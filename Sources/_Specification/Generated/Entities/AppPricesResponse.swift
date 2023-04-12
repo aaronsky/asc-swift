@@ -5,6 +5,7 @@
 
 import Foundation
 
+@available(*, deprecated, message: "Deprecated")
 public struct AppPricesResponse: Codable, Hashable {
     public var data: [AppPrice]
     public var included: [IncludedItem]?

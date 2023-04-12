@@ -15,6 +15,7 @@ extension Resources.V1.AppPrices {
         /// Path: `/v1/appPrices/{id}`
         public let path: String
 
+        @available(*, deprecated, message: "Deprecated")
         public func get(fieldsAppPrices: [FieldsAppPrices]? = nil, include: [Include]? = nil) -> Request<_Specification.AppPriceResponse> {
             Request(method: "GET", url: path, query: makeGetQuery(fieldsAppPrices, include), id: "appPrices-get_instance")
         }

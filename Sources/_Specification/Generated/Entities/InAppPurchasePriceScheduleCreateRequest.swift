@@ -7,7 +7,7 @@ import Foundation
 
 public struct InAppPurchasePriceScheduleCreateRequest: Codable, Hashable {
     public var data: Data
-    public var included: [InAppPurchasePriceInlineCreate]?
+    public var included: [IncludedItem]?
 
     public struct Data: Codable, Hashable {
         public var type: `Type`
@@ -19,6 +19,7 @@ public struct InAppPurchasePriceScheduleCreateRequest: Codable, Hashable {
 
         public struct Relationships: Codable, Hashable {
             public var inAppPurchase: InAppPurchase
+            public var baseTerritory: BaseTerritory?
             public var manualPrices: ManualPrices
 
             public struct InAppPurchase: Codable, Hashable {
@@ -39,6 +40,28 @@ public struct InAppPurchasePriceScheduleCreateRequest: Codable, Hashable {
                 }
 
                 public init(data: Data) {
+                    self.data = data
+                }
+            }
+
+            public struct BaseTerritory: Codable, Hashable {
+                public var data: Data?
+
+                public struct Data: Codable, Hashable, Identifiable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, Codable, CaseIterable {
+                        case territories
+                    }
+
+                    public init(type: `Type`, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: Data? = nil) {
                     self.data = data
                 }
             }
@@ -65,8 +88,9 @@ public struct InAppPurchasePriceScheduleCreateRequest: Codable, Hashable {
                 }
             }
 
-            public init(inAppPurchase: InAppPurchase, manualPrices: ManualPrices) {
+            public init(inAppPurchase: InAppPurchase, baseTerritory: BaseTerritory? = nil, manualPrices: ManualPrices) {
                 self.inAppPurchase = inAppPurchase
+                self.baseTerritory = baseTerritory
                 self.manualPrices = manualPrices
             }
         }
@@ -77,7 +101,34 @@ public struct InAppPurchasePriceScheduleCreateRequest: Codable, Hashable {
         }
     }
 
-    public init(data: Data, included: [InAppPurchasePriceInlineCreate]? = nil) {
+    public enum IncludedItem: Codable, Hashable {
+        case inAppPurchasePriceInlineCreate(InAppPurchasePriceInlineCreate)
+        case territoryInlineCreate(TerritoryInlineCreate)
+
+        public init(from decoder: Decoder) throws {
+            let container = try decoder.singleValueContainer()
+            if let value = try? container.decode(InAppPurchasePriceInlineCreate.self) {
+                self = .inAppPurchasePriceInlineCreate(value)
+            } else if let value = try? container.decode(TerritoryInlineCreate.self) {
+                self = .territoryInlineCreate(value)
+            } else {
+                throw DecodingError.dataCorruptedError(
+                    in: container,
+                    debugDescription: "Data could not be decoded as any of the expected types (InAppPurchasePriceInlineCreate, TerritoryInlineCreate)."
+                )
+            }
+        }
+
+        public func encode(to encoder: Encoder) throws {
+            var container = encoder.singleValueContainer()
+            switch self {
+            case .inAppPurchasePriceInlineCreate(let value): try container.encode(value)
+            case .territoryInlineCreate(let value): try container.encode(value)
+            }
+        }
+    }
+
+    public init(data: Data, included: [IncludedItem]? = nil) {
         self.data = data
         self.included = included
     }

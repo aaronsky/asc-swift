@@ -23,7 +23,7 @@ print(apps)
 
 ## Installation
 
-This library uses the Swift Package Manager. It supports Swift 5.7 and higher, and has minimum requirements of iOS 15, macOS 12, tvOS 15, and watchOS 8. It also strives to be fully supported for deployment on all other platforms outlined by Swift.org [Platform Support page](https://www.swift.org/platform-support/#deployment-only), such as the various Linux flavors and Windows. App Store Connect API version 2.2 is supported.
+This library uses the Swift Package Manager. It supports Swift 5.7 and higher, and has minimum requirements of iOS 15, macOS 12, tvOS 15, and watchOS 8. It also strives to be fully supported for deployment on all other platforms outlined by Swift.org [Platform Support page](https://www.swift.org/platform-support/#deployment-only), such as the various Linux flavors and Windows. App Store Connect API version 2.3 is supported.
 
 To add `AppStoreConnect` to your project, add a package dependency in Xcode as you normally would, or add it to the `dependencies` value of your `Package.swift` manifest:
 

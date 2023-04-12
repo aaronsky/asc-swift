@@ -15,23 +15,27 @@ extension Resources.V2.InAppPurchases.WithID {
         /// Path: `/v2/inAppPurchases/{id}/iapPriceSchedule`
         public let path: String
 
-        public func get(fieldsInAppPurchasePrices: [FieldsInAppPurchasePrices]? = nil, fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]? = nil, limitManualPrices: Int? = nil, include: [Include]? = nil) -> Request<_Specification.InAppPurchasePriceScheduleResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsInAppPurchasePrices, fieldsInAppPurchases, fieldsInAppPurchasePriceSchedules, limitManualPrices, include), id: "inAppPurchases-iapPriceSchedule-get_to_one_related")
+        public func get(fieldsInAppPurchasePrices: [FieldsInAppPurchasePrices]? = nil, fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limitManualPrices: Int? = nil, limitAutomaticPrices: Int? = nil, include: [Include]? = nil) -> Request<_Specification.InAppPurchasePriceScheduleResponse> {
+            Request(method: "GET", url: path, query: makeGetQuery(fieldsInAppPurchasePrices, fieldsInAppPurchases, fieldsInAppPurchasePriceSchedules, fieldsTerritories, limitManualPrices, limitAutomaticPrices, include), id: "inAppPurchases-iapPriceSchedule-get_to_one_related")
         }
 
-        private func makeGetQuery(_ fieldsInAppPurchasePrices: [FieldsInAppPurchasePrices]?, _ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]?, _ limitManualPrices: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsInAppPurchasePrices: [FieldsInAppPurchasePrices]?, _ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]?, _ fieldsTerritories: [FieldsTerritories]?, _ limitManualPrices: Int?, _ limitAutomaticPrices: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsInAppPurchasePrices, forKey: "fields[inAppPurchasePrices]")
             encoder.encode(fieldsInAppPurchases, forKey: "fields[inAppPurchases]")
             encoder.encode(fieldsInAppPurchasePriceSchedules, forKey: "fields[inAppPurchasePriceSchedules]")
+            encoder.encode(fieldsTerritories, forKey: "fields[territories]")
             encoder.encode(limitManualPrices, forKey: "limit[manualPrices]")
+            encoder.encode(limitAutomaticPrices, forKey: "limit[automaticPrices]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
         public enum FieldsInAppPurchasePrices: String, Codable, CaseIterable {
+            case endDate
             case inAppPurchasePricePoint
             case inAppPurchaseV2
+            case manual
             case startDate
             case territory
         }
@@ -55,11 +59,19 @@ extension Resources.V2.InAppPurchases.WithID {
         }
 
         public enum FieldsInAppPurchasePriceSchedules: String, Codable, CaseIterable {
+            case automaticPrices
+            case baseTerritory
             case inAppPurchase
             case manualPrices
         }
 
+        public enum FieldsTerritories: String, Codable, CaseIterable {
+            case currency
+        }
+
         public enum Include: String, Codable, CaseIterable {
+            case automaticPrices
+            case baseTerritory
             case inAppPurchase
             case manualPrices
         }

@@ -126,6 +126,8 @@ extension Resources.V1.Apps.WithID {
         }
 
         public enum FieldsInAppPurchasePriceSchedules: String, Codable, CaseIterable {
+            case automaticPrices
+            case baseTerritory
             case inAppPurchase
             case manualPrices
         }
