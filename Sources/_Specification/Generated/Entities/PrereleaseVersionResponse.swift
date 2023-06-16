@@ -5,9 +5,9 @@
 
 import Foundation
 
-public struct PrereleaseVersionResponse: Codable, Hashable {
-    /// PrereleaseVersion
-    public var data: PrereleaseVersion
+public struct PreReleaseVersionResponse: Codable, Hashable {
+    /// PreReleaseVersion
+    public var data: PreReleaseVersion
     public var included: [IncludedItem]?
     public var links: DocumentLinks
 
@@ -38,7 +38,7 @@ public struct PrereleaseVersionResponse: Codable, Hashable {
         }
     }
 
-    public init(data: PrereleaseVersion, included: [IncludedItem]? = nil, links: DocumentLinks) {
+    public init(data: PreReleaseVersion, included: [IncludedItem]? = nil, links: DocumentLinks) {
         self.data = data
         self.included = included
         self.links = links

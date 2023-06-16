@@ -13,18 +13,21 @@ public struct AppStoreVersionExperimentTreatmentsResponse: Codable, Hashable {
 
     public enum IncludedItem: Codable, Hashable {
         case appStoreVersionExperiment(AppStoreVersionExperiment)
+        case appStoreVersionExperimentV2(AppStoreVersionExperimentV2)
         case appStoreVersionExperimentTreatmentLocalization(AppStoreVersionExperimentTreatmentLocalization)
 
         public init(from decoder: Decoder) throws {
             let container = try decoder.singleValueContainer()
             if let value = try? container.decode(AppStoreVersionExperiment.self) {
                 self = .appStoreVersionExperiment(value)
+            } else if let value = try? container.decode(AppStoreVersionExperimentV2.self) {
+                self = .appStoreVersionExperimentV2(value)
             } else if let value = try? container.decode(AppStoreVersionExperimentTreatmentLocalization.self) {
                 self = .appStoreVersionExperimentTreatmentLocalization(value)
             } else {
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (AppStoreVersionExperiment, AppStoreVersionExperimentTreatmentLocalization)."
+                    debugDescription: "Data could not be decoded as any of the expected types (AppStoreVersionExperiment, AppStoreVersionExperimentV2, AppStoreVersionExperimentTreatmentLocalization)."
                 )
             }
         }
@@ -33,6 +36,7 @@ public struct AppStoreVersionExperimentTreatmentsResponse: Codable, Hashable {
             var container = encoder.singleValueContainer()
             switch self {
             case .appStoreVersionExperiment(let value): try container.encode(value)
+            case .appStoreVersionExperimentV2(let value): try container.encode(value)
             case .appStoreVersionExperimentTreatmentLocalization(let value): try container.encode(value)
             }
         }

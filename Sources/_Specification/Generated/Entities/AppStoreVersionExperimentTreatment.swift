@@ -32,9 +32,49 @@ public struct AppStoreVersionExperimentTreatment: Codable, Hashable, Identifiabl
 
     public struct Relationships: Codable, Hashable {
         public var appStoreVersionExperiment: AppStoreVersionExperiment?
+        public var appStoreVersionExperimentV2: AppStoreVersionExperimentV2?
         public var appStoreVersionExperimentTreatmentLocalizations: AppStoreVersionExperimentTreatmentLocalizations?
 
         public struct AppStoreVersionExperiment: Codable, Hashable {
+            public var links: Links?
+            public var data: Data?
+
+            public struct Links: Codable, Hashable {
+                public var this: URL?
+                public var related: URL?
+
+                public init(this: URL? = nil, related: URL? = nil) {
+                    self.this = this
+                    self.related = related
+                }
+
+                private enum CodingKeys: String, CodingKey {
+                    case this = "self"
+                    case related
+                }
+            }
+
+            public struct Data: Codable, Hashable, Identifiable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, Codable, CaseIterable {
+                    case appStoreVersionExperiments
+                }
+
+                public init(type: `Type`, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: Links? = nil, data: Data? = nil) {
+                self.links = links
+                self.data = data
+            }
+        }
+
+        public struct AppStoreVersionExperimentV2: Codable, Hashable {
             public var links: Links?
             public var data: Data?
 
@@ -114,8 +154,9 @@ public struct AppStoreVersionExperimentTreatment: Codable, Hashable, Identifiabl
             }
         }
 
-        public init(appStoreVersionExperiment: AppStoreVersionExperiment? = nil, appStoreVersionExperimentTreatmentLocalizations: AppStoreVersionExperimentTreatmentLocalizations? = nil) {
+        public init(appStoreVersionExperiment: AppStoreVersionExperiment? = nil, appStoreVersionExperimentV2: AppStoreVersionExperimentV2? = nil, appStoreVersionExperimentTreatmentLocalizations: AppStoreVersionExperimentTreatmentLocalizations? = nil) {
             self.appStoreVersionExperiment = appStoreVersionExperiment
+            self.appStoreVersionExperimentV2 = appStoreVersionExperimentV2
             self.appStoreVersionExperimentTreatmentLocalizations = appStoreVersionExperimentTreatmentLocalizations
         }
     }

@@ -29,6 +29,7 @@ public struct AppStoreVersionExperimentTreatmentCreateRequest: Codable, Hashable
 
         public struct Relationships: Codable, Hashable {
             public var appStoreVersionExperiment: AppStoreVersionExperiment
+            public var appStoreVersionExperimentV2: AppStoreVersionExperimentV2?
 
             public struct AppStoreVersionExperiment: Codable, Hashable {
                 public var data: Data
@@ -52,8 +53,31 @@ public struct AppStoreVersionExperimentTreatmentCreateRequest: Codable, Hashable
                 }
             }
 
-            public init(appStoreVersionExperiment: AppStoreVersionExperiment) {
+            public struct AppStoreVersionExperimentV2: Codable, Hashable {
+                public var data: Data?
+
+                public struct Data: Codable, Hashable, Identifiable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, Codable, CaseIterable {
+                        case appStoreVersionExperiments
+                    }
+
+                    public init(type: `Type`, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: Data? = nil) {
+                    self.data = data
+                }
+            }
+
+            public init(appStoreVersionExperiment: AppStoreVersionExperiment, appStoreVersionExperimentV2: AppStoreVersionExperimentV2? = nil) {
                 self.appStoreVersionExperiment = appStoreVersionExperiment
+                self.appStoreVersionExperimentV2 = appStoreVersionExperimentV2
             }
         }
 

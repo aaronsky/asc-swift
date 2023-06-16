@@ -80,6 +80,7 @@ public struct Subscription: Codable, Hashable, Identifiable {
         public var offerCodes: OfferCodes?
         public var prices: Prices?
         public var promotedPurchase: PromotedPurchase?
+        public var subscriptionAvailability: SubscriptionAvailability?
 
         public struct SubscriptionLocalizations: Codable, Hashable {
             public var links: Links?
@@ -403,7 +404,46 @@ public struct Subscription: Codable, Hashable, Identifiable {
             }
         }
 
-        public init(subscriptionLocalizations: SubscriptionLocalizations? = nil, appStoreReviewScreenshot: AppStoreReviewScreenshot? = nil, group: Group? = nil, introductoryOffers: IntroductoryOffers? = nil, promotionalOffers: PromotionalOffers? = nil, offerCodes: OfferCodes? = nil, prices: Prices? = nil, promotedPurchase: PromotedPurchase? = nil) {
+        public struct SubscriptionAvailability: Codable, Hashable {
+            public var links: Links?
+            public var data: Data?
+
+            public struct Links: Codable, Hashable {
+                public var this: URL?
+                public var related: URL?
+
+                public init(this: URL? = nil, related: URL? = nil) {
+                    self.this = this
+                    self.related = related
+                }
+
+                private enum CodingKeys: String, CodingKey {
+                    case this = "self"
+                    case related
+                }
+            }
+
+            public struct Data: Codable, Hashable, Identifiable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, Codable, CaseIterable {
+                    case subscriptionAvailabilities
+                }
+
+                public init(type: `Type`, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: Links? = nil, data: Data? = nil) {
+                self.links = links
+                self.data = data
+            }
+        }
+
+        public init(subscriptionLocalizations: SubscriptionLocalizations? = nil, appStoreReviewScreenshot: AppStoreReviewScreenshot? = nil, group: Group? = nil, introductoryOffers: IntroductoryOffers? = nil, promotionalOffers: PromotionalOffers? = nil, offerCodes: OfferCodes? = nil, prices: Prices? = nil, promotedPurchase: PromotedPurchase? = nil, subscriptionAvailability: SubscriptionAvailability? = nil) {
             self.subscriptionLocalizations = subscriptionLocalizations
             self.appStoreReviewScreenshot = appStoreReviewScreenshot
             self.group = group
@@ -412,6 +452,7 @@ public struct Subscription: Codable, Hashable, Identifiable {
             self.offerCodes = offerCodes
             self.prices = prices
             self.promotedPurchase = promotedPurchase
+            self.subscriptionAvailability = subscriptionAvailability
         }
     }
 

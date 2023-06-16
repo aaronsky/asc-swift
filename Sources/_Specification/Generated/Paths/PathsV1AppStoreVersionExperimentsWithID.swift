@@ -15,6 +15,7 @@ extension Resources.V1.AppStoreVersionExperiments {
         /// Path: `/v1/appStoreVersionExperiments/{id}`
         public let path: String
 
+        @available(*, deprecated, message: "Deprecated")
         public func get(fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, include: [Include]? = nil, fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]? = nil, limitAppStoreVersionExperimentTreatments: Int? = nil) -> Request<_Specification.AppStoreVersionExperimentResponse> {
             Request(method: "GET", url: path, query: makeGetQuery(fieldsAppStoreVersionExperiments, include, fieldsAppStoreVersionExperimentTreatments, limitAppStoreVersionExperimentTreatments), id: "appStoreVersionExperiments-get_instance")
         }
@@ -50,14 +51,17 @@ extension Resources.V1.AppStoreVersionExperiments {
             case appIconName
             case appStoreVersionExperiment
             case appStoreVersionExperimentTreatmentLocalizations
+            case appStoreVersionExperimentV2
             case name
             case promotedDate
         }
 
+        @available(*, deprecated, message: "Deprecated")
         public func patch(_ body: _Specification.AppStoreVersionExperimentUpdateRequest) -> Request<_Specification.AppStoreVersionExperimentResponse> {
             Request(method: "PATCH", url: path, body: body, id: "appStoreVersionExperiments-update_instance")
         }
 
+        @available(*, deprecated, message: "Deprecated")
         public var delete: Request<Void> {
             Request(method: "DELETE", url: path, id: "appStoreVersionExperiments-delete_instance")
         }

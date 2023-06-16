@@ -49,6 +49,7 @@ extension Resources.V1.AppStoreVersions.WithID {
             case appStoreReviewDetail
             case appStoreState
             case appStoreVersionExperiments
+            case appStoreVersionExperimentsV2
             case appStoreVersionLocalizations
             case appStoreVersionPhasedRelease
             case appStoreVersionSubmission

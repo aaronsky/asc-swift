@@ -74,6 +74,7 @@ public struct AppEncryptionDeclaration: Codable, Hashable, Identifiable {
 
     public struct Relationships: Codable, Hashable {
         public var app: App?
+        /// - warning: Deprecated.
         public var builds: Builds?
         public var appEncryptionDeclarationDocument: AppEncryptionDeclarationDocument?
 
@@ -116,6 +117,7 @@ public struct AppEncryptionDeclaration: Codable, Hashable, Identifiable {
             }
         }
 
+        @available(*, deprecated, message: "Deprecated")
         public struct Builds: Codable, Hashable {
             public var links: Links?
             public var meta: PagingInformation?

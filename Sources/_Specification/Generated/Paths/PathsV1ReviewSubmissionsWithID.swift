@@ -33,9 +33,11 @@ extension Resources.V1.ReviewSubmissions {
             case appStoreVersionForReview
             case canceled
             case items
+            case lastUpdatedByActor
             case platform
             case state
             case submitted
+            case submittedByActor
             case submittedDate
         }
 
@@ -43,6 +45,8 @@ extension Resources.V1.ReviewSubmissions {
             case app
             case appStoreVersionForReview
             case items
+            case lastUpdatedByActor
+            case submittedByActor
         }
 
         public enum FieldsReviewSubmissionItems: String, Codable, CaseIterable {
@@ -50,6 +54,7 @@ extension Resources.V1.ReviewSubmissions {
             case appEvent
             case appStoreVersion
             case appStoreVersionExperiment
+            case appStoreVersionExperimentV2
             case removed
             case resolved
             case reviewSubmission

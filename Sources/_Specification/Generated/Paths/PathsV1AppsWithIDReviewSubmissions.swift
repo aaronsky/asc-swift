@@ -15,15 +15,16 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/reviewSubmissions`
         public let path: String
 
-        public func get(filterPlatform: [FilterPlatform]? = nil, filterState: [FilterState]? = nil, fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsReviewSubmissions: [FieldsReviewSubmissions]? = nil, limit: Int? = nil, limitItems: Int? = nil, include: [Include]? = nil) -> Request<_Specification.ReviewSubmissionsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterPlatform, filterState, fieldsReviewSubmissionItems, fieldsAppStoreVersions, fieldsApps, fieldsReviewSubmissions, limit, limitItems, include), id: "apps-reviewSubmissions-get_to_many_related")
+        public func get(filterPlatform: [FilterPlatform]? = nil, filterState: [FilterState]? = nil, fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]? = nil, fieldsActors: [FieldsActors]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsReviewSubmissions: [FieldsReviewSubmissions]? = nil, limit: Int? = nil, limitItems: Int? = nil, include: [Include]? = nil) -> Request<_Specification.ReviewSubmissionsResponse> {
+            Request(method: "GET", url: path, query: makeGetQuery(filterPlatform, filterState, fieldsReviewSubmissionItems, fieldsActors, fieldsAppStoreVersions, fieldsApps, fieldsReviewSubmissions, limit, limitItems, include), id: "apps-reviewSubmissions-get_to_many_related")
         }
 
-        private func makeGetQuery(_ filterPlatform: [FilterPlatform]?, _ filterState: [FilterState]?, _ fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsApps: [FieldsApps]?, _ fieldsReviewSubmissions: [FieldsReviewSubmissions]?, _ limit: Int?, _ limitItems: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterPlatform: [FilterPlatform]?, _ filterState: [FilterState]?, _ fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]?, _ fieldsActors: [FieldsActors]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsApps: [FieldsApps]?, _ fieldsReviewSubmissions: [FieldsReviewSubmissions]?, _ limit: Int?, _ limitItems: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterPlatform, forKey: "filter[platform]")
             encoder.encode(filterState, forKey: "filter[state]")
             encoder.encode(fieldsReviewSubmissionItems, forKey: "fields[reviewSubmissionItems]")
+            encoder.encode(fieldsActors, forKey: "fields[actors]")
             encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
             encoder.encode(fieldsApps, forKey: "fields[apps]")
             encoder.encode(fieldsReviewSubmissions, forKey: "fields[reviewSubmissions]")
@@ -54,10 +55,19 @@ extension Resources.V1.Apps.WithID {
             case appEvent
             case appStoreVersion
             case appStoreVersionExperiment
+            case appStoreVersionExperimentV2
             case removed
             case resolved
             case reviewSubmission
             case state
+        }
+
+        public enum FieldsActors: String, Codable, CaseIterable {
+            case actorType
+            case apiKeyID = "apiKeyId"
+            case userEmail
+            case userFirstName
+            case userLastName
         }
 
         public enum FieldsAppStoreVersions: String, Codable, CaseIterable {
@@ -67,6 +77,7 @@ extension Resources.V1.Apps.WithID {
             case appStoreReviewDetail
             case appStoreState
             case appStoreVersionExperiments
+            case appStoreVersionExperimentsV2
             case appStoreVersionLocalizations
             case appStoreVersionPhasedRelease
             case appStoreVersionSubmission
@@ -90,6 +101,7 @@ extension Resources.V1.Apps.WithID {
             case appInfos
             case appPricePoints
             case appPriceSchedule
+            case appStoreVersionExperimentsV2
             case appStoreVersions
             case availableInNewTerritories
             case availableTerritories
@@ -131,9 +143,11 @@ extension Resources.V1.Apps.WithID {
             case appStoreVersionForReview
             case canceled
             case items
+            case lastUpdatedByActor
             case platform
             case state
             case submitted
+            case submittedByActor
             case submittedDate
         }
 
@@ -141,6 +155,8 @@ extension Resources.V1.Apps.WithID {
             case app
             case appStoreVersionForReview
             case items
+            case lastUpdatedByActor
+            case submittedByActor
         }
     }
 }

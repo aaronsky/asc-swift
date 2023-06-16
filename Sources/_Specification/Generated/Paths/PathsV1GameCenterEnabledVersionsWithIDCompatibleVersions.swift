@@ -61,6 +61,7 @@ extension Resources.V1.GameCenterEnabledVersions.WithID {
             case appInfos
             case appPricePoints
             case appPriceSchedule
+            case appStoreVersionExperimentsV2
             case appStoreVersions
             case availableInNewTerritories
             case availableTerritories

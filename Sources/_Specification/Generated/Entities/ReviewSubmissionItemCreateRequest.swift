@@ -21,6 +21,7 @@ public struct ReviewSubmissionItemCreateRequest: Codable, Hashable {
             public var appStoreVersion: AppStoreVersion?
             public var appCustomProductPageVersion: AppCustomProductPageVersion?
             public var appStoreVersionExperiment: AppStoreVersionExperiment?
+            public var appStoreVersionExperimentV2: AppStoreVersionExperimentV2?
             public var appEvent: AppEvent?
 
             public struct ReviewSubmission: Codable, Hashable {
@@ -111,6 +112,28 @@ public struct ReviewSubmissionItemCreateRequest: Codable, Hashable {
                 }
             }
 
+            public struct AppStoreVersionExperimentV2: Codable, Hashable {
+                public var data: Data?
+
+                public struct Data: Codable, Hashable, Identifiable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, Codable, CaseIterable {
+                        case appStoreVersionExperiments
+                    }
+
+                    public init(type: `Type`, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: Data? = nil) {
+                    self.data = data
+                }
+            }
+
             public struct AppEvent: Codable, Hashable {
                 public var data: Data?
 
@@ -133,11 +156,12 @@ public struct ReviewSubmissionItemCreateRequest: Codable, Hashable {
                 }
             }
 
-            public init(reviewSubmission: ReviewSubmission, appStoreVersion: AppStoreVersion? = nil, appCustomProductPageVersion: AppCustomProductPageVersion? = nil, appStoreVersionExperiment: AppStoreVersionExperiment? = nil, appEvent: AppEvent? = nil) {
+            public init(reviewSubmission: ReviewSubmission, appStoreVersion: AppStoreVersion? = nil, appCustomProductPageVersion: AppCustomProductPageVersion? = nil, appStoreVersionExperiment: AppStoreVersionExperiment? = nil, appStoreVersionExperimentV2: AppStoreVersionExperimentV2? = nil, appEvent: AppEvent? = nil) {
                 self.reviewSubmission = reviewSubmission
                 self.appStoreVersion = appStoreVersion
                 self.appCustomProductPageVersion = appCustomProductPageVersion
                 self.appStoreVersionExperiment = appStoreVersionExperiment
+                self.appStoreVersionExperimentV2 = appStoreVersionExperimentV2
                 self.appEvent = appEvent
             }
         }

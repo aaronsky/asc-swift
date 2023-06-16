@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct PrereleaseVersion: Codable, Hashable, Identifiable {
+public struct PreReleaseVersion: Codable, Hashable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?

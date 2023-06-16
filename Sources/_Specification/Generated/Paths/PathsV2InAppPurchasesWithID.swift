@@ -15,14 +15,15 @@ extension Resources.V2.InAppPurchases {
         /// Path: `/v2/inAppPurchases/{id}`
         public let path: String
 
-        public func get(fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, include: [Include]? = nil, fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]? = nil, fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsInAppPurchasePricePoints: [FieldsInAppPurchasePricePoints]? = nil, fieldsInAppPurchaseLocalizations: [FieldsInAppPurchaseLocalizations]? = nil, fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]? = nil, fieldsInAppPurchaseContents: [FieldsInAppPurchaseContents]? = nil, limitInAppPurchaseLocalizations: Int? = nil, limitPricePoints: Int? = nil) -> Request<_Specification.InAppPurchaseV2Response> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsInAppPurchases, include, fieldsInAppPurchaseAppStoreReviewScreenshots, fieldsPromotedPurchases, fieldsInAppPurchasePricePoints, fieldsInAppPurchaseLocalizations, fieldsInAppPurchasePriceSchedules, fieldsInAppPurchaseContents, limitInAppPurchaseLocalizations, limitPricePoints), id: "inAppPurchases-get_instance")
+        public func get(fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, include: [Include]? = nil, fieldsInAppPurchaseAvailabilities: [FieldsInAppPurchaseAvailabilities]? = nil, fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]? = nil, fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsInAppPurchasePricePoints: [FieldsInAppPurchasePricePoints]? = nil, fieldsInAppPurchaseLocalizations: [FieldsInAppPurchaseLocalizations]? = nil, fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]? = nil, fieldsInAppPurchaseContents: [FieldsInAppPurchaseContents]? = nil, limitInAppPurchaseLocalizations: Int? = nil, limitPricePoints: Int? = nil) -> Request<_Specification.InAppPurchaseV2Response> {
+            Request(method: "GET", url: path, query: makeGetQuery(fieldsInAppPurchases, include, fieldsInAppPurchaseAvailabilities, fieldsInAppPurchaseAppStoreReviewScreenshots, fieldsPromotedPurchases, fieldsInAppPurchasePricePoints, fieldsInAppPurchaseLocalizations, fieldsInAppPurchasePriceSchedules, fieldsInAppPurchaseContents, limitInAppPurchaseLocalizations, limitPricePoints), id: "inAppPurchases-get_instance")
         }
 
-        private func makeGetQuery(_ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ include: [Include]?, _ fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]?, _ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsInAppPurchasePricePoints: [FieldsInAppPurchasePricePoints]?, _ fieldsInAppPurchaseLocalizations: [FieldsInAppPurchaseLocalizations]?, _ fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]?, _ fieldsInAppPurchaseContents: [FieldsInAppPurchaseContents]?, _ limitInAppPurchaseLocalizations: Int?, _ limitPricePoints: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ include: [Include]?, _ fieldsInAppPurchaseAvailabilities: [FieldsInAppPurchaseAvailabilities]?, _ fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]?, _ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsInAppPurchasePricePoints: [FieldsInAppPurchasePricePoints]?, _ fieldsInAppPurchaseLocalizations: [FieldsInAppPurchaseLocalizations]?, _ fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]?, _ fieldsInAppPurchaseContents: [FieldsInAppPurchaseContents]?, _ limitInAppPurchaseLocalizations: Int?, _ limitPricePoints: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsInAppPurchases, forKey: "fields[inAppPurchases]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(fieldsInAppPurchaseAvailabilities, forKey: "fields[inAppPurchaseAvailabilities]")
             encoder.encode(fieldsInAppPurchaseAppStoreReviewScreenshots, forKey: "fields[inAppPurchaseAppStoreReviewScreenshots]")
             encoder.encode(fieldsPromotedPurchases, forKey: "fields[promotedPurchases]")
             encoder.encode(fieldsInAppPurchasePricePoints, forKey: "fields[inAppPurchasePricePoints]")
@@ -42,6 +43,7 @@ extension Resources.V2.InAppPurchases {
             case contentHosting
             case familySharable
             case iapPriceSchedule
+            case inAppPurchaseAvailability
             case inAppPurchaseLocalizations
             case inAppPurchaseType
             case name
@@ -56,9 +58,16 @@ extension Resources.V2.InAppPurchases {
             case appStoreReviewScreenshot
             case content
             case iapPriceSchedule
+            case inAppPurchaseAvailability
             case inAppPurchaseLocalizations
             case pricePoints
             case promotedPurchase
+        }
+
+        public enum FieldsInAppPurchaseAvailabilities: String, Codable, CaseIterable {
+            case availableInNewTerritories
+            case availableTerritories
+            case inAppPurchase
         }
 
         public enum FieldsInAppPurchaseAppStoreReviewScreenshots: String, Codable, CaseIterable {

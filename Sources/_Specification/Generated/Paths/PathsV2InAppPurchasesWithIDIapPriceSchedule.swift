@@ -48,6 +48,7 @@ extension Resources.V2.InAppPurchases.WithID {
             case contentHosting
             case familySharable
             case iapPriceSchedule
+            case inAppPurchaseAvailability
             case inAppPurchaseLocalizations
             case inAppPurchaseType
             case name

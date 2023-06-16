@@ -12,7 +12,7 @@ public struct BuildResponse: Codable, Hashable {
     public var links: DocumentLinks
 
     public enum IncludedItem: Codable, Hashable {
-        case prereleaseVersion(PrereleaseVersion)
+        case preReleaseVersion(PreReleaseVersion)
         case betaTester(BetaTester)
         case betaGroup(BetaGroup)
         case betaBuildLocalization(BetaBuildLocalization)
@@ -26,8 +26,8 @@ public struct BuildResponse: Codable, Hashable {
 
         public init(from decoder: Decoder) throws {
             let container = try decoder.singleValueContainer()
-            if let value = try? container.decode(PrereleaseVersion.self) {
-                self = .prereleaseVersion(value)
+            if let value = try? container.decode(PreReleaseVersion.self) {
+                self = .preReleaseVersion(value)
             } else if let value = try? container.decode(BetaTester.self) {
                 self = .betaTester(value)
             } else if let value = try? container.decode(BetaGroup.self) {
@@ -51,7 +51,7 @@ public struct BuildResponse: Codable, Hashable {
             } else {
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (PrereleaseVersion, BetaTester, BetaGroup, BetaBuildLocalization, AppEncryptionDeclaration, BetaAppReviewSubmission, App, BuildBetaDetail, AppStoreVersion, BuildIcon, BuildBundle)."
+                    debugDescription: "Data could not be decoded as any of the expected types (PreReleaseVersion, BetaTester, BetaGroup, BetaBuildLocalization, AppEncryptionDeclaration, BetaAppReviewSubmission, App, BuildBetaDetail, AppStoreVersion, BuildIcon, BuildBundle)."
                 )
             }
         }
@@ -59,7 +59,7 @@ public struct BuildResponse: Codable, Hashable {
         public func encode(to encoder: Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
-            case .prereleaseVersion(let value): try container.encode(value)
+            case .preReleaseVersion(let value): try container.encode(value)
             case .betaTester(let value): try container.encode(value)
             case .betaGroup(let value): try container.encode(value)
             case .betaBuildLocalization(let value): try container.encode(value)

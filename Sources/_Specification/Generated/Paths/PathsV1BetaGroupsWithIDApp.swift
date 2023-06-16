@@ -33,6 +33,7 @@ extension Resources.V1.BetaGroups.WithID {
             case appInfos
             case appPricePoints
             case appPriceSchedule
+            case appStoreVersionExperimentsV2
             case appStoreVersions
             case availableInNewTerritories
             case availableTerritories

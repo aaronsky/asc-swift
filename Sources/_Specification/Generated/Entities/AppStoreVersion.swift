@@ -67,6 +67,7 @@ public struct AppStoreVersion: Codable, Hashable, Identifiable {
         public var appStoreVersionSubmission: AppStoreVersionSubmission?
         public var appClipDefaultExperience: AppClipDefaultExperience?
         public var appStoreVersionExperiments: AppStoreVersionExperiments?
+        public var appStoreVersionExperimentsV2: AppStoreVersionExperimentsV2?
 
         public struct App: Codable, Hashable {
             public var links: Links?
@@ -463,7 +464,48 @@ public struct AppStoreVersion: Codable, Hashable, Identifiable {
             }
         }
 
-        public init(app: App? = nil, ageRatingDeclaration: AgeRatingDeclaration? = nil, appStoreVersionLocalizations: AppStoreVersionLocalizations? = nil, build: Build? = nil, appStoreVersionPhasedRelease: AppStoreVersionPhasedRelease? = nil, routingAppCoverage: RoutingAppCoverage? = nil, appStoreReviewDetail: AppStoreReviewDetail? = nil, appStoreVersionSubmission: AppStoreVersionSubmission? = nil, appClipDefaultExperience: AppClipDefaultExperience? = nil, appStoreVersionExperiments: AppStoreVersionExperiments? = nil) {
+        public struct AppStoreVersionExperimentsV2: Codable, Hashable {
+            public var links: Links?
+            public var meta: PagingInformation?
+            public var data: [Datum]?
+
+            public struct Links: Codable, Hashable {
+                public var this: URL?
+                public var related: URL?
+
+                public init(this: URL? = nil, related: URL? = nil) {
+                    self.this = this
+                    self.related = related
+                }
+
+                private enum CodingKeys: String, CodingKey {
+                    case this = "self"
+                    case related
+                }
+            }
+
+            public struct Datum: Codable, Hashable, Identifiable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, Codable, CaseIterable {
+                    case appStoreVersionExperiments
+                }
+
+                public init(type: `Type`, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: Links? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+                self.links = links
+                self.meta = meta
+                self.data = data
+            }
+        }
+
+        public init(app: App? = nil, ageRatingDeclaration: AgeRatingDeclaration? = nil, appStoreVersionLocalizations: AppStoreVersionLocalizations? = nil, build: Build? = nil, appStoreVersionPhasedRelease: AppStoreVersionPhasedRelease? = nil, routingAppCoverage: RoutingAppCoverage? = nil, appStoreReviewDetail: AppStoreReviewDetail? = nil, appStoreVersionSubmission: AppStoreVersionSubmission? = nil, appClipDefaultExperience: AppClipDefaultExperience? = nil, appStoreVersionExperiments: AppStoreVersionExperiments? = nil, appStoreVersionExperimentsV2: AppStoreVersionExperimentsV2? = nil) {
             self.app = app
             self.ageRatingDeclaration = ageRatingDeclaration
             self.appStoreVersionLocalizations = appStoreVersionLocalizations
@@ -474,6 +516,7 @@ public struct AppStoreVersion: Codable, Hashable, Identifiable {
             self.appStoreVersionSubmission = appStoreVersionSubmission
             self.appClipDefaultExperience = appClipDefaultExperience
             self.appStoreVersionExperiments = appStoreVersionExperiments
+            self.appStoreVersionExperimentsV2 = appStoreVersionExperimentsV2
         }
     }
 

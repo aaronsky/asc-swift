@@ -56,6 +56,7 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
         public var appStoreReviewScreenshot: AppStoreReviewScreenshot?
         public var promotedPurchase: PromotedPurchase?
         public var iapPriceSchedule: IapPriceSchedule?
+        public var inAppPurchaseAvailability: InAppPurchaseAvailability?
 
         public struct InAppPurchaseLocalizations: Codable, Hashable {
             public var links: Links?
@@ -295,13 +296,53 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
             }
         }
 
-        public init(inAppPurchaseLocalizations: InAppPurchaseLocalizations? = nil, pricePoints: PricePoints? = nil, content: Content? = nil, appStoreReviewScreenshot: AppStoreReviewScreenshot? = nil, promotedPurchase: PromotedPurchase? = nil, iapPriceSchedule: IapPriceSchedule? = nil) {
+        public struct InAppPurchaseAvailability: Codable, Hashable {
+            public var links: Links?
+            public var data: Data?
+
+            public struct Links: Codable, Hashable {
+                public var this: URL?
+                public var related: URL?
+
+                public init(this: URL? = nil, related: URL? = nil) {
+                    self.this = this
+                    self.related = related
+                }
+
+                private enum CodingKeys: String, CodingKey {
+                    case this = "self"
+                    case related
+                }
+            }
+
+            public struct Data: Codable, Hashable, Identifiable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, Codable, CaseIterable {
+                    case inAppPurchaseAvailabilities
+                }
+
+                public init(type: `Type`, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: Links? = nil, data: Data? = nil) {
+                self.links = links
+                self.data = data
+            }
+        }
+
+        public init(inAppPurchaseLocalizations: InAppPurchaseLocalizations? = nil, pricePoints: PricePoints? = nil, content: Content? = nil, appStoreReviewScreenshot: AppStoreReviewScreenshot? = nil, promotedPurchase: PromotedPurchase? = nil, iapPriceSchedule: IapPriceSchedule? = nil, inAppPurchaseAvailability: InAppPurchaseAvailability? = nil) {
             self.inAppPurchaseLocalizations = inAppPurchaseLocalizations
             self.pricePoints = pricePoints
             self.content = content
             self.appStoreReviewScreenshot = appStoreReviewScreenshot
             self.promotedPurchase = promotedPurchase
             self.iapPriceSchedule = iapPriceSchedule
+            self.inAppPurchaseAvailability = inAppPurchaseAvailability
         }
     }
 

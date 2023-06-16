@@ -42,6 +42,8 @@ public struct ReviewSubmission: Codable, Hashable, Identifiable {
         public var app: App?
         public var items: Items?
         public var appStoreVersionForReview: AppStoreVersionForReview?
+        public var submittedByActor: SubmittedByActor?
+        public var lastUpdatedByActor: LastUpdatedByActor?
 
         public struct App: Codable, Hashable {
             public var links: Links?
@@ -162,10 +164,90 @@ public struct ReviewSubmission: Codable, Hashable, Identifiable {
             }
         }
 
-        public init(app: App? = nil, items: Items? = nil, appStoreVersionForReview: AppStoreVersionForReview? = nil) {
+        public struct SubmittedByActor: Codable, Hashable {
+            public var links: Links?
+            public var data: Data?
+
+            public struct Links: Codable, Hashable {
+                public var this: URL?
+                public var related: URL?
+
+                public init(this: URL? = nil, related: URL? = nil) {
+                    self.this = this
+                    self.related = related
+                }
+
+                private enum CodingKeys: String, CodingKey {
+                    case this = "self"
+                    case related
+                }
+            }
+
+            public struct Data: Codable, Hashable, Identifiable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, Codable, CaseIterable {
+                    case actors
+                }
+
+                public init(type: `Type`, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: Links? = nil, data: Data? = nil) {
+                self.links = links
+                self.data = data
+            }
+        }
+
+        public struct LastUpdatedByActor: Codable, Hashable {
+            public var links: Links?
+            public var data: Data?
+
+            public struct Links: Codable, Hashable {
+                public var this: URL?
+                public var related: URL?
+
+                public init(this: URL? = nil, related: URL? = nil) {
+                    self.this = this
+                    self.related = related
+                }
+
+                private enum CodingKeys: String, CodingKey {
+                    case this = "self"
+                    case related
+                }
+            }
+
+            public struct Data: Codable, Hashable, Identifiable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, Codable, CaseIterable {
+                    case actors
+                }
+
+                public init(type: `Type`, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: Links? = nil, data: Data? = nil) {
+                self.links = links
+                self.data = data
+            }
+        }
+
+        public init(app: App? = nil, items: Items? = nil, appStoreVersionForReview: AppStoreVersionForReview? = nil, submittedByActor: SubmittedByActor? = nil, lastUpdatedByActor: LastUpdatedByActor? = nil) {
             self.app = app
             self.items = items
             self.appStoreVersionForReview = appStoreVersionForReview
+            self.submittedByActor = submittedByActor
+            self.lastUpdatedByActor = lastUpdatedByActor
         }
     }
 

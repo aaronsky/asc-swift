@@ -18,6 +18,7 @@ public struct InAppPurchasesV2Response: Codable, Hashable {
         case inAppPurchaseAppStoreReviewScreenshot(InAppPurchaseAppStoreReviewScreenshot)
         case promotedPurchase(PromotedPurchase)
         case inAppPurchasePriceSchedule(InAppPurchasePriceSchedule)
+        case inAppPurchaseAvailability(InAppPurchaseAvailability)
 
         public init(from decoder: Decoder) throws {
             let container = try decoder.singleValueContainer()
@@ -33,10 +34,12 @@ public struct InAppPurchasesV2Response: Codable, Hashable {
                 self = .promotedPurchase(value)
             } else if let value = try? container.decode(InAppPurchasePriceSchedule.self) {
                 self = .inAppPurchasePriceSchedule(value)
+            } else if let value = try? container.decode(InAppPurchaseAvailability.self) {
+                self = .inAppPurchaseAvailability(value)
             } else {
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (InAppPurchaseLocalization, InAppPurchasePricePoint, InAppPurchaseContent, InAppPurchaseAppStoreReviewScreenshot, PromotedPurchase, InAppPurchasePriceSchedule)."
+                    debugDescription: "Data could not be decoded as any of the expected types (InAppPurchaseLocalization, InAppPurchasePricePoint, InAppPurchaseContent, InAppPurchaseAppStoreReviewScreenshot, PromotedPurchase, InAppPurchasePriceSchedule, InAppPurchaseAvailability)."
                 )
             }
         }
@@ -50,6 +53,7 @@ public struct InAppPurchasesV2Response: Codable, Hashable {
             case .inAppPurchaseAppStoreReviewScreenshot(let value): try container.encode(value)
             case .promotedPurchase(let value): try container.encode(value)
             case .inAppPurchasePriceSchedule(let value): try container.encode(value)
+            case .inAppPurchaseAvailability(let value): try container.encode(value)
             }
         }
     }

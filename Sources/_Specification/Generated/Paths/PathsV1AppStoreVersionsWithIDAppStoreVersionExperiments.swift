@@ -15,6 +15,7 @@ extension Resources.V1.AppStoreVersions.WithID {
         /// Path: `/v1/appStoreVersions/{id}/appStoreVersionExperiments`
         public let path: String
 
+        @available(*, deprecated, message: "Deprecated")
         public func get(filterState: [FilterState]? = nil, fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, limit: Int? = nil, limitAppStoreVersionExperimentTreatments: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppStoreVersionExperimentsResponse> {
             Request(method: "GET", url: path, query: makeGetQuery(filterState, fieldsAppStoreVersionExperiments, fieldsAppStoreVersionExperimentTreatments, fieldsAppStoreVersions, limit, limitAppStoreVersionExperimentTreatments, include), id: "appStoreVersions-appStoreVersionExperiments-get_to_many_related")
         }
@@ -60,6 +61,7 @@ extension Resources.V1.AppStoreVersions.WithID {
             case appIconName
             case appStoreVersionExperiment
             case appStoreVersionExperimentTreatmentLocalizations
+            case appStoreVersionExperimentV2
             case name
             case promotedDate
         }
@@ -71,6 +73,7 @@ extension Resources.V1.AppStoreVersions.WithID {
             case appStoreReviewDetail
             case appStoreState
             case appStoreVersionExperiments
+            case appStoreVersionExperimentsV2
             case appStoreVersionLocalizations
             case appStoreVersionPhasedRelease
             case appStoreVersionSubmission

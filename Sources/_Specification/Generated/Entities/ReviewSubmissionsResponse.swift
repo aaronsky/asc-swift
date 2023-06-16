@@ -15,6 +15,7 @@ public struct ReviewSubmissionsResponse: Codable, Hashable {
         case app(App)
         case reviewSubmissionItem(ReviewSubmissionItem)
         case appStoreVersion(AppStoreVersion)
+        case actor(Actor)
 
         public init(from decoder: Decoder) throws {
             let container = try decoder.singleValueContainer()
@@ -24,10 +25,12 @@ public struct ReviewSubmissionsResponse: Codable, Hashable {
                 self = .reviewSubmissionItem(value)
             } else if let value = try? container.decode(AppStoreVersion.self) {
                 self = .appStoreVersion(value)
+            } else if let value = try? container.decode(Actor.self) {
+                self = .actor(value)
             } else {
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (App, ReviewSubmissionItem, AppStoreVersion)."
+                    debugDescription: "Data could not be decoded as any of the expected types (App, ReviewSubmissionItem, AppStoreVersion, Actor)."
                 )
             }
         }
@@ -38,6 +41,7 @@ public struct ReviewSubmissionsResponse: Codable, Hashable {
             case .app(let value): try container.encode(value)
             case .reviewSubmissionItem(let value): try container.encode(value)
             case .appStoreVersion(let value): try container.encode(value)
+            case .actor(let value): try container.encode(value)
             }
         }
     }

@@ -15,7 +15,7 @@ public struct AppResponse: Codable, Hashable {
         case ciProduct(CiProduct)
         case betaGroup(BetaGroup)
         case appStoreVersion(AppStoreVersion)
-        case prereleaseVersion(PrereleaseVersion)
+        case preReleaseVersion(PreReleaseVersion)
         case betaAppLocalization(BetaAppLocalization)
         case build(Build)
         case betaLicenseAgreement(BetaLicenseAgreement)
@@ -35,6 +35,7 @@ public struct AppResponse: Codable, Hashable {
         case appEvent(AppEvent)
         case reviewSubmission(ReviewSubmission)
         case subscriptionGracePeriod(SubscriptionGracePeriod)
+        case appStoreVersionExperimentV2(AppStoreVersionExperimentV2)
 
         public init(from decoder: Decoder) throws {
             let container = try decoder.singleValueContainer()
@@ -44,8 +45,8 @@ public struct AppResponse: Codable, Hashable {
                 self = .betaGroup(value)
             } else if let value = try? container.decode(AppStoreVersion.self) {
                 self = .appStoreVersion(value)
-            } else if let value = try? container.decode(PrereleaseVersion.self) {
-                self = .prereleaseVersion(value)
+            } else if let value = try? container.decode(PreReleaseVersion.self) {
+                self = .preReleaseVersion(value)
             } else if let value = try? container.decode(BetaAppLocalization.self) {
                 self = .betaAppLocalization(value)
             } else if let value = try? container.decode(Build.self) {
@@ -84,10 +85,12 @@ public struct AppResponse: Codable, Hashable {
                 self = .reviewSubmission(value)
             } else if let value = try? container.decode(SubscriptionGracePeriod.self) {
                 self = .subscriptionGracePeriod(value)
+            } else if let value = try? container.decode(AppStoreVersionExperimentV2.self) {
+                self = .appStoreVersionExperimentV2(value)
             } else {
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (CiProduct, BetaGroup, AppStoreVersion, PrereleaseVersion, BetaAppLocalization, Build, BetaLicenseAgreement, BetaAppReviewDetail, AppInfo, AppClip, EndUserLicenseAgreement, AppPreOrder, AppPrice, Territory, InAppPurchase, SubscriptionGroup, GameCenterEnabledVersion, AppCustomProductPage, InAppPurchaseV2, PromotedPurchase, AppEvent, ReviewSubmission, SubscriptionGracePeriod)."
+                    debugDescription: "Data could not be decoded as any of the expected types (CiProduct, BetaGroup, AppStoreVersion, PreReleaseVersion, BetaAppLocalization, Build, BetaLicenseAgreement, BetaAppReviewDetail, AppInfo, AppClip, EndUserLicenseAgreement, AppPreOrder, AppPrice, Territory, InAppPurchase, SubscriptionGroup, GameCenterEnabledVersion, AppCustomProductPage, InAppPurchaseV2, PromotedPurchase, AppEvent, ReviewSubmission, SubscriptionGracePeriod, AppStoreVersionExperimentV2)."
                 )
             }
         }
@@ -98,7 +101,7 @@ public struct AppResponse: Codable, Hashable {
             case .ciProduct(let value): try container.encode(value)
             case .betaGroup(let value): try container.encode(value)
             case .appStoreVersion(let value): try container.encode(value)
-            case .prereleaseVersion(let value): try container.encode(value)
+            case .preReleaseVersion(let value): try container.encode(value)
             case .betaAppLocalization(let value): try container.encode(value)
             case .build(let value): try container.encode(value)
             case .betaLicenseAgreement(let value): try container.encode(value)
@@ -118,6 +121,7 @@ public struct AppResponse: Codable, Hashable {
             case .appEvent(let value): try container.encode(value)
             case .reviewSubmission(let value): try container.encode(value)
             case .subscriptionGracePeriod(let value): try container.encode(value)
+            case .appStoreVersionExperimentV2(let value): try container.encode(value)
             }
         }
     }

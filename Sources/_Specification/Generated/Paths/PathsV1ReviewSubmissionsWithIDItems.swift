@@ -32,10 +32,13 @@ extension Resources.V1.ReviewSubmissions.WithID {
         }
 
         public enum FieldsAppStoreVersionExperiments: String, Codable, CaseIterable {
-            case appStoreVersion
+            case app
             case appStoreVersionExperimentTreatments
+            case controlVersions
             case endDate
+            case latestControlVersion
             case name
+            case platform
             case reviewRequired
             case startDate
             case started
@@ -48,6 +51,7 @@ extension Resources.V1.ReviewSubmissions.WithID {
             case appEvent
             case appStoreVersion
             case appStoreVersionExperiment
+            case appStoreVersionExperimentV2
             case removed
             case resolved
             case reviewSubmission
@@ -61,6 +65,7 @@ extension Resources.V1.ReviewSubmissions.WithID {
             case appStoreReviewDetail
             case appStoreState
             case appStoreVersionExperiments
+            case appStoreVersionExperimentsV2
             case appStoreVersionLocalizations
             case appStoreVersionPhasedRelease
             case appStoreVersionSubmission
@@ -103,6 +108,7 @@ extension Resources.V1.ReviewSubmissions.WithID {
             case appEvent
             case appStoreVersion
             case appStoreVersionExperiment
+            case appStoreVersionExperimentV2
         }
     }
 }

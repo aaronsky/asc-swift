@@ -15,6 +15,7 @@ extension Resources.V1.AppStoreVersionExperiments.WithID {
         /// Path: `/v1/appStoreVersionExperiments/{id}/appStoreVersionExperimentTreatments`
         public let path: String
 
+        @available(*, deprecated, message: "Deprecated")
         public func get(fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]? = nil, fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]? = nil, limit: Int? = nil, limitAppStoreVersionExperimentTreatmentLocalizations: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppStoreVersionExperimentTreatmentsResponse> {
             Request(method: "GET", url: path, query: makeGetQuery(fieldsAppStoreVersionExperiments, fieldsAppStoreVersionExperimentTreatments, fieldsAppStoreVersionExperimentTreatmentLocalizations, limit, limitAppStoreVersionExperimentTreatmentLocalizations, include), id: "appStoreVersionExperiments-appStoreVersionExperimentTreatments-get_to_many_related")
         }
@@ -31,10 +32,13 @@ extension Resources.V1.AppStoreVersionExperiments.WithID {
         }
 
         public enum FieldsAppStoreVersionExperiments: String, Codable, CaseIterable {
-            case appStoreVersion
+            case app
             case appStoreVersionExperimentTreatments
+            case controlVersions
             case endDate
+            case latestControlVersion
             case name
+            case platform
             case reviewRequired
             case startDate
             case started
@@ -47,6 +51,7 @@ extension Resources.V1.AppStoreVersionExperiments.WithID {
             case appIconName
             case appStoreVersionExperiment
             case appStoreVersionExperimentTreatmentLocalizations
+            case appStoreVersionExperimentV2
             case name
             case promotedDate
         }
@@ -61,6 +66,7 @@ extension Resources.V1.AppStoreVersionExperiments.WithID {
         public enum Include: String, Codable, CaseIterable {
             case appStoreVersionExperiment
             case appStoreVersionExperimentTreatmentLocalizations
+            case appStoreVersionExperimentV2
         }
     }
 }

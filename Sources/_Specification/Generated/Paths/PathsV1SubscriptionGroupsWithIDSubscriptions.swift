@@ -15,11 +15,11 @@ extension Resources.V1.SubscriptionGroups.WithID {
         /// Path: `/v1/subscriptionGroups/{id}/subscriptions`
         public let path: String
 
-        public func get(filterName: [String]? = nil, filterProductID: [String]? = nil, filterState: [FilterState]? = nil, sort: [Sort]? = nil, fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]? = nil, fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionGroups: [FieldsSubscriptionGroups]? = nil, fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]? = nil, fieldsSubscriptionPrices: [FieldsSubscriptionPrices]? = nil, fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]? = nil, limit: Int? = nil, limitSubscriptionLocalizations: Int? = nil, limitIntroductoryOffers: Int? = nil, limitPromotionalOffers: Int? = nil, limitOfferCodes: Int? = nil, limitPrices: Int? = nil, include: [Include]? = nil) -> Request<_Specification.SubscriptionsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterName, filterProductID, filterState, sort, fieldsPromotedPurchases, fieldsSubscriptionPromotionalOffers, fieldsSubscriptionOfferCodes, fieldsSubscriptionAppStoreReviewScreenshots, fieldsSubscriptions, fieldsSubscriptionGroups, fieldsSubscriptionIntroductoryOffers, fieldsSubscriptionPrices, fieldsSubscriptionLocalizations, limit, limitSubscriptionLocalizations, limitIntroductoryOffers, limitPromotionalOffers, limitOfferCodes, limitPrices, include), id: "subscriptionGroups-subscriptions-get_to_many_related")
+        public func get(filterName: [String]? = nil, filterProductID: [String]? = nil, filterState: [FilterState]? = nil, sort: [Sort]? = nil, fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]? = nil, fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]? = nil, fieldsSubscriptionGroups: [FieldsSubscriptionGroups]? = nil, fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]? = nil, fieldsSubscriptionPrices: [FieldsSubscriptionPrices]? = nil, fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]? = nil, limit: Int? = nil, limitSubscriptionLocalizations: Int? = nil, limitIntroductoryOffers: Int? = nil, limitPromotionalOffers: Int? = nil, limitOfferCodes: Int? = nil, limitPrices: Int? = nil, include: [Include]? = nil) -> Request<_Specification.SubscriptionsResponse> {
+            Request(method: "GET", url: path, query: makeGetQuery(filterName, filterProductID, filterState, sort, fieldsPromotedPurchases, fieldsSubscriptionPromotionalOffers, fieldsSubscriptionOfferCodes, fieldsSubscriptionAppStoreReviewScreenshots, fieldsSubscriptions, fieldsSubscriptionAvailabilities, fieldsSubscriptionGroups, fieldsSubscriptionIntroductoryOffers, fieldsSubscriptionPrices, fieldsSubscriptionLocalizations, limit, limitSubscriptionLocalizations, limitIntroductoryOffers, limitPromotionalOffers, limitOfferCodes, limitPrices, include), id: "subscriptionGroups-subscriptions-get_to_many_related")
         }
 
-        private func makeGetQuery(_ filterName: [String]?, _ filterProductID: [String]?, _ filterState: [FilterState]?, _ sort: [Sort]?, _ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]?, _ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionGroups: [FieldsSubscriptionGroups]?, _ fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]?, _ fieldsSubscriptionPrices: [FieldsSubscriptionPrices]?, _ fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]?, _ limit: Int?, _ limitSubscriptionLocalizations: Int?, _ limitIntroductoryOffers: Int?, _ limitPromotionalOffers: Int?, _ limitOfferCodes: Int?, _ limitPrices: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterName: [String]?, _ filterProductID: [String]?, _ filterState: [FilterState]?, _ sort: [Sort]?, _ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]?, _ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]?, _ fieldsSubscriptionGroups: [FieldsSubscriptionGroups]?, _ fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]?, _ fieldsSubscriptionPrices: [FieldsSubscriptionPrices]?, _ fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]?, _ limit: Int?, _ limitSubscriptionLocalizations: Int?, _ limitIntroductoryOffers: Int?, _ limitPromotionalOffers: Int?, _ limitOfferCodes: Int?, _ limitPrices: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterName, forKey: "filter[name]")
             encoder.encode(filterProductID, forKey: "filter[productId]")
@@ -30,6 +30,7 @@ extension Resources.V1.SubscriptionGroups.WithID {
             encoder.encode(fieldsSubscriptionOfferCodes, forKey: "fields[subscriptionOfferCodes]")
             encoder.encode(fieldsSubscriptionAppStoreReviewScreenshots, forKey: "fields[subscriptionAppStoreReviewScreenshots]")
             encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
+            encoder.encode(fieldsSubscriptionAvailabilities, forKey: "fields[subscriptionAvailabilities]")
             encoder.encode(fieldsSubscriptionGroups, forKey: "fields[subscriptionGroups]")
             encoder.encode(fieldsSubscriptionIntroductoryOffers, forKey: "fields[subscriptionIntroductoryOffers]")
             encoder.encode(fieldsSubscriptionPrices, forKey: "fields[subscriptionPrices]")
@@ -126,8 +127,15 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case promotionalOffers
             case reviewNote
             case state
+            case subscriptionAvailability
             case subscriptionLocalizations
             case subscriptionPeriod
+        }
+
+        public enum FieldsSubscriptionAvailabilities: String, Codable, CaseIterable {
+            case availableInNewTerritories
+            case availableTerritories
+            case subscription
         }
 
         public enum FieldsSubscriptionGroups: String, Codable, CaseIterable {
@@ -173,6 +181,7 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case prices
             case promotedPurchase
             case promotionalOffers
+            case subscriptionAvailability
             case subscriptionLocalizations
         }
     }

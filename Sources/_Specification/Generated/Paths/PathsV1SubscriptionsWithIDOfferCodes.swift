@@ -84,6 +84,7 @@ extension Resources.V1.Subscriptions.WithID {
             case promotionalOffers
             case reviewNote
             case state
+            case subscriptionAvailability
             case subscriptionLocalizations
             case subscriptionPeriod
         }

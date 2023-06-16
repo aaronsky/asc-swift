@@ -15,6 +15,7 @@ public struct ReviewSubmissionItemsResponse: Codable, Hashable {
         case appStoreVersion(AppStoreVersion)
         case appCustomProductPageVersion(AppCustomProductPageVersion)
         case appStoreVersionExperiment(AppStoreVersionExperiment)
+        case appStoreVersionExperimentV2(AppStoreVersionExperimentV2)
         case appEvent(AppEvent)
 
         public init(from decoder: Decoder) throws {
@@ -25,12 +26,14 @@ public struct ReviewSubmissionItemsResponse: Codable, Hashable {
                 self = .appCustomProductPageVersion(value)
             } else if let value = try? container.decode(AppStoreVersionExperiment.self) {
                 self = .appStoreVersionExperiment(value)
+            } else if let value = try? container.decode(AppStoreVersionExperimentV2.self) {
+                self = .appStoreVersionExperimentV2(value)
             } else if let value = try? container.decode(AppEvent.self) {
                 self = .appEvent(value)
             } else {
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (AppStoreVersion, AppCustomProductPageVersion, AppStoreVersionExperiment, AppEvent)."
+                    debugDescription: "Data could not be decoded as any of the expected types (AppStoreVersion, AppCustomProductPageVersion, AppStoreVersionExperiment, AppStoreVersionExperimentV2, AppEvent)."
                 )
             }
         }
@@ -41,6 +44,7 @@ public struct ReviewSubmissionItemsResponse: Codable, Hashable {
             case .appStoreVersion(let value): try container.encode(value)
             case .appCustomProductPageVersion(let value): try container.encode(value)
             case .appStoreVersionExperiment(let value): try container.encode(value)
+            case .appStoreVersionExperimentV2(let value): try container.encode(value)
             case .appEvent(let value): try container.encode(value)
             }
         }
