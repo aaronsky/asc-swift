@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: _Specification.AppEventLocalizationCreateRequest) -> Request<_Specification.AppEventLocalizationResponse> {
-            Request(method: "POST", url: path, body: body, id: "appEventLocalizations-create_instance")
+            Request(path: path, method: "POST", body: body, id: "appEventLocalizations-create_instance")
         }
     }
 }

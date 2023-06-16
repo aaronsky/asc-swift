@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(filterProductType: [FilterProductType]? = nil, filterApp: [String]? = nil, fieldsCiProducts: [FieldsCiProducts]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsCiBuildRuns: [FieldsCiBuildRuns]? = nil, fieldsCiWorkflows: [FieldsCiWorkflows]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, limitPrimaryRepositories: Int? = nil) -> Request<_Specification.CiProductsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterProductType, filterApp, fieldsCiProducts, limit, include, fieldsCiBuildRuns, fieldsCiWorkflows, fieldsApps, fieldsScmRepositories, limitPrimaryRepositories), id: "ciProducts-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(filterProductType, filterApp, fieldsCiProducts, limit, include, fieldsCiBuildRuns, fieldsCiWorkflows, fieldsApps, fieldsScmRepositories, limitPrimaryRepositories), id: "ciProducts-get_collection")
         }
 
         private func makeGetQuery(_ filterProductType: [FilterProductType]?, _ filterApp: [String]?, _ fieldsCiProducts: [FieldsCiProducts]?, _ limit: Int?, _ include: [Include]?, _ fieldsCiBuildRuns: [FieldsCiBuildRuns]?, _ fieldsCiWorkflows: [FieldsCiWorkflows]?, _ fieldsApps: [FieldsApps]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ limitPrimaryRepositories: Int?) -> [(String, String?)] {

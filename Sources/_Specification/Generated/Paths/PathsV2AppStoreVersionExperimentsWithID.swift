@@ -16,7 +16,7 @@ extension Resources.V2.AppStoreVersionExperiments {
         public let path: String
 
         public func get(fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, include: [Include]? = nil, fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]? = nil, limitAppStoreVersionExperimentTreatments: Int? = nil, limitControlVersions: Int? = nil) -> Request<_Specification.AppStoreVersionExperimentV2Response> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppStoreVersionExperiments, include, fieldsAppStoreVersionExperimentTreatments, limitAppStoreVersionExperimentTreatments, limitControlVersions), id: "appStoreVersionExperiments-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionExperiments, include, fieldsAppStoreVersionExperimentTreatments, limitAppStoreVersionExperimentTreatments, limitControlVersions), id: "appStoreVersionExperiments-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ include: [Include]?, _ fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]?, _ limitAppStoreVersionExperimentTreatments: Int?, _ limitControlVersions: Int?) -> [(String, String?)] {
@@ -62,11 +62,11 @@ extension Resources.V2.AppStoreVersionExperiments {
         }
 
         public func patch(_ body: _Specification.AppStoreVersionExperimentV2UpdateRequest) -> Request<_Specification.AppStoreVersionExperimentV2Response> {
-            Request(method: "PATCH", url: path, body: body, id: "appStoreVersionExperiments-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appStoreVersionExperiments-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "appStoreVersionExperiments-delete_instance")
+            Request(path: path, method: "DELETE", id: "appStoreVersionExperiments-delete_instance")
         }
     }
 }

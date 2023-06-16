@@ -16,7 +16,7 @@ extension Resources.V1.AppAvailabilities {
         public let path: String
 
         public func get(fieldsAppAvailabilities: [FieldsAppAvailabilities]? = nil, include: [Include]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limitAvailableTerritories: Int? = nil) -> Request<_Specification.AppAvailabilityResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppAvailabilities, include, fieldsTerritories, limitAvailableTerritories), id: "appAvailabilities-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppAvailabilities, include, fieldsTerritories, limitAvailableTerritories), id: "appAvailabilities-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppAvailabilities: [FieldsAppAvailabilities]?, _ include: [Include]?, _ fieldsTerritories: [FieldsTerritories]?, _ limitAvailableTerritories: Int?) -> [(String, String?)] {

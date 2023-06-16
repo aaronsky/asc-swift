@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: _Specification.CustomerReviewResponseV1CreateRequest) -> Request<_Specification.CustomerReviewResponseV1Response> {
-            Request(method: "POST", url: path, body: body, id: "customerReviewResponses-create_instance")
+            Request(path: path, method: "POST", body: body, id: "customerReviewResponses-create_instance")
         }
     }
 }

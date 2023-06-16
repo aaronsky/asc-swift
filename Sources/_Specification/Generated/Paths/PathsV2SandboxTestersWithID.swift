@@ -16,7 +16,7 @@ extension Resources.V2.SandboxTesters {
         public let path: String
 
         public func patch(_ body: _Specification.SandboxTesterV2UpdateRequest) -> Request<_Specification.SandboxTesterV2Response> {
-            Request(method: "PATCH", url: path, body: body, id: "sandboxTesters-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "sandboxTesters-update_instance")
         }
     }
 }

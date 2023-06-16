@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(filterCertificateType: [FilterCertificateType]? = nil, filterDisplayName: [String]? = nil, filterSerialNumber: [String]? = nil, filterID: [String]? = nil, sort: [Sort]? = nil, fieldsCertificates: [FieldsCertificates]? = nil, limit: Int? = nil) -> Request<_Specification.CertificatesResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterCertificateType, filterDisplayName, filterSerialNumber, filterID, sort, fieldsCertificates, limit), id: "certificates-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(filterCertificateType, filterDisplayName, filterSerialNumber, filterID, sort, fieldsCertificates, limit), id: "certificates-get_collection")
         }
 
         private func makeGetQuery(_ filterCertificateType: [FilterCertificateType]?, _ filterDisplayName: [String]?, _ filterSerialNumber: [String]?, _ filterID: [String]?, _ sort: [Sort]?, _ fieldsCertificates: [FieldsCertificates]?, _ limit: Int?) -> [(String, String?)] {
@@ -68,7 +68,7 @@ extension Resources.V1 {
         }
 
         public func post(_ body: _Specification.CertificateCreateRequest) -> Request<_Specification.CertificateResponse> {
-            Request(method: "POST", url: path, body: body, id: "certificates-create_instance")
+            Request(path: path, method: "POST", body: body, id: "certificates-create_instance")
         }
     }
 }

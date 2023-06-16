@@ -16,7 +16,7 @@ extension Resources.V1.SubscriptionOfferCodes.WithID {
         public let path: String
 
         public func get(fieldsSubscriptionOfferCodeCustomCodes: [FieldsSubscriptionOfferCodeCustomCodes]? = nil, fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<_Specification.SubscriptionOfferCodeCustomCodesResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsSubscriptionOfferCodeCustomCodes, fieldsSubscriptionOfferCodes, limit, include), id: "subscriptionOfferCodes-customCodes-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionOfferCodeCustomCodes, fieldsSubscriptionOfferCodes, limit, include), id: "subscriptionOfferCodes-customCodes-get_to_many_related")
         }
 
         private func makeGetQuery(_ fieldsSubscriptionOfferCodeCustomCodes: [FieldsSubscriptionOfferCodeCustomCodes]?, _ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {

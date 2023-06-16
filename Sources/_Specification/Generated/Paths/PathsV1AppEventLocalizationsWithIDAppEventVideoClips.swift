@@ -16,7 +16,7 @@ extension Resources.V1.AppEventLocalizations.WithID {
         public let path: String
 
         public func get(fieldsAppEventVideoClips: [FieldsAppEventVideoClips]? = nil, fieldsAppEventLocalizations: [FieldsAppEventLocalizations]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppEventVideoClipsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppEventVideoClips, fieldsAppEventLocalizations, limit, include), id: "appEventLocalizations-appEventVideoClips-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEventVideoClips, fieldsAppEventLocalizations, limit, include), id: "appEventLocalizations-appEventVideoClips-get_to_many_related")
         }
 
         private func makeGetQuery(_ fieldsAppEventVideoClips: [FieldsAppEventVideoClips]?, _ fieldsAppEventLocalizations: [FieldsAppEventLocalizations]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {

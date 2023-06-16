@@ -17,7 +17,7 @@ extension Resources.V1.AppStoreVersionExperiments {
 
         @available(*, deprecated, message: "Deprecated")
         public func get(fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, include: [Include]? = nil, fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]? = nil, limitAppStoreVersionExperimentTreatments: Int? = nil) -> Request<_Specification.AppStoreVersionExperimentResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppStoreVersionExperiments, include, fieldsAppStoreVersionExperimentTreatments, limitAppStoreVersionExperimentTreatments), id: "appStoreVersionExperiments-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionExperiments, include, fieldsAppStoreVersionExperimentTreatments, limitAppStoreVersionExperimentTreatments), id: "appStoreVersionExperiments-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ include: [Include]?, _ fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]?, _ limitAppStoreVersionExperimentTreatments: Int?) -> [(String, String?)] {
@@ -58,12 +58,12 @@ extension Resources.V1.AppStoreVersionExperiments {
 
         @available(*, deprecated, message: "Deprecated")
         public func patch(_ body: _Specification.AppStoreVersionExperimentUpdateRequest) -> Request<_Specification.AppStoreVersionExperimentResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "appStoreVersionExperiments-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appStoreVersionExperiments-update_instance")
         }
 
         @available(*, deprecated, message: "Deprecated")
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "appStoreVersionExperiments-delete_instance")
+            Request(path: path, method: "DELETE", id: "appStoreVersionExperiments-delete_instance")
         }
     }
 }

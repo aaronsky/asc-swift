@@ -16,7 +16,7 @@ extension Resources.V1.CiProducts.WithID {
         public let path: String
 
         public func get(filterBuilds: [String]? = nil, fieldsScmGitReferences: [FieldsScmGitReferences]? = nil, fieldsCiBuildRuns: [FieldsCiBuildRuns]? = nil, fieldsCiWorkflows: [FieldsCiWorkflows]? = nil, fieldsScmPullRequests: [FieldsScmPullRequests]? = nil, fieldsCiProducts: [FieldsCiProducts]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, limit: Int? = nil, limitBuilds: Int? = nil, include: [Include]? = nil) -> Request<_Specification.CiBuildRunsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterBuilds, fieldsScmGitReferences, fieldsCiBuildRuns, fieldsCiWorkflows, fieldsScmPullRequests, fieldsCiProducts, fieldsBuilds, limit, limitBuilds, include), id: "ciProducts-buildRuns-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterBuilds, fieldsScmGitReferences, fieldsCiBuildRuns, fieldsCiWorkflows, fieldsScmPullRequests, fieldsCiProducts, fieldsBuilds, limit, limitBuilds, include), id: "ciProducts-buildRuns-get_to_many_related")
         }
 
         private func makeGetQuery(_ filterBuilds: [String]?, _ fieldsScmGitReferences: [FieldsScmGitReferences]?, _ fieldsCiBuildRuns: [FieldsCiBuildRuns]?, _ fieldsCiWorkflows: [FieldsCiWorkflows]?, _ fieldsScmPullRequests: [FieldsScmPullRequests]?, _ fieldsCiProducts: [FieldsCiProducts]?, _ fieldsBuilds: [FieldsBuilds]?, _ limit: Int?, _ limitBuilds: Int?, _ include: [Include]?) -> [(String, String?)] {

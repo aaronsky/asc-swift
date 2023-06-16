@@ -16,7 +16,7 @@ extension Resources.V1.AppStoreVersions.WithID {
         public let path: String
 
         public func get(fieldsRoutingAppCoverages: [FieldsRoutingAppCoverages]? = nil) -> Request<_Specification.RoutingAppCoverageResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsRoutingAppCoverages), id: "appStoreVersions-routingAppCoverage-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsRoutingAppCoverages), id: "appStoreVersions-routingAppCoverage-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsRoutingAppCoverages: [FieldsRoutingAppCoverages]?) -> [(String, String?)] {

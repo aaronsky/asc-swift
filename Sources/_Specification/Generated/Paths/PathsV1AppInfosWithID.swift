@@ -16,7 +16,7 @@ extension Resources.V1.AppInfos {
         public let path: String
 
         public func get(fieldsAppInfos: [FieldsAppInfos]? = nil, include: [Include]? = nil, fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]? = nil, fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]? = nil, fieldsAppCategories: [FieldsAppCategories]? = nil, limitAppInfoLocalizations: Int? = nil) -> Request<_Specification.AppInfoResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppInfos, include, fieldsAgeRatingDeclarations, fieldsAppInfoLocalizations, fieldsAppCategories, limitAppInfoLocalizations), id: "appInfos-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppInfos, include, fieldsAgeRatingDeclarations, fieldsAppInfoLocalizations, fieldsAppCategories, limitAppInfoLocalizations), id: "appInfos-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppInfos: [FieldsAppInfos]?, _ include: [Include]?, _ fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]?, _ fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]?, _ fieldsAppCategories: [FieldsAppCategories]?, _ limitAppInfoLocalizations: Int?) -> [(String, String?)] {
@@ -96,7 +96,7 @@ extension Resources.V1.AppInfos {
         }
 
         public func patch(_ body: _Specification.AppInfoUpdateRequest) -> Request<_Specification.AppInfoResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "appInfos-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appInfos-update_instance")
         }
     }
 }

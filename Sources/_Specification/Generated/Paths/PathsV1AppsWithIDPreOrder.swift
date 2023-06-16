@@ -16,7 +16,7 @@ extension Resources.V1.Apps.WithID {
         public let path: String
 
         public func get(fieldsAppPreOrders: [FieldsAppPreOrders]? = nil) -> Request<_Specification.AppPreOrderResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppPreOrders), id: "apps-preOrder-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPreOrders), id: "apps-preOrder-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsAppPreOrders: [FieldsAppPreOrders]?) -> [(String, String?)] {

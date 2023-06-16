@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(filterID: [String], fieldsActors: [FieldsActors]? = nil, limit: Int? = nil) -> Request<_Specification.ActorsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterID, fieldsActors, limit), id: "actors-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(filterID, fieldsActors, limit), id: "actors-get_collection")
         }
 
         private func makeGetQuery(_ filterID: [String], _ fieldsActors: [FieldsActors]?, _ limit: Int?) -> [(String, String?)] {

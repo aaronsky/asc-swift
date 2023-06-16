@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(filterPlatform: [FilterPlatform]? = nil, filterApp: [String]? = nil, filterBuilds: [String]? = nil, fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsAppEncryptionDeclarationDocuments: [FieldsAppEncryptionDeclarationDocuments]? = nil, fieldsApps: [FieldsApps]? = nil, limitBuilds: Int? = nil) -> Request<_Specification.AppEncryptionDeclarationsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterPlatform, filterApp, filterBuilds, fieldsAppEncryptionDeclarations, limit, include, fieldsAppEncryptionDeclarationDocuments, fieldsApps, limitBuilds), id: "appEncryptionDeclarations-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(filterPlatform, filterApp, filterBuilds, fieldsAppEncryptionDeclarations, limit, include, fieldsAppEncryptionDeclarationDocuments, fieldsApps, limitBuilds), id: "appEncryptionDeclarations-get_collection")
         }
 
         private func makeGetQuery(_ filterPlatform: [FilterPlatform]?, _ filterApp: [String]?, _ filterBuilds: [String]?, _ fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]?, _ limit: Int?, _ include: [Include]?, _ fieldsAppEncryptionDeclarationDocuments: [FieldsAppEncryptionDeclarationDocuments]?, _ fieldsApps: [FieldsApps]?, _ limitBuilds: Int?) -> [(String, String?)] {

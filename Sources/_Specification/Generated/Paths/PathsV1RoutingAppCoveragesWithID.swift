@@ -16,7 +16,7 @@ extension Resources.V1.RoutingAppCoverages {
         public let path: String
 
         public func get(fieldsRoutingAppCoverages: [FieldsRoutingAppCoverages]? = nil, include: [Include]? = nil) -> Request<_Specification.RoutingAppCoverageResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsRoutingAppCoverages, include), id: "routingAppCoverages-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsRoutingAppCoverages, include), id: "routingAppCoverages-get_instance")
         }
 
         private func makeGetQuery(_ fieldsRoutingAppCoverages: [FieldsRoutingAppCoverages]?, _ include: [Include]?) -> [(String, String?)] {
@@ -41,11 +41,11 @@ extension Resources.V1.RoutingAppCoverages {
         }
 
         public func patch(_ body: _Specification.RoutingAppCoverageUpdateRequest) -> Request<_Specification.RoutingAppCoverageResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "routingAppCoverages-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "routingAppCoverages-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "routingAppCoverages-delete_instance")
+            Request(path: path, method: "DELETE", id: "routingAppCoverages-delete_instance")
         }
     }
 }

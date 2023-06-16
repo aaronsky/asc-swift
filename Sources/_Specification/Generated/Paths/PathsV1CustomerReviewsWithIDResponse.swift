@@ -16,7 +16,7 @@ extension Resources.V1.CustomerReviews.WithID {
         public let path: String
 
         public func get(fieldsCustomerReviews: [FieldsCustomerReviews]? = nil, fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]? = nil, include: [Include]? = nil) -> Request<_Specification.CustomerReviewResponseV1Response> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsCustomerReviews, fieldsCustomerReviewResponses, include), id: "customerReviews-response-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCustomerReviews, fieldsCustomerReviewResponses, include), id: "customerReviews-response-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsCustomerReviews: [FieldsCustomerReviews]?, _ fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]?, _ include: [Include]?) -> [(String, String?)] {

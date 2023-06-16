@@ -16,7 +16,7 @@ extension Resources.V1.Builds.WithID {
         public let path: String
 
         public func get(fieldsBuildIcons: [FieldsBuildIcons]? = nil, limit: Int? = nil) -> Request<_Specification.BuildIconsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsBuildIcons, limit), id: "builds-icons-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBuildIcons, limit), id: "builds-icons-get_to_many_related")
         }
 
         private func makeGetQuery(_ fieldsBuildIcons: [FieldsBuildIcons]?, _ limit: Int?) -> [(String, String?)] {

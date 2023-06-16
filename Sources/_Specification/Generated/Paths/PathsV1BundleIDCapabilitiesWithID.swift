@@ -16,11 +16,11 @@ extension Resources.V1.BundleIDCapabilities {
         public let path: String
 
         public func patch(_ body: _Specification.BundleIDCapabilityUpdateRequest) -> Request<_Specification.BundleIDCapabilityResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "bundleIdCapabilities-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "bundleIdCapabilities-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "bundleIdCapabilities-delete_instance")
+            Request(path: path, method: "DELETE", id: "bundleIdCapabilities-delete_instance")
         }
     }
 }

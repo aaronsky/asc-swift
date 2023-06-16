@@ -16,7 +16,7 @@ extension Resources.V1.AppEvents.WithID {
         public let path: String
 
         public func get(fieldsAppEventScreenshots: [FieldsAppEventScreenshots]? = nil, fieldsAppEventVideoClips: [FieldsAppEventVideoClips]? = nil, fieldsAppEventLocalizations: [FieldsAppEventLocalizations]? = nil, fieldsAppEvents: [FieldsAppEvents]? = nil, limit: Int? = nil, limitAppEventScreenshots: Int? = nil, limitAppEventVideoClips: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppEventLocalizationsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppEventScreenshots, fieldsAppEventVideoClips, fieldsAppEventLocalizations, fieldsAppEvents, limit, limitAppEventScreenshots, limitAppEventVideoClips, include), id: "appEvents-localizations-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEventScreenshots, fieldsAppEventVideoClips, fieldsAppEventLocalizations, fieldsAppEvents, limit, limitAppEventScreenshots, limitAppEventVideoClips, include), id: "appEvents-localizations-get_to_many_related")
         }
 
         private func makeGetQuery(_ fieldsAppEventScreenshots: [FieldsAppEventScreenshots]?, _ fieldsAppEventVideoClips: [FieldsAppEventVideoClips]?, _ fieldsAppEventLocalizations: [FieldsAppEventLocalizations]?, _ fieldsAppEvents: [FieldsAppEvents]?, _ limit: Int?, _ limitAppEventScreenshots: Int?, _ limitAppEventVideoClips: Int?, _ include: [Include]?) -> [(String, String?)] {

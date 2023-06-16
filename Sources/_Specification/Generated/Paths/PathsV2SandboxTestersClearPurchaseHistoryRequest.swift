@@ -16,7 +16,7 @@ extension Resources.V2 {
         public let path: String
 
         public func post(_ body: _Specification.SandboxTestersClearPurchaseHistoryRequestV2CreateRequest) -> Request<_Specification.SandboxTestersClearPurchaseHistoryRequestV2Response> {
-            Request(method: "POST", url: path, body: body, id: "sandboxTestersClearPurchaseHistoryRequest-create_instance")
+            Request(path: path, method: "POST", body: body, id: "sandboxTestersClearPurchaseHistoryRequest-create_instance")
         }
     }
 }

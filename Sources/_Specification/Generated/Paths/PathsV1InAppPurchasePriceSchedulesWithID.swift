@@ -16,7 +16,7 @@ extension Resources.V1.InAppPurchasePriceSchedules {
         public let path: String
 
         public func get(fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]? = nil, include: [Include]? = nil, fieldsInAppPurchasePrices: [FieldsInAppPurchasePrices]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limitAutomaticPrices: Int? = nil, limitManualPrices: Int? = nil) -> Request<_Specification.InAppPurchasePriceScheduleResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsInAppPurchasePriceSchedules, include, fieldsInAppPurchasePrices, fieldsTerritories, limitAutomaticPrices, limitManualPrices), id: "inAppPurchasePriceSchedules-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchasePriceSchedules, include, fieldsInAppPurchasePrices, fieldsTerritories, limitAutomaticPrices, limitManualPrices), id: "inAppPurchasePriceSchedules-get_instance")
         }
 
         private func makeGetQuery(_ fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]?, _ include: [Include]?, _ fieldsInAppPurchasePrices: [FieldsInAppPurchasePrices]?, _ fieldsTerritories: [FieldsTerritories]?, _ limitAutomaticPrices: Int?, _ limitManualPrices: Int?) -> [(String, String?)] {

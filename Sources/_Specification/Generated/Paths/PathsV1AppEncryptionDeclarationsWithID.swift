@@ -16,7 +16,7 @@ extension Resources.V1.AppEncryptionDeclarations {
         public let path: String
 
         public func get(fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]? = nil, include: [Include]? = nil, fieldsAppEncryptionDeclarationDocuments: [FieldsAppEncryptionDeclarationDocuments]? = nil, fieldsApps: [FieldsApps]? = nil, limitBuilds: Int? = nil) -> Request<_Specification.AppEncryptionDeclarationResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppEncryptionDeclarations, include, fieldsAppEncryptionDeclarationDocuments, fieldsApps, limitBuilds), id: "appEncryptionDeclarations-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEncryptionDeclarations, include, fieldsAppEncryptionDeclarationDocuments, fieldsApps, limitBuilds), id: "appEncryptionDeclarations-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]?, _ include: [Include]?, _ fieldsAppEncryptionDeclarationDocuments: [FieldsAppEncryptionDeclarationDocuments]?, _ fieldsApps: [FieldsApps]?, _ limitBuilds: Int?) -> [(String, String?)] {

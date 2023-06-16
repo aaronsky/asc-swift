@@ -16,7 +16,7 @@ extension Resources.V1.SubscriptionOfferCodeOneTimeUseCodes {
         public let path: String
 
         public func get(fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]? = nil, include: [Include]? = nil, fieldsSubscriptionOfferCodeOneTimeUseCodeValues: [String]? = nil) -> Request<_Specification.SubscriptionOfferCodeOneTimeUseCodeResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsSubscriptionOfferCodeOneTimeUseCodes, include, fieldsSubscriptionOfferCodeOneTimeUseCodeValues), id: "subscriptionOfferCodeOneTimeUseCodes-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionOfferCodeOneTimeUseCodes, include, fieldsSubscriptionOfferCodeOneTimeUseCodeValues), id: "subscriptionOfferCodeOneTimeUseCodes-get_instance")
         }
 
         private func makeGetQuery(_ fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]?, _ include: [Include]?, _ fieldsSubscriptionOfferCodeOneTimeUseCodeValues: [String]?) -> [(String, String?)] {
@@ -41,7 +41,7 @@ extension Resources.V1.SubscriptionOfferCodeOneTimeUseCodes {
         }
 
         public func patch(_ body: _Specification.SubscriptionOfferCodeOneTimeUseCodeUpdateRequest) -> Request<_Specification.SubscriptionOfferCodeOneTimeUseCodeResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "subscriptionOfferCodeOneTimeUseCodes-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "subscriptionOfferCodeOneTimeUseCodes-update_instance")
         }
     }
 }

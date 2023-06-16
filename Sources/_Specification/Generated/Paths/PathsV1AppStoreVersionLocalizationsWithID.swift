@@ -16,7 +16,7 @@ extension Resources.V1.AppStoreVersionLocalizations {
         public let path: String
 
         public func get(fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, include: [Include]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, limitAppPreviewSets: Int? = nil, limitAppScreenshotSets: Int? = nil) -> Request<_Specification.AppStoreVersionLocalizationResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppStoreVersionLocalizations, include, fieldsAppScreenshotSets, fieldsAppPreviewSets, limitAppPreviewSets, limitAppScreenshotSets), id: "appStoreVersionLocalizations-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionLocalizations, include, fieldsAppScreenshotSets, fieldsAppPreviewSets, limitAppPreviewSets, limitAppScreenshotSets), id: "appStoreVersionLocalizations-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ include: [Include]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ limitAppPreviewSets: Int?, _ limitAppScreenshotSets: Int?) -> [(String, String?)] {
@@ -66,11 +66,11 @@ extension Resources.V1.AppStoreVersionLocalizations {
         }
 
         public func patch(_ body: _Specification.AppStoreVersionLocalizationUpdateRequest) -> Request<_Specification.AppStoreVersionLocalizationResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "appStoreVersionLocalizations-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appStoreVersionLocalizations-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "appStoreVersionLocalizations-delete_instance")
+            Request(path: path, method: "DELETE", id: "appStoreVersionLocalizations-delete_instance")
         }
     }
 }

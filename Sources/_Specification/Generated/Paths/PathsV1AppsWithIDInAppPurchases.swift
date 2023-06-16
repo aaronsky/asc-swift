@@ -17,7 +17,7 @@ extension Resources.V1.Apps.WithID {
 
         @available(*, deprecated, message: "Deprecated")
         public func get(filterInAppPurchaseType: [FilterInAppPurchaseType]? = nil, filterCanBeSubmitted: [String]? = nil, sort: [Sort]? = nil, fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, fieldsApps: [FieldsApps]? = nil, limit: Int? = nil, limitApps: Int? = nil, include: [Include]? = nil) -> Request<_Specification.InAppPurchasesResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterInAppPurchaseType, filterCanBeSubmitted, sort, fieldsInAppPurchases, fieldsApps, limit, limitApps, include), id: "apps-inAppPurchases-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterInAppPurchaseType, filterCanBeSubmitted, sort, fieldsInAppPurchases, fieldsApps, limit, limitApps, include), id: "apps-inAppPurchases-get_to_many_related")
         }
 
         private func makeGetQuery(_ filterInAppPurchaseType: [FilterInAppPurchaseType]?, _ filterCanBeSubmitted: [String]?, _ sort: [Sort]?, _ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ fieldsApps: [FieldsApps]?, _ limit: Int?, _ limitApps: Int?, _ include: [Include]?) -> [(String, String?)] {

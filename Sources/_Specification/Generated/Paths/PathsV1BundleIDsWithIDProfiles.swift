@@ -16,7 +16,7 @@ extension Resources.V1.BundleIDs.WithID {
         public let path: String
 
         public func get(fieldsProfiles: [FieldsProfiles]? = nil, limit: Int? = nil) -> Request<_Specification.ProfilesResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsProfiles, limit), id: "bundleIds-profiles-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsProfiles, limit), id: "bundleIds-profiles-get_to_many_related")
         }
 
         private func makeGetQuery(_ fieldsProfiles: [FieldsProfiles]?, _ limit: Int?) -> [(String, String?)] {

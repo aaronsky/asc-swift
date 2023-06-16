@@ -16,7 +16,7 @@ extension Resources.V1.Apps.WithID.Relationships {
         public let path: String
 
         public func delete(_ body: _Specification.AppBetaTestersLinkagesRequest) -> Request<Void> {
-            Request(method: "DELETE", url: path, body: body, id: "apps-betaTesters-delete_to_many_relationship")
+            Request(path: path, method: "DELETE", body: body, id: "apps-betaTesters-delete_to_many_relationship")
         }
     }
 }

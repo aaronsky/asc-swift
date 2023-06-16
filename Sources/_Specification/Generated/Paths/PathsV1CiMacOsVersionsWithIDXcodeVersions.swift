@@ -16,7 +16,7 @@ extension Resources.V1.CiMacOsVersions.WithID {
         public let path: String
 
         public func get(fieldsCiXcodeVersions: [FieldsCiXcodeVersions]? = nil, fieldsCiMacOsVersions: [FieldsCiMacOsVersions]? = nil, limit: Int? = nil, limitMacOsVersions: Int? = nil, include: [Include]? = nil) -> Request<_Specification.CiXcodeVersionsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsCiXcodeVersions, fieldsCiMacOsVersions, limit, limitMacOsVersions, include), id: "ciMacOsVersions-xcodeVersions-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiXcodeVersions, fieldsCiMacOsVersions, limit, limitMacOsVersions, include), id: "ciMacOsVersions-xcodeVersions-get_to_many_related")
         }
 
         private func makeGetQuery(_ fieldsCiXcodeVersions: [FieldsCiXcodeVersions]?, _ fieldsCiMacOsVersions: [FieldsCiMacOsVersions]?, _ limit: Int?, _ limitMacOsVersions: Int?, _ include: [Include]?) -> [(String, String?)] {

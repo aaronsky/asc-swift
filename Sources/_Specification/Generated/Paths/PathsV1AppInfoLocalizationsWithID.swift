@@ -16,7 +16,7 @@ extension Resources.V1.AppInfoLocalizations {
         public let path: String
 
         public func get(fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]? = nil, include: [Include]? = nil) -> Request<_Specification.AppInfoLocalizationResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppInfoLocalizations, include), id: "appInfoLocalizations-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppInfoLocalizations, include), id: "appInfoLocalizations-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]?, _ include: [Include]?) -> [(String, String?)] {
@@ -41,11 +41,11 @@ extension Resources.V1.AppInfoLocalizations {
         }
 
         public func patch(_ body: _Specification.AppInfoLocalizationUpdateRequest) -> Request<_Specification.AppInfoLocalizationResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "appInfoLocalizations-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appInfoLocalizations-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "appInfoLocalizations-delete_instance")
+            Request(path: path, method: "DELETE", id: "appInfoLocalizations-delete_instance")
         }
     }
 }

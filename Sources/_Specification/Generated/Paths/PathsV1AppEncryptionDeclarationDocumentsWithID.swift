@@ -16,7 +16,7 @@ extension Resources.V1.AppEncryptionDeclarationDocuments {
         public let path: String
 
         public func get(fieldsAppEncryptionDeclarationDocuments: [FieldsAppEncryptionDeclarationDocuments]? = nil) -> Request<_Specification.AppEncryptionDeclarationDocumentResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppEncryptionDeclarationDocuments), id: "appEncryptionDeclarationDocuments-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEncryptionDeclarationDocuments), id: "appEncryptionDeclarationDocuments-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppEncryptionDeclarationDocuments: [FieldsAppEncryptionDeclarationDocuments]?) -> [(String, String?)] {
@@ -38,7 +38,7 @@ extension Resources.V1.AppEncryptionDeclarationDocuments {
         }
 
         public func patch(_ body: _Specification.AppEncryptionDeclarationDocumentUpdateRequest) -> Request<_Specification.AppEncryptionDeclarationDocumentResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "appEncryptionDeclarationDocuments-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appEncryptionDeclarationDocuments-update_instance")
         }
     }
 }

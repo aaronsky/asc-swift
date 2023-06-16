@@ -16,7 +16,7 @@ extension Resources.V1.AppClipAppStoreReviewDetails {
         public let path: String
 
         public func get(fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]? = nil, include: [Include]? = nil) -> Request<_Specification.AppClipAppStoreReviewDetailResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppClipAppStoreReviewDetails, include), id: "appClipAppStoreReviewDetails-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipAppStoreReviewDetails, include), id: "appClipAppStoreReviewDetails-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]?, _ include: [Include]?) -> [(String, String?)] {
@@ -36,7 +36,7 @@ extension Resources.V1.AppClipAppStoreReviewDetails {
         }
 
         public func patch(_ body: _Specification.AppClipAppStoreReviewDetailUpdateRequest) -> Request<_Specification.AppClipAppStoreReviewDetailResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "appClipAppStoreReviewDetails-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appClipAppStoreReviewDetails-update_instance")
         }
     }
 }

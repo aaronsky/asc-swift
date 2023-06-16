@@ -16,7 +16,7 @@ extension Resources.V1.Actors {
         public let path: String
 
         public func get(fieldsActors: [FieldsActors]? = nil) -> Request<_Specification.ActorResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsActors), id: "actors-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsActors), id: "actors-get_instance")
         }
 
         private func makeGetQuery(_ fieldsActors: [FieldsActors]?) -> [(String, String?)] {

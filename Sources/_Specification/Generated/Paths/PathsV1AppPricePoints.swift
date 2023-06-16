@@ -17,7 +17,7 @@ extension Resources.V1 {
 
         @available(*, deprecated, message: "Deprecated")
         public func get(filterPriceTier: [String]? = nil, filterTerritory: [String]? = nil, fieldsAppPricePoints: [FieldsAppPricePoints]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsTerritories: [FieldsTerritories]? = nil) -> Request<_Specification.AppPricePointsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterPriceTier, filterTerritory, fieldsAppPricePoints, limit, include, fieldsTerritories), id: "appPricePoints-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(filterPriceTier, filterTerritory, fieldsAppPricePoints, limit, include, fieldsTerritories), id: "appPricePoints-get_collection")
         }
 
         private func makeGetQuery(_ filterPriceTier: [String]?, _ filterTerritory: [String]?, _ fieldsAppPricePoints: [FieldsAppPricePoints]?, _ limit: Int?, _ include: [Include]?, _ fieldsTerritories: [FieldsTerritories]?) -> [(String, String?)] {

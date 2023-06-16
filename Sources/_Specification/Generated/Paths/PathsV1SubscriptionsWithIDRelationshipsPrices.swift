@@ -16,7 +16,7 @@ extension Resources.V1.Subscriptions.WithID.Relationships {
         public let path: String
 
         public func get(limit: Int? = nil) -> Request<_Specification.SubscriptionPricesLinkagesResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(limit), id: "subscriptions-prices-get_to_many_relationship")
+            Request(path: path, method: "GET", query: makeGetQuery(limit), id: "subscriptions-prices-get_to_many_relationship")
         }
 
         private func makeGetQuery(_ limit: Int?) -> [(String, String?)] {
@@ -26,7 +26,7 @@ extension Resources.V1.Subscriptions.WithID.Relationships {
         }
 
         public func delete(_ body: _Specification.SubscriptionPricesLinkagesRequest) -> Request<Void> {
-            Request(method: "DELETE", url: path, body: body, id: "subscriptions-prices-delete_to_many_relationship")
+            Request(path: path, method: "DELETE", body: body, id: "subscriptions-prices-delete_to_many_relationship")
         }
     }
 }

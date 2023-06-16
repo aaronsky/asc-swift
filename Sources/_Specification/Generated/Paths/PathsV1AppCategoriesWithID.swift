@@ -16,7 +16,7 @@ extension Resources.V1.AppCategories {
         public let path: String
 
         public func get(fieldsAppCategories: [FieldsAppCategories]? = nil, include: [Include]? = nil, limitSubcategories: Int? = nil) -> Request<_Specification.AppCategoryResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppCategories, include, limitSubcategories), id: "appCategories-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppCategories, include, limitSubcategories), id: "appCategories-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppCategories: [FieldsAppCategories]?, _ include: [Include]?, _ limitSubcategories: Int?) -> [(String, String?)] {

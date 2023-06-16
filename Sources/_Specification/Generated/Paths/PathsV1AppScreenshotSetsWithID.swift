@@ -16,7 +16,7 @@ extension Resources.V1.AppScreenshotSets {
         public let path: String
 
         public func get(fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, include: [Include]? = nil, fieldsAppScreenshots: [FieldsAppScreenshots]? = nil, limitAppScreenshots: Int? = nil) -> Request<_Specification.AppScreenshotSetResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppScreenshotSets, include, fieldsAppScreenshots, limitAppScreenshots), id: "appScreenshotSets-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppScreenshotSets, include, fieldsAppScreenshots, limitAppScreenshots), id: "appScreenshotSets-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ include: [Include]?, _ fieldsAppScreenshots: [FieldsAppScreenshots]?, _ limitAppScreenshots: Int?) -> [(String, String?)] {
@@ -57,7 +57,7 @@ extension Resources.V1.AppScreenshotSets {
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "appScreenshotSets-delete_instance")
+            Request(path: path, method: "DELETE", id: "appScreenshotSets-delete_instance")
         }
     }
 }

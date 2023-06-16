@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(filterApp: [String], fieldsBetaAppReviewDetails: [FieldsBetaAppReviewDetails]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsApps: [FieldsApps]? = nil) -> Request<_Specification.BetaAppReviewDetailsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterApp, fieldsBetaAppReviewDetails, limit, include, fieldsApps), id: "betaAppReviewDetails-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(filterApp, fieldsBetaAppReviewDetails, limit, include, fieldsApps), id: "betaAppReviewDetails-get_collection")
         }
 
         private func makeGetQuery(_ filterApp: [String], _ fieldsBetaAppReviewDetails: [FieldsBetaAppReviewDetails]?, _ limit: Int?, _ include: [Include]?, _ fieldsApps: [FieldsApps]?) -> [(String, String?)] {

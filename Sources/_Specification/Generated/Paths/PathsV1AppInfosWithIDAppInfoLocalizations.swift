@@ -16,7 +16,7 @@ extension Resources.V1.AppInfos.WithID {
         public let path: String
 
         public func get(filterLocale: [String]? = nil, fieldsAppInfos: [FieldsAppInfos]? = nil, fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppInfoLocalizationsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterLocale, fieldsAppInfos, fieldsAppInfoLocalizations, limit, include), id: "appInfos-appInfoLocalizations-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterLocale, fieldsAppInfos, fieldsAppInfoLocalizations, limit, include), id: "appInfos-appInfoLocalizations-get_to_many_related")
         }
 
         private func makeGetQuery(_ filterLocale: [String]?, _ fieldsAppInfos: [FieldsAppInfos]?, _ fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {

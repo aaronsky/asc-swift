@@ -16,7 +16,7 @@ extension Resources.V1.ScmGitReferences {
         public let path: String
 
         public func get(fieldsScmGitReferences: [FieldsScmGitReferences]? = nil, include: [Include]? = nil) -> Request<_Specification.ScmGitReferenceResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsScmGitReferences, include), id: "scmGitReferences-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsScmGitReferences, include), id: "scmGitReferences-get_instance")
         }
 
         private func makeGetQuery(_ fieldsScmGitReferences: [FieldsScmGitReferences]?, _ include: [Include]?) -> [(String, String?)] {

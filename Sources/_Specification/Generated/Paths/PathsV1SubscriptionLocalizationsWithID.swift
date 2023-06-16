@@ -16,7 +16,7 @@ extension Resources.V1.SubscriptionLocalizations {
         public let path: String
 
         public func get(fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]? = nil, include: [Include]? = nil) -> Request<_Specification.SubscriptionLocalizationResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsSubscriptionLocalizations, include), id: "subscriptionLocalizations-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionLocalizations, include), id: "subscriptionLocalizations-get_instance")
         }
 
         private func makeGetQuery(_ fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]?, _ include: [Include]?) -> [(String, String?)] {
@@ -39,11 +39,11 @@ extension Resources.V1.SubscriptionLocalizations {
         }
 
         public func patch(_ body: _Specification.SubscriptionLocalizationUpdateRequest) -> Request<_Specification.SubscriptionLocalizationResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "subscriptionLocalizations-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "subscriptionLocalizations-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "subscriptionLocalizations-delete_instance")
+            Request(path: path, method: "DELETE", id: "subscriptionLocalizations-delete_instance")
         }
     }
 }

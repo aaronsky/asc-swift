@@ -16,7 +16,7 @@ extension Resources.V1.AppStoreVersionExperimentTreatmentLocalizations {
         public let path: String
 
         public func get(fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]? = nil, include: [Include]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, limitAppPreviewSets: Int? = nil, limitAppScreenshotSets: Int? = nil) -> Request<_Specification.AppStoreVersionExperimentTreatmentLocalizationResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppStoreVersionExperimentTreatmentLocalizations, include, fieldsAppScreenshotSets, fieldsAppPreviewSets, limitAppPreviewSets, limitAppScreenshotSets), id: "appStoreVersionExperimentTreatmentLocalizations-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionExperimentTreatmentLocalizations, include, fieldsAppScreenshotSets, fieldsAppPreviewSets, limitAppPreviewSets, limitAppScreenshotSets), id: "appStoreVersionExperimentTreatmentLocalizations-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]?, _ include: [Include]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ limitAppPreviewSets: Int?, _ limitAppScreenshotSets: Int?) -> [(String, String?)] {
@@ -60,7 +60,7 @@ extension Resources.V1.AppStoreVersionExperimentTreatmentLocalizations {
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "appStoreVersionExperimentTreatmentLocalizations-delete_instance")
+            Request(path: path, method: "DELETE", id: "appStoreVersionExperimentTreatmentLocalizations-delete_instance")
         }
     }
 }

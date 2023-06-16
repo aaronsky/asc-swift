@@ -16,7 +16,7 @@ extension Resources.V1.Apps.WithID {
         public let path: String
 
         public func get(fieldsAppPrices: [FieldsAppPrices]? = nil, fieldsAppPriceSchedules: [FieldsAppPriceSchedules]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limitManualPrices: Int? = nil, limitAutomaticPrices: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppPriceScheduleResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppPrices, fieldsAppPriceSchedules, fieldsApps, fieldsTerritories, limitManualPrices, limitAutomaticPrices, include), id: "apps-appPriceSchedule-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPrices, fieldsAppPriceSchedules, fieldsApps, fieldsTerritories, limitManualPrices, limitAutomaticPrices, include), id: "apps-appPriceSchedule-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsAppPrices: [FieldsAppPrices]?, _ fieldsAppPriceSchedules: [FieldsAppPriceSchedules]?, _ fieldsApps: [FieldsApps]?, _ fieldsTerritories: [FieldsTerritories]?, _ limitManualPrices: Int?, _ limitAutomaticPrices: Int?, _ include: [Include]?) -> [(String, String?)] {

@@ -16,7 +16,7 @@ extension Resources.V1.Profiles.WithID {
         public let path: String
 
         public func get(fieldsCertificates: [FieldsCertificates]? = nil, limit: Int? = nil) -> Request<_Specification.CertificatesResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsCertificates, limit), id: "profiles-certificates-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCertificates, limit), id: "profiles-certificates-get_to_many_related")
         }
 
         private func makeGetQuery(_ fieldsCertificates: [FieldsCertificates]?, _ limit: Int?) -> [(String, String?)] {

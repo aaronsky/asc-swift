@@ -28,24 +28,24 @@ public struct Request<Response> {
     /// Create a Request model.
     ///
     /// - Parameters:
+    ///   - path: Path to the resource.
     ///   - method: HTTP method.
-    ///   - url: Path to the resource.
     ///   - baseURL: Base URL of the resource. A nil value will result in a default of `"https://api.appstoreconnect.apple.com"`.
     ///   - query: Query string encoded parameters.
     ///   - body: Body of the request.
     ///   - headers: Request headers.
     ///   - id: Operation ID. Unused.
     public init(
+        path: String,
         method: String,
-        url: String,
         baseURL: URL? = nil,
         query: [(String, String?)]? = nil,
         body: (any Encodable)? = nil,
         headers: [String: String]? = nil,
         id: String? = nil
     ) {
+        self.path = path
         self.method = method
-        self.path = url
         self.baseURL = baseURL ?? appStoreConnectBaseURL
         self.query = query
         self.body = body

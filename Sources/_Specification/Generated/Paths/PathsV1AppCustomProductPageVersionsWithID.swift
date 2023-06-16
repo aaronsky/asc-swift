@@ -16,7 +16,7 @@ extension Resources.V1.AppCustomProductPageVersions {
         public let path: String
 
         public func get(fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]? = nil, include: [Include]? = nil, fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]? = nil, limitAppCustomProductPageLocalizations: Int? = nil) -> Request<_Specification.AppCustomProductPageVersionResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppCustomProductPageVersions, include, fieldsAppCustomProductPageLocalizations, limitAppCustomProductPageLocalizations), id: "appCustomProductPageVersions-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppCustomProductPageVersions, include, fieldsAppCustomProductPageLocalizations, limitAppCustomProductPageLocalizations), id: "appCustomProductPageVersions-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]?, _ include: [Include]?, _ fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]?, _ limitAppCustomProductPageLocalizations: Int?) -> [(String, String?)] {

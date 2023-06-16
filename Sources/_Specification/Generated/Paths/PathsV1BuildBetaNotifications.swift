@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: _Specification.BuildBetaNotificationCreateRequest) -> Request<_Specification.BuildBetaNotificationResponse> {
-            Request(method: "POST", url: path, body: body, id: "buildBetaNotifications-create_instance")
+            Request(path: path, method: "POST", body: body, id: "buildBetaNotifications-create_instance")
         }
     }
 }

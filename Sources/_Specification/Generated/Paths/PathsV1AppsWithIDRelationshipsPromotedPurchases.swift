@@ -16,7 +16,7 @@ extension Resources.V1.Apps.WithID.Relationships {
         public let path: String
 
         public func get(limit: Int? = nil) -> Request<_Specification.AppPromotedPurchasesLinkagesResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(limit), id: "apps-promotedPurchases-get_to_many_relationship")
+            Request(path: path, method: "GET", query: makeGetQuery(limit), id: "apps-promotedPurchases-get_to_many_relationship")
         }
 
         private func makeGetQuery(_ limit: Int?) -> [(String, String?)] {
@@ -26,7 +26,7 @@ extension Resources.V1.Apps.WithID.Relationships {
         }
 
         public func patch(_ body: _Specification.AppPromotedPurchasesLinkagesRequest) -> Request<Void> {
-            Request(method: "PATCH", url: path, body: body, id: "apps-promotedPurchases-replace_to_many_relationship")
+            Request(path: path, method: "PATCH", body: body, id: "apps-promotedPurchases-replace_to_many_relationship")
         }
     }
 }

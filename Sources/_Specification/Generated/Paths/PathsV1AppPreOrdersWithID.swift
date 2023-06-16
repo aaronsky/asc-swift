@@ -16,7 +16,7 @@ extension Resources.V1.AppPreOrders {
         public let path: String
 
         public func get(fieldsAppPreOrders: [FieldsAppPreOrders]? = nil, include: [Include]? = nil) -> Request<_Specification.AppPreOrderResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppPreOrders, include), id: "appPreOrders-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPreOrders, include), id: "appPreOrders-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppPreOrders: [FieldsAppPreOrders]?, _ include: [Include]?) -> [(String, String?)] {
@@ -37,11 +37,11 @@ extension Resources.V1.AppPreOrders {
         }
 
         public func patch(_ body: _Specification.AppPreOrderUpdateRequest) -> Request<_Specification.AppPreOrderResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "appPreOrders-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appPreOrders-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "appPreOrders-delete_instance")
+            Request(path: path, method: "DELETE", id: "appPreOrders-delete_instance")
         }
     }
 }

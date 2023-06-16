@@ -16,7 +16,7 @@ extension Resources.V1.SubscriptionPricePoints.WithID {
         public let path: String
 
         public func get(filterSubscription: [String]? = nil, filterTerritory: [String]? = nil, fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<_Specification.SubscriptionPricePointsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterSubscription, filterTerritory, fieldsSubscriptionPricePoints, fieldsTerritories, limit, include), id: "subscriptionPricePoints-equalizations-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterSubscription, filterTerritory, fieldsSubscriptionPricePoints, fieldsTerritories, limit, include), id: "subscriptionPricePoints-equalizations-get_to_many_related")
         }
 
         private func makeGetQuery(_ filterSubscription: [String]?, _ filterTerritory: [String]?, _ fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]?, _ fieldsTerritories: [FieldsTerritories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {

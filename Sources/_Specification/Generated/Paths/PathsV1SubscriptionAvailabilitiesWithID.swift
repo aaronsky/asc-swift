@@ -16,7 +16,7 @@ extension Resources.V1.SubscriptionAvailabilities {
         public let path: String
 
         public func get(fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]? = nil, include: [Include]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limitAvailableTerritories: Int? = nil) -> Request<_Specification.SubscriptionAvailabilityResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsSubscriptionAvailabilities, include, fieldsTerritories, limitAvailableTerritories), id: "subscriptionAvailabilities-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionAvailabilities, include, fieldsTerritories, limitAvailableTerritories), id: "subscriptionAvailabilities-get_instance")
         }
 
         private func makeGetQuery(_ fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]?, _ include: [Include]?, _ fieldsTerritories: [FieldsTerritories]?, _ limitAvailableTerritories: Int?) -> [(String, String?)] {

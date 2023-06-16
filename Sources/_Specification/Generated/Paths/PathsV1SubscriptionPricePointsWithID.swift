@@ -16,7 +16,7 @@ extension Resources.V1.SubscriptionPricePoints {
         public let path: String
 
         public func get(fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]? = nil, include: [Include]? = nil) -> Request<_Specification.SubscriptionPricePointResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsSubscriptionPricePoints, include), id: "subscriptionPricePoints-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionPricePoints, include), id: "subscriptionPricePoints-get_instance")
         }
 
         private func makeGetQuery(_ fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]?, _ include: [Include]?) -> [(String, String?)] {

@@ -16,7 +16,7 @@ extension Resources.V1.GameCenterEnabledVersions.WithID.Relationships {
         public let path: String
 
         public func get(limit: Int? = nil) -> Request<_Specification.GameCenterEnabledVersionCompatibleVersionsLinkagesResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(limit), id: "gameCenterEnabledVersions-compatibleVersions-get_to_many_relationship")
+            Request(path: path, method: "GET", query: makeGetQuery(limit), id: "gameCenterEnabledVersions-compatibleVersions-get_to_many_relationship")
         }
 
         private func makeGetQuery(_ limit: Int?) -> [(String, String?)] {
@@ -26,15 +26,15 @@ extension Resources.V1.GameCenterEnabledVersions.WithID.Relationships {
         }
 
         public func post(_ body: _Specification.GameCenterEnabledVersionCompatibleVersionsLinkagesRequest) -> Request<Void> {
-            Request(method: "POST", url: path, body: body, id: "gameCenterEnabledVersions-compatibleVersions-create_to_many_relationship")
+            Request(path: path, method: "POST", body: body, id: "gameCenterEnabledVersions-compatibleVersions-create_to_many_relationship")
         }
 
         public func patch(_ body: _Specification.GameCenterEnabledVersionCompatibleVersionsLinkagesRequest) -> Request<Void> {
-            Request(method: "PATCH", url: path, body: body, id: "gameCenterEnabledVersions-compatibleVersions-replace_to_many_relationship")
+            Request(path: path, method: "PATCH", body: body, id: "gameCenterEnabledVersions-compatibleVersions-replace_to_many_relationship")
         }
 
         public func delete(_ body: _Specification.GameCenterEnabledVersionCompatibleVersionsLinkagesRequest) -> Request<Void> {
-            Request(method: "DELETE", url: path, body: body, id: "gameCenterEnabledVersions-compatibleVersions-delete_to_many_relationship")
+            Request(path: path, method: "DELETE", body: body, id: "gameCenterEnabledVersions-compatibleVersions-delete_to_many_relationship")
         }
     }
 }

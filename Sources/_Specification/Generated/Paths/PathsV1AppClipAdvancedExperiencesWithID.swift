@@ -16,7 +16,7 @@ extension Resources.V1.AppClipAdvancedExperiences {
         public let path: String
 
         public func get(fieldsAppClipAdvancedExperiences: [FieldsAppClipAdvancedExperiences]? = nil, include: [Include]? = nil, limitLocalizations: Int? = nil) -> Request<_Specification.AppClipAdvancedExperienceResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppClipAdvancedExperiences, include, limitLocalizations), id: "appClipAdvancedExperiences-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipAdvancedExperiences, include, limitLocalizations), id: "appClipAdvancedExperiences-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppClipAdvancedExperiences: [FieldsAppClipAdvancedExperiences]?, _ include: [Include]?, _ limitLocalizations: Int?) -> [(String, String?)] {
@@ -50,7 +50,7 @@ extension Resources.V1.AppClipAdvancedExperiences {
         }
 
         public func patch(_ body: _Specification.AppClipAdvancedExperienceUpdateRequest) -> Request<_Specification.AppClipAdvancedExperienceResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "appClipAdvancedExperiences-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appClipAdvancedExperiences-update_instance")
         }
     }
 }

@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: _Specification.InAppPurchaseAvailabilityCreateRequest) -> Request<_Specification.InAppPurchaseAvailabilityResponse> {
-            Request(method: "POST", url: path, body: body, id: "inAppPurchaseAvailabilities-create_instance")
+            Request(path: path, method: "POST", body: body, id: "inAppPurchaseAvailabilities-create_instance")
         }
     }
 }

@@ -16,7 +16,7 @@ extension Resources.V1.SubscriptionGroups.WithID {
         public let path: String
 
         public func get(fieldsSubscriptionGroups: [FieldsSubscriptionGroups]? = nil, fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<_Specification.SubscriptionGroupLocalizationsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsSubscriptionGroups, fieldsSubscriptionGroupLocalizations, limit, include), id: "subscriptionGroups-subscriptionGroupLocalizations-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionGroups, fieldsSubscriptionGroupLocalizations, limit, include), id: "subscriptionGroups-subscriptionGroupLocalizations-get_to_many_related")
         }
 
         private func makeGetQuery(_ fieldsSubscriptionGroups: [FieldsSubscriptionGroups]?, _ fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {

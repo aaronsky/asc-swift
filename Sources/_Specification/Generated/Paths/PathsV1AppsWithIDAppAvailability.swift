@@ -16,7 +16,7 @@ extension Resources.V1.Apps.WithID {
         public let path: String
 
         public func get(fieldsAppAvailabilities: [FieldsAppAvailabilities]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limitAvailableTerritories: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppAvailabilityResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppAvailabilities, fieldsApps, fieldsTerritories, limitAvailableTerritories, include), id: "apps-appAvailability-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppAvailabilities, fieldsApps, fieldsTerritories, limitAvailableTerritories, include), id: "apps-appAvailability-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsAppAvailabilities: [FieldsAppAvailabilities]?, _ fieldsApps: [FieldsApps]?, _ fieldsTerritories: [FieldsTerritories]?, _ limitAvailableTerritories: Int?, _ include: [Include]?) -> [(String, String?)] {

@@ -17,7 +17,7 @@ extension Resources.V1.AppPrices {
 
         @available(*, deprecated, message: "Deprecated")
         public func get(fieldsAppPrices: [FieldsAppPrices]? = nil, include: [Include]? = nil) -> Request<_Specification.AppPriceResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppPrices, include), id: "appPrices-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPrices, include), id: "appPrices-get_instance")
         }
 
         private func makeGetQuery(_ fieldsAppPrices: [FieldsAppPrices]?, _ include: [Include]?) -> [(String, String?)] {

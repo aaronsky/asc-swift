@@ -16,7 +16,7 @@ extension Resources.V1.SubscriptionPromotionalOffers {
         public let path: String
 
         public func get(fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]? = nil, include: [Include]? = nil, fieldsSubscriptionPromotionalOfferPrices: [FieldsSubscriptionPromotionalOfferPrices]? = nil, limitPrices: Int? = nil) -> Request<_Specification.SubscriptionPromotionalOfferResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsSubscriptionPromotionalOffers, include, fieldsSubscriptionPromotionalOfferPrices, limitPrices), id: "subscriptionPromotionalOffers-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionPromotionalOffers, include, fieldsSubscriptionPromotionalOfferPrices, limitPrices), id: "subscriptionPromotionalOffers-get_instance")
         }
 
         private func makeGetQuery(_ fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]?, _ include: [Include]?, _ fieldsSubscriptionPromotionalOfferPrices: [FieldsSubscriptionPromotionalOfferPrices]?, _ limitPrices: Int?) -> [(String, String?)] {
@@ -49,11 +49,11 @@ extension Resources.V1.SubscriptionPromotionalOffers {
         }
 
         public func patch(_ body: _Specification.SubscriptionPromotionalOfferUpdateRequest) -> Request<_Specification.SubscriptionPromotionalOfferResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "subscriptionPromotionalOffers-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "subscriptionPromotionalOffers-update_instance")
         }
 
         public var delete: Request<Void> {
-            Request(method: "DELETE", url: path, id: "subscriptionPromotionalOffers-delete_instance")
+            Request(path: path, method: "DELETE", id: "subscriptionPromotionalOffers-delete_instance")
         }
     }
 }

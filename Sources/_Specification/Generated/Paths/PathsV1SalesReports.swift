@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(filterFrequency: [FilterFrequency], filterReportDate: [String]? = nil, filterReportSubType: [FilterReportSubType], filterReportType: [FilterReportType], filterVendorNumber: [String], filterVersion: [String]? = nil) -> Request<Data> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterFrequency, filterReportDate, filterReportSubType, filterReportType, filterVendorNumber, filterVersion), id: "salesReports-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(filterFrequency, filterReportDate, filterReportSubType, filterReportType, filterVendorNumber, filterVersion), id: "salesReports-get_collection")
         }
 
         private func makeGetQuery(_ filterFrequency: [FilterFrequency], _ filterReportDate: [String]?, _ filterReportSubType: [FilterReportSubType], _ filterReportType: [FilterReportType], _ filterVendorNumber: [String], _ filterVersion: [String]?) -> [(String, String?)] {

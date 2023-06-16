@@ -16,7 +16,7 @@ extension Resources.V1.AppPreviewSets.WithID {
         public let path: String
 
         public func get(fieldsAppPreviews: [FieldsAppPreviews]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppPreviewsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppPreviews, fieldsAppPreviewSets, limit, include), id: "appPreviewSets-appPreviews-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPreviews, fieldsAppPreviewSets, limit, include), id: "appPreviewSets-appPreviews-get_to_many_related")
         }
 
         private func makeGetQuery(_ fieldsAppPreviews: [FieldsAppPreviews]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {

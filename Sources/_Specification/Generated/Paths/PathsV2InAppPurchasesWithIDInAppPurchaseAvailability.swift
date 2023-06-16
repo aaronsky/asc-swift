@@ -16,7 +16,7 @@ extension Resources.V2.InAppPurchases.WithID {
         public let path: String
 
         public func get(fieldsInAppPurchaseAvailabilities: [FieldsInAppPurchaseAvailabilities]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limitAvailableTerritories: Int? = nil, include: [Include]? = nil) -> Request<_Specification.InAppPurchaseAvailabilityResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsInAppPurchaseAvailabilities, fieldsTerritories, limitAvailableTerritories, include), id: "inAppPurchases-inAppPurchaseAvailability-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchaseAvailabilities, fieldsTerritories, limitAvailableTerritories, include), id: "inAppPurchases-inAppPurchaseAvailability-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsInAppPurchaseAvailabilities: [FieldsInAppPurchaseAvailabilities]?, _ fieldsTerritories: [FieldsTerritories]?, _ limitAvailableTerritories: Int?, _ include: [Include]?) -> [(String, String?)] {

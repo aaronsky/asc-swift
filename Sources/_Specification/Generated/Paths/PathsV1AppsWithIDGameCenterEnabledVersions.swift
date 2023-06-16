@@ -16,7 +16,7 @@ extension Resources.V1.Apps.WithID {
         public let path: String
 
         public func get(filterPlatform: [FilterPlatform]? = nil, filterVersionString: [String]? = nil, filterID: [String]? = nil, sort: [Sort]? = nil, fieldsGameCenterEnabledVersions: [FieldsGameCenterEnabledVersions]? = nil, fieldsApps: [FieldsApps]? = nil, limit: Int? = nil, limitCompatibleVersions: Int? = nil, include: [Include]? = nil) -> Request<_Specification.GameCenterEnabledVersionsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterPlatform, filterVersionString, filterID, sort, fieldsGameCenterEnabledVersions, fieldsApps, limit, limitCompatibleVersions, include), id: "apps-gameCenterEnabledVersions-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterPlatform, filterVersionString, filterID, sort, fieldsGameCenterEnabledVersions, fieldsApps, limit, limitCompatibleVersions, include), id: "apps-gameCenterEnabledVersions-get_to_many_related")
         }
 
         private func makeGetQuery(_ filterPlatform: [FilterPlatform]?, _ filterVersionString: [String]?, _ filterID: [String]?, _ sort: [Sort]?, _ fieldsGameCenterEnabledVersions: [FieldsGameCenterEnabledVersions]?, _ fieldsApps: [FieldsApps]?, _ limit: Int?, _ limitCompatibleVersions: Int?, _ include: [Include]?) -> [(String, String?)] {

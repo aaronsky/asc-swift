@@ -16,7 +16,7 @@ extension Resources.V1.CiProducts.WithID {
         public let path: String
 
         public func get(filterID: [String]? = nil, fieldsScmGitReferences: [FieldsScmGitReferences]? = nil, fieldsScmProviders: [FieldsScmProviders]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<_Specification.ScmRepositoriesResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterID, fieldsScmGitReferences, fieldsScmProviders, fieldsScmRepositories, limit, include), id: "ciProducts-primaryRepositories-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterID, fieldsScmGitReferences, fieldsScmProviders, fieldsScmRepositories, limit, include), id: "ciProducts-primaryRepositories-get_to_many_related")
         }
 
         private func makeGetQuery(_ filterID: [String]?, _ fieldsScmGitReferences: [FieldsScmGitReferences]?, _ fieldsScmProviders: [FieldsScmProviders]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {

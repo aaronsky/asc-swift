@@ -16,7 +16,7 @@ extension Resources.V2.InAppPurchases.WithID {
         public let path: String
 
         public func get(filterPriceTier: [String]? = nil, filterTerritory: [String]? = nil, fieldsInAppPurchasePricePoints: [FieldsInAppPurchasePricePoints]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<_Specification.InAppPurchasePricePointsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterPriceTier, filterTerritory, fieldsInAppPurchasePricePoints, fieldsTerritories, limit, include), id: "inAppPurchases-pricePoints-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterPriceTier, filterTerritory, fieldsInAppPurchasePricePoints, fieldsTerritories, limit, include), id: "inAppPurchases-pricePoints-get_to_many_related")
         }
 
         private func makeGetQuery(_ filterPriceTier: [String]?, _ filterTerritory: [String]?, _ fieldsInAppPurchasePricePoints: [FieldsInAppPurchasePricePoints]?, _ fieldsTerritories: [FieldsTerritories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {

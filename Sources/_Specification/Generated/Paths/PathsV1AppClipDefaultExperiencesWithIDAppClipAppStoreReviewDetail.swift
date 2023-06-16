@@ -16,7 +16,7 @@ extension Resources.V1.AppClipDefaultExperiences.WithID {
         public let path: String
 
         public func get(fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, include: [Include]? = nil) -> Request<_Specification.AppClipAppStoreReviewDetailResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAppClipAppStoreReviewDetails, fieldsAppClipDefaultExperiences, include), id: "appClipDefaultExperiences-appClipAppStoreReviewDetail-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipAppStoreReviewDetails, fieldsAppClipDefaultExperiences, include), id: "appClipDefaultExperiences-appClipAppStoreReviewDetail-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ include: [Include]?) -> [(String, String?)] {

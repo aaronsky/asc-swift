@@ -16,11 +16,11 @@ extension Resources.V1.AppStoreVersions.WithID.Relationships {
         public let path: String
 
         public var get: Request<_Specification.AppStoreVersionBuildLinkageResponse> {
-            Request(method: "GET", url: path, id: "appStoreVersions-build-get_to_one_relationship")
+            Request(path: path, method: "GET", id: "appStoreVersions-build-get_to_one_relationship")
         }
 
         public func patch(_ body: _Specification.AppStoreVersionBuildLinkageRequest) -> Request<Void> {
-            Request(method: "PATCH", url: path, body: body, id: "appStoreVersions-build-update_to_one_relationship")
+            Request(path: path, method: "PATCH", body: body, id: "appStoreVersions-build-update_to_one_relationship")
         }
     }
 }

@@ -16,7 +16,7 @@ extension Resources.V1.CiBuildRuns {
         public let path: String
 
         public func get(fieldsCiBuildRuns: [FieldsCiBuildRuns]? = nil, include: [Include]? = nil, fieldsCiBuildActions: [FieldsCiBuildActions]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, limitBuilds: Int? = nil) -> Request<_Specification.CiBuildRunResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsCiBuildRuns, include, fieldsCiBuildActions, fieldsBuilds, limitBuilds), id: "ciBuildRuns-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiBuildRuns, include, fieldsCiBuildActions, fieldsBuilds, limitBuilds), id: "ciBuildRuns-get_instance")
         }
 
         private func makeGetQuery(_ fieldsCiBuildRuns: [FieldsCiBuildRuns]?, _ include: [Include]?, _ fieldsCiBuildActions: [FieldsCiBuildActions]?, _ fieldsBuilds: [FieldsBuilds]?, _ limitBuilds: Int?) -> [(String, String?)] {

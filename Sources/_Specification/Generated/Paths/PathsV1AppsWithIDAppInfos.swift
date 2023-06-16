@@ -16,7 +16,7 @@ extension Resources.V1.Apps.WithID {
         public let path: String
 
         public func get(fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]? = nil, fieldsAppInfos: [FieldsAppInfos]? = nil, fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]? = nil, fieldsAppCategories: [FieldsAppCategories]? = nil, fieldsApps: [FieldsApps]? = nil, limit: Int? = nil, limitAppInfoLocalizations: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppInfosResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsAgeRatingDeclarations, fieldsAppInfos, fieldsAppInfoLocalizations, fieldsAppCategories, fieldsApps, limit, limitAppInfoLocalizations, include), id: "apps-appInfos-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAgeRatingDeclarations, fieldsAppInfos, fieldsAppInfoLocalizations, fieldsAppCategories, fieldsApps, limit, limitAppInfoLocalizations, include), id: "apps-appInfos-get_to_many_related")
         }
 
         private func makeGetQuery(_ fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]?, _ fieldsAppInfos: [FieldsAppInfos]?, _ fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]?, _ fieldsAppCategories: [FieldsAppCategories]?, _ fieldsApps: [FieldsApps]?, _ limit: Int?, _ limitAppInfoLocalizations: Int?, _ include: [Include]?) -> [(String, String?)] {

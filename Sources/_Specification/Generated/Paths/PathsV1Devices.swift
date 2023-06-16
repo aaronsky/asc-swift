@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(filterName: [String]? = nil, filterPlatform: [FilterPlatform]? = nil, filterStatus: [FilterStatus]? = nil, filterUdid: [String]? = nil, filterID: [String]? = nil, sort: [Sort]? = nil, fieldsDevices: [FieldsDevices]? = nil, limit: Int? = nil) -> Request<_Specification.DevicesResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(filterName, filterPlatform, filterStatus, filterUdid, filterID, sort, fieldsDevices, limit), id: "devices-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(filterName, filterPlatform, filterStatus, filterUdid, filterID, sort, fieldsDevices, limit), id: "devices-get_collection")
         }
 
         private func makeGetQuery(_ filterName: [String]?, _ filterPlatform: [FilterPlatform]?, _ filterStatus: [FilterStatus]?, _ filterUdid: [String]?, _ filterID: [String]?, _ sort: [Sort]?, _ fieldsDevices: [FieldsDevices]?, _ limit: Int?) -> [(String, String?)] {
@@ -66,7 +66,7 @@ extension Resources.V1 {
         }
 
         public func post(_ body: _Specification.DeviceCreateRequest) -> Request<_Specification.DeviceResponse> {
-            Request(method: "POST", url: path, body: body, id: "devices-create_instance")
+            Request(path: path, method: "POST", body: body, id: "devices-create_instance")
         }
     }
 }

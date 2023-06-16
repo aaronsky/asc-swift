@@ -16,7 +16,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(fieldsCiMacOsVersions: [FieldsCiMacOsVersions]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsCiXcodeVersions: [FieldsCiXcodeVersions]? = nil, limitXcodeVersions: Int? = nil) -> Request<_Specification.CiMacOsVersionsResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsCiMacOsVersions, limit, include, fieldsCiXcodeVersions, limitXcodeVersions), id: "ciMacOsVersions-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiMacOsVersions, limit, include, fieldsCiXcodeVersions, limitXcodeVersions), id: "ciMacOsVersions-get_collection")
         }
 
         private func makeGetQuery(_ fieldsCiMacOsVersions: [FieldsCiMacOsVersions]?, _ limit: Int?, _ include: [Include]?, _ fieldsCiXcodeVersions: [FieldsCiXcodeVersions]?, _ limitXcodeVersions: Int?) -> [(String, String?)] {

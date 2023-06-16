@@ -16,7 +16,7 @@ extension Resources.V1.Apps.WithID {
         public let path: String
 
         public func get(fieldsBetaLicenseAgreements: [FieldsBetaLicenseAgreements]? = nil) -> Request<_Specification.BetaLicenseAgreementResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsBetaLicenseAgreements), id: "apps-betaLicenseAgreement-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaLicenseAgreements), id: "apps-betaLicenseAgreement-get_to_one_related")
         }
 
         private func makeGetQuery(_ fieldsBetaLicenseAgreements: [FieldsBetaLicenseAgreements]?) -> [(String, String?)] {

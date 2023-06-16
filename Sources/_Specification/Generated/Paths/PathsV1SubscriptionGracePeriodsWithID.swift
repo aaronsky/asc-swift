@@ -16,7 +16,7 @@ extension Resources.V1.SubscriptionGracePeriods {
         public let path: String
 
         public func get(fieldsSubscriptionGracePeriods: [FieldsSubscriptionGracePeriods]? = nil) -> Request<_Specification.SubscriptionGracePeriodResponse> {
-            Request(method: "GET", url: path, query: makeGetQuery(fieldsSubscriptionGracePeriods), id: "subscriptionGracePeriods-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionGracePeriods), id: "subscriptionGracePeriods-get_instance")
         }
 
         private func makeGetQuery(_ fieldsSubscriptionGracePeriods: [FieldsSubscriptionGracePeriods]?) -> [(String, String?)] {
@@ -33,7 +33,7 @@ extension Resources.V1.SubscriptionGracePeriods {
         }
 
         public func patch(_ body: _Specification.SubscriptionGracePeriodUpdateRequest) -> Request<_Specification.SubscriptionGracePeriodResponse> {
-            Request(method: "PATCH", url: path, body: body, id: "subscriptionGracePeriods-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "subscriptionGracePeriods-update_instance")
         }
     }
 }

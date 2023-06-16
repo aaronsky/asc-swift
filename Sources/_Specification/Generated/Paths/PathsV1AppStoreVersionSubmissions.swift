@@ -17,7 +17,7 @@ extension Resources.V1 {
 
         @available(*, deprecated, message: "Deprecated")
         public func post(_ body: _Specification.AppStoreVersionSubmissionCreateRequest) -> Request<_Specification.AppStoreVersionSubmissionResponse> {
-            Request(method: "POST", url: path, body: body, id: "appStoreVersionSubmissions-create_instance")
+            Request(path: path, method: "POST", body: body, id: "appStoreVersionSubmissions-create_instance")
         }
     }
 }
