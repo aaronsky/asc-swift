@@ -50095,7 +50095,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AppStoreVersionLocalizationsWithoutIncludesResponse"
+                  "$ref": "#/components/schemas/AppStoreVersionLocalizationsResponse"
                 }
               }
             }

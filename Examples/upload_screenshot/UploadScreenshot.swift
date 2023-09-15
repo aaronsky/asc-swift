@@ -162,7 +162,7 @@ import FoundationNetworking
                 print(
                     """
                     App Screenshot successfully uploaded to:
-                    \(screenshot.links.this)
+                    \(screenshot.links?.this)
                     You can verify success in App Store Connect or using the API.
                     """
                 )

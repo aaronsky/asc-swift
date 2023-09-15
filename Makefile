@@ -27,6 +27,7 @@ spec: spec-download spec-generate
 spec-download:
 	curl --fail --silent --show-error --location --output - $(OPENAPI_SPEC_URL) \
 		| tar --extract --to-stdout --file - \
+		| sed 's|#/components/schemas/AppStoreVersionLocalizationsWithoutIncludesResponse|#/components/schemas/AppStoreVersionLocalizationsResponse|' \
 		| jq '\
 			.components.schemas.BundleIdPlatform.enum |= [ "IOS", "MAC_OS", "UNIVERSAL" ] \
 			| del(.["x-important"]) \

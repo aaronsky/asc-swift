@@ -158,7 +158,7 @@ import FoundationNetworking
                 print(
                     """
                     App Preview successfully uploaded to:
-                    \(preview.links.this)
+                    \(preview.links?.this)
                     You can verify success in App Store Connect or using the API.
                     """
                 )
