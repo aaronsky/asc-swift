@@ -41,6 +41,7 @@ extension Resources.V1.AppClipDefaultExperiences.WithID {
 
         public enum FieldsAppStoreVersionExperiments: String, Codable, CaseIterable {
             case app
+            case appStoreVersion
             case appStoreVersionExperimentTreatments
             case controlVersions
             case endDate
@@ -118,6 +119,7 @@ extension Resources.V1.AppClipDefaultExperiences.WithID {
             case appAvailability
             case appClips
             case appCustomProductPages
+            case appEncryptionDeclarations
             case appEvents
             case appInfos
             case appPricePoints
@@ -137,6 +139,7 @@ extension Resources.V1.AppClipDefaultExperiences.WithID {
             case contentRightsDeclaration
             case customerReviews
             case endUserLicenseAgreement
+            case gameCenterDetail
             case gameCenterEnabledVersions
             case inAppPurchases
             case inAppPurchasesV2

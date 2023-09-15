@@ -15,7 +15,7 @@ extension Resources.V1.BetaTesters.WithID {
         /// Path: `/v1/betaTesters/{id}/betaGroups`
         public let path: String
 
-        public func get(fieldsBetaGroups: [FieldsBetaGroups]? = nil, limit: Int? = nil) -> Request<_Specification.BetaGroupsResponse> {
+        public func get(fieldsBetaGroups: [FieldsBetaGroups]? = nil, limit: Int? = nil) -> Request<_Specification.BetaGroupsWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaGroups, limit), id: "betaTesters-betaGroups-get_to_many_related")
         }
 

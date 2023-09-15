@@ -6,7 +6,7 @@
 import Foundation
 
 public struct PreReleaseVersionsResponse: Codable, Hashable {
-    public var data: [PreReleaseVersion]
+    public var data: [PrereleaseVersion]
     public var included: [IncludedItem]?
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
@@ -38,7 +38,7 @@ public struct PreReleaseVersionsResponse: Codable, Hashable {
         }
     }
 
-    public init(data: [PreReleaseVersion], included: [IncludedItem]? = nil, links: PagedDocumentLinks, meta: PagingInformation? = nil) {
+    public init(data: [PrereleaseVersion], included: [IncludedItem]? = nil, links: PagedDocumentLinks, meta: PagingInformation? = nil) {
         self.data = data
         self.included = included
         self.links = links

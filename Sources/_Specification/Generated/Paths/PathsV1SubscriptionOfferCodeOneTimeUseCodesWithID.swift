@@ -15,15 +15,14 @@ extension Resources.V1.SubscriptionOfferCodeOneTimeUseCodes {
         /// Path: `/v1/subscriptionOfferCodeOneTimeUseCodes/{id}`
         public let path: String
 
-        public func get(fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]? = nil, include: [Include]? = nil, fieldsSubscriptionOfferCodeOneTimeUseCodeValues: [String]? = nil) -> Request<_Specification.SubscriptionOfferCodeOneTimeUseCodeResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionOfferCodeOneTimeUseCodes, include, fieldsSubscriptionOfferCodeOneTimeUseCodeValues), id: "subscriptionOfferCodeOneTimeUseCodes-get_instance")
+        public func get(fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]? = nil, include: [Include]? = nil) -> Request<_Specification.SubscriptionOfferCodeOneTimeUseCodeResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionOfferCodeOneTimeUseCodes, include), id: "subscriptionOfferCodeOneTimeUseCodes-get_instance")
         }
 
-        private func makeGetQuery(_ fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]?, _ include: [Include]?, _ fieldsSubscriptionOfferCodeOneTimeUseCodeValues: [String]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsSubscriptionOfferCodeOneTimeUseCodes, forKey: "fields[subscriptionOfferCodeOneTimeUseCodes]")
             encoder.encode(include, forKey: "include")
-            encoder.encode(fieldsSubscriptionOfferCodeOneTimeUseCodeValues, forKey: "fields[subscriptionOfferCodeOneTimeUseCodeValues]")
             return encoder.items
         }
 

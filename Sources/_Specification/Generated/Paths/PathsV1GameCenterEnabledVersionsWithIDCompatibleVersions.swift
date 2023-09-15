@@ -15,6 +15,7 @@ extension Resources.V1.GameCenterEnabledVersions.WithID {
         /// Path: `/v1/gameCenterEnabledVersions/{id}/compatibleVersions`
         public let path: String
 
+        @available(*, deprecated, message: "Deprecated")
         public func get(filterPlatform: [FilterPlatform]? = nil, filterVersionString: [String]? = nil, filterApp: [String]? = nil, filterID: [String]? = nil, sort: [Sort]? = nil, fieldsGameCenterEnabledVersions: [FieldsGameCenterEnabledVersions]? = nil, fieldsApps: [FieldsApps]? = nil, limit: Int? = nil, limitCompatibleVersions: Int? = nil, include: [Include]? = nil) -> Request<_Specification.GameCenterEnabledVersionsResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(filterPlatform, filterVersionString, filterApp, filterID, sort, fieldsGameCenterEnabledVersions, fieldsApps, limit, limitCompatibleVersions, include), id: "gameCenterEnabledVersions-compatibleVersions-get_to_many_related")
         }
@@ -57,6 +58,7 @@ extension Resources.V1.GameCenterEnabledVersions.WithID {
             case appAvailability
             case appClips
             case appCustomProductPages
+            case appEncryptionDeclarations
             case appEvents
             case appInfos
             case appPricePoints
@@ -76,6 +78,7 @@ extension Resources.V1.GameCenterEnabledVersions.WithID {
             case contentRightsDeclaration
             case customerReviews
             case endUserLicenseAgreement
+            case gameCenterDetail
             case gameCenterEnabledVersions
             case inAppPurchases
             case inAppPurchasesV2

@@ -2,7 +2,7 @@
 GIT_REPO_TOPLEVEL := $(shell git rev-parse --show-toplevel)
 OPENAPI_SPEC_URL := https://developer.apple.com/sample-code/app-store-connect/app-store-connect-openapi-specification.zip
 OPENAPI_SPEC_OUTDIR := $(GIT_REPO_TOPLEVEL)/Sources/_Specification
-OPENAPI_SPEC_OUTFILE := $(OPENAPI_SPEC_OUTDIR)/app_store_connect_api_2.4_openapi.json
+OPENAPI_SPEC_OUTFILE := $(OPENAPI_SPEC_OUTDIR)/app_store_connect_api_3.0_openapi.json
 
 # Apple Platform Destinations
 DESTINATION_PLATFORM_IOS_SIMULATOR = platform=iOS Simulator,name=iPhone 13 Pro Max

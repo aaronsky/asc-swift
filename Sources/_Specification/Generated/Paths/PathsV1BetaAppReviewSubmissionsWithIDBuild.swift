@@ -15,7 +15,7 @@ extension Resources.V1.BetaAppReviewSubmissions.WithID {
         /// Path: `/v1/betaAppReviewSubmissions/{id}/build`
         public let path: String
 
-        public func get(fieldsBuilds: [FieldsBuilds]? = nil) -> Request<_Specification.BuildResponse> {
+        public func get(fieldsBuilds: [FieldsBuilds]? = nil) -> Request<_Specification.BuildWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsBuilds), id: "betaAppReviewSubmissions-build-get_to_one_related")
         }
 

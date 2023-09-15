@@ -9,7 +9,6 @@ public struct DiagnosticSignature: Codable, Hashable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
-    public var links: ResourceLinks
 
     public enum `Type`: String, Codable, CaseIterable {
         case diagnosticSignatures
@@ -32,10 +31,9 @@ public struct DiagnosticSignature: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, links: ResourceLinks) {
+    public init(type: `Type`, id: String, attributes: Attributes? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes
-        self.links = links
     }
 }

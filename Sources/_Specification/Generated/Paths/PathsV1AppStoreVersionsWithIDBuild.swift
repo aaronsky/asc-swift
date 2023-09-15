@@ -15,7 +15,7 @@ extension Resources.V1.AppStoreVersions.WithID {
         /// Path: `/v1/appStoreVersions/{id}/build`
         public let path: String
 
-        public func get(fieldsBuilds: [FieldsBuilds]? = nil) -> Request<_Specification.BuildResponse> {
+        public func get(fieldsBuilds: [FieldsBuilds]? = nil) -> Request<_Specification.BuildWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsBuilds), id: "appStoreVersions-build-get_to_one_related")
         }
 

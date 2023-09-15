@@ -15,7 +15,7 @@ extension Resources.V1.PreReleaseVersions.WithID {
         /// Path: `/v1/preReleaseVersions/{id}/app`
         public let path: String
 
-        public func get(fieldsApps: [FieldsApps]? = nil) -> Request<_Specification.AppResponse> {
+        public func get(fieldsApps: [FieldsApps]? = nil) -> Request<_Specification.AppWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsApps), id: "preReleaseVersions-app-get_to_one_related")
         }
 
@@ -29,6 +29,7 @@ extension Resources.V1.PreReleaseVersions.WithID {
             case appAvailability
             case appClips
             case appCustomProductPages
+            case appEncryptionDeclarations
             case appEvents
             case appInfos
             case appPricePoints
@@ -48,6 +49,7 @@ extension Resources.V1.PreReleaseVersions.WithID {
             case contentRightsDeclaration
             case customerReviews
             case endUserLicenseAgreement
+            case gameCenterDetail
             case gameCenterEnabledVersions
             case inAppPurchases
             case inAppPurchasesV2

@@ -71,6 +71,7 @@ extension Resources.V1.AppEncryptionDeclarations {
             case appAvailability
             case appClips
             case appCustomProductPages
+            case appEncryptionDeclarations
             case appEvents
             case appInfos
             case appPricePoints
@@ -90,6 +91,7 @@ extension Resources.V1.AppEncryptionDeclarations {
             case contentRightsDeclaration
             case customerReviews
             case endUserLicenseAgreement
+            case gameCenterDetail
             case gameCenterEnabledVersions
             case inAppPurchases
             case inAppPurchasesV2

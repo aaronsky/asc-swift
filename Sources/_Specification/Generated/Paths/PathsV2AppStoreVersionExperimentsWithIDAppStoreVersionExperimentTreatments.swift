@@ -16,7 +16,7 @@ extension Resources.V2.AppStoreVersionExperiments.WithID {
         public let path: String
 
         public func get(fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]? = nil, fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]? = nil, limit: Int? = nil, limitAppStoreVersionExperimentTreatmentLocalizations: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppStoreVersionExperimentTreatmentsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionExperiments, fieldsAppStoreVersionExperimentTreatments, fieldsAppStoreVersionExperimentTreatmentLocalizations, limit, limitAppStoreVersionExperimentTreatmentLocalizations, include), id: "appStoreVersionExperiments-appStoreVersionExperimentTreatments-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionExperiments, fieldsAppStoreVersionExperimentTreatments, fieldsAppStoreVersionExperimentTreatmentLocalizations, limit, limitAppStoreVersionExperimentTreatmentLocalizations, include), id: "appStoreVersionExperimentsV2-appStoreVersionExperimentTreatments-get_to_many_related")
         }
 
         private func makeGetQuery(_ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]?, _ fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]?, _ limit: Int?, _ limitAppStoreVersionExperimentTreatmentLocalizations: Int?, _ include: [Include]?) -> [(String, String?)] {
@@ -32,6 +32,7 @@ extension Resources.V2.AppStoreVersionExperiments.WithID {
 
         public enum FieldsAppStoreVersionExperiments: String, Codable, CaseIterable {
             case app
+            case appStoreVersion
             case appStoreVersionExperimentTreatments
             case controlVersions
             case endDate

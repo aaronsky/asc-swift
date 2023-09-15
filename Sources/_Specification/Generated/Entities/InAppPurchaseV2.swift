@@ -10,7 +10,7 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
     public var id: String
     public var attributes: Attributes?
     public var relationships: Relationships?
-    public var links: ResourceLinks
+    public var links: ResourceLinks?
 
     public enum `Type`: String, Codable, CaseIterable {
         case inAppPurchases
@@ -24,6 +24,7 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
         public var reviewNote: String?
         public var isFamilySharable: Bool?
         public var isContentHosting: Bool?
+        /// - warning: Deprecated.
         public var isAvailableInAllTerritories: Bool?
 
         public init(name: String? = nil, productID: String? = nil, inAppPurchaseType: InAppPurchaseType? = nil, state: InAppPurchaseState? = nil, reviewNote: String? = nil, isFamilySharable: Bool? = nil, isContentHosting: Bool? = nil, isAvailableInAllTerritories: Bool? = nil) {
@@ -346,7 +347,7 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

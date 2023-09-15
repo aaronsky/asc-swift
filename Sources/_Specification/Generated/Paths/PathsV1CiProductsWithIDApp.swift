@@ -15,13 +15,14 @@ extension Resources.V1.CiProducts.WithID {
         /// Path: `/v1/ciProducts/{id}/app`
         public let path: String
 
-        public func get(fieldsBetaAppReviewDetails: [FieldsBetaAppReviewDetails]? = nil, fieldsCiProducts: [FieldsCiProducts]? = nil, fieldsReviewSubmissions: [FieldsReviewSubmissions]? = nil, fieldsBetaGroups: [FieldsBetaGroups]? = nil, fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsAppEvents: [FieldsAppEvents]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsBetaLicenseAgreements: [FieldsBetaLicenseAgreements]? = nil, fieldsAppClips: [FieldsAppClips]? = nil, fieldsBetaAppLocalizations: [FieldsBetaAppLocalizations]? = nil, fieldsAppInfos: [FieldsAppInfos]? = nil, fieldsPreReleaseVersions: [FieldsPreReleaseVersions]? = nil, fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, fieldsSubscriptionGroups: [FieldsSubscriptionGroups]? = nil, fieldsAppPreOrders: [FieldsAppPreOrders]? = nil, fieldsAppPrices: [FieldsAppPrices]? = nil, fieldsGameCenterEnabledVersions: [FieldsGameCenterEnabledVersions]? = nil, fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsSubscriptionGracePeriods: [FieldsSubscriptionGracePeriods]? = nil, fieldsEndUserLicenseAgreements: [FieldsEndUserLicenseAgreements]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppCustomProductPages: [FieldsAppCustomProductPages]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limitBetaGroups: Int? = nil, limitAppStoreVersions: Int? = nil, limitPreReleaseVersions: Int? = nil, limitBetaAppLocalizations: Int? = nil, limitBuilds: Int? = nil, limitAppInfos: Int? = nil, limitAppClips: Int? = nil, limitPrices: Int? = nil, limitAvailableTerritories: Int? = nil, limitInAppPurchases: Int? = nil, limitSubscriptionGroups: Int? = nil, limitGameCenterEnabledVersions: Int? = nil, limitAppCustomProductPages: Int? = nil, limitInAppPurchasesV2: Int? = nil, limitPromotedPurchases: Int? = nil, limitAppEvents: Int? = nil, limitReviewSubmissions: Int? = nil, limitAppStoreVersionExperimentsV2: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaAppReviewDetails, fieldsCiProducts, fieldsReviewSubmissions, fieldsBetaGroups, fieldsPromotedPurchases, fieldsApps, fieldsAppEvents, fieldsBuilds, fieldsBetaLicenseAgreements, fieldsAppClips, fieldsBetaAppLocalizations, fieldsAppInfos, fieldsPreReleaseVersions, fieldsInAppPurchases, fieldsSubscriptionGroups, fieldsAppPreOrders, fieldsAppPrices, fieldsGameCenterEnabledVersions, fieldsAppStoreVersionExperiments, fieldsSubscriptionGracePeriods, fieldsEndUserLicenseAgreements, fieldsAppStoreVersions, fieldsAppCustomProductPages, fieldsTerritories, limitBetaGroups, limitAppStoreVersions, limitPreReleaseVersions, limitBetaAppLocalizations, limitBuilds, limitAppInfos, limitAppClips, limitPrices, limitAvailableTerritories, limitInAppPurchases, limitSubscriptionGroups, limitGameCenterEnabledVersions, limitAppCustomProductPages, limitInAppPurchasesV2, limitPromotedPurchases, limitAppEvents, limitReviewSubmissions, limitAppStoreVersionExperimentsV2, include), id: "ciProducts-app-get_to_one_related")
+        public func get(fieldsBetaAppReviewDetails: [FieldsBetaAppReviewDetails]? = nil, fieldsGameCenterDetails: [FieldsGameCenterDetails]? = nil, fieldsCiProducts: [FieldsCiProducts]? = nil, fieldsReviewSubmissions: [FieldsReviewSubmissions]? = nil, fieldsBetaGroups: [FieldsBetaGroups]? = nil, fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsAppEvents: [FieldsAppEvents]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsBetaLicenseAgreements: [FieldsBetaLicenseAgreements]? = nil, fieldsAppClips: [FieldsAppClips]? = nil, fieldsBetaAppLocalizations: [FieldsBetaAppLocalizations]? = nil, fieldsAppInfos: [FieldsAppInfos]? = nil, fieldsPreReleaseVersions: [FieldsPreReleaseVersions]? = nil, fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, fieldsSubscriptionGroups: [FieldsSubscriptionGroups]? = nil, fieldsAppPreOrders: [FieldsAppPreOrders]? = nil, fieldsAppPrices: [FieldsAppPrices]? = nil, fieldsGameCenterEnabledVersions: [FieldsGameCenterEnabledVersions]? = nil, fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsSubscriptionGracePeriods: [FieldsSubscriptionGracePeriods]? = nil, fieldsEndUserLicenseAgreements: [FieldsEndUserLicenseAgreements]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]? = nil, fieldsAppCustomProductPages: [FieldsAppCustomProductPages]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limitAppEncryptionDeclarations: Int? = nil, limitBetaGroups: Int? = nil, limitAppStoreVersions: Int? = nil, limitPreReleaseVersions: Int? = nil, limitBetaAppLocalizations: Int? = nil, limitBuilds: Int? = nil, limitAppInfos: Int? = nil, limitAppClips: Int? = nil, limitPrices: Int? = nil, limitAvailableTerritories: Int? = nil, limitInAppPurchases: Int? = nil, limitSubscriptionGroups: Int? = nil, limitGameCenterEnabledVersions: Int? = nil, limitAppCustomProductPages: Int? = nil, limitInAppPurchasesV2: Int? = nil, limitPromotedPurchases: Int? = nil, limitAppEvents: Int? = nil, limitReviewSubmissions: Int? = nil, limitAppStoreVersionExperimentsV2: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaAppReviewDetails, fieldsGameCenterDetails, fieldsCiProducts, fieldsReviewSubmissions, fieldsBetaGroups, fieldsPromotedPurchases, fieldsApps, fieldsAppEvents, fieldsBuilds, fieldsBetaLicenseAgreements, fieldsAppClips, fieldsBetaAppLocalizations, fieldsAppInfos, fieldsPreReleaseVersions, fieldsInAppPurchases, fieldsSubscriptionGroups, fieldsAppPreOrders, fieldsAppPrices, fieldsGameCenterEnabledVersions, fieldsAppStoreVersionExperiments, fieldsSubscriptionGracePeriods, fieldsEndUserLicenseAgreements, fieldsAppStoreVersions, fieldsAppEncryptionDeclarations, fieldsAppCustomProductPages, fieldsTerritories, limitAppEncryptionDeclarations, limitBetaGroups, limitAppStoreVersions, limitPreReleaseVersions, limitBetaAppLocalizations, limitBuilds, limitAppInfos, limitAppClips, limitPrices, limitAvailableTerritories, limitInAppPurchases, limitSubscriptionGroups, limitGameCenterEnabledVersions, limitAppCustomProductPages, limitInAppPurchasesV2, limitPromotedPurchases, limitAppEvents, limitReviewSubmissions, limitAppStoreVersionExperimentsV2, include), id: "ciProducts-app-get_to_one_related")
         }
 
-        private func makeGetQuery(_ fieldsBetaAppReviewDetails: [FieldsBetaAppReviewDetails]?, _ fieldsCiProducts: [FieldsCiProducts]?, _ fieldsReviewSubmissions: [FieldsReviewSubmissions]?, _ fieldsBetaGroups: [FieldsBetaGroups]?, _ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsApps: [FieldsApps]?, _ fieldsAppEvents: [FieldsAppEvents]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsBetaLicenseAgreements: [FieldsBetaLicenseAgreements]?, _ fieldsAppClips: [FieldsAppClips]?, _ fieldsBetaAppLocalizations: [FieldsBetaAppLocalizations]?, _ fieldsAppInfos: [FieldsAppInfos]?, _ fieldsPreReleaseVersions: [FieldsPreReleaseVersions]?, _ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ fieldsSubscriptionGroups: [FieldsSubscriptionGroups]?, _ fieldsAppPreOrders: [FieldsAppPreOrders]?, _ fieldsAppPrices: [FieldsAppPrices]?, _ fieldsGameCenterEnabledVersions: [FieldsGameCenterEnabledVersions]?, _ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsSubscriptionGracePeriods: [FieldsSubscriptionGracePeriods]?, _ fieldsEndUserLicenseAgreements: [FieldsEndUserLicenseAgreements]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppCustomProductPages: [FieldsAppCustomProductPages]?, _ fieldsTerritories: [FieldsTerritories]?, _ limitBetaGroups: Int?, _ limitAppStoreVersions: Int?, _ limitPreReleaseVersions: Int?, _ limitBetaAppLocalizations: Int?, _ limitBuilds: Int?, _ limitAppInfos: Int?, _ limitAppClips: Int?, _ limitPrices: Int?, _ limitAvailableTerritories: Int?, _ limitInAppPurchases: Int?, _ limitSubscriptionGroups: Int?, _ limitGameCenterEnabledVersions: Int?, _ limitAppCustomProductPages: Int?, _ limitInAppPurchasesV2: Int?, _ limitPromotedPurchases: Int?, _ limitAppEvents: Int?, _ limitReviewSubmissions: Int?, _ limitAppStoreVersionExperimentsV2: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsBetaAppReviewDetails: [FieldsBetaAppReviewDetails]?, _ fieldsGameCenterDetails: [FieldsGameCenterDetails]?, _ fieldsCiProducts: [FieldsCiProducts]?, _ fieldsReviewSubmissions: [FieldsReviewSubmissions]?, _ fieldsBetaGroups: [FieldsBetaGroups]?, _ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsApps: [FieldsApps]?, _ fieldsAppEvents: [FieldsAppEvents]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsBetaLicenseAgreements: [FieldsBetaLicenseAgreements]?, _ fieldsAppClips: [FieldsAppClips]?, _ fieldsBetaAppLocalizations: [FieldsBetaAppLocalizations]?, _ fieldsAppInfos: [FieldsAppInfos]?, _ fieldsPreReleaseVersions: [FieldsPreReleaseVersions]?, _ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ fieldsSubscriptionGroups: [FieldsSubscriptionGroups]?, _ fieldsAppPreOrders: [FieldsAppPreOrders]?, _ fieldsAppPrices: [FieldsAppPrices]?, _ fieldsGameCenterEnabledVersions: [FieldsGameCenterEnabledVersions]?, _ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsSubscriptionGracePeriods: [FieldsSubscriptionGracePeriods]?, _ fieldsEndUserLicenseAgreements: [FieldsEndUserLicenseAgreements]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]?, _ fieldsAppCustomProductPages: [FieldsAppCustomProductPages]?, _ fieldsTerritories: [FieldsTerritories]?, _ limitAppEncryptionDeclarations: Int?, _ limitBetaGroups: Int?, _ limitAppStoreVersions: Int?, _ limitPreReleaseVersions: Int?, _ limitBetaAppLocalizations: Int?, _ limitBuilds: Int?, _ limitAppInfos: Int?, _ limitAppClips: Int?, _ limitPrices: Int?, _ limitAvailableTerritories: Int?, _ limitInAppPurchases: Int?, _ limitSubscriptionGroups: Int?, _ limitGameCenterEnabledVersions: Int?, _ limitAppCustomProductPages: Int?, _ limitInAppPurchasesV2: Int?, _ limitPromotedPurchases: Int?, _ limitAppEvents: Int?, _ limitReviewSubmissions: Int?, _ limitAppStoreVersionExperimentsV2: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsBetaAppReviewDetails, forKey: "fields[betaAppReviewDetails]")
+            encoder.encode(fieldsGameCenterDetails, forKey: "fields[gameCenterDetails]")
             encoder.encode(fieldsCiProducts, forKey: "fields[ciProducts]")
             encoder.encode(fieldsReviewSubmissions, forKey: "fields[reviewSubmissions]")
             encoder.encode(fieldsBetaGroups, forKey: "fields[betaGroups]")
@@ -43,8 +44,10 @@ extension Resources.V1.CiProducts.WithID {
             encoder.encode(fieldsSubscriptionGracePeriods, forKey: "fields[subscriptionGracePeriods]")
             encoder.encode(fieldsEndUserLicenseAgreements, forKey: "fields[endUserLicenseAgreements]")
             encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
+            encoder.encode(fieldsAppEncryptionDeclarations, forKey: "fields[appEncryptionDeclarations]")
             encoder.encode(fieldsAppCustomProductPages, forKey: "fields[appCustomProductPages]")
             encoder.encode(fieldsTerritories, forKey: "fields[territories]")
+            encoder.encode(limitAppEncryptionDeclarations, forKey: "limit[appEncryptionDeclarations]")
             encoder.encode(limitBetaGroups, forKey: "limit[betaGroups]")
             encoder.encode(limitAppStoreVersions, forKey: "limit[appStoreVersions]")
             encoder.encode(limitPreReleaseVersions, forKey: "limit[preReleaseVersions]")
@@ -77,6 +80,22 @@ extension Resources.V1.CiProducts.WithID {
             case demoAccountPassword
             case demoAccountRequired
             case notes
+        }
+
+        public enum FieldsGameCenterDetails: String, Codable, CaseIterable {
+            case achievementReleases
+            case app
+            case arcadeEnabled
+            case challengeEnabled
+            case defaultGroupLeaderboard
+            case defaultLeaderboard
+            case gameCenterAchievements
+            case gameCenterAppVersions
+            case gameCenterGroup
+            case gameCenterLeaderboardSets
+            case gameCenterLeaderboards
+            case leaderboardReleases
+            case leaderboardSetReleases
         }
 
         public enum FieldsCiProducts: String, Codable, CaseIterable {
@@ -135,6 +154,7 @@ extension Resources.V1.CiProducts.WithID {
             case appAvailability
             case appClips
             case appCustomProductPages
+            case appEncryptionDeclarations
             case appEvents
             case appInfos
             case appPricePoints
@@ -154,6 +174,7 @@ extension Resources.V1.CiProducts.WithID {
             case contentRightsDeclaration
             case customerReviews
             case endUserLicenseAgreement
+            case gameCenterDetail
             case gameCenterEnabledVersions
             case inAppPurchases
             case inAppPurchasesV2
@@ -265,10 +286,23 @@ extension Resources.V1.CiProducts.WithID {
         }
 
         public enum FieldsInAppPurchases: String, Codable, CaseIterable {
+            case app
+            case appStoreReviewScreenshot
             case apps
+            case availableInAllTerritories
+            case content
+            case contentHosting
+            case familySharable
+            case iapPriceSchedule
+            case inAppPurchaseAvailability
+            case inAppPurchaseLocalizations
             case inAppPurchaseType
+            case name
+            case pricePoints
             case productID = "productId"
+            case promotedPurchase
             case referenceName
+            case reviewNote
             case state
         }
 
@@ -349,6 +383,26 @@ extension Resources.V1.CiProducts.WithID {
             case versionString
         }
 
+        public enum FieldsAppEncryptionDeclarations: String, Codable, CaseIterable {
+            case app
+            case appDescription
+            case appEncryptionDeclarationDocument
+            case appEncryptionDeclarationState
+            case availableOnFrenchStore
+            case builds
+            case codeValue
+            case containsProprietaryCryptography
+            case containsThirdPartyCryptography
+            case createdDate
+            case documentName
+            case documentType
+            case documentURL = "documentUrl"
+            case exempt
+            case platform
+            case uploadedDate
+            case usesEncryption
+        }
+
         public enum FieldsAppCustomProductPages: String, Codable, CaseIterable {
             case app
             case appCustomProductPageVersions
@@ -366,6 +420,7 @@ extension Resources.V1.CiProducts.WithID {
         public enum Include: String, Codable, CaseIterable {
             case appClips
             case appCustomProductPages
+            case appEncryptionDeclarations
             case appEvents
             case appInfos
             case appStoreVersionExperimentsV2
@@ -378,6 +433,7 @@ extension Resources.V1.CiProducts.WithID {
             case builds
             case ciProduct
             case endUserLicenseAgreement
+            case gameCenterDetail
             case gameCenterEnabledVersions
             case inAppPurchases
             case inAppPurchasesV2

@@ -15,6 +15,7 @@ extension Resources.V1.InAppPurchases {
         /// Path: `/v1/inAppPurchases/{id}`
         public let path: String
 
+        @available(*, deprecated, message: "Deprecated")
         public func get(fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, include: [Include]? = nil, limitApps: Int? = nil) -> Request<_Specification.InAppPurchaseResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchases, include, limitApps), id: "inAppPurchases-get_instance")
         }

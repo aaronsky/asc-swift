@@ -6,9 +6,9 @@
 import Foundation
 
 public struct ResourceLinks: Codable, Hashable {
-    public var this: URL
+    public var this: URL?
 
-    public init(this: URL) {
+    public init(this: URL? = nil) {
         self.this = this
     }
 

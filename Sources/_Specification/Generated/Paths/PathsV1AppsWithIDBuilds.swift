@@ -15,7 +15,7 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/builds`
         public let path: String
 
-        public func get(fieldsBuilds: [FieldsBuilds]? = nil, limit: Int? = nil) -> Request<_Specification.BuildsResponse> {
+        public func get(fieldsBuilds: [FieldsBuilds]? = nil, limit: Int? = nil) -> Request<_Specification.BuildsWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsBuilds, limit), id: "apps-builds-get_to_many_related")
         }
 

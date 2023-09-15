@@ -16,7 +16,7 @@ extension Resources.V2 {
         public let path: String
 
         public func get(fieldsSandboxTesters: [FieldsSandboxTesters]? = nil, limit: Int? = nil) -> Request<_Specification.SandboxTestersV2Response> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSandboxTesters, limit), id: "sandboxTesters-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSandboxTesters, limit), id: "sandboxTestersV2-get_collection")
         }
 
         private func makeGetQuery(_ fieldsSandboxTesters: [FieldsSandboxTesters]?, _ limit: Int?) -> [(String, String?)] {

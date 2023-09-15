@@ -10,7 +10,6 @@ public struct InAppPurchasePricePoint: Codable, Hashable, Identifiable {
     public var id: String
     public var attributes: Attributes?
     public var relationships: Relationships?
-    public var links: ResourceLinks
 
     public enum `Type`: String, Codable, CaseIterable {
         case inAppPurchasePricePoints
@@ -76,11 +75,10 @@ public struct InAppPurchasePricePoint: Codable, Hashable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes
         self.relationships = relationships
-        self.links = links
     }
 }

@@ -9,7 +9,6 @@ public struct SubscriptionPromotionalOfferPrice: Codable, Hashable, Identifiable
     public var type: `Type`
     public var id: String
     public var relationships: Relationships?
-    public var links: ResourceLinks
 
     public enum `Type`: String, Codable, CaseIterable {
         case subscriptionPromotionalOfferPrices
@@ -103,10 +102,9 @@ public struct SubscriptionPromotionalOfferPrice: Codable, Hashable, Identifiable
         }
     }
 
-    public init(type: `Type`, id: String, relationships: Relationships? = nil, links: ResourceLinks) {
+    public init(type: `Type`, id: String, relationships: Relationships? = nil) {
         self.type = type
         self.id = id
         self.relationships = relationships
-        self.links = links
     }
 }

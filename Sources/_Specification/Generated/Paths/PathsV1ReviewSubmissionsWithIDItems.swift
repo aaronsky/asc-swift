@@ -33,6 +33,7 @@ extension Resources.V1.ReviewSubmissions.WithID {
 
         public enum FieldsAppStoreVersionExperiments: String, Codable, CaseIterable {
             case app
+            case appStoreVersion
             case appStoreVersionExperimentTreatments
             case controlVersions
             case endDate

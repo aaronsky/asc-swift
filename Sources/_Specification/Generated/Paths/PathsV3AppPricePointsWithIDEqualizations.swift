@@ -16,7 +16,7 @@ extension Resources.V3.AppPricePoints.WithID {
         public let path: String
 
         public func get(filterTerritory: [String]? = nil, fieldsAppPricePoints: [FieldsAppPricePoints]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppPricePointsV3Response> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterTerritory, fieldsAppPricePoints, fieldsApps, fieldsTerritories, limit, include), id: "appPricePoints-equalizations-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterTerritory, fieldsAppPricePoints, fieldsApps, fieldsTerritories, limit, include), id: "appPricePointsV3-equalizations-get_to_many_related")
         }
 
         private func makeGetQuery(_ filterTerritory: [String]?, _ fieldsAppPricePoints: [FieldsAppPricePoints]?, _ fieldsApps: [FieldsApps]?, _ fieldsTerritories: [FieldsTerritories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
@@ -42,6 +42,7 @@ extension Resources.V3.AppPricePoints.WithID {
             case appAvailability
             case appClips
             case appCustomProductPages
+            case appEncryptionDeclarations
             case appEvents
             case appInfos
             case appPricePoints
@@ -61,6 +62,7 @@ extension Resources.V3.AppPricePoints.WithID {
             case contentRightsDeclaration
             case customerReviews
             case endUserLicenseAgreement
+            case gameCenterDetail
             case gameCenterEnabledVersions
             case inAppPurchases
             case inAppPurchasesV2

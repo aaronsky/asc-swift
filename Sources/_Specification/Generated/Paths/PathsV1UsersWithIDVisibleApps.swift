@@ -15,7 +15,7 @@ extension Resources.V1.Users.WithID {
         /// Path: `/v1/users/{id}/visibleApps`
         public let path: String
 
-        public func get(fieldsApps: [FieldsApps]? = nil, limit: Int? = nil) -> Request<_Specification.AppsResponse> {
+        public func get(fieldsApps: [FieldsApps]? = nil, limit: Int? = nil) -> Request<_Specification.AppsWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsApps, limit), id: "users-visibleApps-get_to_many_related")
         }
 
@@ -30,6 +30,7 @@ extension Resources.V1.Users.WithID {
             case appAvailability
             case appClips
             case appCustomProductPages
+            case appEncryptionDeclarations
             case appEvents
             case appInfos
             case appPricePoints
@@ -49,6 +50,7 @@ extension Resources.V1.Users.WithID {
             case contentRightsDeclaration
             case customerReviews
             case endUserLicenseAgreement
+            case gameCenterDetail
             case gameCenterEnabledVersions
             case inAppPurchases
             case inAppPurchasesV2

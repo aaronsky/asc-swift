@@ -8,15 +8,13 @@ import Foundation
 public struct AppStoreVersionReleaseRequest: Codable, Hashable, Identifiable {
     public var type: `Type`
     public var id: String
-    public var links: ResourceLinks
 
     public enum `Type`: String, Codable, CaseIterable {
         case appStoreVersionReleaseRequests
     }
 
-    public init(type: `Type`, id: String, links: ResourceLinks) {
+    public init(type: `Type`, id: String) {
         self.type = type
         self.id = id
-        self.links = links
     }
 }

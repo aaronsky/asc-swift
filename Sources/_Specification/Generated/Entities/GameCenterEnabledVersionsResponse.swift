@@ -5,6 +5,7 @@
 
 import Foundation
 
+@available(*, deprecated, message: "Deprecated")
 public struct GameCenterEnabledVersionsResponse: Codable, Hashable {
     public var data: [GameCenterEnabledVersion]
     public var included: [IncludedItem]?

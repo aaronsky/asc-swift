@@ -15,7 +15,7 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/endUserLicenseAgreement`
         public let path: String
 
-        public func get(fieldsEndUserLicenseAgreements: [FieldsEndUserLicenseAgreements]? = nil) -> Request<_Specification.EndUserLicenseAgreementResponse> {
+        public func get(fieldsEndUserLicenseAgreements: [FieldsEndUserLicenseAgreements]? = nil) -> Request<_Specification.EndUserLicenseAgreementWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsEndUserLicenseAgreements), id: "apps-endUserLicenseAgreement-get_to_one_related")
         }
 
