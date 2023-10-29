@@ -9,6 +9,7 @@ public struct AppClipAdvancedExperienceLocalization: Codable, Hashable, Identifi
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
+    public var links: ResourceLinks?
 
     public enum `Type`: String, Codable, CaseIterable {
         case appClipAdvancedExperienceLocalizations
@@ -26,9 +27,10 @@ public struct AppClipAdvancedExperienceLocalization: Codable, Hashable, Identifi
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil) {
+    public init(type: `Type`, id: String, attributes: Attributes? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes
+        self.links = links
     }
 }

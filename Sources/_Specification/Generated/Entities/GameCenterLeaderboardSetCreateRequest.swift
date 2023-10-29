@@ -11,7 +11,7 @@ public struct GameCenterLeaderboardSetCreateRequest: Codable, Hashable {
     public struct Data: Codable, Hashable {
         public var type: `Type`
         public var attributes: Attributes
-        public var relationships: Relationships
+        public var relationships: Relationships?
 
         public enum `Type`: String, Codable, CaseIterable {
             case gameCenterLeaderboardSets
@@ -28,10 +28,56 @@ public struct GameCenterLeaderboardSetCreateRequest: Codable, Hashable {
         }
 
         public struct Relationships: Codable, Hashable {
-            public var gameCenterLeaderboards: GameCenterLeaderboards
+            public var gameCenterDetail: GameCenterDetail?
+            public var gameCenterGroup: GameCenterGroup?
+            public var gameCenterLeaderboards: GameCenterLeaderboards?
+
+            public struct GameCenterDetail: Codable, Hashable {
+                public var data: Data?
+
+                public struct Data: Codable, Hashable, Identifiable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, Codable, CaseIterable {
+                        case gameCenterDetails
+                    }
+
+                    public init(type: `Type`, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: Data? = nil) {
+                    self.data = data
+                }
+            }
+
+            public struct GameCenterGroup: Codable, Hashable {
+                public var data: Data?
+
+                public struct Data: Codable, Hashable, Identifiable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, Codable, CaseIterable {
+                        case gameCenterGroups
+                    }
+
+                    public init(type: `Type`, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: Data? = nil) {
+                    self.data = data
+                }
+            }
 
             public struct GameCenterLeaderboards: Codable, Hashable {
-                public var data: [Datum]
+                public var data: [Datum]?
 
                 public struct Datum: Codable, Hashable, Identifiable {
                     public var type: `Type`
@@ -47,17 +93,19 @@ public struct GameCenterLeaderboardSetCreateRequest: Codable, Hashable {
                     }
                 }
 
-                public init(data: [Datum]) {
+                public init(data: [Datum]? = nil) {
                     self.data = data
                 }
             }
 
-            public init(gameCenterLeaderboards: GameCenterLeaderboards) {
+            public init(gameCenterDetail: GameCenterDetail? = nil, gameCenterGroup: GameCenterGroup? = nil, gameCenterLeaderboards: GameCenterLeaderboards? = nil) {
+                self.gameCenterDetail = gameCenterDetail
+                self.gameCenterGroup = gameCenterGroup
                 self.gameCenterLeaderboards = gameCenterLeaderboards
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type`, attributes: Attributes, relationships: Relationships? = nil) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

@@ -8,13 +8,15 @@ import Foundation
 public struct EndAppAvailabilityPreOrder: Codable, Hashable, Identifiable {
     public var type: `Type`
     public var id: String
+    public var links: ResourceLinks?
 
     public enum `Type`: String, Codable, CaseIterable {
         case endAppAvailabilityPreOrders
     }
 
-    public init(type: `Type`, id: String) {
+    public init(type: `Type`, id: String, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
+        self.links = links
     }
 }

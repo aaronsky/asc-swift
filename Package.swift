@@ -17,7 +17,7 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-crypto.git", .upToNextMajor(from: "2.6.0")),
+        .package(url: "https://github.com/apple/swift-crypto.git", .upToNextMajor(from: "3.1.0")),
         .package(url: "https://github.com/CreateAPI/URLQueryEncoder.git", .upToNextMajor(from: "0.2.1")),
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.3.0"),
     ],
@@ -36,7 +36,7 @@ let package = Package(
             ],
             exclude: [
                 ".create-api.yml",
-                "app_store_connect_api_3.0_openapi.json",
+                "app_store_connect_api_3.1_openapi.json",
             ]
         ),
         .testTarget(

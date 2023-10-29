@@ -15,6 +15,7 @@ extension Resources.V1.AppPreOrders {
         /// Path: `/v1/appPreOrders/{id}`
         public let path: String
 
+        @available(*, deprecated, message: "Deprecated")
         public func get(fieldsAppPreOrders: [FieldsAppPreOrders]? = nil, include: [Include]? = nil) -> Request<_Specification.AppPreOrderResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPreOrders, include), id: "appPreOrders-get_instance")
         }
@@ -36,10 +37,12 @@ extension Resources.V1.AppPreOrders {
             case app
         }
 
+        @available(*, deprecated, message: "Deprecated")
         public func patch(_ body: _Specification.AppPreOrderUpdateRequest) -> Request<_Specification.AppPreOrderResponse> {
             Request(path: path, method: "PATCH", body: body, id: "appPreOrders-update_instance")
         }
 
+        @available(*, deprecated, message: "Deprecated")
         public var delete: Request<Void> {
             Request(path: path, method: "DELETE", id: "appPreOrders-delete_instance")
         }
