@@ -15,7 +15,6 @@ extension Resources.V1.AppStoreVersionSubmissions {
         /// Path: `/v1/appStoreVersionSubmissions/{id}`
         public let path: String
 
-        @available(*, deprecated, message: "Deprecated")
         public var delete: Request<Void> {
             Request(path: path, method: "DELETE", id: "appStoreVersionSubmissions-delete_instance")
         }

@@ -5,7 +5,6 @@
 
 import Foundation
 
-@available(*, deprecated, message: "Deprecated")
 public struct AppAvailabilityCreateRequest: Codable, Hashable {
     public var data: Data
 

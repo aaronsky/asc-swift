@@ -15,7 +15,6 @@ extension Resources.V1.AppEncryptionDeclarations.WithID.Relationships {
         /// Path: `/v1/appEncryptionDeclarations/{id}/relationships/builds`
         public let path: String
 
-        @available(*, deprecated, message: "Deprecated")
         public func post(_ body: _Specification.AppEncryptionDeclarationBuildsLinkagesRequest) -> Request<Void> {
             Request(path: path, method: "POST", body: body, id: "appEncryptionDeclarations-builds-create_to_many_relationship")
         }

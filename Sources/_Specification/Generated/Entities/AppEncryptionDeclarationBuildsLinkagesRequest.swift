@@ -5,7 +5,6 @@
 
 import Foundation
 
-@available(*, deprecated, message: "Deprecated")
 public struct AppEncryptionDeclarationBuildsLinkagesRequest: Codable, Hashable {
     public var data: [Datum]
 

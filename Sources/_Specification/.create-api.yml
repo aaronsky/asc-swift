@@ -4,7 +4,7 @@ generate:
   - entities
   - paths
   - enums
-annotateDeprecations: true
+annotateDeprecations: false
 indentation: spaces
 useNaiveDate: false
 fileHeaderComment: |-

@@ -24,7 +24,6 @@ public struct Subscription: Codable, Hashable, Identifiable {
         public var subscriptionPeriod: SubscriptionPeriod?
         public var reviewNote: String?
         public var groupLevel: Int?
-        /// - warning: Deprecated.
         public var isAvailableInAllTerritories: Bool?
 
         public enum State: String, Codable, CaseIterable {

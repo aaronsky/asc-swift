@@ -18,7 +18,6 @@ public struct AgeRatingDeclaration: Codable, Hashable, Identifiable {
     public struct Attributes: Codable, Hashable {
         public var alcoholTobaccoOrDrugUseOrReferences: AlcoholTobaccoOrDrugUseOrReferences?
         public var contests: Contests?
-        /// - warning: Deprecated.
         public var isGamblingAndContests: Bool?
         public var isGambling: Bool?
         public var gamblingSimulated: GamblingSimulated?

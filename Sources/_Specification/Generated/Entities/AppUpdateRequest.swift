@@ -26,7 +26,6 @@ public struct AppUpdateRequest: Codable, Hashable {
             public var subscriptionStatusURLVersion: SubscriptionStatusURLVersion?
             public var subscriptionStatusURLForSandbox: URL?
             public var subscriptionStatusURLVersionForSandbox: SubscriptionStatusURLVersion?
-            /// - warning: Deprecated.
             public var isAvailableInNewTerritories: Bool?
             public var contentRightsDeclaration: ContentRightsDeclaration?
 
@@ -59,12 +58,9 @@ public struct AppUpdateRequest: Codable, Hashable {
         }
 
         public struct Relationships: Codable, Hashable {
-            /// - warning: Deprecated.
             public var prices: Prices?
-            /// - warning: Deprecated.
             public var availableTerritories: AvailableTerritories?
 
-            @available(*, deprecated, message: "Deprecated")
             public struct Prices: Codable, Hashable {
                 public var data: [Datum]?
 
@@ -87,7 +83,6 @@ public struct AppUpdateRequest: Codable, Hashable {
                 }
             }
 
-            @available(*, deprecated, message: "Deprecated")
             public struct AvailableTerritories: Codable, Hashable {
                 public var data: [Datum]?
 

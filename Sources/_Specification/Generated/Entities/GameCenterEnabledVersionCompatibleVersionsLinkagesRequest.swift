@@ -5,7 +5,6 @@
 
 import Foundation
 
-@available(*, deprecated, message: "Deprecated")
 public struct GameCenterEnabledVersionCompatibleVersionsLinkagesRequest: Codable, Hashable {
     public var data: [Datum]
 

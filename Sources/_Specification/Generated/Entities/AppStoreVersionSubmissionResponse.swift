@@ -5,11 +5,8 @@
 
 import Foundation
 
-@available(*, deprecated, message: "Deprecated")
 public struct AppStoreVersionSubmissionResponse: Codable, Hashable {
     /// AppStoreVersionSubmission
-    ///
-    /// - warning: Deprecated.
     public var data: AppStoreVersionSubmission
     public var included: [AppStoreVersion]?
     public var links: DocumentLinks

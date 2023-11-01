@@ -15,7 +15,6 @@ extension Resources.V1.AppStoreVersions.WithID {
         /// Path: `/v1/appStoreVersions/{id}/appStoreVersionSubmission`
         public let path: String
 
-        @available(*, deprecated, message: "Deprecated")
         public func get(fieldsAppStoreVersionSubmissions: [FieldsAppStoreVersionSubmissions]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, include: [Include]? = nil) -> Request<_Specification.AppStoreVersionSubmissionResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionSubmissions, fieldsAppStoreVersions, include), id: "appStoreVersions-appStoreVersionSubmission-get_to_one_related")
         }

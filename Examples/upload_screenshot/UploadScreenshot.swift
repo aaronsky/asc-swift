@@ -162,7 +162,7 @@ import Utilities
                 print(
                     """
                     App Screenshot successfully uploaded to:
-                    \(screenshot.links?.this)
+                    \(screenshot.links?.this?.absoluteString ?? "<no screenshot url>")
                     You can verify success in App Store Connect or using the API.
                     """
                 )

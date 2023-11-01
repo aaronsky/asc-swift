@@ -15,7 +15,6 @@ extension Resources.V1.AppStoreVersionExperiments.WithID {
         /// Path: `/v1/appStoreVersionExperiments/{id}/appStoreVersionExperimentTreatments`
         public let path: String
 
-        @available(*, deprecated, message: "Deprecated")
         public func get(fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]? = nil, fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]? = nil, limit: Int? = nil, limitAppStoreVersionExperimentTreatmentLocalizations: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppStoreVersionExperimentTreatmentsResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionExperiments, fieldsAppStoreVersionExperimentTreatments, fieldsAppStoreVersionExperimentTreatmentLocalizations, limit, limitAppStoreVersionExperimentTreatmentLocalizations, include), id: "appStoreVersionExperiments-appStoreVersionExperimentTreatments-get_to_many_related")
         }

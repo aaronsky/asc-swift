@@ -31,6 +31,10 @@ spec: spec-download spec-generate
 spec-download:
 	curl --fail --silent --show-error --location --output - $(OPENAPI_SPEC_URL) \
 		| tar --extract --to-stdout --file - \
+		| sed 's|#/components/schemas/AppStoreVersionLocalizationsWithoutIncludesResponse|#/components/schemas/AppStoreVersionLocalizationsResponse|' \
+		| sed 's|#/components/schemas/AgeRatingDeclarationWithoutIncludesResponse|#/components/schemas/AgeRatingDeclarationResponse|' \
+		| sed 's|#/components/schemas/AppStoreVersionPhasedReleaseWithoutIncludesResponse|#/components/schemas/AppStoreVersionPhasedReleaseResponse|' \
+		| sed 's|#/components/schemas/RoutingAppCoverageWithoutIncludesResponse|#/components/schemas/RoutingAppCoverageResponse|' \
 		| jq '.' \
 		> $(OPENAPI_SPEC_OUTFILE)
 

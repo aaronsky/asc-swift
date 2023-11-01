@@ -57,7 +57,6 @@ public struct AppStoreVersion: Codable, Hashable, Identifiable {
 
     public struct Relationships: Codable, Hashable {
         public var app: App?
-        /// - warning: Deprecated.
         public var ageRatingDeclaration: AgeRatingDeclaration?
         public var appStoreVersionLocalizations: AppStoreVersionLocalizations?
         public var build: Build?
@@ -108,7 +107,6 @@ public struct AppStoreVersion: Codable, Hashable, Identifiable {
             }
         }
 
-        @available(*, deprecated, message: "Deprecated")
         public struct AgeRatingDeclaration: Codable, Hashable {
             public var links: Links?
             public var data: Data?

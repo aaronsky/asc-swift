@@ -15,7 +15,6 @@ extension Resources.V1.GameCenterEnabledVersions.WithID.Relationships {
         /// Path: `/v1/gameCenterEnabledVersions/{id}/relationships/compatibleVersions`
         public let path: String
 
-        @available(*, deprecated, message: "Deprecated")
         public func get(limit: Int? = nil) -> Request<_Specification.GameCenterEnabledVersionCompatibleVersionsLinkagesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(limit), id: "gameCenterEnabledVersions-compatibleVersions-get_to_many_relationship")
         }
@@ -26,17 +25,14 @@ extension Resources.V1.GameCenterEnabledVersions.WithID.Relationships {
             return encoder.items
         }
 
-        @available(*, deprecated, message: "Deprecated")
         public func post(_ body: _Specification.GameCenterEnabledVersionCompatibleVersionsLinkagesRequest) -> Request<Void> {
             Request(path: path, method: "POST", body: body, id: "gameCenterEnabledVersions-compatibleVersions-create_to_many_relationship")
         }
 
-        @available(*, deprecated, message: "Deprecated")
         public func patch(_ body: _Specification.GameCenterEnabledVersionCompatibleVersionsLinkagesRequest) -> Request<Void> {
             Request(path: path, method: "PATCH", body: body, id: "gameCenterEnabledVersions-compatibleVersions-replace_to_many_relationship")
         }
 
-        @available(*, deprecated, message: "Deprecated")
         public func delete(_ body: _Specification.GameCenterEnabledVersionCompatibleVersionsLinkagesRequest) -> Request<Void> {
             Request(path: path, method: "DELETE", body: body, id: "gameCenterEnabledVersions-compatibleVersions-delete_to_many_relationship")
         }

@@ -19,7 +19,6 @@ public struct InAppPurchasePricePoint: Codable, Hashable, Identifiable {
     public struct Attributes: Codable, Hashable {
         public var customerPrice: String?
         public var proceeds: String?
-        /// - warning: Deprecated.
         public var priceTier: String?
 
         public init(customerPrice: String? = nil, proceeds: String? = nil, priceTier: String? = nil) {

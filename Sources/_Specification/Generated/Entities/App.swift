@@ -26,7 +26,6 @@ public struct App: Codable, Hashable, Identifiable {
         public var subscriptionStatusURLVersion: SubscriptionStatusURLVersion?
         public var subscriptionStatusURLForSandbox: URL?
         public var subscriptionStatusURLVersionForSandbox: SubscriptionStatusURLVersion?
-        /// - warning: Deprecated.
         public var isAvailableInNewTerritories: Bool?
         public var contentRightsDeclaration: ContentRightsDeclaration?
 
@@ -78,11 +77,8 @@ public struct App: Codable, Hashable, Identifiable {
         public var appClips: AppClips?
         public var endUserLicenseAgreement: EndUserLicenseAgreement?
         public var preOrder: PreOrder?
-        /// - warning: Deprecated.
         public var prices: Prices?
-        /// - warning: Deprecated.
         public var availableTerritories: AvailableTerritories?
-        /// - warning: Deprecated.
         public var inAppPurchases: InAppPurchases?
         public var subscriptionGroups: SubscriptionGroups?
         public var gameCenterEnabledVersions: GameCenterEnabledVersions?
@@ -618,7 +614,6 @@ public struct App: Codable, Hashable, Identifiable {
             }
         }
 
-        @available(*, deprecated, message: "Deprecated")
         public struct Prices: Codable, Hashable {
             public var links: Links?
             public var meta: PagingInformation?
@@ -660,7 +655,6 @@ public struct App: Codable, Hashable, Identifiable {
             }
         }
 
-        @available(*, deprecated, message: "Deprecated")
         public struct AvailableTerritories: Codable, Hashable {
             public var links: Links?
             public var meta: PagingInformation?
@@ -702,7 +696,6 @@ public struct App: Codable, Hashable, Identifiable {
             }
         }
 
-        @available(*, deprecated, message: "Deprecated")
         public struct InAppPurchases: Codable, Hashable {
             public var links: Links?
             public var meta: PagingInformation?

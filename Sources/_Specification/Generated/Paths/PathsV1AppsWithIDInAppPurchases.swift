@@ -15,7 +15,6 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/inAppPurchases`
         public let path: String
 
-        @available(*, deprecated, message: "Deprecated")
         public func get(filterInAppPurchaseType: [FilterInAppPurchaseType]? = nil, filterCanBeSubmitted: [String]? = nil, sort: [Sort]? = nil, fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, fieldsApps: [FieldsApps]? = nil, limit: Int? = nil, limitApps: Int? = nil, include: [Include]? = nil) -> Request<_Specification.InAppPurchasesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(filterInAppPurchaseType, filterCanBeSubmitted, sort, fieldsInAppPurchases, fieldsApps, limit, limitApps, include), id: "apps-inAppPurchases-get_to_many_related")
         }

@@ -5,7 +5,6 @@
 
 import Foundation
 
-@available(*, deprecated, message: "Deprecated")
 public struct InAppPurchase: Codable, Hashable, Identifiable {
     public var type: `Type`
     public var id: String

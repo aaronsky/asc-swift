@@ -158,7 +158,7 @@ import Utilities
                 print(
                     """
                     App Preview successfully uploaded to:
-                    \(preview.links?.this)
+                    \(preview.links?.this?.absoluteString ?? "<no preview url>")
                     You can verify success in App Store Connect or using the API.
                     """
                 )

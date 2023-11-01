@@ -24,7 +24,6 @@ public struct SubscriptionCreateRequest: Codable, Hashable {
             public var subscriptionPeriod: SubscriptionPeriod?
             public var reviewNote: String?
             public var groupLevel: Int?
-            /// - warning: Deprecated.
             public var isAvailableInAllTerritories: Bool?
 
             public enum SubscriptionPeriod: String, Codable, CaseIterable {

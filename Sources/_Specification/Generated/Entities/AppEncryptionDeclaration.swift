@@ -19,20 +19,15 @@ public struct AppEncryptionDeclaration: Codable, Hashable, Identifiable {
     public struct Attributes: Codable, Hashable {
         public var appDescription: String?
         public var createdDate: Date?
-        /// - warning: Deprecated.
         public var usesEncryption: Bool?
         public var isExempt: Bool?
         public var containsProprietaryCryptography: Bool?
         public var containsThirdPartyCryptography: Bool?
         public var isAvailableOnFrenchStore: Bool?
         public var platform: Platform?
-        /// - warning: Deprecated.
         public var uploadedDate: Date?
-        /// - warning: Deprecated.
         public var documentURL: String?
-        /// - warning: Deprecated.
         public var documentName: String?
-        /// - warning: Deprecated.
         public var documentType: String?
         public var appEncryptionDeclarationState: AppEncryptionDeclarationState?
         public var codeValue: String?
@@ -74,7 +69,6 @@ public struct AppEncryptionDeclaration: Codable, Hashable, Identifiable {
 
     public struct Relationships: Codable, Hashable {
         public var app: App?
-        /// - warning: Deprecated.
         public var builds: Builds?
         public var appEncryptionDeclarationDocument: AppEncryptionDeclarationDocument?
 
@@ -117,7 +111,6 @@ public struct AppEncryptionDeclaration: Codable, Hashable, Identifiable {
             }
         }
 
-        @available(*, deprecated, message: "Deprecated")
         public struct Builds: Codable, Hashable {
             public var links: Links?
             public var meta: PagingInformation?

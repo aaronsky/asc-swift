@@ -15,7 +15,6 @@ extension Resources.V1 {
         /// Path: `/v1/appPreOrders`
         public let path: String
 
-        @available(*, deprecated, message: "Deprecated")
         public func post(_ body: _Specification.AppPreOrderCreateRequest) -> Request<_Specification.AppPreOrderResponse> {
             Request(path: path, method: "POST", body: body, id: "appPreOrders-create_instance")
         }

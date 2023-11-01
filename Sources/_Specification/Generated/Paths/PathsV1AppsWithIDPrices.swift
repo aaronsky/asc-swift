@@ -15,7 +15,6 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/prices`
         public let path: String
 
-        @available(*, deprecated, message: "Deprecated")
         public func get(fieldsAppPriceTiers: [FieldsAppPriceTiers]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsAppPrices: [FieldsAppPrices]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppPricesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPriceTiers, fieldsApps, fieldsAppPrices, limit, include), id: "apps-prices-get_to_many_related")
         }

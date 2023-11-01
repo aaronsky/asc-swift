@@ -5,11 +5,8 @@
 
 import Foundation
 
-@available(*, deprecated, message: "Deprecated")
 public struct AppPreOrderResponse: Codable, Hashable {
     /// AppPreOrder
-    ///
-    /// - warning: Deprecated.
     public var data: AppPreOrder
     public var included: [App]?
     public var links: DocumentLinks

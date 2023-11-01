@@ -50359,7 +50359,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AgeRatingDeclarationWithoutIncludesResponse"
+                  "$ref": "#/components/schemas/AgeRatingDeclarationResponse"
                 }
               }
             }
@@ -51493,7 +51493,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AppStoreVersionLocalizationsWithoutIncludesResponse"
+                  "$ref": "#/components/schemas/AppStoreVersionLocalizationsResponse"
                 }
               }
             }
@@ -51591,7 +51591,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AppStoreVersionPhasedReleaseWithoutIncludesResponse"
+                  "$ref": "#/components/schemas/AppStoreVersionPhasedReleaseResponse"
                 }
               }
             }
@@ -52489,7 +52489,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RoutingAppCoverageWithoutIncludesResponse"
+                  "$ref": "#/components/schemas/RoutingAppCoverageResponse"
                 }
               }
             }

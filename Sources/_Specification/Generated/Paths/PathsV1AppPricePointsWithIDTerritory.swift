@@ -15,7 +15,6 @@ extension Resources.V1.AppPricePoints.WithID {
         /// Path: `/v1/appPricePoints/{id}/territory`
         public let path: String
 
-        @available(*, deprecated, message: "Deprecated")
         public func get(fieldsTerritories: [FieldsTerritories]? = nil) -> Request<_Specification.TerritoryResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsTerritories), id: "appPricePoints-territory-get_to_one_related")
         }

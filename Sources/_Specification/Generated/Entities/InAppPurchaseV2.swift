@@ -24,7 +24,6 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
         public var reviewNote: String?
         public var isFamilySharable: Bool?
         public var isContentHosting: Bool?
-        /// - warning: Deprecated.
         public var isAvailableInAllTerritories: Bool?
 
         public init(name: String? = nil, productID: String? = nil, inAppPurchaseType: InAppPurchaseType? = nil, state: InAppPurchaseState? = nil, reviewNote: String? = nil, isFamilySharable: Bool? = nil, isContentHosting: Bool? = nil, isAvailableInAllTerritories: Bool? = nil) {

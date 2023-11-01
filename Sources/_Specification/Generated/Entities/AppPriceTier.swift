@@ -5,7 +5,6 @@
 
 import Foundation
 
-@available(*, deprecated, message: "Deprecated")
 public struct AppPriceTier: Codable, Hashable, Identifiable {
     public var type: `Type`
     public var id: String
@@ -17,10 +16,8 @@ public struct AppPriceTier: Codable, Hashable, Identifiable {
     }
 
     public struct Relationships: Codable, Hashable {
-        /// - warning: Deprecated.
         public var pricePoints: PricePoints?
 
-        @available(*, deprecated, message: "Deprecated")
         public struct PricePoints: Codable, Hashable {
             public var links: Links?
             public var meta: PagingInformation?

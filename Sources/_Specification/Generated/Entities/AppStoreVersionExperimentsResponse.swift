@@ -5,7 +5,6 @@
 
 import Foundation
 
-@available(*, deprecated, message: "Deprecated")
 public struct AppStoreVersionExperimentsResponse: Codable, Hashable {
     public var data: [AppStoreVersionExperiment]
     public var included: [IncludedItem]?

@@ -15,7 +15,6 @@ extension Resources.V1 {
         /// Path: `/v1/appAvailabilities`
         public let path: String
 
-        @available(*, deprecated, message: "Deprecated")
         public func post(_ body: _Specification.AppAvailabilityCreateRequest) -> Request<_Specification.AppAvailabilityResponse> {
             Request(path: path, method: "POST", body: body, id: "appAvailabilities-create_instance")
         }

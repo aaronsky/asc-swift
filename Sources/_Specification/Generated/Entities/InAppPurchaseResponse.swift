@@ -5,11 +5,8 @@
 
 import Foundation
 
-@available(*, deprecated, message: "Deprecated")
 public struct InAppPurchaseResponse: Codable, Hashable {
     /// InAppPurchase
-    ///
-    /// - warning: Deprecated.
     public var data: InAppPurchase
     public var included: [App]?
     public var links: DocumentLinks

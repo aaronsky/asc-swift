@@ -15,7 +15,6 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/pricePoints`
         public let path: String
 
-        @available(*, deprecated, message: "Deprecated")
         public func get(filterPriceTier: [String]? = nil, filterTerritory: [String]? = nil, fieldsAppPriceTiers: [FieldsAppPriceTiers]? = nil, fieldsAppPricePoints: [FieldsAppPricePoints]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppPricePointsV2Response> {
             Request(path: path, method: "GET", query: makeGetQuery(filterPriceTier, filterTerritory, fieldsAppPriceTiers, fieldsAppPricePoints, fieldsApps, fieldsTerritories, limit, include), id: "apps-pricePoints-get_to_many_related")
         }

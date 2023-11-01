@@ -15,7 +15,6 @@ extension Resources.V1.AppAvailabilities {
         /// Path: `/v1/appAvailabilities/{id}`
         public let path: String
 
-        @available(*, deprecated, message: "Deprecated")
         public func get(fieldsAppAvailabilities: [FieldsAppAvailabilities]? = nil, include: [Include]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limitAvailableTerritories: Int? = nil) -> Request<_Specification.AppAvailabilityResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsAppAvailabilities, include, fieldsTerritories, limitAvailableTerritories), id: "appAvailabilities-get_instance")
         }
