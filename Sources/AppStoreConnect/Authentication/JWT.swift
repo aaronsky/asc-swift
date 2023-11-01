@@ -2,7 +2,7 @@ import Crypto
 import Foundation
 
 #if canImport(FoundationNetworking)
-import FoundationNetworking
+    import FoundationNetworking
 #endif
 
 /// Interface for the authorization provider used by ``AppStoreConnectClient``.

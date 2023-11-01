@@ -12,8 +12,12 @@ DESTINATION_PLATFORM_WATCHOS_SIMULATOR = platform=watchOS Simulator,name=Apple W
 
 # Formatting
 SWIFT_FORMAT_BIN := swift format
-SWIFT_FORMAT_CONFIG_FILE := $(GIT_REPO_TOPLEVEL)/.swift-format.json
-FORMAT_PATHS := $(GIT_REPO_TOPLEVEL)/Examples $(GIT_REPO_TOPLEVEL)/Package.swift $(GIT_REPO_TOPLEVEL)/Sources $(GIT_REPO_TOPLEVEL)/Tests
+SWIFT_FORMAT_CONFIG_FILE := $(GIT_REPO_TOPLEVEL)/.swift-format
+FORMAT_PATHS := \
+	$(GIT_REPO_TOPLEVEL)/Examples \
+	$(GIT_REPO_TOPLEVEL)/Package.swift \
+	$(GIT_REPO_TOPLEVEL)/Sources \
+	$(GIT_REPO_TOPLEVEL)/Tests
 
 # Tasks
 
@@ -27,7 +31,6 @@ spec: spec-download spec-generate
 spec-download:
 	curl --fail --silent --show-error --location --output - $(OPENAPI_SPEC_URL) \
 		| tar --extract --to-stdout --file - \
-		| sed 's|#/components/schemas/AppStoreVersionLocalizationsWithoutIncludesResponse|#/components/schemas/AppStoreVersionLocalizationsResponse|' \
 		| jq '\
 			.components.schemas.BundleIdPlatform.enum |= [ "IOS", "MAC_OS", "UNIVERSAL" ] \
 			| del(.["x-important"]) \
@@ -118,6 +121,7 @@ format:
 		--configuration $(SWIFT_FORMAT_CONFIG_FILE) \
 		--ignore-unparsable-files \
 		--in-place \
+		--parallel \
 		--recursive \
 		$(FORMAT_PATHS)
 
@@ -126,5 +130,6 @@ lint:
 	$(SWIFT_FORMAT_BIN) lint \
 		--configuration $(SWIFT_FORMAT_CONFIG_FILE) \
 		--ignore-unparsable-files \
+		--parallel \
 		--recursive \
 		$(FORMAT_PATHS)

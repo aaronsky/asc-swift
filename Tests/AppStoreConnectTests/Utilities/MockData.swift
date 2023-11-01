@@ -3,7 +3,7 @@ import Foundation
 @testable import AppStoreConnect
 
 #if canImport(FoundationNetworking)
-import FoundationNetworking
+    import FoundationNetworking
 #endif
 
 struct MockResources {

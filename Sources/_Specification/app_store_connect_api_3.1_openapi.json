@@ -51493,7 +51493,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AppStoreVersionLocalizationsResponse"
+                  "$ref": "#/components/schemas/AppStoreVersionLocalizationsWithoutIncludesResponse"
                 }
               }
             }

@@ -2,7 +2,7 @@ import Foundation
 import _Specification
 
 #if canImport(FoundationNetworking)
-import FoundationNetworking
+    import FoundationNetworking
 #endif
 
 extension URLRequest {

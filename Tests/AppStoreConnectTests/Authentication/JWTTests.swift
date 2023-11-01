@@ -4,7 +4,7 @@ import XCTest
 @testable import AppStoreConnect
 
 #if canImport(FoundationNetworking)
-import FoundationNetworking
+    import FoundationNetworking
 #endif
 
 // This file contains key that I generated solely for mocking purposes. None of these are

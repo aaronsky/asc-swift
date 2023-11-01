@@ -1,7 +1,7 @@
 import Foundation
 
 #if canImport(FoundationNetworking)
-import FoundationNetworking
+    import FoundationNetworking
 #endif
 
 let rateLimitHeader = "X-Rate-Limit"
@@ -49,23 +49,23 @@ extension URLSession: Transport {
         // These depend on swift-corelibs-foundation, which have not implemented the
         // Task-based API for URLSession.
         #if os(Linux) || os(Windows)
-        return try await withCheckedThrowingContinuation { continuation in
-            send(request: request, decoder: decoder, completion: continuation.resume)
-        }
+            return try await withCheckedThrowingContinuation { continuation in
+                send(request: request, decoder: decoder, completion: continuation.resume)
+            }
         #else
-        let (data, response) = try await data(for: request)
+            let (data, response) = try await data(for: request)
 
-        guard let response = response as? HTTPURLResponse else {
-            throw TransportError.unrecognizedResponse
-        }
+            guard let response = response as? HTTPURLResponse else {
+                throw TransportError.unrecognizedResponse
+            }
 
-        return Response(
-            data: data,
-            response: response,
-            statusCode: response.statusCode,
-            rate: Response.Rate(from: response.value(forHTTPHeaderField: rateLimitHeader)),
-            decoder: decoder
-        )
+            return Response(
+                data: data,
+                response: response,
+                statusCode: response.statusCode,
+                rate: Response.Rate(from: response.value(forHTTPHeaderField: rateLimitHeader)),
+                decoder: decoder
+            )
         #endif
     }
 
@@ -111,22 +111,22 @@ extension URLSession: Transport {
         // These depend on swift-corelibs-foundation, which have not implemented the
         // Task-based API for URLSession.
         #if os(Linux) || os(Windows)
-        return try await withCheckedThrowingContinuation { continuation in
-            download(request: request, completion: continuation.resume)
-        }
+            return try await withCheckedThrowingContinuation { continuation in
+                download(request: request, completion: continuation.resume)
+            }
         #else
-        let (fileURL, response) = try await download(for: request)
+            let (fileURL, response) = try await download(for: request)
 
-        guard let response = response as? HTTPURLResponse else {
-            throw TransportError.unrecognizedResponse
-        }
+            guard let response = response as? HTTPURLResponse else {
+                throw TransportError.unrecognizedResponse
+            }
 
-        return Response(
-            fileURL: fileURL,
-            response: response,
-            statusCode: response.statusCode,
-            rate: Response.Rate(from: response.value(forHTTPHeaderField: rateLimitHeader))
-        )
+            return Response(
+                fileURL: fileURL,
+                response: response,
+                statusCode: response.statusCode,
+                rate: Response.Rate(from: response.value(forHTTPHeaderField: rateLimitHeader))
+            )
         #endif
     }
 
@@ -172,23 +172,23 @@ extension URLSession: Transport {
         // These depend on swift-corelibs-foundation, which have not implemented the
         // Task-based API for URLSession.
         #if os(Linux) || os(Windows)
-        return try await withCheckedThrowingContinuation { continuation in
-            upload(request: request, data: data, decoder: decoder, completion: continuation.resume)
-        }
+            return try await withCheckedThrowingContinuation { continuation in
+                upload(request: request, data: data, decoder: decoder, completion: continuation.resume)
+            }
         #else
-        let (responseData, response) = try await upload(for: request, from: data)
+            let (responseData, response) = try await upload(for: request, from: data)
 
-        guard let response = response as? HTTPURLResponse else {
-            throw TransportError.unrecognizedResponse
-        }
+            guard let response = response as? HTTPURLResponse else {
+                throw TransportError.unrecognizedResponse
+            }
 
-        return Response(
-            data: responseData,
-            response: response,
-            statusCode: response.statusCode,
-            rate: Response.Rate(from: response.value(forHTTPHeaderField: rateLimitHeader)),
-            decoder: decoder
-        )
+            return Response(
+                data: responseData,
+                response: response,
+                statusCode: response.statusCode,
+                rate: Response.Rate(from: response.value(forHTTPHeaderField: rateLimitHeader)),
+                decoder: decoder
+            )
         #endif
     }
 

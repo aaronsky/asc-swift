@@ -4,7 +4,7 @@ import Foundation
 import Utilities
 
 #if canImport(FoundationNetworking)
-import FoundationNetworking
+    import FoundationNetworking
 #endif
 
 @main struct InviteUser: AsyncParsableCommand {

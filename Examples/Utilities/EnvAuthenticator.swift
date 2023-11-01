@@ -2,7 +2,7 @@ import AppStoreConnect
 import Foundation
 
 #if canImport(FoundationNetworking)
-import FoundationNetworking
+    import FoundationNetworking
 #endif
 
 /// An `Authenticator` that wraps ``Environment`` to configure the `JWT`.

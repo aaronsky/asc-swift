@@ -15,7 +15,7 @@ extension Resources.V1.AppStoreVersions.WithID {
         /// Path: `/v1/appStoreVersions/{id}/appStoreVersionLocalizations`
         public let path: String
 
-        public func get(fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, limit: Int? = nil) -> Request<_Specification.AppStoreVersionLocalizationsResponse> {
+        public func get(fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, limit: Int? = nil) -> Request<_Specification.AppStoreVersionLocalizationsWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionLocalizations, limit), id: "appStoreVersions-appStoreVersionLocalizations-get_to_many_related")
         }
 

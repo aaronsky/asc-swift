@@ -1,7 +1,7 @@
 import Foundation
 
 #if canImport(FoundationNetworking)
-import FoundationNetworking
+    import FoundationNetworking
 #endif
 
 private let appStoreConnectBaseURL = URL(string: "https://api.appstoreconnect.apple.com")!

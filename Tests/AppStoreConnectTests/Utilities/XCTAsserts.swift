@@ -2,7 +2,7 @@ import Foundation
 import XCTest
 
 #if canImport(FoundationNetworking)
-import FoundationNetworking
+    import FoundationNetworking
 #endif
 
 // swift-format-ignore: AlwaysUseLowerCamelCase
