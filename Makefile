@@ -31,11 +31,7 @@ spec: spec-download spec-generate
 spec-download:
 	curl --fail --silent --show-error --location --output - $(OPENAPI_SPEC_URL) \
 		| tar --extract --to-stdout --file - \
-		| jq '\
-			.components.schemas.BundleIdPlatform.enum |= [ "IOS", "MAC_OS", "UNIVERSAL" ] \
-			| del(.["x-important"]) \
-			| del(.. |."enum"? | select(. != null and length == 0))\
-			' \
+		| jq '.' \
 		> $(OPENAPI_SPEC_OUTFILE)
 
 .PHONY: spec-generate
