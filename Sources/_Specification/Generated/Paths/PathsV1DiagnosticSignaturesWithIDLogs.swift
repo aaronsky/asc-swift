@@ -15,7 +15,7 @@ extension Resources.V1.DiagnosticSignatures.WithID {
         /// Path: `/v1/diagnosticSignatures/{id}/logs`
         public let path: String
 
-        public func get(limit: Int? = nil) -> Request<Data> {
+        public func get(limit: Int? = nil) -> Request<DiagnosticLogs> {
             Request(path: path, method: "GET", query: makeGetQuery(limit), id: "diagnosticSignatures-logs-get_to_many_related")
         }
 

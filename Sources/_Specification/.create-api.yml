@@ -13,13 +13,6 @@ fileHeaderComment: |-
   //
   // swift-format-ignore-file
 
-commentOptions:
-  - title
-  - description
-  - example
-  - externalDocumentation
-  - capitalized
-
 dataTypes:
   string:
     uri-reference: URL
@@ -36,14 +29,13 @@ paths:
   style: rest
   imports: []
   namespace: Resources
-  includeResponseHeaders: true
   inlineSimpleRequests: true
   inlineSimpleQueryParameters: true
   simpleQueryParametersThreshold: 99
   removeRedundantPaths: true
   overriddenBodyTypes:
-    application/vnd.apple.xcode-metrics+json: Data
-    application/vnd.apple.diagnostic-logs+json: Data
+    application/vnd.apple.xcode-metrics+json: XcodeMetrics
+    application/vnd.apple.diagnostic-logs+json: DiagnosticLogs
     application/a-gzip: Data
 
 rename:
