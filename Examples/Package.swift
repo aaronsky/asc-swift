@@ -21,8 +21,8 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "AppStoreConnect", path: "../"),
-        .package(url: "https://github.com/apple/swift-argument-parser", from: "1.2.3"),
-        .package(url: "https://github.com/apple/swift-crypto.git", .upToNextMajor(from: "3.1.0")),
+        .package(url: "https://github.com/apple/swift-argument-parser", from: "1.3.0"),
+        .package(url: "https://github.com/apple/swift-crypto.git", .upToNextMajor(from: "3.2.0")),
     ],
     targets: [
         .executableTarget(
