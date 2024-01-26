@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct GameCenterMatchmakingRuleResponse: Codable, Hashable {
+public struct GameCenterMatchmakingRuleResponse: Codable, Equatable {
     /// GameCenterMatchmakingRule
     public var data: GameCenterMatchmakingRule
     public var links: DocumentLinks

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppStoreVersionPhasedReleaseWithoutIncludesResponse: Codable, Hashable {
+public struct AppStoreVersionPhasedReleaseWithoutIncludesResponse: Codable, Equatable {
     /// AppStoreVersion
     public var data: AppStoreVersion
     public var links: DocumentLinks

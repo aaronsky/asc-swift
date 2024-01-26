@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BundleID: Codable, Hashable, Identifiable {
+public struct BundleID: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct BundleID: Codable, Hashable, Identifiable {
         case bundleIDs = "bundleIds"
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var name: String?
         public var platform: BundleIDPlatform?
         public var identifier: String?
@@ -37,17 +37,17 @@ public struct BundleID: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var profiles: Profiles?
         public var bundleIDCapabilities: BundleIDCapabilities?
         public var app: App?
 
-        public struct Profiles: Codable, Hashable {
+        public struct Profiles: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -62,7 +62,7 @@ public struct BundleID: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -83,12 +83,12 @@ public struct BundleID: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct BundleIDCapabilities: Codable, Hashable {
+        public struct BundleIDCapabilities: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -103,7 +103,7 @@ public struct BundleID: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -124,11 +124,11 @@ public struct BundleID: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct App: Codable, Hashable {
+        public struct App: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -143,7 +143,7 @@ public struct BundleID: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

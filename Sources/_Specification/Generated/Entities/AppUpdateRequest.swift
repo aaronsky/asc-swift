@@ -5,11 +5,11 @@
 
 import Foundation
 
-public struct AppUpdateRequest: Codable, Hashable {
+public struct AppUpdateRequest: Codable, Equatable {
     public var data: Data
     public var included: [AppPriceInlineCreate]?
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
@@ -19,7 +19,7 @@ public struct AppUpdateRequest: Codable, Hashable {
             case apps
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var bundleID: String?
             public var primaryLocale: String?
             public var subscriptionStatusURL: URL?
@@ -57,14 +57,14 @@ public struct AppUpdateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var prices: Prices?
             public var availableTerritories: AvailableTerritories?
 
-            public struct Prices: Codable, Hashable {
+            public struct Prices: Codable, Equatable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Hashable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -83,10 +83,10 @@ public struct AppUpdateRequest: Codable, Hashable {
                 }
             }
 
-            public struct AvailableTerritories: Codable, Hashable {
+            public struct AvailableTerritories: Codable, Equatable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Hashable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

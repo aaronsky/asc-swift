@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppPriceV2InlineCreate: Codable, Hashable, Identifiable {
+public struct AppPriceV2InlineCreate: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String?
 

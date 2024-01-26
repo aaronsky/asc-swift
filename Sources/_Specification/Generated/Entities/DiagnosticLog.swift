@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct DiagnosticLog: Codable, Hashable, Identifiable {
+public struct DiagnosticLog: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var links: ResourceLinks?

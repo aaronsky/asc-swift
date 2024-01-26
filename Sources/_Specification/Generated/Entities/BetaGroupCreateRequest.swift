@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct BetaGroupCreateRequest: Codable, Hashable {
+public struct BetaGroupCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
@@ -17,7 +17,7 @@ public struct BetaGroupCreateRequest: Codable, Hashable {
             case betaGroups
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var name: String
             public var isInternalGroup: Bool?
             public var hasAccessToAllBuilds: Bool?
@@ -47,15 +47,15 @@ public struct BetaGroupCreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var app: App
             public var builds: Builds?
             public var betaTesters: BetaTesters?
 
-            public struct App: Codable, Hashable {
+            public struct App: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -74,10 +74,10 @@ public struct BetaGroupCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct Builds: Codable, Hashable {
+            public struct Builds: Codable, Equatable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Hashable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -96,10 +96,10 @@ public struct BetaGroupCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct BetaTesters: Codable, Hashable {
+            public struct BetaTesters: Codable, Equatable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Hashable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

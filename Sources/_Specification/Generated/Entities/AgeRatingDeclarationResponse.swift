@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AgeRatingDeclarationResponse: Codable, Hashable {
+public struct AgeRatingDeclarationResponse: Codable, Equatable {
     /// AgeRatingDeclaration
     public var data: AgeRatingDeclaration
     public var links: DocumentLinks

@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct SubscriptionOfferCodeCustomCodeCreateRequest: Codable, Hashable {
+public struct SubscriptionOfferCodeCustomCodeCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
@@ -17,7 +17,7 @@ public struct SubscriptionOfferCodeCustomCodeCreateRequest: Codable, Hashable {
             case subscriptionOfferCodeCustomCodes
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var customCode: String
             public var numberOfCodes: Int
             public var expirationDate: String?
@@ -29,13 +29,13 @@ public struct SubscriptionOfferCodeCustomCodeCreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var offerCode: OfferCode
 
-            public struct OfferCode: Codable, Hashable {
+            public struct OfferCode: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

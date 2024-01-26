@@ -5,12 +5,12 @@
 
 import Foundation
 
-public struct XcodeMetrics: Codable, Hashable {
+public struct XcodeMetrics: Codable, Equatable {
     public var version: String?
     public var insights: Insights?
     public var productData: [ProductDatum]?
 
-    public struct Insights: Codable, Hashable {
+    public struct Insights: Codable, Equatable {
         public var trendingUp: [MetricsInsight]?
         public var regressions: [MetricsInsight]?
 
@@ -20,21 +20,21 @@ public struct XcodeMetrics: Codable, Hashable {
         }
     }
 
-    public struct ProductDatum: Codable, Hashable {
+    public struct ProductDatum: Codable, Equatable {
         public var platform: String?
         public var metricCategories: [MetricCategory]?
 
-        public struct MetricCategory: Codable, Hashable {
+        public struct MetricCategory: Codable, Equatable {
             public var identifier: MetricCategories?
             public var metrics: [Metric]?
 
-            public struct Metric: Codable, Hashable {
+            public struct Metric: Codable, Equatable {
                 public var identifier: String?
                 public var goalKeys: [GoalKey]?
                 public var unit: Unit?
                 public var datasets: [Dataset]?
 
-                public struct GoalKey: Codable, Hashable {
+                public struct GoalKey: Codable, Equatable {
                     public var goalKey: String?
                     public var lowerBound: Int?
                     public var upperBound: Int?
@@ -46,7 +46,7 @@ public struct XcodeMetrics: Codable, Hashable {
                     }
                 }
 
-                public struct Unit: Codable, Hashable {
+                public struct Unit: Codable, Equatable {
                     public var identifier: String?
                     public var displayName: String?
 
@@ -56,11 +56,11 @@ public struct XcodeMetrics: Codable, Hashable {
                     }
                 }
 
-                public struct Dataset: Codable, Hashable {
+                public struct Dataset: Codable, Equatable {
                     public var filterCriteria: FilterCriteria?
                     public var points: [Point]?
 
-                    public struct FilterCriteria: Codable, Hashable {
+                    public struct FilterCriteria: Codable, Equatable {
                         public var percentile: String?
                         public var device: String?
                         public var deviceMarketingName: String?
@@ -72,14 +72,14 @@ public struct XcodeMetrics: Codable, Hashable {
                         }
                     }
 
-                    public struct Point: Codable, Hashable {
+                    public struct Point: Codable, Equatable {
                         public var version: String?
                         public var value: Double?
                         public var errorMargin: Double?
                         public var percentageBreakdown: PercentageBreakdown?
                         public var goal: String?
 
-                        public struct PercentageBreakdown: Codable, Hashable {
+                        public struct PercentageBreakdown: Codable, Equatable {
                             public var value: Double?
                             public var subSystemLabel: String?
 

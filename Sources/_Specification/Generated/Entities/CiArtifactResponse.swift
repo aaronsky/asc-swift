@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiArtifactResponse: Codable, Hashable {
+public struct CiArtifactResponse: Codable, Equatable {
     /// CiArtifact
     public var data: CiArtifact
     public var links: DocumentLinks

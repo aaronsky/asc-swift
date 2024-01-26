@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct GameCenterLeaderboardSetCreateRequest: Codable, Hashable {
+public struct GameCenterLeaderboardSetCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships?
@@ -17,7 +17,7 @@ public struct GameCenterLeaderboardSetCreateRequest: Codable, Hashable {
             case gameCenterLeaderboardSets
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var referenceName: String
             public var vendorIdentifier: String
 
@@ -27,15 +27,15 @@ public struct GameCenterLeaderboardSetCreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var gameCenterDetail: GameCenterDetail?
             public var gameCenterGroup: GameCenterGroup?
             public var gameCenterLeaderboards: GameCenterLeaderboards?
 
-            public struct GameCenterDetail: Codable, Hashable {
+            public struct GameCenterDetail: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -54,10 +54,10 @@ public struct GameCenterLeaderboardSetCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct GameCenterGroup: Codable, Hashable {
+            public struct GameCenterGroup: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -76,10 +76,10 @@ public struct GameCenterLeaderboardSetCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct GameCenterLeaderboards: Codable, Hashable {
+            public struct GameCenterLeaderboards: Codable, Equatable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Hashable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

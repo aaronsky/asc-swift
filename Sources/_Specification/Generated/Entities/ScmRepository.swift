@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct ScmRepository: Codable, Hashable, Identifiable {
+public struct ScmRepository: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct ScmRepository: Codable, Hashable, Identifiable {
         case scmRepositories
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var lastAccessedDate: Date?
         public var httpCloneURL: URL?
         public var sshCloneURL: URL?
@@ -40,15 +40,15 @@ public struct ScmRepository: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var scmProvider: ScmProvider?
         public var defaultBranch: DefaultBranch?
 
-        public struct ScmProvider: Codable, Hashable {
+        public struct ScmProvider: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -63,7 +63,7 @@ public struct ScmRepository: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -83,11 +83,11 @@ public struct ScmRepository: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct DefaultBranch: Codable, Hashable {
+        public struct DefaultBranch: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -102,7 +102,7 @@ public struct ScmRepository: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

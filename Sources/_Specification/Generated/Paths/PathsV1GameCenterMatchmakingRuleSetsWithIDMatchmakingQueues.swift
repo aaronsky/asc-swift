@@ -29,6 +29,7 @@ extension Resources.V1.GameCenterMatchmakingRuleSets.WithID {
         }
 
         public enum FieldsGameCenterMatchmakingQueues: String, Codable, CaseIterable {
+            case classicMatchmakingBundleIDs = "classicMatchmakingBundleIds"
             case experimentRuleSet
             case referenceName
             case ruleSet

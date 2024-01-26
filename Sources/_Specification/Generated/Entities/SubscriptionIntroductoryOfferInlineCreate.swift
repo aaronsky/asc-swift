@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct SubscriptionIntroductoryOfferInlineCreate: Codable, Hashable, Identifiable {
+public struct SubscriptionIntroductoryOfferInlineCreate: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String?
     public var attributes: Attributes
@@ -15,7 +15,7 @@ public struct SubscriptionIntroductoryOfferInlineCreate: Codable, Hashable, Iden
         case subscriptionIntroductoryOffers
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var startDate: String?
         public var endDate: String?
         public var duration: SubscriptionOfferDuration
@@ -31,15 +31,15 @@ public struct SubscriptionIntroductoryOfferInlineCreate: Codable, Hashable, Iden
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var subscription: Subscription?
         public var territory: Territory?
         public var subscriptionPricePoint: SubscriptionPricePoint?
 
-        public struct Subscription: Codable, Hashable {
+        public struct Subscription: Codable, Equatable {
             public var data: Data?
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -58,10 +58,10 @@ public struct SubscriptionIntroductoryOfferInlineCreate: Codable, Hashable, Iden
             }
         }
 
-        public struct Territory: Codable, Hashable {
+        public struct Territory: Codable, Equatable {
             public var data: Data?
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -80,10 +80,10 @@ public struct SubscriptionIntroductoryOfferInlineCreate: Codable, Hashable, Iden
             }
         }
 
-        public struct SubscriptionPricePoint: Codable, Hashable {
+        public struct SubscriptionPricePoint: Codable, Equatable {
             public var data: Data?
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

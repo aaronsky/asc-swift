@@ -5,11 +5,11 @@
 
 import Foundation
 
-public struct InAppPurchasePriceScheduleCreateRequest: Codable, Hashable {
+public struct InAppPurchasePriceScheduleCreateRequest: Codable, Equatable {
     public var data: Data
     public var included: [IncludedItem]?
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var relationships: Relationships
 
@@ -17,15 +17,15 @@ public struct InAppPurchasePriceScheduleCreateRequest: Codable, Hashable {
             case inAppPurchasePriceSchedules
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var inAppPurchase: InAppPurchase
-            public var baseTerritory: BaseTerritory?
+            public var baseTerritory: BaseTerritory
             public var manualPrices: ManualPrices
 
-            public struct InAppPurchase: Codable, Hashable {
+            public struct InAppPurchase: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -44,10 +44,10 @@ public struct InAppPurchasePriceScheduleCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct BaseTerritory: Codable, Hashable {
-                public var data: Data?
+            public struct BaseTerritory: Codable, Equatable {
+                public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -61,15 +61,15 @@ public struct InAppPurchasePriceScheduleCreateRequest: Codable, Hashable {
                     }
                 }
 
-                public init(data: Data? = nil) {
+                public init(data: Data) {
                     self.data = data
                 }
             }
 
-            public struct ManualPrices: Codable, Hashable {
+            public struct ManualPrices: Codable, Equatable {
                 public var data: [Datum]
 
-                public struct Datum: Codable, Hashable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -88,7 +88,7 @@ public struct InAppPurchasePriceScheduleCreateRequest: Codable, Hashable {
                 }
             }
 
-            public init(inAppPurchase: InAppPurchase, baseTerritory: BaseTerritory? = nil, manualPrices: ManualPrices) {
+            public init(inAppPurchase: InAppPurchase, baseTerritory: BaseTerritory, manualPrices: ManualPrices) {
                 self.inAppPurchase = inAppPurchase
                 self.baseTerritory = baseTerritory
                 self.manualPrices = manualPrices
@@ -101,7 +101,7 @@ public struct InAppPurchasePriceScheduleCreateRequest: Codable, Hashable {
         }
     }
 
-    public enum IncludedItem: Codable, Hashable {
+    public enum IncludedItem: Codable, Equatable {
         case inAppPurchasePriceInlineCreate(InAppPurchasePriceInlineCreate)
         case territoryInlineCreate(TerritoryInlineCreate)
 

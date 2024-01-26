@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BetaLicenseAgreementResponse: Codable, Hashable {
+public struct BetaLicenseAgreementResponse: Codable, Equatable {
     /// BetaLicenseAgreement
     public var data: BetaLicenseAgreement
     public var included: [App]?

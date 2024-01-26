@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct ScmGitReferencesResponse: Codable, Hashable {
+public struct ScmGitReferencesResponse: Codable, Equatable {
     public var data: [ScmGitReference]
     public var included: [ScmRepository]?
     public var links: PagedDocumentLinks

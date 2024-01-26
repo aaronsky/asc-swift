@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct TerritoryAvailabilitiesResponse: Codable, Hashable {
+public struct TerritoryAvailabilitiesResponse: Codable, Equatable {
     public var data: [TerritoryAvailability]
     public var included: [Territory]?
     public var links: PagedDocumentLinks

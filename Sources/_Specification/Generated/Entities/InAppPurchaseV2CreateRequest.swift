@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct InAppPurchaseV2CreateRequest: Codable, Hashable {
+public struct InAppPurchaseV2CreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
@@ -17,21 +17,19 @@ public struct InAppPurchaseV2CreateRequest: Codable, Hashable {
             case inAppPurchases
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var name: String
             public var productID: String
             public var inAppPurchaseType: InAppPurchaseType
             public var reviewNote: String?
             public var isFamilySharable: Bool?
-            public var isAvailableInAllTerritories: Bool?
 
-            public init(name: String, productID: String, inAppPurchaseType: InAppPurchaseType, reviewNote: String? = nil, isFamilySharable: Bool? = nil, isAvailableInAllTerritories: Bool? = nil) {
+            public init(name: String, productID: String, inAppPurchaseType: InAppPurchaseType, reviewNote: String? = nil, isFamilySharable: Bool? = nil) {
                 self.name = name
                 self.productID = productID
                 self.inAppPurchaseType = inAppPurchaseType
                 self.reviewNote = reviewNote
                 self.isFamilySharable = isFamilySharable
-                self.isAvailableInAllTerritories = isAvailableInAllTerritories
             }
 
             private enum CodingKeys: String, CodingKey {
@@ -40,17 +38,16 @@ public struct InAppPurchaseV2CreateRequest: Codable, Hashable {
                 case inAppPurchaseType
                 case reviewNote
                 case isFamilySharable = "familySharable"
-                case isAvailableInAllTerritories = "availableInAllTerritories"
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var app: App
 
-            public struct App: Codable, Hashable {
+            public struct App: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

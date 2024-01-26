@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct UserInvitationCreateRequest: Codable, Hashable {
+public struct UserInvitationCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships?
@@ -17,7 +17,7 @@ public struct UserInvitationCreateRequest: Codable, Hashable {
             case userInvitations
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var email: String
             public var firstName: String
             public var lastName: String
@@ -44,13 +44,13 @@ public struct UserInvitationCreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var visibleApps: VisibleApps?
 
-            public struct VisibleApps: Codable, Hashable {
+            public struct VisibleApps: Codable, Equatable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Hashable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

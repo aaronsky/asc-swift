@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct DiagnosticSignature: Codable, Hashable, Identifiable {
+public struct DiagnosticSignature: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -15,7 +15,7 @@ public struct DiagnosticSignature: Codable, Hashable, Identifiable {
         case diagnosticSignatures
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var diagnosticType: DiagnosticType?
         public var signature: String?
         public var weight: Double?

@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct BetaTesterAppsLinkagesRequest: Codable, Hashable {
+public struct BetaTesterAppsLinkagesRequest: Codable, Equatable {
     public var data: [Datum]
 
-    public struct Datum: Codable, Hashable, Identifiable {
+    public struct Datum: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
 

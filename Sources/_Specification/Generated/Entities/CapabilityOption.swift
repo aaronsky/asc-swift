@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CapabilityOption: Codable, Hashable {
+public struct CapabilityOption: Codable, Equatable {
     public var key: Key?
     public var name: String?
     public var description: String?

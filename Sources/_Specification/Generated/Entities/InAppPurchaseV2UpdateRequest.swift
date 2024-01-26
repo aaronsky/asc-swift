@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct InAppPurchaseV2UpdateRequest: Codable, Hashable {
+public struct InAppPurchaseV2UpdateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
@@ -17,24 +17,21 @@ public struct InAppPurchaseV2UpdateRequest: Codable, Hashable {
             case inAppPurchases
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var name: String?
             public var reviewNote: String?
             public var isFamilySharable: Bool?
-            public var isAvailableInAllTerritories: Bool?
 
-            public init(name: String? = nil, reviewNote: String? = nil, isFamilySharable: Bool? = nil, isAvailableInAllTerritories: Bool? = nil) {
+            public init(name: String? = nil, reviewNote: String? = nil, isFamilySharable: Bool? = nil) {
                 self.name = name
                 self.reviewNote = reviewNote
                 self.isFamilySharable = isFamilySharable
-                self.isAvailableInAllTerritories = isAvailableInAllTerritories
             }
 
             private enum CodingKeys: String, CodingKey {
                 case name
                 case reviewNote
                 case isFamilySharable = "familySharable"
-                case isAvailableInAllTerritories = "availableInAllTerritories"
             }
         }
 

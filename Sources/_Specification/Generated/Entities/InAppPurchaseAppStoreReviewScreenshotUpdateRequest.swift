@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct InAppPurchaseAppStoreReviewScreenshotUpdateRequest: Codable, Hashable {
+public struct InAppPurchaseAppStoreReviewScreenshotUpdateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
@@ -17,7 +17,7 @@ public struct InAppPurchaseAppStoreReviewScreenshotUpdateRequest: Codable, Hasha
             case inAppPurchaseAppStoreReviewScreenshots
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var sourceFileChecksum: String?
             public var isUploaded: Bool?
 

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct ScmProviderType: Codable, Hashable {
+public struct ScmProviderType: Codable, Equatable {
     public var kind: Kind?
     public var displayName: String?
     public var isOnPremise: Bool?

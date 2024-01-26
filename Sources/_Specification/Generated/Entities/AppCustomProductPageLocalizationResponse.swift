@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct AppCustomProductPageLocalizationResponse: Codable, Hashable {
+public struct AppCustomProductPageLocalizationResponse: Codable, Equatable {
     /// AppCustomProductPageLocalization
     public var data: AppCustomProductPageLocalization
     public var included: [IncludedItem]?
     public var links: DocumentLinks
 
-    public enum IncludedItem: Codable, Hashable {
+    public enum IncludedItem: Codable, Equatable {
         case appCustomProductPageVersion(AppCustomProductPageVersion)
         case appScreenshotSet(AppScreenshotSet)
         case appPreviewSet(AppPreviewSet)

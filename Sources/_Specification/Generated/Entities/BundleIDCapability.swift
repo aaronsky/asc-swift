@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BundleIDCapability: Codable, Hashable, Identifiable {
+public struct BundleIDCapability: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -15,7 +15,7 @@ public struct BundleIDCapability: Codable, Hashable, Identifiable {
         case bundleIDCapabilities = "bundleIdCapabilities"
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var capabilityType: CapabilityType?
         public var settings: [CapabilitySetting]?
 

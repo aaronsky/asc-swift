@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct ProfileCreateRequest: Codable, Hashable {
+public struct ProfileCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
@@ -17,7 +17,7 @@ public struct ProfileCreateRequest: Codable, Hashable {
             case profiles
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var name: String
             public var profileType: ProfileType
 
@@ -44,15 +44,15 @@ public struct ProfileCreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var bundleID: BundleID
             public var devices: Devices?
             public var certificates: Certificates
 
-            public struct BundleID: Codable, Hashable {
+            public struct BundleID: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -71,10 +71,10 @@ public struct ProfileCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct Devices: Codable, Hashable {
+            public struct Devices: Codable, Equatable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Hashable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -93,10 +93,10 @@ public struct ProfileCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct Certificates: Codable, Hashable {
+            public struct Certificates: Codable, Equatable {
                 public var data: [Datum]
 
-                public struct Datum: Codable, Hashable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

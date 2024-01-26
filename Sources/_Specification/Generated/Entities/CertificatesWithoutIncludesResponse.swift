@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CertificatesWithoutIncludesResponse: Codable, Hashable {
+public struct CertificatesWithoutIncludesResponse: Codable, Equatable {
     public var data: [Profile]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?

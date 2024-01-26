@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct SubscriptionGroup: Codable, Hashable, Identifiable {
+public struct SubscriptionGroup: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct SubscriptionGroup: Codable, Hashable, Identifiable {
         case subscriptionGroups
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var referenceName: String?
 
         public init(referenceName: String? = nil) {
@@ -24,16 +24,16 @@ public struct SubscriptionGroup: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var subscriptions: Subscriptions?
         public var subscriptionGroupLocalizations: SubscriptionGroupLocalizations?
 
-        public struct Subscriptions: Codable, Hashable {
+        public struct Subscriptions: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -48,7 +48,7 @@ public struct SubscriptionGroup: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -69,12 +69,12 @@ public struct SubscriptionGroup: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct SubscriptionGroupLocalizations: Codable, Hashable {
+        public struct SubscriptionGroupLocalizations: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -89,7 +89,7 @@ public struct SubscriptionGroup: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

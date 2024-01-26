@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct AppEventScreenshotUpdateRequest: Codable, Hashable {
+public struct AppEventScreenshotUpdateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
@@ -17,7 +17,7 @@ public struct AppEventScreenshotUpdateRequest: Codable, Hashable {
             case appEventScreenshots
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var isUploaded: Bool?
 
             public init(isUploaded: Bool? = nil) {

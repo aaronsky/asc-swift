@@ -5,12 +5,12 @@
 
 import Foundation
 
-public struct BetaGroupBuildsLinkagesResponse: Codable, Hashable {
+public struct BetaGroupBuildsLinkagesResponse: Codable, Equatable {
     public var data: [Datum]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public struct Datum: Codable, Hashable, Identifiable {
+    public struct Datum: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
 

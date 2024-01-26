@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppPreviewSet: Codable, Hashable, Identifiable {
+public struct AppPreviewSet: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct AppPreviewSet: Codable, Hashable, Identifiable {
         case appPreviewSets
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var previewType: PreviewType?
 
         public init(previewType: PreviewType? = nil) {
@@ -24,17 +24,17 @@ public struct AppPreviewSet: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var appStoreVersionLocalization: AppStoreVersionLocalization?
         public var appCustomProductPageLocalization: AppCustomProductPageLocalization?
         public var appStoreVersionExperimentTreatmentLocalization: AppStoreVersionExperimentTreatmentLocalization?
         public var appPreviews: AppPreviews?
 
-        public struct AppStoreVersionLocalization: Codable, Hashable {
+        public struct AppStoreVersionLocalization: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -49,7 +49,7 @@ public struct AppPreviewSet: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -69,11 +69,11 @@ public struct AppPreviewSet: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct AppCustomProductPageLocalization: Codable, Hashable {
+        public struct AppCustomProductPageLocalization: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -88,7 +88,7 @@ public struct AppPreviewSet: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -108,11 +108,11 @@ public struct AppPreviewSet: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct AppStoreVersionExperimentTreatmentLocalization: Codable, Hashable {
+        public struct AppStoreVersionExperimentTreatmentLocalization: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -127,7 +127,7 @@ public struct AppPreviewSet: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -147,12 +147,12 @@ public struct AppPreviewSet: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct AppPreviews: Codable, Hashable {
+        public struct AppPreviews: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -167,7 +167,7 @@ public struct AppPreviewSet: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

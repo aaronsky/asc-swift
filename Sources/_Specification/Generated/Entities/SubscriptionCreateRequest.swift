@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct SubscriptionCreateRequest: Codable, Hashable {
+public struct SubscriptionCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
@@ -17,14 +17,13 @@ public struct SubscriptionCreateRequest: Codable, Hashable {
             case subscriptions
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var name: String
             public var productID: String
             public var isFamilySharable: Bool?
             public var subscriptionPeriod: SubscriptionPeriod?
             public var reviewNote: String?
             public var groupLevel: Int?
-            public var isAvailableInAllTerritories: Bool?
 
             public enum SubscriptionPeriod: String, Codable, CaseIterable {
                 case oneWeek = "ONE_WEEK"
@@ -35,14 +34,13 @@ public struct SubscriptionCreateRequest: Codable, Hashable {
                 case oneYear = "ONE_YEAR"
             }
 
-            public init(name: String, productID: String, isFamilySharable: Bool? = nil, subscriptionPeriod: SubscriptionPeriod? = nil, reviewNote: String? = nil, groupLevel: Int? = nil, isAvailableInAllTerritories: Bool? = nil) {
+            public init(name: String, productID: String, isFamilySharable: Bool? = nil, subscriptionPeriod: SubscriptionPeriod? = nil, reviewNote: String? = nil, groupLevel: Int? = nil) {
                 self.name = name
                 self.productID = productID
                 self.isFamilySharable = isFamilySharable
                 self.subscriptionPeriod = subscriptionPeriod
                 self.reviewNote = reviewNote
                 self.groupLevel = groupLevel
-                self.isAvailableInAllTerritories = isAvailableInAllTerritories
             }
 
             private enum CodingKeys: String, CodingKey {
@@ -52,17 +50,16 @@ public struct SubscriptionCreateRequest: Codable, Hashable {
                 case subscriptionPeriod
                 case reviewNote
                 case groupLevel
-                case isAvailableInAllTerritories = "availableInAllTerritories"
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var group: Group
 
-            public struct Group: Codable, Hashable {
+            public struct Group: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

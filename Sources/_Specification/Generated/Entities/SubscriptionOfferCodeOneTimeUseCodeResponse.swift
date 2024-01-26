@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct SubscriptionOfferCodeOneTimeUseCodeResponse: Codable, Hashable {
+public struct SubscriptionOfferCodeOneTimeUseCodeResponse: Codable, Equatable {
     /// SubscriptionOfferCodeOneTimeUseCode
     public var data: SubscriptionOfferCodeOneTimeUseCode
     public var included: [SubscriptionOfferCode]?

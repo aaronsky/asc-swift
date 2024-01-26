@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct SubscriptionPromotionalOfferInlineCreate: Codable, Hashable, Identifiable {
+public struct SubscriptionPromotionalOfferInlineCreate: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String?
     public var attributes: Attributes
@@ -15,7 +15,7 @@ public struct SubscriptionPromotionalOfferInlineCreate: Codable, Hashable, Ident
         case subscriptionPromotionalOffers
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var name: String
         public var offerCode: String
         public var duration: SubscriptionOfferDuration
@@ -31,14 +31,14 @@ public struct SubscriptionPromotionalOfferInlineCreate: Codable, Hashable, Ident
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var subscription: Subscription?
         public var prices: Prices?
 
-        public struct Subscription: Codable, Hashable {
+        public struct Subscription: Codable, Equatable {
             public var data: Data?
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -57,10 +57,10 @@ public struct SubscriptionPromotionalOfferInlineCreate: Codable, Hashable, Ident
             }
         }
 
-        public struct Prices: Codable, Hashable {
+        public struct Prices: Codable, Equatable {
             public var data: [Datum]?
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

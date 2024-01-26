@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppCategoriesWithoutIncludesResponse: Codable, Hashable {
+public struct AppCategoriesWithoutIncludesResponse: Codable, Equatable {
     public var data: [AppCategory]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?

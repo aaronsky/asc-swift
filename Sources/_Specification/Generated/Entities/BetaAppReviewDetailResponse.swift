@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BetaAppReviewDetailResponse: Codable, Hashable {
+public struct BetaAppReviewDetailResponse: Codable, Equatable {
     /// BetaAppReviewDetail
     public var data: BetaAppReviewDetail
     public var included: [App]?

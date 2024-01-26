@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct AppInfoResponse: Codable, Hashable {
+public struct AppInfoResponse: Codable, Equatable {
     /// AppInfo
     public var data: AppInfo
     public var included: [IncludedItem]?
     public var links: DocumentLinks
 
-    public enum IncludedItem: Codable, Hashable {
+    public enum IncludedItem: Codable, Equatable {
         case app(App)
         case ageRatingDeclaration(AgeRatingDeclaration)
         case appInfoLocalization(AppInfoLocalization)

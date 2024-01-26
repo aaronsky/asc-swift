@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct AppClipDefaultExperienceLocalizationResponse: Codable, Hashable {
+public struct AppClipDefaultExperienceLocalizationResponse: Codable, Equatable {
     /// AppClipDefaultExperienceLocalization
     public var data: AppClipDefaultExperienceLocalization
     public var included: [IncludedItem]?
     public var links: DocumentLinks
 
-    public enum IncludedItem: Codable, Hashable {
+    public enum IncludedItem: Codable, Equatable {
         case appClipDefaultExperience(AppClipDefaultExperience)
         case appClipHeaderImage(AppClipHeaderImage)
 

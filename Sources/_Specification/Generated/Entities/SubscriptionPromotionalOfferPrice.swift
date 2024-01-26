@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct SubscriptionPromotionalOfferPrice: Codable, Hashable, Identifiable {
+public struct SubscriptionPromotionalOfferPrice: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var relationships: Relationships?
@@ -15,15 +15,15 @@ public struct SubscriptionPromotionalOfferPrice: Codable, Hashable, Identifiable
         case subscriptionPromotionalOfferPrices
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var territory: Territory?
         public var subscriptionPricePoint: SubscriptionPricePoint?
 
-        public struct Territory: Codable, Hashable {
+        public struct Territory: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -38,7 +38,7 @@ public struct SubscriptionPromotionalOfferPrice: Codable, Hashable, Identifiable
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -58,11 +58,11 @@ public struct SubscriptionPromotionalOfferPrice: Codable, Hashable, Identifiable
             }
         }
 
-        public struct SubscriptionPricePoint: Codable, Hashable {
+        public struct SubscriptionPricePoint: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -77,7 +77,7 @@ public struct SubscriptionPromotionalOfferPrice: Codable, Hashable, Identifiable
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

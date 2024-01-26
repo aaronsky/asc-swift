@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct GameCenterLeaderboardSetResponse: Codable, Hashable {
+public struct GameCenterLeaderboardSetResponse: Codable, Equatable {
     /// GameCenterLeaderboardSet
     public var data: GameCenterLeaderboardSet
     public var included: [IncludedItem]?
     public var links: DocumentLinks
 
-    public enum IncludedItem: Codable, Hashable {
+    public enum IncludedItem: Codable, Equatable {
         case gameCenterDetail(GameCenterDetail)
         case gameCenterGroup(GameCenterGroup)
         case gameCenterLeaderboardSet(GameCenterLeaderboardSet)

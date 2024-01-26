@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct ReviewSubmissionItemCreateRequest: Codable, Hashable {
+public struct ReviewSubmissionItemCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var relationships: Relationships
 
@@ -16,7 +16,7 @@ public struct ReviewSubmissionItemCreateRequest: Codable, Hashable {
             case reviewSubmissionItems
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var reviewSubmission: ReviewSubmission
             public var appStoreVersion: AppStoreVersion?
             public var appCustomProductPageVersion: AppCustomProductPageVersion?
@@ -24,10 +24,10 @@ public struct ReviewSubmissionItemCreateRequest: Codable, Hashable {
             public var appStoreVersionExperimentV2: AppStoreVersionExperimentV2?
             public var appEvent: AppEvent?
 
-            public struct ReviewSubmission: Codable, Hashable {
+            public struct ReviewSubmission: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -46,10 +46,10 @@ public struct ReviewSubmissionItemCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct AppStoreVersion: Codable, Hashable {
+            public struct AppStoreVersion: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -68,10 +68,10 @@ public struct ReviewSubmissionItemCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct AppCustomProductPageVersion: Codable, Hashable {
+            public struct AppCustomProductPageVersion: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -90,10 +90,10 @@ public struct ReviewSubmissionItemCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct AppStoreVersionExperiment: Codable, Hashable {
+            public struct AppStoreVersionExperiment: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -112,10 +112,10 @@ public struct ReviewSubmissionItemCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct AppStoreVersionExperimentV2: Codable, Hashable {
+            public struct AppStoreVersionExperimentV2: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -134,10 +134,10 @@ public struct ReviewSubmissionItemCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct AppEvent: Codable, Hashable {
+            public struct AppEvent: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

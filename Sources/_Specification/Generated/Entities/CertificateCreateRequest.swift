@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct CertificateCreateRequest: Codable, Hashable {
+public struct CertificateCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
 
@@ -16,7 +16,7 @@ public struct CertificateCreateRequest: Codable, Hashable {
             case certificates
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var csrContent: String
             public var certificateType: CertificateType
 

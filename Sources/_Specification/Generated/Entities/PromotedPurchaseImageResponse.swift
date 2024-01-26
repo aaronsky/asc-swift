@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct PromotedPurchaseImageResponse: Codable, Hashable {
+public struct PromotedPurchaseImageResponse: Codable, Equatable {
     /// PromotedPurchaseImage
     public var data: PromotedPurchaseImage
     public var included: [PromotedPurchase]?

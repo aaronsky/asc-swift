@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BuildBetaDetailWithoutIncludesResponse: Codable, Hashable {
+public struct BuildBetaDetailWithoutIncludesResponse: Codable, Equatable {
     /// Build
     public var data: Build
     public var links: DocumentLinks

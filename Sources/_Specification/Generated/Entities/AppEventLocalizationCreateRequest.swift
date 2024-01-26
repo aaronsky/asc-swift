@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct AppEventLocalizationCreateRequest: Codable, Hashable {
+public struct AppEventLocalizationCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
@@ -17,7 +17,7 @@ public struct AppEventLocalizationCreateRequest: Codable, Hashable {
             case appEventLocalizations
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var locale: String
             public var name: String?
             public var shortDescription: String?
@@ -31,13 +31,13 @@ public struct AppEventLocalizationCreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var appEvent: AppEvent
 
-            public struct AppEvent: Codable, Hashable {
+            public struct AppEvent: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

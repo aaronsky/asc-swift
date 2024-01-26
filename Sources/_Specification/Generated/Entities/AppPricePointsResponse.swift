@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct AppPricePointsResponse: Codable, Hashable {
+public struct AppPricePointsResponse: Codable, Equatable {
     public var data: [AppPricePoint]
     public var included: [IncludedItem]?
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public enum IncludedItem: Codable, Hashable {
+    public enum IncludedItem: Codable, Equatable {
         case appPriceTier(AppPriceTier)
         case territory(Territory)
 

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppPriceTier: Codable, Hashable, Identifiable {
+public struct AppPriceTier: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var relationships: Relationships?
@@ -15,15 +15,15 @@ public struct AppPriceTier: Codable, Hashable, Identifiable {
         case appPriceTiers
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var pricePoints: PricePoints?
 
-        public struct PricePoints: Codable, Hashable {
+        public struct PricePoints: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -38,7 +38,7 @@ public struct AppPriceTier: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BuildBundleFileSizesResponse: Codable, Hashable {
+public struct BuildBundleFileSizesResponse: Codable, Equatable {
     public var data: [BuildBundleFileSize]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?

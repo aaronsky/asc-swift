@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct SubscriptionAppStoreReviewScreenshot: Codable, Hashable, Identifiable {
+public struct SubscriptionAppStoreReviewScreenshot: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct SubscriptionAppStoreReviewScreenshot: Codable, Hashable, Identifia
         case subscriptionAppStoreReviewScreenshots
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var fileSize: Int?
         public var fileName: String?
         public var sourceFileChecksum: String?
@@ -38,14 +38,14 @@ public struct SubscriptionAppStoreReviewScreenshot: Codable, Hashable, Identifia
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var subscription: Subscription?
 
-        public struct Subscription: Codable, Hashable {
+        public struct Subscription: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -60,7 +60,7 @@ public struct SubscriptionAppStoreReviewScreenshot: Codable, Hashable, Identifia
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

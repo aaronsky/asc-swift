@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct SandboxTestersClearPurchaseHistoryRequestV2CreateRequest: Codable, Hashable {
+public struct SandboxTestersClearPurchaseHistoryRequestV2CreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var relationships: Relationships
 
@@ -16,13 +16,13 @@ public struct SandboxTestersClearPurchaseHistoryRequestV2CreateRequest: Codable,
             case sandboxTestersClearPurchaseHistoryRequest
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var sandboxTesters: SandboxTesters
 
-            public struct SandboxTesters: Codable, Hashable {
+            public struct SandboxTesters: Codable, Equatable {
                 public var data: [Datum]
 
-                public struct Datum: Codable, Hashable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

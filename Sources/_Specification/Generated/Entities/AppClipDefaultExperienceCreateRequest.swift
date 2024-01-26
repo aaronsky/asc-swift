@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct AppClipDefaultExperienceCreateRequest: Codable, Hashable {
+public struct AppClipDefaultExperienceCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes?
         public var relationships: Relationships
@@ -17,7 +17,7 @@ public struct AppClipDefaultExperienceCreateRequest: Codable, Hashable {
             case appClipDefaultExperiences
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var action: AppClipAction?
 
             public init(action: AppClipAction? = nil) {
@@ -25,15 +25,15 @@ public struct AppClipDefaultExperienceCreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var appClip: AppClip
             public var releaseWithAppStoreVersion: ReleaseWithAppStoreVersion?
             public var appClipDefaultExperienceTemplate: AppClipDefaultExperienceTemplate?
 
-            public struct AppClip: Codable, Hashable {
+            public struct AppClip: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -52,10 +52,10 @@ public struct AppClipDefaultExperienceCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct ReleaseWithAppStoreVersion: Codable, Hashable {
+            public struct ReleaseWithAppStoreVersion: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -74,10 +74,10 @@ public struct AppClipDefaultExperienceCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct AppClipDefaultExperienceTemplate: Codable, Hashable {
+            public struct AppClipDefaultExperienceTemplate: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

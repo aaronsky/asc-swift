@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct GameCenterMatchmakingTeamUpdateRequest: Codable, Hashable {
+public struct GameCenterMatchmakingTeamUpdateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
@@ -17,7 +17,7 @@ public struct GameCenterMatchmakingTeamUpdateRequest: Codable, Hashable {
             case gameCenterMatchmakingTeams
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var minPlayers: Int?
             public var maxPlayers: Int?
 

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiAction: Codable, Hashable {
+public struct CiAction: Codable, Equatable {
     public var name: String?
     public var actionType: CiActionType?
     public var destination: Destination?
@@ -24,9 +24,11 @@ public struct CiAction: Codable, Hashable {
         case anyWatchosSimulator = "ANY_WATCHOS_SIMULATOR"
         case anyMac = "ANY_MAC"
         case anyMacCatalyst = "ANY_MAC_CATALYST"
+        case anyVisionosDevice = "ANY_VISIONOS_DEVICE"
+        case anyVisionosSimulator = "ANY_VISIONOS_SIMULATOR"
     }
 
-    public struct TestConfiguration: Codable, Hashable {
+    public struct TestConfiguration: Codable, Equatable {
         public var kind: Kind?
         public var testPlanName: String?
         public var testDestinations: [CiTestDestination]?
@@ -48,6 +50,7 @@ public struct CiAction: Codable, Hashable {
         case ios = "IOS"
         case tvos = "TVOS"
         case watchos = "WATCHOS"
+        case visionos = "VISIONOS"
     }
 
     public init(name: String? = nil, actionType: CiActionType? = nil, destination: Destination? = nil, buildDistributionAudience: BuildAudienceType? = nil, testConfiguration: TestConfiguration? = nil, scheme: String? = nil, platform: Platform? = nil, isRequiredToPass: Bool? = nil) {

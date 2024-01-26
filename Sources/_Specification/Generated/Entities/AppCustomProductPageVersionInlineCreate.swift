@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppCustomProductPageVersionInlineCreate: Codable, Hashable, Identifiable {
+public struct AppCustomProductPageVersionInlineCreate: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String?
     public var relationships: Relationships?
@@ -14,14 +14,14 @@ public struct AppCustomProductPageVersionInlineCreate: Codable, Hashable, Identi
         case appCustomProductPageVersions
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var appCustomProductPage: AppCustomProductPage?
         public var appCustomProductPageLocalizations: AppCustomProductPageLocalizations?
 
-        public struct AppCustomProductPage: Codable, Hashable {
+        public struct AppCustomProductPage: Codable, Equatable {
             public var data: Data?
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -40,10 +40,10 @@ public struct AppCustomProductPageVersionInlineCreate: Codable, Hashable, Identi
             }
         }
 
-        public struct AppCustomProductPageLocalizations: Codable, Hashable {
+        public struct AppCustomProductPageLocalizations: Codable, Equatable {
             public var data: [Datum]?
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

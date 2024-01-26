@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppClipDefaultExperience: Codable, Hashable, Identifiable {
+public struct AppClipDefaultExperience: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct AppClipDefaultExperience: Codable, Hashable, Identifiable {
         case appClipDefaultExperiences
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var action: AppClipAction?
 
         public init(action: AppClipAction? = nil) {
@@ -24,17 +24,17 @@ public struct AppClipDefaultExperience: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var appClip: AppClip?
         public var releaseWithAppStoreVersion: ReleaseWithAppStoreVersion?
         public var appClipDefaultExperienceLocalizations: AppClipDefaultExperienceLocalizations?
         public var appClipAppStoreReviewDetail: AppClipAppStoreReviewDetail?
 
-        public struct AppClip: Codable, Hashable {
+        public struct AppClip: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -49,7 +49,7 @@ public struct AppClipDefaultExperience: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -69,11 +69,11 @@ public struct AppClipDefaultExperience: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct ReleaseWithAppStoreVersion: Codable, Hashable {
+        public struct ReleaseWithAppStoreVersion: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -88,7 +88,7 @@ public struct AppClipDefaultExperience: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -108,12 +108,12 @@ public struct AppClipDefaultExperience: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct AppClipDefaultExperienceLocalizations: Codable, Hashable {
+        public struct AppClipDefaultExperienceLocalizations: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -128,7 +128,7 @@ public struct AppClipDefaultExperience: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -149,11 +149,11 @@ public struct AppClipDefaultExperience: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct AppClipAppStoreReviewDetail: Codable, Hashable {
+        public struct AppClipAppStoreReviewDetail: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -168,7 +168,7 @@ public struct AppClipDefaultExperience: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

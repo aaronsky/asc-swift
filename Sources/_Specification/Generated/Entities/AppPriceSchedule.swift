@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppPriceSchedule: Codable, Hashable, Identifiable {
+public struct AppPriceSchedule: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var relationships: Relationships?
@@ -15,17 +15,17 @@ public struct AppPriceSchedule: Codable, Hashable, Identifiable {
         case appPriceSchedules
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var app: App?
         public var baseTerritory: BaseTerritory?
         public var manualPrices: ManualPrices?
         public var automaticPrices: AutomaticPrices?
 
-        public struct App: Codable, Hashable {
+        public struct App: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -40,7 +40,7 @@ public struct AppPriceSchedule: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -60,11 +60,11 @@ public struct AppPriceSchedule: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct BaseTerritory: Codable, Hashable {
+        public struct BaseTerritory: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -79,7 +79,7 @@ public struct AppPriceSchedule: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -99,12 +99,12 @@ public struct AppPriceSchedule: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct ManualPrices: Codable, Hashable {
+        public struct ManualPrices: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -119,7 +119,7 @@ public struct AppPriceSchedule: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -140,12 +140,12 @@ public struct AppPriceSchedule: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct AutomaticPrices: Codable, Hashable {
+        public struct AutomaticPrices: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -160,7 +160,7 @@ public struct AppPriceSchedule: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

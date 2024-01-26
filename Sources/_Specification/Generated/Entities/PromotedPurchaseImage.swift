@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct PromotedPurchaseImage: Codable, Hashable, Identifiable {
+public struct PromotedPurchaseImage: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct PromotedPurchaseImage: Codable, Hashable, Identifiable {
         case promotedPurchaseImages
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var fileSize: Int?
         public var fileName: String?
         public var sourceFileChecksum: String?
@@ -48,14 +48,14 @@ public struct PromotedPurchaseImage: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var promotedPurchase: PromotedPurchase?
 
-        public struct PromotedPurchase: Codable, Hashable {
+        public struct PromotedPurchase: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -70,7 +70,7 @@ public struct PromotedPurchaseImage: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

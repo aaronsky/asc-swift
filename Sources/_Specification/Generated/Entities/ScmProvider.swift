@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct ScmProvider: Codable, Hashable, Identifiable {
+public struct ScmProvider: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -15,7 +15,7 @@ public struct ScmProvider: Codable, Hashable, Identifiable {
         case scmProviders
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var scmProviderType: ScmProviderType?
         public var url: URL?
 

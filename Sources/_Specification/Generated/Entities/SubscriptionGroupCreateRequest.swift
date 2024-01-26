@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct SubscriptionGroupCreateRequest: Codable, Hashable {
+public struct SubscriptionGroupCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
@@ -17,7 +17,7 @@ public struct SubscriptionGroupCreateRequest: Codable, Hashable {
             case subscriptionGroups
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var referenceName: String
 
             public init(referenceName: String) {
@@ -25,13 +25,13 @@ public struct SubscriptionGroupCreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var app: App
 
-            public struct App: Codable, Hashable {
+            public struct App: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

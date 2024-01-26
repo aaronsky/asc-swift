@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct GameCenterMatchmakingRuleSetTest: Codable, Hashable, Identifiable {
+public struct GameCenterMatchmakingRuleSetTest: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -15,10 +15,10 @@ public struct GameCenterMatchmakingRuleSetTest: Codable, Hashable, Identifiable 
         case gameCenterMatchmakingRuleSetTests
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var matchmakingResults: [[MatchmakingResultItem]]?
 
-        public struct MatchmakingResultItem: Codable, Hashable {
+        public struct MatchmakingResultItem: Codable, Equatable {
             public var requestName: String?
             public var teamAssignments: [GameCenterMatchmakingTeamAssignment]?
 

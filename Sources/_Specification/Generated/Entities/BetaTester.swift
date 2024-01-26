@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BetaTester: Codable, Hashable, Identifiable {
+public struct BetaTester: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct BetaTester: Codable, Hashable, Identifiable {
         case betaTesters
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var firstName: String?
         public var lastName: String?
         public var email: String?
@@ -30,17 +30,17 @@ public struct BetaTester: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var apps: Apps?
         public var betaGroups: BetaGroups?
         public var builds: Builds?
 
-        public struct Apps: Codable, Hashable {
+        public struct Apps: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -55,7 +55,7 @@ public struct BetaTester: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -76,12 +76,12 @@ public struct BetaTester: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct BetaGroups: Codable, Hashable {
+        public struct BetaGroups: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -96,7 +96,7 @@ public struct BetaTester: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -117,12 +117,12 @@ public struct BetaTester: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct Builds: Codable, Hashable {
+        public struct Builds: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -137,7 +137,7 @@ public struct BetaTester: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

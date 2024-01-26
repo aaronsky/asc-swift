@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct PromotedPurchase: Codable, Hashable, Identifiable {
+public struct PromotedPurchase: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct PromotedPurchase: Codable, Hashable, Identifiable {
         case promotedPurchases
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var isVisibleForAllUsers: Bool?
         public var isEnabled: Bool?
         public var state: State?
@@ -41,16 +41,16 @@ public struct PromotedPurchase: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var inAppPurchaseV2: InAppPurchaseV2?
         public var subscription: Subscription?
         public var promotionImages: PromotionImages?
 
-        public struct InAppPurchaseV2: Codable, Hashable {
+        public struct InAppPurchaseV2: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -65,7 +65,7 @@ public struct PromotedPurchase: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -85,11 +85,11 @@ public struct PromotedPurchase: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct Subscription: Codable, Hashable {
+        public struct Subscription: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -104,7 +104,7 @@ public struct PromotedPurchase: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -124,12 +124,12 @@ public struct PromotedPurchase: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct PromotionImages: Codable, Hashable {
+        public struct PromotionImages: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -144,7 +144,7 @@ public struct PromotedPurchase: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

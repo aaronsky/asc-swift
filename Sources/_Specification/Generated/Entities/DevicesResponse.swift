@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct DevicesResponse: Codable, Hashable {
+public struct DevicesResponse: Codable, Equatable {
     public var data: [Device]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?

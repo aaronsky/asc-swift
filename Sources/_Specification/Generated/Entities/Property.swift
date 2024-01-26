@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct Property: Codable, Hashable {
+public struct Property: Codable, Equatable {
     public var key: String?
     public var value: String?
 

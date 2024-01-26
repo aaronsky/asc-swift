@@ -5,21 +5,21 @@
 
 import Foundation
 
-public struct GameCenterMatchmakingSessionsV1MetricResponse: Codable, Hashable {
+public struct GameCenterMatchmakingSessionsV1MetricResponse: Codable, Equatable {
     public var data: [Datum]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public struct Datum: Codable, Hashable {
+    public struct Datum: Codable, Equatable {
         public var dataPoints: DataPoints?
         public var granularity: Granularity?
 
-        public struct DataPoints: Codable, Hashable {
+        public struct DataPoints: Codable, Equatable {
             public var start: Date?
             public var end: Date?
             public var values: Values?
 
-            public struct Values: Codable, Hashable {
+            public struct Values: Codable, Equatable {
                 public var count: Int?
                 public var averagePlayerCount: Double?
                 public var p50PlayerCount: Double?

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppCategory: Codable, Hashable, Identifiable {
+public struct AppCategory: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct AppCategory: Codable, Hashable, Identifiable {
         case appCategories
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var platforms: [Platform]?
 
         public init(platforms: [Platform]? = nil) {
@@ -24,16 +24,16 @@ public struct AppCategory: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var subcategories: Subcategories?
         public var parent: Parent?
 
-        public struct Subcategories: Codable, Hashable {
+        public struct Subcategories: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -48,7 +48,7 @@ public struct AppCategory: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -69,11 +69,11 @@ public struct AppCategory: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct Parent: Codable, Hashable {
+        public struct Parent: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -88,7 +88,7 @@ public struct AppCategory: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

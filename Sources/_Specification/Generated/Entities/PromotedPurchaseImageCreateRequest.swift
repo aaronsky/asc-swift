@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct PromotedPurchaseImageCreateRequest: Codable, Hashable {
+public struct PromotedPurchaseImageCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
@@ -17,7 +17,7 @@ public struct PromotedPurchaseImageCreateRequest: Codable, Hashable {
             case promotedPurchaseImages
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var fileSize: Int
             public var fileName: String
 
@@ -27,13 +27,13 @@ public struct PromotedPurchaseImageCreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var promotedPurchase: PromotedPurchase
 
-            public struct PromotedPurchase: Codable, Hashable {
+            public struct PromotedPurchase: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

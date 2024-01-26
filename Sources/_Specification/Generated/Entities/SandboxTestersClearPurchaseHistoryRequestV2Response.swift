@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct SandboxTestersClearPurchaseHistoryRequestV2Response: Codable, Hashable {
+public struct SandboxTestersClearPurchaseHistoryRequestV2Response: Codable, Equatable {
     /// SandboxTestersClearPurchaseHistoryRequestV2
     public var data: SandboxTestersClearPurchaseHistoryRequestV2
     public var links: DocumentLinks

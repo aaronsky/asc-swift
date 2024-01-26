@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppStoreVersionPhasedRelease: Codable, Hashable, Identifiable {
+public struct AppStoreVersionPhasedRelease: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -15,7 +15,7 @@ public struct AppStoreVersionPhasedRelease: Codable, Hashable, Identifiable {
         case appStoreVersionPhasedReleases
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var phasedReleaseState: PhasedReleaseState?
         public var startDate: Date?
         public var totalPauseDuration: Int?

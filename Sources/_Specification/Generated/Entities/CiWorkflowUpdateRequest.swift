@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct CiWorkflowUpdateRequest: Codable, Hashable {
+public struct CiWorkflowUpdateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
@@ -18,26 +18,32 @@ public struct CiWorkflowUpdateRequest: Codable, Hashable {
             case ciWorkflows
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var name: String?
             public var description: String?
             public var branchStartCondition: CiBranchStartCondition?
             public var tagStartCondition: CiTagStartCondition?
             public var pullRequestStartCondition: CiPullRequestStartCondition?
             public var scheduledStartCondition: CiScheduledStartCondition?
+            public var manualBranchStartCondition: CiManualBranchStartCondition?
+            public var manualTagStartCondition: CiManualTagStartCondition?
+            public var manualPullRequestStartCondition: CiManualPullRequestStartCondition?
             public var actions: [CiAction]?
             public var isEnabled: Bool?
             public var isLockedForEditing: Bool?
             public var isClean: Bool?
             public var containerFilePath: String?
 
-            public init(name: String? = nil, description: String? = nil, branchStartCondition: CiBranchStartCondition? = nil, tagStartCondition: CiTagStartCondition? = nil, pullRequestStartCondition: CiPullRequestStartCondition? = nil, scheduledStartCondition: CiScheduledStartCondition? = nil, actions: [CiAction]? = nil, isEnabled: Bool? = nil, isLockedForEditing: Bool? = nil, isClean: Bool? = nil, containerFilePath: String? = nil) {
+            public init(name: String? = nil, description: String? = nil, branchStartCondition: CiBranchStartCondition? = nil, tagStartCondition: CiTagStartCondition? = nil, pullRequestStartCondition: CiPullRequestStartCondition? = nil, scheduledStartCondition: CiScheduledStartCondition? = nil, manualBranchStartCondition: CiManualBranchStartCondition? = nil, manualTagStartCondition: CiManualTagStartCondition? = nil, manualPullRequestStartCondition: CiManualPullRequestStartCondition? = nil, actions: [CiAction]? = nil, isEnabled: Bool? = nil, isLockedForEditing: Bool? = nil, isClean: Bool? = nil, containerFilePath: String? = nil) {
                 self.name = name
                 self.description = description
                 self.branchStartCondition = branchStartCondition
                 self.tagStartCondition = tagStartCondition
                 self.pullRequestStartCondition = pullRequestStartCondition
                 self.scheduledStartCondition = scheduledStartCondition
+                self.manualBranchStartCondition = manualBranchStartCondition
+                self.manualTagStartCondition = manualTagStartCondition
+                self.manualPullRequestStartCondition = manualPullRequestStartCondition
                 self.actions = actions
                 self.isEnabled = isEnabled
                 self.isLockedForEditing = isLockedForEditing
@@ -52,6 +58,9 @@ public struct CiWorkflowUpdateRequest: Codable, Hashable {
                 case tagStartCondition
                 case pullRequestStartCondition
                 case scheduledStartCondition
+                case manualBranchStartCondition
+                case manualTagStartCondition
+                case manualPullRequestStartCondition
                 case actions
                 case isEnabled
                 case isLockedForEditing
@@ -60,14 +69,14 @@ public struct CiWorkflowUpdateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var xcodeVersion: XcodeVersion?
             public var macOsVersion: MacOsVersion?
 
-            public struct XcodeVersion: Codable, Hashable {
+            public struct XcodeVersion: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -86,10 +95,10 @@ public struct CiWorkflowUpdateRequest: Codable, Hashable {
                 }
             }
 
-            public struct MacOsVersion: Codable, Hashable {
+            public struct MacOsVersion: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

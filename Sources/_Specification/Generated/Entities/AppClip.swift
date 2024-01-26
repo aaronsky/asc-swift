@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppClip: Codable, Hashable, Identifiable {
+public struct AppClip: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct AppClip: Codable, Hashable, Identifiable {
         case appClips
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var bundleID: String?
 
         public init(bundleID: String? = nil) {
@@ -28,15 +28,15 @@ public struct AppClip: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var app: App?
         public var appClipDefaultExperiences: AppClipDefaultExperiences?
 
-        public struct App: Codable, Hashable {
+        public struct App: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -51,7 +51,7 @@ public struct AppClip: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -71,12 +71,12 @@ public struct AppClip: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct AppClipDefaultExperiences: Codable, Hashable {
+        public struct AppClipDefaultExperiences: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -91,7 +91,7 @@ public struct AppClip: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

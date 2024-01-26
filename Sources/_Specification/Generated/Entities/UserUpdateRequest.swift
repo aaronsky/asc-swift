@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct UserUpdateRequest: Codable, Hashable {
+public struct UserUpdateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
@@ -18,7 +18,7 @@ public struct UserUpdateRequest: Codable, Hashable {
             case users
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var roles: [UserRole]?
             public var isAllAppsVisible: Bool?
             public var isProvisioningAllowed: Bool?
@@ -36,13 +36,13 @@ public struct UserUpdateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var visibleApps: VisibleApps?
 
-            public struct VisibleApps: Codable, Hashable {
+            public struct VisibleApps: Codable, Equatable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Hashable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

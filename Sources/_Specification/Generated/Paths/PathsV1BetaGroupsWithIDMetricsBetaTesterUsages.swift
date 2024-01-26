@@ -15,11 +15,11 @@ extension Resources.V1.BetaGroups.WithID.Metrics {
         /// Path: `/v1/betaGroups/{id}/metrics/betaTesterUsages`
         public let path: String
 
-        public func get(limit: Int? = nil, groupBy: [GroupBy]? = nil, filterBetaTesters: String? = nil, period: String? = nil) -> Request<_Specification.AppsBetaTesterUsagesV1MetricResponse> {
+        public func get(limit: Int? = nil, groupBy: [GroupBy]? = nil, filterBetaTesters: String? = nil, period: Period? = nil) -> Request<_Specification.AppsBetaTesterUsagesV1MetricResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(limit, groupBy, filterBetaTesters, period), id: "betaGroups-betaTesterUsages-get_metrics")
         }
 
-        private func makeGetQuery(_ limit: Int?, _ groupBy: [GroupBy]?, _ filterBetaTesters: String?, _ period: String?) -> [(String, String?)] {
+        private func makeGetQuery(_ limit: Int?, _ groupBy: [GroupBy]?, _ filterBetaTesters: String?, _ period: Period?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(limit, forKey: "limit")
             encoder.encode(groupBy, forKey: "groupBy")
@@ -30,6 +30,13 @@ extension Resources.V1.BetaGroups.WithID.Metrics {
 
         public enum GroupBy: String, Codable, CaseIterable {
             case betaTesters
+        }
+
+        public enum Period: String, Codable, CaseIterable {
+            case p7d = "P7D"
+            case p30d = "P30D"
+            case p90d = "P90D"
+            case p365d = "P365D"
         }
     }
 }

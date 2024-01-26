@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct SubscriptionLocalization: Codable, Hashable, Identifiable {
+public struct SubscriptionLocalization: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct SubscriptionLocalization: Codable, Hashable, Identifiable {
         case subscriptionLocalizations
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var name: String?
         public var locale: String?
         public var description: String?
@@ -37,14 +37,14 @@ public struct SubscriptionLocalization: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var subscription: Subscription?
 
-        public struct Subscription: Codable, Hashable {
+        public struct Subscription: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -59,7 +59,7 @@ public struct SubscriptionLocalization: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

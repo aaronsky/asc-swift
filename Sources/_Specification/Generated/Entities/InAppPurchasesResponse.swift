@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct InAppPurchasesResponse: Codable, Hashable {
+public struct InAppPurchasesResponse: Codable, Equatable {
     public var data: [InAppPurchase]
     public var included: [App]?
     public var links: PagedDocumentLinks

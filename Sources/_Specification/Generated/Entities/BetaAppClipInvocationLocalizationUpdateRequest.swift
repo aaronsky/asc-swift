@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct BetaAppClipInvocationLocalizationUpdateRequest: Codable, Hashable {
+public struct BetaAppClipInvocationLocalizationUpdateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
@@ -17,7 +17,7 @@ public struct BetaAppClipInvocationLocalizationUpdateRequest: Codable, Hashable 
             case betaAppClipInvocationLocalizations
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var title: String?
 
             public init(title: String? = nil) {

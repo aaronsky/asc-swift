@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct BetaTesterInvitationCreateRequest: Codable, Hashable {
+public struct BetaTesterInvitationCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var relationships: Relationships
 
@@ -16,14 +16,14 @@ public struct BetaTesterInvitationCreateRequest: Codable, Hashable {
             case betaTesterInvitations
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var betaTester: BetaTester
             public var app: App
 
-            public struct BetaTester: Codable, Hashable {
+            public struct BetaTester: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -42,10 +42,10 @@ public struct BetaTesterInvitationCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct App: Codable, Hashable {
+            public struct App: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct GameCenterMatchmakingRule: Codable, Hashable, Identifiable {
+public struct GameCenterMatchmakingRule: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -15,7 +15,7 @@ public struct GameCenterMatchmakingRule: Codable, Hashable, Identifiable {
         case gameCenterMatchmakingRules
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var referenceName: String?
         public var description: String?
         public var type: `Type`?

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct Certificate: Codable, Hashable, Identifiable {
+public struct Certificate: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -15,7 +15,7 @@ public struct Certificate: Codable, Hashable, Identifiable {
         case certificates
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var name: String?
         public var certificateType: CertificateType?
         public var displayName: String?

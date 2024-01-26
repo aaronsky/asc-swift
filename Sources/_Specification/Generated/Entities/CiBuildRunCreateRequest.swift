@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct CiBuildRunCreateRequest: Codable, Hashable {
+public struct CiBuildRunCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes?
         public var relationships: Relationships?
@@ -17,7 +17,7 @@ public struct CiBuildRunCreateRequest: Codable, Hashable {
             case ciBuildRuns
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var isClean: Bool?
 
             public init(isClean: Bool? = nil) {
@@ -29,16 +29,16 @@ public struct CiBuildRunCreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var buildRun: BuildRun?
             public var workflow: Workflow?
             public var sourceBranchOrTag: SourceBranchOrTag?
             public var pullRequest: PullRequest?
 
-            public struct BuildRun: Codable, Hashable {
+            public struct BuildRun: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -57,10 +57,10 @@ public struct CiBuildRunCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct Workflow: Codable, Hashable {
+            public struct Workflow: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -79,10 +79,10 @@ public struct CiBuildRunCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct SourceBranchOrTag: Codable, Hashable {
+            public struct SourceBranchOrTag: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -101,10 +101,10 @@ public struct CiBuildRunCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct PullRequest: Codable, Hashable {
+            public struct PullRequest: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

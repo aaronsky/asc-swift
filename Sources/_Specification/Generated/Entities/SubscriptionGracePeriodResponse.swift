@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct SubscriptionGracePeriodResponse: Codable, Hashable {
+public struct SubscriptionGracePeriodResponse: Codable, Equatable {
     /// SubscriptionGracePeriod
     public var data: SubscriptionGracePeriod
     public var links: DocumentLinks

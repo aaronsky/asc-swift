@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct AppStoreVersionBuildLinkageRequest: Codable, Hashable {
+public struct AppStoreVersionBuildLinkageRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
 

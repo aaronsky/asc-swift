@@ -5,21 +5,21 @@
 
 import Foundation
 
-public struct BetaBuildUsagesV1MetricResponse: Codable, Hashable {
+public struct BetaBuildUsagesV1MetricResponse: Codable, Equatable {
     public var data: [Datum]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public struct Datum: Codable, Hashable {
+    public struct Datum: Codable, Equatable {
         public var dataPoints: DataPoints?
         public var dimensions: Dimensions?
 
-        public struct DataPoints: Codable, Hashable {
+        public struct DataPoints: Codable, Equatable {
             public var start: Date?
             public var end: Date?
             public var values: Values?
 
-            public struct Values: Codable, Hashable {
+            public struct Values: Codable, Equatable {
                 public var crashCount: Int?
                 public var installCount: Int?
                 public var sessionCount: Int?
@@ -42,13 +42,13 @@ public struct BetaBuildUsagesV1MetricResponse: Codable, Hashable {
             }
         }
 
-        public struct Dimensions: Codable, Hashable {
+        public struct Dimensions: Codable, Equatable {
             public var bundleIDs: BundleIDs?
 
-            public struct BundleIDs: Codable, Hashable {
+            public struct BundleIDs: Codable, Equatable {
                 public var links: Links?
 
-                public struct Links: Codable, Hashable {
+                public struct Links: Codable, Equatable {
                     public var groupBy: URL?
 
                     public init(groupBy: URL? = nil) {

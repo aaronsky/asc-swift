@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct Territory: Codable, Hashable, Identifiable {
+public struct Territory: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -15,7 +15,7 @@ public struct Territory: Codable, Hashable, Identifiable {
         case territories
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var currency: String?
 
         public init(currency: String? = nil) {

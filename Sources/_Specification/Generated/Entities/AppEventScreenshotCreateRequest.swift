@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct AppEventScreenshotCreateRequest: Codable, Hashable {
+public struct AppEventScreenshotCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
@@ -17,7 +17,7 @@ public struct AppEventScreenshotCreateRequest: Codable, Hashable {
             case appEventScreenshots
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var fileSize: Int
             public var fileName: String
             public var appEventAssetType: AppEventAssetType
@@ -29,13 +29,13 @@ public struct AppEventScreenshotCreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var appEventLocalization: AppEventLocalization
 
-            public struct AppEventLocalization: Codable, Hashable {
+            public struct AppEventLocalization: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BuildBundle: Codable, Hashable, Identifiable {
+public struct BuildBundle: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct BuildBundle: Codable, Hashable, Identifiable {
         case buildBundles
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var bundleID: String?
         public var bundleType: BundleType?
         public var sdkBuild: String?
@@ -81,17 +81,17 @@ public struct BuildBundle: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var appClipDomainCacheStatus: AppClipDomainCacheStatus?
         public var appClipDomainDebugStatus: AppClipDomainDebugStatus?
         public var betaAppClipInvocations: BetaAppClipInvocations?
         public var buildBundleFileSizes: BuildBundleFileSizes?
 
-        public struct AppClipDomainCacheStatus: Codable, Hashable {
+        public struct AppClipDomainCacheStatus: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -106,7 +106,7 @@ public struct BuildBundle: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -126,11 +126,11 @@ public struct BuildBundle: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct AppClipDomainDebugStatus: Codable, Hashable {
+        public struct AppClipDomainDebugStatus: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -145,7 +145,7 @@ public struct BuildBundle: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -165,12 +165,12 @@ public struct BuildBundle: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct BetaAppClipInvocations: Codable, Hashable {
+        public struct BetaAppClipInvocations: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -185,7 +185,7 @@ public struct BuildBundle: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -206,12 +206,12 @@ public struct BuildBundle: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct BuildBundleFileSizes: Codable, Hashable {
+        public struct BuildBundleFileSizes: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -226,7 +226,7 @@ public struct BuildBundle: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

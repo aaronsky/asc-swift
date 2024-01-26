@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BuildIcon: Codable, Hashable, Identifiable {
+public struct BuildIcon: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -15,7 +15,7 @@ public struct BuildIcon: Codable, Hashable, Identifiable {
         case buildIcons
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var name: String?
         public var iconAsset: ImageAsset?
         public var iconType: IconAssetType?

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiWorkflow: Codable, Hashable, Identifiable {
+public struct CiWorkflow: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,13 +16,16 @@ public struct CiWorkflow: Codable, Hashable, Identifiable {
         case ciWorkflows
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var name: String?
         public var description: String?
         public var branchStartCondition: CiBranchStartCondition?
         public var tagStartCondition: CiTagStartCondition?
         public var pullRequestStartCondition: CiPullRequestStartCondition?
         public var scheduledStartCondition: CiScheduledStartCondition?
+        public var manualBranchStartCondition: CiManualBranchStartCondition?
+        public var manualTagStartCondition: CiManualTagStartCondition?
+        public var manualPullRequestStartCondition: CiManualPullRequestStartCondition?
         public var actions: [CiAction]?
         public var isEnabled: Bool?
         public var isLockedForEditing: Bool?
@@ -30,13 +33,16 @@ public struct CiWorkflow: Codable, Hashable, Identifiable {
         public var containerFilePath: String?
         public var lastModifiedDate: Date?
 
-        public init(name: String? = nil, description: String? = nil, branchStartCondition: CiBranchStartCondition? = nil, tagStartCondition: CiTagStartCondition? = nil, pullRequestStartCondition: CiPullRequestStartCondition? = nil, scheduledStartCondition: CiScheduledStartCondition? = nil, actions: [CiAction]? = nil, isEnabled: Bool? = nil, isLockedForEditing: Bool? = nil, isClean: Bool? = nil, containerFilePath: String? = nil, lastModifiedDate: Date? = nil) {
+        public init(name: String? = nil, description: String? = nil, branchStartCondition: CiBranchStartCondition? = nil, tagStartCondition: CiTagStartCondition? = nil, pullRequestStartCondition: CiPullRequestStartCondition? = nil, scheduledStartCondition: CiScheduledStartCondition? = nil, manualBranchStartCondition: CiManualBranchStartCondition? = nil, manualTagStartCondition: CiManualTagStartCondition? = nil, manualPullRequestStartCondition: CiManualPullRequestStartCondition? = nil, actions: [CiAction]? = nil, isEnabled: Bool? = nil, isLockedForEditing: Bool? = nil, isClean: Bool? = nil, containerFilePath: String? = nil, lastModifiedDate: Date? = nil) {
             self.name = name
             self.description = description
             self.branchStartCondition = branchStartCondition
             self.tagStartCondition = tagStartCondition
             self.pullRequestStartCondition = pullRequestStartCondition
             self.scheduledStartCondition = scheduledStartCondition
+            self.manualBranchStartCondition = manualBranchStartCondition
+            self.manualTagStartCondition = manualTagStartCondition
+            self.manualPullRequestStartCondition = manualPullRequestStartCondition
             self.actions = actions
             self.isEnabled = isEnabled
             self.isLockedForEditing = isLockedForEditing
@@ -52,6 +58,9 @@ public struct CiWorkflow: Codable, Hashable, Identifiable {
             case tagStartCondition
             case pullRequestStartCondition
             case scheduledStartCondition
+            case manualBranchStartCondition
+            case manualTagStartCondition
+            case manualPullRequestStartCondition
             case actions
             case isEnabled
             case isLockedForEditing
@@ -61,17 +70,17 @@ public struct CiWorkflow: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var product: Product?
         public var repository: Repository?
         public var xcodeVersion: XcodeVersion?
         public var macOsVersion: MacOsVersion?
 
-        public struct Product: Codable, Hashable {
+        public struct Product: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -86,7 +95,7 @@ public struct CiWorkflow: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -106,11 +115,11 @@ public struct CiWorkflow: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct Repository: Codable, Hashable {
+        public struct Repository: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -125,7 +134,7 @@ public struct CiWorkflow: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -145,11 +154,11 @@ public struct CiWorkflow: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct XcodeVersion: Codable, Hashable {
+        public struct XcodeVersion: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -164,7 +173,7 @@ public struct CiWorkflow: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -184,11 +193,11 @@ public struct CiWorkflow: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct MacOsVersion: Codable, Hashable {
+        public struct MacOsVersion: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -203,7 +212,7 @@ public struct CiWorkflow: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BetaAppLocalization: Codable, Hashable, Identifiable {
+public struct BetaAppLocalization: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct BetaAppLocalization: Codable, Hashable, Identifiable {
         case betaAppLocalizations
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var feedbackEmail: String?
         public var marketingURL: String?
         public var privacyPolicyURL: String?
@@ -43,14 +43,14 @@ public struct BetaAppLocalization: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var app: App?
 
-        public struct App: Codable, Hashable {
+        public struct App: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -65,7 +65,7 @@ public struct BetaAppLocalization: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

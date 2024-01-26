@@ -5,11 +5,11 @@
 
 import Foundation
 
-public struct AppPriceScheduleCreateRequest: Codable, Hashable {
+public struct AppPriceScheduleCreateRequest: Codable, Equatable {
     public var data: Data
     public var included: [IncludedItem]?
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var relationships: Relationships
 
@@ -17,15 +17,15 @@ public struct AppPriceScheduleCreateRequest: Codable, Hashable {
             case appPriceSchedules
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var app: App
             public var baseTerritory: BaseTerritory
             public var manualPrices: ManualPrices
 
-            public struct App: Codable, Hashable {
+            public struct App: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -44,10 +44,10 @@ public struct AppPriceScheduleCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct BaseTerritory: Codable, Hashable {
+            public struct BaseTerritory: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -66,10 +66,10 @@ public struct AppPriceScheduleCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct ManualPrices: Codable, Hashable {
+            public struct ManualPrices: Codable, Equatable {
                 public var data: [Datum]
 
-                public struct Datum: Codable, Hashable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -101,7 +101,7 @@ public struct AppPriceScheduleCreateRequest: Codable, Hashable {
         }
     }
 
-    public enum IncludedItem: Codable, Hashable {
+    public enum IncludedItem: Codable, Equatable {
         case appPriceV2InlineCreate(AppPriceV2InlineCreate)
         case territoryInlineCreate(TerritoryInlineCreate)
 

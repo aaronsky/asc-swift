@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppCustomProductPageVersion: Codable, Hashable, Identifiable {
+public struct AppCustomProductPageVersion: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct AppCustomProductPageVersion: Codable, Hashable, Identifiable {
         case appCustomProductPageVersions
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var version: String?
         public var state: State?
 
@@ -37,15 +37,15 @@ public struct AppCustomProductPageVersion: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var appCustomProductPage: AppCustomProductPage?
         public var appCustomProductPageLocalizations: AppCustomProductPageLocalizations?
 
-        public struct AppCustomProductPage: Codable, Hashable {
+        public struct AppCustomProductPage: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -60,7 +60,7 @@ public struct AppCustomProductPageVersion: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -80,12 +80,12 @@ public struct AppCustomProductPageVersion: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct AppCustomProductPageLocalizations: Codable, Hashable {
+        public struct AppCustomProductPageLocalizations: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -100,7 +100,7 @@ public struct AppCustomProductPageVersion: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

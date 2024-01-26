@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppClipAdvancedExperienceLocalization: Codable, Hashable, Identifiable {
+public struct AppClipAdvancedExperienceLocalization: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -15,7 +15,7 @@ public struct AppClipAdvancedExperienceLocalization: Codable, Hashable, Identifi
         case appClipAdvancedExperienceLocalizations
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var language: AppClipAdvancedExperienceLanguage?
         public var title: String?
         public var subtitle: String?

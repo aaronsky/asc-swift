@@ -5,11 +5,11 @@
 
 import Foundation
 
-public struct AppStoreVersionBuildLinkageResponse: Codable, Hashable {
+public struct AppStoreVersionBuildLinkageResponse: Codable, Equatable {
     public var data: Data
     public var links: DocumentLinks
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
 

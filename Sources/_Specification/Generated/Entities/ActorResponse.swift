@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct ActorResponse: Codable, Hashable {
+public struct ActorResponse: Codable, Equatable {
     /// Actor
     public var data: Actor
     public var links: DocumentLinks

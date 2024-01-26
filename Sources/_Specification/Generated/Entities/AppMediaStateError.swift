@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppMediaStateError: Codable, Hashable {
+public struct AppMediaStateError: Codable, Equatable {
     public var code: String?
     public var description: String?
 

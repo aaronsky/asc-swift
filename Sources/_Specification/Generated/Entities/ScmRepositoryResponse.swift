@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct ScmRepositoryResponse: Codable, Hashable {
+public struct ScmRepositoryResponse: Codable, Equatable {
     /// ScmRepository
     public var data: ScmRepository
     public var included: [IncludedItem]?
     public var links: DocumentLinks
 
-    public enum IncludedItem: Codable, Hashable {
+    public enum IncludedItem: Codable, Equatable {
         case scmProvider(ScmProvider)
         case scmGitReference(ScmGitReference)
 

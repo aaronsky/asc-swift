@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct CustomerReviewResponseV1CreateRequest: Codable, Hashable {
+public struct CustomerReviewResponseV1CreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
@@ -17,7 +17,7 @@ public struct CustomerReviewResponseV1CreateRequest: Codable, Hashable {
             case customerReviewResponses
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var responseBody: String
 
             public init(responseBody: String) {
@@ -25,13 +25,13 @@ public struct CustomerReviewResponseV1CreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var review: Review
 
-            public struct Review: Codable, Hashable {
+            public struct Review: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

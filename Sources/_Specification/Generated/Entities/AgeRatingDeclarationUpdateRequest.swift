@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct AgeRatingDeclarationUpdateRequest: Codable, Hashable {
+public struct AgeRatingDeclarationUpdateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
@@ -17,7 +17,7 @@ public struct AgeRatingDeclarationUpdateRequest: Codable, Hashable {
             case ageRatingDeclarations
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var alcoholTobaccoOrDrugUseOrReferences: AlcoholTobaccoOrDrugUseOrReferences?
             public var contests: Contests?
             public var isGamblingAndContests: Bool?

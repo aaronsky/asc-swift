@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct AppStoreReviewDetailCreateRequest: Codable, Hashable {
+public struct AppStoreReviewDetailCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes?
         public var relationships: Relationships
@@ -17,7 +17,7 @@ public struct AppStoreReviewDetailCreateRequest: Codable, Hashable {
             case appStoreReviewDetails
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var contactFirstName: String?
             public var contactLastName: String?
             public var contactPhone: String?
@@ -50,13 +50,13 @@ public struct AppStoreReviewDetailCreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var appStoreVersion: AppStoreVersion
 
-            public struct AppStoreVersion: Codable, Hashable {
+            public struct AppStoreVersion: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

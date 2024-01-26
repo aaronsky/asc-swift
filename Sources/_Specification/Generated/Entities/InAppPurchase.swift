@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct InAppPurchase: Codable, Hashable, Identifiable {
+public struct InAppPurchase: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct InAppPurchase: Codable, Hashable, Identifiable {
         case inAppPurchases
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var referenceName: String?
         public var productID: String?
         public var inAppPurchaseType: InAppPurchaseType?
@@ -67,15 +67,15 @@ public struct InAppPurchase: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var apps: Apps?
 
-        public struct Apps: Codable, Hashable {
+        public struct Apps: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -90,7 +90,7 @@ public struct InAppPurchase: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

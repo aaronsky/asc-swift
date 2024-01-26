@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BetaAppClipInvocationsResponse: Codable, Hashable {
+public struct BetaAppClipInvocationsResponse: Codable, Equatable {
     public var data: [BetaAppClipInvocation]
     public var included: [BetaAppClipInvocationLocalization]?
     public var links: PagedDocumentLinks

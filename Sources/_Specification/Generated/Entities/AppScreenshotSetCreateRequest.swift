@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct AppScreenshotSetCreateRequest: Codable, Hashable {
+public struct AppScreenshotSetCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships?
@@ -17,7 +17,7 @@ public struct AppScreenshotSetCreateRequest: Codable, Hashable {
             case appScreenshotSets
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var screenshotDisplayType: ScreenshotDisplayType
 
             public init(screenshotDisplayType: ScreenshotDisplayType) {
@@ -25,15 +25,15 @@ public struct AppScreenshotSetCreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var appStoreVersionLocalization: AppStoreVersionLocalization?
             public var appCustomProductPageLocalization: AppCustomProductPageLocalization?
             public var appStoreVersionExperimentTreatmentLocalization: AppStoreVersionExperimentTreatmentLocalization?
 
-            public struct AppStoreVersionLocalization: Codable, Hashable {
+            public struct AppStoreVersionLocalization: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -52,10 +52,10 @@ public struct AppScreenshotSetCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct AppCustomProductPageLocalization: Codable, Hashable {
+            public struct AppCustomProductPageLocalization: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -74,10 +74,10 @@ public struct AppScreenshotSetCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct AppStoreVersionExperimentTreatmentLocalization: Codable, Hashable {
+            public struct AppStoreVersionExperimentTreatmentLocalization: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

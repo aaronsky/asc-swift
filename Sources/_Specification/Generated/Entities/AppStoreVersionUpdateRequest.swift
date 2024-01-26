@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct AppStoreVersionUpdateRequest: Codable, Hashable {
+public struct AppStoreVersionUpdateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
@@ -18,7 +18,7 @@ public struct AppStoreVersionUpdateRequest: Codable, Hashable {
             case appStoreVersions
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var versionString: String?
             public var copyright: String?
             public var releaseType: ReleaseType?
@@ -48,14 +48,14 @@ public struct AppStoreVersionUpdateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var build: Build?
             public var appClipDefaultExperience: AppClipDefaultExperience?
 
-            public struct Build: Codable, Hashable {
+            public struct Build: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -74,10 +74,10 @@ public struct AppStoreVersionUpdateRequest: Codable, Hashable {
                 }
             }
 
-            public struct AppClipDefaultExperience: Codable, Hashable {
+            public struct AppClipDefaultExperience: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

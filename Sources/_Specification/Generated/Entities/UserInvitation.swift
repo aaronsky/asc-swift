@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct UserInvitation: Codable, Hashable, Identifiable {
+public struct UserInvitation: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct UserInvitation: Codable, Hashable, Identifiable {
         case userInvitations
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var email: String?
         public var firstName: String?
         public var lastName: String?
@@ -46,15 +46,15 @@ public struct UserInvitation: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var visibleApps: VisibleApps?
 
-        public struct VisibleApps: Codable, Hashable {
+        public struct VisibleApps: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -69,7 +69,7 @@ public struct UserInvitation: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

@@ -38,6 +38,7 @@ extension Resources.V1.GameCenterEnabledVersions.WithID {
             case ios = "IOS"
             case macOs = "MAC_OS"
             case tvOs = "TV_OS"
+            case visionOs = "VISION_OS"
         }
 
         public enum Sort: String, Codable, CaseIterable {

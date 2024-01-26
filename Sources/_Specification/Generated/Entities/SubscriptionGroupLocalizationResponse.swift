@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct SubscriptionGroupLocalizationResponse: Codable, Hashable {
+public struct SubscriptionGroupLocalizationResponse: Codable, Equatable {
     /// SubscriptionGroupLocalization
     public var data: SubscriptionGroupLocalization
     public var included: [SubscriptionGroup]?

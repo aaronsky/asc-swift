@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct AppClipDefaultExperienceLocalizationCreateRequest: Codable, Hashable {
+public struct AppClipDefaultExperienceLocalizationCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
@@ -17,7 +17,7 @@ public struct AppClipDefaultExperienceLocalizationCreateRequest: Codable, Hashab
             case appClipDefaultExperienceLocalizations
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var locale: String
             public var subtitle: String?
 
@@ -27,13 +27,13 @@ public struct AppClipDefaultExperienceLocalizationCreateRequest: Codable, Hashab
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var appClipDefaultExperience: AppClipDefaultExperience
 
-            public struct AppClipDefaultExperience: Codable, Hashable {
+            public struct AppClipDefaultExperience: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

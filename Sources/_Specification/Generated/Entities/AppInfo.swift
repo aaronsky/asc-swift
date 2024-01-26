@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppInfo: Codable, Hashable, Identifiable {
+public struct AppInfo: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct AppInfo: Codable, Hashable, Identifiable {
         case appInfos
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var appStoreState: AppStoreVersionState?
         public var appStoreAgeRating: AppStoreAgeRating?
         public var brazilAgeRating: BrazilAgeRating?
@@ -47,7 +47,7 @@ public struct AppInfo: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var app: App?
         public var ageRatingDeclaration: AgeRatingDeclaration?
         public var appInfoLocalizations: AppInfoLocalizations?
@@ -58,11 +58,11 @@ public struct AppInfo: Codable, Hashable, Identifiable {
         public var secondarySubcategoryOne: SecondarySubcategoryOne?
         public var secondarySubcategoryTwo: SecondarySubcategoryTwo?
 
-        public struct App: Codable, Hashable {
+        public struct App: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -77,7 +77,7 @@ public struct AppInfo: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -97,11 +97,11 @@ public struct AppInfo: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct AgeRatingDeclaration: Codable, Hashable {
+        public struct AgeRatingDeclaration: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -116,7 +116,7 @@ public struct AppInfo: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -136,12 +136,12 @@ public struct AppInfo: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct AppInfoLocalizations: Codable, Hashable {
+        public struct AppInfoLocalizations: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -156,7 +156,7 @@ public struct AppInfo: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -177,11 +177,11 @@ public struct AppInfo: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct PrimaryCategory: Codable, Hashable {
+        public struct PrimaryCategory: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -196,7 +196,7 @@ public struct AppInfo: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -216,11 +216,11 @@ public struct AppInfo: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct PrimarySubcategoryOne: Codable, Hashable {
+        public struct PrimarySubcategoryOne: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -235,7 +235,7 @@ public struct AppInfo: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -255,11 +255,11 @@ public struct AppInfo: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct PrimarySubcategoryTwo: Codable, Hashable {
+        public struct PrimarySubcategoryTwo: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -274,7 +274,7 @@ public struct AppInfo: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -294,11 +294,11 @@ public struct AppInfo: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct SecondaryCategory: Codable, Hashable {
+        public struct SecondaryCategory: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -313,7 +313,7 @@ public struct AppInfo: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -333,11 +333,11 @@ public struct AppInfo: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct SecondarySubcategoryOne: Codable, Hashable {
+        public struct SecondarySubcategoryOne: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -352,7 +352,7 @@ public struct AppInfo: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -372,11 +372,11 @@ public struct AppInfo: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct SecondarySubcategoryTwo: Codable, Hashable {
+        public struct SecondarySubcategoryTwo: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -391,7 +391,7 @@ public struct AppInfo: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct GameCenterLeaderboardSetImage: Codable, Hashable, Identifiable {
+public struct GameCenterLeaderboardSetImage: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct GameCenterLeaderboardSetImage: Codable, Hashable, Identifiable {
         case gameCenterLeaderboardSetImages
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var fileSize: Int?
         public var fileName: String?
         public var imageAsset: ImageAsset?
@@ -32,14 +32,14 @@ public struct GameCenterLeaderboardSetImage: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var gameCenterLeaderboardSetLocalization: GameCenterLeaderboardSetLocalization?
 
-        public struct GameCenterLeaderboardSetLocalization: Codable, Hashable {
+        public struct GameCenterLeaderboardSetLocalization: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -54,7 +54,7 @@ public struct GameCenterLeaderboardSetImage: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

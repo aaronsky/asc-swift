@@ -5,22 +5,22 @@
 
 import Foundation
 
-public struct GameCenterMatchmakingQueueRequestsV1MetricResponse: Codable, Hashable {
+public struct GameCenterMatchmakingQueueRequestsV1MetricResponse: Codable, Equatable {
     public var data: [Datum]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public struct Datum: Codable, Hashable {
+    public struct Datum: Codable, Equatable {
         public var dataPoints: DataPoints?
         public var dimensions: Dimensions?
         public var granularity: Granularity?
 
-        public struct DataPoints: Codable, Hashable {
+        public struct DataPoints: Codable, Equatable {
             public var start: Date?
             public var end: Date?
             public var values: Values?
 
-            public struct Values: Codable, Hashable {
+            public struct Values: Codable, Equatable {
                 public var count: Int?
                 public var averageSecondsInQueue: Double?
                 public var p50SecondsInQueue: Double?
@@ -41,14 +41,14 @@ public struct GameCenterMatchmakingQueueRequestsV1MetricResponse: Codable, Hasha
             }
         }
 
-        public struct Dimensions: Codable, Hashable {
+        public struct Dimensions: Codable, Equatable {
             public var result: Result?
             public var gameCenterDetail: GameCenterDetail?
 
-            public struct Result: Codable, Hashable {
+            public struct Result: Codable, Equatable {
                 public var links: Links?
 
-                public struct Links: Codable, Hashable {
+                public struct Links: Codable, Equatable {
                     public var groupBy: URL?
 
                     public init(groupBy: URL? = nil) {
@@ -61,10 +61,10 @@ public struct GameCenterMatchmakingQueueRequestsV1MetricResponse: Codable, Hasha
                 }
             }
 
-            public struct GameCenterDetail: Codable, Hashable {
+            public struct GameCenterDetail: Codable, Equatable {
                 public var links: Links?
 
-                public struct Links: Codable, Hashable {
+                public struct Links: Codable, Equatable {
                     public var groupBy: URL?
                     public var related: URL?
 

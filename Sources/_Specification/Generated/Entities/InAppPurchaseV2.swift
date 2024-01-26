@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
+public struct InAppPurchaseV2: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
         case inAppPurchases
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var name: String?
         public var productID: String?
         public var inAppPurchaseType: InAppPurchaseType?
@@ -24,9 +24,8 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
         public var reviewNote: String?
         public var isFamilySharable: Bool?
         public var isContentHosting: Bool?
-        public var isAvailableInAllTerritories: Bool?
 
-        public init(name: String? = nil, productID: String? = nil, inAppPurchaseType: InAppPurchaseType? = nil, state: InAppPurchaseState? = nil, reviewNote: String? = nil, isFamilySharable: Bool? = nil, isContentHosting: Bool? = nil, isAvailableInAllTerritories: Bool? = nil) {
+        public init(name: String? = nil, productID: String? = nil, inAppPurchaseType: InAppPurchaseType? = nil, state: InAppPurchaseState? = nil, reviewNote: String? = nil, isFamilySharable: Bool? = nil, isContentHosting: Bool? = nil) {
             self.name = name
             self.productID = productID
             self.inAppPurchaseType = inAppPurchaseType
@@ -34,7 +33,6 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
             self.reviewNote = reviewNote
             self.isFamilySharable = isFamilySharable
             self.isContentHosting = isContentHosting
-            self.isAvailableInAllTerritories = isAvailableInAllTerritories
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -45,11 +43,10 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
             case reviewNote
             case isFamilySharable = "familySharable"
             case isContentHosting = "contentHosting"
-            case isAvailableInAllTerritories = "availableInAllTerritories"
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var inAppPurchaseLocalizations: InAppPurchaseLocalizations?
         public var pricePoints: PricePoints?
         public var content: Content?
@@ -58,12 +55,12 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
         public var iapPriceSchedule: IapPriceSchedule?
         public var inAppPurchaseAvailability: InAppPurchaseAvailability?
 
-        public struct InAppPurchaseLocalizations: Codable, Hashable {
+        public struct InAppPurchaseLocalizations: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -78,7 +75,7 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -99,12 +96,12 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct PricePoints: Codable, Hashable {
+        public struct PricePoints: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -119,7 +116,7 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -140,11 +137,11 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct Content: Codable, Hashable {
+        public struct Content: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -159,7 +156,7 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -179,11 +176,11 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct AppStoreReviewScreenshot: Codable, Hashable {
+        public struct AppStoreReviewScreenshot: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -198,7 +195,7 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -218,11 +215,11 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct PromotedPurchase: Codable, Hashable {
+        public struct PromotedPurchase: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -237,7 +234,7 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -257,11 +254,11 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct IapPriceSchedule: Codable, Hashable {
+        public struct IapPriceSchedule: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -276,7 +273,7 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -296,11 +293,11 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct InAppPurchaseAvailability: Codable, Hashable {
+        public struct InAppPurchaseAvailability: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -315,7 +312,7 @@ public struct InAppPurchaseV2: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

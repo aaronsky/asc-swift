@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct GameCenterMatchmakingTestRequestInlineCreate: Codable, Hashable, Identifiable {
+public struct GameCenterMatchmakingTestRequestInlineCreate: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String?
     public var attributes: Attributes
@@ -15,7 +15,7 @@ public struct GameCenterMatchmakingTestRequestInlineCreate: Codable, Hashable, I
         case gameCenterMatchmakingTestRequests
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var requestName: String
         public var secondsInQueue: Int
         public var locale: Locale?
@@ -96,13 +96,13 @@ public struct GameCenterMatchmakingTestRequestInlineCreate: Codable, Hashable, I
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var matchmakingPlayerProperties: MatchmakingPlayerProperties?
 
-        public struct MatchmakingPlayerProperties: Codable, Hashable {
+        public struct MatchmakingPlayerProperties: Codable, Equatable {
             public var data: [Datum]?
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

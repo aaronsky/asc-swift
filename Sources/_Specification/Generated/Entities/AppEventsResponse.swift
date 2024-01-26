@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppEventsResponse: Codable, Hashable {
+public struct AppEventsResponse: Codable, Equatable {
     public var data: [AppEvent]
     public var included: [AppEventLocalization]?
     public var links: PagedDocumentLinks

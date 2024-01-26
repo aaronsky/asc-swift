@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct TerritoryAvailabilityResponse: Codable, Hashable {
+public struct TerritoryAvailabilityResponse: Codable, Equatable {
     /// TerritoryAvailability
     public var data: TerritoryAvailability
     public var included: [Territory]?

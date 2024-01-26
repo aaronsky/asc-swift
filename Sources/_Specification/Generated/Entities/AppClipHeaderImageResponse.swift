@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppClipHeaderImageResponse: Codable, Hashable {
+public struct AppClipHeaderImageResponse: Codable, Equatable {
     /// AppClipHeaderImage
     public var data: AppClipHeaderImage
     public var included: [AppClipDefaultExperienceLocalization]?

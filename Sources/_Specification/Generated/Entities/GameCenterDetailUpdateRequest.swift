@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct GameCenterDetailUpdateRequest: Codable, Hashable {
+public struct GameCenterDetailUpdateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
@@ -18,7 +18,7 @@ public struct GameCenterDetailUpdateRequest: Codable, Hashable {
             case gameCenterDetails
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var isChallengeEnabled: Bool?
 
             public init(isChallengeEnabled: Bool? = nil) {
@@ -30,15 +30,15 @@ public struct GameCenterDetailUpdateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var gameCenterGroup: GameCenterGroup?
             public var defaultLeaderboard: DefaultLeaderboard?
             public var defaultGroupLeaderboard: DefaultGroupLeaderboard?
 
-            public struct GameCenterGroup: Codable, Hashable {
+            public struct GameCenterGroup: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -57,10 +57,10 @@ public struct GameCenterDetailUpdateRequest: Codable, Hashable {
                 }
             }
 
-            public struct DefaultLeaderboard: Codable, Hashable {
+            public struct DefaultLeaderboard: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -79,10 +79,10 @@ public struct GameCenterDetailUpdateRequest: Codable, Hashable {
                 }
             }
 
-            public struct DefaultGroupLeaderboard: Codable, Hashable {
+            public struct DefaultGroupLeaderboard: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct SubscriptionOfferCodeUpdateRequest: Codable, Hashable {
+public struct SubscriptionOfferCodeUpdateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
@@ -17,7 +17,7 @@ public struct SubscriptionOfferCodeUpdateRequest: Codable, Hashable {
             case subscriptionOfferCodes
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var isActive: Bool?
 
             public init(isActive: Bool? = nil) {

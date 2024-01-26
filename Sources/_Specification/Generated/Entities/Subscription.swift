@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct Subscription: Codable, Hashable, Identifiable {
+public struct Subscription: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct Subscription: Codable, Hashable, Identifiable {
         case subscriptions
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var name: String?
         public var productID: String?
         public var isFamilySharable: Bool?
@@ -24,7 +24,6 @@ public struct Subscription: Codable, Hashable, Identifiable {
         public var subscriptionPeriod: SubscriptionPeriod?
         public var reviewNote: String?
         public var groupLevel: Int?
-        public var isAvailableInAllTerritories: Bool?
 
         public enum State: String, Codable, CaseIterable {
             case missingMetadata = "MISSING_METADATA"
@@ -48,7 +47,7 @@ public struct Subscription: Codable, Hashable, Identifiable {
             case oneYear = "ONE_YEAR"
         }
 
-        public init(name: String? = nil, productID: String? = nil, isFamilySharable: Bool? = nil, state: State? = nil, subscriptionPeriod: SubscriptionPeriod? = nil, reviewNote: String? = nil, groupLevel: Int? = nil, isAvailableInAllTerritories: Bool? = nil) {
+        public init(name: String? = nil, productID: String? = nil, isFamilySharable: Bool? = nil, state: State? = nil, subscriptionPeriod: SubscriptionPeriod? = nil, reviewNote: String? = nil, groupLevel: Int? = nil) {
             self.name = name
             self.productID = productID
             self.isFamilySharable = isFamilySharable
@@ -56,7 +55,6 @@ public struct Subscription: Codable, Hashable, Identifiable {
             self.subscriptionPeriod = subscriptionPeriod
             self.reviewNote = reviewNote
             self.groupLevel = groupLevel
-            self.isAvailableInAllTerritories = isAvailableInAllTerritories
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -67,11 +65,10 @@ public struct Subscription: Codable, Hashable, Identifiable {
             case subscriptionPeriod
             case reviewNote
             case groupLevel
-            case isAvailableInAllTerritories = "availableInAllTerritories"
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var subscriptionLocalizations: SubscriptionLocalizations?
         public var appStoreReviewScreenshot: AppStoreReviewScreenshot?
         public var group: Group?
@@ -82,12 +79,12 @@ public struct Subscription: Codable, Hashable, Identifiable {
         public var promotedPurchase: PromotedPurchase?
         public var subscriptionAvailability: SubscriptionAvailability?
 
-        public struct SubscriptionLocalizations: Codable, Hashable {
+        public struct SubscriptionLocalizations: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -102,7 +99,7 @@ public struct Subscription: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -123,11 +120,11 @@ public struct Subscription: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct AppStoreReviewScreenshot: Codable, Hashable {
+        public struct AppStoreReviewScreenshot: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -142,7 +139,7 @@ public struct Subscription: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -162,11 +159,11 @@ public struct Subscription: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct Group: Codable, Hashable {
+        public struct Group: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -181,7 +178,7 @@ public struct Subscription: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -201,12 +198,12 @@ public struct Subscription: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct IntroductoryOffers: Codable, Hashable {
+        public struct IntroductoryOffers: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -221,7 +218,7 @@ public struct Subscription: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -242,12 +239,12 @@ public struct Subscription: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct PromotionalOffers: Codable, Hashable {
+        public struct PromotionalOffers: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -262,7 +259,7 @@ public struct Subscription: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -283,12 +280,12 @@ public struct Subscription: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct OfferCodes: Codable, Hashable {
+        public struct OfferCodes: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -303,7 +300,7 @@ public struct Subscription: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -324,12 +321,12 @@ public struct Subscription: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct Prices: Codable, Hashable {
+        public struct Prices: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -344,7 +341,7 @@ public struct Subscription: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -365,11 +362,11 @@ public struct Subscription: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct PromotedPurchase: Codable, Hashable {
+        public struct PromotedPurchase: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -384,7 +381,7 @@ public struct Subscription: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -404,11 +401,11 @@ public struct Subscription: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct SubscriptionAvailability: Codable, Hashable {
+        public struct SubscriptionAvailability: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -423,7 +420,7 @@ public struct Subscription: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

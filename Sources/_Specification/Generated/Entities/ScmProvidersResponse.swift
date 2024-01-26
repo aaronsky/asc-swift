@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct ScmProvidersResponse: Codable, Hashable {
+public struct ScmProvidersResponse: Codable, Equatable {
     public var data: [ScmProvider]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?

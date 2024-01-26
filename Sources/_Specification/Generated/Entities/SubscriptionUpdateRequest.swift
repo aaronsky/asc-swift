@@ -5,11 +5,11 @@
 
 import Foundation
 
-public struct SubscriptionUpdateRequest: Codable, Hashable {
+public struct SubscriptionUpdateRequest: Codable, Equatable {
     public var data: Data
     public var included: [IncludedItem]?
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
@@ -19,13 +19,12 @@ public struct SubscriptionUpdateRequest: Codable, Hashable {
             case subscriptions
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var name: String?
             public var isFamilySharable: Bool?
             public var subscriptionPeriod: SubscriptionPeriod?
             public var reviewNote: String?
             public var groupLevel: Int?
-            public var isAvailableInAllTerritories: Bool?
 
             public enum SubscriptionPeriod: String, Codable, CaseIterable {
                 case oneWeek = "ONE_WEEK"
@@ -36,13 +35,12 @@ public struct SubscriptionUpdateRequest: Codable, Hashable {
                 case oneYear = "ONE_YEAR"
             }
 
-            public init(name: String? = nil, isFamilySharable: Bool? = nil, subscriptionPeriod: SubscriptionPeriod? = nil, reviewNote: String? = nil, groupLevel: Int? = nil, isAvailableInAllTerritories: Bool? = nil) {
+            public init(name: String? = nil, isFamilySharable: Bool? = nil, subscriptionPeriod: SubscriptionPeriod? = nil, reviewNote: String? = nil, groupLevel: Int? = nil) {
                 self.name = name
                 self.isFamilySharable = isFamilySharable
                 self.subscriptionPeriod = subscriptionPeriod
                 self.reviewNote = reviewNote
                 self.groupLevel = groupLevel
-                self.isAvailableInAllTerritories = isAvailableInAllTerritories
             }
 
             private enum CodingKeys: String, CodingKey {
@@ -51,19 +49,18 @@ public struct SubscriptionUpdateRequest: Codable, Hashable {
                 case subscriptionPeriod
                 case reviewNote
                 case groupLevel
-                case isAvailableInAllTerritories = "availableInAllTerritories"
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var introductoryOffers: IntroductoryOffers?
             public var promotionalOffers: PromotionalOffers?
             public var prices: Prices?
 
-            public struct IntroductoryOffers: Codable, Hashable {
+            public struct IntroductoryOffers: Codable, Equatable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Hashable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -82,10 +79,10 @@ public struct SubscriptionUpdateRequest: Codable, Hashable {
                 }
             }
 
-            public struct PromotionalOffers: Codable, Hashable {
+            public struct PromotionalOffers: Codable, Equatable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Hashable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -104,10 +101,10 @@ public struct SubscriptionUpdateRequest: Codable, Hashable {
                 }
             }
 
-            public struct Prices: Codable, Hashable {
+            public struct Prices: Codable, Equatable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Hashable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -141,7 +138,7 @@ public struct SubscriptionUpdateRequest: Codable, Hashable {
         }
     }
 
-    public enum IncludedItem: Codable, Hashable {
+    public enum IncludedItem: Codable, Equatable {
         case subscriptionPromotionalOfferInlineCreate(SubscriptionPromotionalOfferInlineCreate)
         case subscriptionPriceInlineCreate(SubscriptionPriceInlineCreate)
         case subscriptionIntroductoryOfferInlineCreate(SubscriptionIntroductoryOfferInlineCreate)

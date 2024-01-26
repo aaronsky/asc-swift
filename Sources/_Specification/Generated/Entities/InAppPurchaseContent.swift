@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct InAppPurchaseContent: Codable, Hashable, Identifiable {
+public struct InAppPurchaseContent: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct InAppPurchaseContent: Codable, Hashable, Identifiable {
         case inAppPurchaseContents
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var fileName: String?
         public var fileSize: Int?
         public var url: URL?
@@ -30,14 +30,14 @@ public struct InAppPurchaseContent: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var inAppPurchaseV2: InAppPurchaseV2?
 
-        public struct InAppPurchaseV2: Codable, Hashable {
+        public struct InAppPurchaseV2: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -52,7 +52,7 @@ public struct InAppPurchaseContent: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

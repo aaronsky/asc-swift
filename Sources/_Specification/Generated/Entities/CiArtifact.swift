@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiArtifact: Codable, Hashable, Identifiable {
+public struct CiArtifact: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -15,7 +15,7 @@ public struct CiArtifact: Codable, Hashable, Identifiable {
         case ciArtifacts
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var fileType: FileType?
         public var fileName: String?
         public var fileSize: Int?
@@ -28,6 +28,7 @@ public struct CiArtifact: Codable, Hashable, Identifiable {
             case resultBundle = "RESULT_BUNDLE"
             case testProducts = "TEST_PRODUCTS"
             case xcodebuildProducts = "XCODEBUILD_PRODUCTS"
+            case stapledNotarizedArchive = "STAPLED_NOTARIZED_ARCHIVE"
         }
 
         public init(fileType: FileType? = nil, fileName: String? = nil, fileSize: Int? = nil, downloadURL: URL? = nil) {

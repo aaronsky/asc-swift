@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct BundleIDsResponse: Codable, Hashable {
+public struct BundleIDsResponse: Codable, Equatable {
     public var data: [BundleID]
     public var included: [IncludedItem]?
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public enum IncludedItem: Codable, Hashable {
+    public enum IncludedItem: Codable, Equatable {
         case profile(Profile)
         case bundleIDCapability(BundleIDCapability)
         case app(App)

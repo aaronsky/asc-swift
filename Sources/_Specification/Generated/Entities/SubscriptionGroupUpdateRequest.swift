@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct SubscriptionGroupUpdateRequest: Codable, Hashable {
+public struct SubscriptionGroupUpdateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
@@ -17,7 +17,7 @@ public struct SubscriptionGroupUpdateRequest: Codable, Hashable {
             case subscriptionGroups
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var referenceName: String?
 
             public init(referenceName: String? = nil) {

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct SubscriptionSubmissionResponse: Codable, Hashable {
+public struct SubscriptionSubmissionResponse: Codable, Equatable {
     /// SubscriptionSubmission
     public var data: SubscriptionSubmission
     public var included: [Subscription]?

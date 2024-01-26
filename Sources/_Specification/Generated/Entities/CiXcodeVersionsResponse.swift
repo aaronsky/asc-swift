@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiXcodeVersionsResponse: Codable, Hashable {
+public struct CiXcodeVersionsResponse: Codable, Equatable {
     public var data: [CiXcodeVersion]
     public var included: [CiMacOsVersion]?
     public var links: PagedDocumentLinks

@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct GameCenterMatchmakingQueueCreateRequest: Codable, Hashable {
+public struct GameCenterMatchmakingQueueCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
@@ -17,22 +17,29 @@ public struct GameCenterMatchmakingQueueCreateRequest: Codable, Hashable {
             case gameCenterMatchmakingQueues
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var referenceName: String
+            public var classicMatchmakingBundleIDs: [String]?
 
-            public init(referenceName: String) {
+            public init(referenceName: String, classicMatchmakingBundleIDs: [String]? = nil) {
                 self.referenceName = referenceName
+                self.classicMatchmakingBundleIDs = classicMatchmakingBundleIDs
+            }
+
+            private enum CodingKeys: String, CodingKey {
+                case referenceName
+                case classicMatchmakingBundleIDs = "classicMatchmakingBundleIds"
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var ruleSet: RuleSet
             public var experimentRuleSet: ExperimentRuleSet?
 
-            public struct RuleSet: Codable, Hashable {
+            public struct RuleSet: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -51,10 +58,10 @@ public struct GameCenterMatchmakingQueueCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct ExperimentRuleSet: Codable, Hashable {
+            public struct ExperimentRuleSet: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

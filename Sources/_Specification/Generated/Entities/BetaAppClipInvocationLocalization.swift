@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BetaAppClipInvocationLocalization: Codable, Hashable, Identifiable {
+public struct BetaAppClipInvocationLocalization: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -15,7 +15,7 @@ public struct BetaAppClipInvocationLocalization: Codable, Hashable, Identifiable
         case betaAppClipInvocationLocalizations
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var title: String?
         public var locale: String?
 

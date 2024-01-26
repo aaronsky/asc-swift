@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BetaAppClipInvocation: Codable, Hashable, Identifiable {
+public struct BetaAppClipInvocation: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct BetaAppClipInvocation: Codable, Hashable, Identifiable {
         case betaAppClipInvocations
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var url: URL?
 
         public init(url: URL? = nil) {
@@ -24,15 +24,15 @@ public struct BetaAppClipInvocation: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var betaAppClipInvocationLocalizations: BetaAppClipInvocationLocalizations?
 
-        public struct BetaAppClipInvocationLocalizations: Codable, Hashable {
+        public struct BetaAppClipInvocationLocalizations: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -47,7 +47,7 @@ public struct BetaAppClipInvocation: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

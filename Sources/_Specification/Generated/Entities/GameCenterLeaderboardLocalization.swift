@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct GameCenterLeaderboardLocalization: Codable, Hashable, Identifiable {
+public struct GameCenterLeaderboardLocalization: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct GameCenterLeaderboardLocalization: Codable, Hashable, Identifiable
         case gameCenterLeaderboardLocalizations
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var locale: String?
         public var name: String?
         public var formatterOverride: GameCenterLeaderboardFormatter?
@@ -32,15 +32,15 @@ public struct GameCenterLeaderboardLocalization: Codable, Hashable, Identifiable
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var gameCenterLeaderboard: GameCenterLeaderboard?
         public var gameCenterLeaderboardImage: GameCenterLeaderboardImage?
 
-        public struct GameCenterLeaderboard: Codable, Hashable {
+        public struct GameCenterLeaderboard: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -55,7 +55,7 @@ public struct GameCenterLeaderboardLocalization: Codable, Hashable, Identifiable
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -75,11 +75,11 @@ public struct GameCenterLeaderboardLocalization: Codable, Hashable, Identifiable
             }
         }
 
-        public struct GameCenterLeaderboardImage: Codable, Hashable {
+        public struct GameCenterLeaderboardImage: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -94,7 +94,7 @@ public struct GameCenterLeaderboardLocalization: Codable, Hashable, Identifiable
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

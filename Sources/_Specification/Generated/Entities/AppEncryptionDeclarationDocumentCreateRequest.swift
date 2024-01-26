@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct AppEncryptionDeclarationDocumentCreateRequest: Codable, Hashable {
+public struct AppEncryptionDeclarationDocumentCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
@@ -17,7 +17,7 @@ public struct AppEncryptionDeclarationDocumentCreateRequest: Codable, Hashable {
             case appEncryptionDeclarationDocuments
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var fileSize: Int
             public var fileName: String
 
@@ -27,13 +27,13 @@ public struct AppEncryptionDeclarationDocumentCreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var appEncryptionDeclaration: AppEncryptionDeclaration
 
-            public struct AppEncryptionDeclaration: Codable, Hashable {
+            public struct AppEncryptionDeclaration: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

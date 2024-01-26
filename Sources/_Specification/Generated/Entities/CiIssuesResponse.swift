@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiIssuesResponse: Codable, Hashable {
+public struct CiIssuesResponse: Codable, Equatable {
     public var data: [CiIssue]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?

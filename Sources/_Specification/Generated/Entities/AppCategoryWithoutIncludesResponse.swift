@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppCategoryWithoutIncludesResponse: Codable, Hashable {
+public struct AppCategoryWithoutIncludesResponse: Codable, Equatable {
     /// AppCategory
     public var data: AppCategory
     public var links: DocumentLinks

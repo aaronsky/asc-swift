@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct SubscriptionGroupLocalizationCreateRequest: Codable, Hashable {
+public struct SubscriptionGroupLocalizationCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
@@ -17,7 +17,7 @@ public struct SubscriptionGroupLocalizationCreateRequest: Codable, Hashable {
             case subscriptionGroupLocalizations
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var name: String
             public var customAppName: String?
             public var locale: String
@@ -29,13 +29,13 @@ public struct SubscriptionGroupLocalizationCreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var subscriptionGroup: SubscriptionGroup
 
-            public struct SubscriptionGroup: Codable, Hashable {
+            public struct SubscriptionGroup: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

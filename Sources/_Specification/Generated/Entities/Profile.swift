@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct Profile: Codable, Hashable, Identifiable {
+public struct Profile: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct Profile: Codable, Hashable, Identifiable {
         case profiles
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var name: String?
         public var platform: BundleIDPlatform?
         public var profileType: ProfileType?
@@ -60,16 +60,16 @@ public struct Profile: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var bundleID: BundleID?
         public var devices: Devices?
         public var certificates: Certificates?
 
-        public struct BundleID: Codable, Hashable {
+        public struct BundleID: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -84,7 +84,7 @@ public struct Profile: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -104,12 +104,12 @@ public struct Profile: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct Devices: Codable, Hashable {
+        public struct Devices: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -124,7 +124,7 @@ public struct Profile: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -145,12 +145,12 @@ public struct Profile: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct Certificates: Codable, Hashable {
+        public struct Certificates: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -165,7 +165,7 @@ public struct Profile: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppPriceTierResponse: Codable, Hashable {
+public struct AppPriceTierResponse: Codable, Equatable {
     /// AppPriceTier
     public var data: AppPriceTier
     public var included: [AppPricePoint]?

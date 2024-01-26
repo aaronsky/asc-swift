@@ -15,16 +15,23 @@ extension Resources.V1.BetaTesters.WithID.Metrics {
         /// Path: `/v1/betaTesters/{id}/metrics/betaTesterUsages`
         public let path: String
 
-        public func get(limit: Int? = nil, filterApps: String? = nil, period: String? = nil) -> Request<_Specification.BetaTesterUsagesV1MetricResponse> {
+        public func get(limit: Int? = nil, filterApps: String, period: Period? = nil) -> Request<_Specification.BetaTesterUsagesV1MetricResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(limit, filterApps, period), id: "betaTesters-betaTesterUsages-get_metrics")
         }
 
-        private func makeGetQuery(_ limit: Int?, _ filterApps: String?, _ period: String?) -> [(String, String?)] {
+        private func makeGetQuery(_ limit: Int?, _ filterApps: String, _ period: Period?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(limit, forKey: "limit")
             encoder.encode(filterApps, forKey: "filter[apps]")
             encoder.encode(period, forKey: "period")
             return encoder.items
+        }
+
+        public enum Period: String, Codable, CaseIterable {
+            case p7d = "P7D"
+            case p30d = "P30D"
+            case p90d = "P90D"
+            case p365d = "P365D"
         }
     }
 }

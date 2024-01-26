@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct GameCenterAchievementReleaseCreateRequest: Codable, Hashable {
+public struct GameCenterAchievementReleaseCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var relationships: Relationships
 
@@ -16,14 +16,14 @@ public struct GameCenterAchievementReleaseCreateRequest: Codable, Hashable {
             case gameCenterAchievementReleases
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var gameCenterDetail: GameCenterDetail
             public var gameCenterAchievement: GameCenterAchievement
 
-            public struct GameCenterDetail: Codable, Hashable {
+            public struct GameCenterDetail: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -42,10 +42,10 @@ public struct GameCenterAchievementReleaseCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct GameCenterAchievement: Codable, Hashable {
+            public struct GameCenterAchievement: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

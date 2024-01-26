@@ -23,7 +23,7 @@ entities:
   optimizeCodingKeys: false
   protocols:
     - Codable
-    - Hashable
+    - Equatable
 
 paths:
   style: rest

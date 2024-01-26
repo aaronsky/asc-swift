@@ -42,7 +42,6 @@ extension Resources.V1.Subscriptions.WithID {
 
         public enum FieldsSubscriptions: String, Codable, CaseIterable {
             case appStoreReviewScreenshot
-            case availableInAllTerritories
             case familySharable
             case group
             case groupLevel
@@ -64,7 +63,6 @@ extension Resources.V1.Subscriptions.WithID {
         public enum FieldsInAppPurchases: String, Codable, CaseIterable {
             case app
             case appStoreReviewScreenshot
-            case availableInAllTerritories
             case content
             case contentHosting
             case familySharable

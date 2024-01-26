@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct PagingInformation: Codable, Hashable {
+public struct PagingInformation: Codable, Equatable {
     public var paging: Paging
 
-    public struct Paging: Codable, Hashable {
+    public struct Paging: Codable, Equatable {
         public var total: Int?
         public var limit: Int
 

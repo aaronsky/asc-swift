@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct SubscriptionOfferCodeOneTimeUseCode: Codable, Hashable, Identifiable {
+public struct SubscriptionOfferCodeOneTimeUseCode: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct SubscriptionOfferCodeOneTimeUseCode: Codable, Hashable, Identifiab
         case subscriptionOfferCodeOneTimeUseCodes
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var numberOfCodes: Int?
         public var createdDate: Date?
         public var expirationDate: String?
@@ -37,14 +37,14 @@ public struct SubscriptionOfferCodeOneTimeUseCode: Codable, Hashable, Identifiab
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var offerCode: OfferCode?
 
-        public struct OfferCode: Codable, Hashable {
+        public struct OfferCode: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -59,7 +59,7 @@ public struct SubscriptionOfferCodeOneTimeUseCode: Codable, Hashable, Identifiab
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

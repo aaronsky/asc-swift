@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct AppCustomProductPageLocalizationCreateRequest: Codable, Hashable {
+public struct AppCustomProductPageLocalizationCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
@@ -17,7 +17,7 @@ public struct AppCustomProductPageLocalizationCreateRequest: Codable, Hashable {
             case appCustomProductPageLocalizations
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var locale: String
             public var promotionalText: String?
 
@@ -27,13 +27,13 @@ public struct AppCustomProductPageLocalizationCreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var appCustomProductPageVersion: AppCustomProductPageVersion
 
-            public struct AppCustomProductPageVersion: Codable, Hashable {
+            public struct AppCustomProductPageVersion: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

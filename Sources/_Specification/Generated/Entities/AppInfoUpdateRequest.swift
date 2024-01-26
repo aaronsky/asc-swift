@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct AppInfoUpdateRequest: Codable, Hashable {
+public struct AppInfoUpdateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
         public var relationships: Relationships?
@@ -17,7 +17,7 @@ public struct AppInfoUpdateRequest: Codable, Hashable {
             case appInfos
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var primaryCategory: PrimaryCategory?
             public var primarySubcategoryOne: PrimarySubcategoryOne?
             public var primarySubcategoryTwo: PrimarySubcategoryTwo?
@@ -25,10 +25,10 @@ public struct AppInfoUpdateRequest: Codable, Hashable {
             public var secondarySubcategoryOne: SecondarySubcategoryOne?
             public var secondarySubcategoryTwo: SecondarySubcategoryTwo?
 
-            public struct PrimaryCategory: Codable, Hashable {
+            public struct PrimaryCategory: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -47,10 +47,10 @@ public struct AppInfoUpdateRequest: Codable, Hashable {
                 }
             }
 
-            public struct PrimarySubcategoryOne: Codable, Hashable {
+            public struct PrimarySubcategoryOne: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -69,10 +69,10 @@ public struct AppInfoUpdateRequest: Codable, Hashable {
                 }
             }
 
-            public struct PrimarySubcategoryTwo: Codable, Hashable {
+            public struct PrimarySubcategoryTwo: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -91,10 +91,10 @@ public struct AppInfoUpdateRequest: Codable, Hashable {
                 }
             }
 
-            public struct SecondaryCategory: Codable, Hashable {
+            public struct SecondaryCategory: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -113,10 +113,10 @@ public struct AppInfoUpdateRequest: Codable, Hashable {
                 }
             }
 
-            public struct SecondarySubcategoryOne: Codable, Hashable {
+            public struct SecondarySubcategoryOne: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -135,10 +135,10 @@ public struct AppInfoUpdateRequest: Codable, Hashable {
                 }
             }
 
-            public struct SecondarySubcategoryTwo: Codable, Hashable {
+            public struct SecondarySubcategoryTwo: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

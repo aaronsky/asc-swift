@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct GameCenterAppVersion: Codable, Hashable, Identifiable {
+public struct GameCenterAppVersion: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct GameCenterAppVersion: Codable, Hashable, Identifiable {
         case gameCenterAppVersions
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var isEnabled: Bool?
 
         public init(isEnabled: Bool? = nil) {
@@ -28,16 +28,16 @@ public struct GameCenterAppVersion: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var compatibilityVersions: CompatibilityVersions?
         public var appStoreVersion: AppStoreVersion?
 
-        public struct CompatibilityVersions: Codable, Hashable {
+        public struct CompatibilityVersions: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -52,7 +52,7 @@ public struct GameCenterAppVersion: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -73,11 +73,11 @@ public struct GameCenterAppVersion: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct AppStoreVersion: Codable, Hashable {
+        public struct AppStoreVersion: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -92,7 +92,7 @@ public struct GameCenterAppVersion: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

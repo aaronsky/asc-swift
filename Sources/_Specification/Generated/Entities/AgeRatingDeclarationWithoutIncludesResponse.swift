@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AgeRatingDeclarationWithoutIncludesResponse: Codable, Hashable {
+public struct AgeRatingDeclarationWithoutIncludesResponse: Codable, Equatable {
     /// AppStoreVersion
     public var data: AppStoreVersion
     public var links: DocumentLinks

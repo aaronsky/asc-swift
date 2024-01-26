@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct Build: Codable, Hashable, Identifiable {
+public struct Build: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct Build: Codable, Hashable, Identifiable {
         case builds
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var version: String?
         public var uploadedDate: Date?
         public var expirationDate: Date?
@@ -65,7 +65,7 @@ public struct Build: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var preReleaseVersion: PreReleaseVersion?
         public var individualTesters: IndividualTesters?
         public var betaGroups: BetaGroups?
@@ -78,11 +78,11 @@ public struct Build: Codable, Hashable, Identifiable {
         public var icons: Icons?
         public var buildBundles: BuildBundles?
 
-        public struct PreReleaseVersion: Codable, Hashable {
+        public struct PreReleaseVersion: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -97,7 +97,7 @@ public struct Build: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -117,12 +117,12 @@ public struct Build: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct IndividualTesters: Codable, Hashable {
+        public struct IndividualTesters: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -137,7 +137,7 @@ public struct Build: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -158,12 +158,12 @@ public struct Build: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct BetaGroups: Codable, Hashable {
+        public struct BetaGroups: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -178,7 +178,7 @@ public struct Build: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -199,12 +199,12 @@ public struct Build: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct BetaBuildLocalizations: Codable, Hashable {
+        public struct BetaBuildLocalizations: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -219,7 +219,7 @@ public struct Build: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -240,11 +240,11 @@ public struct Build: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct AppEncryptionDeclaration: Codable, Hashable {
+        public struct AppEncryptionDeclaration: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -259,7 +259,7 @@ public struct Build: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -279,11 +279,11 @@ public struct Build: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct BetaAppReviewSubmission: Codable, Hashable {
+        public struct BetaAppReviewSubmission: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -298,7 +298,7 @@ public struct Build: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -318,11 +318,11 @@ public struct Build: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct App: Codable, Hashable {
+        public struct App: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -337,7 +337,7 @@ public struct Build: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -357,11 +357,11 @@ public struct Build: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct BuildBetaDetail: Codable, Hashable {
+        public struct BuildBetaDetail: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -376,7 +376,7 @@ public struct Build: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -396,11 +396,11 @@ public struct Build: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct AppStoreVersion: Codable, Hashable {
+        public struct AppStoreVersion: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -415,7 +415,7 @@ public struct Build: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -435,12 +435,12 @@ public struct Build: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct Icons: Codable, Hashable {
+        public struct Icons: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -455,7 +455,7 @@ public struct Build: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -476,12 +476,12 @@ public struct Build: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct BuildBundles: Codable, Hashable {
+        public struct BuildBundles: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -496,7 +496,7 @@ public struct Build: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

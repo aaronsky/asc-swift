@@ -5,26 +5,39 @@
 
 import Foundation
 
-public struct GameCenterMatchmakingQueueUpdateRequest: Codable, Hashable {
+public struct GameCenterMatchmakingQueueUpdateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
+        public var attributes: Attributes?
         public var relationships: Relationships?
 
         public enum `Type`: String, Codable, CaseIterable {
             case gameCenterMatchmakingQueues
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
+            public var classicMatchmakingBundleIDs: [String]?
+
+            public init(classicMatchmakingBundleIDs: [String]? = nil) {
+                self.classicMatchmakingBundleIDs = classicMatchmakingBundleIDs
+            }
+
+            private enum CodingKeys: String, CodingKey {
+                case classicMatchmakingBundleIDs = "classicMatchmakingBundleIds"
+            }
+        }
+
+        public struct Relationships: Codable, Equatable {
             public var ruleSet: RuleSet?
             public var experimentRuleSet: ExperimentRuleSet?
 
-            public struct RuleSet: Codable, Hashable {
+            public struct RuleSet: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -43,10 +56,10 @@ public struct GameCenterMatchmakingQueueUpdateRequest: Codable, Hashable {
                 }
             }
 
-            public struct ExperimentRuleSet: Codable, Hashable {
+            public struct ExperimentRuleSet: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -71,9 +84,10 @@ public struct GameCenterMatchmakingQueueUpdateRequest: Codable, Hashable {
             }
         }
 
-        public init(type: `Type`, id: String, relationships: Relationships? = nil) {
+        public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil) {
             self.type = type
             self.id = id
+            self.attributes = attributes
             self.relationships = relationships
         }
     }

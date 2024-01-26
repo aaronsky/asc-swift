@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppCategoriesResponse: Codable, Hashable {
+public struct AppCategoriesResponse: Codable, Equatable {
     public var data: [AppCategory]
     public var included: [AppCategory]?
     public var links: PagedDocumentLinks

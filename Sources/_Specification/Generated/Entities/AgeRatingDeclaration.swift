@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AgeRatingDeclaration: Codable, Hashable, Identifiable {
+public struct AgeRatingDeclaration: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -15,7 +15,7 @@ public struct AgeRatingDeclaration: Codable, Hashable, Identifiable {
         case ageRatingDeclarations
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var alcoholTobaccoOrDrugUseOrReferences: AlcoholTobaccoOrDrugUseOrReferences?
         public var contests: Contests?
         public var isGamblingAndContests: Bool?

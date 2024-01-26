@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct BundleIDCapabilityUpdateRequest: Codable, Hashable {
+public struct BundleIDCapabilityUpdateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
@@ -17,7 +17,7 @@ public struct BundleIDCapabilityUpdateRequest: Codable, Hashable {
             case bundleIDCapabilities = "bundleIdCapabilities"
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var capabilityType: CapabilityType?
             public var settings: [CapabilitySetting]?
 

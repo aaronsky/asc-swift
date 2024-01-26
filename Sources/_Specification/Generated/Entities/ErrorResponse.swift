@@ -5,18 +5,19 @@
 
 import Foundation
 
-public struct ErrorResponse: Codable, Hashable {
+public struct ErrorResponse: Codable, Equatable {
     public var errors: [Error]?
 
-    public struct Error: Codable, Hashable, Identifiable {
+    public struct Error: Codable, Equatable, Identifiable {
         public var id: String?
         public var status: String
         public var code: String
         public var title: String
         public var detail: String
         public var source: Source?
+        public var meta: [String: AnyJSON]?
 
-        public enum Source: Codable, Hashable {
+        public enum Source: Codable, Equatable {
             case errorSourcePointer(ErrorSourcePointer)
             case errorSourceParameter(ErrorSourceParameter)
 
@@ -43,13 +44,14 @@ public struct ErrorResponse: Codable, Hashable {
             }
         }
 
-        public init(id: String? = nil, status: String, code: String, title: String, detail: String, source: Source? = nil) {
+        public init(id: String? = nil, status: String, code: String, title: String, detail: String, source: Source? = nil, meta: [String: AnyJSON]? = nil) {
             self.id = id
             self.status = status
             self.code = code
             self.title = title
             self.detail = detail
             self.source = source
+            self.meta = meta
         }
     }
 

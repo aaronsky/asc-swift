@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct AppClipDefaultExperienceUpdateRequest: Codable, Hashable {
+public struct AppClipDefaultExperienceUpdateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
@@ -18,7 +18,7 @@ public struct AppClipDefaultExperienceUpdateRequest: Codable, Hashable {
             case appClipDefaultExperiences
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var action: AppClipAction?
 
             public init(action: AppClipAction? = nil) {
@@ -26,13 +26,13 @@ public struct AppClipDefaultExperienceUpdateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var releaseWithAppStoreVersion: ReleaseWithAppStoreVersion?
 
-            public struct ReleaseWithAppStoreVersion: Codable, Hashable {
+            public struct ReleaseWithAppStoreVersion: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

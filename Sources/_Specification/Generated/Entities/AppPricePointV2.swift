@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppPricePointV2: Codable, Hashable, Identifiable {
+public struct AppPricePointV2: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct AppPricePointV2: Codable, Hashable, Identifiable {
         case appPricePoints
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var customerPrice: String?
         public var proceeds: String?
 
@@ -26,16 +26,16 @@ public struct AppPricePointV2: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var app: App?
         public var priceTier: PriceTier?
         public var territory: Territory?
 
-        public struct App: Codable, Hashable {
+        public struct App: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -50,7 +50,7 @@ public struct AppPricePointV2: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -70,11 +70,11 @@ public struct AppPricePointV2: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct PriceTier: Codable, Hashable {
+        public struct PriceTier: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -89,7 +89,7 @@ public struct AppPricePointV2: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -109,11 +109,11 @@ public struct AppPricePointV2: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct Territory: Codable, Hashable {
+        public struct Territory: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -128,7 +128,7 @@ public struct AppPricePointV2: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

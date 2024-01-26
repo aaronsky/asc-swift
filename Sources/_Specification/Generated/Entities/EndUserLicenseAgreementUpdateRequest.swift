@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct EndUserLicenseAgreementUpdateRequest: Codable, Hashable {
+public struct EndUserLicenseAgreementUpdateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
@@ -18,7 +18,7 @@ public struct EndUserLicenseAgreementUpdateRequest: Codable, Hashable {
             case endUserLicenseAgreements
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var agreementText: String?
 
             public init(agreementText: String? = nil) {
@@ -26,13 +26,13 @@ public struct EndUserLicenseAgreementUpdateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var territories: Territories?
 
-            public struct Territories: Codable, Hashable {
+            public struct Territories: Codable, Equatable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Hashable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

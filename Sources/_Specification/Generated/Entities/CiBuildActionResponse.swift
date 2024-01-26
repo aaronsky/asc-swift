@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiBuildActionResponse: Codable, Hashable {
+public struct CiBuildActionResponse: Codable, Equatable {
     /// CiBuildAction
     public var data: CiBuildAction
     public var included: [CiBuildRun]?

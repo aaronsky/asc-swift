@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct BuildIndividualTestersLinkagesRequest: Codable, Hashable {
+public struct BuildIndividualTestersLinkagesRequest: Codable, Equatable {
     public var data: [Datum]
 
-    public struct Datum: Codable, Hashable, Identifiable {
+    public struct Datum: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
 

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BuildIconsWithoutIncludesResponse: Codable, Hashable {
+public struct BuildIconsWithoutIncludesResponse: Codable, Equatable {
     public var data: [Build]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?

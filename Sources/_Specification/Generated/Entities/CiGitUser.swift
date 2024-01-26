@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiGitUser: Codable, Hashable {
+public struct CiGitUser: Codable, Equatable {
     public var displayName: String?
     public var avatarURL: URL?
 

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppStoreVersionSubmissionResponse: Codable, Hashable {
+public struct AppStoreVersionSubmissionResponse: Codable, Equatable {
     /// AppStoreVersionSubmission
     public var data: AppStoreVersionSubmission
     public var included: [AppStoreVersion]?

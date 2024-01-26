@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BundleIDWithoutIncludesResponse: Codable, Hashable {
+public struct BundleIDWithoutIncludesResponse: Codable, Equatable {
     /// Profile
     public var data: Profile
     public var links: DocumentLinks

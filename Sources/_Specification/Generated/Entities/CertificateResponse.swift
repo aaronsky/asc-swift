@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CertificateResponse: Codable, Hashable {
+public struct CertificateResponse: Codable, Equatable {
     /// Certificate
     public var data: Certificate
     public var links: DocumentLinks

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct InAppPurchaseSubmission: Codable, Hashable, Identifiable {
+public struct InAppPurchaseSubmission: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var relationships: Relationships?
@@ -15,14 +15,14 @@ public struct InAppPurchaseSubmission: Codable, Hashable, Identifiable {
         case inAppPurchaseSubmissions
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var inAppPurchaseV2: InAppPurchaseV2?
 
-        public struct InAppPurchaseV2: Codable, Hashable {
+        public struct InAppPurchaseV2: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -37,7 +37,7 @@ public struct InAppPurchaseSubmission: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

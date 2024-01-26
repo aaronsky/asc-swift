@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct BetaBuildLocalizationCreateRequest: Codable, Hashable {
+public struct BetaBuildLocalizationCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
@@ -17,7 +17,7 @@ public struct BetaBuildLocalizationCreateRequest: Codable, Hashable {
             case betaBuildLocalizations
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var whatsNew: String?
             public var locale: String
 
@@ -27,13 +27,13 @@ public struct BetaBuildLocalizationCreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var build: Build
 
-            public struct Build: Codable, Hashable {
+            public struct Build: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

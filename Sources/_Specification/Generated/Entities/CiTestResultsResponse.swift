@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiTestResultsResponse: Codable, Hashable {
+public struct CiTestResultsResponse: Codable, Equatable {
     public var data: [CiTestResult]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?

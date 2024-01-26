@@ -15,11 +15,11 @@ extension Resources.V1.GameCenterMatchmakingRules.WithID.Metrics {
         /// Path: `/v1/gameCenterMatchmakingRules/{id}/metrics/matchmakingRuleErrors`
         public let path: String
 
-        public func get(limit: Int? = nil, granularity: [Granularity], groupBy: [GroupBy]? = nil, filterGameCenterMatchmakingQueue: String? = nil, sort: [Sort]? = nil) -> Request<_Specification.GameCenterMatchmakingRuleErrorsV1MetricResponse> {
+        public func get(limit: Int? = nil, granularity: Granularity, groupBy: [GroupBy]? = nil, filterGameCenterMatchmakingQueue: String? = nil, sort: [Sort]? = nil) -> Request<_Specification.GameCenterMatchmakingRuleErrorsV1MetricResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(limit, granularity, groupBy, filterGameCenterMatchmakingQueue, sort), id: "gameCenterMatchmakingRules-matchmakingRuleErrors-get_metrics")
         }
 
-        private func makeGetQuery(_ limit: Int?, _ granularity: [Granularity], _ groupBy: [GroupBy]?, _ filterGameCenterMatchmakingQueue: String?, _ sort: [Sort]?) -> [(String, String?)] {
+        private func makeGetQuery(_ limit: Int?, _ granularity: Granularity, _ groupBy: [GroupBy]?, _ filterGameCenterMatchmakingQueue: String?, _ sort: [Sort]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(limit, forKey: "limit")
             encoder.encode(granularity, forKey: "granularity")

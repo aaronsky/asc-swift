@@ -5,16 +5,16 @@
 
 import Foundation
 
-public struct DiagnosticLogs: Codable, Hashable {
+public struct DiagnosticLogs: Codable, Equatable {
     public var productData: [ProductDatum]?
     public var version: String?
 
-    public struct ProductDatum: Codable, Hashable {
+    public struct ProductDatum: Codable, Equatable {
         public var signatureID: String?
         public var diagnosticInsights: [DiagnosticInsight]?
         public var diagnosticLogs: [DiagnosticLog]?
 
-        public struct DiagnosticInsight: Codable, Hashable {
+        public struct DiagnosticInsight: Codable, Equatable {
             public var insightsURL: String?
             public var insightsCategory: String?
             public var insightsString: String?
@@ -26,15 +26,15 @@ public struct DiagnosticLogs: Codable, Hashable {
             }
         }
 
-        public struct DiagnosticLog: Codable, Hashable {
+        public struct DiagnosticLog: Codable, Equatable {
             public var callStackTree: [CallStackTreeItem]?
             public var diagnosticMetaData: DiagnosticMetaData?
 
-            public struct CallStackTreeItem: Codable, Hashable {
+            public struct CallStackTreeItem: Codable, Equatable {
                 public var isCallStackPerThread: Bool?
                 public var callStacks: [CallStack]?
 
-                public struct CallStack: Codable, Hashable {
+                public struct CallStack: Codable, Equatable {
                     public var callStackRootFrames: [DiagnosticLogCallStackNode]?
 
                     public init(callStackRootFrames: [DiagnosticLogCallStackNode]? = nil) {
@@ -53,7 +53,7 @@ public struct DiagnosticLogs: Codable, Hashable {
                 }
             }
 
-            public struct DiagnosticMetaData: Codable, Hashable {
+            public struct DiagnosticMetaData: Codable, Equatable {
                 public var bundleID: String?
                 public var event: String?
                 public var osVersion: String?

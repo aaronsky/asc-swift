@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct PagedDocumentLinks: Codable, Hashable {
+public struct PagedDocumentLinks: Codable, Equatable {
     public var this: URL
     public var first: URL?
     public var next: URL?

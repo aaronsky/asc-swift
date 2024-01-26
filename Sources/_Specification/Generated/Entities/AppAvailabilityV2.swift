@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppAvailabilityV2: Codable, Hashable, Identifiable {
+public struct AppAvailabilityV2: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct AppAvailabilityV2: Codable, Hashable, Identifiable {
         case appAvailabilities
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var isAvailableInNewTerritories: Bool?
 
         public init(isAvailableInNewTerritories: Bool? = nil) {
@@ -28,15 +28,15 @@ public struct AppAvailabilityV2: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var territoryAvailabilities: TerritoryAvailabilities?
 
-        public struct TerritoryAvailabilities: Codable, Hashable {
+        public struct TerritoryAvailabilities: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -51,7 +51,7 @@ public struct AppAvailabilityV2: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

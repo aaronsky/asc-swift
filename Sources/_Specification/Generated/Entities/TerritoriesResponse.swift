@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct TerritoriesResponse: Codable, Hashable {
+public struct TerritoriesResponse: Codable, Equatable {
     public var data: [Territory]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?

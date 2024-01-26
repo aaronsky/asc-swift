@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct AppAvailabilityCreateRequest: Codable, Hashable {
+public struct AppAvailabilityCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
@@ -17,7 +17,7 @@ public struct AppAvailabilityCreateRequest: Codable, Hashable {
             case appAvailabilities
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var isAvailableInNewTerritories: Bool
 
             public init(isAvailableInNewTerritories: Bool) {
@@ -29,14 +29,14 @@ public struct AppAvailabilityCreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var app: App
             public var availableTerritories: AvailableTerritories
 
-            public struct App: Codable, Hashable {
+            public struct App: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -55,10 +55,10 @@ public struct AppAvailabilityCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct AvailableTerritories: Codable, Hashable {
+            public struct AvailableTerritories: Codable, Equatable {
                 public var data: [Datum]
 
-                public struct Datum: Codable, Hashable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

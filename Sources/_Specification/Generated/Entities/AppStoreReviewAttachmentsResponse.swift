@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppStoreReviewAttachmentsResponse: Codable, Hashable {
+public struct AppStoreReviewAttachmentsResponse: Codable, Equatable {
     public var data: [AppStoreReviewAttachment]
     public var included: [AppStoreReviewDetail]?
     public var links: PagedDocumentLinks

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct UserInvitationResponse: Codable, Hashable {
+public struct UserInvitationResponse: Codable, Equatable {
     /// UserInvitation
     public var data: UserInvitation
     public var included: [App]?

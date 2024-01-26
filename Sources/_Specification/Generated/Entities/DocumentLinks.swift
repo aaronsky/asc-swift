@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct DocumentLinks: Codable, Hashable {
+public struct DocumentLinks: Codable, Equatable {
     public var this: URL
 
     public init(this: URL) {

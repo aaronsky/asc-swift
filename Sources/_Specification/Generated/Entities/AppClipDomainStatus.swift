@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppClipDomainStatus: Codable, Hashable, Identifiable {
+public struct AppClipDomainStatus: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -15,11 +15,11 @@ public struct AppClipDomainStatus: Codable, Hashable, Identifiable {
         case appClipDomainStatuses
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var domains: [Domain]?
         public var lastUpdatedDate: Date?
 
-        public struct Domain: Codable, Hashable {
+        public struct Domain: Codable, Equatable {
             public var domain: String?
             public var isValid: Bool?
             public var lastUpdatedDate: Date?

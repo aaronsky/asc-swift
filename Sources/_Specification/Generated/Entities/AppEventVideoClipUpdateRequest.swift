@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct AppEventVideoClipUpdateRequest: Codable, Hashable {
+public struct AppEventVideoClipUpdateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
@@ -17,7 +17,7 @@ public struct AppEventVideoClipUpdateRequest: Codable, Hashable {
             case appEventVideoClips
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var previewFrameTimeCode: String?
             public var isUploaded: Bool?
 

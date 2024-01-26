@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiFilesAndFoldersRule: Codable, Hashable {
+public struct CiFilesAndFoldersRule: Codable, Equatable {
     public var mode: Mode?
     public var matchers: [CiStartConditionFileMatcher]?
 

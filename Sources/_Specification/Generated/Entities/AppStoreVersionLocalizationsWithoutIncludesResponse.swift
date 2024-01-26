@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppStoreVersionLocalizationsWithoutIncludesResponse: Codable, Hashable {
+public struct AppStoreVersionLocalizationsWithoutIncludesResponse: Codable, Equatable {
     public var data: [AppStoreVersion]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?

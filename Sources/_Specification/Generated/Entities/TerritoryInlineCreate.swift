@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct TerritoryInlineCreate: Codable, Hashable, Identifiable {
+public struct TerritoryInlineCreate: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String?
 

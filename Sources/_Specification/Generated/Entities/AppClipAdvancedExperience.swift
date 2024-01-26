@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppClipAdvancedExperience: Codable, Hashable, Identifiable {
+public struct AppClipAdvancedExperience: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct AppClipAdvancedExperience: Codable, Hashable, Identifiable {
         case appClipAdvancedExperiences
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var link: URL?
         public var version: Int?
         public var status: Status?
@@ -33,7 +33,7 @@ public struct AppClipAdvancedExperience: Codable, Hashable, Identifiable {
             case appTransferInProgress = "APP_TRANSFER_IN_PROGRESS"
         }
 
-        public struct Place: Codable, Hashable {
+        public struct Place: Codable, Equatable {
             public var placeID: String?
             public var names: [String]?
             public var mainAddress: MainAddress?
@@ -44,11 +44,11 @@ public struct AppClipAdvancedExperience: Codable, Hashable, Identifiable {
             public var homePage: String?
             public var categories: [String]?
 
-            public struct MainAddress: Codable, Hashable {
+            public struct MainAddress: Codable, Equatable {
                 public var fullAddress: String?
                 public var structuredAddress: StructuredAddress?
 
-                public struct StructuredAddress: Codable, Hashable {
+                public struct StructuredAddress: Codable, Equatable {
                     public var streetAddress: [String]?
                     public var floor: String?
                     public var neighborhood: String?
@@ -74,11 +74,11 @@ public struct AppClipAdvancedExperience: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct DisplayPoint: Codable, Hashable {
+            public struct DisplayPoint: Codable, Equatable {
                 public var coordinates: Coordinates?
                 public var source: Source?
 
-                public struct Coordinates: Codable, Hashable {
+                public struct Coordinates: Codable, Equatable {
                     public var latitude: Double?
                     public var longitude: Double?
 
@@ -121,7 +121,7 @@ public struct AppClipAdvancedExperience: Codable, Hashable, Identifiable {
                 case other = "OTHER"
             }
 
-            public struct PhoneNumber: Codable, Hashable {
+            public struct PhoneNumber: Codable, Equatable {
                 public var number: String?
                 public var type: `Type`?
                 public var intent: String?
@@ -214,16 +214,16 @@ public struct AppClipAdvancedExperience: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var appClip: AppClip?
         public var headerImage: HeaderImage?
         public var localizations: Localizations?
 
-        public struct AppClip: Codable, Hashable {
+        public struct AppClip: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -238,7 +238,7 @@ public struct AppClipAdvancedExperience: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -258,11 +258,11 @@ public struct AppClipAdvancedExperience: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct HeaderImage: Codable, Hashable {
+        public struct HeaderImage: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -277,7 +277,7 @@ public struct AppClipAdvancedExperience: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -297,12 +297,12 @@ public struct AppClipAdvancedExperience: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct Localizations: Codable, Hashable {
+        public struct Localizations: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -317,7 +317,7 @@ public struct AppClipAdvancedExperience: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

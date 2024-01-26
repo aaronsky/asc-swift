@@ -14,10 +14,18 @@ DESTINATION_PLATFORM_WATCHOS_SIMULATOR = platform=watchOS Simulator,name=Apple W
 SWIFT_FORMAT_BIN := swift format
 SWIFT_FORMAT_CONFIG_FILE := $(GIT_REPO_TOPLEVEL)/.swift-format
 FORMAT_PATHS := \
-	$(GIT_REPO_TOPLEVEL)/Examples \
 	$(GIT_REPO_TOPLEVEL)/Package.swift \
 	$(GIT_REPO_TOPLEVEL)/Sources \
-	$(GIT_REPO_TOPLEVEL)/Tests
+	$(GIT_REPO_TOPLEVEL)/Tests \
+	$(GIT_REPO_TOPLEVEL)/Examples/Package.swift \
+	$(GIT_REPO_TOPLEVEL)/Examples/invite_beta_tester \
+	$(GIT_REPO_TOPLEVEL)/Examples/invite_user \
+	$(GIT_REPO_TOPLEVEL)/Examples/list_builds \
+	$(GIT_REPO_TOPLEVEL)/Examples/register_device \
+	$(GIT_REPO_TOPLEVEL)/Examples/sales_finance_reports \
+	$(GIT_REPO_TOPLEVEL)/Examples/upload_preview \
+	$(GIT_REPO_TOPLEVEL)/Examples/upload_screenshot \
+	$(GIT_REPO_TOPLEVEL)/Examples/Utilities
 
 # Tasks
 

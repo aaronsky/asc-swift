@@ -15,13 +15,14 @@ extension Resources.V1.CiProducts.WithID {
         /// Path: `/v1/ciProducts/{id}/buildRuns`
         public let path: String
 
-        public func get(filterBuilds: [String]? = nil, fieldsScmGitReferences: [FieldsScmGitReferences]? = nil, fieldsCiBuildRuns: [FieldsCiBuildRuns]? = nil, fieldsCiWorkflows: [FieldsCiWorkflows]? = nil, fieldsScmPullRequests: [FieldsScmPullRequests]? = nil, fieldsCiProducts: [FieldsCiProducts]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, limit: Int? = nil, limitBuilds: Int? = nil, include: [Include]? = nil) -> Request<_Specification.CiBuildRunsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterBuilds, fieldsScmGitReferences, fieldsCiBuildRuns, fieldsCiWorkflows, fieldsScmPullRequests, fieldsCiProducts, fieldsBuilds, limit, limitBuilds, include), id: "ciProducts-buildRuns-get_to_many_related")
+        public func get(filterBuilds: [String]? = nil, sort: [Sort]? = nil, fieldsScmGitReferences: [FieldsScmGitReferences]? = nil, fieldsCiBuildRuns: [FieldsCiBuildRuns]? = nil, fieldsCiWorkflows: [FieldsCiWorkflows]? = nil, fieldsScmPullRequests: [FieldsScmPullRequests]? = nil, fieldsCiProducts: [FieldsCiProducts]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, limit: Int? = nil, limitBuilds: Int? = nil, include: [Include]? = nil) -> Request<_Specification.CiBuildRunsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterBuilds, sort, fieldsScmGitReferences, fieldsCiBuildRuns, fieldsCiWorkflows, fieldsScmPullRequests, fieldsCiProducts, fieldsBuilds, limit, limitBuilds, include), id: "ciProducts-buildRuns-get_to_many_related")
         }
 
-        private func makeGetQuery(_ filterBuilds: [String]?, _ fieldsScmGitReferences: [FieldsScmGitReferences]?, _ fieldsCiBuildRuns: [FieldsCiBuildRuns]?, _ fieldsCiWorkflows: [FieldsCiWorkflows]?, _ fieldsScmPullRequests: [FieldsScmPullRequests]?, _ fieldsCiProducts: [FieldsCiProducts]?, _ fieldsBuilds: [FieldsBuilds]?, _ limit: Int?, _ limitBuilds: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterBuilds: [String]?, _ sort: [Sort]?, _ fieldsScmGitReferences: [FieldsScmGitReferences]?, _ fieldsCiBuildRuns: [FieldsCiBuildRuns]?, _ fieldsCiWorkflows: [FieldsCiWorkflows]?, _ fieldsScmPullRequests: [FieldsScmPullRequests]?, _ fieldsCiProducts: [FieldsCiProducts]?, _ fieldsBuilds: [FieldsBuilds]?, _ limit: Int?, _ limitBuilds: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterBuilds, forKey: "filter[builds]")
+            encoder.encode(sort, forKey: "sort")
             encoder.encode(fieldsScmGitReferences, forKey: "fields[scmGitReferences]")
             encoder.encode(fieldsCiBuildRuns, forKey: "fields[ciBuildRuns]")
             encoder.encode(fieldsCiWorkflows, forKey: "fields[ciWorkflows]")
@@ -32,6 +33,11 @@ extension Resources.V1.CiProducts.WithID {
             encoder.encode(limitBuilds, forKey: "limit[builds]")
             encoder.encode(include, forKey: "include")
             return encoder.items
+        }
+
+        public enum Sort: String, Codable, CaseIterable {
+            case number
+            case minusnumber = "-number"
         }
 
         public enum FieldsScmGitReferences: String, Codable, CaseIterable {
@@ -77,6 +83,9 @@ extension Resources.V1.CiProducts.WithID {
             case isLockedForEditing
             case lastModifiedDate
             case macOsVersion
+            case manualBranchStartCondition
+            case manualPullRequestStartCondition
+            case manualTagStartCondition
             case name
             case product
             case pullRequestStartCondition

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppCategoryResponse: Codable, Hashable {
+public struct AppCategoryResponse: Codable, Equatable {
     /// AppCategory
     public var data: AppCategory
     public var included: [AppCategory]?

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct InAppPurchaseAppStoreReviewScreenshotResponse: Codable, Hashable {
+public struct InAppPurchaseAppStoreReviewScreenshotResponse: Codable, Equatable {
     /// InAppPurchaseAppStoreReviewScreenshot
     public var data: InAppPurchaseAppStoreReviewScreenshot
     public var included: [InAppPurchaseV2]?

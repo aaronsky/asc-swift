@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct ScmProviderResponse: Codable, Hashable {
+public struct ScmProviderResponse: Codable, Equatable {
     /// ScmProvider
     public var data: ScmProvider
     public var links: DocumentLinks

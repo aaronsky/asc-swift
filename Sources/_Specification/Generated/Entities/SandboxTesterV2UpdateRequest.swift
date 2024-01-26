@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct SandboxTesterV2UpdateRequest: Codable, Hashable {
+public struct SandboxTesterV2UpdateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
@@ -17,7 +17,7 @@ public struct SandboxTesterV2UpdateRequest: Codable, Hashable {
             case sandboxTesters
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var territory: TerritoryCode?
             public var isInterruptPurchases: Bool?
             public var subscriptionRenewalRate: SubscriptionRenewalRate?

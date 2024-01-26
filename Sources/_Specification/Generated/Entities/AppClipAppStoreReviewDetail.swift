@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppClipAppStoreReviewDetail: Codable, Hashable, Identifiable {
+public struct AppClipAppStoreReviewDetail: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct AppClipAppStoreReviewDetail: Codable, Hashable, Identifiable {
         case appClipAppStoreReviewDetails
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var invocationURLs: [URL]?
 
         public init(invocationURLs: [URL]? = nil) {
@@ -28,14 +28,14 @@ public struct AppClipAppStoreReviewDetail: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var appClipDefaultExperience: AppClipDefaultExperience?
 
-        public struct AppClipDefaultExperience: Codable, Hashable {
+        public struct AppClipDefaultExperience: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -50,7 +50,7 @@ public struct AppClipAppStoreReviewDetail: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiTagStartCondition: Codable, Hashable {
+public struct CiTagStartCondition: Codable, Equatable {
     public var source: CiTagPatterns?
     public var filesAndFoldersRule: CiFilesAndFoldersRule?
     public var isAutoCancel: Bool?

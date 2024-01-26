@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiPullRequestStartCondition: Codable, Hashable {
+public struct CiPullRequestStartCondition: Codable, Equatable {
     public var source: CiBranchPatterns?
     public var destination: CiBranchPatterns?
     public var filesAndFoldersRule: CiFilesAndFoldersRule?

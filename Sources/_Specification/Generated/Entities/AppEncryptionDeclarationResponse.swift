@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct AppEncryptionDeclarationResponse: Codable, Hashable {
+public struct AppEncryptionDeclarationResponse: Codable, Equatable {
     /// AppEncryptionDeclaration
     public var data: AppEncryptionDeclaration
     public var included: [IncludedItem]?
     public var links: DocumentLinks
 
-    public enum IncludedItem: Codable, Hashable {
+    public enum IncludedItem: Codable, Equatable {
         case app(App)
         case build(Build)
         case appEncryptionDeclarationDocument(AppEncryptionDeclarationDocument)

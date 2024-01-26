@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct GameCenterLeaderboardSetReleaseCreateRequest: Codable, Hashable {
+public struct GameCenterLeaderboardSetReleaseCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var relationships: Relationships
 
@@ -16,14 +16,14 @@ public struct GameCenterLeaderboardSetReleaseCreateRequest: Codable, Hashable {
             case gameCenterLeaderboardSetReleases
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var gameCenterDetail: GameCenterDetail
             public var gameCenterLeaderboardSet: GameCenterLeaderboardSet
 
-            public struct GameCenterDetail: Codable, Hashable {
+            public struct GameCenterDetail: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -42,10 +42,10 @@ public struct GameCenterLeaderboardSetReleaseCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct GameCenterLeaderboardSet: Codable, Hashable {
+            public struct GameCenterLeaderboardSet: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

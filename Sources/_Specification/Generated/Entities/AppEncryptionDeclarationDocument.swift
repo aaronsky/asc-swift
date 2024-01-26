@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppEncryptionDeclarationDocument: Codable, Hashable, Identifiable {
+public struct AppEncryptionDeclarationDocument: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -15,7 +15,7 @@ public struct AppEncryptionDeclarationDocument: Codable, Hashable, Identifiable 
         case appEncryptionDeclarationDocuments
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var fileSize: Int?
         public var fileName: String?
         public var assetToken: String?

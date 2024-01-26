@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiIssueCounts: Codable, Hashable {
+public struct CiIssueCounts: Codable, Equatable {
     public var analyzerWarnings: Int?
     public var errors: Int?
     public var testFailures: Int?

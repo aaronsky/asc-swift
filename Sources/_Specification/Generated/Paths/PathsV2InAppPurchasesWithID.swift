@@ -38,7 +38,6 @@ extension Resources.V2.InAppPurchases {
         public enum FieldsInAppPurchases: String, Codable, CaseIterable {
             case app
             case appStoreReviewScreenshot
-            case availableInAllTerritories
             case content
             case contentHosting
             case familySharable

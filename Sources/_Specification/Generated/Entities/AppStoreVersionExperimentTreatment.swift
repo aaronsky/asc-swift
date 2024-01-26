@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppStoreVersionExperimentTreatment: Codable, Hashable, Identifiable {
+public struct AppStoreVersionExperimentTreatment: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct AppStoreVersionExperimentTreatment: Codable, Hashable, Identifiabl
         case appStoreVersionExperimentTreatments
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var name: String?
         public var appIcon: ImageAsset?
         public var appIconName: String?
@@ -30,16 +30,16 @@ public struct AppStoreVersionExperimentTreatment: Codable, Hashable, Identifiabl
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var appStoreVersionExperiment: AppStoreVersionExperiment?
         public var appStoreVersionExperimentV2: AppStoreVersionExperimentV2?
         public var appStoreVersionExperimentTreatmentLocalizations: AppStoreVersionExperimentTreatmentLocalizations?
 
-        public struct AppStoreVersionExperiment: Codable, Hashable {
+        public struct AppStoreVersionExperiment: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -54,7 +54,7 @@ public struct AppStoreVersionExperimentTreatment: Codable, Hashable, Identifiabl
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -74,11 +74,11 @@ public struct AppStoreVersionExperimentTreatment: Codable, Hashable, Identifiabl
             }
         }
 
-        public struct AppStoreVersionExperimentV2: Codable, Hashable {
+        public struct AppStoreVersionExperimentV2: Codable, Equatable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -93,7 +93,7 @@ public struct AppStoreVersionExperimentTreatment: Codable, Hashable, Identifiabl
                 }
             }
 
-            public struct Data: Codable, Hashable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 
@@ -113,12 +113,12 @@ public struct AppStoreVersionExperimentTreatment: Codable, Hashable, Identifiabl
             }
         }
 
-        public struct AppStoreVersionExperimentTreatmentLocalizations: Codable, Hashable {
+        public struct AppStoreVersionExperimentTreatmentLocalizations: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -133,7 +133,7 @@ public struct AppStoreVersionExperimentTreatment: Codable, Hashable, Identifiabl
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

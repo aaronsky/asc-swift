@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppEvent: Codable, Hashable, Identifiable {
+public struct AppEvent: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -16,7 +16,7 @@ public struct AppEvent: Codable, Hashable, Identifiable {
         case appEvents
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var referenceName: String?
         public var badge: Badge?
         public var eventState: EventState?
@@ -71,7 +71,7 @@ public struct AppEvent: Codable, Hashable, Identifiable {
             case bringBackLapsedUsers = "BRING_BACK_LAPSED_USERS"
         }
 
-        public struct TerritorySchedule: Codable, Hashable {
+        public struct TerritorySchedule: Codable, Equatable {
             public var territories: [String]?
             public var publishStart: Date?
             public var eventStart: Date?
@@ -85,7 +85,7 @@ public struct AppEvent: Codable, Hashable, Identifiable {
             }
         }
 
-        public struct ArchivedTerritorySchedule: Codable, Hashable {
+        public struct ArchivedTerritorySchedule: Codable, Equatable {
             public var territories: [String]?
             public var publishStart: Date?
             public var eventStart: Date?
@@ -113,15 +113,15 @@ public struct AppEvent: Codable, Hashable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Hashable {
+    public struct Relationships: Codable, Equatable {
         public var localizations: Localizations?
 
-        public struct Localizations: Codable, Hashable {
+        public struct Localizations: Codable, Equatable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Hashable {
+            public struct Links: Codable, Equatable {
                 public var this: URL?
                 public var related: URL?
 
@@ -136,7 +136,7 @@ public struct AppEvent: Codable, Hashable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Hashable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable {
                 public var type: `Type`
                 public var id: String
 

@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct AppCustomProductPageVersionCreateRequest: Codable, Hashable {
+public struct AppCustomProductPageVersionCreateRequest: Codable, Equatable {
     public var data: Data
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var relationships: Relationships
 
@@ -16,14 +16,14 @@ public struct AppCustomProductPageVersionCreateRequest: Codable, Hashable {
             case appCustomProductPageVersions
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var appCustomProductPage: AppCustomProductPage
             public var appCustomProductPageLocalizations: AppCustomProductPageLocalizations?
 
-            public struct AppCustomProductPage: Codable, Hashable {
+            public struct AppCustomProductPage: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -42,10 +42,10 @@ public struct AppCustomProductPageVersionCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct AppCustomProductPageLocalizations: Codable, Hashable {
+            public struct AppCustomProductPageLocalizations: Codable, Equatable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Hashable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 

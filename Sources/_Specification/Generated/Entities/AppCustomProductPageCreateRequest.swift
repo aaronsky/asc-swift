@@ -5,11 +5,11 @@
 
 import Foundation
 
-public struct AppCustomProductPageCreateRequest: Codable, Hashable {
+public struct AppCustomProductPageCreateRequest: Codable, Equatable {
     public var data: Data
     public var included: [IncludedItem]?
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
@@ -18,7 +18,7 @@ public struct AppCustomProductPageCreateRequest: Codable, Hashable {
             case appCustomProductPages
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var name: String
 
             public init(name: String) {
@@ -26,16 +26,16 @@ public struct AppCustomProductPageCreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var app: App
             public var appCustomProductPageVersions: AppCustomProductPageVersions?
             public var appStoreVersionTemplate: AppStoreVersionTemplate?
             public var customProductPageTemplate: CustomProductPageTemplate?
 
-            public struct App: Codable, Hashable {
+            public struct App: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -54,10 +54,10 @@ public struct AppCustomProductPageCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct AppCustomProductPageVersions: Codable, Hashable {
+            public struct AppCustomProductPageVersions: Codable, Equatable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Hashable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -76,10 +76,10 @@ public struct AppCustomProductPageCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct AppStoreVersionTemplate: Codable, Hashable {
+            public struct AppStoreVersionTemplate: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -98,10 +98,10 @@ public struct AppCustomProductPageCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct CustomProductPageTemplate: Codable, Hashable {
+            public struct CustomProductPageTemplate: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -135,7 +135,7 @@ public struct AppCustomProductPageCreateRequest: Codable, Hashable {
         }
     }
 
-    public enum IncludedItem: Codable, Hashable {
+    public enum IncludedItem: Codable, Equatable {
         case appCustomProductPageLocalizationInlineCreate(AppCustomProductPageLocalizationInlineCreate)
         case appCustomProductPageVersionInlineCreate(AppCustomProductPageVersionInlineCreate)
 

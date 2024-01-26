@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiBuildActionsResponse: Codable, Hashable {
+public struct CiBuildActionsResponse: Codable, Equatable {
     public var data: [CiBuildAction]
     public var included: [CiBuildRun]?
     public var links: PagedDocumentLinks

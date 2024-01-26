@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct PerfPowerMetric: Codable, Hashable, Identifiable {
+public struct PerfPowerMetric: Codable, Equatable, Identifiable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
@@ -15,7 +15,7 @@ public struct PerfPowerMetric: Codable, Hashable, Identifiable {
         case perfPowerMetrics
     }
 
-    public struct Attributes: Codable, Hashable {
+    public struct Attributes: Codable, Equatable {
         public var platform: Platform?
         public var metricType: MetricType?
         public var deviceType: String?

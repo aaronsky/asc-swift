@@ -5,12 +5,12 @@
 
 import Foundation
 
-public struct GameCenterDetailGameCenterLeaderboardSetsLinkagesResponse: Codable, Hashable {
+public struct GameCenterDetailGameCenterLeaderboardSetsLinkagesResponse: Codable, Equatable {
     public var data: [Datum]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public struct Datum: Codable, Hashable, Identifiable {
+    public struct Datum: Codable, Equatable, Identifiable {
         public var type: `Type`
         public var id: String
 

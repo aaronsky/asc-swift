@@ -5,11 +5,11 @@
 
 import Foundation
 
-public struct SubscriptionIntroductoryOfferCreateRequest: Codable, Hashable {
+public struct SubscriptionIntroductoryOfferCreateRequest: Codable, Equatable {
     public var data: Data
     public var included: [SubscriptionPricePointInlineCreate]?
 
-    public struct Data: Codable, Hashable {
+    public struct Data: Codable, Equatable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
@@ -18,7 +18,7 @@ public struct SubscriptionIntroductoryOfferCreateRequest: Codable, Hashable {
             case subscriptionIntroductoryOffers
         }
 
-        public struct Attributes: Codable, Hashable {
+        public struct Attributes: Codable, Equatable {
             public var startDate: String?
             public var endDate: String?
             public var duration: SubscriptionOfferDuration
@@ -34,15 +34,15 @@ public struct SubscriptionIntroductoryOfferCreateRequest: Codable, Hashable {
             }
         }
 
-        public struct Relationships: Codable, Hashable {
+        public struct Relationships: Codable, Equatable {
             public var subscription: Subscription
             public var territory: Territory?
             public var subscriptionPricePoint: SubscriptionPricePoint?
 
-            public struct Subscription: Codable, Hashable {
+            public struct Subscription: Codable, Equatable {
                 public var data: Data
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -61,10 +61,10 @@ public struct SubscriptionIntroductoryOfferCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct Territory: Codable, Hashable {
+            public struct Territory: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
@@ -83,10 +83,10 @@ public struct SubscriptionIntroductoryOfferCreateRequest: Codable, Hashable {
                 }
             }
 
-            public struct SubscriptionPricePoint: Codable, Hashable {
+            public struct SubscriptionPricePoint: Codable, Equatable {
                 public var data: Data?
 
-                public struct Data: Codable, Hashable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable {
                     public var type: `Type`
                     public var id: String
 
