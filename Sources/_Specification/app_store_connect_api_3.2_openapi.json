@@ -141976,7 +141976,8 @@
           "IMAGE_MANAGER",
           "CREATE_APPS",
           "CLOUD_MANAGED_DEVELOPER_ID",
-          "CLOUD_MANAGED_APP_DISTRIBUTION"
+          "CLOUD_MANAGED_APP_DISTRIBUTION",
+          "GENERATE_INDIVIDUAL_KEYS"
         ]
       },
       "csv": {

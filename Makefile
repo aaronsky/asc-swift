@@ -43,6 +43,7 @@ spec-download:
 		| sed 's|#/components/schemas/AgeRatingDeclarationWithoutIncludesResponse|#/components/schemas/AgeRatingDeclarationResponse|' \
 		| sed 's|#/components/schemas/AppStoreVersionPhasedReleaseWithoutIncludesResponse|#/components/schemas/AppStoreVersionPhasedReleaseResponse|' \
 		| sed 's|#/components/schemas/RoutingAppCoverageWithoutIncludesResponse|#/components/schemas/RoutingAppCoverageResponse|' \
+		| jq '.components.schemas.UserRole.enum |= . + ["GENERATE_INDIVIDUAL_KEYS"]' \
 		| jq '.' \
 		> $(OPENAPI_SPEC_OUTFILE)
 
