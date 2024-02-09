@@ -10,4 +10,5 @@ public enum AppStoreAgeRating: String, Codable, CaseIterable {
     case ninePlus = "NINE_PLUS"
     case twelvePlus = "TWELVE_PLUS"
     case seventeenPlus = "SEVENTEEN_PLUS"
+    case unrated = "UNRATED"
 }

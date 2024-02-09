@@ -27,6 +27,7 @@ public struct AgeRatingDeclaration: Codable, Equatable, Identifiable {
         public var sexualContentGraphicAndNudity: SexualContentGraphicAndNudity?
         public var sexualContentOrNudity: SexualContentOrNudity?
         public var isSeventeenPlus: Bool?
+        public var ageRatingOverride: AgeRatingOverride?
         public var horrorOrFearThemes: HorrorOrFearThemes?
         public var matureOrSuggestiveThemes: MatureOrSuggestiveThemes?
         public var isUnrestrictedWebAccess: Bool?
@@ -76,6 +77,12 @@ public struct AgeRatingDeclaration: Codable, Equatable, Identifiable {
             case frequentOrIntense = "FREQUENT_OR_INTENSE"
         }
 
+        public enum AgeRatingOverride: String, Codable, CaseIterable {
+            case `none` = "NONE"
+            case seventeenPlus = "SEVENTEEN_PLUS"
+            case unrated = "UNRATED"
+        }
+
         public enum HorrorOrFearThemes: String, Codable, CaseIterable {
             case `none` = "NONE"
             case infrequentOrMild = "INFREQUENT_OR_MILD"
@@ -106,7 +113,7 @@ public struct AgeRatingDeclaration: Codable, Equatable, Identifiable {
             case frequentOrIntense = "FREQUENT_OR_INTENSE"
         }
 
-        public init(alcoholTobaccoOrDrugUseOrReferences: AlcoholTobaccoOrDrugUseOrReferences? = nil, contests: Contests? = nil, isGamblingAndContests: Bool? = nil, isGambling: Bool? = nil, gamblingSimulated: GamblingSimulated? = nil, kidsAgeBand: KidsAgeBand? = nil, medicalOrTreatmentInformation: MedicalOrTreatmentInformation? = nil, profanityOrCrudeHumor: ProfanityOrCrudeHumor? = nil, sexualContentGraphicAndNudity: SexualContentGraphicAndNudity? = nil, sexualContentOrNudity: SexualContentOrNudity? = nil, isSeventeenPlus: Bool? = nil, horrorOrFearThemes: HorrorOrFearThemes? = nil, matureOrSuggestiveThemes: MatureOrSuggestiveThemes? = nil, isUnrestrictedWebAccess: Bool? = nil, violenceCartoonOrFantasy: ViolenceCartoonOrFantasy? = nil, violenceRealisticProlongedGraphicOrSadistic: ViolenceRealisticProlongedGraphicOrSadistic? = nil, violenceRealistic: ViolenceRealistic? = nil) {
+        public init(alcoholTobaccoOrDrugUseOrReferences: AlcoholTobaccoOrDrugUseOrReferences? = nil, contests: Contests? = nil, isGamblingAndContests: Bool? = nil, isGambling: Bool? = nil, gamblingSimulated: GamblingSimulated? = nil, kidsAgeBand: KidsAgeBand? = nil, medicalOrTreatmentInformation: MedicalOrTreatmentInformation? = nil, profanityOrCrudeHumor: ProfanityOrCrudeHumor? = nil, sexualContentGraphicAndNudity: SexualContentGraphicAndNudity? = nil, sexualContentOrNudity: SexualContentOrNudity? = nil, isSeventeenPlus: Bool? = nil, ageRatingOverride: AgeRatingOverride? = nil, horrorOrFearThemes: HorrorOrFearThemes? = nil, matureOrSuggestiveThemes: MatureOrSuggestiveThemes? = nil, isUnrestrictedWebAccess: Bool? = nil, violenceCartoonOrFantasy: ViolenceCartoonOrFantasy? = nil, violenceRealisticProlongedGraphicOrSadistic: ViolenceRealisticProlongedGraphicOrSadistic? = nil, violenceRealistic: ViolenceRealistic? = nil) {
             self.alcoholTobaccoOrDrugUseOrReferences = alcoholTobaccoOrDrugUseOrReferences
             self.contests = contests
             self.isGamblingAndContests = isGamblingAndContests
@@ -118,6 +125,7 @@ public struct AgeRatingDeclaration: Codable, Equatable, Identifiable {
             self.sexualContentGraphicAndNudity = sexualContentGraphicAndNudity
             self.sexualContentOrNudity = sexualContentOrNudity
             self.isSeventeenPlus = isSeventeenPlus
+            self.ageRatingOverride = ageRatingOverride
             self.horrorOrFearThemes = horrorOrFearThemes
             self.matureOrSuggestiveThemes = matureOrSuggestiveThemes
             self.isUnrestrictedWebAccess = isUnrestrictedWebAccess
@@ -138,6 +146,7 @@ public struct AgeRatingDeclaration: Codable, Equatable, Identifiable {
             case sexualContentGraphicAndNudity
             case sexualContentOrNudity
             case isSeventeenPlus = "seventeenPlus"
+            case ageRatingOverride
             case horrorOrFearThemes
             case matureOrSuggestiveThemes
             case isUnrestrictedWebAccess = "unrestrictedWebAccess"

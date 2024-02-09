@@ -36,6 +36,7 @@ extension Resources.V1.Apps.WithID {
         }
 
         public enum FieldsApps: String, Codable, CaseIterable {
+            case alternativeDistributionKey
             case appAvailability
             case appClips
             case appCustomProductPages
@@ -64,6 +65,7 @@ extension Resources.V1.Apps.WithID {
             case inAppPurchases
             case inAppPurchasesV2
             case isOrEverWasMadeForKids
+            case marketplaceSearchDetail
             case name
             case perfPowerMetrics
             case preOrder

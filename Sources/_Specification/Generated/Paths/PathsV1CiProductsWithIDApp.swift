@@ -151,6 +151,7 @@ extension Resources.V1.CiProducts.WithID {
         }
 
         public enum FieldsApps: String, Codable, CaseIterable {
+            case alternativeDistributionKey
             case appAvailability
             case appClips
             case appCustomProductPages
@@ -179,6 +180,7 @@ extension Resources.V1.CiProducts.WithID {
             case inAppPurchases
             case inAppPurchasesV2
             case isOrEverWasMadeForKids
+            case marketplaceSearchDetail
             case name
             case perfPowerMetrics
             case preOrder
@@ -276,6 +278,7 @@ extension Resources.V1.CiProducts.WithID {
             case secondaryCategory
             case secondarySubcategoryOne
             case secondarySubcategoryTwo
+            case state
         }
 
         public enum FieldsPreReleaseVersions: String, Codable, CaseIterable {
@@ -361,6 +364,7 @@ extension Resources.V1.CiProducts.WithID {
 
         public enum FieldsAppStoreVersions: String, Codable, CaseIterable {
             case ageRatingDeclaration
+            case alternativeDistributionPackage
             case app
             case appClipDefaultExperience
             case appStoreReviewDetail
@@ -370,6 +374,7 @@ extension Resources.V1.CiProducts.WithID {
             case appStoreVersionLocalizations
             case appStoreVersionPhasedRelease
             case appStoreVersionSubmission
+            case appVersionState
             case build
             case copyright
             case createdDate
@@ -378,6 +383,7 @@ extension Resources.V1.CiProducts.WithID {
             case earliestReleaseDate
             case platform
             case releaseType
+            case reviewType
             case routingAppCoverage
             case versionString
         }

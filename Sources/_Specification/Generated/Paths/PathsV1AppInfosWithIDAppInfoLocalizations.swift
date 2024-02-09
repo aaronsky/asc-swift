@@ -44,6 +44,7 @@ extension Resources.V1.AppInfos.WithID {
             case secondaryCategory
             case secondarySubcategoryOne
             case secondarySubcategoryTwo
+            case state
         }
 
         public enum FieldsAppInfoLocalizations: String, Codable, CaseIterable {

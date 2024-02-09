@@ -20,11 +20,18 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable {
         public var platform: Platform?
         public var versionString: String?
         public var appStoreState: AppStoreVersionState?
+        public var appVersionState: AppVersionState?
         public var copyright: String?
+        public var reviewType: ReviewType?
         public var releaseType: ReleaseType?
         public var earliestReleaseDate: Date?
         public var isDownloadable: Bool?
         public var createdDate: Date?
+
+        public enum ReviewType: String, Codable, CaseIterable {
+            case appStore = "APP_STORE"
+            case notarization = "NOTARIZATION"
+        }
 
         public enum ReleaseType: String, Codable, CaseIterable {
             case manual = "MANUAL"
@@ -32,11 +39,13 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable {
             case scheduled = "SCHEDULED"
         }
 
-        public init(platform: Platform? = nil, versionString: String? = nil, appStoreState: AppStoreVersionState? = nil, copyright: String? = nil, releaseType: ReleaseType? = nil, earliestReleaseDate: Date? = nil, isDownloadable: Bool? = nil, createdDate: Date? = nil) {
+        public init(platform: Platform? = nil, versionString: String? = nil, appStoreState: AppStoreVersionState? = nil, appVersionState: AppVersionState? = nil, copyright: String? = nil, reviewType: ReviewType? = nil, releaseType: ReleaseType? = nil, earliestReleaseDate: Date? = nil, isDownloadable: Bool? = nil, createdDate: Date? = nil) {
             self.platform = platform
             self.versionString = versionString
             self.appStoreState = appStoreState
+            self.appVersionState = appVersionState
             self.copyright = copyright
+            self.reviewType = reviewType
             self.releaseType = releaseType
             self.earliestReleaseDate = earliestReleaseDate
             self.isDownloadable = isDownloadable
@@ -47,7 +56,9 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable {
             case platform
             case versionString
             case appStoreState
+            case appVersionState
             case copyright
+            case reviewType
             case releaseType
             case earliestReleaseDate
             case isDownloadable = "downloadable"
@@ -67,6 +78,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable {
         public var appClipDefaultExperience: AppClipDefaultExperience?
         public var appStoreVersionExperiments: AppStoreVersionExperiments?
         public var appStoreVersionExperimentsV2: AppStoreVersionExperimentsV2?
+        public var alternativeDistributionPackage: AlternativeDistributionPackage?
 
         public struct App: Codable, Equatable {
             public var links: Links?
@@ -503,7 +515,46 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable {
             }
         }
 
-        public init(app: App? = nil, ageRatingDeclaration: AgeRatingDeclaration? = nil, appStoreVersionLocalizations: AppStoreVersionLocalizations? = nil, build: Build? = nil, appStoreVersionPhasedRelease: AppStoreVersionPhasedRelease? = nil, routingAppCoverage: RoutingAppCoverage? = nil, appStoreReviewDetail: AppStoreReviewDetail? = nil, appStoreVersionSubmission: AppStoreVersionSubmission? = nil, appClipDefaultExperience: AppClipDefaultExperience? = nil, appStoreVersionExperiments: AppStoreVersionExperiments? = nil, appStoreVersionExperimentsV2: AppStoreVersionExperimentsV2? = nil) {
+        public struct AlternativeDistributionPackage: Codable, Equatable {
+            public var links: Links?
+            public var data: Data?
+
+            public struct Links: Codable, Equatable {
+                public var this: URL?
+                public var related: URL?
+
+                public init(this: URL? = nil, related: URL? = nil) {
+                    self.this = this
+                    self.related = related
+                }
+
+                private enum CodingKeys: String, CodingKey {
+                    case this = "self"
+                    case related
+                }
+            }
+
+            public struct Data: Codable, Equatable, Identifiable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, Codable, CaseIterable {
+                    case alternativeDistributionPackages
+                }
+
+                public init(type: `Type`, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: Links? = nil, data: Data? = nil) {
+                self.links = links
+                self.data = data
+            }
+        }
+
+        public init(app: App? = nil, ageRatingDeclaration: AgeRatingDeclaration? = nil, appStoreVersionLocalizations: AppStoreVersionLocalizations? = nil, build: Build? = nil, appStoreVersionPhasedRelease: AppStoreVersionPhasedRelease? = nil, routingAppCoverage: RoutingAppCoverage? = nil, appStoreReviewDetail: AppStoreReviewDetail? = nil, appStoreVersionSubmission: AppStoreVersionSubmission? = nil, appClipDefaultExperience: AppClipDefaultExperience? = nil, appStoreVersionExperiments: AppStoreVersionExperiments? = nil, appStoreVersionExperimentsV2: AppStoreVersionExperimentsV2? = nil, alternativeDistributionPackage: AlternativeDistributionPackage? = nil) {
             self.app = app
             self.ageRatingDeclaration = ageRatingDeclaration
             self.appStoreVersionLocalizations = appStoreVersionLocalizations
@@ -515,6 +566,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable {
             self.appClipDefaultExperience = appClipDefaultExperience
             self.appStoreVersionExperiments = appStoreVersionExperiments
             self.appStoreVersionExperimentsV2 = appStoreVersionExperimentsV2
+            self.alternativeDistributionPackage = alternativeDistributionPackage
         }
     }
 

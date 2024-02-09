@@ -15,17 +15,18 @@ extension Resources.V1.AppStoreVersions {
         /// Path: `/v1/appStoreVersions/{id}`
         public let path: String
 
-        public func get(fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, include: [Include]? = nil, fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAppStoreVersionSubmissions: [FieldsAppStoreVersionSubmissions]? = nil, fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]? = nil, fieldsCustomerReviews: [FieldsCustomerReviews]? = nil, fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, fieldsRoutingAppCoverages: [FieldsRoutingAppCoverages]? = nil, fieldsAppStoreVersionPhasedReleases: [FieldsAppStoreVersionPhasedReleases]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, limitAppStoreVersionExperiments: Int? = nil, limitAppStoreVersionExperimentsV2: Int? = nil, limitAppStoreVersionLocalizations: Int? = nil) -> Request<_Specification.AppStoreVersionResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersions, include, fieldsAppStoreVersionExperiments, fieldsAppStoreVersionSubmissions, fieldsAgeRatingDeclarations, fieldsCustomerReviews, fieldsAppStoreReviewDetails, fieldsAppClipDefaultExperiences, fieldsRoutingAppCoverages, fieldsAppStoreVersionPhasedReleases, fieldsBuilds, fieldsAppStoreVersionLocalizations, limitAppStoreVersionExperiments, limitAppStoreVersionExperimentsV2, limitAppStoreVersionLocalizations), id: "appStoreVersions-get_instance")
+        public func get(fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, include: [Include]? = nil, fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAppStoreVersionSubmissions: [FieldsAppStoreVersionSubmissions]? = nil, fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]? = nil, fieldsAlternativeDistributionPackages: [FieldsAlternativeDistributionPackages]? = nil, fieldsCustomerReviews: [FieldsCustomerReviews]? = nil, fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, fieldsRoutingAppCoverages: [FieldsRoutingAppCoverages]? = nil, fieldsAppStoreVersionPhasedReleases: [FieldsAppStoreVersionPhasedReleases]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, limitAppStoreVersionExperiments: Int? = nil, limitAppStoreVersionExperimentsV2: Int? = nil, limitAppStoreVersionLocalizations: Int? = nil) -> Request<_Specification.AppStoreVersionResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersions, include, fieldsAppStoreVersionExperiments, fieldsAppStoreVersionSubmissions, fieldsAgeRatingDeclarations, fieldsAlternativeDistributionPackages, fieldsCustomerReviews, fieldsAppStoreReviewDetails, fieldsAppClipDefaultExperiences, fieldsRoutingAppCoverages, fieldsAppStoreVersionPhasedReleases, fieldsBuilds, fieldsAppStoreVersionLocalizations, limitAppStoreVersionExperiments, limitAppStoreVersionExperimentsV2, limitAppStoreVersionLocalizations), id: "appStoreVersions-get_instance")
         }
 
-        private func makeGetQuery(_ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ include: [Include]?, _ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsAppStoreVersionSubmissions: [FieldsAppStoreVersionSubmissions]?, _ fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]?, _ fieldsCustomerReviews: [FieldsCustomerReviews]?, _ fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ fieldsRoutingAppCoverages: [FieldsRoutingAppCoverages]?, _ fieldsAppStoreVersionPhasedReleases: [FieldsAppStoreVersionPhasedReleases]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ limitAppStoreVersionExperiments: Int?, _ limitAppStoreVersionExperimentsV2: Int?, _ limitAppStoreVersionLocalizations: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ include: [Include]?, _ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsAppStoreVersionSubmissions: [FieldsAppStoreVersionSubmissions]?, _ fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]?, _ fieldsAlternativeDistributionPackages: [FieldsAlternativeDistributionPackages]?, _ fieldsCustomerReviews: [FieldsCustomerReviews]?, _ fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ fieldsRoutingAppCoverages: [FieldsRoutingAppCoverages]?, _ fieldsAppStoreVersionPhasedReleases: [FieldsAppStoreVersionPhasedReleases]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ limitAppStoreVersionExperiments: Int?, _ limitAppStoreVersionExperimentsV2: Int?, _ limitAppStoreVersionLocalizations: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
             encoder.encode(include, forKey: "include")
             encoder.encode(fieldsAppStoreVersionExperiments, forKey: "fields[appStoreVersionExperiments]")
             encoder.encode(fieldsAppStoreVersionSubmissions, forKey: "fields[appStoreVersionSubmissions]")
             encoder.encode(fieldsAgeRatingDeclarations, forKey: "fields[ageRatingDeclarations]")
+            encoder.encode(fieldsAlternativeDistributionPackages, forKey: "fields[alternativeDistributionPackages]")
             encoder.encode(fieldsCustomerReviews, forKey: "fields[customerReviews]")
             encoder.encode(fieldsAppStoreReviewDetails, forKey: "fields[appStoreReviewDetails]")
             encoder.encode(fieldsAppClipDefaultExperiences, forKey: "fields[appClipDefaultExperiences]")
@@ -41,6 +42,7 @@ extension Resources.V1.AppStoreVersions {
 
         public enum FieldsAppStoreVersions: String, Codable, CaseIterable {
             case ageRatingDeclaration
+            case alternativeDistributionPackage
             case app
             case appClipDefaultExperience
             case appStoreReviewDetail
@@ -50,6 +52,7 @@ extension Resources.V1.AppStoreVersions {
             case appStoreVersionLocalizations
             case appStoreVersionPhasedRelease
             case appStoreVersionSubmission
+            case appVersionState
             case build
             case copyright
             case createdDate
@@ -58,12 +61,14 @@ extension Resources.V1.AppStoreVersions {
             case earliestReleaseDate
             case platform
             case releaseType
+            case reviewType
             case routingAppCoverage
             case versionString
         }
 
         public enum Include: String, Codable, CaseIterable {
             case ageRatingDeclaration
+            case alternativeDistributionPackage
             case app
             case appClipDefaultExperience
             case appStoreReviewDetail
@@ -97,6 +102,7 @@ extension Resources.V1.AppStoreVersions {
         }
 
         public enum FieldsAgeRatingDeclarations: String, Codable, CaseIterable {
+            case ageRatingOverride
             case alcoholTobaccoOrDrugUseOrReferences
             case contests
             case gambling
@@ -114,6 +120,11 @@ extension Resources.V1.AppStoreVersions {
             case violenceCartoonOrFantasy
             case violenceRealistic
             case violenceRealisticProlongedGraphicOrSadistic
+        }
+
+        public enum FieldsAlternativeDistributionPackages: String, Codable, CaseIterable {
+            case appStoreVersion
+            case versions
         }
 
         public enum FieldsCustomerReviews: String, Codable, CaseIterable {

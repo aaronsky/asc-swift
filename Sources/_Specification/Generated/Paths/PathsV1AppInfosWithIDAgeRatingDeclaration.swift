@@ -26,6 +26,7 @@ extension Resources.V1.AppInfos.WithID {
         }
 
         public enum FieldsAgeRatingDeclarations: String, Codable, CaseIterable {
+            case ageRatingOverride
             case alcoholTobaccoOrDrugUseOrReferences
             case contests
             case gambling

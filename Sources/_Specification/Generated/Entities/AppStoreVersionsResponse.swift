@@ -23,6 +23,7 @@ public struct AppStoreVersionsResponse: Codable, Equatable {
         case appClipDefaultExperience(AppClipDefaultExperience)
         case appStoreVersionExperiment(AppStoreVersionExperiment)
         case appStoreVersionExperimentV2(AppStoreVersionExperimentV2)
+        case alternativeDistributionPackage(AlternativeDistributionPackage)
 
         public init(from decoder: Decoder) throws {
             let container = try decoder.singleValueContainer()
@@ -48,10 +49,12 @@ public struct AppStoreVersionsResponse: Codable, Equatable {
                 self = .appStoreVersionExperiment(value)
             } else if let value = try? container.decode(AppStoreVersionExperimentV2.self) {
                 self = .appStoreVersionExperimentV2(value)
+            } else if let value = try? container.decode(AlternativeDistributionPackage.self) {
+                self = .alternativeDistributionPackage(value)
             } else {
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (App, AgeRatingDeclaration, AppStoreVersionLocalization, Build, AppStoreVersionPhasedRelease, RoutingAppCoverage, AppStoreReviewDetail, AppStoreVersionSubmission, AppClipDefaultExperience, AppStoreVersionExperiment, AppStoreVersionExperimentV2)."
+                    debugDescription: "Data could not be decoded as any of the expected types (App, AgeRatingDeclaration, AppStoreVersionLocalization, Build, AppStoreVersionPhasedRelease, RoutingAppCoverage, AppStoreReviewDetail, AppStoreVersionSubmission, AppClipDefaultExperience, AppStoreVersionExperiment, AppStoreVersionExperimentV2, AlternativeDistributionPackage)."
                 )
             }
         }
@@ -70,6 +73,7 @@ public struct AppStoreVersionsResponse: Codable, Equatable {
             case .appClipDefaultExperience(let value): try container.encode(value)
             case .appStoreVersionExperiment(let value): try container.encode(value)
             case .appStoreVersionExperimentV2(let value): try container.encode(value)
+            case .alternativeDistributionPackage(let value): try container.encode(value)
             }
         }
     }

@@ -21,9 +21,15 @@ public struct AppStoreVersionUpdateRequest: Codable, Equatable {
         public struct Attributes: Codable, Equatable {
             public var versionString: String?
             public var copyright: String?
+            public var reviewType: ReviewType?
             public var releaseType: ReleaseType?
             public var earliestReleaseDate: Date?
             public var isDownloadable: Bool?
+
+            public enum ReviewType: String, Codable, CaseIterable {
+                case appStore = "APP_STORE"
+                case notarization = "NOTARIZATION"
+            }
 
             public enum ReleaseType: String, Codable, CaseIterable {
                 case manual = "MANUAL"
@@ -31,9 +37,10 @@ public struct AppStoreVersionUpdateRequest: Codable, Equatable {
                 case scheduled = "SCHEDULED"
             }
 
-            public init(versionString: String? = nil, copyright: String? = nil, releaseType: ReleaseType? = nil, earliestReleaseDate: Date? = nil, isDownloadable: Bool? = nil) {
+            public init(versionString: String? = nil, copyright: String? = nil, reviewType: ReviewType? = nil, releaseType: ReleaseType? = nil, earliestReleaseDate: Date? = nil, isDownloadable: Bool? = nil) {
                 self.versionString = versionString
                 self.copyright = copyright
+                self.reviewType = reviewType
                 self.releaseType = releaseType
                 self.earliestReleaseDate = earliestReleaseDate
                 self.isDownloadable = isDownloadable
@@ -42,6 +49,7 @@ public struct AppStoreVersionUpdateRequest: Codable, Equatable {
             private enum CodingKeys: String, CodingKey {
                 case versionString
                 case copyright
+                case reviewType
                 case releaseType
                 case earliestReleaseDate
                 case isDownloadable = "downloadable"

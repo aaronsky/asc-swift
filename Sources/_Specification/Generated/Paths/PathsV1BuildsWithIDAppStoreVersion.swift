@@ -15,23 +15,24 @@ extension Resources.V1.Builds.WithID {
         /// Path: `/v1/builds/{id}/appStoreVersion`
         public let path: String
 
-        public func get(fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]? = nil, fieldsAppStoreVersionSubmissions: [FieldsAppStoreVersionSubmissions]? = nil, fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsRoutingAppCoverages: [FieldsRoutingAppCoverages]? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, fieldsAppStoreVersionPhasedReleases: [FieldsAppStoreVersionPhasedReleases]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, limitAppStoreVersionLocalizations: Int? = nil, limitAppStoreVersionExperiments: Int? = nil, limitAppStoreVersionExperimentsV2: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppStoreVersionResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionExperiments, fieldsAgeRatingDeclarations, fieldsAppStoreVersionSubmissions, fieldsAppStoreReviewDetails, fieldsAppStoreVersions, fieldsApps, fieldsRoutingAppCoverages, fieldsAppClipDefaultExperiences, fieldsAppStoreVersionPhasedReleases, fieldsBuilds, fieldsAppStoreVersionLocalizations, limitAppStoreVersionLocalizations, limitAppStoreVersionExperiments, limitAppStoreVersionExperimentsV2, include), id: "builds-appStoreVersion-get_to_one_related")
+        public func get(fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]? = nil, fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]? = nil, fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAppStoreVersionSubmissions: [FieldsAppStoreVersionSubmissions]? = nil, fieldsAlternativeDistributionPackages: [FieldsAlternativeDistributionPackages]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsRoutingAppCoverages: [FieldsRoutingAppCoverages]? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, fieldsAppStoreVersionPhasedReleases: [FieldsAppStoreVersionPhasedReleases]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, limitAppStoreVersionLocalizations: Int? = nil, limitAppStoreVersionExperiments: Int? = nil, limitAppStoreVersionExperimentsV2: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppStoreVersionResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAgeRatingDeclarations, fieldsAppStoreReviewDetails, fieldsAppStoreVersionLocalizations, fieldsAppStoreVersionExperiments, fieldsAppStoreVersionSubmissions, fieldsAlternativeDistributionPackages, fieldsAppStoreVersions, fieldsApps, fieldsRoutingAppCoverages, fieldsAppClipDefaultExperiences, fieldsAppStoreVersionPhasedReleases, fieldsBuilds, limitAppStoreVersionLocalizations, limitAppStoreVersionExperiments, limitAppStoreVersionExperimentsV2, include), id: "builds-appStoreVersion-get_to_one_related")
         }
 
-        private func makeGetQuery(_ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]?, _ fieldsAppStoreVersionSubmissions: [FieldsAppStoreVersionSubmissions]?, _ fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsApps: [FieldsApps]?, _ fieldsRoutingAppCoverages: [FieldsRoutingAppCoverages]?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ fieldsAppStoreVersionPhasedReleases: [FieldsAppStoreVersionPhasedReleases]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ limitAppStoreVersionLocalizations: Int?, _ limitAppStoreVersionExperiments: Int?, _ limitAppStoreVersionExperimentsV2: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]?, _ fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]?, _ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsAppStoreVersionSubmissions: [FieldsAppStoreVersionSubmissions]?, _ fieldsAlternativeDistributionPackages: [FieldsAlternativeDistributionPackages]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsApps: [FieldsApps]?, _ fieldsRoutingAppCoverages: [FieldsRoutingAppCoverages]?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ fieldsAppStoreVersionPhasedReleases: [FieldsAppStoreVersionPhasedReleases]?, _ fieldsBuilds: [FieldsBuilds]?, _ limitAppStoreVersionLocalizations: Int?, _ limitAppStoreVersionExperiments: Int?, _ limitAppStoreVersionExperimentsV2: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(fieldsAppStoreVersionExperiments, forKey: "fields[appStoreVersionExperiments]")
             encoder.encode(fieldsAgeRatingDeclarations, forKey: "fields[ageRatingDeclarations]")
-            encoder.encode(fieldsAppStoreVersionSubmissions, forKey: "fields[appStoreVersionSubmissions]")
             encoder.encode(fieldsAppStoreReviewDetails, forKey: "fields[appStoreReviewDetails]")
+            encoder.encode(fieldsAppStoreVersionLocalizations, forKey: "fields[appStoreVersionLocalizations]")
+            encoder.encode(fieldsAppStoreVersionExperiments, forKey: "fields[appStoreVersionExperiments]")
+            encoder.encode(fieldsAppStoreVersionSubmissions, forKey: "fields[appStoreVersionSubmissions]")
+            encoder.encode(fieldsAlternativeDistributionPackages, forKey: "fields[alternativeDistributionPackages]")
             encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
             encoder.encode(fieldsApps, forKey: "fields[apps]")
             encoder.encode(fieldsRoutingAppCoverages, forKey: "fields[routingAppCoverages]")
             encoder.encode(fieldsAppClipDefaultExperiences, forKey: "fields[appClipDefaultExperiences]")
             encoder.encode(fieldsAppStoreVersionPhasedReleases, forKey: "fields[appStoreVersionPhasedReleases]")
             encoder.encode(fieldsBuilds, forKey: "fields[builds]")
-            encoder.encode(fieldsAppStoreVersionLocalizations, forKey: "fields[appStoreVersionLocalizations]")
             encoder.encode(limitAppStoreVersionLocalizations, forKey: "limit[appStoreVersionLocalizations]")
             encoder.encode(limitAppStoreVersionExperiments, forKey: "limit[appStoreVersionExperiments]")
             encoder.encode(limitAppStoreVersionExperimentsV2, forKey: "limit[appStoreVersionExperimentsV2]")
@@ -39,23 +40,8 @@ extension Resources.V1.Builds.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppStoreVersionExperiments: String, Codable, CaseIterable {
-            case app
-            case appStoreVersion
-            case appStoreVersionExperimentTreatments
-            case controlVersions
-            case endDate
-            case latestControlVersion
-            case name
-            case platform
-            case reviewRequired
-            case startDate
-            case started
-            case state
-            case trafficProportion
-        }
-
         public enum FieldsAgeRatingDeclarations: String, Codable, CaseIterable {
+            case ageRatingOverride
             case alcoholTobaccoOrDrugUseOrReferences
             case contests
             case gambling
@@ -75,10 +61,6 @@ extension Resources.V1.Builds.WithID {
             case violenceRealisticProlongedGraphicOrSadistic
         }
 
-        public enum FieldsAppStoreVersionSubmissions: String, Codable, CaseIterable {
-            case appStoreVersion
-        }
-
         public enum FieldsAppStoreReviewDetails: String, Codable, CaseIterable {
             case appStoreReviewAttachments
             case appStoreVersion
@@ -92,8 +74,47 @@ extension Resources.V1.Builds.WithID {
             case notes
         }
 
+        public enum FieldsAppStoreVersionLocalizations: String, Codable, CaseIterable {
+            case appPreviewSets
+            case appScreenshotSets
+            case appStoreVersion
+            case description
+            case keywords
+            case locale
+            case marketingURL = "marketingUrl"
+            case promotionalText
+            case supportURL = "supportUrl"
+            case whatsNew
+        }
+
+        public enum FieldsAppStoreVersionExperiments: String, Codable, CaseIterable {
+            case app
+            case appStoreVersion
+            case appStoreVersionExperimentTreatments
+            case controlVersions
+            case endDate
+            case latestControlVersion
+            case name
+            case platform
+            case reviewRequired
+            case startDate
+            case started
+            case state
+            case trafficProportion
+        }
+
+        public enum FieldsAppStoreVersionSubmissions: String, Codable, CaseIterable {
+            case appStoreVersion
+        }
+
+        public enum FieldsAlternativeDistributionPackages: String, Codable, CaseIterable {
+            case appStoreVersion
+            case versions
+        }
+
         public enum FieldsAppStoreVersions: String, Codable, CaseIterable {
             case ageRatingDeclaration
+            case alternativeDistributionPackage
             case app
             case appClipDefaultExperience
             case appStoreReviewDetail
@@ -103,6 +124,7 @@ extension Resources.V1.Builds.WithID {
             case appStoreVersionLocalizations
             case appStoreVersionPhasedRelease
             case appStoreVersionSubmission
+            case appVersionState
             case build
             case copyright
             case createdDate
@@ -111,11 +133,13 @@ extension Resources.V1.Builds.WithID {
             case earliestReleaseDate
             case platform
             case releaseType
+            case reviewType
             case routingAppCoverage
             case versionString
         }
 
         public enum FieldsApps: String, Codable, CaseIterable {
+            case alternativeDistributionKey
             case appAvailability
             case appClips
             case appCustomProductPages
@@ -144,6 +168,7 @@ extension Resources.V1.Builds.WithID {
             case inAppPurchases
             case inAppPurchasesV2
             case isOrEverWasMadeForKids
+            case marketplaceSearchDetail
             case name
             case perfPowerMetrics
             case preOrder
@@ -216,21 +241,9 @@ extension Resources.V1.Builds.WithID {
             case version
         }
 
-        public enum FieldsAppStoreVersionLocalizations: String, Codable, CaseIterable {
-            case appPreviewSets
-            case appScreenshotSets
-            case appStoreVersion
-            case description
-            case keywords
-            case locale
-            case marketingURL = "marketingUrl"
-            case promotionalText
-            case supportURL = "supportUrl"
-            case whatsNew
-        }
-
         public enum Include: String, Codable, CaseIterable {
             case ageRatingDeclaration
+            case alternativeDistributionPackage
             case app
             case appClipDefaultExperience
             case appStoreReviewDetail

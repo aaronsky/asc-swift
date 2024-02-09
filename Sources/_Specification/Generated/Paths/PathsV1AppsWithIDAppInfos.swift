@@ -33,6 +33,7 @@ extension Resources.V1.Apps.WithID {
         }
 
         public enum FieldsAgeRatingDeclarations: String, Codable, CaseIterable {
+            case ageRatingOverride
             case alcoholTobaccoOrDrugUseOrReferences
             case contests
             case gambling
@@ -67,6 +68,7 @@ extension Resources.V1.Apps.WithID {
             case secondaryCategory
             case secondarySubcategoryOne
             case secondarySubcategoryTwo
+            case state
         }
 
         public enum FieldsAppInfoLocalizations: String, Codable, CaseIterable {
@@ -86,6 +88,7 @@ extension Resources.V1.Apps.WithID {
         }
 
         public enum FieldsApps: String, Codable, CaseIterable {
+            case alternativeDistributionKey
             case appAvailability
             case appClips
             case appCustomProductPages
@@ -114,6 +117,7 @@ extension Resources.V1.Apps.WithID {
             case inAppPurchases
             case inAppPurchasesV2
             case isOrEverWasMadeForKids
+            case marketplaceSearchDetail
             case name
             case perfPowerMetrics
             case preOrder
