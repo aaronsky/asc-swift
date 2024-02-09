@@ -5,10 +5,11 @@ OPENAPI_SPEC_OUTDIR := $(GIT_REPO_TOPLEVEL)/Sources/_Specification
 OPENAPI_SPEC_OUTFILE := $(OPENAPI_SPEC_OUTDIR)/app_store_connect_api_3.3_openapi.json
 
 # Apple Platform Destinations
-DESTINATION_PLATFORM_IOS_SIMULATOR = platform=iOS Simulator,name=iPhone 13 Pro Max
+DESTINATION_PLATFORM_IOS_SIMULATOR = platform=iOS Simulator,name=iPhone 15 Pro Max
 DESTINATION_PLATFORM_MACOS = platform=macOS
 DESTINATION_PLATFORM_TVOS_SIMULATOR = platform=tvOS Simulator,name=Apple TV
-DESTINATION_PLATFORM_WATCHOS_SIMULATOR = platform=watchOS Simulator,name=Apple Watch Series 5 (44mm)
+DESTINATION_PLATFORM_WATCHOS_SIMULATOR = platform=watchOS Simulator,name=Apple Watch Series 9 (44mm)
+DESTINATION_PLATFORM_VISIONOS_SIMULATOR = platform=visionOS Simulator,name=Apple Vision Pro
 
 # Formatting
 SWIFT_FORMAT_BIN := swift format
@@ -59,7 +60,7 @@ test-library:
 	swift test --parallel
 
 .PHONY: test-library-xcode
-test-library-xcode: test-library-xcode-ios test-library-xcode-macos test-library-xcode-tvos test-library-xcode-watchos
+test-library-xcode: test-library-xcode-ios test-library-xcode-macos test-library-xcode-tvos test-library-xcode-watchos test-library-xcode-visionos
 
 .PHONY: test-library-xcode-ios
 test-library-xcode-ios:
@@ -87,6 +88,13 @@ test-library-xcode-watchos:
 	xcodebuild \
 		-scheme AppStoreConnect \
 		-destination "$(DESTINATION_PLATFORM_WATCHOS_SIMULATOR)" \
+		-quiet
+
+.PHONY: test-library-xcode-visionos
+test-library-xcode-visionos:
+	xcodebuild \
+		-scheme AppStoreConnect \
+		-destination "$(DESTINATION_PLATFORM_VISIONOS_SIMULATOR)" \
 		-quiet
 
 .PHONY: build-examples
