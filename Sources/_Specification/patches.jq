@@ -1,0 +1,32 @@
+#!/usr/bin/env jq
+
+delpaths([
+    ["components", "schemas", "AgeRatingDeclarationWithoutIncludesResponse"],
+    ["components", "schemas", "AppCategoriesWithoutIncludesResponse"],
+    ["components", "schemas", "AppCategoryWithoutIncludesResponse"],
+    ["components", "schemas", "AppEncryptionDeclarationWithoutIncludesResponse"],
+    ["components", "schemas", "AppPreOrderWithoutIncludesResponse"],
+    ["components", "schemas", "AppStoreVersionPhasedReleaseWithoutIncludesResponse"],
+    ["components", "schemas", "AppsWithoutIncludesResponse"],
+    ["components", "schemas", "AppWithoutIncludesResponse"],
+    ["components", "schemas", "BetaAppLocalizationsWithoutIncludesResponse"],
+    ["components", "schemas", "BetaAppReviewDetailWithoutIncludesResponse"],
+    ["components", "schemas", "BetaAppReviewSubmissionWithoutIncludesResponse"],
+    ["components", "schemas", "BetaBuildLocalizationsWithoutIncludesResponse"],
+    ["components", "schemas", "BetaGroupsWithoutIncludesResponse"],
+    ["components", "schemas", "BetaLicenseAgreementWithoutIncludesResponse"],
+    ["components", "schemas", "BetaTestersWithoutIncludesResponse"],
+    ["components", "schemas", "BuildIconsWithoutIncludesResponse"],
+    ["components", "schemas", "BuildsWithoutIncludesResponse"],
+    ["components", "schemas", "BuildWithoutIncludesResponse"],
+    ["components", "schemas", "BundleIdCapabilitiesWithoutIncludesResponse"],
+    ["components", "schemas", "BundleIdWithoutIncludesResponse"],
+    ["components", "schemas", "CertificatesWithoutIncludesResponse"],
+    ["components", "schemas", "DevicesWithoutIncludesResponse"],
+    ["components", "schemas", "EndUserLicenseAgreementWithoutIncludesResponse"],
+    ["components", "schemas", "PreReleaseVersionsWithoutIncludesResponse"],
+    ["components", "schemas", "PrereleaseVersionWithoutIncludesResponse"],
+    ["components", "schemas", "ProfilesWithoutIncludesResponse"],
+    ["components", "schemas", "RoutingAppCoverageWithoutIncludesResponse"],
+    ["components", "schemas", "TerritoriesWithoutIncludesResponse"]
+])
