@@ -2,7 +2,9 @@
 GIT_REPO_TOPLEVEL := $(shell git rev-parse --show-toplevel)
 OPENAPI_SPEC_URL := https://developer.apple.com/sample-code/app-store-connect/app-store-connect-openapi-specification.zip
 OPENAPI_SPEC_OUTDIR := $(GIT_REPO_TOPLEVEL)/Sources/_Specification
-OPENAPI_SPEC_OUTFILE := $(OPENAPI_SPEC_OUTDIR)/app_store_connect_api_3.3_openapi.json
+OPENAPI_SPEC_OUTFILE := $(OPENAPI_SPEC_OUTDIR)/app_store_connect_api_3.4_openapi.json
+OPENAPI_SPEC_PATCHFILE_AWK := $(OPENAPI_SPEC_OUTDIR)/patches.awk
+OPENAPI_SPEC_PATCHFILE_JQ := $(OPENAPI_SPEC_OUTDIR)/patches.jq
 
 # Apple Platform Destinations
 DESTINATION_PLATFORM_IOS_SIMULATOR = platform=iOS Simulator,name=iPhone 15 Pro Max
@@ -40,12 +42,8 @@ spec: spec-download spec-generate
 spec-download:
 	curl --fail --silent --show-error --location --output - $(OPENAPI_SPEC_URL) \
 		| tar --extract --to-stdout --file - \
-		| sed 's|#/components/schemas/AppStoreVersionLocalizationsWithoutIncludesResponse|#/components/schemas/AppStoreVersionLocalizationsResponse|' \
-		| sed 's|#/components/schemas/AgeRatingDeclarationWithoutIncludesResponse|#/components/schemas/AgeRatingDeclarationResponse|' \
-		| sed 's|#/components/schemas/AppStoreVersionPhasedReleaseWithoutIncludesResponse|#/components/schemas/AppStoreVersionPhasedReleaseResponse|' \
-		| sed 's|#/components/schemas/RoutingAppCoverageWithoutIncludesResponse|#/components/schemas/RoutingAppCoverageResponse|' \
-		| jq '.components.schemas.UserRole.enum |= . + ["GENERATE_INDIVIDUAL_KEYS"]' \
-		| jq '.' \
+		| awk -f $(OPENAPI_SPEC_PATCHFILE_AWK) - \
+		| jq --from-file $(OPENAPI_SPEC_PATCHFILE_JQ) \
 		> $(OPENAPI_SPEC_OUTFILE)
 
 .PHONY: spec-generate

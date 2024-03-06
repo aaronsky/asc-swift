@@ -15,7 +15,7 @@ extension Resources.V1.PreReleaseVersions.WithID {
         /// Path: `/v1/preReleaseVersions/{id}/builds`
         public let path: String
 
-        public func get(fieldsBuilds: [FieldsBuilds]? = nil, limit: Int? = nil) -> Request<_Specification.BuildsWithoutIncludesResponse> {
+        public func get(fieldsBuilds: [FieldsBuilds]? = nil, limit: Int? = nil) -> Request<_Specification.BuildsResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsBuilds, limit), id: "preReleaseVersions-builds-get_to_many_related")
         }
 

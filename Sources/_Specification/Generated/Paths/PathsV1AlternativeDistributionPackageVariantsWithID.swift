@@ -27,6 +27,7 @@ extension Resources.V1.AlternativeDistributionPackageVariants {
 
         public enum FieldsAlternativeDistributionPackageVariants: String, Codable, CaseIterable {
             case alternativeDistributionKeyBlob
+            case fileChecksum
             case url
             case urlExpirationDate
         }

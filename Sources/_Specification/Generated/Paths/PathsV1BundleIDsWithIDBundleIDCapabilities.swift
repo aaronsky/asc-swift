@@ -15,7 +15,7 @@ extension Resources.V1.BundleIDs.WithID {
         /// Path: `/v1/bundleIds/{id}/bundleIdCapabilities`
         public let path: String
 
-        public func get(fieldsBundleIDCapabilities: [FieldsBundleIDCapabilities]? = nil, limit: Int? = nil) -> Request<_Specification.BundleIDCapabilitiesWithoutIncludesResponse> {
+        public func get(fieldsBundleIDCapabilities: [FieldsBundleIDCapabilities]? = nil, limit: Int? = nil) -> Request<_Specification.BundleIDCapabilitiesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsBundleIDCapabilities, limit), id: "bundleIds-bundleIdCapabilities-get_to_many_related")
         }
 

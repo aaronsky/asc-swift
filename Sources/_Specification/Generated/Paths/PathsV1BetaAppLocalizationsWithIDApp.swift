@@ -15,7 +15,7 @@ extension Resources.V1.BetaAppLocalizations.WithID {
         /// Path: `/v1/betaAppLocalizations/{id}/app`
         public let path: String
 
-        public func get(fieldsApps: [FieldsApps]? = nil) -> Request<_Specification.AppWithoutIncludesResponse> {
+        public func get(fieldsApps: [FieldsApps]? = nil) -> Request<_Specification.AppResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsApps), id: "betaAppLocalizations-app-get_to_one_related")
         }
 
@@ -27,6 +27,7 @@ extension Resources.V1.BetaAppLocalizations.WithID {
 
         public enum FieldsApps: String, Codable, CaseIterable {
             case alternativeDistributionKey
+            case analyticsReportRequests
             case appAvailability
             case appClips
             case appCustomProductPages

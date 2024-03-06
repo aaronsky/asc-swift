@@ -15,7 +15,7 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/betaAppReviewDetail`
         public let path: String
 
-        public func get(fieldsBetaAppReviewDetails: [FieldsBetaAppReviewDetails]? = nil) -> Request<_Specification.BetaAppReviewDetailWithoutIncludesResponse> {
+        public func get(fieldsBetaAppReviewDetails: [FieldsBetaAppReviewDetails]? = nil) -> Request<_Specification.BetaAppReviewDetailResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaAppReviewDetails), id: "apps-betaAppReviewDetail-get_to_one_related")
         }
 

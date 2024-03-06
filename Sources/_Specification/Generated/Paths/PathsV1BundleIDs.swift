@@ -94,6 +94,7 @@ extension Resources.V1 {
 
         public enum FieldsApps: String, Codable, CaseIterable {
             case alternativeDistributionKey
+            case analyticsReportRequests
             case appAvailability
             case appClips
             case appCustomProductPages
