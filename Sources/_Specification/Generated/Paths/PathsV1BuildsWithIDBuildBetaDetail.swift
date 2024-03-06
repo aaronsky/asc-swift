@@ -15,13 +15,15 @@ extension Resources.V1.Builds.WithID {
         /// Path: `/v1/builds/{id}/buildBetaDetail`
         public let path: String
 
-        public func get(fieldsBuildBetaDetails: [FieldsBuildBetaDetails]? = nil) -> Request<_Specification.BuildBetaDetailWithoutIncludesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBuildBetaDetails), id: "builds-buildBetaDetail-get_to_one_related")
+        public func get(fieldsBuildBetaDetails: [FieldsBuildBetaDetails]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, include: [Include]? = nil) -> Request<_Specification.BuildBetaDetailResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBuildBetaDetails, fieldsBuilds, include), id: "builds-buildBetaDetail-get_to_one_related")
         }
 
-        private func makeGetQuery(_ fieldsBuildBetaDetails: [FieldsBuildBetaDetails]?) -> [(String, String?)] {
-            let encoder = URLQueryEncoder()
-            encoder.encode(fieldsBuildBetaDetails, forKey: "fields[buildBetaDetails]", explode: false)
+        private func makeGetQuery(_ fieldsBuildBetaDetails: [FieldsBuildBetaDetails]?, _ fieldsBuilds: [FieldsBuilds]?, _ include: [Include]?) -> [(String, String?)] {
+            let encoder = URLQueryEncoder(explode: false)
+            encoder.encode(fieldsBuildBetaDetails, forKey: "fields[buildBetaDetails]")
+            encoder.encode(fieldsBuilds, forKey: "fields[builds]")
+            encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
@@ -30,6 +32,37 @@ extension Resources.V1.Builds.WithID {
             case build
             case externalBuildState
             case internalBuildState
+        }
+
+        public enum FieldsBuilds: String, Codable, CaseIterable {
+            case app
+            case appEncryptionDeclaration
+            case appStoreVersion
+            case betaAppReviewSubmission
+            case betaBuildLocalizations
+            case betaGroups
+            case buildAudienceType
+            case buildBetaDetail
+            case buildBundles
+            case computedMinMacOsVersion
+            case diagnosticSignatures
+            case expirationDate
+            case expired
+            case iconAssetToken
+            case icons
+            case individualTesters
+            case lsMinimumSystemVersion
+            case minOsVersion
+            case perfPowerMetrics
+            case preReleaseVersion
+            case processingState
+            case uploadedDate
+            case usesNonExemptEncryption
+            case version
+        }
+
+        public enum Include: String, Codable, CaseIterable {
+            case build
         }
     }
 }

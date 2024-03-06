@@ -6,11 +6,11 @@
 import Foundation
 
 public struct RoutingAppCoverageWithoutIncludesResponse: Codable, Equatable {
-    /// AppStoreVersion
-    public var data: AppStoreVersion
+    /// RoutingAppCoverage
+    public var data: RoutingAppCoverage
     public var links: DocumentLinks
 
-    public init(data: AppStoreVersion, links: DocumentLinks) {
+    public init(data: RoutingAppCoverage, links: DocumentLinks) {
         self.data = data
         self.links = links
     }

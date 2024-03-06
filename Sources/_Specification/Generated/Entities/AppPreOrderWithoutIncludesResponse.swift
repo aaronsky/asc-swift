@@ -6,11 +6,11 @@
 import Foundation
 
 public struct AppPreOrderWithoutIncludesResponse: Codable, Equatable {
-    /// App
-    public var data: App
+    /// AppPreOrder
+    public var data: AppPreOrder
     public var links: DocumentLinks
 
-    public init(data: App, links: DocumentLinks) {
+    public init(data: AppPreOrder, links: DocumentLinks) {
         self.data = data
         self.links = links
     }

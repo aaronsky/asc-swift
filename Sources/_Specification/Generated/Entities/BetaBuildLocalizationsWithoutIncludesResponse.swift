@@ -6,11 +6,11 @@
 import Foundation
 
 public struct BetaBuildLocalizationsWithoutIncludesResponse: Codable, Equatable {
-    public var data: [Build]
+    public var data: [BetaBuildLocalization]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public init(data: [Build], links: PagedDocumentLinks, meta: PagingInformation? = nil) {
+    public init(data: [BetaBuildLocalization], links: PagedDocumentLinks, meta: PagingInformation? = nil) {
         self.data = data
         self.links = links
         self.meta = meta

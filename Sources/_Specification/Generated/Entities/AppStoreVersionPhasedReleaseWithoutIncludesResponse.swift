@@ -6,11 +6,11 @@
 import Foundation
 
 public struct AppStoreVersionPhasedReleaseWithoutIncludesResponse: Codable, Equatable {
-    /// AppStoreVersion
-    public var data: AppStoreVersion
+    /// AppStoreVersionPhasedRelease
+    public var data: AppStoreVersionPhasedRelease
     public var links: DocumentLinks
 
-    public init(data: AppStoreVersion, links: DocumentLinks) {
+    public init(data: AppStoreVersionPhasedRelease, links: DocumentLinks) {
         self.data = data
         self.links = links
     }

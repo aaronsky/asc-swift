@@ -33,6 +33,7 @@ extension Resources.V1.AlternativeDistributionPackageVersions {
         public enum FieldsAlternativeDistributionPackageVersions: String, Codable, CaseIterable {
             case alternativeDistributionPackage
             case deltas
+            case fileChecksum
             case state
             case url
             case urlExpirationDate
@@ -48,12 +49,14 @@ extension Resources.V1.AlternativeDistributionPackageVersions {
 
         public enum FieldsAlternativeDistributionPackageVariants: String, Codable, CaseIterable {
             case alternativeDistributionKeyBlob
+            case fileChecksum
             case url
             case urlExpirationDate
         }
 
         public enum FieldsAlternativeDistributionPackageDeltas: String, Codable, CaseIterable {
             case alternativeDistributionKeyBlob
+            case fileChecksum
             case url
             case urlExpirationDate
         }

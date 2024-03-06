@@ -6,11 +6,11 @@
 import Foundation
 
 public struct BuildsWithoutIncludesResponse: Codable, Equatable {
-    public var data: [PrereleaseVersion]
+    public var data: [Build]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public init(data: [PrereleaseVersion], links: PagedDocumentLinks, meta: PagingInformation? = nil) {
+    public init(data: [Build], links: PagedDocumentLinks, meta: PagingInformation? = nil) {
         self.data = data
         self.links = links
         self.meta = meta

@@ -20,6 +20,7 @@ public struct AlternativeDistributionPackageVersion: Codable, Equatable, Identif
         public var url: URL?
         public var urlExpirationDate: Date?
         public var version: String?
+        public var fileChecksum: String?
         public var state: State?
 
         public enum State: String, Codable, CaseIterable {
@@ -27,10 +28,11 @@ public struct AlternativeDistributionPackageVersion: Codable, Equatable, Identif
             case replaced = "REPLACED"
         }
 
-        public init(url: URL? = nil, urlExpirationDate: Date? = nil, version: String? = nil, state: State? = nil) {
+        public init(url: URL? = nil, urlExpirationDate: Date? = nil, version: String? = nil, fileChecksum: String? = nil, state: State? = nil) {
             self.url = url
             self.urlExpirationDate = urlExpirationDate
             self.version = version
+            self.fileChecksum = fileChecksum
             self.state = state
         }
     }

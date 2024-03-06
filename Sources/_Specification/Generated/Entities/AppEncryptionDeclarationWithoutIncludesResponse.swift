@@ -6,11 +6,11 @@
 import Foundation
 
 public struct AppEncryptionDeclarationWithoutIncludesResponse: Codable, Equatable {
-    /// Build
-    public var data: Build
+    /// AppEncryptionDeclaration
+    public var data: AppEncryptionDeclaration
     public var links: DocumentLinks
 
-    public init(data: Build, links: DocumentLinks) {
+    public init(data: AppEncryptionDeclaration, links: DocumentLinks) {
         self.data = data
         self.links = links
     }

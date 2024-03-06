@@ -6,11 +6,11 @@
 import Foundation
 
 public struct BetaAppReviewDetailWithoutIncludesResponse: Codable, Equatable {
-    /// App
-    public var data: App
+    /// BetaAppReviewDetail
+    public var data: BetaAppReviewDetail
     public var links: DocumentLinks
 
-    public init(data: App, links: DocumentLinks) {
+    public init(data: BetaAppReviewDetail, links: DocumentLinks) {
         self.data = data
         self.links = links
     }

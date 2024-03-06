@@ -6,11 +6,11 @@
 import Foundation
 
 public struct AppsWithoutIncludesResponse: Codable, Equatable {
-    public var data: [User]
+    public var data: [App]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public init(data: [User], links: PagedDocumentLinks, meta: PagingInformation? = nil) {
+    public init(data: [App], links: PagedDocumentLinks, meta: PagingInformation? = nil) {
         self.data = data
         self.links = links
         self.meta = meta

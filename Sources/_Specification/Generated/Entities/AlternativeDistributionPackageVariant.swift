@@ -19,11 +19,13 @@ public struct AlternativeDistributionPackageVariant: Codable, Equatable, Identif
         public var url: URL?
         public var urlExpirationDate: Date?
         public var alternativeDistributionKeyBlob: String?
+        public var fileChecksum: String?
 
-        public init(url: URL? = nil, urlExpirationDate: Date? = nil, alternativeDistributionKeyBlob: String? = nil) {
+        public init(url: URL? = nil, urlExpirationDate: Date? = nil, alternativeDistributionKeyBlob: String? = nil, fileChecksum: String? = nil) {
             self.url = url
             self.urlExpirationDate = urlExpirationDate
             self.alternativeDistributionKeyBlob = alternativeDistributionKeyBlob
+            self.fileChecksum = fileChecksum
         }
     }
 

@@ -40,6 +40,7 @@ extension Resources.V3.AppPricePoints.WithID {
 
         public enum FieldsApps: String, Codable, CaseIterable {
             case alternativeDistributionKey
+            case analyticsReportRequests
             case appAvailability
             case appClips
             case appCustomProductPages

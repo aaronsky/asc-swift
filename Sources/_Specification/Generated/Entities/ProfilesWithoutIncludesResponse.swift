@@ -6,11 +6,11 @@
 import Foundation
 
 public struct ProfilesWithoutIncludesResponse: Codable, Equatable {
-    public var data: [BundleID]
+    public var data: [Profile]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public init(data: [BundleID], links: PagedDocumentLinks, meta: PagingInformation? = nil) {
+    public init(data: [Profile], links: PagedDocumentLinks, meta: PagingInformation? = nil) {
         self.data = data
         self.links = links
         self.meta = meta

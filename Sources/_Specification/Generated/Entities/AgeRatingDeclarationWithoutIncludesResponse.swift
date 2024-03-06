@@ -6,11 +6,11 @@
 import Foundation
 
 public struct AgeRatingDeclarationWithoutIncludesResponse: Codable, Equatable {
-    /// AppStoreVersion
-    public var data: AppStoreVersion
+    /// AgeRatingDeclaration
+    public var data: AgeRatingDeclaration
     public var links: DocumentLinks
 
-    public init(data: AppStoreVersion, links: DocumentLinks) {
+    public init(data: AgeRatingDeclaration, links: DocumentLinks) {
         self.data = data
         self.links = links
     }

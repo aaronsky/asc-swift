@@ -54,6 +54,7 @@ extension Resources.V1 {
             case subscriber = "SUBSCRIBER"
             case subscriptionOfferCodeRedemption = "SUBSCRIPTION_OFFER_CODE_REDEMPTION"
             case installs = "INSTALLS"
+            case firstAnnual = "FIRST_ANNUAL"
         }
     }
 }

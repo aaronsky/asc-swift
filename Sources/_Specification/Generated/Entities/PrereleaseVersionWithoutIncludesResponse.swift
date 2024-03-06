@@ -6,11 +6,11 @@
 import Foundation
 
 public struct PrereleaseVersionWithoutIncludesResponse: Codable, Equatable {
-    /// Build
-    public var data: Build
+    /// PrereleaseVersion
+    public var data: PrereleaseVersion
     public var links: DocumentLinks
 
-    public init(data: Build, links: DocumentLinks) {
+    public init(data: PrereleaseVersion, links: DocumentLinks) {
         self.data = data
         self.links = links
     }

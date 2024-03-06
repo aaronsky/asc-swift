@@ -6,11 +6,11 @@
 import Foundation
 
 public struct EndUserLicenseAgreementWithoutIncludesResponse: Codable, Equatable {
-    /// App
-    public var data: App
+    /// EndUserLicenseAgreement
+    public var data: EndUserLicenseAgreement
     public var links: DocumentLinks
 
-    public init(data: App, links: DocumentLinks) {
+    public init(data: EndUserLicenseAgreement, links: DocumentLinks) {
         self.data = data
         self.links = links
     }

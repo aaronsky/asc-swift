@@ -6,11 +6,11 @@
 import Foundation
 
 public struct BundleIDWithoutIncludesResponse: Codable, Equatable {
-    /// Profile
-    public var data: Profile
+    /// BundleId
+    public var data: BundleID
     public var links: DocumentLinks
 
-    public init(data: Profile, links: DocumentLinks) {
+    public init(data: BundleID, links: DocumentLinks) {
         self.data = data
         self.links = links
     }

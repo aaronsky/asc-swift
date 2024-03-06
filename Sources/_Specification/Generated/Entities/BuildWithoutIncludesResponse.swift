@@ -6,11 +6,11 @@
 import Foundation
 
 public struct BuildWithoutIncludesResponse: Codable, Equatable {
-    /// BuildBetaDetail
-    public var data: BuildBetaDetail
+    /// Build
+    public var data: Build
     public var links: DocumentLinks
 
-    public init(data: BuildBetaDetail, links: DocumentLinks) {
+    public init(data: Build, links: DocumentLinks) {
         self.data = data
         self.links = links
     }

@@ -27,6 +27,7 @@ extension Resources.V1.AlternativeDistributionPackageDeltas {
 
         public enum FieldsAlternativeDistributionPackageDeltas: String, Codable, CaseIterable {
             case alternativeDistributionKeyBlob
+            case fileChecksum
             case url
             case urlExpirationDate
         }

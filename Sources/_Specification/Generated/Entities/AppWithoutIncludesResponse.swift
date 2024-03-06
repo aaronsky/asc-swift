@@ -6,11 +6,11 @@
 import Foundation
 
 public struct AppWithoutIncludesResponse: Codable, Equatable {
-    /// PrereleaseVersion
-    public var data: PrereleaseVersion
+    /// App
+    public var data: App
     public var links: DocumentLinks
 
-    public init(data: PrereleaseVersion, links: DocumentLinks) {
+    public init(data: App, links: DocumentLinks) {
         self.data = data
         self.links = links
     }

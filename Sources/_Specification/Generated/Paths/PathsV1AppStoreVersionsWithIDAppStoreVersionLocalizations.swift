@@ -15,15 +15,64 @@ extension Resources.V1.AppStoreVersions.WithID {
         /// Path: `/v1/appStoreVersions/{id}/appStoreVersionLocalizations`
         public let path: String
 
-        public func get(fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, limit: Int? = nil) -> Request<_Specification.AppStoreVersionLocalizationsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionLocalizations, limit), id: "appStoreVersions-appStoreVersionLocalizations-get_to_many_related")
+        public func get(filterLocale: [String]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, limit: Int? = nil, limitAppScreenshotSets: Int? = nil, limitAppPreviewSets: Int? = nil, include: [Include]? = nil) -> Request<_Specification.AppStoreVersionLocalizationsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterLocale, fieldsAppScreenshotSets, fieldsAppStoreVersions, fieldsAppPreviewSets, fieldsAppStoreVersionLocalizations, limit, limitAppScreenshotSets, limitAppPreviewSets, include), id: "appStoreVersions-appStoreVersionLocalizations-get_to_many_related")
         }
 
-        private func makeGetQuery(_ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ limit: Int?) -> [(String, String?)] {
-            let encoder = URLQueryEncoder()
-            encoder.encode(fieldsAppStoreVersionLocalizations, forKey: "fields[appStoreVersionLocalizations]", explode: false)
+        private func makeGetQuery(_ filterLocale: [String]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ limit: Int?, _ limitAppScreenshotSets: Int?, _ limitAppPreviewSets: Int?, _ include: [Include]?) -> [(String, String?)] {
+            let encoder = URLQueryEncoder(explode: false)
+            encoder.encode(filterLocale, forKey: "filter[locale]")
+            encoder.encode(fieldsAppScreenshotSets, forKey: "fields[appScreenshotSets]")
+            encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
+            encoder.encode(fieldsAppPreviewSets, forKey: "fields[appPreviewSets]")
+            encoder.encode(fieldsAppStoreVersionLocalizations, forKey: "fields[appStoreVersionLocalizations]")
             encoder.encode(limit, forKey: "limit")
+            encoder.encode(limitAppScreenshotSets, forKey: "limit[appScreenshotSets]")
+            encoder.encode(limitAppPreviewSets, forKey: "limit[appPreviewSets]")
+            encoder.encode(include, forKey: "include")
             return encoder.items
+        }
+
+        public enum FieldsAppScreenshotSets: String, Codable, CaseIterable {
+            case appCustomProductPageLocalization
+            case appScreenshots
+            case appStoreVersionExperimentTreatmentLocalization
+            case appStoreVersionLocalization
+            case screenshotDisplayType
+        }
+
+        public enum FieldsAppStoreVersions: String, Codable, CaseIterable {
+            case ageRatingDeclaration
+            case alternativeDistributionPackage
+            case app
+            case appClipDefaultExperience
+            case appStoreReviewDetail
+            case appStoreState
+            case appStoreVersionExperiments
+            case appStoreVersionExperimentsV2
+            case appStoreVersionLocalizations
+            case appStoreVersionPhasedRelease
+            case appStoreVersionSubmission
+            case appVersionState
+            case build
+            case copyright
+            case createdDate
+            case customerReviews
+            case downloadable
+            case earliestReleaseDate
+            case platform
+            case releaseType
+            case reviewType
+            case routingAppCoverage
+            case versionString
+        }
+
+        public enum FieldsAppPreviewSets: String, Codable, CaseIterable {
+            case appCustomProductPageLocalization
+            case appPreviews
+            case appStoreVersionExperimentTreatmentLocalization
+            case appStoreVersionLocalization
+            case previewType
         }
 
         public enum FieldsAppStoreVersionLocalizations: String, Codable, CaseIterable {
@@ -37,6 +86,12 @@ extension Resources.V1.AppStoreVersions.WithID {
             case promotionalText
             case supportURL = "supportUrl"
             case whatsNew
+        }
+
+        public enum Include: String, Codable, CaseIterable {
+            case appPreviewSets
+            case appScreenshotSets
+            case appStoreVersion
         }
     }
 }
