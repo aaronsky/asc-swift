@@ -14,7 +14,7 @@ public struct SubscriptionOfferCodeOneTimeUseCodeValue: Codable, Equatable, Iden
         case subscriptionOfferCodeOneTimeUseCodeValues
     }
 
-    public init(type: `Type`, id: String, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .subscriptionOfferCodeOneTimeUseCodeValues, id: String, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.links = links

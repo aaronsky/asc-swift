@@ -16,7 +16,7 @@ public struct AppPreviewSetAppPreviewsLinkagesRequest: Codable, Equatable {
             case appPreviews
         }
 
-        public init(type: `Type`, id: String) {
+        public init(type: `Type` = .appPreviews, id: String) {
             self.type = type
             self.id = id
         }

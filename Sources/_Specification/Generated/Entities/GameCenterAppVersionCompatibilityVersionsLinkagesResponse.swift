@@ -18,7 +18,7 @@ public struct GameCenterAppVersionCompatibilityVersionsLinkagesResponse: Codable
             case gameCenterAppVersions
         }
 
-        public init(type: `Type`, id: String) {
+        public init(type: `Type` = .gameCenterAppVersions, id: String) {
             self.type = type
             self.id = id
         }

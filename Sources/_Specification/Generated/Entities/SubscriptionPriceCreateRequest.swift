@@ -48,7 +48,7 @@ public struct SubscriptionPriceCreateRequest: Codable, Equatable {
                         case subscriptions
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .subscriptions, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -70,7 +70,7 @@ public struct SubscriptionPriceCreateRequest: Codable, Equatable {
                         case territories
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .territories, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -92,7 +92,7 @@ public struct SubscriptionPriceCreateRequest: Codable, Equatable {
                         case subscriptionPricePoints
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .subscriptionPricePoints, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -110,7 +110,7 @@ public struct SubscriptionPriceCreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes? = nil, relationships: Relationships) {
+        public init(type: `Type` = .subscriptionPrices, attributes: Attributes? = nil, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

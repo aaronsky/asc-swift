@@ -14,7 +14,7 @@ public struct DiagnosticLog: Codable, Equatable, Identifiable {
         case diagnosticLogs
     }
 
-    public init(type: `Type`, id: String, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .diagnosticLogs, id: String, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.links = links

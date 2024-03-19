@@ -71,7 +71,7 @@ public struct GameCenterDetail: Codable, Equatable, Identifiable {
                     case apps
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .apps, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -111,7 +111,7 @@ public struct GameCenterDetail: Codable, Equatable, Identifiable {
                     case gameCenterAppVersions
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterAppVersions, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -151,7 +151,7 @@ public struct GameCenterDetail: Codable, Equatable, Identifiable {
                     case gameCenterGroups
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterGroups, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -191,7 +191,7 @@ public struct GameCenterDetail: Codable, Equatable, Identifiable {
                     case gameCenterLeaderboards
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterLeaderboards, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -232,7 +232,7 @@ public struct GameCenterDetail: Codable, Equatable, Identifiable {
                     case gameCenterLeaderboardSets
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterLeaderboardSets, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -273,7 +273,7 @@ public struct GameCenterDetail: Codable, Equatable, Identifiable {
                     case gameCenterAchievements
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterAchievements, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -313,7 +313,7 @@ public struct GameCenterDetail: Codable, Equatable, Identifiable {
                     case gameCenterLeaderboards
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterLeaderboards, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -352,7 +352,7 @@ public struct GameCenterDetail: Codable, Equatable, Identifiable {
                     case gameCenterLeaderboards
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterLeaderboards, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -392,7 +392,7 @@ public struct GameCenterDetail: Codable, Equatable, Identifiable {
                     case gameCenterAchievementReleases
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterAchievementReleases, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -433,7 +433,7 @@ public struct GameCenterDetail: Codable, Equatable, Identifiable {
                     case gameCenterLeaderboardReleases
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterLeaderboardReleases, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -474,7 +474,7 @@ public struct GameCenterDetail: Codable, Equatable, Identifiable {
                     case gameCenterLeaderboardSetReleases
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterLeaderboardSetReleases, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -502,7 +502,7 @@ public struct GameCenterDetail: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .gameCenterDetails, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

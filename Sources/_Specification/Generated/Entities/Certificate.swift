@@ -35,7 +35,7 @@ public struct Certificate: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .certificates, id: String, attributes: Attributes? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

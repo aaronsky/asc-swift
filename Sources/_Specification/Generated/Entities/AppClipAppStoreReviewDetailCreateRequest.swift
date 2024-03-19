@@ -43,7 +43,7 @@ public struct AppClipAppStoreReviewDetailCreateRequest: Codable, Equatable {
                         case appClipDefaultExperiences
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appClipDefaultExperiences, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -59,7 +59,7 @@ public struct AppClipAppStoreReviewDetailCreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes? = nil, relationships: Relationships) {
+        public init(type: `Type` = .appClipAppStoreReviewDetails, attributes: Attributes? = nil, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

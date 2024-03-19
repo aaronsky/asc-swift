@@ -44,7 +44,7 @@ public struct BetaTesterCreateRequest: Codable, Equatable {
                         case betaGroups
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .betaGroups, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -66,7 +66,7 @@ public struct BetaTesterCreateRequest: Codable, Equatable {
                         case builds
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .builds, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -83,7 +83,7 @@ public struct BetaTesterCreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships? = nil) {
+        public init(type: `Type` = .betaTesters, attributes: Attributes, relationships: Relationships? = nil) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

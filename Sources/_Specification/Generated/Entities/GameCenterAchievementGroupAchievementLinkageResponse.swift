@@ -17,7 +17,7 @@ public struct GameCenterAchievementGroupAchievementLinkageResponse: Codable, Equ
             case gameCenterAchievements
         }
 
-        public init(type: `Type`, id: String) {
+        public init(type: `Type` = .gameCenterAchievements, id: String) {
             self.type = type
             self.id = id
         }

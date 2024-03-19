@@ -18,7 +18,7 @@ public struct BuildIndividualTestersLinkagesResponse: Codable, Equatable {
             case betaTesters
         }
 
-        public init(type: `Type`, id: String) {
+        public init(type: `Type` = .betaTesters, id: String) {
             self.type = type
             self.id = id
         }

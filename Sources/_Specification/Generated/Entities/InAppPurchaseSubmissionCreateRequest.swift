@@ -30,7 +30,7 @@ public struct InAppPurchaseSubmissionCreateRequest: Codable, Equatable {
                         case inAppPurchases
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .inAppPurchases, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -46,7 +46,7 @@ public struct InAppPurchaseSubmissionCreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, relationships: Relationships) {
+        public init(type: `Type` = .inAppPurchaseSubmissions, relationships: Relationships) {
             self.type = type
             self.relationships = relationships
         }

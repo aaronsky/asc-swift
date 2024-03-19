@@ -14,7 +14,7 @@ public struct AppStoreVersionReleaseRequest: Codable, Equatable, Identifiable {
         case appStoreVersionReleaseRequests
     }
 
-    public init(type: `Type`, id: String, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .appStoreVersionReleaseRequests, id: String, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.links = links

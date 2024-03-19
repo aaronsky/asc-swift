@@ -18,7 +18,7 @@ public struct GameCenterGroupGameCenterLeaderboardSetsLinkagesResponse: Codable,
             case gameCenterLeaderboardSets
         }
 
-        public init(type: `Type`, id: String) {
+        public init(type: `Type` = .gameCenterLeaderboardSets, id: String) {
             self.type = type
             self.id = id
         }

@@ -31,7 +31,7 @@ public struct AppCustomProductPageVersionCreateRequest: Codable, Equatable {
                         case appCustomProductPages
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appCustomProductPages, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -53,7 +53,7 @@ public struct AppCustomProductPageVersionCreateRequest: Codable, Equatable {
                         case appCustomProductPageLocalizations
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appCustomProductPageLocalizations, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -70,7 +70,7 @@ public struct AppCustomProductPageVersionCreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, relationships: Relationships) {
+        public init(type: `Type` = .appCustomProductPageVersions, relationships: Relationships) {
             self.type = type
             self.relationships = relationships
         }

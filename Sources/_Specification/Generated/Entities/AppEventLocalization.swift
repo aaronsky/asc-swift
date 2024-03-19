@@ -62,7 +62,7 @@ public struct AppEventLocalization: Codable, Equatable, Identifiable {
                     case appEvents
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appEvents, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -102,7 +102,7 @@ public struct AppEventLocalization: Codable, Equatable, Identifiable {
                     case appEventScreenshots
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appEventScreenshots, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -143,7 +143,7 @@ public struct AppEventLocalization: Codable, Equatable, Identifiable {
                     case appEventVideoClips
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appEventVideoClips, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -163,7 +163,7 @@ public struct AppEventLocalization: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .appEventLocalizations, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

@@ -107,7 +107,7 @@ public struct Subscription: Codable, Equatable, Identifiable {
                     case subscriptionLocalizations
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptionLocalizations, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -147,7 +147,7 @@ public struct Subscription: Codable, Equatable, Identifiable {
                     case subscriptionAppStoreReviewScreenshots
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptionAppStoreReviewScreenshots, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -186,7 +186,7 @@ public struct Subscription: Codable, Equatable, Identifiable {
                     case subscriptionGroups
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptionGroups, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -226,7 +226,7 @@ public struct Subscription: Codable, Equatable, Identifiable {
                     case subscriptionIntroductoryOffers
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptionIntroductoryOffers, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -267,7 +267,7 @@ public struct Subscription: Codable, Equatable, Identifiable {
                     case subscriptionPromotionalOffers
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptionPromotionalOffers, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -308,7 +308,7 @@ public struct Subscription: Codable, Equatable, Identifiable {
                     case subscriptionOfferCodes
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptionOfferCodes, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -349,7 +349,7 @@ public struct Subscription: Codable, Equatable, Identifiable {
                     case subscriptionPrices
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptionPrices, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -389,7 +389,7 @@ public struct Subscription: Codable, Equatable, Identifiable {
                     case promotedPurchases
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .promotedPurchases, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -428,7 +428,7 @@ public struct Subscription: Codable, Equatable, Identifiable {
                     case subscriptionAvailabilities
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptionAvailabilities, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -453,7 +453,7 @@ public struct Subscription: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .subscriptions, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

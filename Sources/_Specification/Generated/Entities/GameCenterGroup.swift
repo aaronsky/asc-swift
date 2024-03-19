@@ -58,7 +58,7 @@ public struct GameCenterGroup: Codable, Equatable, Identifiable {
                     case gameCenterDetails
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterDetails, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -99,7 +99,7 @@ public struct GameCenterGroup: Codable, Equatable, Identifiable {
                     case gameCenterLeaderboards
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterLeaderboards, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -140,7 +140,7 @@ public struct GameCenterGroup: Codable, Equatable, Identifiable {
                     case gameCenterLeaderboardSets
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterLeaderboardSets, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -181,7 +181,7 @@ public struct GameCenterGroup: Codable, Equatable, Identifiable {
                     case gameCenterAchievements
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterAchievements, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -202,7 +202,7 @@ public struct GameCenterGroup: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .gameCenterGroups, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

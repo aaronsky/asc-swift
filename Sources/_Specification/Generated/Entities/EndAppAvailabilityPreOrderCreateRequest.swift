@@ -30,7 +30,7 @@ public struct EndAppAvailabilityPreOrderCreateRequest: Codable, Equatable {
                         case territoryAvailabilities
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .territoryAvailabilities, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -46,7 +46,7 @@ public struct EndAppAvailabilityPreOrderCreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, relationships: Relationships) {
+        public init(type: `Type` = .endAppAvailabilityPreOrders, relationships: Relationships) {
             self.type = type
             self.relationships = relationships
         }

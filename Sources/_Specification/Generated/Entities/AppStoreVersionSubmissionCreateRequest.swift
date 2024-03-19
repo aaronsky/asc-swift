@@ -30,7 +30,7 @@ public struct AppStoreVersionSubmissionCreateRequest: Codable, Equatable {
                         case appStoreVersions
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appStoreVersions, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -46,7 +46,7 @@ public struct AppStoreVersionSubmissionCreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, relationships: Relationships) {
+        public init(type: `Type` = .appStoreVersionSubmissions, relationships: Relationships) {
             self.type = type
             self.relationships = relationships
         }

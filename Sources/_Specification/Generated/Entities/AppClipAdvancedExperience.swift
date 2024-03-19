@@ -246,7 +246,7 @@ public struct AppClipAdvancedExperience: Codable, Equatable, Identifiable {
                     case appClips
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appClips, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -285,7 +285,7 @@ public struct AppClipAdvancedExperience: Codable, Equatable, Identifiable {
                     case appClipAdvancedExperienceImages
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appClipAdvancedExperienceImages, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -325,7 +325,7 @@ public struct AppClipAdvancedExperience: Codable, Equatable, Identifiable {
                     case appClipAdvancedExperienceLocalizations
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appClipAdvancedExperienceLocalizations, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -345,7 +345,7 @@ public struct AppClipAdvancedExperience: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .appClipAdvancedExperiences, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

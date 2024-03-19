@@ -46,7 +46,7 @@ public struct GameCenterLeaderboardEntrySubmissionCreateRequest: Codable, Equata
             }
         }
 
-        public init(type: `Type`, attributes: Attributes) {
+        public init(type: `Type` = .gameCenterLeaderboardEntrySubmissions, attributes: Attributes) {
             self.type = type
             self.attributes = attributes
         }

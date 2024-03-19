@@ -91,7 +91,7 @@ public struct AppStoreVersionExperimentV2: Codable, Equatable, Identifiable {
                     case apps
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .apps, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -130,7 +130,7 @@ public struct AppStoreVersionExperimentV2: Codable, Equatable, Identifiable {
                     case appStoreVersions
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appStoreVersions, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -170,7 +170,7 @@ public struct AppStoreVersionExperimentV2: Codable, Equatable, Identifiable {
                     case appStoreVersions
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appStoreVersions, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -211,7 +211,7 @@ public struct AppStoreVersionExperimentV2: Codable, Equatable, Identifiable {
                     case appStoreVersionExperimentTreatments
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appStoreVersionExperimentTreatments, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -232,7 +232,7 @@ public struct AppStoreVersionExperimentV2: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .appStoreVersionExperiments, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

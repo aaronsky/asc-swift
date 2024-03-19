@@ -110,7 +110,7 @@ public struct GameCenterMatchmakingTestRequestInlineCreate: Codable, Equatable, 
                     case gameCenterMatchmakingTestPlayerProperties
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterMatchmakingTestPlayerProperties, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -126,7 +126,7 @@ public struct GameCenterMatchmakingTestRequestInlineCreate: Codable, Equatable, 
         }
     }
 
-    public init(type: `Type`, id: String? = nil, attributes: Attributes, relationships: Relationships? = nil) {
+    public init(type: `Type` = .gameCenterMatchmakingTestRequests, id: String? = nil, attributes: Attributes, relationships: Relationships? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

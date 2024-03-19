@@ -40,7 +40,7 @@ public struct EndUserLicenseAgreementCreateRequest: Codable, Equatable {
                         case apps
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .apps, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -62,7 +62,7 @@ public struct EndUserLicenseAgreementCreateRequest: Codable, Equatable {
                         case territories
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .territories, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -79,7 +79,7 @@ public struct EndUserLicenseAgreementCreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .endUserLicenseAgreements, attributes: Attributes, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

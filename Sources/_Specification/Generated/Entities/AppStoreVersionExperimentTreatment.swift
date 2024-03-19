@@ -62,7 +62,7 @@ public struct AppStoreVersionExperimentTreatment: Codable, Equatable, Identifiab
                     case appStoreVersionExperiments
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appStoreVersionExperiments, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -101,7 +101,7 @@ public struct AppStoreVersionExperimentTreatment: Codable, Equatable, Identifiab
                     case appStoreVersionExperiments
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appStoreVersionExperiments, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -141,7 +141,7 @@ public struct AppStoreVersionExperimentTreatment: Codable, Equatable, Identifiab
                     case appStoreVersionExperimentTreatmentLocalizations
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appStoreVersionExperimentTreatmentLocalizations, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -161,7 +161,7 @@ public struct AppStoreVersionExperimentTreatment: Codable, Equatable, Identifiab
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .appStoreVersionExperimentTreatments, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

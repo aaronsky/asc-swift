@@ -33,7 +33,7 @@ public struct AppPriceScheduleCreateRequest: Codable, Equatable {
                         case apps
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .apps, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -55,7 +55,7 @@ public struct AppPriceScheduleCreateRequest: Codable, Equatable {
                         case territories
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .territories, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -77,7 +77,7 @@ public struct AppPriceScheduleCreateRequest: Codable, Equatable {
                         case appPrices
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appPrices, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -95,7 +95,7 @@ public struct AppPriceScheduleCreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, relationships: Relationships) {
+        public init(type: `Type` = .appPriceSchedules, relationships: Relationships) {
             self.type = type
             self.relationships = relationships
         }

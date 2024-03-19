@@ -43,7 +43,7 @@ public struct GameCenterPlayerAchievementSubmissionCreateRequest: Codable, Equat
             }
         }
 
-        public init(type: `Type`, attributes: Attributes) {
+        public init(type: `Type` = .gameCenterPlayerAchievementSubmissions, attributes: Attributes) {
             self.type = type
             self.attributes = attributes
         }

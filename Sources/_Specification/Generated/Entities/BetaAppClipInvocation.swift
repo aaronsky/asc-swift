@@ -55,7 +55,7 @@ public struct BetaAppClipInvocation: Codable, Equatable, Identifiable {
                     case betaAppClipInvocationLocalizations
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .betaAppClipInvocationLocalizations, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -73,7 +73,7 @@ public struct BetaAppClipInvocation: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .betaAppClipInvocations, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

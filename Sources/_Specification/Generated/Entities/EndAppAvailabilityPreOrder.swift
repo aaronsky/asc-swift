@@ -14,7 +14,7 @@ public struct EndAppAvailabilityPreOrder: Codable, Equatable, Identifiable {
         case endAppAvailabilityPreOrders
     }
 
-    public init(type: `Type`, id: String, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .endAppAvailabilityPreOrders, id: String, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.links = links

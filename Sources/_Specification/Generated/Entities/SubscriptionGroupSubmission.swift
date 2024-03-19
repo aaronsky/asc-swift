@@ -14,7 +14,7 @@ public struct SubscriptionGroupSubmission: Codable, Equatable, Identifiable {
         case subscriptionGroupSubmissions
     }
 
-    public init(type: `Type`, id: String, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .subscriptionGroupSubmissions, id: String, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.links = links

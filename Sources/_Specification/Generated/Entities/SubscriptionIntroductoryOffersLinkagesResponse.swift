@@ -18,7 +18,7 @@ public struct SubscriptionIntroductoryOffersLinkagesResponse: Codable, Equatable
             case subscriptionIntroductoryOffers
         }
 
-        public init(type: `Type`, id: String) {
+        public init(type: `Type` = .subscriptionIntroductoryOffers, id: String) {
             self.type = type
             self.id = id
         }

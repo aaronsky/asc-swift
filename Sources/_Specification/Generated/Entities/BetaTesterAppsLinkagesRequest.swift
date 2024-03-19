@@ -16,7 +16,7 @@ public struct BetaTesterAppsLinkagesRequest: Codable, Equatable {
             case apps
         }
 
-        public init(type: `Type`, id: String) {
+        public init(type: `Type` = .apps, id: String) {
             self.type = type
             self.id = id
         }

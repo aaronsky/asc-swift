@@ -14,7 +14,7 @@ public struct BuildBetaNotification: Codable, Equatable, Identifiable {
         case buildBetaNotifications
     }
 
-    public init(type: `Type`, id: String, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .buildBetaNotifications, id: String, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.links = links

@@ -35,7 +35,7 @@ public struct ReviewSubmissionItemCreateRequest: Codable, Equatable {
                         case reviewSubmissions
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .reviewSubmissions, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -57,7 +57,7 @@ public struct ReviewSubmissionItemCreateRequest: Codable, Equatable {
                         case appStoreVersions
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appStoreVersions, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -79,7 +79,7 @@ public struct ReviewSubmissionItemCreateRequest: Codable, Equatable {
                         case appCustomProductPageVersions
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appCustomProductPageVersions, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -101,7 +101,7 @@ public struct ReviewSubmissionItemCreateRequest: Codable, Equatable {
                         case appStoreVersionExperiments
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appStoreVersionExperiments, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -123,7 +123,7 @@ public struct ReviewSubmissionItemCreateRequest: Codable, Equatable {
                         case appStoreVersionExperiments
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appStoreVersionExperiments, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -145,7 +145,7 @@ public struct ReviewSubmissionItemCreateRequest: Codable, Equatable {
                         case appEvents
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appEvents, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -166,7 +166,7 @@ public struct ReviewSubmissionItemCreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, relationships: Relationships) {
+        public init(type: `Type` = .reviewSubmissionItems, relationships: Relationships) {
             self.type = type
             self.relationships = relationships
         }

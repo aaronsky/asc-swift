@@ -26,7 +26,7 @@ public struct AppClipAdvancedExperienceImageCreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes) {
+        public init(type: `Type` = .appClipAdvancedExperienceImages, attributes: Attributes) {
             self.type = type
             self.attributes = attributes
         }
