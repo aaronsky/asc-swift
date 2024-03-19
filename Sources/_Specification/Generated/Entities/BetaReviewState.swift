@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum BetaReviewState: String, Codable, CaseIterable {
+public enum BetaReviewState: String, CaseIterable, Codable, Sendable {
     case waitingForReview = "WAITING_FOR_REVIEW"
     case inReview = "IN_REVIEW"
     case rejected = "REJECTED"

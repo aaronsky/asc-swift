@@ -26,7 +26,7 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FieldsMarketplaceWebhooks: String, Codable, CaseIterable {
+        public enum FieldsMarketplaceWebhooks: String, CaseIterable, Codable, Sendable {
             case endpointURL = "endpointUrl"
             case secret
         }

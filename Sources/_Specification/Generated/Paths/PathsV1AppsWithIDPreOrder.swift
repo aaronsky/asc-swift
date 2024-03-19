@@ -25,7 +25,7 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppPreOrders: String, Codable, CaseIterable {
+        public enum FieldsAppPreOrders: String, CaseIterable, Codable, Sendable {
             case app
             case appReleaseDate
             case preOrderAvailableDate

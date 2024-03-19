@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct AppEventLocalizationResponse: Codable, Equatable {
+public struct AppEventLocalizationResponse: Codable, Equatable, Sendable {
     /// AppEventLocalization
     public var data: AppEventLocalization
     public var included: [IncludedItem]?
     public var links: DocumentLinks
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case appEvent(AppEvent)
         case appEventScreenshot(AppEventScreenshot)
         case appEventVideoClip(AppEventVideoClip)

@@ -30,7 +30,7 @@ extension Resources.V1.CiBuildActions {
             return encoder.items
         }
 
-        public enum FieldsCiBuildActions: String, Codable, CaseIterable {
+        public enum FieldsCiBuildActions: String, CaseIterable, Codable, Sendable {
             case actionType
             case artifacts
             case buildRun
@@ -45,18 +45,18 @@ extension Resources.V1.CiBuildActions {
             case testResults
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case buildRun
         }
 
-        public enum FieldsCiIssues: String, Codable, CaseIterable {
+        public enum FieldsCiIssues: String, CaseIterable, Codable, Sendable {
             case category
             case fileSource
             case issueType
             case message
         }
 
-        public enum FieldsCiBuildRuns: String, Codable, CaseIterable {
+        public enum FieldsCiBuildRuns: String, CaseIterable, Codable, Sendable {
             case actions
             case buildRun
             case builds
@@ -80,7 +80,7 @@ extension Resources.V1.CiBuildActions {
             case workflow
         }
 
-        public enum FieldsCiTestResults: String, Codable, CaseIterable {
+        public enum FieldsCiTestResults: String, CaseIterable, Codable, Sendable {
             case className
             case destinationTestResults
             case fileSource
@@ -89,7 +89,7 @@ extension Resources.V1.CiBuildActions {
             case status
         }
 
-        public enum FieldsCiArtifacts: String, Codable, CaseIterable {
+        public enum FieldsCiArtifacts: String, CaseIterable, Codable, Sendable {
             case downloadURL = "downloadUrl"
             case fileName
             case fileSize

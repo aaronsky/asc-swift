@@ -25,7 +25,7 @@ extension Resources.V1.CiTestResults {
             return encoder.items
         }
 
-        public enum FieldsCiTestResults: String, Codable, CaseIterable {
+        public enum FieldsCiTestResults: String, CaseIterable, Codable, Sendable {
             case className
             case destinationTestResults
             case fileSource

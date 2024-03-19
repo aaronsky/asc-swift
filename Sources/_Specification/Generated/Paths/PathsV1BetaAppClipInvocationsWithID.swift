@@ -27,13 +27,13 @@ extension Resources.V1.BetaAppClipInvocations {
             return encoder.items
         }
 
-        public enum FieldsBetaAppClipInvocations: String, Codable, CaseIterable {
+        public enum FieldsBetaAppClipInvocations: String, CaseIterable, Codable, Sendable {
             case betaAppClipInvocationLocalizations
             case buildBundle
             case url
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case betaAppClipInvocationLocalizations
         }
 

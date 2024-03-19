@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiTestResultResponse: Codable, Equatable {
+public struct CiTestResultResponse: Codable, Equatable, Sendable {
     /// CiTestResult
     public var data: CiTestResult
     public var links: DocumentLinks

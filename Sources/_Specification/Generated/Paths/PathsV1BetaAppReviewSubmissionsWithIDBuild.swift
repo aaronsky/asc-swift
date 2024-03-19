@@ -25,7 +25,7 @@ extension Resources.V1.BetaAppReviewSubmissions.WithID {
             return encoder.items
         }
 
-        public enum FieldsBuilds: String, Codable, CaseIterable {
+        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
             case app
             case appEncryptionDeclaration
             case appStoreVersion

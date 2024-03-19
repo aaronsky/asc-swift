@@ -30,19 +30,19 @@ extension Resources.V1.SubscriptionGroups {
             return encoder.items
         }
 
-        public enum FieldsSubscriptionGroups: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionGroups: String, CaseIterable, Codable, Sendable {
             case app
             case referenceName
             case subscriptionGroupLocalizations
             case subscriptions
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case subscriptionGroupLocalizations
             case subscriptions
         }
 
-        public enum FieldsSubscriptions: String, Codable, CaseIterable {
+        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
             case appStoreReviewScreenshot
             case familySharable
             case group
@@ -62,7 +62,7 @@ extension Resources.V1.SubscriptionGroups {
             case subscriptionPeriod
         }
 
-        public enum FieldsSubscriptionGroupLocalizations: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionGroupLocalizations: String, CaseIterable, Codable, Sendable {
             case customAppName
             case locale
             case name

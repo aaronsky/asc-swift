@@ -25,7 +25,7 @@ extension Resources.V1.Builds.WithID {
             return encoder.items
         }
 
-        public enum FieldsBetaAppReviewSubmissions: String, Codable, CaseIterable {
+        public enum FieldsBetaAppReviewSubmissions: String, CaseIterable, Codable, Sendable {
             case betaReviewState
             case build
             case submittedDate

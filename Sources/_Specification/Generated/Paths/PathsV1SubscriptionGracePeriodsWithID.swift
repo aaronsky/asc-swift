@@ -25,7 +25,7 @@ extension Resources.V1.SubscriptionGracePeriods {
             return encoder.items
         }
 
-        public enum FieldsSubscriptionGracePeriods: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionGracePeriods: String, CaseIterable, Codable, Sendable {
             case duration
             case optIn
             case renewalType

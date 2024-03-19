@@ -31,7 +31,7 @@ extension Resources.V1.CiProducts {
             return encoder.items
         }
 
-        public enum FieldsCiProducts: String, Codable, CaseIterable {
+        public enum FieldsCiProducts: String, CaseIterable, Codable, Sendable {
             case additionalRepositories
             case app
             case buildRuns
@@ -43,13 +43,13 @@ extension Resources.V1.CiProducts {
             case workflows
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case bundleID = "bundleId"
             case primaryRepositories
         }
 
-        public enum FieldsCiBuildRuns: String, Codable, CaseIterable {
+        public enum FieldsCiBuildRuns: String, CaseIterable, Codable, Sendable {
             case actions
             case buildRun
             case builds
@@ -73,7 +73,7 @@ extension Resources.V1.CiProducts {
             case workflow
         }
 
-        public enum FieldsCiWorkflows: String, Codable, CaseIterable {
+        public enum FieldsCiWorkflows: String, CaseIterable, Codable, Sendable {
             case actions
             case branchStartCondition
             case buildRuns
@@ -96,7 +96,7 @@ extension Resources.V1.CiProducts {
             case xcodeVersion
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability
@@ -146,7 +146,7 @@ extension Resources.V1.CiProducts {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
-        public enum FieldsScmRepositories: String, Codable, CaseIterable {
+        public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
             case defaultBranch
             case gitReferences
             case httpCloneURL = "httpCloneUrl"

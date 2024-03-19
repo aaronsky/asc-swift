@@ -5,27 +5,27 @@
 
 import Foundation
 
-public struct AppClipDomainStatus: Codable, Equatable, Identifiable {
+public struct AppClipDomainStatus: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case appClipDomainStatuses
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var domains: [Domain]?
         public var lastUpdatedDate: Date?
 
-        public struct Domain: Codable, Equatable {
+        public struct Domain: Codable, Equatable, Sendable {
             public var domain: String?
             public var isValid: Bool?
             public var lastUpdatedDate: Date?
             public var errorCode: ErrorCode?
 
-            public enum ErrorCode: String, Codable, CaseIterable {
+            public enum ErrorCode: String, CaseIterable, Codable, Sendable {
                 case badHTTPResponse = "BAD_HTTP_RESPONSE"
                 case badJSONContent = "BAD_JSON_CONTENT"
                 case badPkcs7Signature = "BAD_PKCS7_SIGNATURE"

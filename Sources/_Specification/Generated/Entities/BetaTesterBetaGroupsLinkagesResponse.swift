@@ -5,16 +5,16 @@
 
 import Foundation
 
-public struct BetaTesterBetaGroupsLinkagesResponse: Codable, Equatable {
+public struct BetaTesterBetaGroupsLinkagesResponse: Codable, Equatable, Sendable {
     public var data: [Datum]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public struct Datum: Codable, Equatable, Identifiable {
+    public struct Datum: Codable, Equatable, Identifiable, Sendable {
         public var type: `Type`
         public var id: String
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case betaGroups
         }
 

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct SubscriptionGroupSubmissionResponse: Codable, Equatable {
+public struct SubscriptionGroupSubmissionResponse: Codable, Equatable, Sendable {
     /// SubscriptionGroupSubmission
     public var data: SubscriptionGroupSubmission
     public var links: DocumentLinks

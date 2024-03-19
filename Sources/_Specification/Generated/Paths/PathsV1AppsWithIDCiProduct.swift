@@ -30,7 +30,7 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FieldsCiProducts: String, Codable, CaseIterable {
+        public enum FieldsCiProducts: String, CaseIterable, Codable, Sendable {
             case additionalRepositories
             case app
             case buildRuns
@@ -42,7 +42,7 @@ extension Resources.V1.Apps.WithID {
             case workflows
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability
@@ -92,7 +92,7 @@ extension Resources.V1.Apps.WithID {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
-        public enum FieldsScmRepositories: String, Codable, CaseIterable {
+        public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
             case defaultBranch
             case gitReferences
             case httpCloneURL = "httpCloneUrl"
@@ -104,7 +104,7 @@ extension Resources.V1.Apps.WithID {
             case sshCloneURL = "sshCloneUrl"
         }
 
-        public enum FieldsBundleIDs: String, Codable, CaseIterable {
+        public enum FieldsBundleIDs: String, CaseIterable, Codable, Sendable {
             case app
             case bundleIDCapabilities = "bundleIdCapabilities"
             case identifier
@@ -114,7 +114,7 @@ extension Resources.V1.Apps.WithID {
             case seedID = "seedId"
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case bundleID = "bundleId"
             case primaryRepositories

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CustomerReviewResponse: Codable, Equatable {
+public struct CustomerReviewResponse: Codable, Equatable, Sendable {
     /// CustomerReview
     public var data: CustomerReview
     public var included: [CustomerReviewResponseV1]?

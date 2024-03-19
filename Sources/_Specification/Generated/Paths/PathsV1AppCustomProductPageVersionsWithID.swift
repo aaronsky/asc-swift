@@ -28,19 +28,19 @@ extension Resources.V1.AppCustomProductPageVersions {
             return encoder.items
         }
 
-        public enum FieldsAppCustomProductPageVersions: String, Codable, CaseIterable {
+        public enum FieldsAppCustomProductPageVersions: String, CaseIterable, Codable, Sendable {
             case appCustomProductPage
             case appCustomProductPageLocalizations
             case state
             case version
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appCustomProductPage
             case appCustomProductPageLocalizations
         }
 
-        public enum FieldsAppCustomProductPageLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppCustomProductPageLocalizations: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageVersion
             case appPreviewSets
             case appScreenshotSets

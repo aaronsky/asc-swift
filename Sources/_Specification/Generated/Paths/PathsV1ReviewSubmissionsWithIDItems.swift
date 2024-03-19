@@ -31,7 +31,7 @@ extension Resources.V1.ReviewSubmissions.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppStoreVersionExperiments: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionExperiments: String, CaseIterable, Codable, Sendable {
             case app
             case appStoreVersion
             case appStoreVersionExperimentTreatments
@@ -47,7 +47,7 @@ extension Resources.V1.ReviewSubmissions.WithID {
             case trafficProportion
         }
 
-        public enum FieldsReviewSubmissionItems: String, Codable, CaseIterable {
+        public enum FieldsReviewSubmissionItems: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageVersion
             case appEvent
             case appStoreVersion
@@ -59,7 +59,7 @@ extension Resources.V1.ReviewSubmissions.WithID {
             case state
         }
 
-        public enum FieldsAppStoreVersions: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
             case ageRatingDeclaration
             case alternativeDistributionPackage
             case app
@@ -85,14 +85,14 @@ extension Resources.V1.ReviewSubmissions.WithID {
             case versionString
         }
 
-        public enum FieldsAppCustomProductPageVersions: String, Codable, CaseIterable {
+        public enum FieldsAppCustomProductPageVersions: String, CaseIterable, Codable, Sendable {
             case appCustomProductPage
             case appCustomProductPageLocalizations
             case state
             case version
         }
 
-        public enum FieldsAppEvents: String, Codable, CaseIterable {
+        public enum FieldsAppEvents: String, CaseIterable, Codable, Sendable {
             case app
             case archivedTerritorySchedules
             case badge
@@ -107,7 +107,7 @@ extension Resources.V1.ReviewSubmissions.WithID {
             case territorySchedules
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageVersion
             case appEvent
             case appStoreVersion

@@ -27,19 +27,19 @@ extension Resources.V1.GameCenterLeaderboardSetLocalizations {
             return encoder.items
         }
 
-        public enum FieldsGameCenterLeaderboardSetLocalizations: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardSetLocalizations: String, CaseIterable, Codable, Sendable {
             case gameCenterLeaderboardSet
             case gameCenterLeaderboardSetImage
             case locale
             case name
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case gameCenterLeaderboardSet
             case gameCenterLeaderboardSetImage
         }
 
-        public enum FieldsGameCenterLeaderboardSetImages: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardSetImages: String, CaseIterable, Codable, Sendable {
             case assetDeliveryState
             case fileName
             case fileSize

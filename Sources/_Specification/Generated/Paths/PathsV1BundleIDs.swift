@@ -38,12 +38,12 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FilterPlatform: String, Codable, CaseIterable {
+        public enum FilterPlatform: String, CaseIterable, Codable, Sendable {
             case ios = "IOS"
             case macOs = "MAC_OS"
         }
 
-        public enum Sort: String, Codable, CaseIterable {
+        public enum Sort: String, CaseIterable, Codable, Sendable {
             case id
             case minusid = "-id"
             case identifier
@@ -56,7 +56,7 @@ extension Resources.V1 {
             case minusseedID = "-seedId"
         }
 
-        public enum FieldsBundleIDs: String, Codable, CaseIterable {
+        public enum FieldsBundleIDs: String, CaseIterable, Codable, Sendable {
             case app
             case bundleIDCapabilities = "bundleIdCapabilities"
             case identifier
@@ -66,19 +66,19 @@ extension Resources.V1 {
             case seedID = "seedId"
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case bundleIDCapabilities = "bundleIdCapabilities"
             case profiles
         }
 
-        public enum FieldsBundleIDCapabilities: String, Codable, CaseIterable {
+        public enum FieldsBundleIDCapabilities: String, CaseIterable, Codable, Sendable {
             case bundleID = "bundleId"
             case capabilityType
             case settings
         }
 
-        public enum FieldsProfiles: String, Codable, CaseIterable {
+        public enum FieldsProfiles: String, CaseIterable, Codable, Sendable {
             case bundleID = "bundleId"
             case certificates
             case createdDate
@@ -92,7 +92,7 @@ extension Resources.V1 {
             case uuid
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability

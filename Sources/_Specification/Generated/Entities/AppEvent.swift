@@ -5,18 +5,18 @@
 
 import Foundation
 
-public struct AppEvent: Codable, Equatable, Identifiable {
+public struct AppEvent: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var relationships: Relationships?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case appEvents
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var referenceName: String?
         public var badge: Badge?
         public var eventState: EventState?
@@ -28,7 +28,7 @@ public struct AppEvent: Codable, Equatable, Identifiable {
         public var territorySchedules: [TerritorySchedule]?
         public var archivedTerritorySchedules: [ArchivedTerritorySchedule]?
 
-        public enum Badge: String, Codable, CaseIterable {
+        public enum Badge: String, CaseIterable, Codable, Sendable {
             case liveEvent = "LIVE_EVENT"
             case premiere = "PREMIERE"
             case challenge = "CHALLENGE"
@@ -38,7 +38,7 @@ public struct AppEvent: Codable, Equatable, Identifiable {
             case specialEvent = "SPECIAL_EVENT"
         }
 
-        public enum EventState: String, Codable, CaseIterable {
+        public enum EventState: String, CaseIterable, Codable, Sendable {
             case draft = "DRAFT"
             case readyForReview = "READY_FOR_REVIEW"
             case waitingForReview = "WAITING_FOR_REVIEW"
@@ -51,7 +51,7 @@ public struct AppEvent: Codable, Equatable, Identifiable {
             case archived = "ARCHIVED"
         }
 
-        public enum PurchaseRequirement: String, Codable, CaseIterable {
+        public enum PurchaseRequirement: String, CaseIterable, Codable, Sendable {
             case noCostAssociated = "NO_COST_ASSOCIATED"
             case inAppPurchase = "IN_APP_PURCHASE"
             case subscription = "SUBSCRIPTION"
@@ -59,19 +59,19 @@ public struct AppEvent: Codable, Equatable, Identifiable {
             case inAppPurchaseOrSubscription = "IN_APP_PURCHASE_OR_SUBSCRIPTION"
         }
 
-        public enum Priority: String, Codable, CaseIterable {
+        public enum Priority: String, CaseIterable, Codable, Sendable {
             case high = "HIGH"
             case normal = "NORMAL"
         }
 
-        public enum Purpose: String, Codable, CaseIterable {
+        public enum Purpose: String, CaseIterable, Codable, Sendable {
             case appropriateForAllUsers = "APPROPRIATE_FOR_ALL_USERS"
             case attractNewUsers = "ATTRACT_NEW_USERS"
             case keepActiveUsersInformed = "KEEP_ACTIVE_USERS_INFORMED"
             case bringBackLapsedUsers = "BRING_BACK_LAPSED_USERS"
         }
 
-        public struct TerritorySchedule: Codable, Equatable {
+        public struct TerritorySchedule: Codable, Equatable, Sendable {
             public var territories: [String]?
             public var publishStart: Date?
             public var eventStart: Date?
@@ -85,7 +85,7 @@ public struct AppEvent: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct ArchivedTerritorySchedule: Codable, Equatable {
+        public struct ArchivedTerritorySchedule: Codable, Equatable, Sendable {
             public var territories: [String]?
             public var publishStart: Date?
             public var eventStart: Date?
@@ -113,15 +113,15 @@ public struct AppEvent: Codable, Equatable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var localizations: Localizations?
 
-        public struct Localizations: Codable, Equatable {
+        public struct Localizations: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -136,11 +136,11 @@ public struct AppEvent: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appEventLocalizations
                 }
 

@@ -26,7 +26,7 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FieldsTerritories: String, Codable, CaseIterable {
+        public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
             case currency
         }
     }

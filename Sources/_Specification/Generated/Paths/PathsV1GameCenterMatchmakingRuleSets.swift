@@ -33,7 +33,7 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FieldsGameCenterMatchmakingRuleSets: String, Codable, CaseIterable {
+        public enum FieldsGameCenterMatchmakingRuleSets: String, CaseIterable, Codable, Sendable {
             case matchmakingQueues
             case maxPlayers
             case minPlayers
@@ -43,27 +43,27 @@ extension Resources.V1 {
             case teams
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case matchmakingQueues
             case rules
             case teams
         }
 
-        public enum FieldsGameCenterMatchmakingQueues: String, Codable, CaseIterable {
+        public enum FieldsGameCenterMatchmakingQueues: String, CaseIterable, Codable, Sendable {
             case classicMatchmakingBundleIDs = "classicMatchmakingBundleIds"
             case experimentRuleSet
             case referenceName
             case ruleSet
         }
 
-        public enum FieldsGameCenterMatchmakingTeams: String, Codable, CaseIterable {
+        public enum FieldsGameCenterMatchmakingTeams: String, CaseIterable, Codable, Sendable {
             case maxPlayers
             case minPlayers
             case referenceName
             case ruleSet
         }
 
-        public enum FieldsGameCenterMatchmakingRules: String, Codable, CaseIterable {
+        public enum FieldsGameCenterMatchmakingRules: String, CaseIterable, Codable, Sendable {
             case description
             case expression
             case referenceName

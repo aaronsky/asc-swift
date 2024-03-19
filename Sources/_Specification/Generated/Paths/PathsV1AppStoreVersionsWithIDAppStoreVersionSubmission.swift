@@ -27,11 +27,11 @@ extension Resources.V1.AppStoreVersions.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppStoreVersionSubmissions: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionSubmissions: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
         }
 
-        public enum FieldsAppStoreVersions: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
             case ageRatingDeclaration
             case alternativeDistributionPackage
             case app
@@ -57,7 +57,7 @@ extension Resources.V1.AppStoreVersions.WithID {
             case versionString
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
         }
     }

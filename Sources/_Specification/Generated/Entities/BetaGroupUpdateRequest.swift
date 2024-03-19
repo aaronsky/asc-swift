@@ -5,19 +5,19 @@
 
 import Foundation
 
-public struct BetaGroupUpdateRequest: Codable, Equatable {
+public struct BetaGroupUpdateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable, Sendable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case betaGroups
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var name: String?
             public var isPublicLinkEnabled: Bool?
             public var isPublicLinkLimitEnabled: Bool?

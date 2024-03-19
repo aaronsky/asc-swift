@@ -32,7 +32,7 @@ extension Resources.V1.SubscriptionOfferCodes {
             return encoder.items
         }
 
-        public enum FieldsSubscriptionOfferCodes: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionOfferCodes: String, CaseIterable, Codable, Sendable {
             case active
             case customCodes
             case customerEligibilities
@@ -47,14 +47,14 @@ extension Resources.V1.SubscriptionOfferCodes {
             case totalNumberOfCodes
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case customCodes
             case oneTimeUseCodes
             case prices
             case subscription
         }
 
-        public enum FieldsSubscriptionOfferCodeCustomCodes: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionOfferCodeCustomCodes: String, CaseIterable, Codable, Sendable {
             case active
             case createdDate
             case customCode
@@ -63,7 +63,7 @@ extension Resources.V1.SubscriptionOfferCodes {
             case offerCode
         }
 
-        public enum FieldsSubscriptionOfferCodeOneTimeUseCodes: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionOfferCodeOneTimeUseCodes: String, CaseIterable, Codable, Sendable {
             case active
             case createdDate
             case expirationDate
@@ -72,7 +72,7 @@ extension Resources.V1.SubscriptionOfferCodes {
             case values
         }
 
-        public enum FieldsSubscriptionOfferCodePrices: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionOfferCodePrices: String, CaseIterable, Codable, Sendable {
             case subscriptionPricePoint
             case territory
         }

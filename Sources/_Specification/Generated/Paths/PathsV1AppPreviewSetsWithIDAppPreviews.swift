@@ -28,7 +28,7 @@ extension Resources.V1.AppPreviewSets.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppPreviews: String, Codable, CaseIterable {
+        public enum FieldsAppPreviews: String, CaseIterable, Codable, Sendable {
             case appPreviewSet
             case assetDeliveryState
             case fileName
@@ -42,7 +42,7 @@ extension Resources.V1.AppPreviewSets.WithID {
             case videoURL = "videoUrl"
         }
 
-        public enum FieldsAppPreviewSets: String, Codable, CaseIterable {
+        public enum FieldsAppPreviewSets: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageLocalization
             case appPreviews
             case appStoreVersionExperimentTreatmentLocalization
@@ -50,7 +50,7 @@ extension Resources.V1.AppPreviewSets.WithID {
             case previewType
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appPreviewSet
         }
     }

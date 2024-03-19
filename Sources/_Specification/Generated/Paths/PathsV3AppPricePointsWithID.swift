@@ -26,7 +26,7 @@ extension Resources.V3.AppPricePoints {
             return encoder.items
         }
 
-        public enum FieldsAppPricePoints: String, Codable, CaseIterable {
+        public enum FieldsAppPricePoints: String, CaseIterable, Codable, Sendable {
             case app
             case customerPrice
             case equalizations
@@ -34,7 +34,7 @@ extension Resources.V3.AppPricePoints {
             case territory
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case territory
         }

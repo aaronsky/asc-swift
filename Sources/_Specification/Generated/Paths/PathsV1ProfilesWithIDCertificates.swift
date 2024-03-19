@@ -26,7 +26,7 @@ extension Resources.V1.Profiles.WithID {
             return encoder.items
         }
 
-        public enum FieldsCertificates: String, Codable, CaseIterable {
+        public enum FieldsCertificates: String, CaseIterable, Codable, Sendable {
             case certificateContent
             case certificateType
             case csrContent

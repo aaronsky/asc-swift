@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BetaAppReviewDetailsResponse: Codable, Equatable {
+public struct BetaAppReviewDetailsResponse: Codable, Equatable, Sendable {
     public var data: [BetaAppReviewDetail]
     public var included: [App]?
     public var links: PagedDocumentLinks

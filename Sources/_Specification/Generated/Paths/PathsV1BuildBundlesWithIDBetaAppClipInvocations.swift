@@ -29,19 +29,19 @@ extension Resources.V1.BuildBundles.WithID {
             return encoder.items
         }
 
-        public enum FieldsBetaAppClipInvocations: String, Codable, CaseIterable {
+        public enum FieldsBetaAppClipInvocations: String, CaseIterable, Codable, Sendable {
             case betaAppClipInvocationLocalizations
             case buildBundle
             case url
         }
 
-        public enum FieldsBetaAppClipInvocationLocalizations: String, Codable, CaseIterable {
+        public enum FieldsBetaAppClipInvocationLocalizations: String, CaseIterable, Codable, Sendable {
             case betaAppClipInvocation
             case locale
             case title
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case betaAppClipInvocationLocalizations
         }
     }

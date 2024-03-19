@@ -31,7 +31,7 @@ extension Resources.V1.Subscriptions.WithID {
             return encoder.items
         }
 
-        public enum FieldsSubscriptionPromotionalOffers: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionPromotionalOffers: String, CaseIterable, Codable, Sendable {
             case duration
             case name
             case numberOfPeriods
@@ -41,7 +41,7 @@ extension Resources.V1.Subscriptions.WithID {
             case subscription
         }
 
-        public enum FieldsSubscriptions: String, Codable, CaseIterable {
+        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
             case appStoreReviewScreenshot
             case familySharable
             case group
@@ -61,12 +61,12 @@ extension Resources.V1.Subscriptions.WithID {
             case subscriptionPeriod
         }
 
-        public enum FieldsSubscriptionPromotionalOfferPrices: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionPromotionalOfferPrices: String, CaseIterable, Codable, Sendable {
             case subscriptionPricePoint
             case territory
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case prices
             case subscription
         }

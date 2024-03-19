@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiBranchStartCondition: Codable, Equatable {
+public struct CiBranchStartCondition: Codable, Equatable, Sendable {
     public var source: CiBranchPatterns?
     public var filesAndFoldersRule: CiFilesAndFoldersRule?
     public var isAutoCancel: Bool?

@@ -5,15 +5,15 @@
 
 import Foundation
 
-public struct AppClipDefaultExperienceReleaseWithAppStoreVersionLinkageResponse: Codable, Equatable {
+public struct AppClipDefaultExperienceReleaseWithAppStoreVersionLinkageResponse: Codable, Equatable, Sendable {
     public var data: Data
     public var links: DocumentLinks
 
-    public struct Data: Codable, Equatable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable, Sendable {
         public var type: `Type`
         public var id: String
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case appStoreVersions
         }
 

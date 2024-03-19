@@ -5,17 +5,17 @@
 
 import Foundation
 
-public struct MarketplaceDomain: Codable, Equatable, Identifiable {
+public struct MarketplaceDomain: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case marketplaceDomains
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var domain: String?
         public var referenceName: String?
         public var createdDate: Date?

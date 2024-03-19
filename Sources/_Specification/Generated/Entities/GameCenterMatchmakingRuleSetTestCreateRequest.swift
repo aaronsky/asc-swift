@@ -5,30 +5,30 @@
 
 import Foundation
 
-public struct GameCenterMatchmakingRuleSetTestCreateRequest: Codable, Equatable {
+public struct GameCenterMatchmakingRuleSetTestCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
     public var included: [IncludedItem]?
 
-    public struct Data: Codable, Equatable {
+    public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var relationships: Relationships
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case gameCenterMatchmakingRuleSetTests
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var matchmakingRuleSet: MatchmakingRuleSet
             public var matchmakingRequests: MatchmakingRequests
 
-            public struct MatchmakingRuleSet: Codable, Equatable {
+            public struct MatchmakingRuleSet: Codable, Equatable, Sendable {
                 public var data: Data
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case gameCenterMatchmakingRuleSets
                     }
 
@@ -43,14 +43,14 @@ public struct GameCenterMatchmakingRuleSetTestCreateRequest: Codable, Equatable 
                 }
             }
 
-            public struct MatchmakingRequests: Codable, Equatable {
+            public struct MatchmakingRequests: Codable, Equatable, Sendable {
                 public var data: [Datum]
 
-                public struct Datum: Codable, Equatable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case gameCenterMatchmakingTestRequests
                     }
 
@@ -77,7 +77,7 @@ public struct GameCenterMatchmakingRuleSetTestCreateRequest: Codable, Equatable 
         }
     }
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case gameCenterMatchmakingTestPlayerPropertyInlineCreate(GameCenterMatchmakingTestPlayerPropertyInlineCreate)
         case gameCenterMatchmakingTestRequestInlineCreate(GameCenterMatchmakingTestRequestInlineCreate)
 

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct DiagnosticLogCallStackNode: Codable, Equatable {
+public struct DiagnosticLogCallStackNode: Codable, Equatable, Sendable {
     public var sampleCount: Int?
     public var isBlameFrame: Bool?
     public var symbolName: String?

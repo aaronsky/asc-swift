@@ -5,20 +5,20 @@
 
 import Foundation
 
-public struct GameCenterDetailUpdateRequest: Codable, Equatable {
+public struct GameCenterDetailUpdateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable, Sendable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
         public var relationships: Relationships?
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case gameCenterDetails
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var isChallengeEnabled: Bool?
 
             public init(isChallengeEnabled: Bool? = nil) {
@@ -30,19 +30,19 @@ public struct GameCenterDetailUpdateRequest: Codable, Equatable {
             }
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var gameCenterGroup: GameCenterGroup?
             public var defaultLeaderboard: DefaultLeaderboard?
             public var defaultGroupLeaderboard: DefaultGroupLeaderboard?
 
-            public struct GameCenterGroup: Codable, Equatable {
+            public struct GameCenterGroup: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case gameCenterGroups
                     }
 
@@ -57,14 +57,14 @@ public struct GameCenterDetailUpdateRequest: Codable, Equatable {
                 }
             }
 
-            public struct DefaultLeaderboard: Codable, Equatable {
+            public struct DefaultLeaderboard: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case gameCenterLeaderboards
                     }
 
@@ -79,14 +79,14 @@ public struct GameCenterDetailUpdateRequest: Codable, Equatable {
                 }
             }
 
-            public struct DefaultGroupLeaderboard: Codable, Equatable {
+            public struct DefaultGroupLeaderboard: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case gameCenterLeaderboards
                     }
 

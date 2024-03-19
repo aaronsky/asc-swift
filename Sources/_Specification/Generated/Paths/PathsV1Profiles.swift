@@ -37,12 +37,12 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FilterProfileState: String, Codable, CaseIterable {
+        public enum FilterProfileState: String, CaseIterable, Codable, Sendable {
             case active = "ACTIVE"
             case invalid = "INVALID"
         }
 
-        public enum FilterProfileType: String, Codable, CaseIterable {
+        public enum FilterProfileType: String, CaseIterable, Codable, Sendable {
             case iosAppDevelopment = "IOS_APP_DEVELOPMENT"
             case iosAppStore = "IOS_APP_STORE"
             case iosAppAdhoc = "IOS_APP_ADHOC"
@@ -59,7 +59,7 @@ extension Resources.V1 {
             case macCatalystAppDirect = "MAC_CATALYST_APP_DIRECT"
         }
 
-        public enum Sort: String, Codable, CaseIterable {
+        public enum Sort: String, CaseIterable, Codable, Sendable {
             case id
             case minusid = "-id"
             case name
@@ -70,7 +70,7 @@ extension Resources.V1 {
             case minusprofileType = "-profileType"
         }
 
-        public enum FieldsProfiles: String, Codable, CaseIterable {
+        public enum FieldsProfiles: String, CaseIterable, Codable, Sendable {
             case bundleID = "bundleId"
             case certificates
             case createdDate
@@ -84,13 +84,13 @@ extension Resources.V1 {
             case uuid
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case bundleID = "bundleId"
             case certificates
             case devices
         }
 
-        public enum FieldsCertificates: String, Codable, CaseIterable {
+        public enum FieldsCertificates: String, CaseIterable, Codable, Sendable {
             case certificateContent
             case certificateType
             case csrContent
@@ -101,7 +101,7 @@ extension Resources.V1 {
             case serialNumber
         }
 
-        public enum FieldsDevices: String, Codable, CaseIterable {
+        public enum FieldsDevices: String, CaseIterable, Codable, Sendable {
             case addedDate
             case deviceClass
             case model
@@ -111,7 +111,7 @@ extension Resources.V1 {
             case udid
         }
 
-        public enum FieldsBundleIDs: String, Codable, CaseIterable {
+        public enum FieldsBundleIDs: String, CaseIterable, Codable, Sendable {
             case app
             case bundleIDCapabilities = "bundleIdCapabilities"
             case identifier

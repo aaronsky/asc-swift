@@ -5,18 +5,18 @@
 
 import Foundation
 
-public struct GameCenterMatchmakingQueue: Codable, Equatable, Identifiable {
+public struct GameCenterMatchmakingQueue: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var relationships: Relationships?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case gameCenterMatchmakingQueues
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var referenceName: String?
         public var classicMatchmakingBundleIDs: [String]?
 
@@ -31,15 +31,15 @@ public struct GameCenterMatchmakingQueue: Codable, Equatable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var ruleSet: RuleSet?
         public var experimentRuleSet: ExperimentRuleSet?
 
-        public struct RuleSet: Codable, Equatable {
+        public struct RuleSet: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -54,11 +54,11 @@ public struct GameCenterMatchmakingQueue: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case gameCenterMatchmakingRuleSets
                 }
 
@@ -74,11 +74,11 @@ public struct GameCenterMatchmakingQueue: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct ExperimentRuleSet: Codable, Equatable {
+        public struct ExperimentRuleSet: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -93,11 +93,11 @@ public struct GameCenterMatchmakingQueue: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case gameCenterMatchmakingRuleSets
                 }
 

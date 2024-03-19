@@ -5,17 +5,17 @@
 
 import Foundation
 
-public struct MarketplaceWebhook: Codable, Equatable, Identifiable {
+public struct MarketplaceWebhook: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case marketplaceWebhooks
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var endpointURL: URL?
 
         public init(endpointURL: URL? = nil) {

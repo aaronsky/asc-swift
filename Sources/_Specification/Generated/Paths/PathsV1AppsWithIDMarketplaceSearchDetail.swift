@@ -25,7 +25,7 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FieldsMarketplaceSearchDetails: String, Codable, CaseIterable {
+        public enum FieldsMarketplaceSearchDetails: String, CaseIterable, Codable, Sendable {
             case app
             case catalogURL = "catalogUrl"
         }

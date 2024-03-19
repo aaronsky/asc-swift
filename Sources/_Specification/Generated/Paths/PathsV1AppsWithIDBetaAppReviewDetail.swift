@@ -25,7 +25,7 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FieldsBetaAppReviewDetails: String, Codable, CaseIterable {
+        public enum FieldsBetaAppReviewDetails: String, CaseIterable, Codable, Sendable {
             case app
             case contactEmail
             case contactFirstName

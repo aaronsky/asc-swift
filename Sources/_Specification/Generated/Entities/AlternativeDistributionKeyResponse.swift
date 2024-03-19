@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AlternativeDistributionKeyResponse: Codable, Equatable {
+public struct AlternativeDistributionKeyResponse: Codable, Equatable, Sendable {
     /// AlternativeDistributionKey
     public var data: AlternativeDistributionKey
     public var links: DocumentLinks

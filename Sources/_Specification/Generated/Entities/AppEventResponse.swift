@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppEventResponse: Codable, Equatable {
+public struct AppEventResponse: Codable, Equatable, Sendable {
     /// AppEvent
     public var data: AppEvent
     public var included: [AppEventLocalization]?

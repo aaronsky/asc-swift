@@ -5,17 +5,17 @@
 
 import Foundation
 
-public struct BuildIcon: Codable, Equatable, Identifiable {
+public struct BuildIcon: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case buildIcons
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var name: String?
         public var iconAsset: ImageAsset?
         public var iconType: IconAssetType?

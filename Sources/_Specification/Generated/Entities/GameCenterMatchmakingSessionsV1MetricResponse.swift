@@ -5,21 +5,21 @@
 
 import Foundation
 
-public struct GameCenterMatchmakingSessionsV1MetricResponse: Codable, Equatable {
+public struct GameCenterMatchmakingSessionsV1MetricResponse: Codable, Equatable, Sendable {
     public var data: [Datum]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public struct Datum: Codable, Equatable {
+    public struct Datum: Codable, Equatable, Sendable {
         public var dataPoints: DataPoints?
         public var granularity: Granularity?
 
-        public struct DataPoints: Codable, Equatable {
+        public struct DataPoints: Codable, Equatable, Sendable {
             public var start: Date?
             public var end: Date?
             public var values: Values?
 
-            public struct Values: Codable, Equatable {
+            public struct Values: Codable, Equatable, Sendable {
                 public var count: Int?
                 public var averagePlayerCount: Double?
                 public var p50PlayerCount: Double?
@@ -40,7 +40,7 @@ public struct GameCenterMatchmakingSessionsV1MetricResponse: Codable, Equatable 
             }
         }
 
-        public enum Granularity: String, Codable, CaseIterable {
+        public enum Granularity: String, CaseIterable, Codable, Sendable {
             case p1d = "P1D"
             case pt1h = "PT1H"
             case pt15m = "PT15M"

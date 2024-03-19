@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct CiProductResponse: Codable, Equatable {
+public struct CiProductResponse: Codable, Equatable, Sendable {
     /// CiProduct
     public var data: CiProduct
     public var included: [IncludedItem]?
     public var links: DocumentLinks
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case app(App)
         case bundleID(BundleID)
         case scmRepository(ScmRepository)

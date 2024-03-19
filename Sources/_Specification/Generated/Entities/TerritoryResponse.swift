@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct TerritoryResponse: Codable, Equatable {
+public struct TerritoryResponse: Codable, Equatable, Sendable {
     /// Territory
     public var data: Territory
     public var links: DocumentLinks

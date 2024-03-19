@@ -35,7 +35,7 @@ extension Resources.V1.Subscriptions.WithID {
             return encoder.items
         }
 
-        public enum FieldsSubscriptionOfferCodeCustomCodes: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionOfferCodeCustomCodes: String, CaseIterable, Codable, Sendable {
             case active
             case createdDate
             case customCode
@@ -44,7 +44,7 @@ extension Resources.V1.Subscriptions.WithID {
             case offerCode
         }
 
-        public enum FieldsSubscriptionOfferCodes: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionOfferCodes: String, CaseIterable, Codable, Sendable {
             case active
             case customCodes
             case customerEligibilities
@@ -59,7 +59,7 @@ extension Resources.V1.Subscriptions.WithID {
             case totalNumberOfCodes
         }
 
-        public enum FieldsSubscriptionOfferCodeOneTimeUseCodes: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionOfferCodeOneTimeUseCodes: String, CaseIterable, Codable, Sendable {
             case active
             case createdDate
             case expirationDate
@@ -68,7 +68,7 @@ extension Resources.V1.Subscriptions.WithID {
             case values
         }
 
-        public enum FieldsSubscriptions: String, Codable, CaseIterable {
+        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
             case appStoreReviewScreenshot
             case familySharable
             case group
@@ -88,12 +88,12 @@ extension Resources.V1.Subscriptions.WithID {
             case subscriptionPeriod
         }
 
-        public enum FieldsSubscriptionOfferCodePrices: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionOfferCodePrices: String, CaseIterable, Codable, Sendable {
             case subscriptionPricePoint
             case territory
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case customCodes
             case oneTimeUseCodes
             case prices

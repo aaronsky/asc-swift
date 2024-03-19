@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct UserInvitationsResponse: Codable, Equatable {
+public struct UserInvitationsResponse: Codable, Equatable, Sendable {
     public var data: [UserInvitation]
     public var included: [App]?
     public var links: PagedDocumentLinks

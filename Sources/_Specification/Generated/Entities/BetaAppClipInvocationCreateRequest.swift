@@ -5,20 +5,20 @@
 
 import Foundation
 
-public struct BetaAppClipInvocationCreateRequest: Codable, Equatable {
+public struct BetaAppClipInvocationCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
     public var included: [BetaAppClipInvocationLocalizationInlineCreate]?
 
-    public struct Data: Codable, Equatable {
+    public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case betaAppClipInvocations
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var url: URL
 
             public init(url: URL) {
@@ -26,18 +26,18 @@ public struct BetaAppClipInvocationCreateRequest: Codable, Equatable {
             }
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var buildBundle: BuildBundle
             public var betaAppClipInvocationLocalizations: BetaAppClipInvocationLocalizations
 
-            public struct BuildBundle: Codable, Equatable {
+            public struct BuildBundle: Codable, Equatable, Sendable {
                 public var data: Data
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case buildBundles
                     }
 
@@ -52,14 +52,14 @@ public struct BetaAppClipInvocationCreateRequest: Codable, Equatable {
                 }
             }
 
-            public struct BetaAppClipInvocationLocalizations: Codable, Equatable {
+            public struct BetaAppClipInvocationLocalizations: Codable, Equatable, Sendable {
                 public var data: [Datum]
 
-                public struct Datum: Codable, Equatable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case betaAppClipInvocationLocalizations
                     }
 

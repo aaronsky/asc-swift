@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppEncryptionDeclarationDocumentResponse: Codable, Equatable {
+public struct AppEncryptionDeclarationDocumentResponse: Codable, Equatable, Sendable {
     /// AppEncryptionDeclarationDocument
     public var data: AppEncryptionDeclarationDocument
     public var links: DocumentLinks

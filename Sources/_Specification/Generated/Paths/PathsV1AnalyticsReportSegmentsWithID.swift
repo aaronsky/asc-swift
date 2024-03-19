@@ -25,7 +25,7 @@ extension Resources.V1.AnalyticsReportSegments {
             return encoder.items
         }
 
-        public enum FieldsAnalyticsReportSegments: String, Codable, CaseIterable {
+        public enum FieldsAnalyticsReportSegments: String, CaseIterable, Codable, Sendable {
             case checksum
             case sizeInBytes
             case url

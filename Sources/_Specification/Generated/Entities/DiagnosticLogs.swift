@@ -5,16 +5,16 @@
 
 import Foundation
 
-public struct DiagnosticLogs: Codable, Equatable {
+public struct DiagnosticLogs: Codable, Equatable, Sendable {
     public var productData: [ProductDatum]?
     public var version: String?
 
-    public struct ProductDatum: Codable, Equatable {
+    public struct ProductDatum: Codable, Equatable, Sendable {
         public var signatureID: String?
         public var diagnosticInsights: [DiagnosticInsight]?
         public var diagnosticLogs: [DiagnosticLog]?
 
-        public struct DiagnosticInsight: Codable, Equatable {
+        public struct DiagnosticInsight: Codable, Equatable, Sendable {
             public var insightsURL: String?
             public var insightsCategory: String?
             public var insightsString: String?
@@ -26,15 +26,15 @@ public struct DiagnosticLogs: Codable, Equatable {
             }
         }
 
-        public struct DiagnosticLog: Codable, Equatable {
+        public struct DiagnosticLog: Codable, Equatable, Sendable {
             public var callStackTree: [CallStackTreeItem]?
             public var diagnosticMetaData: DiagnosticMetaData?
 
-            public struct CallStackTreeItem: Codable, Equatable {
+            public struct CallStackTreeItem: Codable, Equatable, Sendable {
                 public var isCallStackPerThread: Bool?
                 public var callStacks: [CallStack]?
 
-                public struct CallStack: Codable, Equatable {
+                public struct CallStack: Codable, Equatable, Sendable {
                     public var callStackRootFrames: [DiagnosticLogCallStackNode]?
 
                     public init(callStackRootFrames: [DiagnosticLogCallStackNode]? = nil) {
@@ -53,7 +53,7 @@ public struct DiagnosticLogs: Codable, Equatable {
                 }
             }
 
-            public struct DiagnosticMetaData: Codable, Equatable {
+            public struct DiagnosticMetaData: Codable, Equatable, Sendable {
                 public var bundleID: String?
                 public var event: String?
                 public var osVersion: String?

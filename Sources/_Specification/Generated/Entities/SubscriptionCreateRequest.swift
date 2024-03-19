@@ -5,19 +5,19 @@
 
 import Foundation
 
-public struct SubscriptionCreateRequest: Codable, Equatable {
+public struct SubscriptionCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable {
+    public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case subscriptions
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var name: String
             public var productID: String
             public var isFamilySharable: Bool?
@@ -25,7 +25,7 @@ public struct SubscriptionCreateRequest: Codable, Equatable {
             public var reviewNote: String?
             public var groupLevel: Int?
 
-            public enum SubscriptionPeriod: String, Codable, CaseIterable {
+            public enum SubscriptionPeriod: String, CaseIterable, Codable, Sendable {
                 case oneWeek = "ONE_WEEK"
                 case oneMonth = "ONE_MONTH"
                 case twoMonths = "TWO_MONTHS"
@@ -53,17 +53,17 @@ public struct SubscriptionCreateRequest: Codable, Equatable {
             }
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var group: Group
 
-            public struct Group: Codable, Equatable {
+            public struct Group: Codable, Equatable, Sendable {
                 public var data: Data
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case subscriptionGroups
                     }
 

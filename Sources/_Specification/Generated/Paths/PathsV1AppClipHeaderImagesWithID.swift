@@ -26,7 +26,7 @@ extension Resources.V1.AppClipHeaderImages {
             return encoder.items
         }
 
-        public enum FieldsAppClipHeaderImages: String, Codable, CaseIterable {
+        public enum FieldsAppClipHeaderImages: String, CaseIterable, Codable, Sendable {
             case appClipDefaultExperienceLocalization
             case assetDeliveryState
             case fileName
@@ -37,7 +37,7 @@ extension Resources.V1.AppClipHeaderImages {
             case uploaded
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appClipDefaultExperienceLocalization
         }
 

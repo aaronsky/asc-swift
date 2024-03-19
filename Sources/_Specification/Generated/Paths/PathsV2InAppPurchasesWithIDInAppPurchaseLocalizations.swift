@@ -28,7 +28,7 @@ extension Resources.V2.InAppPurchases.WithID {
             return encoder.items
         }
 
-        public enum FieldsInAppPurchaseLocalizations: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchaseLocalizations: String, CaseIterable, Codable, Sendable {
             case description
             case inAppPurchaseV2
             case locale
@@ -36,7 +36,7 @@ extension Resources.V2.InAppPurchases.WithID {
             case state
         }
 
-        public enum FieldsInAppPurchases: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchases: String, CaseIterable, Codable, Sendable {
             case app
             case appStoreReviewScreenshot
             case content
@@ -54,7 +54,7 @@ extension Resources.V2.InAppPurchases.WithID {
             case state
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case inAppPurchaseV2
         }
     }

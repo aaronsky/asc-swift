@@ -25,7 +25,7 @@ extension Resources.V1.Devices {
             return encoder.items
         }
 
-        public enum FieldsDevices: String, Codable, CaseIterable {
+        public enum FieldsDevices: String, CaseIterable, Codable, Sendable {
             case addedDate
             case deviceClass
             case model

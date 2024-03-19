@@ -30,7 +30,7 @@ extension Resources.V1.AppEventLocalizations {
             return encoder.items
         }
 
-        public enum FieldsAppEventLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppEventLocalizations: String, CaseIterable, Codable, Sendable {
             case appEvent
             case appEventScreenshots
             case appEventVideoClips
@@ -40,13 +40,13 @@ extension Resources.V1.AppEventLocalizations {
             case shortDescription
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appEvent
             case appEventScreenshots
             case appEventVideoClips
         }
 
-        public enum FieldsAppEventScreenshots: String, Codable, CaseIterable {
+        public enum FieldsAppEventScreenshots: String, CaseIterable, Codable, Sendable {
             case appEventAssetType
             case appEventLocalization
             case assetDeliveryState
@@ -58,7 +58,7 @@ extension Resources.V1.AppEventLocalizations {
             case uploaded
         }
 
-        public enum FieldsAppEventVideoClips: String, Codable, CaseIterable {
+        public enum FieldsAppEventVideoClips: String, CaseIterable, Codable, Sendable {
             case appEventAssetType
             case appEventLocalization
             case assetDeliveryState

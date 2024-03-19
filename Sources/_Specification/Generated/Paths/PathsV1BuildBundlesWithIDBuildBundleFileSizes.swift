@@ -26,7 +26,7 @@ extension Resources.V1.BuildBundles.WithID {
             return encoder.items
         }
 
-        public enum FieldsBuildBundleFileSizes: String, Codable, CaseIterable {
+        public enum FieldsBuildBundleFileSizes: String, CaseIterable, Codable, Sendable {
             case deviceModel
             case downloadBytes
             case installBytes

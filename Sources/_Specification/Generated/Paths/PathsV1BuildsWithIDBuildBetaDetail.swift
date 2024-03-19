@@ -27,14 +27,14 @@ extension Resources.V1.Builds.WithID {
             return encoder.items
         }
 
-        public enum FieldsBuildBetaDetails: String, Codable, CaseIterable {
+        public enum FieldsBuildBetaDetails: String, CaseIterable, Codable, Sendable {
             case autoNotifyEnabled
             case build
             case externalBuildState
             case internalBuildState
         }
 
-        public enum FieldsBuilds: String, Codable, CaseIterable {
+        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
             case app
             case appEncryptionDeclaration
             case appStoreVersion
@@ -61,7 +61,7 @@ extension Resources.V1.Builds.WithID {
             case version
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case build
         }
     }

@@ -35,7 +35,7 @@ extension Resources.V2.InAppPurchases {
             return encoder.items
         }
 
-        public enum FieldsInAppPurchases: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchases: String, CaseIterable, Codable, Sendable {
             case app
             case appStoreReviewScreenshot
             case content
@@ -53,7 +53,7 @@ extension Resources.V2.InAppPurchases {
             case state
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appStoreReviewScreenshot
             case content
             case iapPriceSchedule
@@ -63,13 +63,13 @@ extension Resources.V2.InAppPurchases {
             case promotedPurchase
         }
 
-        public enum FieldsInAppPurchaseAvailabilities: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchaseAvailabilities: String, CaseIterable, Codable, Sendable {
             case availableInNewTerritories
             case availableTerritories
             case inAppPurchase
         }
 
-        public enum FieldsInAppPurchaseAppStoreReviewScreenshots: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchaseAppStoreReviewScreenshots: String, CaseIterable, Codable, Sendable {
             case assetDeliveryState
             case assetToken
             case assetType
@@ -82,7 +82,7 @@ extension Resources.V2.InAppPurchases {
             case uploaded
         }
 
-        public enum FieldsPromotedPurchases: String, Codable, CaseIterable {
+        public enum FieldsPromotedPurchases: String, CaseIterable, Codable, Sendable {
             case app
             case enabled
             case inAppPurchaseV2
@@ -92,7 +92,7 @@ extension Resources.V2.InAppPurchases {
             case visibleForAllUsers
         }
 
-        public enum FieldsInAppPurchasePricePoints: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchasePricePoints: String, CaseIterable, Codable, Sendable {
             case customerPrice
             case inAppPurchaseV2
             case priceTier
@@ -100,7 +100,7 @@ extension Resources.V2.InAppPurchases {
             case territory
         }
 
-        public enum FieldsInAppPurchaseLocalizations: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchaseLocalizations: String, CaseIterable, Codable, Sendable {
             case description
             case inAppPurchaseV2
             case locale
@@ -108,14 +108,14 @@ extension Resources.V2.InAppPurchases {
             case state
         }
 
-        public enum FieldsInAppPurchasePriceSchedules: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchasePriceSchedules: String, CaseIterable, Codable, Sendable {
             case automaticPrices
             case baseTerritory
             case inAppPurchase
             case manualPrices
         }
 
-        public enum FieldsInAppPurchaseContents: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchaseContents: String, CaseIterable, Codable, Sendable {
             case fileName
             case fileSize
             case inAppPurchaseV2

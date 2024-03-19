@@ -5,19 +5,19 @@
 
 import Foundation
 
-public struct AppCustomProductPageLocalizationUpdateRequest: Codable, Equatable {
+public struct AppCustomProductPageLocalizationUpdateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable, Sendable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageLocalizations
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var promotionalText: String?
 
             public init(promotionalText: String? = nil) {

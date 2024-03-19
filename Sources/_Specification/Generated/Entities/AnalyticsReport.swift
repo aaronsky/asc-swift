@@ -5,21 +5,21 @@
 
 import Foundation
 
-public struct AnalyticsReport: Codable, Equatable, Identifiable {
+public struct AnalyticsReport: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case analyticsReports
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var name: String?
         public var category: Category?
 
-        public enum Category: String, Codable, CaseIterable {
+        public enum Category: String, CaseIterable, Codable, Sendable {
             case appUsage = "APP_USAGE"
             case appStoreEngagement = "APP_STORE_ENGAGEMENT"
             case commerce = "COMMERCE"

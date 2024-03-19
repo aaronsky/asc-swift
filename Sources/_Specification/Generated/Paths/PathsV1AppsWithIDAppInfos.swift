@@ -32,7 +32,7 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FieldsAgeRatingDeclarations: String, Codable, CaseIterable {
+        public enum FieldsAgeRatingDeclarations: String, CaseIterable, Codable, Sendable {
             case ageRatingOverride
             case alcoholTobaccoOrDrugUseOrReferences
             case contests
@@ -53,7 +53,7 @@ extension Resources.V1.Apps.WithID {
             case violenceRealisticProlongedGraphicOrSadistic
         }
 
-        public enum FieldsAppInfos: String, Codable, CaseIterable {
+        public enum FieldsAppInfos: String, CaseIterable, Codable, Sendable {
             case ageRatingDeclaration
             case app
             case appInfoLocalizations
@@ -71,7 +71,7 @@ extension Resources.V1.Apps.WithID {
             case state
         }
 
-        public enum FieldsAppInfoLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppInfoLocalizations: String, CaseIterable, Codable, Sendable {
             case appInfo
             case locale
             case name
@@ -81,13 +81,13 @@ extension Resources.V1.Apps.WithID {
             case subtitle
         }
 
-        public enum FieldsAppCategories: String, Codable, CaseIterable {
+        public enum FieldsAppCategories: String, CaseIterable, Codable, Sendable {
             case parent
             case platforms
             case subcategories
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability
@@ -137,7 +137,7 @@ extension Resources.V1.Apps.WithID {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case ageRatingDeclaration
             case app
             case appInfoLocalizations

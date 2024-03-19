@@ -5,28 +5,28 @@
 
 import Foundation
 
-public struct SubscriptionUpdateRequest: Codable, Equatable {
+public struct SubscriptionUpdateRequest: Codable, Equatable, Sendable {
     public var data: Data
     public var included: [IncludedItem]?
 
-    public struct Data: Codable, Equatable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable, Sendable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
         public var relationships: Relationships?
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case subscriptions
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var name: String?
             public var isFamilySharable: Bool?
             public var subscriptionPeriod: SubscriptionPeriod?
             public var reviewNote: String?
             public var groupLevel: Int?
 
-            public enum SubscriptionPeriod: String, Codable, CaseIterable {
+            public enum SubscriptionPeriod: String, CaseIterable, Codable, Sendable {
                 case oneWeek = "ONE_WEEK"
                 case oneMonth = "ONE_MONTH"
                 case twoMonths = "TWO_MONTHS"
@@ -52,19 +52,19 @@ public struct SubscriptionUpdateRequest: Codable, Equatable {
             }
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var introductoryOffers: IntroductoryOffers?
             public var promotionalOffers: PromotionalOffers?
             public var prices: Prices?
 
-            public struct IntroductoryOffers: Codable, Equatable {
+            public struct IntroductoryOffers: Codable, Equatable, Sendable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Equatable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case subscriptionIntroductoryOffers
                     }
 
@@ -79,14 +79,14 @@ public struct SubscriptionUpdateRequest: Codable, Equatable {
                 }
             }
 
-            public struct PromotionalOffers: Codable, Equatable {
+            public struct PromotionalOffers: Codable, Equatable, Sendable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Equatable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case subscriptionPromotionalOffers
                     }
 
@@ -101,14 +101,14 @@ public struct SubscriptionUpdateRequest: Codable, Equatable {
                 }
             }
 
-            public struct Prices: Codable, Equatable {
+            public struct Prices: Codable, Equatable, Sendable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Equatable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case subscriptionPrices
                     }
 
@@ -138,7 +138,7 @@ public struct SubscriptionUpdateRequest: Codable, Equatable {
         }
     }
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case subscriptionPromotionalOfferInlineCreate(SubscriptionPromotionalOfferInlineCreate)
         case subscriptionPriceInlineCreate(SubscriptionPriceInlineCreate)
         case subscriptionIntroductoryOfferInlineCreate(SubscriptionIntroductoryOfferInlineCreate)

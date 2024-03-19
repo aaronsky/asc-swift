@@ -30,7 +30,7 @@ extension Resources.V2.InAppPurchases.WithID {
             return encoder.items
         }
 
-        public enum FieldsInAppPurchasePricePoints: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchasePricePoints: String, CaseIterable, Codable, Sendable {
             case customerPrice
             case inAppPurchaseV2
             case priceTier
@@ -38,11 +38,11 @@ extension Resources.V2.InAppPurchases.WithID {
             case territory
         }
 
-        public enum FieldsTerritories: String, Codable, CaseIterable {
+        public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
             case currency
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case territory
         }
     }

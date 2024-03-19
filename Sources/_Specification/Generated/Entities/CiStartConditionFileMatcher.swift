@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiStartConditionFileMatcher: Codable, Equatable {
+public struct CiStartConditionFileMatcher: Codable, Equatable, Sendable {
     public var directory: String?
     public var fileExtension: String?
     public var fileName: String?

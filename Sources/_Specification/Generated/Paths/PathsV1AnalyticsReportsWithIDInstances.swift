@@ -28,13 +28,13 @@ extension Resources.V1.AnalyticsReports.WithID {
             return encoder.items
         }
 
-        public enum FilterGranularity: String, Codable, CaseIterable {
+        public enum FilterGranularity: String, CaseIterable, Codable, Sendable {
             case daily = "DAILY"
             case weekly = "WEEKLY"
             case monthly = "MONTHLY"
         }
 
-        public enum FieldsAnalyticsReportInstances: String, Codable, CaseIterable {
+        public enum FieldsAnalyticsReportInstances: String, CaseIterable, Codable, Sendable {
             case granularity
             case processingDate
             case segments

@@ -28,7 +28,7 @@ extension Resources.V1.AnalyticsReportRequests.WithID {
             return encoder.items
         }
 
-        public enum FilterCategory: String, Codable, CaseIterable {
+        public enum FilterCategory: String, CaseIterable, Codable, Sendable {
             case appUsage = "APP_USAGE"
             case appStoreEngagement = "APP_STORE_ENGAGEMENT"
             case commerce = "COMMERCE"
@@ -36,7 +36,7 @@ extension Resources.V1.AnalyticsReportRequests.WithID {
             case performance = "PERFORMANCE"
         }
 
-        public enum FieldsAnalyticsReports: String, Codable, CaseIterable {
+        public enum FieldsAnalyticsReports: String, CaseIterable, Codable, Sendable {
             case category
             case instances
             case name

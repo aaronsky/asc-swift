@@ -5,18 +5,18 @@
 
 import Foundation
 
-public struct AppCustomProductPageLocalization: Codable, Equatable, Identifiable {
+public struct AppCustomProductPageLocalization: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var relationships: Relationships?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case appCustomProductPageLocalizations
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var locale: String?
         public var promotionalText: String?
 
@@ -26,16 +26,16 @@ public struct AppCustomProductPageLocalization: Codable, Equatable, Identifiable
         }
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var appCustomProductPageVersion: AppCustomProductPageVersion?
         public var appScreenshotSets: AppScreenshotSets?
         public var appPreviewSets: AppPreviewSets?
 
-        public struct AppCustomProductPageVersion: Codable, Equatable {
+        public struct AppCustomProductPageVersion: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -50,11 +50,11 @@ public struct AppCustomProductPageLocalization: Codable, Equatable, Identifiable
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appCustomProductPageVersions
                 }
 
@@ -70,12 +70,12 @@ public struct AppCustomProductPageLocalization: Codable, Equatable, Identifiable
             }
         }
 
-        public struct AppScreenshotSets: Codable, Equatable {
+        public struct AppScreenshotSets: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -90,11 +90,11 @@ public struct AppCustomProductPageLocalization: Codable, Equatable, Identifiable
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appScreenshotSets
                 }
 
@@ -111,12 +111,12 @@ public struct AppCustomProductPageLocalization: Codable, Equatable, Identifiable
             }
         }
 
-        public struct AppPreviewSets: Codable, Equatable {
+        public struct AppPreviewSets: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -131,11 +131,11 @@ public struct AppCustomProductPageLocalization: Codable, Equatable, Identifiable
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appPreviewSets
                 }
 

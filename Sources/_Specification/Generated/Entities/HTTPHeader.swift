@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct HTTPHeader: Codable, Equatable {
+public struct HTTPHeader: Codable, Equatable, Sendable {
     public var name: String?
     public var value: String?
 

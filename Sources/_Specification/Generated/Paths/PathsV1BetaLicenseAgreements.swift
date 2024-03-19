@@ -29,16 +29,16 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FieldsBetaLicenseAgreements: String, Codable, CaseIterable {
+        public enum FieldsBetaLicenseAgreements: String, CaseIterable, Codable, Sendable {
             case agreementText
             case app
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability

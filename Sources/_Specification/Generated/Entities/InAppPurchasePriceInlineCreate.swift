@@ -5,17 +5,17 @@
 
 import Foundation
 
-public struct InAppPurchasePriceInlineCreate: Codable, Equatable, Identifiable {
+public struct InAppPurchasePriceInlineCreate: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String?
     public var attributes: Attributes?
     public var relationships: Relationships?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case inAppPurchasePrices
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var startDate: String?
         public var endDate: String?
 
@@ -25,18 +25,18 @@ public struct InAppPurchasePriceInlineCreate: Codable, Equatable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var inAppPurchaseV2: InAppPurchaseV2?
         public var inAppPurchasePricePoint: InAppPurchasePricePoint?
 
-        public struct InAppPurchaseV2: Codable, Equatable {
+        public struct InAppPurchaseV2: Codable, Equatable, Sendable {
             public var data: Data?
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case inAppPurchases
                 }
 
@@ -51,14 +51,14 @@ public struct InAppPurchasePriceInlineCreate: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct InAppPurchasePricePoint: Codable, Equatable {
+        public struct InAppPurchasePricePoint: Codable, Equatable, Sendable {
             public var data: Data?
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case inAppPurchasePricePoints
                 }
 

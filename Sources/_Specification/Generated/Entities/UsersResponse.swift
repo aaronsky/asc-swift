@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct UsersResponse: Codable, Equatable {
+public struct UsersResponse: Codable, Equatable, Sendable {
     public var data: [User]
     public var included: [App]?
     public var links: PagedDocumentLinks

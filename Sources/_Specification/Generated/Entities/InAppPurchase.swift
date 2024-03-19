@@ -5,24 +5,24 @@
 
 import Foundation
 
-public struct InAppPurchase: Codable, Equatable, Identifiable {
+public struct InAppPurchase: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var relationships: Relationships?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case inAppPurchases
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var referenceName: String?
         public var productID: String?
         public var inAppPurchaseType: InAppPurchaseType?
         public var state: State?
 
-        public enum InAppPurchaseType: String, Codable, CaseIterable {
+        public enum InAppPurchaseType: String, CaseIterable, Codable, Sendable {
             case automaticallyRenewableSubscription = "AUTOMATICALLY_RENEWABLE_SUBSCRIPTION"
             case nonConsumable = "NON_CONSUMABLE"
             case consumable = "CONSUMABLE"
@@ -30,7 +30,7 @@ public struct InAppPurchase: Codable, Equatable, Identifiable {
             case freeSubscription = "FREE_SUBSCRIPTION"
         }
 
-        public enum State: String, Codable, CaseIterable {
+        public enum State: String, CaseIterable, Codable, Sendable {
             case created = "CREATED"
             case developerSignedOff = "DEVELOPER_SIGNED_OFF"
             case developerActionNeeded = "DEVELOPER_ACTION_NEEDED"
@@ -67,15 +67,15 @@ public struct InAppPurchase: Codable, Equatable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var apps: Apps?
 
-        public struct Apps: Codable, Equatable {
+        public struct Apps: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -90,11 +90,11 @@ public struct InAppPurchase: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case apps
                 }
 

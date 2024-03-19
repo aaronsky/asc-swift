@@ -57,33 +57,33 @@ extension Resources.V1.CiBuildRuns.WithID {
             return encoder.items
         }
 
-        public enum FilterBetaAppReviewSubmissionBetaReviewState: String, Codable, CaseIterable {
+        public enum FilterBetaAppReviewSubmissionBetaReviewState: String, CaseIterable, Codable, Sendable {
             case waitingForReview = "WAITING_FOR_REVIEW"
             case inReview = "IN_REVIEW"
             case rejected = "REJECTED"
             case approved = "APPROVED"
         }
 
-        public enum FilterBuildAudienceType: String, Codable, CaseIterable {
+        public enum FilterBuildAudienceType: String, CaseIterable, Codable, Sendable {
             case internalOnly = "INTERNAL_ONLY"
             case appStoreEligible = "APP_STORE_ELIGIBLE"
         }
 
-        public enum FilterPreReleaseVersionPlatform: String, Codable, CaseIterable {
+        public enum FilterPreReleaseVersionPlatform: String, CaseIterable, Codable, Sendable {
             case ios = "IOS"
             case macOs = "MAC_OS"
             case tvOs = "TV_OS"
             case visionOs = "VISION_OS"
         }
 
-        public enum FilterProcessingState: String, Codable, CaseIterable {
+        public enum FilterProcessingState: String, CaseIterable, Codable, Sendable {
             case processing = "PROCESSING"
             case failed = "FAILED"
             case invalid = "INVALID"
             case valid = "VALID"
         }
 
-        public enum Sort: String, Codable, CaseIterable {
+        public enum Sort: String, CaseIterable, Codable, Sendable {
             case preReleaseVersion
             case minuspreReleaseVersion = "-preReleaseVersion"
             case uploadedDate
@@ -92,7 +92,7 @@ extension Resources.V1.CiBuildRuns.WithID {
             case minusversion = "-version"
         }
 
-        public enum FieldsBuildBundles: String, Codable, CaseIterable {
+        public enum FieldsBuildBundles: String, CaseIterable, Codable, Sendable {
             case appClipDomainCacheStatus
             case appClipDomainDebugStatus
             case betaAppClipInvocations
@@ -116,26 +116,26 @@ extension Resources.V1.CiBuildRuns.WithID {
             case usesLocationServices
         }
 
-        public enum FieldsBuildIcons: String, Codable, CaseIterable {
+        public enum FieldsBuildIcons: String, CaseIterable, Codable, Sendable {
             case iconAsset
             case iconType
             case name
         }
 
-        public enum FieldsBetaAppReviewSubmissions: String, Codable, CaseIterable {
+        public enum FieldsBetaAppReviewSubmissions: String, CaseIterable, Codable, Sendable {
             case betaReviewState
             case build
             case submittedDate
         }
 
-        public enum FieldsBuildBetaDetails: String, Codable, CaseIterable {
+        public enum FieldsBuildBetaDetails: String, CaseIterable, Codable, Sendable {
             case autoNotifyEnabled
             case build
             case externalBuildState
             case internalBuildState
         }
 
-        public enum FieldsBetaTesters: String, Codable, CaseIterable {
+        public enum FieldsBetaTesters: String, CaseIterable, Codable, Sendable {
             case apps
             case betaGroups
             case builds
@@ -145,20 +145,20 @@ extension Resources.V1.CiBuildRuns.WithID {
             case lastName
         }
 
-        public enum FieldsPreReleaseVersions: String, Codable, CaseIterable {
+        public enum FieldsPreReleaseVersions: String, CaseIterable, Codable, Sendable {
             case app
             case builds
             case platform
             case version
         }
 
-        public enum FieldsBetaBuildLocalizations: String, Codable, CaseIterable {
+        public enum FieldsBetaBuildLocalizations: String, CaseIterable, Codable, Sendable {
             case build
             case locale
             case whatsNew
         }
 
-        public enum FieldsAppStoreVersions: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
             case ageRatingDeclaration
             case alternativeDistributionPackage
             case app
@@ -184,7 +184,7 @@ extension Resources.V1.CiBuildRuns.WithID {
             case versionString
         }
 
-        public enum FieldsAppEncryptionDeclarations: String, Codable, CaseIterable {
+        public enum FieldsAppEncryptionDeclarations: String, CaseIterable, Codable, Sendable {
             case app
             case appDescription
             case appEncryptionDeclarationDocument
@@ -204,7 +204,7 @@ extension Resources.V1.CiBuildRuns.WithID {
             case usesEncryption
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability
@@ -254,7 +254,7 @@ extension Resources.V1.CiBuildRuns.WithID {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
-        public enum FieldsBuilds: String, Codable, CaseIterable {
+        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
             case app
             case appEncryptionDeclaration
             case appStoreVersion
@@ -281,7 +281,7 @@ extension Resources.V1.CiBuildRuns.WithID {
             case version
         }
 
-        public enum FieldsBetaGroups: String, Codable, CaseIterable {
+        public enum FieldsBetaGroups: String, CaseIterable, Codable, Sendable {
             case app
             case betaTesters
             case builds
@@ -298,7 +298,7 @@ extension Resources.V1.CiBuildRuns.WithID {
             case publicLinkLimitEnabled
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case appEncryptionDeclaration
             case appStoreVersion

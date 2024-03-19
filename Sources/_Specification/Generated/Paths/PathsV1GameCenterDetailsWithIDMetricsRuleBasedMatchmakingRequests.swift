@@ -29,23 +29,23 @@ extension Resources.V1.GameCenterDetails.WithID.Metrics {
             return encoder.items
         }
 
-        public enum Granularity: String, Codable, CaseIterable {
+        public enum Granularity: String, CaseIterable, Codable, Sendable {
             case p1d = "P1D"
             case pt1h = "PT1H"
             case pt15m = "PT15M"
         }
 
-        public enum GroupBy: String, Codable, CaseIterable {
+        public enum GroupBy: String, CaseIterable, Codable, Sendable {
             case result
         }
 
-        public enum FilterResult: String, Codable, CaseIterable {
+        public enum FilterResult: String, CaseIterable, Codable, Sendable {
             case matched = "MATCHED"
             case canceled = "CANCELED"
             case expired = "EXPIRED"
         }
 
-        public enum Sort: String, Codable, CaseIterable {
+        public enum Sort: String, CaseIterable, Codable, Sendable {
             case averageSecondsInQueue
             case minusaverageSecondsInQueue = "-averageSecondsInQueue"
             case count

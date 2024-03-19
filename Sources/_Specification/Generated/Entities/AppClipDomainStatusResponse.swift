@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppClipDomainStatusResponse: Codable, Equatable {
+public struct AppClipDomainStatusResponse: Codable, Equatable, Sendable {
     /// AppClipDomainStatus
     public var data: AppClipDomainStatus
     public var links: DocumentLinks

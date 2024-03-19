@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AlternativeDistributionPackageDeltasResponse: Codable, Equatable {
+public struct AlternativeDistributionPackageDeltasResponse: Codable, Equatable, Sendable {
     public var data: [AlternativeDistributionPackageDelta]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?

@@ -36,13 +36,13 @@ extension Resources.V1.GameCenterGroups.WithID {
             return encoder.items
         }
 
-        public enum FieldsGameCenterAchievementReleases: String, Codable, CaseIterable {
+        public enum FieldsGameCenterAchievementReleases: String, CaseIterable, Codable, Sendable {
             case gameCenterAchievement
             case gameCenterDetail
             case live
         }
 
-        public enum FieldsGameCenterGroups: String, Codable, CaseIterable {
+        public enum FieldsGameCenterGroups: String, CaseIterable, Codable, Sendable {
             case gameCenterAchievements
             case gameCenterDetails
             case gameCenterLeaderboardSets
@@ -50,7 +50,7 @@ extension Resources.V1.GameCenterGroups.WithID {
             case referenceName
         }
 
-        public enum FieldsGameCenterDetails: String, Codable, CaseIterable {
+        public enum FieldsGameCenterDetails: String, CaseIterable, Codable, Sendable {
             case achievementReleases
             case app
             case arcadeEnabled
@@ -66,7 +66,7 @@ extension Resources.V1.GameCenterGroups.WithID {
             case leaderboardSetReleases
         }
 
-        public enum FieldsGameCenterAchievementLocalizations: String, Codable, CaseIterable {
+        public enum FieldsGameCenterAchievementLocalizations: String, CaseIterable, Codable, Sendable {
             case afterEarnedDescription
             case beforeEarnedDescription
             case gameCenterAchievement
@@ -75,7 +75,7 @@ extension Resources.V1.GameCenterGroups.WithID {
             case name
         }
 
-        public enum FieldsGameCenterAchievements: String, Codable, CaseIterable {
+        public enum FieldsGameCenterAchievements: String, CaseIterable, Codable, Sendable {
             case archived
             case gameCenterDetail
             case gameCenterGroup
@@ -89,7 +89,7 @@ extension Resources.V1.GameCenterGroups.WithID {
             case vendorIdentifier
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case gameCenterDetail
             case gameCenterGroup
             case groupAchievement

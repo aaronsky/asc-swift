@@ -5,17 +5,17 @@
 
 import Foundation
 
-public struct SubscriptionPriceInlineCreate: Codable, Equatable, Identifiable {
+public struct SubscriptionPriceInlineCreate: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String?
     public var attributes: Attributes?
     public var relationships: Relationships?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case subscriptionPrices
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var startDate: String?
         public var isPreserveCurrentPrice: Bool?
 
@@ -30,19 +30,19 @@ public struct SubscriptionPriceInlineCreate: Codable, Equatable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var subscription: Subscription?
         public var territory: Territory?
         public var subscriptionPricePoint: SubscriptionPricePoint?
 
-        public struct Subscription: Codable, Equatable {
+        public struct Subscription: Codable, Equatable, Sendable {
             public var data: Data?
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case subscriptions
                 }
 
@@ -57,14 +57,14 @@ public struct SubscriptionPriceInlineCreate: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct Territory: Codable, Equatable {
+        public struct Territory: Codable, Equatable, Sendable {
             public var data: Data?
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case territories
                 }
 
@@ -79,14 +79,14 @@ public struct SubscriptionPriceInlineCreate: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct SubscriptionPricePoint: Codable, Equatable {
+        public struct SubscriptionPricePoint: Codable, Equatable, Sendable {
             public var data: Data?
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case subscriptionPricePoints
                 }
 

@@ -5,17 +5,17 @@
 
 import Foundation
 
-public struct ScmProvider: Codable, Equatable, Identifiable {
+public struct ScmProvider: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case scmProviders
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var scmProviderType: ScmProviderType?
         public var url: URL?
 

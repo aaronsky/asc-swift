@@ -30,7 +30,7 @@ extension Resources.V1.AppInfos {
             return encoder.items
         }
 
-        public enum FieldsAppInfos: String, Codable, CaseIterable {
+        public enum FieldsAppInfos: String, CaseIterable, Codable, Sendable {
             case ageRatingDeclaration
             case app
             case appInfoLocalizations
@@ -48,7 +48,7 @@ extension Resources.V1.AppInfos {
             case state
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case ageRatingDeclaration
             case app
             case appInfoLocalizations
@@ -60,7 +60,7 @@ extension Resources.V1.AppInfos {
             case secondarySubcategoryTwo
         }
 
-        public enum FieldsAgeRatingDeclarations: String, Codable, CaseIterable {
+        public enum FieldsAgeRatingDeclarations: String, CaseIterable, Codable, Sendable {
             case ageRatingOverride
             case alcoholTobaccoOrDrugUseOrReferences
             case contests
@@ -81,7 +81,7 @@ extension Resources.V1.AppInfos {
             case violenceRealisticProlongedGraphicOrSadistic
         }
 
-        public enum FieldsAppInfoLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppInfoLocalizations: String, CaseIterable, Codable, Sendable {
             case appInfo
             case locale
             case name
@@ -91,7 +91,7 @@ extension Resources.V1.AppInfos {
             case subtitle
         }
 
-        public enum FieldsAppCategories: String, Codable, CaseIterable {
+        public enum FieldsAppCategories: String, CaseIterable, Codable, Sendable {
             case parent
             case platforms
             case subcategories

@@ -26,7 +26,7 @@ extension Resources.V1.InAppPurchaseLocalizations {
             return encoder.items
         }
 
-        public enum FieldsInAppPurchaseLocalizations: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchaseLocalizations: String, CaseIterable, Codable, Sendable {
             case description
             case inAppPurchaseV2
             case locale
@@ -34,7 +34,7 @@ extension Resources.V1.InAppPurchaseLocalizations {
             case state
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case inAppPurchaseV2
         }
 

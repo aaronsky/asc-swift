@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct MarketplaceWebhooksResponse: Codable, Equatable {
+public struct MarketplaceWebhooksResponse: Codable, Equatable, Sendable {
     public var data: [MarketplaceWebhook]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?

@@ -5,20 +5,20 @@
 
 import Foundation
 
-public struct CiWorkflowUpdateRequest: Codable, Equatable {
+public struct CiWorkflowUpdateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable, Sendable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
         public var relationships: Relationships?
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case ciWorkflows
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var name: String?
             public var description: String?
             public var branchStartCondition: CiBranchStartCondition?
@@ -69,18 +69,18 @@ public struct CiWorkflowUpdateRequest: Codable, Equatable {
             }
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var xcodeVersion: XcodeVersion?
             public var macOsVersion: MacOsVersion?
 
-            public struct XcodeVersion: Codable, Equatable {
+            public struct XcodeVersion: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case ciXcodeVersions
                     }
 
@@ -95,14 +95,14 @@ public struct CiWorkflowUpdateRequest: Codable, Equatable {
                 }
             }
 
-            public struct MacOsVersion: Codable, Equatable {
+            public struct MacOsVersion: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case ciMacOsVersions
                     }
 

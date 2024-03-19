@@ -26,7 +26,7 @@ extension Resources.V1.BundleIDs.WithID {
             return encoder.items
         }
 
-        public enum FieldsBundleIDCapabilities: String, Codable, CaseIterable {
+        public enum FieldsBundleIDCapabilities: String, CaseIterable, Codable, Sendable {
             case bundleID = "bundleId"
             case capabilityType
             case settings

@@ -31,7 +31,7 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FilterCertificateType: String, Codable, CaseIterable {
+        public enum FilterCertificateType: String, CaseIterable, Codable, Sendable {
             case iosDevelopment = "IOS_DEVELOPMENT"
             case iosDistribution = "IOS_DISTRIBUTION"
             case macAppDistribution = "MAC_APP_DISTRIBUTION"
@@ -45,7 +45,7 @@ extension Resources.V1 {
             case passTypeIDWithNfc = "PASS_TYPE_ID_WITH_NFC"
         }
 
-        public enum Sort: String, Codable, CaseIterable {
+        public enum Sort: String, CaseIterable, Codable, Sendable {
             case certificateType
             case minuscertificateType = "-certificateType"
             case displayName
@@ -56,7 +56,7 @@ extension Resources.V1 {
             case minusserialNumber = "-serialNumber"
         }
 
-        public enum FieldsCertificates: String, Codable, CaseIterable {
+        public enum FieldsCertificates: String, CaseIterable, Codable, Sendable {
             case certificateContent
             case certificateType
             case csrContent

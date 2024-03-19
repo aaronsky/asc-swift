@@ -32,7 +32,7 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FilterInAppPurchaseType: String, Codable, CaseIterable {
+        public enum FilterInAppPurchaseType: String, CaseIterable, Codable, Sendable {
             case automaticallyRenewableSubscription = "AUTOMATICALLY_RENEWABLE_SUBSCRIPTION"
             case nonConsumable = "NON_CONSUMABLE"
             case consumable = "CONSUMABLE"
@@ -40,7 +40,7 @@ extension Resources.V1.Apps.WithID {
             case freeSubscription = "FREE_SUBSCRIPTION"
         }
 
-        public enum Sort: String, Codable, CaseIterable {
+        public enum Sort: String, CaseIterable, Codable, Sendable {
             case inAppPurchaseType
             case minusinAppPurchaseType = "-inAppPurchaseType"
             case productID = "productId"
@@ -49,7 +49,7 @@ extension Resources.V1.Apps.WithID {
             case minusreferenceName = "-referenceName"
         }
 
-        public enum FieldsInAppPurchases: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchases: String, CaseIterable, Codable, Sendable {
             case apps
             case inAppPurchaseType
             case productID = "productId"
@@ -57,7 +57,7 @@ extension Resources.V1.Apps.WithID {
             case state
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability
@@ -107,7 +107,7 @@ extension Resources.V1.Apps.WithID {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case apps
         }
     }

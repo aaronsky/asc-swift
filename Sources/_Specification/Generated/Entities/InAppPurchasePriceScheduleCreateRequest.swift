@@ -5,31 +5,31 @@
 
 import Foundation
 
-public struct InAppPurchasePriceScheduleCreateRequest: Codable, Equatable {
+public struct InAppPurchasePriceScheduleCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
     public var included: [IncludedItem]?
 
-    public struct Data: Codable, Equatable {
+    public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var relationships: Relationships
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case inAppPurchasePriceSchedules
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var inAppPurchase: InAppPurchase
             public var baseTerritory: BaseTerritory
             public var manualPrices: ManualPrices
 
-            public struct InAppPurchase: Codable, Equatable {
+            public struct InAppPurchase: Codable, Equatable, Sendable {
                 public var data: Data
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case inAppPurchases
                     }
 
@@ -44,14 +44,14 @@ public struct InAppPurchasePriceScheduleCreateRequest: Codable, Equatable {
                 }
             }
 
-            public struct BaseTerritory: Codable, Equatable {
+            public struct BaseTerritory: Codable, Equatable, Sendable {
                 public var data: Data
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case territories
                     }
 
@@ -66,14 +66,14 @@ public struct InAppPurchasePriceScheduleCreateRequest: Codable, Equatable {
                 }
             }
 
-            public struct ManualPrices: Codable, Equatable {
+            public struct ManualPrices: Codable, Equatable, Sendable {
                 public var data: [Datum]
 
-                public struct Datum: Codable, Equatable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case inAppPurchasePrices
                     }
 
@@ -101,7 +101,7 @@ public struct InAppPurchasePriceScheduleCreateRequest: Codable, Equatable {
         }
     }
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case inAppPurchasePriceInlineCreate(InAppPurchasePriceInlineCreate)
         case territoryInlineCreate(TerritoryInlineCreate)
 

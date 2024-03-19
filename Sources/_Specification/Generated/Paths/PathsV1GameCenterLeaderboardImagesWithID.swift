@@ -26,7 +26,7 @@ extension Resources.V1.GameCenterLeaderboardImages {
             return encoder.items
         }
 
-        public enum FieldsGameCenterLeaderboardImages: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardImages: String, CaseIterable, Codable, Sendable {
             case assetDeliveryState
             case fileName
             case fileSize
@@ -36,7 +36,7 @@ extension Resources.V1.GameCenterLeaderboardImages {
             case uploaded
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case gameCenterLeaderboardLocalization
         }
 

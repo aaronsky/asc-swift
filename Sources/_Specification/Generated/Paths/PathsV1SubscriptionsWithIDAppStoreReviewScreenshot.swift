@@ -27,7 +27,7 @@ extension Resources.V1.Subscriptions.WithID {
             return encoder.items
         }
 
-        public enum FieldsSubscriptionAppStoreReviewScreenshots: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionAppStoreReviewScreenshots: String, CaseIterable, Codable, Sendable {
             case assetDeliveryState
             case assetToken
             case assetType
@@ -40,7 +40,7 @@ extension Resources.V1.Subscriptions.WithID {
             case uploaded
         }
 
-        public enum FieldsSubscriptions: String, Codable, CaseIterable {
+        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
             case appStoreReviewScreenshot
             case familySharable
             case group
@@ -60,7 +60,7 @@ extension Resources.V1.Subscriptions.WithID {
             case subscriptionPeriod
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case subscription
         }
     }

@@ -27,7 +27,7 @@ extension Resources.V1.AppClipAdvancedExperiences {
             return encoder.items
         }
 
-        public enum FieldsAppClipAdvancedExperiences: String, Codable, CaseIterable {
+        public enum FieldsAppClipAdvancedExperiences: String, CaseIterable, Codable, Sendable {
             case action
             case appClip
             case businessCategory
@@ -43,7 +43,7 @@ extension Resources.V1.AppClipAdvancedExperiences {
             case version
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appClip
             case headerImage
             case localizations

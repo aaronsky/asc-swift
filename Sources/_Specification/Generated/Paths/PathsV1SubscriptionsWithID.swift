@@ -40,7 +40,7 @@ extension Resources.V1.Subscriptions {
             return encoder.items
         }
 
-        public enum FieldsSubscriptions: String, Codable, CaseIterable {
+        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
             case appStoreReviewScreenshot
             case familySharable
             case group
@@ -60,7 +60,7 @@ extension Resources.V1.Subscriptions {
             case subscriptionPeriod
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appStoreReviewScreenshot
             case group
             case introductoryOffers
@@ -72,7 +72,7 @@ extension Resources.V1.Subscriptions {
             case subscriptionLocalizations
         }
 
-        public enum FieldsPromotedPurchases: String, Codable, CaseIterable {
+        public enum FieldsPromotedPurchases: String, CaseIterable, Codable, Sendable {
             case app
             case enabled
             case inAppPurchaseV2
@@ -82,7 +82,7 @@ extension Resources.V1.Subscriptions {
             case visibleForAllUsers
         }
 
-        public enum FieldsSubscriptionPricePoints: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionPricePoints: String, CaseIterable, Codable, Sendable {
             case customerPrice
             case equalizations
             case proceeds
@@ -91,7 +91,7 @@ extension Resources.V1.Subscriptions {
             case territory
         }
 
-        public enum FieldsSubscriptionPromotionalOffers: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionPromotionalOffers: String, CaseIterable, Codable, Sendable {
             case duration
             case name
             case numberOfPeriods
@@ -101,7 +101,7 @@ extension Resources.V1.Subscriptions {
             case subscription
         }
 
-        public enum FieldsSubscriptionOfferCodes: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionOfferCodes: String, CaseIterable, Codable, Sendable {
             case active
             case customCodes
             case customerEligibilities
@@ -116,7 +116,7 @@ extension Resources.V1.Subscriptions {
             case totalNumberOfCodes
         }
 
-        public enum FieldsSubscriptionAppStoreReviewScreenshots: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionAppStoreReviewScreenshots: String, CaseIterable, Codable, Sendable {
             case assetDeliveryState
             case assetToken
             case assetType
@@ -129,13 +129,13 @@ extension Resources.V1.Subscriptions {
             case uploaded
         }
 
-        public enum FieldsSubscriptionAvailabilities: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionAvailabilities: String, CaseIterable, Codable, Sendable {
             case availableInNewTerritories
             case availableTerritories
             case subscription
         }
 
-        public enum FieldsSubscriptionPrices: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionPrices: String, CaseIterable, Codable, Sendable {
             case preserveCurrentPrice
             case preserved
             case startDate
@@ -144,7 +144,7 @@ extension Resources.V1.Subscriptions {
             case territory
         }
 
-        public enum FieldsSubscriptionIntroductoryOffers: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionIntroductoryOffers: String, CaseIterable, Codable, Sendable {
             case duration
             case endDate
             case numberOfPeriods
@@ -155,7 +155,7 @@ extension Resources.V1.Subscriptions {
             case territory
         }
 
-        public enum FieldsSubscriptionLocalizations: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionLocalizations: String, CaseIterable, Codable, Sendable {
             case description
             case locale
             case name

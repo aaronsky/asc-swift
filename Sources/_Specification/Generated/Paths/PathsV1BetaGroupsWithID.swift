@@ -31,7 +31,7 @@ extension Resources.V1.BetaGroups {
             return encoder.items
         }
 
-        public enum FieldsBetaGroups: String, Codable, CaseIterable {
+        public enum FieldsBetaGroups: String, CaseIterable, Codable, Sendable {
             case app
             case betaTesters
             case builds
@@ -48,13 +48,13 @@ extension Resources.V1.BetaGroups {
             case publicLinkLimitEnabled
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case betaTesters
             case builds
         }
 
-        public enum FieldsBetaTesters: String, Codable, CaseIterable {
+        public enum FieldsBetaTesters: String, CaseIterable, Codable, Sendable {
             case apps
             case betaGroups
             case builds
@@ -64,7 +64,7 @@ extension Resources.V1.BetaGroups {
             case lastName
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability
@@ -114,7 +114,7 @@ extension Resources.V1.BetaGroups {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
-        public enum FieldsBuilds: String, Codable, CaseIterable {
+        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
             case app
             case appEncryptionDeclaration
             case appStoreVersion

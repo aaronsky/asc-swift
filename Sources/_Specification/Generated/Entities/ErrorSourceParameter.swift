@@ -6,7 +6,7 @@
 import Foundation
 
 /// Parameter
-public struct ErrorSourceParameter: Codable, Equatable {
+public struct ErrorSourceParameter: Codable, Equatable, Sendable {
     public var parameter: String?
 
     public init(parameter: String? = nil) {

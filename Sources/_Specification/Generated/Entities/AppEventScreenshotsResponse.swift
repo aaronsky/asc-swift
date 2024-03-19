@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppEventScreenshotsResponse: Codable, Equatable {
+public struct AppEventScreenshotsResponse: Codable, Equatable, Sendable {
     public var data: [AppEventScreenshot]
     public var included: [AppEventLocalization]?
     public var links: PagedDocumentLinks

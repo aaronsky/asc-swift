@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum AppClipAction: String, Codable, CaseIterable {
+public enum AppClipAction: String, CaseIterable, Codable, Sendable {
     case `open` = "OPEN"
     case view = "VIEW"
     case play = "PLAY"

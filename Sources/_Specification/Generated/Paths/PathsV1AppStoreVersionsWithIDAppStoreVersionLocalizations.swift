@@ -33,7 +33,7 @@ extension Resources.V1.AppStoreVersions.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppScreenshotSets: String, Codable, CaseIterable {
+        public enum FieldsAppScreenshotSets: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageLocalization
             case appScreenshots
             case appStoreVersionExperimentTreatmentLocalization
@@ -41,7 +41,7 @@ extension Resources.V1.AppStoreVersions.WithID {
             case screenshotDisplayType
         }
 
-        public enum FieldsAppStoreVersions: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
             case ageRatingDeclaration
             case alternativeDistributionPackage
             case app
@@ -67,7 +67,7 @@ extension Resources.V1.AppStoreVersions.WithID {
             case versionString
         }
 
-        public enum FieldsAppPreviewSets: String, Codable, CaseIterable {
+        public enum FieldsAppPreviewSets: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageLocalization
             case appPreviews
             case appStoreVersionExperimentTreatmentLocalization
@@ -75,7 +75,7 @@ extension Resources.V1.AppStoreVersions.WithID {
             case previewType
         }
 
-        public enum FieldsAppStoreVersionLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionLocalizations: String, CaseIterable, Codable, Sendable {
             case appPreviewSets
             case appScreenshotSets
             case appStoreVersion
@@ -88,7 +88,7 @@ extension Resources.V1.AppStoreVersions.WithID {
             case whatsNew
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appPreviewSets
             case appScreenshotSets
             case appStoreVersion

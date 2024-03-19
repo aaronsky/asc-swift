@@ -26,7 +26,7 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FieldsBetaAppLocalizations: String, Codable, CaseIterable {
+        public enum FieldsBetaAppLocalizations: String, CaseIterable, Codable, Sendable {
             case app
             case description
             case feedbackEmail

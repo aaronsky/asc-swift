@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct MarketplaceDomainResponse: Codable, Equatable {
+public struct MarketplaceDomainResponse: Codable, Equatable, Sendable {
     /// MarketplaceDomain
     public var data: MarketplaceDomain
     public var links: DocumentLinks

@@ -26,6 +26,13 @@ entities:
   protocols:
     - Codable
     - Equatable
+    - Sendable
+
+enums:
+  protocols:
+    - CaseIterable
+    - Codable
+    - Sendable
 
 paths:
   style: rest

@@ -26,7 +26,7 @@ extension Resources.V1.AppEventVideoClips {
             return encoder.items
         }
 
-        public enum FieldsAppEventVideoClips: String, Codable, CaseIterable {
+        public enum FieldsAppEventVideoClips: String, CaseIterable, Codable, Sendable {
             case appEventAssetType
             case appEventLocalization
             case assetDeliveryState
@@ -39,7 +39,7 @@ extension Resources.V1.AppEventVideoClips {
             case videoURL = "videoUrl"
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appEventLocalization
         }
 

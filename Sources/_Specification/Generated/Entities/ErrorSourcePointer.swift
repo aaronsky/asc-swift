@@ -6,7 +6,7 @@
 import Foundation
 
 /// JsonPointer
-public struct ErrorSourcePointer: Codable, Equatable {
+public struct ErrorSourcePointer: Codable, Equatable, Sendable {
     public var pointer: String?
 
     public init(pointer: String? = nil) {

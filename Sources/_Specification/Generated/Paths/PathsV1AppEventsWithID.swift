@@ -28,7 +28,7 @@ extension Resources.V1.AppEvents {
             return encoder.items
         }
 
-        public enum FieldsAppEvents: String, Codable, CaseIterable {
+        public enum FieldsAppEvents: String, CaseIterable, Codable, Sendable {
             case app
             case archivedTerritorySchedules
             case badge
@@ -43,11 +43,11 @@ extension Resources.V1.AppEvents {
             case territorySchedules
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case localizations
         }
 
-        public enum FieldsAppEventLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppEventLocalizations: String, CaseIterable, Codable, Sendable {
             case appEvent
             case appEventScreenshots
             case appEventVideoClips

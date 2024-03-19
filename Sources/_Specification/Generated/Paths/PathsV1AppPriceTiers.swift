@@ -30,15 +30,15 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FieldsAppPriceTiers: String, Codable, CaseIterable {
+        public enum FieldsAppPriceTiers: String, CaseIterable, Codable, Sendable {
             case pricePoints
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case pricePoints
         }
 
-        public enum FieldsAppPricePoints: String, Codable, CaseIterable {
+        public enum FieldsAppPricePoints: String, CaseIterable, Codable, Sendable {
             case customerPrice
             case priceTier
             case proceeds

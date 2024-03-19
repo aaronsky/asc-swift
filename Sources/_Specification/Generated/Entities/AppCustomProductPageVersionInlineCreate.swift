@@ -5,27 +5,27 @@
 
 import Foundation
 
-public struct AppCustomProductPageVersionInlineCreate: Codable, Equatable, Identifiable {
+public struct AppCustomProductPageVersionInlineCreate: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String?
     public var relationships: Relationships?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case appCustomProductPageVersions
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var appCustomProductPage: AppCustomProductPage?
         public var appCustomProductPageLocalizations: AppCustomProductPageLocalizations?
 
-        public struct AppCustomProductPage: Codable, Equatable {
+        public struct AppCustomProductPage: Codable, Equatable, Sendable {
             public var data: Data?
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appCustomProductPages
                 }
 
@@ -40,14 +40,14 @@ public struct AppCustomProductPageVersionInlineCreate: Codable, Equatable, Ident
             }
         }
 
-        public struct AppCustomProductPageLocalizations: Codable, Equatable {
+        public struct AppCustomProductPageLocalizations: Codable, Equatable, Sendable {
             public var data: [Datum]?
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appCustomProductPageLocalizations
                 }
 

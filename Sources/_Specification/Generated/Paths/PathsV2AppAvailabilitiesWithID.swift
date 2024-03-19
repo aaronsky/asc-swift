@@ -28,17 +28,17 @@ extension Resources.V2.AppAvailabilities {
             return encoder.items
         }
 
-        public enum FieldsAppAvailabilities: String, Codable, CaseIterable {
+        public enum FieldsAppAvailabilities: String, CaseIterable, Codable, Sendable {
             case app
             case availableInNewTerritories
             case territoryAvailabilities
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case territoryAvailabilities
         }
 
-        public enum FieldsTerritoryAvailabilities: String, Codable, CaseIterable {
+        public enum FieldsTerritoryAvailabilities: String, CaseIterable, Codable, Sendable {
             case available
             case contentStatuses
             case preOrderEnabled

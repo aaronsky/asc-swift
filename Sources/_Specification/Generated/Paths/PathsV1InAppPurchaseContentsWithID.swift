@@ -26,7 +26,7 @@ extension Resources.V1.InAppPurchaseContents {
             return encoder.items
         }
 
-        public enum FieldsInAppPurchaseContents: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchaseContents: String, CaseIterable, Codable, Sendable {
             case fileName
             case fileSize
             case inAppPurchaseV2
@@ -34,7 +34,7 @@ extension Resources.V1.InAppPurchaseContents {
             case url
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case inAppPurchaseV2
         }
     }

@@ -5,17 +5,17 @@
 
 import Foundation
 
-public struct AgeRatingDeclaration: Codable, Equatable, Identifiable {
+public struct AgeRatingDeclaration: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case ageRatingDeclarations
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var alcoholTobaccoOrDrugUseOrReferences: AlcoholTobaccoOrDrugUseOrReferences?
         public var contests: Contests?
         public var isGamblingAndContests: Bool?
@@ -35,79 +35,79 @@ public struct AgeRatingDeclaration: Codable, Equatable, Identifiable {
         public var violenceRealisticProlongedGraphicOrSadistic: ViolenceRealisticProlongedGraphicOrSadistic?
         public var violenceRealistic: ViolenceRealistic?
 
-        public enum AlcoholTobaccoOrDrugUseOrReferences: String, Codable, CaseIterable {
+        public enum AlcoholTobaccoOrDrugUseOrReferences: String, CaseIterable, Codable, Sendable {
             case `none` = "NONE"
             case infrequentOrMild = "INFREQUENT_OR_MILD"
             case frequentOrIntense = "FREQUENT_OR_INTENSE"
         }
 
-        public enum Contests: String, Codable, CaseIterable {
+        public enum Contests: String, CaseIterable, Codable, Sendable {
             case `none` = "NONE"
             case infrequentOrMild = "INFREQUENT_OR_MILD"
             case frequentOrIntense = "FREQUENT_OR_INTENSE"
         }
 
-        public enum GamblingSimulated: String, Codable, CaseIterable {
+        public enum GamblingSimulated: String, CaseIterable, Codable, Sendable {
             case `none` = "NONE"
             case infrequentOrMild = "INFREQUENT_OR_MILD"
             case frequentOrIntense = "FREQUENT_OR_INTENSE"
         }
 
-        public enum MedicalOrTreatmentInformation: String, Codable, CaseIterable {
+        public enum MedicalOrTreatmentInformation: String, CaseIterable, Codable, Sendable {
             case `none` = "NONE"
             case infrequentOrMild = "INFREQUENT_OR_MILD"
             case frequentOrIntense = "FREQUENT_OR_INTENSE"
         }
 
-        public enum ProfanityOrCrudeHumor: String, Codable, CaseIterable {
+        public enum ProfanityOrCrudeHumor: String, CaseIterable, Codable, Sendable {
             case `none` = "NONE"
             case infrequentOrMild = "INFREQUENT_OR_MILD"
             case frequentOrIntense = "FREQUENT_OR_INTENSE"
         }
 
-        public enum SexualContentGraphicAndNudity: String, Codable, CaseIterable {
+        public enum SexualContentGraphicAndNudity: String, CaseIterable, Codable, Sendable {
             case `none` = "NONE"
             case infrequentOrMild = "INFREQUENT_OR_MILD"
             case frequentOrIntense = "FREQUENT_OR_INTENSE"
         }
 
-        public enum SexualContentOrNudity: String, Codable, CaseIterable {
+        public enum SexualContentOrNudity: String, CaseIterable, Codable, Sendable {
             case `none` = "NONE"
             case infrequentOrMild = "INFREQUENT_OR_MILD"
             case frequentOrIntense = "FREQUENT_OR_INTENSE"
         }
 
-        public enum AgeRatingOverride: String, Codable, CaseIterable {
+        public enum AgeRatingOverride: String, CaseIterable, Codable, Sendable {
             case `none` = "NONE"
             case seventeenPlus = "SEVENTEEN_PLUS"
             case unrated = "UNRATED"
         }
 
-        public enum HorrorOrFearThemes: String, Codable, CaseIterable {
+        public enum HorrorOrFearThemes: String, CaseIterable, Codable, Sendable {
             case `none` = "NONE"
             case infrequentOrMild = "INFREQUENT_OR_MILD"
             case frequentOrIntense = "FREQUENT_OR_INTENSE"
         }
 
-        public enum MatureOrSuggestiveThemes: String, Codable, CaseIterable {
+        public enum MatureOrSuggestiveThemes: String, CaseIterable, Codable, Sendable {
             case `none` = "NONE"
             case infrequentOrMild = "INFREQUENT_OR_MILD"
             case frequentOrIntense = "FREQUENT_OR_INTENSE"
         }
 
-        public enum ViolenceCartoonOrFantasy: String, Codable, CaseIterable {
+        public enum ViolenceCartoonOrFantasy: String, CaseIterable, Codable, Sendable {
             case `none` = "NONE"
             case infrequentOrMild = "INFREQUENT_OR_MILD"
             case frequentOrIntense = "FREQUENT_OR_INTENSE"
         }
 
-        public enum ViolenceRealisticProlongedGraphicOrSadistic: String, Codable, CaseIterable {
+        public enum ViolenceRealisticProlongedGraphicOrSadistic: String, CaseIterable, Codable, Sendable {
             case `none` = "NONE"
             case infrequentOrMild = "INFREQUENT_OR_MILD"
             case frequentOrIntense = "FREQUENT_OR_INTENSE"
         }
 
-        public enum ViolenceRealistic: String, Codable, CaseIterable {
+        public enum ViolenceRealistic: String, CaseIterable, Codable, Sendable {
             case `none` = "NONE"
             case infrequentOrMild = "INFREQUENT_OR_MILD"
             case frequentOrIntense = "FREQUENT_OR_INTENSE"

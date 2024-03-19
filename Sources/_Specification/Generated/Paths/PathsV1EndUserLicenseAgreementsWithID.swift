@@ -28,18 +28,18 @@ extension Resources.V1.EndUserLicenseAgreements {
             return encoder.items
         }
 
-        public enum FieldsEndUserLicenseAgreements: String, Codable, CaseIterable {
+        public enum FieldsEndUserLicenseAgreements: String, CaseIterable, Codable, Sendable {
             case agreementText
             case app
             case territories
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case territories
         }
 
-        public enum FieldsTerritories: String, Codable, CaseIterable {
+        public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
             case currency
         }
 

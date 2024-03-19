@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct UploadOperation: Codable, Equatable {
+public struct UploadOperation: Codable, Equatable, Sendable {
     public var method: String?
     public var url: String?
     public var length: Int?

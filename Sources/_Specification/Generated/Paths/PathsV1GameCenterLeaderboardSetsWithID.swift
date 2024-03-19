@@ -32,7 +32,7 @@ extension Resources.V1.GameCenterLeaderboardSets {
             return encoder.items
         }
 
-        public enum FieldsGameCenterLeaderboardSets: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardSets: String, CaseIterable, Codable, Sendable {
             case gameCenterDetail
             case gameCenterGroup
             case gameCenterLeaderboards
@@ -43,7 +43,7 @@ extension Resources.V1.GameCenterLeaderboardSets {
             case vendorIdentifier
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case gameCenterDetail
             case gameCenterGroup
             case gameCenterLeaderboards
@@ -52,20 +52,20 @@ extension Resources.V1.GameCenterLeaderboardSets {
             case releases
         }
 
-        public enum FieldsGameCenterLeaderboardSetLocalizations: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardSetLocalizations: String, CaseIterable, Codable, Sendable {
             case gameCenterLeaderboardSet
             case gameCenterLeaderboardSetImage
             case locale
             case name
         }
 
-        public enum FieldsGameCenterLeaderboardSetReleases: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardSetReleases: String, CaseIterable, Codable, Sendable {
             case gameCenterDetail
             case gameCenterLeaderboardSet
             case live
         }
 
-        public enum FieldsGameCenterLeaderboards: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboards: String, CaseIterable, Codable, Sendable {
             case archived
             case defaultFormatter
             case gameCenterDetail

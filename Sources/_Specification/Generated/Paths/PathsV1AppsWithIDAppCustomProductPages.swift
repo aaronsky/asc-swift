@@ -31,7 +31,7 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppCustomProductPages: String, Codable, CaseIterable {
+        public enum FieldsAppCustomProductPages: String, CaseIterable, Codable, Sendable {
             case app
             case appCustomProductPageVersions
             case appStoreVersionTemplate
@@ -41,14 +41,14 @@ extension Resources.V1.Apps.WithID {
             case visible
         }
 
-        public enum FieldsAppCustomProductPageVersions: String, Codable, CaseIterable {
+        public enum FieldsAppCustomProductPageVersions: String, CaseIterable, Codable, Sendable {
             case appCustomProductPage
             case appCustomProductPageLocalizations
             case state
             case version
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability
@@ -98,7 +98,7 @@ extension Resources.V1.Apps.WithID {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case appCustomProductPageVersions
         }

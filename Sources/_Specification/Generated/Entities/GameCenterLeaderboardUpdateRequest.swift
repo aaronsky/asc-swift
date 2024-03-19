@@ -5,19 +5,19 @@
 
 import Foundation
 
-public struct GameCenterLeaderboardUpdateRequest: Codable, Equatable {
+public struct GameCenterLeaderboardUpdateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable, Sendable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case gameCenterLeaderboards
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var defaultFormatter: GameCenterLeaderboardFormatter?
             public var referenceName: String?
             public var submissionType: SubmissionType?
@@ -29,12 +29,12 @@ public struct GameCenterLeaderboardUpdateRequest: Codable, Equatable {
             public var recurrenceRule: String?
             public var isArchived: Bool?
 
-            public enum SubmissionType: String, Codable, CaseIterable {
+            public enum SubmissionType: String, CaseIterable, Codable, Sendable {
                 case bestScore = "BEST_SCORE"
                 case mostRecentScore = "MOST_RECENT_SCORE"
             }
 
-            public enum ScoreSortType: String, Codable, CaseIterable {
+            public enum ScoreSortType: String, CaseIterable, Codable, Sendable {
                 case asc = "ASC"
                 case desc = "DESC"
             }

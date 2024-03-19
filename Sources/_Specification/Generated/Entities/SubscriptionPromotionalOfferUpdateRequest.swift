@@ -5,30 +5,30 @@
 
 import Foundation
 
-public struct SubscriptionPromotionalOfferUpdateRequest: Codable, Equatable {
+public struct SubscriptionPromotionalOfferUpdateRequest: Codable, Equatable, Sendable {
     public var data: Data
     public var included: [SubscriptionPromotionalOfferPriceInlineCreate]?
 
-    public struct Data: Codable, Equatable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable, Sendable {
         public var type: `Type`
         public var id: String
         public var relationships: Relationships?
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case subscriptionPromotionalOffers
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var prices: Prices?
 
-            public struct Prices: Codable, Equatable {
+            public struct Prices: Codable, Equatable, Sendable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Equatable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case subscriptionPromotionalOfferPrices
                     }
 

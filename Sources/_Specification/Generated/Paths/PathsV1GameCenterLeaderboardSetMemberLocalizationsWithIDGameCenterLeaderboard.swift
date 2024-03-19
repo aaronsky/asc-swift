@@ -34,7 +34,7 @@ extension Resources.V1.GameCenterLeaderboardSetMemberLocalizations.WithID {
             return encoder.items
         }
 
-        public enum FieldsGameCenterLeaderboardLocalizations: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardLocalizations: String, CaseIterable, Codable, Sendable {
             case formatterOverride
             case formatterSuffix
             case formatterSuffixSingular
@@ -44,7 +44,7 @@ extension Resources.V1.GameCenterLeaderboardSetMemberLocalizations.WithID {
             case name
         }
 
-        public enum FieldsGameCenterLeaderboardSets: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardSets: String, CaseIterable, Codable, Sendable {
             case gameCenterDetail
             case gameCenterGroup
             case gameCenterLeaderboards
@@ -55,7 +55,7 @@ extension Resources.V1.GameCenterLeaderboardSetMemberLocalizations.WithID {
             case vendorIdentifier
         }
 
-        public enum FieldsGameCenterGroups: String, Codable, CaseIterable {
+        public enum FieldsGameCenterGroups: String, CaseIterable, Codable, Sendable {
             case gameCenterAchievements
             case gameCenterDetails
             case gameCenterLeaderboardSets
@@ -63,7 +63,7 @@ extension Resources.V1.GameCenterLeaderboardSetMemberLocalizations.WithID {
             case referenceName
         }
 
-        public enum FieldsGameCenterDetails: String, Codable, CaseIterable {
+        public enum FieldsGameCenterDetails: String, CaseIterable, Codable, Sendable {
             case achievementReleases
             case app
             case arcadeEnabled
@@ -79,7 +79,7 @@ extension Resources.V1.GameCenterLeaderboardSetMemberLocalizations.WithID {
             case leaderboardSetReleases
         }
 
-        public enum FieldsGameCenterLeaderboards: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboards: String, CaseIterable, Codable, Sendable {
             case archived
             case defaultFormatter
             case gameCenterDetail
@@ -99,13 +99,13 @@ extension Resources.V1.GameCenterLeaderboardSetMemberLocalizations.WithID {
             case vendorIdentifier
         }
 
-        public enum FieldsGameCenterLeaderboardReleases: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardReleases: String, CaseIterable, Codable, Sendable {
             case gameCenterDetail
             case gameCenterLeaderboard
             case live
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case gameCenterDetail
             case gameCenterGroup
             case gameCenterLeaderboardSets

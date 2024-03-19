@@ -26,7 +26,7 @@ extension Resources.V1.PromotedPurchaseImages {
             return encoder.items
         }
 
-        public enum FieldsPromotedPurchaseImages: String, Codable, CaseIterable {
+        public enum FieldsPromotedPurchaseImages: String, CaseIterable, Codable, Sendable {
             case assetToken
             case assetType
             case fileName
@@ -39,7 +39,7 @@ extension Resources.V1.PromotedPurchaseImages {
             case uploaded
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case promotedPurchase
         }
 

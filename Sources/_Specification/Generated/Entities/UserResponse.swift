@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct UserResponse: Codable, Equatable {
+public struct UserResponse: Codable, Equatable, Sendable {
     /// User
     public var data: User
     public var included: [App]?

@@ -28,7 +28,7 @@ extension Resources.V1.AppScreenshotSets {
             return encoder.items
         }
 
-        public enum FieldsAppScreenshotSets: String, Codable, CaseIterable {
+        public enum FieldsAppScreenshotSets: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageLocalization
             case appScreenshots
             case appStoreVersionExperimentTreatmentLocalization
@@ -36,14 +36,14 @@ extension Resources.V1.AppScreenshotSets {
             case screenshotDisplayType
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageLocalization
             case appScreenshots
             case appStoreVersionExperimentTreatmentLocalization
             case appStoreVersionLocalization
         }
 
-        public enum FieldsAppScreenshots: String, Codable, CaseIterable {
+        public enum FieldsAppScreenshots: String, CaseIterable, Codable, Sendable {
             case appScreenshotSet
             case assetDeliveryState
             case assetToken

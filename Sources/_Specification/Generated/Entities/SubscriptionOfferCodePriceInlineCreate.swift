@@ -5,27 +5,27 @@
 
 import Foundation
 
-public struct SubscriptionOfferCodePriceInlineCreate: Codable, Equatable, Identifiable {
+public struct SubscriptionOfferCodePriceInlineCreate: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String?
     public var relationships: Relationships?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case subscriptionOfferCodePrices
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var territory: Territory?
         public var subscriptionPricePoint: SubscriptionPricePoint?
 
-        public struct Territory: Codable, Equatable {
+        public struct Territory: Codable, Equatable, Sendable {
             public var data: Data?
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case territories
                 }
 
@@ -40,14 +40,14 @@ public struct SubscriptionOfferCodePriceInlineCreate: Codable, Equatable, Identi
             }
         }
 
-        public struct SubscriptionPricePoint: Codable, Equatable {
+        public struct SubscriptionPricePoint: Codable, Equatable, Sendable {
             public var data: Data?
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case subscriptionPricePoints
                 }
 

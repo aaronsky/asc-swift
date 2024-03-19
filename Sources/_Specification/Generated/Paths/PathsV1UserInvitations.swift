@@ -33,7 +33,7 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FilterRoles: String, Codable, CaseIterable {
+        public enum FilterRoles: String, CaseIterable, Codable, Sendable {
             case admin = "ADMIN"
             case finance = "FINANCE"
             case accountHolder = "ACCOUNT_HOLDER"
@@ -50,14 +50,14 @@ extension Resources.V1 {
             case generateIndividualKeys = "GENERATE_INDIVIDUAL_KEYS"
         }
 
-        public enum Sort: String, Codable, CaseIterable {
+        public enum Sort: String, CaseIterable, Codable, Sendable {
             case email
             case minusemail = "-email"
             case lastName
             case minuslastName = "-lastName"
         }
 
-        public enum FieldsUserInvitations: String, Codable, CaseIterable {
+        public enum FieldsUserInvitations: String, CaseIterable, Codable, Sendable {
             case allAppsVisible
             case email
             case expirationDate
@@ -68,11 +68,11 @@ extension Resources.V1 {
             case visibleApps
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case visibleApps
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability

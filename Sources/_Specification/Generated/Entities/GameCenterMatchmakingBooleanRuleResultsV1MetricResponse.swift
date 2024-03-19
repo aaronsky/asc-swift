@@ -5,22 +5,22 @@
 
 import Foundation
 
-public struct GameCenterMatchmakingBooleanRuleResultsV1MetricResponse: Codable, Equatable {
+public struct GameCenterMatchmakingBooleanRuleResultsV1MetricResponse: Codable, Equatable, Sendable {
     public var data: [Datum]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public struct Datum: Codable, Equatable {
+    public struct Datum: Codable, Equatable, Sendable {
         public var dataPoints: DataPoints?
         public var dimensions: Dimensions?
         public var granularity: Granularity?
 
-        public struct DataPoints: Codable, Equatable {
+        public struct DataPoints: Codable, Equatable, Sendable {
             public var start: Date?
             public var end: Date?
             public var values: Values?
 
-            public struct Values: Codable, Equatable {
+            public struct Values: Codable, Equatable, Sendable {
                 public var count: Int?
 
                 public init(count: Int? = nil) {
@@ -35,14 +35,14 @@ public struct GameCenterMatchmakingBooleanRuleResultsV1MetricResponse: Codable, 
             }
         }
 
-        public struct Dimensions: Codable, Equatable {
+        public struct Dimensions: Codable, Equatable, Sendable {
             public var result: Result?
             public var gameCenterMatchmakingQueue: GameCenterMatchmakingQueue?
 
-            public struct Result: Codable, Equatable {
+            public struct Result: Codable, Equatable, Sendable {
                 public var links: Links?
 
-                public struct Links: Codable, Equatable {
+                public struct Links: Codable, Equatable, Sendable {
                     public var groupBy: URL?
 
                     public init(groupBy: URL? = nil) {
@@ -55,10 +55,10 @@ public struct GameCenterMatchmakingBooleanRuleResultsV1MetricResponse: Codable, 
                 }
             }
 
-            public struct GameCenterMatchmakingQueue: Codable, Equatable {
+            public struct GameCenterMatchmakingQueue: Codable, Equatable, Sendable {
                 public var links: Links?
 
-                public struct Links: Codable, Equatable {
+                public struct Links: Codable, Equatable, Sendable {
                     public var groupBy: URL?
                     public var related: URL?
 
@@ -79,7 +79,7 @@ public struct GameCenterMatchmakingBooleanRuleResultsV1MetricResponse: Codable, 
             }
         }
 
-        public enum Granularity: String, Codable, CaseIterable {
+        public enum Granularity: String, CaseIterable, Codable, Sendable {
             case p1d = "P1D"
             case pt1h = "PT1H"
             case pt15m = "PT15M"

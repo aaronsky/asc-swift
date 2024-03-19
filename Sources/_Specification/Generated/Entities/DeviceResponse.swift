@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct DeviceResponse: Codable, Equatable {
+public struct DeviceResponse: Codable, Equatable, Sendable {
     /// Device
     public var data: Device
     public var links: DocumentLinks

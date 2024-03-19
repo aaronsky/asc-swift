@@ -27,7 +27,7 @@ extension Resources.V1.AppClipDefaultExperienceLocalizations.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppClipHeaderImages: String, Codable, CaseIterable {
+        public enum FieldsAppClipHeaderImages: String, CaseIterable, Codable, Sendable {
             case appClipDefaultExperienceLocalization
             case assetDeliveryState
             case fileName
@@ -38,14 +38,14 @@ extension Resources.V1.AppClipDefaultExperienceLocalizations.WithID {
             case uploaded
         }
 
-        public enum FieldsAppClipDefaultExperienceLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppClipDefaultExperienceLocalizations: String, CaseIterable, Codable, Sendable {
             case appClipDefaultExperience
             case appClipHeaderImage
             case locale
             case subtitle
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appClipDefaultExperienceLocalization
         }
     }

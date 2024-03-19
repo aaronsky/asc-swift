@@ -25,7 +25,7 @@ extension Resources.V1.BetaAppLocalizations.WithID {
             return encoder.items
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability

@@ -28,18 +28,18 @@ extension Resources.V1.SubscriptionAvailabilities {
             return encoder.items
         }
 
-        public enum FieldsSubscriptionAvailabilities: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionAvailabilities: String, CaseIterable, Codable, Sendable {
             case availableInNewTerritories
             case availableTerritories
             case subscription
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case availableTerritories
             case subscription
         }
 
-        public enum FieldsTerritories: String, Codable, CaseIterable {
+        public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
             case currency
         }
     }

@@ -5,19 +5,19 @@
 
 import Foundation
 
-public struct AppScreenshotSetCreateRequest: Codable, Equatable {
+public struct AppScreenshotSetCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable {
+    public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships?
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case appScreenshotSets
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var screenshotDisplayType: ScreenshotDisplayType
 
             public init(screenshotDisplayType: ScreenshotDisplayType) {
@@ -25,19 +25,19 @@ public struct AppScreenshotSetCreateRequest: Codable, Equatable {
             }
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var appStoreVersionLocalization: AppStoreVersionLocalization?
             public var appCustomProductPageLocalization: AppCustomProductPageLocalization?
             public var appStoreVersionExperimentTreatmentLocalization: AppStoreVersionExperimentTreatmentLocalization?
 
-            public struct AppStoreVersionLocalization: Codable, Equatable {
+            public struct AppStoreVersionLocalization: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appStoreVersionLocalizations
                     }
 
@@ -52,14 +52,14 @@ public struct AppScreenshotSetCreateRequest: Codable, Equatable {
                 }
             }
 
-            public struct AppCustomProductPageLocalization: Codable, Equatable {
+            public struct AppCustomProductPageLocalization: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appCustomProductPageLocalizations
                     }
 
@@ -74,14 +74,14 @@ public struct AppScreenshotSetCreateRequest: Codable, Equatable {
                 }
             }
 
-            public struct AppStoreVersionExperimentTreatmentLocalization: Codable, Equatable {
+            public struct AppStoreVersionExperimentTreatmentLocalization: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appStoreVersionExperimentTreatmentLocalizations
                     }
 

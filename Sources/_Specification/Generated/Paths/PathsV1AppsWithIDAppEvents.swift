@@ -31,7 +31,7 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FilterEventState: String, Codable, CaseIterable {
+        public enum FilterEventState: String, CaseIterable, Codable, Sendable {
             case draft = "DRAFT"
             case readyForReview = "READY_FOR_REVIEW"
             case waitingForReview = "WAITING_FOR_REVIEW"
@@ -44,7 +44,7 @@ extension Resources.V1.Apps.WithID {
             case archived = "ARCHIVED"
         }
 
-        public enum FieldsAppEventLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppEventLocalizations: String, CaseIterable, Codable, Sendable {
             case appEvent
             case appEventScreenshots
             case appEventVideoClips
@@ -54,7 +54,7 @@ extension Resources.V1.Apps.WithID {
             case shortDescription
         }
 
-        public enum FieldsAppEvents: String, Codable, CaseIterable {
+        public enum FieldsAppEvents: String, CaseIterable, Codable, Sendable {
             case app
             case archivedTerritorySchedules
             case badge
@@ -69,7 +69,7 @@ extension Resources.V1.Apps.WithID {
             case territorySchedules
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case localizations
         }
     }

@@ -25,7 +25,7 @@ extension Resources.V1.CiIssues {
             return encoder.items
         }
 
-        public enum FieldsCiIssues: String, Codable, CaseIterable {
+        public enum FieldsCiIssues: String, CaseIterable, Codable, Sendable {
             case category
             case fileSource
             case issueType

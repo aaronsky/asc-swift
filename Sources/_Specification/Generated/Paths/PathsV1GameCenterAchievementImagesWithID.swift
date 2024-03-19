@@ -26,7 +26,7 @@ extension Resources.V1.GameCenterAchievementImages {
             return encoder.items
         }
 
-        public enum FieldsGameCenterAchievementImages: String, Codable, CaseIterable {
+        public enum FieldsGameCenterAchievementImages: String, CaseIterable, Codable, Sendable {
             case assetDeliveryState
             case fileName
             case fileSize
@@ -36,7 +36,7 @@ extension Resources.V1.GameCenterAchievementImages {
             case uploaded
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case gameCenterAchievementLocalization
         }
 

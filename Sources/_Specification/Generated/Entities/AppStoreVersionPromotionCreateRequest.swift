@@ -5,29 +5,29 @@
 
 import Foundation
 
-public struct AppStoreVersionPromotionCreateRequest: Codable, Equatable {
+public struct AppStoreVersionPromotionCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable {
+    public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var relationships: Relationships
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case appStoreVersionPromotions
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var appStoreVersion: AppStoreVersion
             public var appStoreVersionExperimentTreatment: AppStoreVersionExperimentTreatment
 
-            public struct AppStoreVersion: Codable, Equatable {
+            public struct AppStoreVersion: Codable, Equatable, Sendable {
                 public var data: Data
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appStoreVersions
                     }
 
@@ -42,14 +42,14 @@ public struct AppStoreVersionPromotionCreateRequest: Codable, Equatable {
                 }
             }
 
-            public struct AppStoreVersionExperimentTreatment: Codable, Equatable {
+            public struct AppStoreVersionExperimentTreatment: Codable, Equatable, Sendable {
                 public var data: Data
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appStoreVersionExperimentTreatments
                     }
 

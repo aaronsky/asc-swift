@@ -28,14 +28,14 @@ extension Resources.V1.SubscriptionGroups.WithID {
             return encoder.items
         }
 
-        public enum FieldsSubscriptionGroups: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionGroups: String, CaseIterable, Codable, Sendable {
             case app
             case referenceName
             case subscriptionGroupLocalizations
             case subscriptions
         }
 
-        public enum FieldsSubscriptionGroupLocalizations: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionGroupLocalizations: String, CaseIterable, Codable, Sendable {
             case customAppName
             case locale
             case name
@@ -43,7 +43,7 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case subscriptionGroup
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case subscriptionGroup
         }
     }

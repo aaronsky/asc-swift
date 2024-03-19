@@ -32,7 +32,7 @@ extension Resources.V1.AppStoreVersions.WithID {
             return encoder.items
         }
 
-        public enum FilterTerritory: String, Codable, CaseIterable {
+        public enum FilterTerritory: String, CaseIterable, Codable, Sendable {
             case abw = "ABW"
             case afg = "AFG"
             case ago = "AGO"
@@ -267,14 +267,14 @@ extension Resources.V1.AppStoreVersions.WithID {
             case zwe = "ZWE"
         }
 
-        public enum Sort: String, Codable, CaseIterable {
+        public enum Sort: String, CaseIterable, Codable, Sendable {
             case createdDate
             case minuscreatedDate = "-createdDate"
             case rating
             case minusrating = "-rating"
         }
 
-        public enum FieldsCustomerReviews: String, Codable, CaseIterable {
+        public enum FieldsCustomerReviews: String, CaseIterable, Codable, Sendable {
             case body
             case createdDate
             case rating
@@ -284,14 +284,14 @@ extension Resources.V1.AppStoreVersions.WithID {
             case title
         }
 
-        public enum FieldsCustomerReviewResponses: String, Codable, CaseIterable {
+        public enum FieldsCustomerReviewResponses: String, CaseIterable, Codable, Sendable {
             case lastModifiedDate
             case responseBody
             case review
             case state
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case response
         }
     }

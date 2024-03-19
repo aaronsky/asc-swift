@@ -25,7 +25,7 @@ extension Resources.V1.CiArtifacts {
             return encoder.items
         }
 
-        public enum FieldsCiArtifacts: String, Codable, CaseIterable {
+        public enum FieldsCiArtifacts: String, CaseIterable, Codable, Sendable {
             case downloadURL = "downloadUrl"
             case fileName
             case fileSize

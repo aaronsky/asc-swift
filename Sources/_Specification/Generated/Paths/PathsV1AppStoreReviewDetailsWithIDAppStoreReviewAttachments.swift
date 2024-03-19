@@ -28,7 +28,7 @@ extension Resources.V1.AppStoreReviewDetails.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppStoreReviewDetails: String, Codable, CaseIterable {
+        public enum FieldsAppStoreReviewDetails: String, CaseIterable, Codable, Sendable {
             case appStoreReviewAttachments
             case appStoreVersion
             case contactEmail
@@ -41,7 +41,7 @@ extension Resources.V1.AppStoreReviewDetails.WithID {
             case notes
         }
 
-        public enum FieldsAppStoreReviewAttachments: String, Codable, CaseIterable {
+        public enum FieldsAppStoreReviewAttachments: String, CaseIterable, Codable, Sendable {
             case appStoreReviewDetail
             case assetDeliveryState
             case fileName
@@ -51,7 +51,7 @@ extension Resources.V1.AppStoreReviewDetails.WithID {
             case uploaded
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appStoreReviewDetail
         }
     }

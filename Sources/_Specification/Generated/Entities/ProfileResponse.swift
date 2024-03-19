@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct ProfileResponse: Codable, Equatable {
+public struct ProfileResponse: Codable, Equatable, Sendable {
     /// Profile
     public var data: Profile
     public var included: [IncludedItem]?
     public var links: DocumentLinks
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case bundleID(BundleID)
         case device(Device)
         case certificate(Certificate)

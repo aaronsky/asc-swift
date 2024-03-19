@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BundleIDCapabilityResponse: Codable, Equatable {
+public struct BundleIDCapabilityResponse: Codable, Equatable, Sendable {
     /// BundleIdCapability
     public var data: BundleIDCapability
     public var links: DocumentLinks

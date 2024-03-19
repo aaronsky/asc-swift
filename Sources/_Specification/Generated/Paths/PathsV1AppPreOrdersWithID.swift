@@ -26,13 +26,13 @@ extension Resources.V1.AppPreOrders {
             return encoder.items
         }
 
-        public enum FieldsAppPreOrders: String, Codable, CaseIterable {
+        public enum FieldsAppPreOrders: String, CaseIterable, Codable, Sendable {
             case app
             case appReleaseDate
             case preOrderAvailableDate
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
         }
 

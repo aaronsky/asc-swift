@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppClipAdvancedExperienceImageResponse: Codable, Equatable {
+public struct AppClipAdvancedExperienceImageResponse: Codable, Equatable, Sendable {
     /// AppClipAdvancedExperienceImage
     public var data: AppClipAdvancedExperienceImage
     public var links: DocumentLinks

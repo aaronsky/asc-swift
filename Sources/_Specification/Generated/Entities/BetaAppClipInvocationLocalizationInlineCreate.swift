@@ -5,17 +5,17 @@
 
 import Foundation
 
-public struct BetaAppClipInvocationLocalizationInlineCreate: Codable, Equatable, Identifiable {
+public struct BetaAppClipInvocationLocalizationInlineCreate: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String?
     public var attributes: Attributes
     public var relationships: Relationships?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case betaAppClipInvocationLocalizations
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var title: String
         public var locale: String
 
@@ -25,17 +25,17 @@ public struct BetaAppClipInvocationLocalizationInlineCreate: Codable, Equatable,
         }
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var betaAppClipInvocation: BetaAppClipInvocation?
 
-        public struct BetaAppClipInvocation: Codable, Equatable {
+        public struct BetaAppClipInvocation: Codable, Equatable, Sendable {
             public var data: Data?
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case betaAppClipInvocations
                 }
 

@@ -26,7 +26,7 @@ extension Resources.V1.SubscriptionGroupLocalizations {
             return encoder.items
         }
 
-        public enum FieldsSubscriptionGroupLocalizations: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionGroupLocalizations: String, CaseIterable, Codable, Sendable {
             case customAppName
             case locale
             case name
@@ -34,7 +34,7 @@ extension Resources.V1.SubscriptionGroupLocalizations {
             case subscriptionGroup
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case subscriptionGroup
         }
 

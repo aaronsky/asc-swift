@@ -29,7 +29,7 @@ extension Resources.V1.CiBuildRuns {
             return encoder.items
         }
 
-        public enum FieldsCiBuildRuns: String, Codable, CaseIterable {
+        public enum FieldsCiBuildRuns: String, CaseIterable, Codable, Sendable {
             case actions
             case buildRun
             case builds
@@ -53,7 +53,7 @@ extension Resources.V1.CiBuildRuns {
             case workflow
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case builds
             case destinationBranch
             case product
@@ -62,7 +62,7 @@ extension Resources.V1.CiBuildRuns {
             case workflow
         }
 
-        public enum FieldsCiBuildActions: String, Codable, CaseIterable {
+        public enum FieldsCiBuildActions: String, CaseIterable, Codable, Sendable {
             case actionType
             case artifacts
             case buildRun
@@ -77,7 +77,7 @@ extension Resources.V1.CiBuildRuns {
             case testResults
         }
 
-        public enum FieldsBuilds: String, Codable, CaseIterable {
+        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
             case app
             case appEncryptionDeclaration
             case appStoreVersion

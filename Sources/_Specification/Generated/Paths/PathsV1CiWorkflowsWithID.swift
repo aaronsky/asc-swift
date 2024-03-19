@@ -28,7 +28,7 @@ extension Resources.V1.CiWorkflows {
             return encoder.items
         }
 
-        public enum FieldsCiWorkflows: String, Codable, CaseIterable {
+        public enum FieldsCiWorkflows: String, CaseIterable, Codable, Sendable {
             case actions
             case branchStartCondition
             case buildRuns
@@ -51,14 +51,14 @@ extension Resources.V1.CiWorkflows {
             case xcodeVersion
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case macOsVersion
             case product
             case repository
             case xcodeVersion
         }
 
-        public enum FieldsCiBuildRuns: String, Codable, CaseIterable {
+        public enum FieldsCiBuildRuns: String, CaseIterable, Codable, Sendable {
             case actions
             case buildRun
             case builds
@@ -82,7 +82,7 @@ extension Resources.V1.CiWorkflows {
             case workflow
         }
 
-        public enum FieldsScmRepositories: String, Codable, CaseIterable {
+        public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
             case defaultBranch
             case gitReferences
             case httpCloneURL = "httpCloneUrl"

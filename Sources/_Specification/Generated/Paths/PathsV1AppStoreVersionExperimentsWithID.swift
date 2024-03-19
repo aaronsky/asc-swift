@@ -28,7 +28,7 @@ extension Resources.V1.AppStoreVersionExperiments {
             return encoder.items
         }
 
-        public enum FieldsAppStoreVersionExperiments: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionExperiments: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
             case appStoreVersionExperimentTreatments
             case endDate
@@ -40,12 +40,12 @@ extension Resources.V1.AppStoreVersionExperiments {
             case trafficProportion
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
             case appStoreVersionExperimentTreatments
         }
 
-        public enum FieldsAppStoreVersionExperimentTreatments: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionExperimentTreatments: String, CaseIterable, Codable, Sendable {
             case appIcon
             case appIconName
             case appStoreVersionExperiment

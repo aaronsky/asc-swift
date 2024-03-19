@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct AppsResponse: Codable, Equatable {
+public struct AppsResponse: Codable, Equatable, Sendable {
     public var data: [App]
     public var included: [IncludedItem]?
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case appEncryptionDeclaration(AppEncryptionDeclaration)
         case ciProduct(CiProduct)
         case betaGroup(BetaGroup)

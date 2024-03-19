@@ -25,7 +25,7 @@ extension Resources.V1.BuildBundles.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppClipDomainStatuses: String, Codable, CaseIterable {
+        public enum FieldsAppClipDomainStatuses: String, CaseIterable, Codable, Sendable {
             case domains
             case lastUpdatedDate
         }

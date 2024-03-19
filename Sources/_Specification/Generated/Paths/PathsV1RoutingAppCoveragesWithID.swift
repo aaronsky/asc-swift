@@ -26,7 +26,7 @@ extension Resources.V1.RoutingAppCoverages {
             return encoder.items
         }
 
-        public enum FieldsRoutingAppCoverages: String, Codable, CaseIterable {
+        public enum FieldsRoutingAppCoverages: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
             case assetDeliveryState
             case fileName
@@ -36,7 +36,7 @@ extension Resources.V1.RoutingAppCoverages {
             case uploaded
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
         }
 

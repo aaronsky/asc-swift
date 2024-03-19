@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiManualTagStartCondition: Codable, Equatable {
+public struct CiManualTagStartCondition: Codable, Equatable, Sendable {
     public var source: CiTagPatterns?
 
     public init(source: CiTagPatterns? = nil) {

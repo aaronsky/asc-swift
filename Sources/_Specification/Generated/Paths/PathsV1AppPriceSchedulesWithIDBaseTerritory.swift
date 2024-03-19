@@ -25,7 +25,7 @@ extension Resources.V1.AppPriceSchedules.WithID {
             return encoder.items
         }
 
-        public enum FieldsTerritories: String, Codable, CaseIterable {
+        public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
             case currency
         }
     }

@@ -31,7 +31,7 @@ extension Resources.V1.Profiles {
             return encoder.items
         }
 
-        public enum FieldsProfiles: String, Codable, CaseIterable {
+        public enum FieldsProfiles: String, CaseIterable, Codable, Sendable {
             case bundleID = "bundleId"
             case certificates
             case createdDate
@@ -45,13 +45,13 @@ extension Resources.V1.Profiles {
             case uuid
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case bundleID = "bundleId"
             case certificates
             case devices
         }
 
-        public enum FieldsCertificates: String, Codable, CaseIterable {
+        public enum FieldsCertificates: String, CaseIterable, Codable, Sendable {
             case certificateContent
             case certificateType
             case csrContent
@@ -62,7 +62,7 @@ extension Resources.V1.Profiles {
             case serialNumber
         }
 
-        public enum FieldsDevices: String, Codable, CaseIterable {
+        public enum FieldsDevices: String, CaseIterable, Codable, Sendable {
             case addedDate
             case deviceClass
             case model
@@ -72,7 +72,7 @@ extension Resources.V1.Profiles {
             case udid
         }
 
-        public enum FieldsBundleIDs: String, Codable, CaseIterable {
+        public enum FieldsBundleIDs: String, CaseIterable, Codable, Sendable {
             case app
             case bundleIDCapabilities = "bundleIdCapabilities"
             case identifier

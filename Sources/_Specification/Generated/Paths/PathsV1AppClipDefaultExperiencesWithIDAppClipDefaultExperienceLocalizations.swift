@@ -30,7 +30,7 @@ extension Resources.V1.AppClipDefaultExperiences.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppClipDefaultExperiences: String, Codable, CaseIterable {
+        public enum FieldsAppClipDefaultExperiences: String, CaseIterable, Codable, Sendable {
             case action
             case appClip
             case appClipAppStoreReviewDetail
@@ -39,14 +39,14 @@ extension Resources.V1.AppClipDefaultExperiences.WithID {
             case releaseWithAppStoreVersion
         }
 
-        public enum FieldsAppClipDefaultExperienceLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppClipDefaultExperienceLocalizations: String, CaseIterable, Codable, Sendable {
             case appClipDefaultExperience
             case appClipHeaderImage
             case locale
             case subtitle
         }
 
-        public enum FieldsAppClipHeaderImages: String, Codable, CaseIterable {
+        public enum FieldsAppClipHeaderImages: String, CaseIterable, Codable, Sendable {
             case appClipDefaultExperienceLocalization
             case assetDeliveryState
             case fileName
@@ -57,7 +57,7 @@ extension Resources.V1.AppClipDefaultExperiences.WithID {
             case uploaded
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appClipDefaultExperience
             case appClipHeaderImage
         }

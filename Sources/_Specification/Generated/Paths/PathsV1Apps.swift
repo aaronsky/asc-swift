@@ -89,7 +89,7 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FilterAppStoreVersionsAppStoreState: String, Codable, CaseIterable {
+        public enum FilterAppStoreVersionsAppStoreState: String, CaseIterable, Codable, Sendable {
             case accepted = "ACCEPTED"
             case developerRemovedFromSale = "DEVELOPER_REMOVED_FROM_SALE"
             case developerRejected = "DEVELOPER_REJECTED"
@@ -112,7 +112,7 @@ extension Resources.V1 {
             case notApplicable = "NOT_APPLICABLE"
         }
 
-        public enum FilterAppStoreVersionsAppVersionState: String, Codable, CaseIterable {
+        public enum FilterAppStoreVersionsAppVersionState: String, CaseIterable, Codable, Sendable {
             case accepted = "ACCEPTED"
             case developerRejected = "DEVELOPER_REJECTED"
             case inReview = "IN_REVIEW"
@@ -130,14 +130,14 @@ extension Resources.V1 {
             case waitingForReview = "WAITING_FOR_REVIEW"
         }
 
-        public enum FilterAppStoreVersionsPlatform: String, Codable, CaseIterable {
+        public enum FilterAppStoreVersionsPlatform: String, CaseIterable, Codable, Sendable {
             case ios = "IOS"
             case macOs = "MAC_OS"
             case tvOs = "TV_OS"
             case visionOs = "VISION_OS"
         }
 
-        public enum Sort: String, Codable, CaseIterable {
+        public enum Sort: String, CaseIterable, Codable, Sendable {
             case bundleID = "bundleId"
             case minusbundleID = "-bundleId"
             case name
@@ -146,7 +146,7 @@ extension Resources.V1 {
             case minussku = "-sku"
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability
@@ -196,7 +196,7 @@ extension Resources.V1 {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appClips
             case appCustomProductPages
             case appEncryptionDeclarations
@@ -225,7 +225,7 @@ extension Resources.V1 {
             case subscriptionGroups
         }
 
-        public enum FieldsBetaAppReviewDetails: String, Codable, CaseIterable {
+        public enum FieldsBetaAppReviewDetails: String, CaseIterable, Codable, Sendable {
             case app
             case contactEmail
             case contactFirstName
@@ -237,7 +237,7 @@ extension Resources.V1 {
             case notes
         }
 
-        public enum FieldsGameCenterDetails: String, Codable, CaseIterable {
+        public enum FieldsGameCenterDetails: String, CaseIterable, Codable, Sendable {
             case achievementReleases
             case app
             case arcadeEnabled
@@ -253,14 +253,14 @@ extension Resources.V1 {
             case leaderboardSetReleases
         }
 
-        public enum FieldsAppPriceSchedules: String, Codable, CaseIterable {
+        public enum FieldsAppPriceSchedules: String, CaseIterable, Codable, Sendable {
             case app
             case automaticPrices
             case baseTerritory
             case manualPrices
         }
 
-        public enum FieldsCiProducts: String, Codable, CaseIterable {
+        public enum FieldsCiProducts: String, CaseIterable, Codable, Sendable {
             case additionalRepositories
             case app
             case buildRuns
@@ -272,12 +272,12 @@ extension Resources.V1 {
             case workflows
         }
 
-        public enum FieldsAlternativeDistributionKeys: String, Codable, CaseIterable {
+        public enum FieldsAlternativeDistributionKeys: String, CaseIterable, Codable, Sendable {
             case app
             case publicKey
         }
 
-        public enum FieldsReviewSubmissions: String, Codable, CaseIterable {
+        public enum FieldsReviewSubmissions: String, CaseIterable, Codable, Sendable {
             case app
             case appStoreVersionForReview
             case canceled
@@ -290,7 +290,7 @@ extension Resources.V1 {
             case submittedDate
         }
 
-        public enum FieldsBetaGroups: String, Codable, CaseIterable {
+        public enum FieldsBetaGroups: String, CaseIterable, Codable, Sendable {
             case app
             case betaTesters
             case builds
@@ -307,7 +307,7 @@ extension Resources.V1 {
             case publicLinkLimitEnabled
         }
 
-        public enum FieldsPromotedPurchases: String, Codable, CaseIterable {
+        public enum FieldsPromotedPurchases: String, CaseIterable, Codable, Sendable {
             case app
             case enabled
             case inAppPurchaseV2
@@ -317,13 +317,13 @@ extension Resources.V1 {
             case visibleForAllUsers
         }
 
-        public enum FieldsAppAvailabilities: String, Codable, CaseIterable {
+        public enum FieldsAppAvailabilities: String, CaseIterable, Codable, Sendable {
             case app
             case availableInNewTerritories
             case availableTerritories
         }
 
-        public enum FieldsCustomerReviews: String, Codable, CaseIterable {
+        public enum FieldsCustomerReviews: String, CaseIterable, Codable, Sendable {
             case body
             case createdDate
             case rating
@@ -333,7 +333,7 @@ extension Resources.V1 {
             case title
         }
 
-        public enum FieldsAppEvents: String, Codable, CaseIterable {
+        public enum FieldsAppEvents: String, CaseIterable, Codable, Sendable {
             case app
             case archivedTerritorySchedules
             case badge
@@ -348,7 +348,7 @@ extension Resources.V1 {
             case territorySchedules
         }
 
-        public enum FieldsBuilds: String, Codable, CaseIterable {
+        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
             case app
             case appEncryptionDeclaration
             case appStoreVersion
@@ -375,24 +375,24 @@ extension Resources.V1 {
             case version
         }
 
-        public enum FieldsBetaLicenseAgreements: String, Codable, CaseIterable {
+        public enum FieldsBetaLicenseAgreements: String, CaseIterable, Codable, Sendable {
             case agreementText
             case app
         }
 
-        public enum FieldsMarketplaceSearchDetails: String, Codable, CaseIterable {
+        public enum FieldsMarketplaceSearchDetails: String, CaseIterable, Codable, Sendable {
             case app
             case catalogURL = "catalogUrl"
         }
 
-        public enum FieldsAppClips: String, Codable, CaseIterable {
+        public enum FieldsAppClips: String, CaseIterable, Codable, Sendable {
             case app
             case appClipAdvancedExperiences
             case appClipDefaultExperiences
             case bundleID = "bundleId"
         }
 
-        public enum FieldsAppInfos: String, Codable, CaseIterable {
+        public enum FieldsAppInfos: String, CaseIterable, Codable, Sendable {
             case ageRatingDeclaration
             case app
             case appInfoLocalizations
@@ -410,7 +410,7 @@ extension Resources.V1 {
             case state
         }
 
-        public enum FieldsBetaAppLocalizations: String, Codable, CaseIterable {
+        public enum FieldsBetaAppLocalizations: String, CaseIterable, Codable, Sendable {
             case app
             case description
             case feedbackEmail
@@ -420,7 +420,7 @@ extension Resources.V1 {
             case tvOsPrivacyPolicy
         }
 
-        public enum FieldsAppPricePoints: String, Codable, CaseIterable {
+        public enum FieldsAppPricePoints: String, CaseIterable, Codable, Sendable {
             case app
             case customerPrice
             case equalizations
@@ -429,7 +429,7 @@ extension Resources.V1 {
             case territory
         }
 
-        public enum FieldsInAppPurchases: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchases: String, CaseIterable, Codable, Sendable {
             case app
             case appStoreReviewScreenshot
             case apps
@@ -449,39 +449,39 @@ extension Resources.V1 {
             case state
         }
 
-        public enum FieldsPreReleaseVersions: String, Codable, CaseIterable {
+        public enum FieldsPreReleaseVersions: String, CaseIterable, Codable, Sendable {
             case app
             case builds
             case platform
             case version
         }
 
-        public enum FieldsSubscriptionGroups: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionGroups: String, CaseIterable, Codable, Sendable {
             case app
             case referenceName
             case subscriptionGroupLocalizations
             case subscriptions
         }
 
-        public enum FieldsAnalyticsReportRequests: String, Codable, CaseIterable {
+        public enum FieldsAnalyticsReportRequests: String, CaseIterable, Codable, Sendable {
             case accessType
             case app
             case reports
             case stoppedDueToInactivity
         }
 
-        public enum FieldsAppPrices: String, Codable, CaseIterable {
+        public enum FieldsAppPrices: String, CaseIterable, Codable, Sendable {
             case app
             case priceTier
         }
 
-        public enum FieldsAppPreOrders: String, Codable, CaseIterable {
+        public enum FieldsAppPreOrders: String, CaseIterable, Codable, Sendable {
             case app
             case appReleaseDate
             case preOrderAvailableDate
         }
 
-        public enum FieldsAppStoreVersionExperiments: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionExperiments: String, CaseIterable, Codable, Sendable {
             case app
             case appStoreVersionExperimentTreatments
             case controlVersions
@@ -496,7 +496,7 @@ extension Resources.V1 {
             case trafficProportion
         }
 
-        public enum FieldsGameCenterEnabledVersions: String, Codable, CaseIterable {
+        public enum FieldsGameCenterEnabledVersions: String, CaseIterable, Codable, Sendable {
             case app
             case compatibleVersions
             case iconAsset
@@ -504,20 +504,20 @@ extension Resources.V1 {
             case versionString
         }
 
-        public enum FieldsSubscriptionGracePeriods: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionGracePeriods: String, CaseIterable, Codable, Sendable {
             case duration
             case optIn
             case renewalType
             case sandboxOptIn
         }
 
-        public enum FieldsEndUserLicenseAgreements: String, Codable, CaseIterable {
+        public enum FieldsEndUserLicenseAgreements: String, CaseIterable, Codable, Sendable {
             case agreementText
             case app
             case territories
         }
 
-        public enum FieldsAppStoreVersions: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
             case ageRatingDeclaration
             case alternativeDistributionPackage
             case app
@@ -543,7 +543,7 @@ extension Resources.V1 {
             case versionString
         }
 
-        public enum FieldsAppCustomProductPages: String, Codable, CaseIterable {
+        public enum FieldsAppCustomProductPages: String, CaseIterable, Codable, Sendable {
             case app
             case appCustomProductPageVersions
             case appStoreVersionTemplate
@@ -553,7 +553,7 @@ extension Resources.V1 {
             case visible
         }
 
-        public enum FieldsAppEncryptionDeclarations: String, Codable, CaseIterable {
+        public enum FieldsAppEncryptionDeclarations: String, CaseIterable, Codable, Sendable {
             case app
             case appDescription
             case appEncryptionDeclarationDocument
@@ -573,11 +573,11 @@ extension Resources.V1 {
             case usesEncryption
         }
 
-        public enum FieldsTerritories: String, Codable, CaseIterable {
+        public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
             case currency
         }
 
-        public enum FieldsPerfPowerMetrics: String, Codable, CaseIterable {
+        public enum FieldsPerfPowerMetrics: String, CaseIterable, Codable, Sendable {
             case deviceType
             case metricType
             case platform

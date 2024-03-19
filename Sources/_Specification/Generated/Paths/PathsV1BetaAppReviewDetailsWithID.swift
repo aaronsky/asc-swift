@@ -27,7 +27,7 @@ extension Resources.V1.BetaAppReviewDetails {
             return encoder.items
         }
 
-        public enum FieldsBetaAppReviewDetails: String, Codable, CaseIterable {
+        public enum FieldsBetaAppReviewDetails: String, CaseIterable, Codable, Sendable {
             case app
             case contactEmail
             case contactFirstName
@@ -39,11 +39,11 @@ extension Resources.V1.BetaAppReviewDetails {
             case notes
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability

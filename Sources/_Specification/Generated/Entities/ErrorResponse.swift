@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct ErrorResponse: Codable, Equatable {
+public struct ErrorResponse: Codable, Equatable, Sendable {
     public var errors: [Error]?
 
-    public struct Error: Codable, Equatable, Identifiable {
+    public struct Error: Codable, Equatable, Identifiable, Sendable {
         public var id: String?
         public var status: String
         public var code: String
@@ -17,7 +17,7 @@ public struct ErrorResponse: Codable, Equatable {
         public var source: Source?
         public var meta: [String: AnyJSON]?
 
-        public enum Source: Codable, Equatable {
+        public enum Source: Codable, Equatable, Sendable {
             case errorSourcePointer(ErrorSourcePointer)
             case errorSourceParameter(ErrorSourceParameter)
 

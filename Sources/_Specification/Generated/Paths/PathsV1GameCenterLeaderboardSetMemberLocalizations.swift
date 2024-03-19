@@ -31,19 +31,19 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FieldsGameCenterLeaderboardSetMemberLocalizations: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardSetMemberLocalizations: String, CaseIterable, Codable, Sendable {
             case gameCenterLeaderboard
             case gameCenterLeaderboardSet
             case locale
             case name
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case gameCenterLeaderboard
             case gameCenterLeaderboardSet
         }
 
-        public enum FieldsGameCenterLeaderboardSets: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardSets: String, CaseIterable, Codable, Sendable {
             case gameCenterDetail
             case gameCenterGroup
             case gameCenterLeaderboards
@@ -54,7 +54,7 @@ extension Resources.V1 {
             case vendorIdentifier
         }
 
-        public enum FieldsGameCenterLeaderboards: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboards: String, CaseIterable, Codable, Sendable {
             case archived
             case defaultFormatter
             case gameCenterDetail

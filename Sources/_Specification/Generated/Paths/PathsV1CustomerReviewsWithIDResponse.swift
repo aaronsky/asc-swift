@@ -27,7 +27,7 @@ extension Resources.V1.CustomerReviews.WithID {
             return encoder.items
         }
 
-        public enum FieldsCustomerReviews: String, Codable, CaseIterable {
+        public enum FieldsCustomerReviews: String, CaseIterable, Codable, Sendable {
             case body
             case createdDate
             case rating
@@ -37,14 +37,14 @@ extension Resources.V1.CustomerReviews.WithID {
             case title
         }
 
-        public enum FieldsCustomerReviewResponses: String, Codable, CaseIterable {
+        public enum FieldsCustomerReviewResponses: String, CaseIterable, Codable, Sendable {
             case lastModifiedDate
             case responseBody
             case review
             case state
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case review
         }
     }

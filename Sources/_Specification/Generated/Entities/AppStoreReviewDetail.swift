@@ -5,18 +5,18 @@
 
 import Foundation
 
-public struct AppStoreReviewDetail: Codable, Equatable, Identifiable {
+public struct AppStoreReviewDetail: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var relationships: Relationships?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case appStoreReviewDetails
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var contactFirstName: String?
         public var contactLastName: String?
         public var contactPhone: String?
@@ -49,15 +49,15 @@ public struct AppStoreReviewDetail: Codable, Equatable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var appStoreVersion: AppStoreVersion?
         public var appStoreReviewAttachments: AppStoreReviewAttachments?
 
-        public struct AppStoreVersion: Codable, Equatable {
+        public struct AppStoreVersion: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -72,11 +72,11 @@ public struct AppStoreReviewDetail: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appStoreVersions
                 }
 
@@ -92,12 +92,12 @@ public struct AppStoreReviewDetail: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct AppStoreReviewAttachments: Codable, Equatable {
+        public struct AppStoreReviewAttachments: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -112,11 +112,11 @@ public struct AppStoreReviewDetail: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appStoreReviewAttachments
                 }
 

@@ -26,7 +26,7 @@ extension Resources.V1.AppCategories.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppCategories: String, Codable, CaseIterable {
+        public enum FieldsAppCategories: String, CaseIterable, Codable, Sendable {
             case parent
             case platforms
             case subcategories

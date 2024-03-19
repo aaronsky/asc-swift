@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct GameCenterLeaderboardSetMemberLocalizationsResponse: Codable, Equatable {
+public struct GameCenterLeaderboardSetMemberLocalizationsResponse: Codable, Equatable, Sendable {
     public var data: [GameCenterLeaderboardSetMemberLocalization]
     public var included: [IncludedItem]?
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case gameCenterLeaderboardSet(GameCenterLeaderboardSet)
         case gameCenterLeaderboard(GameCenterLeaderboard)
 

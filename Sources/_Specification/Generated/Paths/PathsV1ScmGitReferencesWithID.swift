@@ -26,7 +26,7 @@ extension Resources.V1.ScmGitReferences {
             return encoder.items
         }
 
-        public enum FieldsScmGitReferences: String, Codable, CaseIterable {
+        public enum FieldsScmGitReferences: String, CaseIterable, Codable, Sendable {
             case canonicalName
             case isDeleted
             case kind
@@ -34,7 +34,7 @@ extension Resources.V1.ScmGitReferences {
             case repository
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case repository
         }
     }

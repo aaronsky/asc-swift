@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct FileLocation: Codable, Equatable {
+public struct FileLocation: Codable, Equatable, Sendable {
     public var path: String?
     public var lineNumber: Int?
 

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppScreenshotResponse: Codable, Equatable {
+public struct AppScreenshotResponse: Codable, Equatable, Sendable {
     /// AppScreenshot
     public var data: AppScreenshot
     public var included: [AppScreenshotSet]?

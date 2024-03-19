@@ -29,7 +29,7 @@ extension Resources.V1.AppEncryptionDeclarations {
             return encoder.items
         }
 
-        public enum FieldsAppEncryptionDeclarations: String, Codable, CaseIterable {
+        public enum FieldsAppEncryptionDeclarations: String, CaseIterable, Codable, Sendable {
             case app
             case appDescription
             case appEncryptionDeclarationDocument
@@ -49,13 +49,13 @@ extension Resources.V1.AppEncryptionDeclarations {
             case usesEncryption
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case appEncryptionDeclarationDocument
             case builds
         }
 
-        public enum FieldsAppEncryptionDeclarationDocuments: String, Codable, CaseIterable {
+        public enum FieldsAppEncryptionDeclarationDocuments: String, CaseIterable, Codable, Sendable {
             case appEncryptionDeclaration
             case assetDeliveryState
             case assetToken
@@ -67,7 +67,7 @@ extension Resources.V1.AppEncryptionDeclarations {
             case uploaded
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability

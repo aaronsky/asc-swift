@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum AppClipAdvancedExperienceLanguage: String, Codable, CaseIterable {
+public enum AppClipAdvancedExperienceLanguage: String, CaseIterable, Codable, Sendable {
     case ar = "AR"
     case ca = "CA"
     case cs = "CS"

@@ -27,7 +27,7 @@ extension Resources.V1.InAppPurchases {
             return encoder.items
         }
 
-        public enum FieldsInAppPurchases: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchases: String, CaseIterable, Codable, Sendable {
             case apps
             case inAppPurchaseType
             case productID = "productId"
@@ -35,7 +35,7 @@ extension Resources.V1.InAppPurchases {
             case state
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case apps
         }
     }

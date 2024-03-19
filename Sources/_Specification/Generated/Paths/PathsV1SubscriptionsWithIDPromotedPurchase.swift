@@ -30,7 +30,7 @@ extension Resources.V1.Subscriptions.WithID {
             return encoder.items
         }
 
-        public enum FieldsPromotedPurchases: String, Codable, CaseIterable {
+        public enum FieldsPromotedPurchases: String, CaseIterable, Codable, Sendable {
             case app
             case enabled
             case inAppPurchaseV2
@@ -40,7 +40,7 @@ extension Resources.V1.Subscriptions.WithID {
             case visibleForAllUsers
         }
 
-        public enum FieldsSubscriptions: String, Codable, CaseIterable {
+        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
             case appStoreReviewScreenshot
             case familySharable
             case group
@@ -60,7 +60,7 @@ extension Resources.V1.Subscriptions.WithID {
             case subscriptionPeriod
         }
 
-        public enum FieldsInAppPurchases: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchases: String, CaseIterable, Codable, Sendable {
             case app
             case appStoreReviewScreenshot
             case content
@@ -78,7 +78,7 @@ extension Resources.V1.Subscriptions.WithID {
             case state
         }
 
-        public enum FieldsPromotedPurchaseImages: String, Codable, CaseIterable {
+        public enum FieldsPromotedPurchaseImages: String, CaseIterable, Codable, Sendable {
             case assetToken
             case assetType
             case fileName
@@ -91,7 +91,7 @@ extension Resources.V1.Subscriptions.WithID {
             case uploaded
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case inAppPurchaseV2
             case promotionImages
             case subscription

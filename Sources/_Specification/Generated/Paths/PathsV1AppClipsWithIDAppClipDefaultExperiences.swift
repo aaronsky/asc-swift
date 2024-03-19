@@ -33,19 +33,19 @@ extension Resources.V1.AppClips.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppClips: String, Codable, CaseIterable {
+        public enum FieldsAppClips: String, CaseIterable, Codable, Sendable {
             case app
             case appClipAdvancedExperiences
             case appClipDefaultExperiences
             case bundleID = "bundleId"
         }
 
-        public enum FieldsAppClipAppStoreReviewDetails: String, Codable, CaseIterable {
+        public enum FieldsAppClipAppStoreReviewDetails: String, CaseIterable, Codable, Sendable {
             case appClipDefaultExperience
             case invocationURLs = "invocationUrls"
         }
 
-        public enum FieldsAppStoreVersions: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
             case ageRatingDeclaration
             case alternativeDistributionPackage
             case app
@@ -71,7 +71,7 @@ extension Resources.V1.AppClips.WithID {
             case versionString
         }
 
-        public enum FieldsAppClipDefaultExperiences: String, Codable, CaseIterable {
+        public enum FieldsAppClipDefaultExperiences: String, CaseIterable, Codable, Sendable {
             case action
             case appClip
             case appClipAppStoreReviewDetail
@@ -80,14 +80,14 @@ extension Resources.V1.AppClips.WithID {
             case releaseWithAppStoreVersion
         }
 
-        public enum FieldsAppClipDefaultExperienceLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppClipDefaultExperienceLocalizations: String, CaseIterable, Codable, Sendable {
             case appClipDefaultExperience
             case appClipHeaderImage
             case locale
             case subtitle
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appClip
             case appClipAppStoreReviewDetail
             case appClipDefaultExperienceLocalizations

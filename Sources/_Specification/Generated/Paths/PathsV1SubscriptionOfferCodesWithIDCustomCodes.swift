@@ -28,7 +28,7 @@ extension Resources.V1.SubscriptionOfferCodes.WithID {
             return encoder.items
         }
 
-        public enum FieldsSubscriptionOfferCodeCustomCodes: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionOfferCodeCustomCodes: String, CaseIterable, Codable, Sendable {
             case active
             case createdDate
             case customCode
@@ -37,7 +37,7 @@ extension Resources.V1.SubscriptionOfferCodes.WithID {
             case offerCode
         }
 
-        public enum FieldsSubscriptionOfferCodes: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionOfferCodes: String, CaseIterable, Codable, Sendable {
             case active
             case customCodes
             case customerEligibilities
@@ -52,7 +52,7 @@ extension Resources.V1.SubscriptionOfferCodes.WithID {
             case totalNumberOfCodes
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case offerCode
         }
     }

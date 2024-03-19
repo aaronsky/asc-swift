@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct ScmPullRequestResponse: Codable, Equatable {
+public struct ScmPullRequestResponse: Codable, Equatable, Sendable {
     /// ScmPullRequest
     public var data: ScmPullRequest
     public var included: [ScmRepository]?

@@ -27,7 +27,7 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FieldsActors: String, Codable, CaseIterable {
+        public enum FieldsActors: String, CaseIterable, Codable, Sendable {
             case actorType
             case apiKeyID = "apiKeyId"
             case userEmail

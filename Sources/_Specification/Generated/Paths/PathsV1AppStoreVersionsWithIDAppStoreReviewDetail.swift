@@ -29,7 +29,7 @@ extension Resources.V1.AppStoreVersions.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppStoreReviewDetails: String, Codable, CaseIterable {
+        public enum FieldsAppStoreReviewDetails: String, CaseIterable, Codable, Sendable {
             case appStoreReviewAttachments
             case appStoreVersion
             case contactEmail
@@ -42,7 +42,7 @@ extension Resources.V1.AppStoreVersions.WithID {
             case notes
         }
 
-        public enum FieldsAppStoreVersions: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
             case ageRatingDeclaration
             case alternativeDistributionPackage
             case app
@@ -68,7 +68,7 @@ extension Resources.V1.AppStoreVersions.WithID {
             case versionString
         }
 
-        public enum FieldsAppStoreReviewAttachments: String, Codable, CaseIterable {
+        public enum FieldsAppStoreReviewAttachments: String, CaseIterable, Codable, Sendable {
             case appStoreReviewDetail
             case assetDeliveryState
             case fileName
@@ -78,7 +78,7 @@ extension Resources.V1.AppStoreVersions.WithID {
             case uploaded
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appStoreReviewAttachments
             case appStoreVersion
         }

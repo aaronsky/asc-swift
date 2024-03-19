@@ -28,7 +28,7 @@ extension Resources.V1.ReviewSubmissions {
             return encoder.items
         }
 
-        public enum FieldsReviewSubmissions: String, Codable, CaseIterable {
+        public enum FieldsReviewSubmissions: String, CaseIterable, Codable, Sendable {
             case app
             case appStoreVersionForReview
             case canceled
@@ -41,7 +41,7 @@ extension Resources.V1.ReviewSubmissions {
             case submittedDate
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case appStoreVersionForReview
             case items
@@ -49,7 +49,7 @@ extension Resources.V1.ReviewSubmissions {
             case submittedByActor
         }
 
-        public enum FieldsReviewSubmissionItems: String, Codable, CaseIterable {
+        public enum FieldsReviewSubmissionItems: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageVersion
             case appEvent
             case appStoreVersion

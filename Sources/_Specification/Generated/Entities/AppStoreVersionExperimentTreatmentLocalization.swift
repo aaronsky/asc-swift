@@ -5,18 +5,18 @@
 
 import Foundation
 
-public struct AppStoreVersionExperimentTreatmentLocalization: Codable, Equatable, Identifiable {
+public struct AppStoreVersionExperimentTreatmentLocalization: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var relationships: Relationships?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case appStoreVersionExperimentTreatmentLocalizations
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var locale: String?
 
         public init(locale: String? = nil) {
@@ -24,16 +24,16 @@ public struct AppStoreVersionExperimentTreatmentLocalization: Codable, Equatable
         }
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var appStoreVersionExperimentTreatment: AppStoreVersionExperimentTreatment?
         public var appScreenshotSets: AppScreenshotSets?
         public var appPreviewSets: AppPreviewSets?
 
-        public struct AppStoreVersionExperimentTreatment: Codable, Equatable {
+        public struct AppStoreVersionExperimentTreatment: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -48,11 +48,11 @@ public struct AppStoreVersionExperimentTreatmentLocalization: Codable, Equatable
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appStoreVersionExperimentTreatments
                 }
 
@@ -68,12 +68,12 @@ public struct AppStoreVersionExperimentTreatmentLocalization: Codable, Equatable
             }
         }
 
-        public struct AppScreenshotSets: Codable, Equatable {
+        public struct AppScreenshotSets: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -88,11 +88,11 @@ public struct AppStoreVersionExperimentTreatmentLocalization: Codable, Equatable
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appScreenshotSets
                 }
 
@@ -109,12 +109,12 @@ public struct AppStoreVersionExperimentTreatmentLocalization: Codable, Equatable
             }
         }
 
-        public struct AppPreviewSets: Codable, Equatable {
+        public struct AppPreviewSets: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -129,11 +129,11 @@ public struct AppStoreVersionExperimentTreatmentLocalization: Codable, Equatable
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appPreviewSets
                 }
 

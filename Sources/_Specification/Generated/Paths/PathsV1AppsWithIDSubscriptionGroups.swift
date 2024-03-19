@@ -34,7 +34,7 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FilterSubscriptionsState: String, Codable, CaseIterable {
+        public enum FilterSubscriptionsState: String, CaseIterable, Codable, Sendable {
             case missingMetadata = "MISSING_METADATA"
             case readyToSubmit = "READY_TO_SUBMIT"
             case waitingForReview = "WAITING_FOR_REVIEW"
@@ -47,12 +47,12 @@ extension Resources.V1.Apps.WithID {
             case rejected = "REJECTED"
         }
 
-        public enum Sort: String, Codable, CaseIterable {
+        public enum Sort: String, CaseIterable, Codable, Sendable {
             case referenceName
             case minusreferenceName = "-referenceName"
         }
 
-        public enum FieldsSubscriptions: String, Codable, CaseIterable {
+        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
             case appStoreReviewScreenshot
             case familySharable
             case group
@@ -72,14 +72,14 @@ extension Resources.V1.Apps.WithID {
             case subscriptionPeriod
         }
 
-        public enum FieldsSubscriptionGroups: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionGroups: String, CaseIterable, Codable, Sendable {
             case app
             case referenceName
             case subscriptionGroupLocalizations
             case subscriptions
         }
 
-        public enum FieldsSubscriptionGroupLocalizations: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionGroupLocalizations: String, CaseIterable, Codable, Sendable {
             case customAppName
             case locale
             case name
@@ -87,7 +87,7 @@ extension Resources.V1.Apps.WithID {
             case subscriptionGroup
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case subscriptionGroupLocalizations
             case subscriptions
         }

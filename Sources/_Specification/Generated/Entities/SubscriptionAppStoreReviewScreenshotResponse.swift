@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct SubscriptionAppStoreReviewScreenshotResponse: Codable, Equatable {
+public struct SubscriptionAppStoreReviewScreenshotResponse: Codable, Equatable, Sendable {
     /// SubscriptionAppStoreReviewScreenshot
     public var data: SubscriptionAppStoreReviewScreenshot
     public var included: [Subscription]?

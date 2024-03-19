@@ -45,7 +45,7 @@ extension Resources.V1.SubscriptionGroups.WithID {
             return encoder.items
         }
 
-        public enum FilterState: String, Codable, CaseIterable {
+        public enum FilterState: String, CaseIterable, Codable, Sendable {
             case missingMetadata = "MISSING_METADATA"
             case readyToSubmit = "READY_TO_SUBMIT"
             case waitingForReview = "WAITING_FOR_REVIEW"
@@ -58,12 +58,12 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case rejected = "REJECTED"
         }
 
-        public enum Sort: String, Codable, CaseIterable {
+        public enum Sort: String, CaseIterable, Codable, Sendable {
             case name
             case minusname = "-name"
         }
 
-        public enum FieldsPromotedPurchases: String, Codable, CaseIterable {
+        public enum FieldsPromotedPurchases: String, CaseIterable, Codable, Sendable {
             case app
             case enabled
             case inAppPurchaseV2
@@ -73,7 +73,7 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case visibleForAllUsers
         }
 
-        public enum FieldsSubscriptionPromotionalOffers: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionPromotionalOffers: String, CaseIterable, Codable, Sendable {
             case duration
             case name
             case numberOfPeriods
@@ -83,7 +83,7 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case subscription
         }
 
-        public enum FieldsSubscriptionOfferCodes: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionOfferCodes: String, CaseIterable, Codable, Sendable {
             case active
             case customCodes
             case customerEligibilities
@@ -98,7 +98,7 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case totalNumberOfCodes
         }
 
-        public enum FieldsSubscriptionAppStoreReviewScreenshots: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionAppStoreReviewScreenshots: String, CaseIterable, Codable, Sendable {
             case assetDeliveryState
             case assetToken
             case assetType
@@ -111,7 +111,7 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case uploaded
         }
 
-        public enum FieldsSubscriptions: String, Codable, CaseIterable {
+        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
             case appStoreReviewScreenshot
             case familySharable
             case group
@@ -131,20 +131,20 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case subscriptionPeriod
         }
 
-        public enum FieldsSubscriptionAvailabilities: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionAvailabilities: String, CaseIterable, Codable, Sendable {
             case availableInNewTerritories
             case availableTerritories
             case subscription
         }
 
-        public enum FieldsSubscriptionGroups: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionGroups: String, CaseIterable, Codable, Sendable {
             case app
             case referenceName
             case subscriptionGroupLocalizations
             case subscriptions
         }
 
-        public enum FieldsSubscriptionIntroductoryOffers: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionIntroductoryOffers: String, CaseIterable, Codable, Sendable {
             case duration
             case endDate
             case numberOfPeriods
@@ -155,7 +155,7 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case territory
         }
 
-        public enum FieldsSubscriptionPrices: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionPrices: String, CaseIterable, Codable, Sendable {
             case preserveCurrentPrice
             case preserved
             case startDate
@@ -164,7 +164,7 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case territory
         }
 
-        public enum FieldsSubscriptionLocalizations: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionLocalizations: String, CaseIterable, Codable, Sendable {
             case description
             case locale
             case name
@@ -172,7 +172,7 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case subscription
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appStoreReviewScreenshot
             case group
             case introductoryOffers

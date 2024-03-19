@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct GameCenterLeaderboardEntrySubmissionResponse: Codable, Equatable {
+public struct GameCenterLeaderboardEntrySubmissionResponse: Codable, Equatable, Sendable {
     /// GameCenterLeaderboardEntrySubmission
     public var data: GameCenterLeaderboardEntrySubmission
     public var links: DocumentLinks

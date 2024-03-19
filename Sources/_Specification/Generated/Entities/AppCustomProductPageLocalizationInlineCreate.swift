@@ -5,17 +5,17 @@
 
 import Foundation
 
-public struct AppCustomProductPageLocalizationInlineCreate: Codable, Equatable, Identifiable {
+public struct AppCustomProductPageLocalizationInlineCreate: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String?
     public var attributes: Attributes
     public var relationships: Relationships?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case appCustomProductPageLocalizations
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var locale: String
         public var promotionalText: String?
 
@@ -25,17 +25,17 @@ public struct AppCustomProductPageLocalizationInlineCreate: Codable, Equatable, 
         }
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var appCustomProductPageVersion: AppCustomProductPageVersion?
 
-        public struct AppCustomProductPageVersion: Codable, Equatable {
+        public struct AppCustomProductPageVersion: Codable, Equatable, Sendable {
             public var data: Data?
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appCustomProductPageVersions
                 }
 

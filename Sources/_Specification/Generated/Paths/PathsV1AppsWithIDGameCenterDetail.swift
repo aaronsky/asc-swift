@@ -42,19 +42,19 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FieldsGameCenterAchievementReleases: String, Codable, CaseIterable {
+        public enum FieldsGameCenterAchievementReleases: String, CaseIterable, Codable, Sendable {
             case gameCenterAchievement
             case gameCenterDetail
             case live
         }
 
-        public enum FieldsGameCenterLeaderboardSetReleases: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardSetReleases: String, CaseIterable, Codable, Sendable {
             case gameCenterDetail
             case gameCenterLeaderboardSet
             case live
         }
 
-        public enum FieldsGameCenterLeaderboardSets: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardSets: String, CaseIterable, Codable, Sendable {
             case gameCenterDetail
             case gameCenterGroup
             case gameCenterLeaderboards
@@ -65,7 +65,7 @@ extension Resources.V1.Apps.WithID {
             case vendorIdentifier
         }
 
-        public enum FieldsGameCenterGroups: String, Codable, CaseIterable {
+        public enum FieldsGameCenterGroups: String, CaseIterable, Codable, Sendable {
             case gameCenterAchievements
             case gameCenterDetails
             case gameCenterLeaderboardSets
@@ -73,7 +73,7 @@ extension Resources.V1.Apps.WithID {
             case referenceName
         }
 
-        public enum FieldsGameCenterDetails: String, Codable, CaseIterable {
+        public enum FieldsGameCenterDetails: String, CaseIterable, Codable, Sendable {
             case achievementReleases
             case app
             case arcadeEnabled
@@ -89,7 +89,7 @@ extension Resources.V1.Apps.WithID {
             case leaderboardSetReleases
         }
 
-        public enum FieldsGameCenterLeaderboards: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboards: String, CaseIterable, Codable, Sendable {
             case archived
             case defaultFormatter
             case gameCenterDetail
@@ -109,13 +109,13 @@ extension Resources.V1.Apps.WithID {
             case vendorIdentifier
         }
 
-        public enum FieldsGameCenterAppVersions: String, Codable, CaseIterable {
+        public enum FieldsGameCenterAppVersions: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
             case compatibilityVersions
             case enabled
         }
 
-        public enum FieldsGameCenterAchievements: String, Codable, CaseIterable {
+        public enum FieldsGameCenterAchievements: String, CaseIterable, Codable, Sendable {
             case archived
             case gameCenterDetail
             case gameCenterGroup
@@ -129,7 +129,7 @@ extension Resources.V1.Apps.WithID {
             case vendorIdentifier
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability
@@ -179,13 +179,13 @@ extension Resources.V1.Apps.WithID {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
-        public enum FieldsGameCenterLeaderboardReleases: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardReleases: String, CaseIterable, Codable, Sendable {
             case gameCenterDetail
             case gameCenterLeaderboard
             case live
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case achievementReleases
             case app
             case defaultGroupLeaderboard
