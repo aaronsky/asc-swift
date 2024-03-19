@@ -29,7 +29,7 @@ public struct AppStoreVersionPhasedRelease: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .appStoreVersionPhasedReleases, id: String, attributes: Attributes? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

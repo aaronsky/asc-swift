@@ -59,7 +59,7 @@ public struct GameCenterLeaderboardSetRelease: Codable, Equatable, Identifiable 
                     case gameCenterDetails
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterDetails, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -98,7 +98,7 @@ public struct GameCenterLeaderboardSetRelease: Codable, Equatable, Identifiable 
                     case gameCenterLeaderboardSets
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterLeaderboardSets, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -116,7 +116,7 @@ public struct GameCenterLeaderboardSetRelease: Codable, Equatable, Identifiable 
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .gameCenterLeaderboardSetReleases, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

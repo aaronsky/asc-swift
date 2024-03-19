@@ -57,7 +57,7 @@ public struct AppClipDefaultExperienceLocalization: Codable, Equatable, Identifi
                     case appClipDefaultExperiences
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appClipDefaultExperiences, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -96,7 +96,7 @@ public struct AppClipDefaultExperienceLocalization: Codable, Equatable, Identifi
                     case appClipHeaderImages
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appClipHeaderImages, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -114,7 +114,7 @@ public struct AppClipDefaultExperienceLocalization: Codable, Equatable, Identifi
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .appClipDefaultExperienceLocalizations, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

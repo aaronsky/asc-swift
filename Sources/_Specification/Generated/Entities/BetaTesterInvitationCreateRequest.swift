@@ -31,7 +31,7 @@ public struct BetaTesterInvitationCreateRequest: Codable, Equatable {
                         case betaTesters
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .betaTesters, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -53,7 +53,7 @@ public struct BetaTesterInvitationCreateRequest: Codable, Equatable {
                         case apps
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .apps, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -70,7 +70,7 @@ public struct BetaTesterInvitationCreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, relationships: Relationships) {
+        public init(type: `Type` = .betaTesterInvitations, relationships: Relationships) {
             self.type = type
             self.relationships = relationships
         }

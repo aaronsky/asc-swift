@@ -56,7 +56,7 @@ public struct GameCenterAchievementCreateRequest: Codable, Equatable {
                         case gameCenterDetails
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .gameCenterDetails, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -78,7 +78,7 @@ public struct GameCenterAchievementCreateRequest: Codable, Equatable {
                         case gameCenterGroups
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .gameCenterGroups, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -95,7 +95,7 @@ public struct GameCenterAchievementCreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships? = nil) {
+        public init(type: `Type` = .gameCenterAchievements, attributes: Attributes, relationships: Relationships? = nil) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

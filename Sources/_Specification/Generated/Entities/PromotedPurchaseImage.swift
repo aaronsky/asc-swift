@@ -78,7 +78,7 @@ public struct PromotedPurchaseImage: Codable, Equatable, Identifiable {
                     case promotedPurchases
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .promotedPurchases, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -95,7 +95,7 @@ public struct PromotedPurchaseImage: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .promotedPurchaseImages, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

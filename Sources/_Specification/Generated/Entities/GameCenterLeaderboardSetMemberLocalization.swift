@@ -57,7 +57,7 @@ public struct GameCenterLeaderboardSetMemberLocalization: Codable, Equatable, Id
                     case gameCenterLeaderboardSets
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterLeaderboardSets, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -96,7 +96,7 @@ public struct GameCenterLeaderboardSetMemberLocalization: Codable, Equatable, Id
                     case gameCenterLeaderboards
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterLeaderboards, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -114,7 +114,7 @@ public struct GameCenterLeaderboardSetMemberLocalization: Codable, Equatable, Id
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .gameCenterLeaderboardSetMemberLocalizations, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

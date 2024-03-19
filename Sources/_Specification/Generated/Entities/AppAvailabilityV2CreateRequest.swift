@@ -45,7 +45,7 @@ public struct AppAvailabilityV2CreateRequest: Codable, Equatable {
                         case apps
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .apps, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -67,7 +67,7 @@ public struct AppAvailabilityV2CreateRequest: Codable, Equatable {
                         case territoryAvailabilities
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .territoryAvailabilities, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -84,7 +84,7 @@ public struct AppAvailabilityV2CreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .appAvailabilities, attributes: Attributes, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

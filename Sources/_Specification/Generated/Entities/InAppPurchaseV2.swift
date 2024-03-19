@@ -83,7 +83,7 @@ public struct InAppPurchaseV2: Codable, Equatable, Identifiable {
                     case inAppPurchaseLocalizations
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .inAppPurchaseLocalizations, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -124,7 +124,7 @@ public struct InAppPurchaseV2: Codable, Equatable, Identifiable {
                     case inAppPurchasePricePoints
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .inAppPurchasePricePoints, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -164,7 +164,7 @@ public struct InAppPurchaseV2: Codable, Equatable, Identifiable {
                     case inAppPurchaseContents
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .inAppPurchaseContents, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -203,7 +203,7 @@ public struct InAppPurchaseV2: Codable, Equatable, Identifiable {
                     case inAppPurchaseAppStoreReviewScreenshots
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .inAppPurchaseAppStoreReviewScreenshots, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -242,7 +242,7 @@ public struct InAppPurchaseV2: Codable, Equatable, Identifiable {
                     case promotedPurchases
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .promotedPurchases, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -281,7 +281,7 @@ public struct InAppPurchaseV2: Codable, Equatable, Identifiable {
                     case inAppPurchasePriceSchedules
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .inAppPurchasePriceSchedules, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -320,7 +320,7 @@ public struct InAppPurchaseV2: Codable, Equatable, Identifiable {
                     case inAppPurchaseAvailabilities
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .inAppPurchaseAvailabilities, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -343,7 +343,7 @@ public struct InAppPurchaseV2: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .inAppPurchases, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

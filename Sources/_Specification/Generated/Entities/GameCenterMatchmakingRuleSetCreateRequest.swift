@@ -30,7 +30,7 @@ public struct GameCenterMatchmakingRuleSetCreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes) {
+        public init(type: `Type` = .gameCenterMatchmakingRuleSets, attributes: Attributes) {
             self.type = type
             self.attributes = attributes
         }

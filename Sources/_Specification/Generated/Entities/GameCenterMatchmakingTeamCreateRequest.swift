@@ -43,7 +43,7 @@ public struct GameCenterMatchmakingTeamCreateRequest: Codable, Equatable {
                         case gameCenterMatchmakingRuleSets
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .gameCenterMatchmakingRuleSets, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -59,7 +59,7 @@ public struct GameCenterMatchmakingTeamCreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .gameCenterMatchmakingTeams, attributes: Attributes, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

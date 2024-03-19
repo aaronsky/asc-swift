@@ -83,7 +83,7 @@ public struct CiXcodeVersion: Codable, Equatable, Identifiable {
                     case ciMacOsVersions
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .ciMacOsVersions, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -101,7 +101,7 @@ public struct CiXcodeVersion: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .ciXcodeVersions, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

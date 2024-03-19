@@ -41,7 +41,7 @@ public struct AppClipDefaultExperienceCreateRequest: Codable, Equatable {
                         case appClips
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appClips, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -63,7 +63,7 @@ public struct AppClipDefaultExperienceCreateRequest: Codable, Equatable {
                         case appStoreVersions
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appStoreVersions, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -85,7 +85,7 @@ public struct AppClipDefaultExperienceCreateRequest: Codable, Equatable {
                         case appClipDefaultExperiences
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .appClipDefaultExperiences, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -103,7 +103,7 @@ public struct AppClipDefaultExperienceCreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes? = nil, relationships: Relationships) {
+        public init(type: `Type` = .appClipDefaultExperiences, attributes: Attributes? = nil, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

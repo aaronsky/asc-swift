@@ -63,7 +63,7 @@ public struct SubscriptionPromotionalOffer: Codable, Equatable, Identifiable {
                     case subscriptions
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptions, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -103,7 +103,7 @@ public struct SubscriptionPromotionalOffer: Codable, Equatable, Identifiable {
                     case subscriptionPromotionalOfferPrices
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .subscriptionPromotionalOfferPrices, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -122,7 +122,7 @@ public struct SubscriptionPromotionalOffer: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .subscriptionPromotionalOffers, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

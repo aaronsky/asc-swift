@@ -59,7 +59,7 @@ public struct InAppPurchaseAvailability: Codable, Equatable, Identifiable {
                     case territories
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .territories, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -77,7 +77,7 @@ public struct InAppPurchaseAvailability: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .inAppPurchaseAvailabilities, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

@@ -40,7 +40,7 @@ public struct InAppPurchasePriceInlineCreate: Codable, Equatable, Identifiable {
                     case inAppPurchases
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .inAppPurchases, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -62,7 +62,7 @@ public struct InAppPurchasePriceInlineCreate: Codable, Equatable, Identifiable {
                     case inAppPurchasePricePoints
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .inAppPurchasePricePoints, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -79,7 +79,7 @@ public struct InAppPurchasePriceInlineCreate: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String? = nil, attributes: Attributes? = nil, relationships: Relationships? = nil) {
+    public init(type: `Type` = .inAppPurchasePrices, id: String? = nil, attributes: Attributes? = nil, relationships: Relationships? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

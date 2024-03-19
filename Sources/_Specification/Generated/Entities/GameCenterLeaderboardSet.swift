@@ -61,7 +61,7 @@ public struct GameCenterLeaderboardSet: Codable, Equatable, Identifiable {
                     case gameCenterDetails
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterDetails, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -100,7 +100,7 @@ public struct GameCenterLeaderboardSet: Codable, Equatable, Identifiable {
                     case gameCenterGroups
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterGroups, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -139,7 +139,7 @@ public struct GameCenterLeaderboardSet: Codable, Equatable, Identifiable {
                     case gameCenterLeaderboardSets
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterLeaderboardSets, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -179,7 +179,7 @@ public struct GameCenterLeaderboardSet: Codable, Equatable, Identifiable {
                     case gameCenterLeaderboardSetLocalizations
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterLeaderboardSetLocalizations, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -220,7 +220,7 @@ public struct GameCenterLeaderboardSet: Codable, Equatable, Identifiable {
                     case gameCenterLeaderboards
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterLeaderboards, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -261,7 +261,7 @@ public struct GameCenterLeaderboardSet: Codable, Equatable, Identifiable {
                     case gameCenterLeaderboardSetReleases
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .gameCenterLeaderboardSetReleases, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -284,7 +284,7 @@ public struct GameCenterLeaderboardSet: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .gameCenterLeaderboardSets, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

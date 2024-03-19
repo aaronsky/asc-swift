@@ -26,7 +26,7 @@ public struct MarketplaceDomainCreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes) {
+        public init(type: `Type` = .marketplaceDomains, attributes: Attributes) {
             self.type = type
             self.attributes = attributes
         }

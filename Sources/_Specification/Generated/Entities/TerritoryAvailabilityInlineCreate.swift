@@ -13,7 +13,7 @@ public struct TerritoryAvailabilityInlineCreate: Codable, Equatable, Identifiabl
         case territoryAvailabilities
     }
 
-    public init(type: `Type`, id: String? = nil) {
+    public init(type: `Type` = .territoryAvailabilities, id: String? = nil) {
         self.type = type
         self.id = id
     }

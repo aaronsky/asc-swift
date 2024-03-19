@@ -24,7 +24,7 @@ public struct GameCenterGroupCreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes? = nil) {
+        public init(type: `Type` = .gameCenterGroups, attributes: Attributes? = nil) {
             self.type = type
             self.attributes = attributes
         }

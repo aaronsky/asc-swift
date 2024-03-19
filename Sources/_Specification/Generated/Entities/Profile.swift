@@ -92,7 +92,7 @@ public struct Profile: Codable, Equatable, Identifiable {
                     case bundleIDs = "bundleIds"
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .bundleIDs, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -132,7 +132,7 @@ public struct Profile: Codable, Equatable, Identifiable {
                     case devices
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .devices, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -173,7 +173,7 @@ public struct Profile: Codable, Equatable, Identifiable {
                     case certificates
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .certificates, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -199,7 +199,7 @@ public struct Profile: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .profiles, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

@@ -47,8 +47,8 @@ let package = Package(
         ),
         .binaryTarget(
             name: "create-api",
-            url: "https://github.com/CreateAPI/CreateAPI/releases/download/0.2.0/create-api.artifactbundle.zip",
-            checksum: "6f8a3ce099f07eb2655ccaf6f66d8c9a09b74bb2307781c4adec36609ddac009"
+            url: "https://github.com/aaronsky/CreateAPI/releases/download/0.2.0-alpha.1/create-api.artifactbundle.zip",
+            checksum: "e4e128b2080247802a654bec1aba2c3c161e7ab3f407ea8f02f3474cea772792"
         ),
         .plugin(
             name: "CreateAPI",

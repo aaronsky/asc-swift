@@ -61,11 +61,8 @@ import Utilities
                 Resources.v1.appStoreVersionLocalizations.post(
                     .init(
                         data: .init(
-                            type: .appStoreVersionLocalizations,
                             attributes: .init(locale: locale),
-                            relationships: .init(
-                                appStoreVersion: .init(data: .init(type: .appStoreVersions, id: version.id))
-                            )
+                            relationships: .init(appStoreVersion: .init(data: .init(id: version.id)))
                         )
                     )
                 )
@@ -89,12 +86,9 @@ import Utilities
                     Resources.v1.appPreviewSets.post(
                         .init(
                             data: .init(
-                                type: .appPreviewSets,
                                 attributes: .init(previewType: previewType),
                                 relationships: .init(
-                                    appStoreVersionLocalization: .init(
-                                        data: .init(type: .appStoreVersionLocalizations, id: localization.id)
-                                    )
+                                    appStoreVersionLocalization: .init(data: .init(id: localization.id))
                                 )
                             )
                         )
@@ -111,14 +105,11 @@ import Utilities
                         Resources.v1.appPreviews.post(
                             .init(
                                 data: .init(
-                                    type: .appPreviews,
                                     attributes: .init(
                                         fileSize: previewFile.count,
                                         fileName: previewFileURL.lastPathComponent
                                     ),
-                                    relationships: .init(
-                                        appPreviewSet: .init(data: .init(type: .appPreviewSets, id: previewSet.id))
-                                    )
+                                    relationships: .init(appPreviewSet: .init(data: .init(id: previewSet.id)))
                                 )
                             )
                         )
@@ -146,7 +137,6 @@ import Utilities
                         .patch(
                             .init(
                                 data: .init(
-                                    type: .appPreviews,
                                     id: preview.id,
                                     attributes: .init(sourceFileChecksum: previewFileChecksum, isUploaded: true)
                                 )

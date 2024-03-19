@@ -107,7 +107,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable {
                     case apps
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .apps, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -146,7 +146,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable {
                     case ageRatingDeclarations
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .ageRatingDeclarations, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -186,7 +186,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable {
                     case appStoreVersionLocalizations
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appStoreVersionLocalizations, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -226,7 +226,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable {
                     case builds
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .builds, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -265,7 +265,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable {
                     case appStoreVersionPhasedReleases
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appStoreVersionPhasedReleases, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -304,7 +304,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable {
                     case routingAppCoverages
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .routingAppCoverages, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -343,7 +343,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable {
                     case appStoreReviewDetails
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appStoreReviewDetails, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -382,7 +382,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable {
                     case appStoreVersionSubmissions
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appStoreVersionSubmissions, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -421,7 +421,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable {
                     case appClipDefaultExperiences
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appClipDefaultExperiences, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -461,7 +461,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable {
                     case appStoreVersionExperiments
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appStoreVersionExperiments, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -502,7 +502,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable {
                     case appStoreVersionExperiments
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appStoreVersionExperiments, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -542,7 +542,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable {
                     case alternativeDistributionPackages
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .alternativeDistributionPackages, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -570,7 +570,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .appStoreVersions, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

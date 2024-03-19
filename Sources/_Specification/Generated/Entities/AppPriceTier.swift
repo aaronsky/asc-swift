@@ -46,7 +46,7 @@ public struct AppPriceTier: Codable, Equatable, Identifiable {
                     case appPricePoints
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appPricePoints, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -64,7 +64,7 @@ public struct AppPriceTier: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .appPriceTiers, id: String, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.relationships = relationships

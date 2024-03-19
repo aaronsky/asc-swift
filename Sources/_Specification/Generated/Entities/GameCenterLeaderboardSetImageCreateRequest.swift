@@ -41,7 +41,7 @@ public struct GameCenterLeaderboardSetImageCreateRequest: Codable, Equatable {
                         case gameCenterLeaderboardSetLocalizations
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .gameCenterLeaderboardSetLocalizations, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -57,7 +57,7 @@ public struct GameCenterLeaderboardSetImageCreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .gameCenterLeaderboardSetImages, attributes: Attributes, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

@@ -65,7 +65,7 @@ public struct AppPriceV2: Codable, Equatable, Identifiable {
                     case appPricePoints
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appPricePoints, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -104,7 +104,7 @@ public struct AppPriceV2: Codable, Equatable, Identifiable {
                     case territories
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .territories, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -122,7 +122,7 @@ public struct AppPriceV2: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .appPrices, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

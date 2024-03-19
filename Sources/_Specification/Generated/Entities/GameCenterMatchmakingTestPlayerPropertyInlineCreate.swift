@@ -29,7 +29,7 @@ public struct GameCenterMatchmakingTestPlayerPropertyInlineCreate: Codable, Equa
         }
     }
 
-    public init(type: `Type`, id: String? = nil, attributes: Attributes) {
+    public init(type: `Type` = .gameCenterMatchmakingTestPlayerProperties, id: String? = nil, attributes: Attributes) {
         self.type = type
         self.id = id
         self.attributes = attributes

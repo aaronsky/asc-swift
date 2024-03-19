@@ -41,7 +41,7 @@ public struct GameCenterAchievementImageCreateRequest: Codable, Equatable {
                         case gameCenterAchievementLocalizations
                     }
 
-                    public init(type: `Type`, id: String) {
+                    public init(type: `Type` = .gameCenterAchievementLocalizations, id: String) {
                         self.type = type
                         self.id = id
                     }
@@ -57,7 +57,7 @@ public struct GameCenterAchievementImageCreateRequest: Codable, Equatable {
             }
         }
 
-        public init(type: `Type`, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .gameCenterAchievementImages, attributes: Attributes, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

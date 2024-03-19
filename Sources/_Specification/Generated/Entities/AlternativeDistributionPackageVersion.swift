@@ -70,7 +70,7 @@ public struct AlternativeDistributionPackageVersion: Codable, Equatable, Identif
                     case alternativeDistributionPackageVariants
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .alternativeDistributionPackageVariants, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -111,7 +111,7 @@ public struct AlternativeDistributionPackageVersion: Codable, Equatable, Identif
                     case alternativeDistributionPackageDeltas
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .alternativeDistributionPackageDeltas, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -151,7 +151,7 @@ public struct AlternativeDistributionPackageVersion: Codable, Equatable, Identif
                     case alternativeDistributionPackages
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .alternativeDistributionPackages, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -170,7 +170,7 @@ public struct AlternativeDistributionPackageVersion: Codable, Equatable, Identif
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .alternativeDistributionPackageVersions, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

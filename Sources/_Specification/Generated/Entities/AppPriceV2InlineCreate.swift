@@ -13,7 +13,7 @@ public struct AppPriceV2InlineCreate: Codable, Equatable, Identifiable {
         case appPrices
     }
 
-    public init(type: `Type`, id: String? = nil) {
+    public init(type: `Type` = .appPrices, id: String? = nil) {
         self.type = type
         self.id = id
     }

@@ -73,7 +73,7 @@ public struct AppInfoLocalization: Codable, Equatable, Identifiable {
                     case appInfos
                 }
 
-                public init(type: `Type`, id: String) {
+                public init(type: `Type` = .appInfos, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -90,7 +90,7 @@ public struct AppInfoLocalization: Codable, Equatable, Identifiable {
         }
     }
 
-    public init(type: `Type`, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .appInfoLocalizations, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes
