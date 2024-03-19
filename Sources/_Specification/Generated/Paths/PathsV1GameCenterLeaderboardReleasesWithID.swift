@@ -26,13 +26,13 @@ extension Resources.V1.GameCenterLeaderboardReleases {
             return encoder.items
         }
 
-        public enum FieldsGameCenterLeaderboardReleases: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardReleases: String, CaseIterable, Codable, Sendable {
             case gameCenterDetail
             case gameCenterLeaderboard
             case live
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case gameCenterDetail
             case gameCenterLeaderboard
         }

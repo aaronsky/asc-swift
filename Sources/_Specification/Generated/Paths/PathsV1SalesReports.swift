@@ -30,14 +30,14 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FilterFrequency: String, Codable, CaseIterable {
+        public enum FilterFrequency: String, CaseIterable, Codable, Sendable {
             case daily = "DAILY"
             case weekly = "WEEKLY"
             case monthly = "MONTHLY"
             case yearly = "YEARLY"
         }
 
-        public enum FilterReportSubType: String, Codable, CaseIterable {
+        public enum FilterReportSubType: String, CaseIterable, Codable, Sendable {
             case summary = "SUMMARY"
             case detailed = "DETAILED"
             case summaryInstallType = "SUMMARY_INSTALL_TYPE"
@@ -45,7 +45,7 @@ extension Resources.V1 {
             case summaryChannel = "SUMMARY_CHANNEL"
         }
 
-        public enum FilterReportType: String, Codable, CaseIterable {
+        public enum FilterReportType: String, CaseIterable, Codable, Sendable {
             case sales = "SALES"
             case preOrder = "PRE_ORDER"
             case newsstand = "NEWSSTAND"

@@ -5,24 +5,24 @@
 
 import Foundation
 
-public struct SubscriptionGroupLocalization: Codable, Equatable, Identifiable {
+public struct SubscriptionGroupLocalization: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var relationships: Relationships?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case subscriptionGroupLocalizations
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var name: String?
         public var customAppName: String?
         public var locale: String?
         public var state: State?
 
-        public enum State: String, Codable, CaseIterable {
+        public enum State: String, CaseIterable, Codable, Sendable {
             case prepareForSubmission = "PREPARE_FOR_SUBMISSION"
             case waitingForReview = "WAITING_FOR_REVIEW"
             case approved = "APPROVED"
@@ -37,14 +37,14 @@ public struct SubscriptionGroupLocalization: Codable, Equatable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var subscriptionGroup: SubscriptionGroup?
 
-        public struct SubscriptionGroup: Codable, Equatable {
+        public struct SubscriptionGroup: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -59,11 +59,11 @@ public struct SubscriptionGroupLocalization: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case subscriptionGroups
                 }
 

@@ -5,23 +5,23 @@
 
 import Foundation
 
-public struct CiIssue: Codable, Equatable, Identifiable {
+public struct CiIssue: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case ciIssues
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var issueType: IssueType?
         public var message: String?
         public var fileSource: FileLocation?
         public var category: String?
 
-        public enum IssueType: String, Codable, CaseIterable {
+        public enum IssueType: String, CaseIterable, Codable, Sendable {
             case analyzerWarning = "ANALYZER_WARNING"
             case error = "ERROR"
             case testFailure = "TEST_FAILURE"

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AlternativeDistributionPackageVariantsResponse: Codable, Equatable {
+public struct AlternativeDistributionPackageVariantsResponse: Codable, Equatable, Sendable {
     public var data: [AlternativeDistributionPackageVariant]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?

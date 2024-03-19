@@ -28,18 +28,18 @@ extension Resources.V1.AnalyticsReportRequests {
             return encoder.items
         }
 
-        public enum FieldsAnalyticsReportRequests: String, Codable, CaseIterable {
+        public enum FieldsAnalyticsReportRequests: String, CaseIterable, Codable, Sendable {
             case accessType
             case app
             case reports
             case stoppedDueToInactivity
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case reports
         }
 
-        public enum FieldsAnalyticsReports: String, Codable, CaseIterable {
+        public enum FieldsAnalyticsReports: String, CaseIterable, Codable, Sendable {
             case category
             case instances
             case name

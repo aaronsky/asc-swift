@@ -28,7 +28,7 @@ extension Resources.V1.ScmRepositories {
             return encoder.items
         }
 
-        public enum FieldsScmRepositories: String, Codable, CaseIterable {
+        public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
             case defaultBranch
             case gitReferences
             case httpCloneURL = "httpCloneUrl"
@@ -40,12 +40,12 @@ extension Resources.V1.ScmRepositories {
             case sshCloneURL = "sshCloneUrl"
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case defaultBranch
             case scmProvider
         }
 
-        public enum FieldsScmGitReferences: String, Codable, CaseIterable {
+        public enum FieldsScmGitReferences: String, CaseIterable, Codable, Sendable {
             case canonicalName
             case isDeleted
             case kind
@@ -53,7 +53,7 @@ extension Resources.V1.ScmRepositories {
             case repository
         }
 
-        public enum FieldsScmPullRequests: String, Codable, CaseIterable {
+        public enum FieldsScmPullRequests: String, CaseIterable, Codable, Sendable {
             case destinationBranchName
             case destinationRepositoryName
             case destinationRepositoryOwner

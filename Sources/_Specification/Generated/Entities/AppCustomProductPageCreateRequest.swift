@@ -5,20 +5,20 @@
 
 import Foundation
 
-public struct AppCustomProductPageCreateRequest: Codable, Equatable {
+public struct AppCustomProductPageCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
     public var included: [IncludedItem]?
 
-    public struct Data: Codable, Equatable {
+    public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case appCustomProductPages
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var name: String
 
             public init(name: String) {
@@ -26,20 +26,20 @@ public struct AppCustomProductPageCreateRequest: Codable, Equatable {
             }
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var app: App
             public var appCustomProductPageVersions: AppCustomProductPageVersions?
             public var appStoreVersionTemplate: AppStoreVersionTemplate?
             public var customProductPageTemplate: CustomProductPageTemplate?
 
-            public struct App: Codable, Equatable {
+            public struct App: Codable, Equatable, Sendable {
                 public var data: Data
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case apps
                     }
 
@@ -54,14 +54,14 @@ public struct AppCustomProductPageCreateRequest: Codable, Equatable {
                 }
             }
 
-            public struct AppCustomProductPageVersions: Codable, Equatable {
+            public struct AppCustomProductPageVersions: Codable, Equatable, Sendable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Equatable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appCustomProductPageVersions
                     }
 
@@ -76,14 +76,14 @@ public struct AppCustomProductPageCreateRequest: Codable, Equatable {
                 }
             }
 
-            public struct AppStoreVersionTemplate: Codable, Equatable {
+            public struct AppStoreVersionTemplate: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appStoreVersions
                     }
 
@@ -98,14 +98,14 @@ public struct AppCustomProductPageCreateRequest: Codable, Equatable {
                 }
             }
 
-            public struct CustomProductPageTemplate: Codable, Equatable {
+            public struct CustomProductPageTemplate: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appCustomProductPages
                     }
 
@@ -135,7 +135,7 @@ public struct AppCustomProductPageCreateRequest: Codable, Equatable {
         }
     }
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case appCustomProductPageLocalizationInlineCreate(AppCustomProductPageLocalizationInlineCreate)
         case appCustomProductPageVersionInlineCreate(AppCustomProductPageVersionInlineCreate)
 

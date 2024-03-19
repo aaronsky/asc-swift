@@ -26,12 +26,12 @@ extension Resources.V1.AppClipAppStoreReviewDetails {
             return encoder.items
         }
 
-        public enum FieldsAppClipAppStoreReviewDetails: String, Codable, CaseIterable {
+        public enum FieldsAppClipAppStoreReviewDetails: String, CaseIterable, Codable, Sendable {
             case appClipDefaultExperience
             case invocationURLs = "invocationUrls"
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appClipDefaultExperience
         }
 

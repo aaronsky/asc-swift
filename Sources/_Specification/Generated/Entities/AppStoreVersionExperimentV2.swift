@@ -5,18 +5,18 @@
 
 import Foundation
 
-public struct AppStoreVersionExperimentV2: Codable, Equatable, Identifiable {
+public struct AppStoreVersionExperimentV2: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var relationships: Relationships?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case appStoreVersionExperiments
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var name: String?
         public var platform: Platform?
         public var trafficProportion: Int?
@@ -25,7 +25,7 @@ public struct AppStoreVersionExperimentV2: Codable, Equatable, Identifiable {
         public var startDate: Date?
         public var endDate: Date?
 
-        public enum State: String, Codable, CaseIterable {
+        public enum State: String, CaseIterable, Codable, Sendable {
             case prepareForSubmission = "PREPARE_FOR_SUBMISSION"
             case readyForReview = "READY_FOR_REVIEW"
             case waitingForReview = "WAITING_FOR_REVIEW"
@@ -58,17 +58,17 @@ public struct AppStoreVersionExperimentV2: Codable, Equatable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var app: App?
         public var latestControlVersion: LatestControlVersion?
         public var controlVersions: ControlVersions?
         public var appStoreVersionExperimentTreatments: AppStoreVersionExperimentTreatments?
 
-        public struct App: Codable, Equatable {
+        public struct App: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -83,11 +83,11 @@ public struct AppStoreVersionExperimentV2: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case apps
                 }
 
@@ -103,11 +103,11 @@ public struct AppStoreVersionExperimentV2: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct LatestControlVersion: Codable, Equatable {
+        public struct LatestControlVersion: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -122,11 +122,11 @@ public struct AppStoreVersionExperimentV2: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appStoreVersions
                 }
 
@@ -142,12 +142,12 @@ public struct AppStoreVersionExperimentV2: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct ControlVersions: Codable, Equatable {
+        public struct ControlVersions: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -162,11 +162,11 @@ public struct AppStoreVersionExperimentV2: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appStoreVersions
                 }
 
@@ -183,12 +183,12 @@ public struct AppStoreVersionExperimentV2: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct AppStoreVersionExperimentTreatments: Codable, Equatable {
+        public struct AppStoreVersionExperimentTreatments: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -203,11 +203,11 @@ public struct AppStoreVersionExperimentV2: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appStoreVersionExperimentTreatments
                 }
 

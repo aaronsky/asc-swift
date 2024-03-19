@@ -27,7 +27,7 @@ extension Resources.V1.Builds.WithID {
             return encoder.items
         }
 
-        public enum FilterMetricType: String, Codable, CaseIterable {
+        public enum FilterMetricType: String, CaseIterable, Codable, Sendable {
             case disk = "DISK"
             case hang = "HANG"
             case battery = "BATTERY"
@@ -37,7 +37,7 @@ extension Resources.V1.Builds.WithID {
             case termination = "TERMINATION"
         }
 
-        public enum FilterPlatform: String, Codable, CaseIterable {
+        public enum FilterPlatform: String, CaseIterable, Codable, Sendable {
             case ios = "IOS"
         }
     }

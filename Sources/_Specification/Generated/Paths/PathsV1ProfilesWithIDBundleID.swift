@@ -25,7 +25,7 @@ extension Resources.V1.Profiles.WithID {
             return encoder.items
         }
 
-        public enum FieldsBundleIDs: String, Codable, CaseIterable {
+        public enum FieldsBundleIDs: String, CaseIterable, Codable, Sendable {
             case app
             case bundleIDCapabilities = "bundleIdCapabilities"
             case identifier

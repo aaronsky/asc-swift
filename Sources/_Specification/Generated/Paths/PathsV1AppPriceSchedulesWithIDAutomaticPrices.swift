@@ -32,7 +32,7 @@ extension Resources.V1.AppPriceSchedules.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppPrices: String, Codable, CaseIterable {
+        public enum FieldsAppPrices: String, CaseIterable, Codable, Sendable {
             case appPricePoint
             case endDate
             case manual
@@ -40,7 +40,7 @@ extension Resources.V1.AppPriceSchedules.WithID {
             case territory
         }
 
-        public enum FieldsAppPricePoints: String, Codable, CaseIterable {
+        public enum FieldsAppPricePoints: String, CaseIterable, Codable, Sendable {
             case app
             case customerPrice
             case equalizations
@@ -48,11 +48,11 @@ extension Resources.V1.AppPriceSchedules.WithID {
             case territory
         }
 
-        public enum FieldsTerritories: String, Codable, CaseIterable {
+        public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
             case currency
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appPricePoint
             case territory
         }

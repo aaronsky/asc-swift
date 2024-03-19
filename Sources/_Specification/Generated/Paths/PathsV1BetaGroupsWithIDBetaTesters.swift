@@ -26,7 +26,7 @@ extension Resources.V1.BetaGroups.WithID {
             return encoder.items
         }
 
-        public enum FieldsBetaTesters: String, Codable, CaseIterable {
+        public enum FieldsBetaTesters: String, CaseIterable, Codable, Sendable {
             case apps
             case betaGroups
             case builds

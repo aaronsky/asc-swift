@@ -30,7 +30,7 @@ extension Resources.V1.SubscriptionPricePoints.WithID {
             return encoder.items
         }
 
-        public enum FieldsSubscriptionPricePoints: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionPricePoints: String, CaseIterable, Codable, Sendable {
             case customerPrice
             case equalizations
             case proceeds
@@ -39,11 +39,11 @@ extension Resources.V1.SubscriptionPricePoints.WithID {
             case territory
         }
 
-        public enum FieldsTerritories: String, Codable, CaseIterable {
+        public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
             case currency
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case territory
         }
     }

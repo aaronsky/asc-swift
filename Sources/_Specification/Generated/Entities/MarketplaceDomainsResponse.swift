@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct MarketplaceDomainsResponse: Codable, Equatable {
+public struct MarketplaceDomainsResponse: Codable, Equatable, Sendable {
     public var data: [MarketplaceDomain]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?

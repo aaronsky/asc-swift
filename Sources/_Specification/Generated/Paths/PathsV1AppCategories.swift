@@ -30,20 +30,20 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FilterPlatforms: String, Codable, CaseIterable {
+        public enum FilterPlatforms: String, CaseIterable, Codable, Sendable {
             case ios = "IOS"
             case macOs = "MAC_OS"
             case tvOs = "TV_OS"
             case visionOs = "VISION_OS"
         }
 
-        public enum FieldsAppCategories: String, Codable, CaseIterable {
+        public enum FieldsAppCategories: String, CaseIterable, Codable, Sendable {
             case parent
             case platforms
             case subcategories
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case parent
             case subcategories
         }

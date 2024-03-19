@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct GameCenterPlayerAchievementSubmissionResponse: Codable, Equatable {
+public struct GameCenterPlayerAchievementSubmissionResponse: Codable, Equatable, Sendable {
     /// GameCenterPlayerAchievementSubmission
     public var data: GameCenterPlayerAchievementSubmission
     public var links: DocumentLinks

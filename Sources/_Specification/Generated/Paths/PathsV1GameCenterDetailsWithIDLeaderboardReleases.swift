@@ -31,7 +31,7 @@ extension Resources.V1.GameCenterDetails.WithID {
             return encoder.items
         }
 
-        public enum FieldsGameCenterDetails: String, Codable, CaseIterable {
+        public enum FieldsGameCenterDetails: String, CaseIterable, Codable, Sendable {
             case achievementReleases
             case app
             case arcadeEnabled
@@ -47,7 +47,7 @@ extension Resources.V1.GameCenterDetails.WithID {
             case leaderboardSetReleases
         }
 
-        public enum FieldsGameCenterLeaderboards: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboards: String, CaseIterable, Codable, Sendable {
             case archived
             case defaultFormatter
             case gameCenterDetail
@@ -67,13 +67,13 @@ extension Resources.V1.GameCenterDetails.WithID {
             case vendorIdentifier
         }
 
-        public enum FieldsGameCenterLeaderboardReleases: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardReleases: String, CaseIterable, Codable, Sendable {
             case gameCenterDetail
             case gameCenterLeaderboard
             case live
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case gameCenterDetail
             case gameCenterLeaderboard
         }

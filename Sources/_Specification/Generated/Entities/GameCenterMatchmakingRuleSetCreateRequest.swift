@@ -5,18 +5,18 @@
 
 import Foundation
 
-public struct GameCenterMatchmakingRuleSetCreateRequest: Codable, Equatable {
+public struct GameCenterMatchmakingRuleSetCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable {
+    public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var attributes: Attributes
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case gameCenterMatchmakingRuleSets
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var referenceName: String
             public var ruleLanguageVersion: Int
             public var minPlayers: Int

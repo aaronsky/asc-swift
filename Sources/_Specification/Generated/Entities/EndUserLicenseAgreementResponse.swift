@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct EndUserLicenseAgreementResponse: Codable, Equatable {
+public struct EndUserLicenseAgreementResponse: Codable, Equatable, Sendable {
     /// EndUserLicenseAgreement
     public var data: EndUserLicenseAgreement
     public var included: [IncludedItem]?
     public var links: DocumentLinks
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case app(App)
         case territory(Territory)
 

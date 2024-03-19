@@ -25,7 +25,7 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FieldsAlternativeDistributionKeys: String, Codable, CaseIterable {
+        public enum FieldsAlternativeDistributionKeys: String, CaseIterable, Codable, Sendable {
             case app
             case publicKey
         }

@@ -5,20 +5,20 @@
 
 import Foundation
 
-public struct AppClipAdvancedExperienceCreateRequest: Codable, Equatable {
+public struct AppClipAdvancedExperienceCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
     public var included: [AppClipAdvancedExperienceLocalizationInlineCreate]?
 
-    public struct Data: Codable, Equatable {
+    public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case appClipAdvancedExperiences
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var link: URL
             public var action: AppClipAction?
             public var isPoweredBy: Bool
@@ -26,7 +26,7 @@ public struct AppClipAdvancedExperienceCreateRequest: Codable, Equatable {
             public var businessCategory: BusinessCategory?
             public var defaultLanguage: AppClipAdvancedExperienceLanguage
 
-            public struct Place: Codable, Equatable {
+            public struct Place: Codable, Equatable, Sendable {
                 public var placeID: String?
                 public var names: [String]?
                 public var mainAddress: MainAddress?
@@ -37,11 +37,11 @@ public struct AppClipAdvancedExperienceCreateRequest: Codable, Equatable {
                 public var homePage: String?
                 public var categories: [String]?
 
-                public struct MainAddress: Codable, Equatable {
+                public struct MainAddress: Codable, Equatable, Sendable {
                     public var fullAddress: String?
                     public var structuredAddress: StructuredAddress?
 
-                    public struct StructuredAddress: Codable, Equatable {
+                    public struct StructuredAddress: Codable, Equatable, Sendable {
                         public var streetAddress: [String]?
                         public var floor: String?
                         public var neighborhood: String?
@@ -67,11 +67,11 @@ public struct AppClipAdvancedExperienceCreateRequest: Codable, Equatable {
                     }
                 }
 
-                public struct DisplayPoint: Codable, Equatable {
+                public struct DisplayPoint: Codable, Equatable, Sendable {
                     public var coordinates: Coordinates?
                     public var source: Source?
 
-                    public struct Coordinates: Codable, Equatable {
+                    public struct Coordinates: Codable, Equatable, Sendable {
                         public var latitude: Double?
                         public var longitude: Double?
 
@@ -81,7 +81,7 @@ public struct AppClipAdvancedExperienceCreateRequest: Codable, Equatable {
                         }
                     }
 
-                    public enum Source: String, Codable, CaseIterable {
+                    public enum Source: String, CaseIterable, Codable, Sendable {
                         case calculated = "CALCULATED"
                         case manuallyPlaced = "MANUALLY_PLACED"
                     }
@@ -92,7 +92,7 @@ public struct AppClipAdvancedExperienceCreateRequest: Codable, Equatable {
                     }
                 }
 
-                public enum MapAction: String, Codable, CaseIterable {
+                public enum MapAction: String, CaseIterable, Codable, Sendable {
                     case buyTickets = "BUY_TICKETS"
                     case viewAvailability = "VIEW_AVAILABILITY"
                     case viewPricing = "VIEW_PRICING"
@@ -108,18 +108,18 @@ public struct AppClipAdvancedExperienceCreateRequest: Codable, Equatable {
                     case theaterNowPlaying = "THEATER_NOW_PLAYING"
                 }
 
-                public enum Relationship: String, Codable, CaseIterable {
+                public enum Relationship: String, CaseIterable, Codable, Sendable {
                     case owner = "OWNER"
                     case authorized = "AUTHORIZED"
                     case other = "OTHER"
                 }
 
-                public struct PhoneNumber: Codable, Equatable {
+                public struct PhoneNumber: Codable, Equatable, Sendable {
                     public var number: String?
                     public var type: `Type`?
                     public var intent: String?
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case fax = "FAX"
                         case landline = "LANDLINE"
                         case mobile = "MOBILE"
@@ -158,7 +158,7 @@ public struct AppClipAdvancedExperienceCreateRequest: Codable, Equatable {
                 }
             }
 
-            public enum BusinessCategory: String, Codable, CaseIterable {
+            public enum BusinessCategory: String, CaseIterable, Codable, Sendable {
                 case automotive = "AUTOMOTIVE"
                 case beauty = "BEAUTY"
                 case bikes = "BIKES"
@@ -198,19 +198,19 @@ public struct AppClipAdvancedExperienceCreateRequest: Codable, Equatable {
             }
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var appClip: AppClip
             public var headerImage: HeaderImage
             public var localizations: Localizations
 
-            public struct AppClip: Codable, Equatable {
+            public struct AppClip: Codable, Equatable, Sendable {
                 public var data: Data
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appClips
                     }
 
@@ -225,14 +225,14 @@ public struct AppClipAdvancedExperienceCreateRequest: Codable, Equatable {
                 }
             }
 
-            public struct HeaderImage: Codable, Equatable {
+            public struct HeaderImage: Codable, Equatable, Sendable {
                 public var data: Data
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appClipAdvancedExperienceImages
                     }
 
@@ -247,14 +247,14 @@ public struct AppClipAdvancedExperienceCreateRequest: Codable, Equatable {
                 }
             }
 
-            public struct Localizations: Codable, Equatable {
+            public struct Localizations: Codable, Equatable, Sendable {
                 public var data: [Datum]
 
-                public struct Datum: Codable, Equatable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appClipAdvancedExperienceLocalizations
                     }
 

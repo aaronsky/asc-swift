@@ -26,7 +26,7 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FieldsPreReleaseVersions: String, Codable, CaseIterable {
+        public enum FieldsPreReleaseVersions: String, CaseIterable, Codable, Sendable {
             case app
             case builds
             case platform

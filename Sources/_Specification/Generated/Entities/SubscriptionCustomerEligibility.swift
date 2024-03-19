@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum SubscriptionCustomerEligibility: String, Codable, CaseIterable {
+public enum SubscriptionCustomerEligibility: String, CaseIterable, Codable, Sendable {
     case new = "NEW"
     case existing = "EXISTING"
     case expired = "EXPIRED"

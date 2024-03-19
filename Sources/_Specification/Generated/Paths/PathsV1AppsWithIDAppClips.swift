@@ -31,14 +31,14 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppClips: String, Codable, CaseIterable {
+        public enum FieldsAppClips: String, CaseIterable, Codable, Sendable {
             case app
             case appClipAdvancedExperiences
             case appClipDefaultExperiences
             case bundleID = "bundleId"
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability
@@ -88,7 +88,7 @@ extension Resources.V1.Apps.WithID {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
-        public enum FieldsAppClipDefaultExperiences: String, Codable, CaseIterable {
+        public enum FieldsAppClipDefaultExperiences: String, CaseIterable, Codable, Sendable {
             case action
             case appClip
             case appClipAppStoreReviewDetail
@@ -97,7 +97,7 @@ extension Resources.V1.Apps.WithID {
             case releaseWithAppStoreVersion
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case appClipDefaultExperiences
         }

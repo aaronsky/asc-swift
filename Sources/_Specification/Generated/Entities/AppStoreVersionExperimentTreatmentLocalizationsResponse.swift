@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct AppStoreVersionExperimentTreatmentLocalizationsResponse: Codable, Equatable {
+public struct AppStoreVersionExperimentTreatmentLocalizationsResponse: Codable, Equatable, Sendable {
     public var data: [AppStoreVersionExperimentTreatmentLocalization]
     public var included: [IncludedItem]?
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case appStoreVersionExperimentTreatment(AppStoreVersionExperimentTreatment)
         case appScreenshotSet(AppScreenshotSet)
         case appPreviewSet(AppPreviewSet)

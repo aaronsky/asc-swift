@@ -26,7 +26,7 @@ extension Resources.V1.GameCenterMatchmakingRuleSets.WithID {
             return encoder.items
         }
 
-        public enum FieldsGameCenterMatchmakingTeams: String, Codable, CaseIterable {
+        public enum FieldsGameCenterMatchmakingTeams: String, CaseIterable, Codable, Sendable {
             case maxPlayers
             case minPlayers
             case referenceName

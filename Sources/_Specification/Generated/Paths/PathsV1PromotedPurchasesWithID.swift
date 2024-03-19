@@ -28,7 +28,7 @@ extension Resources.V1.PromotedPurchases {
             return encoder.items
         }
 
-        public enum FieldsPromotedPurchases: String, Codable, CaseIterable {
+        public enum FieldsPromotedPurchases: String, CaseIterable, Codable, Sendable {
             case app
             case enabled
             case inAppPurchaseV2
@@ -38,13 +38,13 @@ extension Resources.V1.PromotedPurchases {
             case visibleForAllUsers
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case inAppPurchaseV2
             case promotionImages
             case subscription
         }
 
-        public enum FieldsPromotedPurchaseImages: String, Codable, CaseIterable {
+        public enum FieldsPromotedPurchaseImages: String, CaseIterable, Codable, Sendable {
             case assetToken
             case assetType
             case fileName

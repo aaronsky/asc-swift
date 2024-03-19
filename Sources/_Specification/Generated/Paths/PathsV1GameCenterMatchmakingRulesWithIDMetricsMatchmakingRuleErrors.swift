@@ -29,17 +29,17 @@ extension Resources.V1.GameCenterMatchmakingRules.WithID.Metrics {
             return encoder.items
         }
 
-        public enum Granularity: String, Codable, CaseIterable {
+        public enum Granularity: String, CaseIterable, Codable, Sendable {
             case p1d = "P1D"
             case pt1h = "PT1H"
             case pt15m = "PT15M"
         }
 
-        public enum GroupBy: String, Codable, CaseIterable {
+        public enum GroupBy: String, CaseIterable, Codable, Sendable {
             case gameCenterMatchmakingQueue
         }
 
-        public enum Sort: String, Codable, CaseIterable {
+        public enum Sort: String, CaseIterable, Codable, Sendable {
             case count
             case minuscount = "-count"
         }

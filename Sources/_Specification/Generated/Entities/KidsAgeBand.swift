@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum KidsAgeBand: String, Codable, CaseIterable {
+public enum KidsAgeBand: String, CaseIterable, Codable, Sendable {
     case fiveAndUnder = "FIVE_AND_UNDER"
     case sixToEight = "SIX_TO_EIGHT"
     case nineToEleven = "NINE_TO_ELEVEN"

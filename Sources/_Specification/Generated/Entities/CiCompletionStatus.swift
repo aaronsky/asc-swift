@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum CiCompletionStatus: String, Codable, CaseIterable {
+public enum CiCompletionStatus: String, CaseIterable, Codable, Sendable {
     case succeeded = "SUCCEEDED"
     case failed = "FAILED"
     case errored = "ERRORED"

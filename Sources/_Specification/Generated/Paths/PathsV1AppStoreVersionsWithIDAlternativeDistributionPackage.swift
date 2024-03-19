@@ -28,12 +28,12 @@ extension Resources.V1.AppStoreVersions.WithID {
             return encoder.items
         }
 
-        public enum FieldsAlternativeDistributionPackages: String, Codable, CaseIterable {
+        public enum FieldsAlternativeDistributionPackages: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
             case versions
         }
 
-        public enum FieldsAlternativeDistributionPackageVersions: String, Codable, CaseIterable {
+        public enum FieldsAlternativeDistributionPackageVersions: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionPackage
             case deltas
             case fileChecksum
@@ -44,7 +44,7 @@ extension Resources.V1.AppStoreVersions.WithID {
             case version
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case versions
         }
     }

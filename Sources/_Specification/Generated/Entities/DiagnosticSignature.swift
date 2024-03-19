@@ -5,22 +5,22 @@
 
 import Foundation
 
-public struct DiagnosticSignature: Codable, Equatable, Identifiable {
+public struct DiagnosticSignature: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case diagnosticSignatures
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var diagnosticType: DiagnosticType?
         public var signature: String?
         public var weight: Double?
 
-        public enum DiagnosticType: String, Codable, CaseIterable {
+        public enum DiagnosticType: String, CaseIterable, Codable, Sendable {
             case diskWrites = "DISK_WRITES"
             case hangs = "HANGS"
         }

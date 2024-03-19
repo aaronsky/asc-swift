@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum BetaInviteType: String, Codable, CaseIterable {
+public enum BetaInviteType: String, CaseIterable, Codable, Sendable {
     case email = "EMAIL"
     case publicLink = "PUBLIC_LINK"
 }

@@ -5,21 +5,21 @@
 
 import Foundation
 
-public struct ReviewSubmissionItem: Codable, Equatable, Identifiable {
+public struct ReviewSubmissionItem: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var relationships: Relationships?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case reviewSubmissionItems
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var state: State?
 
-        public enum State: String, Codable, CaseIterable {
+        public enum State: String, CaseIterable, Codable, Sendable {
             case readyForReview = "READY_FOR_REVIEW"
             case accepted = "ACCEPTED"
             case approved = "APPROVED"
@@ -32,18 +32,18 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var appStoreVersion: AppStoreVersion?
         public var appCustomProductPageVersion: AppCustomProductPageVersion?
         public var appStoreVersionExperiment: AppStoreVersionExperiment?
         public var appStoreVersionExperimentV2: AppStoreVersionExperimentV2?
         public var appEvent: AppEvent?
 
-        public struct AppStoreVersion: Codable, Equatable {
+        public struct AppStoreVersion: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -58,11 +58,11 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appStoreVersions
                 }
 
@@ -78,11 +78,11 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct AppCustomProductPageVersion: Codable, Equatable {
+        public struct AppCustomProductPageVersion: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -97,11 +97,11 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appCustomProductPageVersions
                 }
 
@@ -117,11 +117,11 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct AppStoreVersionExperiment: Codable, Equatable {
+        public struct AppStoreVersionExperiment: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -136,11 +136,11 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appStoreVersionExperiments
                 }
 
@@ -156,11 +156,11 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct AppStoreVersionExperimentV2: Codable, Equatable {
+        public struct AppStoreVersionExperimentV2: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -175,11 +175,11 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appStoreVersionExperiments
                 }
 
@@ -195,11 +195,11 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct AppEvent: Codable, Equatable {
+        public struct AppEvent: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -214,11 +214,11 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appEvents
                 }
 

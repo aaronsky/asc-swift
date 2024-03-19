@@ -28,7 +28,7 @@ extension Resources.V1.SubscriptionPromotionalOffers {
             return encoder.items
         }
 
-        public enum FieldsSubscriptionPromotionalOffers: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionPromotionalOffers: String, CaseIterable, Codable, Sendable {
             case duration
             case name
             case numberOfPeriods
@@ -38,12 +38,12 @@ extension Resources.V1.SubscriptionPromotionalOffers {
             case subscription
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case prices
             case subscription
         }
 
-        public enum FieldsSubscriptionPromotionalOfferPrices: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionPromotionalOfferPrices: String, CaseIterable, Codable, Sendable {
             case subscriptionPricePoint
             case territory
         }

@@ -38,38 +38,38 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FilterBuildsProcessingState: String, Codable, CaseIterable {
+        public enum FilterBuildsProcessingState: String, CaseIterable, Codable, Sendable {
             case processing = "PROCESSING"
             case failed = "FAILED"
             case invalid = "INVALID"
             case valid = "VALID"
         }
 
-        public enum FilterPlatform: String, Codable, CaseIterable {
+        public enum FilterPlatform: String, CaseIterable, Codable, Sendable {
             case ios = "IOS"
             case macOs = "MAC_OS"
             case tvOs = "TV_OS"
             case visionOs = "VISION_OS"
         }
 
-        public enum Sort: String, Codable, CaseIterable {
+        public enum Sort: String, CaseIterable, Codable, Sendable {
             case version
             case minusversion = "-version"
         }
 
-        public enum FieldsPreReleaseVersions: String, Codable, CaseIterable {
+        public enum FieldsPreReleaseVersions: String, CaseIterable, Codable, Sendable {
             case app
             case builds
             case platform
             case version
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case builds
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability
@@ -119,7 +119,7 @@ extension Resources.V1 {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
-        public enum FieldsBuilds: String, Codable, CaseIterable {
+        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
             case app
             case appEncryptionDeclaration
             case appStoreVersion

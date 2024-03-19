@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiAction: Codable, Equatable {
+public struct CiAction: Codable, Equatable, Sendable {
     public var name: String?
     public var actionType: CiActionType?
     public var destination: Destination?
@@ -15,7 +15,7 @@ public struct CiAction: Codable, Equatable {
     public var platform: Platform?
     public var isRequiredToPass: Bool?
 
-    public enum Destination: String, Codable, CaseIterable {
+    public enum Destination: String, CaseIterable, Codable, Sendable {
         case anyIosDevice = "ANY_IOS_DEVICE"
         case anyIosSimulator = "ANY_IOS_SIMULATOR"
         case anyTvosDevice = "ANY_TVOS_DEVICE"
@@ -28,12 +28,12 @@ public struct CiAction: Codable, Equatable {
         case anyVisionosSimulator = "ANY_VISIONOS_SIMULATOR"
     }
 
-    public struct TestConfiguration: Codable, Equatable {
+    public struct TestConfiguration: Codable, Equatable, Sendable {
         public var kind: Kind?
         public var testPlanName: String?
         public var testDestinations: [CiTestDestination]?
 
-        public enum Kind: String, Codable, CaseIterable {
+        public enum Kind: String, CaseIterable, Codable, Sendable {
             case useSchemeSettings = "USE_SCHEME_SETTINGS"
             case specificTestPlans = "SPECIFIC_TEST_PLANS"
         }
@@ -45,7 +45,7 @@ public struct CiAction: Codable, Equatable {
         }
     }
 
-    public enum Platform: String, Codable, CaseIterable {
+    public enum Platform: String, CaseIterable, Codable, Sendable {
         case macos = "MACOS"
         case ios = "IOS"
         case tvos = "TVOS"

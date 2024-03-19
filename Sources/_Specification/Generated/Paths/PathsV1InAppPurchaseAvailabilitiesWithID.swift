@@ -28,17 +28,17 @@ extension Resources.V1.InAppPurchaseAvailabilities {
             return encoder.items
         }
 
-        public enum FieldsInAppPurchaseAvailabilities: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchaseAvailabilities: String, CaseIterable, Codable, Sendable {
             case availableInNewTerritories
             case availableTerritories
             case inAppPurchase
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case availableTerritories
         }
 
-        public enum FieldsTerritories: String, Codable, CaseIterable {
+        public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
             case currency
         }
     }

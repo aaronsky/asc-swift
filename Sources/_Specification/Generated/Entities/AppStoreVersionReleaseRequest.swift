@@ -5,12 +5,12 @@
 
 import Foundation
 
-public struct AppStoreVersionReleaseRequest: Codable, Equatable, Identifiable {
+public struct AppStoreVersionReleaseRequest: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case appStoreVersionReleaseRequests
     }
 

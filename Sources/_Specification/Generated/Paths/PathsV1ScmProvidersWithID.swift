@@ -26,13 +26,13 @@ extension Resources.V1.ScmProviders {
             return encoder.items
         }
 
-        public enum FieldsScmProviders: String, Codable, CaseIterable {
+        public enum FieldsScmProviders: String, CaseIterable, Codable, Sendable {
             case repositories
             case scmProviderType
             case url
         }
 
-        public enum FieldsScmRepositories: String, Codable, CaseIterable {
+        public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
             case defaultBranch
             case gitReferences
             case httpCloneURL = "httpCloneUrl"

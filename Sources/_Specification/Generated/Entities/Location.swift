@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct Location: Codable, Equatable {
+public struct Location: Codable, Equatable, Sendable {
     public var latitude: Double?
     public var longitude: Double?
 

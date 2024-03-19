@@ -33,14 +33,14 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FilterPlatform: String, Codable, CaseIterable {
+        public enum FilterPlatform: String, CaseIterable, Codable, Sendable {
             case ios = "IOS"
             case macOs = "MAC_OS"
             case tvOs = "TV_OS"
             case visionOs = "VISION_OS"
         }
 
-        public enum FieldsAppEncryptionDeclarations: String, Codable, CaseIterable {
+        public enum FieldsAppEncryptionDeclarations: String, CaseIterable, Codable, Sendable {
             case app
             case appDescription
             case appEncryptionDeclarationDocument
@@ -60,7 +60,7 @@ extension Resources.V1.Apps.WithID {
             case usesEncryption
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability
@@ -110,7 +110,7 @@ extension Resources.V1.Apps.WithID {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
-        public enum FieldsAppEncryptionDeclarationDocuments: String, Codable, CaseIterable {
+        public enum FieldsAppEncryptionDeclarationDocuments: String, CaseIterable, Codable, Sendable {
             case appEncryptionDeclaration
             case assetDeliveryState
             case assetToken
@@ -122,7 +122,7 @@ extension Resources.V1.Apps.WithID {
             case uploaded
         }
 
-        public enum FieldsBuilds: String, Codable, CaseIterable {
+        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
             case app
             case appEncryptionDeclaration
             case appStoreVersion
@@ -149,7 +149,7 @@ extension Resources.V1.Apps.WithID {
             case version
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case appEncryptionDeclarationDocument
             case builds

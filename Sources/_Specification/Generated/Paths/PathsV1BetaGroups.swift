@@ -41,7 +41,7 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum Sort: String, Codable, CaseIterable {
+        public enum Sort: String, CaseIterable, Codable, Sendable {
             case createdDate
             case minuscreatedDate = "-createdDate"
             case name
@@ -52,7 +52,7 @@ extension Resources.V1 {
             case minuspublicLinkLimit = "-publicLinkLimit"
         }
 
-        public enum FieldsBetaGroups: String, Codable, CaseIterable {
+        public enum FieldsBetaGroups: String, CaseIterable, Codable, Sendable {
             case app
             case betaTesters
             case builds
@@ -69,13 +69,13 @@ extension Resources.V1 {
             case publicLinkLimitEnabled
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case betaTesters
             case builds
         }
 
-        public enum FieldsBetaTesters: String, Codable, CaseIterable {
+        public enum FieldsBetaTesters: String, CaseIterable, Codable, Sendable {
             case apps
             case betaGroups
             case builds
@@ -85,7 +85,7 @@ extension Resources.V1 {
             case lastName
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability
@@ -135,7 +135,7 @@ extension Resources.V1 {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
-        public enum FieldsBuilds: String, Codable, CaseIterable {
+        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
             case app
             case appEncryptionDeclaration
             case appStoreVersion

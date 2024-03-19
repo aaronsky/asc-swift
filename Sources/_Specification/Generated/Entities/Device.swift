@@ -5,17 +5,17 @@
 
 import Foundation
 
-public struct Device: Codable, Equatable, Identifiable {
+public struct Device: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case devices
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var name: String?
         public var platform: BundleIDPlatform?
         public var udid: String?
@@ -24,7 +24,7 @@ public struct Device: Codable, Equatable, Identifiable {
         public var model: String?
         public var addedDate: Date?
 
-        public enum DeviceClass: String, Codable, CaseIterable {
+        public enum DeviceClass: String, CaseIterable, Codable, Sendable {
             case appleWatch = "APPLE_WATCH"
             case ipad = "IPAD"
             case iphone = "IPHONE"
@@ -33,7 +33,7 @@ public struct Device: Codable, Equatable, Identifiable {
             case mac = "MAC"
         }
 
-        public enum Status: String, Codable, CaseIterable {
+        public enum Status: String, CaseIterable, Codable, Sendable {
             case enabled = "ENABLED"
             case disabled = "DISABLED"
         }

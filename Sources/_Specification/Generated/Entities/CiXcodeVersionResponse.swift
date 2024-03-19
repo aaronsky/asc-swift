@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiXcodeVersionResponse: Codable, Equatable {
+public struct CiXcodeVersionResponse: Codable, Equatable, Sendable {
     /// CiXcodeVersion
     public var data: CiXcodeVersion
     public var included: [CiMacOsVersion]?

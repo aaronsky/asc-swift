@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct GameCenterMatchmakingRuleSetsResponse: Codable, Equatable {
+public struct GameCenterMatchmakingRuleSetsResponse: Codable, Equatable, Sendable {
     public var data: [GameCenterMatchmakingRuleSet]
     public var included: [IncludedItem]?
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case gameCenterMatchmakingTeam(GameCenterMatchmakingTeam)
         case gameCenterMatchmakingRule(GameCenterMatchmakingRule)
         case gameCenterMatchmakingQueue(GameCenterMatchmakingQueue)

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct DiagnosticSignaturesResponse: Codable, Equatable {
+public struct DiagnosticSignaturesResponse: Codable, Equatable, Sendable {
     public var data: [DiagnosticSignature]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?

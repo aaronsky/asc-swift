@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct AppStoreVersionResponse: Codable, Equatable {
+public struct AppStoreVersionResponse: Codable, Equatable, Sendable {
     /// AppStoreVersion
     public var data: AppStoreVersion
     public var included: [IncludedItem]?
     public var links: DocumentLinks
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case app(App)
         case ageRatingDeclaration(AgeRatingDeclaration)
         case appStoreVersionLocalization(AppStoreVersionLocalization)

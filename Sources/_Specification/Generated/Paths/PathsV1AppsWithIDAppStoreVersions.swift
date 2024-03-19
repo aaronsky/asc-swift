@@ -46,7 +46,7 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FilterAppStoreState: String, Codable, CaseIterable {
+        public enum FilterAppStoreState: String, CaseIterable, Codable, Sendable {
             case accepted = "ACCEPTED"
             case developerRemovedFromSale = "DEVELOPER_REMOVED_FROM_SALE"
             case developerRejected = "DEVELOPER_REJECTED"
@@ -69,7 +69,7 @@ extension Resources.V1.Apps.WithID {
             case notApplicable = "NOT_APPLICABLE"
         }
 
-        public enum FilterAppVersionState: String, Codable, CaseIterable {
+        public enum FilterAppVersionState: String, CaseIterable, Codable, Sendable {
             case accepted = "ACCEPTED"
             case developerRejected = "DEVELOPER_REJECTED"
             case inReview = "IN_REVIEW"
@@ -87,14 +87,14 @@ extension Resources.V1.Apps.WithID {
             case waitingForReview = "WAITING_FOR_REVIEW"
         }
 
-        public enum FilterPlatform: String, Codable, CaseIterable {
+        public enum FilterPlatform: String, CaseIterable, Codable, Sendable {
             case ios = "IOS"
             case macOs = "MAC_OS"
             case tvOs = "TV_OS"
             case visionOs = "VISION_OS"
         }
 
-        public enum FieldsAgeRatingDeclarations: String, Codable, CaseIterable {
+        public enum FieldsAgeRatingDeclarations: String, CaseIterable, Codable, Sendable {
             case ageRatingOverride
             case alcoholTobaccoOrDrugUseOrReferences
             case contests
@@ -115,7 +115,7 @@ extension Resources.V1.Apps.WithID {
             case violenceRealisticProlongedGraphicOrSadistic
         }
 
-        public enum FieldsAppStoreReviewDetails: String, Codable, CaseIterable {
+        public enum FieldsAppStoreReviewDetails: String, CaseIterable, Codable, Sendable {
             case appStoreReviewAttachments
             case appStoreVersion
             case contactEmail
@@ -128,7 +128,7 @@ extension Resources.V1.Apps.WithID {
             case notes
         }
 
-        public enum FieldsAppStoreVersionLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionLocalizations: String, CaseIterable, Codable, Sendable {
             case appPreviewSets
             case appScreenshotSets
             case appStoreVersion
@@ -141,7 +141,7 @@ extension Resources.V1.Apps.WithID {
             case whatsNew
         }
 
-        public enum FieldsAppStoreVersionExperiments: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionExperiments: String, CaseIterable, Codable, Sendable {
             case app
             case appStoreVersion
             case appStoreVersionExperimentTreatments
@@ -157,16 +157,16 @@ extension Resources.V1.Apps.WithID {
             case trafficProportion
         }
 
-        public enum FieldsAppStoreVersionSubmissions: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionSubmissions: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
         }
 
-        public enum FieldsAlternativeDistributionPackages: String, Codable, CaseIterable {
+        public enum FieldsAlternativeDistributionPackages: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
             case versions
         }
 
-        public enum FieldsAppStoreVersions: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
             case ageRatingDeclaration
             case alternativeDistributionPackage
             case app
@@ -192,7 +192,7 @@ extension Resources.V1.Apps.WithID {
             case versionString
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability
@@ -242,7 +242,7 @@ extension Resources.V1.Apps.WithID {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
-        public enum FieldsRoutingAppCoverages: String, Codable, CaseIterable {
+        public enum FieldsRoutingAppCoverages: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
             case assetDeliveryState
             case fileName
@@ -252,7 +252,7 @@ extension Resources.V1.Apps.WithID {
             case uploaded
         }
 
-        public enum FieldsAppClipDefaultExperiences: String, Codable, CaseIterable {
+        public enum FieldsAppClipDefaultExperiences: String, CaseIterable, Codable, Sendable {
             case action
             case appClip
             case appClipAppStoreReviewDetail
@@ -261,7 +261,7 @@ extension Resources.V1.Apps.WithID {
             case releaseWithAppStoreVersion
         }
 
-        public enum FieldsAppStoreVersionPhasedReleases: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionPhasedReleases: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
             case currentDayNumber
             case phasedReleaseState
@@ -269,7 +269,7 @@ extension Resources.V1.Apps.WithID {
             case totalPauseDuration
         }
 
-        public enum FieldsBuilds: String, Codable, CaseIterable {
+        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
             case app
             case appEncryptionDeclaration
             case appStoreVersion
@@ -296,7 +296,7 @@ extension Resources.V1.Apps.WithID {
             case version
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case ageRatingDeclaration
             case alternativeDistributionPackage
             case app

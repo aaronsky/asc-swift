@@ -25,7 +25,7 @@ extension Resources.V1.AppInfos.WithID {
             return encoder.items
         }
 
-        public enum FieldsAgeRatingDeclarations: String, Codable, CaseIterable {
+        public enum FieldsAgeRatingDeclarations: String, CaseIterable, Codable, Sendable {
             case ageRatingOverride
             case alcoholTobaccoOrDrugUseOrReferences
             case contests

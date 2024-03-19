@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct AlternativeDistributionPackageVersionsResponse: Codable, Equatable {
+public struct AlternativeDistributionPackageVersionsResponse: Codable, Equatable, Sendable {
     public var data: [AlternativeDistributionPackageVersion]
     public var included: [IncludedItem]?
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case alternativeDistributionPackageVariant(AlternativeDistributionPackageVariant)
         case alternativeDistributionPackageDelta(AlternativeDistributionPackageDelta)
         case alternativeDistributionPackage(AlternativeDistributionPackage)

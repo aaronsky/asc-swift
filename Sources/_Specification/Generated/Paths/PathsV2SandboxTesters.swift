@@ -26,7 +26,7 @@ extension Resources.V2 {
             return encoder.items
         }
 
-        public enum FieldsSandboxTesters: String, Codable, CaseIterable {
+        public enum FieldsSandboxTesters: String, CaseIterable, Codable, Sendable {
             case acAccountName
             case applePayCompatible
             case firstName

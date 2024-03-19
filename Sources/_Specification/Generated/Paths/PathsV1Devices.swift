@@ -32,17 +32,17 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FilterPlatform: String, Codable, CaseIterable {
+        public enum FilterPlatform: String, CaseIterable, Codable, Sendable {
             case ios = "IOS"
             case macOs = "MAC_OS"
         }
 
-        public enum FilterStatus: String, Codable, CaseIterable {
+        public enum FilterStatus: String, CaseIterable, Codable, Sendable {
             case enabled = "ENABLED"
             case disabled = "DISABLED"
         }
 
-        public enum Sort: String, Codable, CaseIterable {
+        public enum Sort: String, CaseIterable, Codable, Sendable {
             case id
             case minusid = "-id"
             case name
@@ -55,7 +55,7 @@ extension Resources.V1 {
             case minusudid = "-udid"
         }
 
-        public enum FieldsDevices: String, Codable, CaseIterable {
+        public enum FieldsDevices: String, CaseIterable, Codable, Sendable {
             case addedDate
             case deviceClass
             case model

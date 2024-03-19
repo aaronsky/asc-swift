@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct GameCenterLeaderboardImageResponse: Codable, Equatable {
+public struct GameCenterLeaderboardImageResponse: Codable, Equatable, Sendable {
     /// GameCenterLeaderboardImage
     public var data: GameCenterLeaderboardImage
     public var included: [GameCenterLeaderboardLocalization]?

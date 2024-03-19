@@ -35,7 +35,7 @@ extension Resources.V1.AppStoreVersionLocalizations.WithID {
             return encoder.items
         }
 
-        public enum FilterPreviewType: String, Codable, CaseIterable {
+        public enum FilterPreviewType: String, CaseIterable, Codable, Sendable {
             case iphone67 = "IPHONE_67"
             case iphone61 = "IPHONE_61"
             case iphone65 = "IPHONE_65"
@@ -54,7 +54,7 @@ extension Resources.V1.AppStoreVersionLocalizations.WithID {
             case appleVisionPro = "APPLE_VISION_PRO"
         }
 
-        public enum FieldsAppCustomProductPageLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppCustomProductPageLocalizations: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageVersion
             case appPreviewSets
             case appScreenshotSets
@@ -62,14 +62,14 @@ extension Resources.V1.AppStoreVersionLocalizations.WithID {
             case promotionalText
         }
 
-        public enum FieldsAppStoreVersionExperimentTreatmentLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionExperimentTreatmentLocalizations: String, CaseIterable, Codable, Sendable {
             case appPreviewSets
             case appScreenshotSets
             case appStoreVersionExperimentTreatment
             case locale
         }
 
-        public enum FieldsAppPreviews: String, Codable, CaseIterable {
+        public enum FieldsAppPreviews: String, CaseIterable, Codable, Sendable {
             case appPreviewSet
             case assetDeliveryState
             case fileName
@@ -83,7 +83,7 @@ extension Resources.V1.AppStoreVersionLocalizations.WithID {
             case videoURL = "videoUrl"
         }
 
-        public enum FieldsAppPreviewSets: String, Codable, CaseIterable {
+        public enum FieldsAppPreviewSets: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageLocalization
             case appPreviews
             case appStoreVersionExperimentTreatmentLocalization
@@ -91,7 +91,7 @@ extension Resources.V1.AppStoreVersionLocalizations.WithID {
             case previewType
         }
 
-        public enum FieldsAppStoreVersionLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionLocalizations: String, CaseIterable, Codable, Sendable {
             case appPreviewSets
             case appScreenshotSets
             case appStoreVersion
@@ -104,7 +104,7 @@ extension Resources.V1.AppStoreVersionLocalizations.WithID {
             case whatsNew
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageLocalization
             case appPreviews
             case appStoreVersionExperimentTreatmentLocalization

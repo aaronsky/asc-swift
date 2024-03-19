@@ -5,23 +5,23 @@
 
 import Foundation
 
-public struct CiArtifact: Codable, Equatable, Identifiable {
+public struct CiArtifact: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case ciArtifacts
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var fileType: FileType?
         public var fileName: String?
         public var fileSize: Int?
         public var downloadURL: URL?
 
-        public enum FileType: String, Codable, CaseIterable {
+        public enum FileType: String, CaseIterable, Codable, Sendable {
             case archive = "ARCHIVE"
             case archiveExport = "ARCHIVE_EXPORT"
             case logBundle = "LOG_BUNDLE"

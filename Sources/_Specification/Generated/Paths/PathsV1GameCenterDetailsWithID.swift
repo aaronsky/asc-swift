@@ -41,7 +41,7 @@ extension Resources.V1.GameCenterDetails {
             return encoder.items
         }
 
-        public enum FieldsGameCenterDetails: String, Codable, CaseIterable {
+        public enum FieldsGameCenterDetails: String, CaseIterable, Codable, Sendable {
             case achievementReleases
             case app
             case arcadeEnabled
@@ -57,7 +57,7 @@ extension Resources.V1.GameCenterDetails {
             case leaderboardSetReleases
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case achievementReleases
             case app
             case defaultGroupLeaderboard
@@ -71,19 +71,19 @@ extension Resources.V1.GameCenterDetails {
             case leaderboardSetReleases
         }
 
-        public enum FieldsGameCenterAchievementReleases: String, Codable, CaseIterable {
+        public enum FieldsGameCenterAchievementReleases: String, CaseIterable, Codable, Sendable {
             case gameCenterAchievement
             case gameCenterDetail
             case live
         }
 
-        public enum FieldsGameCenterLeaderboardSetReleases: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardSetReleases: String, CaseIterable, Codable, Sendable {
             case gameCenterDetail
             case gameCenterLeaderboardSet
             case live
         }
 
-        public enum FieldsGameCenterLeaderboardSets: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardSets: String, CaseIterable, Codable, Sendable {
             case gameCenterDetail
             case gameCenterGroup
             case gameCenterLeaderboards
@@ -94,7 +94,7 @@ extension Resources.V1.GameCenterDetails {
             case vendorIdentifier
         }
 
-        public enum FieldsGameCenterGroups: String, Codable, CaseIterable {
+        public enum FieldsGameCenterGroups: String, CaseIterable, Codable, Sendable {
             case gameCenterAchievements
             case gameCenterDetails
             case gameCenterLeaderboardSets
@@ -102,7 +102,7 @@ extension Resources.V1.GameCenterDetails {
             case referenceName
         }
 
-        public enum FieldsGameCenterLeaderboards: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboards: String, CaseIterable, Codable, Sendable {
             case archived
             case defaultFormatter
             case gameCenterDetail
@@ -122,7 +122,7 @@ extension Resources.V1.GameCenterDetails {
             case vendorIdentifier
         }
 
-        public enum FieldsGameCenterAchievements: String, Codable, CaseIterable {
+        public enum FieldsGameCenterAchievements: String, CaseIterable, Codable, Sendable {
             case archived
             case gameCenterDetail
             case gameCenterGroup
@@ -136,13 +136,13 @@ extension Resources.V1.GameCenterDetails {
             case vendorIdentifier
         }
 
-        public enum FieldsGameCenterAppVersions: String, Codable, CaseIterable {
+        public enum FieldsGameCenterAppVersions: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
             case compatibilityVersions
             case enabled
         }
 
-        public enum FieldsGameCenterLeaderboardReleases: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardReleases: String, CaseIterable, Codable, Sendable {
             case gameCenterDetail
             case gameCenterLeaderboard
             case live

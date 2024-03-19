@@ -5,23 +5,23 @@
 
 import Foundation
 
-public struct DeviceUpdateRequest: Codable, Equatable {
+public struct DeviceUpdateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable, Sendable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case devices
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var name: String?
             public var status: Status?
 
-            public enum Status: String, Codable, CaseIterable {
+            public enum Status: String, CaseIterable, Codable, Sendable {
                 case enabled = "ENABLED"
                 case disabled = "DISABLED"
             }

@@ -25,7 +25,7 @@ extension Resources.V1.AppClipAdvancedExperienceImages {
             return encoder.items
         }
 
-        public enum FieldsAppClipAdvancedExperienceImages: String, Codable, CaseIterable {
+        public enum FieldsAppClipAdvancedExperienceImages: String, CaseIterable, Codable, Sendable {
             case assetDeliveryState
             case fileName
             case fileSize

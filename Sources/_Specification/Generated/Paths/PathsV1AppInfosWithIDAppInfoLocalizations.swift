@@ -29,7 +29,7 @@ extension Resources.V1.AppInfos.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppInfos: String, Codable, CaseIterable {
+        public enum FieldsAppInfos: String, CaseIterable, Codable, Sendable {
             case ageRatingDeclaration
             case app
             case appInfoLocalizations
@@ -47,7 +47,7 @@ extension Resources.V1.AppInfos.WithID {
             case state
         }
 
-        public enum FieldsAppInfoLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppInfoLocalizations: String, CaseIterable, Codable, Sendable {
             case appInfo
             case locale
             case name
@@ -57,7 +57,7 @@ extension Resources.V1.AppInfos.WithID {
             case subtitle
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appInfo
         }
     }

@@ -25,7 +25,7 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FieldsBetaLicenseAgreements: String, Codable, CaseIterable {
+        public enum FieldsBetaLicenseAgreements: String, CaseIterable, Codable, Sendable {
             case agreementText
             case app
         }

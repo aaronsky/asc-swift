@@ -5,18 +5,18 @@
 
 import Foundation
 
-public struct GameCenterLeaderboardSetMemberLocalization: Codable, Equatable, Identifiable {
+public struct GameCenterLeaderboardSetMemberLocalization: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var relationships: Relationships?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case gameCenterLeaderboardSetMemberLocalizations
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var name: String?
         public var locale: String?
 
@@ -26,15 +26,15 @@ public struct GameCenterLeaderboardSetMemberLocalization: Codable, Equatable, Id
         }
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var gameCenterLeaderboardSet: GameCenterLeaderboardSet?
         public var gameCenterLeaderboard: GameCenterLeaderboard?
 
-        public struct GameCenterLeaderboardSet: Codable, Equatable {
+        public struct GameCenterLeaderboardSet: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -49,11 +49,11 @@ public struct GameCenterLeaderboardSetMemberLocalization: Codable, Equatable, Id
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case gameCenterLeaderboardSets
                 }
 
@@ -69,11 +69,11 @@ public struct GameCenterLeaderboardSetMemberLocalization: Codable, Equatable, Id
             }
         }
 
-        public struct GameCenterLeaderboard: Codable, Equatable {
+        public struct GameCenterLeaderboard: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -88,11 +88,11 @@ public struct GameCenterLeaderboardSetMemberLocalization: Codable, Equatable, Id
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case gameCenterLeaderboards
                 }
 

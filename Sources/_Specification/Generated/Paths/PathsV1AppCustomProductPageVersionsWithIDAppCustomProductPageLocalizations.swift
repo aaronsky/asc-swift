@@ -33,7 +33,7 @@ extension Resources.V1.AppCustomProductPageVersions.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppScreenshotSets: String, Codable, CaseIterable {
+        public enum FieldsAppScreenshotSets: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageLocalization
             case appScreenshots
             case appStoreVersionExperimentTreatmentLocalization
@@ -41,7 +41,7 @@ extension Resources.V1.AppCustomProductPageVersions.WithID {
             case screenshotDisplayType
         }
 
-        public enum FieldsAppCustomProductPageLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppCustomProductPageLocalizations: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageVersion
             case appPreviewSets
             case appScreenshotSets
@@ -49,14 +49,14 @@ extension Resources.V1.AppCustomProductPageVersions.WithID {
             case promotionalText
         }
 
-        public enum FieldsAppCustomProductPageVersions: String, Codable, CaseIterable {
+        public enum FieldsAppCustomProductPageVersions: String, CaseIterable, Codable, Sendable {
             case appCustomProductPage
             case appCustomProductPageLocalizations
             case state
             case version
         }
 
-        public enum FieldsAppPreviewSets: String, Codable, CaseIterable {
+        public enum FieldsAppPreviewSets: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageLocalization
             case appPreviews
             case appStoreVersionExperimentTreatmentLocalization
@@ -64,7 +64,7 @@ extension Resources.V1.AppCustomProductPageVersions.WithID {
             case previewType
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageVersion
             case appPreviewSets
             case appScreenshotSets

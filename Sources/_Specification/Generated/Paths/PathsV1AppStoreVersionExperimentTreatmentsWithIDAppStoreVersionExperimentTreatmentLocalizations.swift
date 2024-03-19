@@ -33,7 +33,7 @@ extension Resources.V1.AppStoreVersionExperimentTreatments.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppScreenshotSets: String, Codable, CaseIterable {
+        public enum FieldsAppScreenshotSets: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageLocalization
             case appScreenshots
             case appStoreVersionExperimentTreatmentLocalization
@@ -41,7 +41,7 @@ extension Resources.V1.AppStoreVersionExperimentTreatments.WithID {
             case screenshotDisplayType
         }
 
-        public enum FieldsAppStoreVersionExperimentTreatments: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionExperimentTreatments: String, CaseIterable, Codable, Sendable {
             case appIcon
             case appIconName
             case appStoreVersionExperiment
@@ -51,14 +51,14 @@ extension Resources.V1.AppStoreVersionExperimentTreatments.WithID {
             case promotedDate
         }
 
-        public enum FieldsAppStoreVersionExperimentTreatmentLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionExperimentTreatmentLocalizations: String, CaseIterable, Codable, Sendable {
             case appPreviewSets
             case appScreenshotSets
             case appStoreVersionExperimentTreatment
             case locale
         }
 
-        public enum FieldsAppPreviewSets: String, Codable, CaseIterable {
+        public enum FieldsAppPreviewSets: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageLocalization
             case appPreviews
             case appStoreVersionExperimentTreatmentLocalization
@@ -66,7 +66,7 @@ extension Resources.V1.AppStoreVersionExperimentTreatments.WithID {
             case previewType
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appPreviewSets
             case appScreenshotSets
             case appStoreVersionExperimentTreatment

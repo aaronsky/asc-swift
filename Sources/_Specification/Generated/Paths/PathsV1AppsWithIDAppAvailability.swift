@@ -29,13 +29,13 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppAvailabilities: String, Codable, CaseIterable {
+        public enum FieldsAppAvailabilities: String, CaseIterable, Codable, Sendable {
             case app
             case availableInNewTerritories
             case availableTerritories
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability
@@ -85,11 +85,11 @@ extension Resources.V1.Apps.WithID {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
-        public enum FieldsTerritories: String, Codable, CaseIterable {
+        public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
             case currency
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case availableTerritories
         }

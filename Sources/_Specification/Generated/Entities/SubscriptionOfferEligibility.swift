@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum SubscriptionOfferEligibility: String, Codable, CaseIterable {
+public enum SubscriptionOfferEligibility: String, CaseIterable, Codable, Sendable {
     case stackWithIntroOffers = "STACK_WITH_INTRO_OFFERS"
     case replaceIntroOffers = "REPLACE_INTRO_OFFERS"
 }

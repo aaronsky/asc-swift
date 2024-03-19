@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct EndAppAvailabilityPreOrderResponse: Codable, Equatable {
+public struct EndAppAvailabilityPreOrderResponse: Codable, Equatable, Sendable {
     /// EndAppAvailabilityPreOrder
     public var data: EndAppAvailabilityPreOrder
     public var links: DocumentLinks

@@ -29,19 +29,19 @@ extension Resources.V1.AppClips {
             return encoder.items
         }
 
-        public enum FieldsAppClips: String, Codable, CaseIterable {
+        public enum FieldsAppClips: String, CaseIterable, Codable, Sendable {
             case app
             case appClipAdvancedExperiences
             case appClipDefaultExperiences
             case bundleID = "bundleId"
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case appClipDefaultExperiences
         }
 
-        public enum FieldsAppClipAdvancedExperiences: String, Codable, CaseIterable {
+        public enum FieldsAppClipAdvancedExperiences: String, CaseIterable, Codable, Sendable {
             case action
             case appClip
             case businessCategory
@@ -57,7 +57,7 @@ extension Resources.V1.AppClips {
             case version
         }
 
-        public enum FieldsAppClipDefaultExperiences: String, Codable, CaseIterable {
+        public enum FieldsAppClipDefaultExperiences: String, CaseIterable, Codable, Sendable {
             case action
             case appClip
             case appClipAppStoreReviewDetail

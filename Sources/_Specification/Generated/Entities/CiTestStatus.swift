@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum CiTestStatus: String, Codable, CaseIterable {
+public enum CiTestStatus: String, CaseIterable, Codable, Sendable {
     case success = "SUCCESS"
     case failure = "FAILURE"
     case mixed = "MIXED"

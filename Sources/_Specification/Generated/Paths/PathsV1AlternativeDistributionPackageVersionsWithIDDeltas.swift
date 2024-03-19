@@ -26,7 +26,7 @@ extension Resources.V1.AlternativeDistributionPackageVersions.WithID {
             return encoder.items
         }
 
-        public enum FieldsAlternativeDistributionPackageDeltas: String, Codable, CaseIterable {
+        public enum FieldsAlternativeDistributionPackageDeltas: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKeyBlob
             case fileChecksum
             case url

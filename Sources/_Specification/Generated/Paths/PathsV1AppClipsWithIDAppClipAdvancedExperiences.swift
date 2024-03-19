@@ -34,25 +34,25 @@ extension Resources.V1.AppClips.WithID {
             return encoder.items
         }
 
-        public enum FilterAction: String, Codable, CaseIterable {
+        public enum FilterAction: String, CaseIterable, Codable, Sendable {
             case `open` = "OPEN"
             case view = "VIEW"
             case play = "PLAY"
         }
 
-        public enum FilterPlaceStatus: String, Codable, CaseIterable {
+        public enum FilterPlaceStatus: String, CaseIterable, Codable, Sendable {
             case pending = "PENDING"
             case matched = "MATCHED"
             case noMatch = "NO_MATCH"
         }
 
-        public enum FilterStatus: String, Codable, CaseIterable {
+        public enum FilterStatus: String, CaseIterable, Codable, Sendable {
             case received = "RECEIVED"
             case deactivated = "DEACTIVATED"
             case appTransferInProgress = "APP_TRANSFER_IN_PROGRESS"
         }
 
-        public enum FieldsAppClipAdvancedExperiences: String, Codable, CaseIterable {
+        public enum FieldsAppClipAdvancedExperiences: String, CaseIterable, Codable, Sendable {
             case action
             case appClip
             case businessCategory
@@ -68,14 +68,14 @@ extension Resources.V1.AppClips.WithID {
             case version
         }
 
-        public enum FieldsAppClips: String, Codable, CaseIterable {
+        public enum FieldsAppClips: String, CaseIterable, Codable, Sendable {
             case app
             case appClipAdvancedExperiences
             case appClipDefaultExperiences
             case bundleID = "bundleId"
         }
 
-        public enum FieldsAppClipAdvancedExperienceImages: String, Codable, CaseIterable {
+        public enum FieldsAppClipAdvancedExperienceImages: String, CaseIterable, Codable, Sendable {
             case assetDeliveryState
             case fileName
             case fileSize
@@ -85,13 +85,13 @@ extension Resources.V1.AppClips.WithID {
             case uploaded
         }
 
-        public enum FieldsAppClipAdvancedExperienceLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppClipAdvancedExperienceLocalizations: String, CaseIterable, Codable, Sendable {
             case language
             case subtitle
             case title
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appClip
             case headerImage
             case localizations

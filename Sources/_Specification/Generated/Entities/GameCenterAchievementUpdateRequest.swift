@@ -5,19 +5,19 @@
 
 import Foundation
 
-public struct GameCenterAchievementUpdateRequest: Codable, Equatable {
+public struct GameCenterAchievementUpdateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable, Sendable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case gameCenterAchievements
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var referenceName: String?
             public var points: Int?
             public var isShowBeforeEarned: Bool?

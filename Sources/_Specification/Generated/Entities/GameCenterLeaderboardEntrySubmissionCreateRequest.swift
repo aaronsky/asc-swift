@@ -5,18 +5,18 @@
 
 import Foundation
 
-public struct GameCenterLeaderboardEntrySubmissionCreateRequest: Codable, Equatable {
+public struct GameCenterLeaderboardEntrySubmissionCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable {
+    public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var attributes: Attributes
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case gameCenterLeaderboardEntrySubmissions
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var bundleID: String
             public var challengeIDs: [String]?
             public var context: String?

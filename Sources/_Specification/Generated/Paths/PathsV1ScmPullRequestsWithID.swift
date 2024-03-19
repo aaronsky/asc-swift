@@ -26,7 +26,7 @@ extension Resources.V1.ScmPullRequests {
             return encoder.items
         }
 
-        public enum FieldsScmPullRequests: String, Codable, CaseIterable {
+        public enum FieldsScmPullRequests: String, CaseIterable, Codable, Sendable {
             case destinationBranchName
             case destinationRepositoryName
             case destinationRepositoryOwner
@@ -41,7 +41,7 @@ extension Resources.V1.ScmPullRequests {
             case webURL = "webUrl"
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case repository
         }
     }

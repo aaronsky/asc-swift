@@ -26,7 +26,7 @@ extension Resources.V1.AppPreviews {
             return encoder.items
         }
 
-        public enum FieldsAppPreviews: String, Codable, CaseIterable {
+        public enum FieldsAppPreviews: String, CaseIterable, Codable, Sendable {
             case appPreviewSet
             case assetDeliveryState
             case fileName
@@ -40,7 +40,7 @@ extension Resources.V1.AppPreviews {
             case videoURL = "videoUrl"
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appPreviewSet
         }
 

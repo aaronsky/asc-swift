@@ -26,13 +26,13 @@ extension Resources.V1.AnalyticsReportInstances {
             return encoder.items
         }
 
-        public enum FieldsAnalyticsReportInstances: String, Codable, CaseIterable {
+        public enum FieldsAnalyticsReportInstances: String, CaseIterable, Codable, Sendable {
             case granularity
             case processingDate
             case segments
         }
 
-        public enum FieldsAnalyticsReportSegments: String, Codable, CaseIterable {
+        public enum FieldsAnalyticsReportSegments: String, CaseIterable, Codable, Sendable {
             case checksum
             case sizeInBytes
             case url

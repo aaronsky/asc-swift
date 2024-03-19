@@ -5,29 +5,29 @@
 
 import Foundation
 
-public struct GameCenterLeaderboardReleaseCreateRequest: Codable, Equatable {
+public struct GameCenterLeaderboardReleaseCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable {
+    public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var relationships: Relationships
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case gameCenterLeaderboardReleases
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var gameCenterDetail: GameCenterDetail
             public var gameCenterLeaderboard: GameCenterLeaderboard
 
-            public struct GameCenterDetail: Codable, Equatable {
+            public struct GameCenterDetail: Codable, Equatable, Sendable {
                 public var data: Data
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case gameCenterDetails
                     }
 
@@ -42,14 +42,14 @@ public struct GameCenterLeaderboardReleaseCreateRequest: Codable, Equatable {
                 }
             }
 
-            public struct GameCenterLeaderboard: Codable, Equatable {
+            public struct GameCenterLeaderboard: Codable, Equatable, Sendable {
                 public var data: Data
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case gameCenterLeaderboards
                     }
 

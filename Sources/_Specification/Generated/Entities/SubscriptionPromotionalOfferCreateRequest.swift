@@ -5,20 +5,20 @@
 
 import Foundation
 
-public struct SubscriptionPromotionalOfferCreateRequest: Codable, Equatable {
+public struct SubscriptionPromotionalOfferCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
     public var included: [SubscriptionPromotionalOfferPriceInlineCreate]?
 
-    public struct Data: Codable, Equatable {
+    public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case subscriptionPromotionalOffers
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var name: String
             public var offerCode: String
             public var duration: SubscriptionOfferDuration
@@ -34,18 +34,18 @@ public struct SubscriptionPromotionalOfferCreateRequest: Codable, Equatable {
             }
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var subscription: Subscription
             public var prices: Prices
 
-            public struct Subscription: Codable, Equatable {
+            public struct Subscription: Codable, Equatable, Sendable {
                 public var data: Data
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case subscriptions
                     }
 
@@ -60,14 +60,14 @@ public struct SubscriptionPromotionalOfferCreateRequest: Codable, Equatable {
                 }
             }
 
-            public struct Prices: Codable, Equatable {
+            public struct Prices: Codable, Equatable, Sendable {
                 public var data: [Datum]
 
-                public struct Datum: Codable, Equatable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case subscriptionPromotionalOfferPrices
                     }
 

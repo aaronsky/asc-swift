@@ -29,13 +29,13 @@ extension Resources.V1.Subscriptions.WithID {
             return encoder.items
         }
 
-        public enum FieldsSubscriptionAvailabilities: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionAvailabilities: String, CaseIterable, Codable, Sendable {
             case availableInNewTerritories
             case availableTerritories
             case subscription
         }
 
-        public enum FieldsSubscriptions: String, Codable, CaseIterable {
+        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
             case appStoreReviewScreenshot
             case familySharable
             case group
@@ -55,11 +55,11 @@ extension Resources.V1.Subscriptions.WithID {
             case subscriptionPeriod
         }
 
-        public enum FieldsTerritories: String, Codable, CaseIterable {
+        public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
             case currency
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case availableTerritories
             case subscription
         }

@@ -29,19 +29,19 @@ extension Resources.V1.PreReleaseVersions {
             return encoder.items
         }
 
-        public enum FieldsPreReleaseVersions: String, Codable, CaseIterable {
+        public enum FieldsPreReleaseVersions: String, CaseIterable, Codable, Sendable {
             case app
             case builds
             case platform
             case version
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case builds
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability
@@ -91,7 +91,7 @@ extension Resources.V1.PreReleaseVersions {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
-        public enum FieldsBuilds: String, Codable, CaseIterable {
+        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
             case app
             case appEncryptionDeclaration
             case appStoreVersion

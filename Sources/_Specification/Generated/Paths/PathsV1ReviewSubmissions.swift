@@ -32,14 +32,14 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FilterPlatform: String, Codable, CaseIterable {
+        public enum FilterPlatform: String, CaseIterable, Codable, Sendable {
             case ios = "IOS"
             case macOs = "MAC_OS"
             case tvOs = "TV_OS"
             case visionOs = "VISION_OS"
         }
 
-        public enum FilterState: String, Codable, CaseIterable {
+        public enum FilterState: String, CaseIterable, Codable, Sendable {
             case readyForReview = "READY_FOR_REVIEW"
             case waitingForReview = "WAITING_FOR_REVIEW"
             case inReview = "IN_REVIEW"
@@ -49,7 +49,7 @@ extension Resources.V1 {
             case complete = "COMPLETE"
         }
 
-        public enum FieldsReviewSubmissions: String, Codable, CaseIterable {
+        public enum FieldsReviewSubmissions: String, CaseIterable, Codable, Sendable {
             case app
             case appStoreVersionForReview
             case canceled
@@ -62,7 +62,7 @@ extension Resources.V1 {
             case submittedDate
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case appStoreVersionForReview
             case items
@@ -70,7 +70,7 @@ extension Resources.V1 {
             case submittedByActor
         }
 
-        public enum FieldsReviewSubmissionItems: String, Codable, CaseIterable {
+        public enum FieldsReviewSubmissionItems: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageVersion
             case appEvent
             case appStoreVersion

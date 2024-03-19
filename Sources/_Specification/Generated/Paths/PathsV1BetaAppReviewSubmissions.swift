@@ -30,24 +30,24 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FilterBetaReviewState: String, Codable, CaseIterable {
+        public enum FilterBetaReviewState: String, CaseIterable, Codable, Sendable {
             case waitingForReview = "WAITING_FOR_REVIEW"
             case inReview = "IN_REVIEW"
             case rejected = "REJECTED"
             case approved = "APPROVED"
         }
 
-        public enum FieldsBetaAppReviewSubmissions: String, Codable, CaseIterable {
+        public enum FieldsBetaAppReviewSubmissions: String, CaseIterable, Codable, Sendable {
             case betaReviewState
             case build
             case submittedDate
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case build
         }
 
-        public enum FieldsBuilds: String, Codable, CaseIterable {
+        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
             case app
             case appEncryptionDeclaration
             case appStoreVersion

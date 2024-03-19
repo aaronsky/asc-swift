@@ -5,28 +5,28 @@
 
 import Foundation
 
-public struct EndAppAvailabilityPreOrderCreateRequest: Codable, Equatable {
+public struct EndAppAvailabilityPreOrderCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable {
+    public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var relationships: Relationships
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case endAppAvailabilityPreOrders
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var territoryAvailabilities: TerritoryAvailabilities
 
-            public struct TerritoryAvailabilities: Codable, Equatable {
+            public struct TerritoryAvailabilities: Codable, Equatable, Sendable {
                 public var data: [Datum]
 
-                public struct Datum: Codable, Equatable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case territoryAvailabilities
                     }
 

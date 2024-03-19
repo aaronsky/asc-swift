@@ -5,19 +5,19 @@
 
 import Foundation
 
-public struct AppEventScreenshotCreateRequest: Codable, Equatable {
+public struct AppEventScreenshotCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable {
+    public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case appEventScreenshots
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var fileSize: Int
             public var fileName: String
             public var appEventAssetType: AppEventAssetType
@@ -29,17 +29,17 @@ public struct AppEventScreenshotCreateRequest: Codable, Equatable {
             }
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var appEventLocalization: AppEventLocalization
 
-            public struct AppEventLocalization: Codable, Equatable {
+            public struct AppEventLocalization: Codable, Equatable, Sendable {
                 public var data: Data
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appEventLocalizations
                     }
 

@@ -25,7 +25,7 @@ extension Resources.V1.AppStoreVersions.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppStoreVersionPhasedReleases: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionPhasedReleases: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
             case currentDayNumber
             case phasedReleaseState

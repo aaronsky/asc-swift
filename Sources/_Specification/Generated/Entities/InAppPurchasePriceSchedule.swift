@@ -5,27 +5,27 @@
 
 import Foundation
 
-public struct InAppPurchasePriceSchedule: Codable, Equatable, Identifiable {
+public struct InAppPurchasePriceSchedule: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var relationships: Relationships?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case inAppPurchasePriceSchedules
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var inAppPurchase: InAppPurchase?
         public var baseTerritory: BaseTerritory?
         public var manualPrices: ManualPrices?
         public var automaticPrices: AutomaticPrices?
 
-        public struct InAppPurchase: Codable, Equatable {
+        public struct InAppPurchase: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -40,11 +40,11 @@ public struct InAppPurchasePriceSchedule: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case inAppPurchases
                 }
 
@@ -60,11 +60,11 @@ public struct InAppPurchasePriceSchedule: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct BaseTerritory: Codable, Equatable {
+        public struct BaseTerritory: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -79,11 +79,11 @@ public struct InAppPurchasePriceSchedule: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case territories
                 }
 
@@ -99,12 +99,12 @@ public struct InAppPurchasePriceSchedule: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct ManualPrices: Codable, Equatable {
+        public struct ManualPrices: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -119,11 +119,11 @@ public struct InAppPurchasePriceSchedule: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case inAppPurchasePrices
                 }
 
@@ -140,12 +140,12 @@ public struct InAppPurchasePriceSchedule: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct AutomaticPrices: Codable, Equatable {
+        public struct AutomaticPrices: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -160,11 +160,11 @@ public struct InAppPurchasePriceSchedule: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case inAppPurchasePrices
                 }
 

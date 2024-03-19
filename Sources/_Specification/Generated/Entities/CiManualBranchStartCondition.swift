@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiManualBranchStartCondition: Codable, Equatable {
+public struct CiManualBranchStartCondition: Codable, Equatable, Sendable {
     public var source: CiBranchPatterns?
 
     public init(source: CiBranchPatterns? = nil) {

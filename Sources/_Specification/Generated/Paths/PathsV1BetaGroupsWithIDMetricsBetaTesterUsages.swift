@@ -28,11 +28,11 @@ extension Resources.V1.BetaGroups.WithID.Metrics {
             return encoder.items
         }
 
-        public enum GroupBy: String, Codable, CaseIterable {
+        public enum GroupBy: String, CaseIterable, Codable, Sendable {
             case betaTesters
         }
 
-        public enum Period: String, Codable, CaseIterable {
+        public enum Period: String, CaseIterable, Codable, Sendable {
             case p7d = "P7D"
             case p30d = "P30D"
             case p90d = "P90D"

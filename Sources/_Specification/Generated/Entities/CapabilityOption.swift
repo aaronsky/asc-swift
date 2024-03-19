@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CapabilityOption: Codable, Equatable {
+public struct CapabilityOption: Codable, Equatable, Sendable {
     public var key: Key?
     public var name: String?
     public var description: String?
@@ -13,7 +13,7 @@ public struct CapabilityOption: Codable, Equatable {
     public var isEnabled: Bool?
     public var isSupportsWildcard: Bool?
 
-    public enum Key: String, Codable, CaseIterable {
+    public enum Key: String, CaseIterable, Codable, Sendable {
         case xcode5 = "XCODE_5"
         case xcode6 = "XCODE_6"
         case completeProtection = "COMPLETE_PROTECTION"

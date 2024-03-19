@@ -30,7 +30,7 @@ extension Resources.V1.AppCustomProductPageLocalizations {
             return encoder.items
         }
 
-        public enum FieldsAppCustomProductPageLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppCustomProductPageLocalizations: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageVersion
             case appPreviewSets
             case appScreenshotSets
@@ -38,13 +38,13 @@ extension Resources.V1.AppCustomProductPageLocalizations {
             case promotionalText
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageVersion
             case appPreviewSets
             case appScreenshotSets
         }
 
-        public enum FieldsAppScreenshotSets: String, Codable, CaseIterable {
+        public enum FieldsAppScreenshotSets: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageLocalization
             case appScreenshots
             case appStoreVersionExperimentTreatmentLocalization
@@ -52,7 +52,7 @@ extension Resources.V1.AppCustomProductPageLocalizations {
             case screenshotDisplayType
         }
 
-        public enum FieldsAppPreviewSets: String, Codable, CaseIterable {
+        public enum FieldsAppPreviewSets: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageLocalization
             case appPreviews
             case appStoreVersionExperimentTreatmentLocalization

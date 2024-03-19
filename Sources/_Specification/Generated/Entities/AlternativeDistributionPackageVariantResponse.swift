@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AlternativeDistributionPackageVariantResponse: Codable, Equatable {
+public struct AlternativeDistributionPackageVariantResponse: Codable, Equatable, Sendable {
     /// AlternativeDistributionPackageVariant
     public var data: AlternativeDistributionPackageVariant
     public var links: DocumentLinks

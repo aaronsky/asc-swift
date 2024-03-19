@@ -5,18 +5,18 @@
 
 import Foundation
 
-public struct Profile: Codable, Equatable, Identifiable {
+public struct Profile: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var relationships: Relationships?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case profiles
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var name: String?
         public var platform: BundleIDPlatform?
         public var profileType: ProfileType?
@@ -26,7 +26,7 @@ public struct Profile: Codable, Equatable, Identifiable {
         public var createdDate: Date?
         public var expirationDate: Date?
 
-        public enum ProfileType: String, Codable, CaseIterable {
+        public enum ProfileType: String, CaseIterable, Codable, Sendable {
             case iosAppDevelopment = "IOS_APP_DEVELOPMENT"
             case iosAppStore = "IOS_APP_STORE"
             case iosAppAdhoc = "IOS_APP_ADHOC"
@@ -43,7 +43,7 @@ public struct Profile: Codable, Equatable, Identifiable {
             case macCatalystAppDirect = "MAC_CATALYST_APP_DIRECT"
         }
 
-        public enum ProfileState: String, Codable, CaseIterable {
+        public enum ProfileState: String, CaseIterable, Codable, Sendable {
             case active = "ACTIVE"
             case invalid = "INVALID"
         }
@@ -60,16 +60,16 @@ public struct Profile: Codable, Equatable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var bundleID: BundleID?
         public var devices: Devices?
         public var certificates: Certificates?
 
-        public struct BundleID: Codable, Equatable {
+        public struct BundleID: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -84,11 +84,11 @@ public struct Profile: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case bundleIDs = "bundleIds"
                 }
 
@@ -104,12 +104,12 @@ public struct Profile: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct Devices: Codable, Equatable {
+        public struct Devices: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -124,11 +124,11 @@ public struct Profile: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case devices
                 }
 
@@ -145,12 +145,12 @@ public struct Profile: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct Certificates: Codable, Equatable {
+        public struct Certificates: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -165,11 +165,11 @@ public struct Profile: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case certificates
                 }
 

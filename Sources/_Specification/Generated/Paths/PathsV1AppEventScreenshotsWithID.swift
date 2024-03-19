@@ -26,7 +26,7 @@ extension Resources.V1.AppEventScreenshots {
             return encoder.items
         }
 
-        public enum FieldsAppEventScreenshots: String, Codable, CaseIterable {
+        public enum FieldsAppEventScreenshots: String, CaseIterable, Codable, Sendable {
             case appEventAssetType
             case appEventLocalization
             case assetDeliveryState
@@ -38,7 +38,7 @@ extension Resources.V1.AppEventScreenshots {
             case uploaded
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appEventLocalization
         }
 

@@ -31,7 +31,7 @@ extension Resources.V1.AppCustomProductPages.WithID {
             return encoder.items
         }
 
-        public enum FilterState: String, Codable, CaseIterable {
+        public enum FilterState: String, CaseIterable, Codable, Sendable {
             case prepareForSubmission = "PREPARE_FOR_SUBMISSION"
             case readyForReview = "READY_FOR_REVIEW"
             case waitingForReview = "WAITING_FOR_REVIEW"
@@ -42,7 +42,7 @@ extension Resources.V1.AppCustomProductPages.WithID {
             case rejected = "REJECTED"
         }
 
-        public enum FieldsAppCustomProductPageLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppCustomProductPageLocalizations: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageVersion
             case appPreviewSets
             case appScreenshotSets
@@ -50,14 +50,14 @@ extension Resources.V1.AppCustomProductPages.WithID {
             case promotionalText
         }
 
-        public enum FieldsAppCustomProductPageVersions: String, Codable, CaseIterable {
+        public enum FieldsAppCustomProductPageVersions: String, CaseIterable, Codable, Sendable {
             case appCustomProductPage
             case appCustomProductPageLocalizations
             case state
             case version
         }
 
-        public enum FieldsAppCustomProductPages: String, Codable, CaseIterable {
+        public enum FieldsAppCustomProductPages: String, CaseIterable, Codable, Sendable {
             case app
             case appCustomProductPageVersions
             case appStoreVersionTemplate
@@ -67,7 +67,7 @@ extension Resources.V1.AppCustomProductPages.WithID {
             case visible
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appCustomProductPage
             case appCustomProductPageLocalizations
         }

@@ -5,20 +5,20 @@
 
 import Foundation
 
-public struct BuildUpdateRequest: Codable, Equatable {
+public struct BuildUpdateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable, Sendable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
         public var relationships: Relationships?
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case builds
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var isExpired: Bool?
             public var usesNonExemptEncryption: Bool?
 
@@ -33,17 +33,17 @@ public struct BuildUpdateRequest: Codable, Equatable {
             }
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var appEncryptionDeclaration: AppEncryptionDeclaration?
 
-            public struct AppEncryptionDeclaration: Codable, Equatable {
+            public struct AppEncryptionDeclaration: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appEncryptionDeclarations
                     }
 

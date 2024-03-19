@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AnalyticsReportResponse: Codable, Equatable {
+public struct AnalyticsReportResponse: Codable, Equatable, Sendable {
     /// AnalyticsReport
     public var data: AnalyticsReport
     public var links: DocumentLinks

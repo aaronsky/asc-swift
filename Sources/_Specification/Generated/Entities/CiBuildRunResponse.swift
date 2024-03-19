@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct CiBuildRunResponse: Codable, Equatable {
+public struct CiBuildRunResponse: Codable, Equatable, Sendable {
     /// CiBuildRun
     public var data: CiBuildRun
     public var included: [IncludedItem]?
     public var links: DocumentLinks
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case build(Build)
         case ciWorkflow(CiWorkflow)
         case ciProduct(CiProduct)

@@ -35,12 +35,12 @@ extension Resources.V1.CiWorkflows.WithID {
             return encoder.items
         }
 
-        public enum Sort: String, Codable, CaseIterable {
+        public enum Sort: String, CaseIterable, Codable, Sendable {
             case number
             case minusnumber = "-number"
         }
 
-        public enum FieldsScmGitReferences: String, Codable, CaseIterable {
+        public enum FieldsScmGitReferences: String, CaseIterable, Codable, Sendable {
             case canonicalName
             case isDeleted
             case kind
@@ -48,7 +48,7 @@ extension Resources.V1.CiWorkflows.WithID {
             case repository
         }
 
-        public enum FieldsCiBuildRuns: String, Codable, CaseIterable {
+        public enum FieldsCiBuildRuns: String, CaseIterable, Codable, Sendable {
             case actions
             case buildRun
             case builds
@@ -72,7 +72,7 @@ extension Resources.V1.CiWorkflows.WithID {
             case workflow
         }
 
-        public enum FieldsCiWorkflows: String, Codable, CaseIterable {
+        public enum FieldsCiWorkflows: String, CaseIterable, Codable, Sendable {
             case actions
             case branchStartCondition
             case buildRuns
@@ -95,7 +95,7 @@ extension Resources.V1.CiWorkflows.WithID {
             case xcodeVersion
         }
 
-        public enum FieldsScmPullRequests: String, Codable, CaseIterable {
+        public enum FieldsScmPullRequests: String, CaseIterable, Codable, Sendable {
             case destinationBranchName
             case destinationRepositoryName
             case destinationRepositoryOwner
@@ -110,7 +110,7 @@ extension Resources.V1.CiWorkflows.WithID {
             case webURL = "webUrl"
         }
 
-        public enum FieldsCiProducts: String, Codable, CaseIterable {
+        public enum FieldsCiProducts: String, CaseIterable, Codable, Sendable {
             case additionalRepositories
             case app
             case buildRuns
@@ -122,7 +122,7 @@ extension Resources.V1.CiWorkflows.WithID {
             case workflows
         }
 
-        public enum FieldsBuilds: String, Codable, CaseIterable {
+        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
             case app
             case appEncryptionDeclaration
             case appStoreVersion
@@ -149,7 +149,7 @@ extension Resources.V1.CiWorkflows.WithID {
             case version
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case builds
             case destinationBranch
             case product

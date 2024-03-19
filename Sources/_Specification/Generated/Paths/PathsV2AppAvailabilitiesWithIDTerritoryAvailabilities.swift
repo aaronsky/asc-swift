@@ -28,7 +28,7 @@ extension Resources.V2.AppAvailabilities.WithID {
             return encoder.items
         }
 
-        public enum FieldsTerritoryAvailabilities: String, Codable, CaseIterable {
+        public enum FieldsTerritoryAvailabilities: String, CaseIterable, Codable, Sendable {
             case available
             case contentStatuses
             case preOrderEnabled
@@ -37,11 +37,11 @@ extension Resources.V2.AppAvailabilities.WithID {
             case territory
         }
 
-        public enum FieldsTerritories: String, Codable, CaseIterable {
+        public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
             case currency
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case territory
         }
     }

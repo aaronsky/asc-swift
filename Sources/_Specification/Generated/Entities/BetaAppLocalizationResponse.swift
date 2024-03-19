@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BetaAppLocalizationResponse: Codable, Equatable {
+public struct BetaAppLocalizationResponse: Codable, Equatable, Sendable {
     /// BetaAppLocalization
     public var data: BetaAppLocalization
     public var included: [App]?

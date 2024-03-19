@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AlternativeDistributionPackageDeltaResponse: Codable, Equatable {
+public struct AlternativeDistributionPackageDeltaResponse: Codable, Equatable, Sendable {
     /// AlternativeDistributionPackageDelta
     public var data: AlternativeDistributionPackageDelta
     public var links: DocumentLinks

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum CiTestDestinationKind: String, Codable, CaseIterable {
+public enum CiTestDestinationKind: String, CaseIterable, Codable, Sendable {
     case simulator = "SIMULATOR"
     case mac = "MAC"
 }

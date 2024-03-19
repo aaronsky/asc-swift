@@ -26,7 +26,7 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FieldsMarketplaceDomains: String, Codable, CaseIterable {
+        public enum FieldsMarketplaceDomains: String, CaseIterable, Codable, Sendable {
             case createdDate
             case domain
             case referenceName

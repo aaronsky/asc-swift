@@ -26,7 +26,7 @@ extension Resources.V1.AppScreenshots {
             return encoder.items
         }
 
-        public enum FieldsAppScreenshots: String, Codable, CaseIterable {
+        public enum FieldsAppScreenshots: String, CaseIterable, Codable, Sendable {
             case appScreenshotSet
             case assetDeliveryState
             case assetToken
@@ -39,7 +39,7 @@ extension Resources.V1.AppScreenshots {
             case uploaded
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appScreenshotSet
         }
 

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct ActorsResponse: Codable, Equatable {
+public struct ActorsResponse: Codable, Equatable, Sendable {
     public var data: [Actor]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?

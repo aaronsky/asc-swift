@@ -5,18 +5,18 @@
 
 import Foundation
 
-public struct GameCenterAppVersion: Codable, Equatable, Identifiable {
+public struct GameCenterAppVersion: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var relationships: Relationships?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case gameCenterAppVersions
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var isEnabled: Bool?
 
         public init(isEnabled: Bool? = nil) {
@@ -28,16 +28,16 @@ public struct GameCenterAppVersion: Codable, Equatable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var compatibilityVersions: CompatibilityVersions?
         public var appStoreVersion: AppStoreVersion?
 
-        public struct CompatibilityVersions: Codable, Equatable {
+        public struct CompatibilityVersions: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -52,11 +52,11 @@ public struct GameCenterAppVersion: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case gameCenterAppVersions
                 }
 
@@ -73,11 +73,11 @@ public struct GameCenterAppVersion: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct AppStoreVersion: Codable, Equatable {
+        public struct AppStoreVersion: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -92,11 +92,11 @@ public struct GameCenterAppVersion: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appStoreVersions
                 }
 

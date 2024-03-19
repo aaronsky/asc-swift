@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AlternativeDistributionPackageResponse: Codable, Equatable {
+public struct AlternativeDistributionPackageResponse: Codable, Equatable, Sendable {
     /// AlternativeDistributionPackage
     public var data: AlternativeDistributionPackage
     public var included: [AlternativeDistributionPackageVersion]?

@@ -30,25 +30,25 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FilterAccessType: String, Codable, CaseIterable {
+        public enum FilterAccessType: String, CaseIterable, Codable, Sendable {
             case oneTimeSnapshot = "ONE_TIME_SNAPSHOT"
             case ongoing = "ONGOING"
         }
 
-        public enum FieldsAnalyticsReportRequests: String, Codable, CaseIterable {
+        public enum FieldsAnalyticsReportRequests: String, CaseIterable, Codable, Sendable {
             case accessType
             case app
             case reports
             case stoppedDueToInactivity
         }
 
-        public enum FieldsAnalyticsReports: String, Codable, CaseIterable {
+        public enum FieldsAnalyticsReports: String, CaseIterable, Codable, Sendable {
             case category
             case instances
             case name
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case reports
         }
     }

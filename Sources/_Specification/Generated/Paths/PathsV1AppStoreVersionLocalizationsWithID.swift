@@ -30,7 +30,7 @@ extension Resources.V1.AppStoreVersionLocalizations {
             return encoder.items
         }
 
-        public enum FieldsAppStoreVersionLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionLocalizations: String, CaseIterable, Codable, Sendable {
             case appPreviewSets
             case appScreenshotSets
             case appStoreVersion
@@ -43,13 +43,13 @@ extension Resources.V1.AppStoreVersionLocalizations {
             case whatsNew
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appPreviewSets
             case appScreenshotSets
             case appStoreVersion
         }
 
-        public enum FieldsAppScreenshotSets: String, Codable, CaseIterable {
+        public enum FieldsAppScreenshotSets: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageLocalization
             case appScreenshots
             case appStoreVersionExperimentTreatmentLocalization
@@ -57,7 +57,7 @@ extension Resources.V1.AppStoreVersionLocalizations {
             case screenshotDisplayType
         }
 
-        public enum FieldsAppPreviewSets: String, Codable, CaseIterable {
+        public enum FieldsAppPreviewSets: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageLocalization
             case appPreviews
             case appStoreVersionExperimentTreatmentLocalization

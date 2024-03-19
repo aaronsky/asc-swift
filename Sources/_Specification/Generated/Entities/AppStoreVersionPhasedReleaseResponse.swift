@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppStoreVersionPhasedReleaseResponse: Codable, Equatable {
+public struct AppStoreVersionPhasedReleaseResponse: Codable, Equatable, Sendable {
     /// AppStoreVersionPhasedRelease
     public var data: AppStoreVersionPhasedRelease
     public var links: DocumentLinks

@@ -5,18 +5,18 @@
 
 import Foundation
 
-public struct AppInfo: Codable, Equatable, Identifiable {
+public struct AppInfo: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var relationships: Relationships?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case appInfos
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var appStoreState: AppStoreVersionState?
         public var state: State?
         public var appStoreAgeRating: AppStoreAgeRating?
@@ -24,7 +24,7 @@ public struct AppInfo: Codable, Equatable, Identifiable {
         public var brazilAgeRatingV2: BrazilAgeRatingV2?
         public var kidsAgeBand: KidsAgeBand?
 
-        public enum State: String, Codable, CaseIterable {
+        public enum State: String, CaseIterable, Codable, Sendable {
             case accepted = "ACCEPTED"
             case developerRejected = "DEVELOPER_REJECTED"
             case inReview = "IN_REVIEW"
@@ -37,7 +37,7 @@ public struct AppInfo: Codable, Equatable, Identifiable {
             case waitingForReview = "WAITING_FOR_REVIEW"
         }
 
-        public enum BrazilAgeRatingV2: String, Codable, CaseIterable {
+        public enum BrazilAgeRatingV2: String, CaseIterable, Codable, Sendable {
             case selfRatedL = "SELF_RATED_L"
             case selfRatedTen = "SELF_RATED_TEN"
             case selfRatedTwelve = "SELF_RATED_TWELVE"
@@ -62,7 +62,7 @@ public struct AppInfo: Codable, Equatable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var app: App?
         public var ageRatingDeclaration: AgeRatingDeclaration?
         public var appInfoLocalizations: AppInfoLocalizations?
@@ -73,11 +73,11 @@ public struct AppInfo: Codable, Equatable, Identifiable {
         public var secondarySubcategoryOne: SecondarySubcategoryOne?
         public var secondarySubcategoryTwo: SecondarySubcategoryTwo?
 
-        public struct App: Codable, Equatable {
+        public struct App: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -92,11 +92,11 @@ public struct AppInfo: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case apps
                 }
 
@@ -112,11 +112,11 @@ public struct AppInfo: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct AgeRatingDeclaration: Codable, Equatable {
+        public struct AgeRatingDeclaration: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -131,11 +131,11 @@ public struct AppInfo: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case ageRatingDeclarations
                 }
 
@@ -151,12 +151,12 @@ public struct AppInfo: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct AppInfoLocalizations: Codable, Equatable {
+        public struct AppInfoLocalizations: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -171,11 +171,11 @@ public struct AppInfo: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appInfoLocalizations
                 }
 
@@ -192,11 +192,11 @@ public struct AppInfo: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct PrimaryCategory: Codable, Equatable {
+        public struct PrimaryCategory: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -211,11 +211,11 @@ public struct AppInfo: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appCategories
                 }
 
@@ -231,11 +231,11 @@ public struct AppInfo: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct PrimarySubcategoryOne: Codable, Equatable {
+        public struct PrimarySubcategoryOne: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -250,11 +250,11 @@ public struct AppInfo: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appCategories
                 }
 
@@ -270,11 +270,11 @@ public struct AppInfo: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct PrimarySubcategoryTwo: Codable, Equatable {
+        public struct PrimarySubcategoryTwo: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -289,11 +289,11 @@ public struct AppInfo: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appCategories
                 }
 
@@ -309,11 +309,11 @@ public struct AppInfo: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct SecondaryCategory: Codable, Equatable {
+        public struct SecondaryCategory: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -328,11 +328,11 @@ public struct AppInfo: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appCategories
                 }
 
@@ -348,11 +348,11 @@ public struct AppInfo: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct SecondarySubcategoryOne: Codable, Equatable {
+        public struct SecondarySubcategoryOne: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -367,11 +367,11 @@ public struct AppInfo: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appCategories
                 }
 
@@ -387,11 +387,11 @@ public struct AppInfo: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct SecondarySubcategoryTwo: Codable, Equatable {
+        public struct SecondarySubcategoryTwo: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -406,11 +406,11 @@ public struct AppInfo: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appCategories
                 }
 

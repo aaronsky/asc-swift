@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum CertificateType: String, Codable, CaseIterable {
+public enum CertificateType: String, CaseIterable, Codable, Sendable {
     case iosDevelopment = "IOS_DEVELOPMENT"
     case iosDistribution = "IOS_DISTRIBUTION"
     case macAppDistribution = "MAC_APP_DISTRIBUTION"

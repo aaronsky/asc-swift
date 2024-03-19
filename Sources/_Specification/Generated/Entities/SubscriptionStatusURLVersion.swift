@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum SubscriptionStatusURLVersion: String, Codable, CaseIterable {
+public enum SubscriptionStatusURLVersion: String, CaseIterable, Codable, Sendable {
     case v1 = "V1"
     case v2 = "V2"
     case v12 = "v1"

@@ -5,24 +5,24 @@
 
 import Foundation
 
-public struct GameCenterMatchmakingRule: Codable, Equatable, Identifiable {
+public struct GameCenterMatchmakingRule: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case gameCenterMatchmakingRules
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var referenceName: String?
         public var description: String?
         public var type: `Type`?
         public var expression: String?
         public var weight: Double?
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case compatible = "COMPATIBLE"
             case distance = "DISTANCE"
             case match = "MATCH"

@@ -27,12 +27,12 @@ extension Resources.V1.Builds.WithID {
             return encoder.items
         }
 
-        public enum FilterDiagnosticType: String, Codable, CaseIterable {
+        public enum FilterDiagnosticType: String, CaseIterable, Codable, Sendable {
             case diskWrites = "DISK_WRITES"
             case hangs = "HANGS"
         }
 
-        public enum FieldsDiagnosticSignatures: String, Codable, CaseIterable {
+        public enum FieldsDiagnosticSignatures: String, CaseIterable, Codable, Sendable {
             case diagnosticType
             case logs
             case signature

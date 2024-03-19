@@ -28,7 +28,7 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FilterReportType: String, Codable, CaseIterable {
+        public enum FilterReportType: String, CaseIterable, Codable, Sendable {
             case financial = "FINANCIAL"
             case financeDetail = "FINANCE_DETAIL"
         }

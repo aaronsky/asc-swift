@@ -5,20 +5,20 @@
 
 import Foundation
 
-public struct AppStoreVersionUpdateRequest: Codable, Equatable {
+public struct AppStoreVersionUpdateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable, Sendable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
         public var relationships: Relationships?
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case appStoreVersions
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var versionString: String?
             public var copyright: String?
             public var reviewType: ReviewType?
@@ -26,12 +26,12 @@ public struct AppStoreVersionUpdateRequest: Codable, Equatable {
             public var earliestReleaseDate: Date?
             public var isDownloadable: Bool?
 
-            public enum ReviewType: String, Codable, CaseIterable {
+            public enum ReviewType: String, CaseIterable, Codable, Sendable {
                 case appStore = "APP_STORE"
                 case notarization = "NOTARIZATION"
             }
 
-            public enum ReleaseType: String, Codable, CaseIterable {
+            public enum ReleaseType: String, CaseIterable, Codable, Sendable {
                 case manual = "MANUAL"
                 case afterApproval = "AFTER_APPROVAL"
                 case scheduled = "SCHEDULED"
@@ -56,18 +56,18 @@ public struct AppStoreVersionUpdateRequest: Codable, Equatable {
             }
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var build: Build?
             public var appClipDefaultExperience: AppClipDefaultExperience?
 
-            public struct Build: Codable, Equatable {
+            public struct Build: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case builds
                     }
 
@@ -82,14 +82,14 @@ public struct AppStoreVersionUpdateRequest: Codable, Equatable {
                 }
             }
 
-            public struct AppClipDefaultExperience: Codable, Equatable {
+            public struct AppClipDefaultExperience: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appClipDefaultExperiences
                     }
 

@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct CiWorkflowsResponse: Codable, Equatable {
+public struct CiWorkflowsResponse: Codable, Equatable, Sendable {
     public var data: [CiWorkflow]
     public var included: [IncludedItem]?
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case ciProduct(CiProduct)
         case scmRepository(ScmRepository)
         case ciXcodeVersion(CiXcodeVersion)

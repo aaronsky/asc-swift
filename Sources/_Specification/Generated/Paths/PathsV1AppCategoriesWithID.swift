@@ -27,13 +27,13 @@ extension Resources.V1.AppCategories {
             return encoder.items
         }
 
-        public enum FieldsAppCategories: String, Codable, CaseIterable {
+        public enum FieldsAppCategories: String, CaseIterable, Codable, Sendable {
             case parent
             case platforms
             case subcategories
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case parent
             case subcategories
         }

@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct AlternativeDistributionPackageVersionResponse: Codable, Equatable {
+public struct AlternativeDistributionPackageVersionResponse: Codable, Equatable, Sendable {
     /// AlternativeDistributionPackageVersion
     public var data: AlternativeDistributionPackageVersion
     public var included: [IncludedItem]?
     public var links: DocumentLinks
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case alternativeDistributionPackageVariant(AlternativeDistributionPackageVariant)
         case alternativeDistributionPackageDelta(AlternativeDistributionPackageDelta)
         case alternativeDistributionPackage(AlternativeDistributionPackage)

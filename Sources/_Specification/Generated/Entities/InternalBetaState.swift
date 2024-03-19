@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum InternalBetaState: String, Codable, CaseIterable {
+public enum InternalBetaState: String, CaseIterable, Codable, Sendable {
     case processing = "PROCESSING"
     case processingException = "PROCESSING_EXCEPTION"
     case missingExportCompliance = "MISSING_EXPORT_COMPLIANCE"

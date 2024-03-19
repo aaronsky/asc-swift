@@ -39,13 +39,13 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FilterInAppPurchaseType: String, Codable, CaseIterable {
+        public enum FilterInAppPurchaseType: String, CaseIterable, Codable, Sendable {
             case consumable = "CONSUMABLE"
             case nonConsumable = "NON_CONSUMABLE"
             case nonRenewingSubscription = "NON_RENEWING_SUBSCRIPTION"
         }
 
-        public enum FilterState: String, Codable, CaseIterable {
+        public enum FilterState: String, CaseIterable, Codable, Sendable {
             case missingMetadata = "MISSING_METADATA"
             case waitingForUpload = "WAITING_FOR_UPLOAD"
             case processingContent = "PROCESSING_CONTENT"
@@ -60,14 +60,14 @@ extension Resources.V1.Apps.WithID {
             case rejected = "REJECTED"
         }
 
-        public enum Sort: String, Codable, CaseIterable {
+        public enum Sort: String, CaseIterable, Codable, Sendable {
             case inAppPurchaseType
             case minusinAppPurchaseType = "-inAppPurchaseType"
             case name
             case minusname = "-name"
         }
 
-        public enum FieldsInAppPurchaseAppStoreReviewScreenshots: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchaseAppStoreReviewScreenshots: String, CaseIterable, Codable, Sendable {
             case assetDeliveryState
             case assetToken
             case assetType
@@ -80,13 +80,13 @@ extension Resources.V1.Apps.WithID {
             case uploaded
         }
 
-        public enum FieldsInAppPurchaseAvailabilities: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchaseAvailabilities: String, CaseIterable, Codable, Sendable {
             case availableInNewTerritories
             case availableTerritories
             case inAppPurchase
         }
 
-        public enum FieldsPromotedPurchases: String, Codable, CaseIterable {
+        public enum FieldsPromotedPurchases: String, CaseIterable, Codable, Sendable {
             case app
             case enabled
             case inAppPurchaseV2
@@ -96,7 +96,7 @@ extension Resources.V1.Apps.WithID {
             case visibleForAllUsers
         }
 
-        public enum FieldsInAppPurchaseLocalizations: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchaseLocalizations: String, CaseIterable, Codable, Sendable {
             case description
             case inAppPurchaseV2
             case locale
@@ -104,7 +104,7 @@ extension Resources.V1.Apps.WithID {
             case state
         }
 
-        public enum FieldsInAppPurchases: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchases: String, CaseIterable, Codable, Sendable {
             case app
             case appStoreReviewScreenshot
             case content
@@ -121,14 +121,14 @@ extension Resources.V1.Apps.WithID {
             case state
         }
 
-        public enum FieldsInAppPurchasePriceSchedules: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchasePriceSchedules: String, CaseIterable, Codable, Sendable {
             case automaticPrices
             case baseTerritory
             case inAppPurchase
             case manualPrices
         }
 
-        public enum FieldsInAppPurchaseContents: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchaseContents: String, CaseIterable, Codable, Sendable {
             case fileName
             case fileSize
             case inAppPurchaseV2
@@ -136,7 +136,7 @@ extension Resources.V1.Apps.WithID {
             case url
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appStoreReviewScreenshot
             case content
             case iapPriceSchedule

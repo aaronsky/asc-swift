@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct ReviewSubmissionItemsResponse: Codable, Equatable {
+public struct ReviewSubmissionItemsResponse: Codable, Equatable, Sendable {
     public var data: [ReviewSubmissionItem]
     public var included: [IncludedItem]?
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case appStoreVersion(AppStoreVersion)
         case appCustomProductPageVersion(AppCustomProductPageVersion)
         case appStoreVersionExperiment(AppStoreVersionExperiment)

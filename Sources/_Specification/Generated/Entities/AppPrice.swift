@@ -5,25 +5,25 @@
 
 import Foundation
 
-public struct AppPrice: Codable, Equatable, Identifiable {
+public struct AppPrice: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var relationships: Relationships?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case appPrices
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var app: App?
         public var priceTier: PriceTier?
 
-        public struct App: Codable, Equatable {
+        public struct App: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -38,11 +38,11 @@ public struct AppPrice: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case apps
                 }
 
@@ -58,11 +58,11 @@ public struct AppPrice: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct PriceTier: Codable, Equatable {
+        public struct PriceTier: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -77,11 +77,11 @@ public struct AppPrice: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case appPriceTiers
                 }
 

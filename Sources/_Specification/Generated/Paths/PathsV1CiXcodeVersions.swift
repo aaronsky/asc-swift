@@ -29,18 +29,18 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FieldsCiXcodeVersions: String, Codable, CaseIterable {
+        public enum FieldsCiXcodeVersions: String, CaseIterable, Codable, Sendable {
             case macOsVersions
             case name
             case testDestinations
             case version
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case macOsVersions
         }
 
-        public enum FieldsCiMacOsVersions: String, Codable, CaseIterable {
+        public enum FieldsCiMacOsVersions: String, CaseIterable, Codable, Sendable {
             case name
             case version
             case xcodeVersions

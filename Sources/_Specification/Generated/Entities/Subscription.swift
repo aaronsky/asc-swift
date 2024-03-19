@@ -5,18 +5,18 @@
 
 import Foundation
 
-public struct Subscription: Codable, Equatable, Identifiable {
+public struct Subscription: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var relationships: Relationships?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case subscriptions
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var name: String?
         public var productID: String?
         public var isFamilySharable: Bool?
@@ -25,7 +25,7 @@ public struct Subscription: Codable, Equatable, Identifiable {
         public var reviewNote: String?
         public var groupLevel: Int?
 
-        public enum State: String, Codable, CaseIterable {
+        public enum State: String, CaseIterable, Codable, Sendable {
             case missingMetadata = "MISSING_METADATA"
             case readyToSubmit = "READY_TO_SUBMIT"
             case waitingForReview = "WAITING_FOR_REVIEW"
@@ -38,7 +38,7 @@ public struct Subscription: Codable, Equatable, Identifiable {
             case rejected = "REJECTED"
         }
 
-        public enum SubscriptionPeriod: String, Codable, CaseIterable {
+        public enum SubscriptionPeriod: String, CaseIterable, Codable, Sendable {
             case oneWeek = "ONE_WEEK"
             case oneMonth = "ONE_MONTH"
             case twoMonths = "TWO_MONTHS"
@@ -68,7 +68,7 @@ public struct Subscription: Codable, Equatable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var subscriptionLocalizations: SubscriptionLocalizations?
         public var appStoreReviewScreenshot: AppStoreReviewScreenshot?
         public var group: Group?
@@ -79,12 +79,12 @@ public struct Subscription: Codable, Equatable, Identifiable {
         public var promotedPurchase: PromotedPurchase?
         public var subscriptionAvailability: SubscriptionAvailability?
 
-        public struct SubscriptionLocalizations: Codable, Equatable {
+        public struct SubscriptionLocalizations: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -99,11 +99,11 @@ public struct Subscription: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case subscriptionLocalizations
                 }
 
@@ -120,11 +120,11 @@ public struct Subscription: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct AppStoreReviewScreenshot: Codable, Equatable {
+        public struct AppStoreReviewScreenshot: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -139,11 +139,11 @@ public struct Subscription: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case subscriptionAppStoreReviewScreenshots
                 }
 
@@ -159,11 +159,11 @@ public struct Subscription: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct Group: Codable, Equatable {
+        public struct Group: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -178,11 +178,11 @@ public struct Subscription: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case subscriptionGroups
                 }
 
@@ -198,12 +198,12 @@ public struct Subscription: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct IntroductoryOffers: Codable, Equatable {
+        public struct IntroductoryOffers: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -218,11 +218,11 @@ public struct Subscription: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case subscriptionIntroductoryOffers
                 }
 
@@ -239,12 +239,12 @@ public struct Subscription: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct PromotionalOffers: Codable, Equatable {
+        public struct PromotionalOffers: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -259,11 +259,11 @@ public struct Subscription: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case subscriptionPromotionalOffers
                 }
 
@@ -280,12 +280,12 @@ public struct Subscription: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct OfferCodes: Codable, Equatable {
+        public struct OfferCodes: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -300,11 +300,11 @@ public struct Subscription: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case subscriptionOfferCodes
                 }
 
@@ -321,12 +321,12 @@ public struct Subscription: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct Prices: Codable, Equatable {
+        public struct Prices: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -341,11 +341,11 @@ public struct Subscription: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case subscriptionPrices
                 }
 
@@ -362,11 +362,11 @@ public struct Subscription: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct PromotedPurchase: Codable, Equatable {
+        public struct PromotedPurchase: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -381,11 +381,11 @@ public struct Subscription: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case promotedPurchases
                 }
 
@@ -401,11 +401,11 @@ public struct Subscription: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct SubscriptionAvailability: Codable, Equatable {
+        public struct SubscriptionAvailability: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -420,11 +420,11 @@ public struct Subscription: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case subscriptionAvailabilities
                 }
 

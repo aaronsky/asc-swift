@@ -5,19 +5,19 @@
 
 import Foundation
 
-public struct AppStoreVersionCreateRequest: Codable, Equatable {
+public struct AppStoreVersionCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable {
+    public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case appStoreVersions
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var platform: Platform
             public var versionString: String
             public var copyright: String?
@@ -25,12 +25,12 @@ public struct AppStoreVersionCreateRequest: Codable, Equatable {
             public var releaseType: ReleaseType?
             public var earliestReleaseDate: Date?
 
-            public enum ReviewType: String, Codable, CaseIterable {
+            public enum ReviewType: String, CaseIterable, Codable, Sendable {
                 case appStore = "APP_STORE"
                 case notarization = "NOTARIZATION"
             }
 
-            public enum ReleaseType: String, Codable, CaseIterable {
+            public enum ReleaseType: String, CaseIterable, Codable, Sendable {
                 case manual = "MANUAL"
                 case afterApproval = "AFTER_APPROVAL"
                 case scheduled = "SCHEDULED"
@@ -46,19 +46,19 @@ public struct AppStoreVersionCreateRequest: Codable, Equatable {
             }
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var app: App
             public var appStoreVersionLocalizations: AppStoreVersionLocalizations?
             public var build: Build?
 
-            public struct App: Codable, Equatable {
+            public struct App: Codable, Equatable, Sendable {
                 public var data: Data
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case apps
                     }
 
@@ -73,14 +73,14 @@ public struct AppStoreVersionCreateRequest: Codable, Equatable {
                 }
             }
 
-            public struct AppStoreVersionLocalizations: Codable, Equatable {
+            public struct AppStoreVersionLocalizations: Codable, Equatable, Sendable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Equatable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appStoreVersionLocalizations
                     }
 
@@ -95,14 +95,14 @@ public struct AppStoreVersionCreateRequest: Codable, Equatable {
                 }
             }
 
-            public struct Build: Codable, Equatable {
+            public struct Build: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case builds
                     }
 

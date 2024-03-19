@@ -30,7 +30,7 @@ extension Resources.V1.AlternativeDistributionPackageVersions {
             return encoder.items
         }
 
-        public enum FieldsAlternativeDistributionPackageVersions: String, Codable, CaseIterable {
+        public enum FieldsAlternativeDistributionPackageVersions: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionPackage
             case deltas
             case fileChecksum
@@ -41,20 +41,20 @@ extension Resources.V1.AlternativeDistributionPackageVersions {
             case version
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionPackage
             case deltas
             case variants
         }
 
-        public enum FieldsAlternativeDistributionPackageVariants: String, Codable, CaseIterable {
+        public enum FieldsAlternativeDistributionPackageVariants: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKeyBlob
             case fileChecksum
             case url
             case urlExpirationDate
         }
 
-        public enum FieldsAlternativeDistributionPackageDeltas: String, Codable, CaseIterable {
+        public enum FieldsAlternativeDistributionPackageDeltas: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKeyBlob
             case fileChecksum
             case url

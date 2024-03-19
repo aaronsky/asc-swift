@@ -5,18 +5,18 @@
 
 import Foundation
 
-public struct CiBuildRun: Codable, Equatable, Identifiable {
+public struct CiBuildRun: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
     public var relationships: Relationships?
     public var links: ResourceLinks?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case ciBuildRuns
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var number: Int?
         public var createdDate: Date?
         public var startedDate: Date?
@@ -30,7 +30,7 @@ public struct CiBuildRun: Codable, Equatable, Identifiable {
         public var startReason: StartReason?
         public var cancelReason: CancelReason?
 
-        public struct SourceCommit: Codable, Equatable {
+        public struct SourceCommit: Codable, Equatable, Sendable {
             public var commitSha: String?
             public var message: String?
             public var author: CiGitUser?
@@ -54,7 +54,7 @@ public struct CiBuildRun: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct DestinationCommit: Codable, Equatable {
+        public struct DestinationCommit: Codable, Equatable, Sendable {
             public var commitSha: String?
             public var message: String?
             public var author: CiGitUser?
@@ -78,7 +78,7 @@ public struct CiBuildRun: Codable, Equatable, Identifiable {
             }
         }
 
-        public enum StartReason: String, Codable, CaseIterable {
+        public enum StartReason: String, CaseIterable, Codable, Sendable {
             case gitRefChange = "GIT_REF_CHANGE"
             case manual = "MANUAL"
             case manualRebuild = "MANUAL_REBUILD"
@@ -87,7 +87,7 @@ public struct CiBuildRun: Codable, Equatable, Identifiable {
             case schedule = "SCHEDULE"
         }
 
-        public enum CancelReason: String, Codable, CaseIterable {
+        public enum CancelReason: String, CaseIterable, Codable, Sendable {
             case automaticallyByNewerBuild = "AUTOMATICALLY_BY_NEWER_BUILD"
             case manuallyByUser = "MANUALLY_BY_USER"
         }
@@ -108,7 +108,7 @@ public struct CiBuildRun: Codable, Equatable, Identifiable {
         }
     }
 
-    public struct Relationships: Codable, Equatable {
+    public struct Relationships: Codable, Equatable, Sendable {
         public var builds: Builds?
         public var workflow: Workflow?
         public var product: Product?
@@ -116,12 +116,12 @@ public struct CiBuildRun: Codable, Equatable, Identifiable {
         public var destinationBranch: DestinationBranch?
         public var pullRequest: PullRequest?
 
-        public struct Builds: Codable, Equatable {
+        public struct Builds: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -136,11 +136,11 @@ public struct CiBuildRun: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Datum: Codable, Equatable, Identifiable {
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case builds
                 }
 
@@ -157,11 +157,11 @@ public struct CiBuildRun: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct Workflow: Codable, Equatable {
+        public struct Workflow: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -176,11 +176,11 @@ public struct CiBuildRun: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case ciWorkflows
                 }
 
@@ -196,11 +196,11 @@ public struct CiBuildRun: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct Product: Codable, Equatable {
+        public struct Product: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -215,11 +215,11 @@ public struct CiBuildRun: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case ciProducts
                 }
 
@@ -235,11 +235,11 @@ public struct CiBuildRun: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct SourceBranchOrTag: Codable, Equatable {
+        public struct SourceBranchOrTag: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -254,11 +254,11 @@ public struct CiBuildRun: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case scmGitReferences
                 }
 
@@ -274,11 +274,11 @@ public struct CiBuildRun: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct DestinationBranch: Codable, Equatable {
+        public struct DestinationBranch: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -293,11 +293,11 @@ public struct CiBuildRun: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case scmGitReferences
                 }
 
@@ -313,11 +313,11 @@ public struct CiBuildRun: Codable, Equatable, Identifiable {
             }
         }
 
-        public struct PullRequest: Codable, Equatable {
+        public struct PullRequest: Codable, Equatable, Sendable {
             public var links: Links?
             public var data: Data?
 
-            public struct Links: Codable, Equatable {
+            public struct Links: Codable, Equatable, Sendable {
                 public var this: URL?
                 public var related: URL?
 
@@ -332,11 +332,11 @@ public struct CiBuildRun: Codable, Equatable, Identifiable {
                 }
             }
 
-            public struct Data: Codable, Equatable, Identifiable {
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
                 public var id: String
 
-                public enum `Type`: String, Codable, CaseIterable {
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
                     case scmPullRequests
                 }
 

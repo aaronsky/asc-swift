@@ -5,19 +5,19 @@
 
 import Foundation
 
-public struct InAppPurchaseAvailabilityCreateRequest: Codable, Equatable {
+public struct InAppPurchaseAvailabilityCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable {
+    public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case inAppPurchaseAvailabilities
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var isAvailableInNewTerritories: Bool
 
             public init(isAvailableInNewTerritories: Bool) {
@@ -29,18 +29,18 @@ public struct InAppPurchaseAvailabilityCreateRequest: Codable, Equatable {
             }
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var inAppPurchase: InAppPurchase
             public var availableTerritories: AvailableTerritories
 
-            public struct InAppPurchase: Codable, Equatable {
+            public struct InAppPurchase: Codable, Equatable, Sendable {
                 public var data: Data
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case inAppPurchases
                     }
 
@@ -55,14 +55,14 @@ public struct InAppPurchaseAvailabilityCreateRequest: Codable, Equatable {
                 }
             }
 
-            public struct AvailableTerritories: Codable, Equatable {
+            public struct AvailableTerritories: Codable, Equatable, Sendable {
                 public var data: [Datum]
 
-                public struct Datum: Codable, Equatable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case territories
                     }
 

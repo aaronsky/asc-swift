@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppPreviewResponse: Codable, Equatable {
+public struct AppPreviewResponse: Codable, Equatable, Sendable {
     /// AppPreview
     public var data: AppPreview
     public var included: [AppPreviewSet]?

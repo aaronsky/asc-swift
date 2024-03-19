@@ -26,14 +26,14 @@ extension Resources.V1.CustomerReviewResponses {
             return encoder.items
         }
 
-        public enum FieldsCustomerReviewResponses: String, Codable, CaseIterable {
+        public enum FieldsCustomerReviewResponses: String, CaseIterable, Codable, Sendable {
             case lastModifiedDate
             case responseBody
             case review
             case state
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case review
         }
 

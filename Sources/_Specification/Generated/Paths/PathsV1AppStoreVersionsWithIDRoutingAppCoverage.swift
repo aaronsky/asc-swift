@@ -25,7 +25,7 @@ extension Resources.V1.AppStoreVersions.WithID {
             return encoder.items
         }
 
-        public enum FieldsRoutingAppCoverages: String, Codable, CaseIterable {
+        public enum FieldsRoutingAppCoverages: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
             case assetDeliveryState
             case fileName

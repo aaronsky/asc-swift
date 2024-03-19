@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiIssueResponse: Codable, Equatable {
+public struct CiIssueResponse: Codable, Equatable, Sendable {
     /// CiIssue
     public var data: CiIssue
     public var links: DocumentLinks

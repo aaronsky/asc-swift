@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct BetaTesterResponse: Codable, Equatable {
+public struct BetaTesterResponse: Codable, Equatable, Sendable {
     /// BetaTester
     public var data: BetaTester
     public var included: [IncludedItem]?
     public var links: DocumentLinks
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case app(App)
         case betaGroup(BetaGroup)
         case build(Build)

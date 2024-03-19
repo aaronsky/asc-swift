@@ -5,12 +5,12 @@
 
 import Foundation
 
-public struct AppMediaAssetState: Codable, Equatable {
+public struct AppMediaAssetState: Codable, Equatable, Sendable {
     public var errors: [AppMediaStateError]?
     public var warnings: [AppMediaStateError]?
     public var state: State?
 
-    public enum State: String, Codable, CaseIterable {
+    public enum State: String, CaseIterable, Codable, Sendable {
         case awaitingUpload = "AWAITING_UPLOAD"
         case uploadComplete = "UPLOAD_COMPLETE"
         case complete = "COMPLETE"

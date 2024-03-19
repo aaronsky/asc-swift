@@ -28,7 +28,7 @@ extension Resources.V1.AppEventLocalizations.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppEventVideoClips: String, Codable, CaseIterable {
+        public enum FieldsAppEventVideoClips: String, CaseIterable, Codable, Sendable {
             case appEventAssetType
             case appEventLocalization
             case assetDeliveryState
@@ -41,7 +41,7 @@ extension Resources.V1.AppEventLocalizations.WithID {
             case videoURL = "videoUrl"
         }
 
-        public enum FieldsAppEventLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppEventLocalizations: String, CaseIterable, Codable, Sendable {
             case appEvent
             case appEventScreenshots
             case appEventVideoClips
@@ -51,7 +51,7 @@ extension Resources.V1.AppEventLocalizations.WithID {
             case shortDescription
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appEventLocalization
         }
     }

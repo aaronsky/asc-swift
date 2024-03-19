@@ -28,16 +28,16 @@ extension Resources.V1.AlternativeDistributionPackages {
             return encoder.items
         }
 
-        public enum FieldsAlternativeDistributionPackages: String, Codable, CaseIterable {
+        public enum FieldsAlternativeDistributionPackages: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
             case versions
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case versions
         }
 
-        public enum FieldsAlternativeDistributionPackageVersions: String, Codable, CaseIterable {
+        public enum FieldsAlternativeDistributionPackageVersions: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionPackage
             case deltas
             case fileChecksum

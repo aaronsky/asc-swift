@@ -5,19 +5,19 @@
 
 import Foundation
 
-public struct BetaTesterCreateRequest: Codable, Equatable {
+public struct BetaTesterCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable {
+    public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships?
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case betaTesters
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var firstName: String?
             public var lastName: String?
             public var email: String
@@ -29,18 +29,18 @@ public struct BetaTesterCreateRequest: Codable, Equatable {
             }
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var betaGroups: BetaGroups?
             public var builds: Builds?
 
-            public struct BetaGroups: Codable, Equatable {
+            public struct BetaGroups: Codable, Equatable, Sendable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Equatable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case betaGroups
                     }
 
@@ -55,14 +55,14 @@ public struct BetaTesterCreateRequest: Codable, Equatable {
                 }
             }
 
-            public struct Builds: Codable, Equatable {
+            public struct Builds: Codable, Equatable, Sendable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Equatable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case builds
                     }
 

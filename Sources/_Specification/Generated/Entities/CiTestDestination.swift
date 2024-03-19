@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct CiTestDestination: Codable, Equatable {
+public struct CiTestDestination: Codable, Equatable, Sendable {
     public var deviceTypeName: String?
     public var deviceTypeIdentifier: String?
     public var runtimeName: String?

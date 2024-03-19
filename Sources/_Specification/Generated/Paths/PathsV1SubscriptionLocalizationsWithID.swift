@@ -26,7 +26,7 @@ extension Resources.V1.SubscriptionLocalizations {
             return encoder.items
         }
 
-        public enum FieldsSubscriptionLocalizations: String, Codable, CaseIterable {
+        public enum FieldsSubscriptionLocalizations: String, CaseIterable, Codable, Sendable {
             case description
             case locale
             case name
@@ -34,7 +34,7 @@ extension Resources.V1.SubscriptionLocalizations {
             case subscription
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case subscription
         }
 

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct RoutingAppCoverageResponse: Codable, Equatable {
+public struct RoutingAppCoverageResponse: Codable, Equatable, Sendable {
     /// RoutingAppCoverage
     public var data: RoutingAppCoverage
     public var included: [AppStoreVersion]?

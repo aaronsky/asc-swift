@@ -26,13 +26,13 @@ extension Resources.V1.GameCenterAchievementReleases {
             return encoder.items
         }
 
-        public enum FieldsGameCenterAchievementReleases: String, Codable, CaseIterable {
+        public enum FieldsGameCenterAchievementReleases: String, CaseIterable, Codable, Sendable {
             case gameCenterAchievement
             case gameCenterDetail
             case live
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case gameCenterAchievement
             case gameCenterDetail
         }

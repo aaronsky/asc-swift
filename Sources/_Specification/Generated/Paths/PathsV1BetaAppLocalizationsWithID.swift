@@ -27,7 +27,7 @@ extension Resources.V1.BetaAppLocalizations {
             return encoder.items
         }
 
-        public enum FieldsBetaAppLocalizations: String, Codable, CaseIterable {
+        public enum FieldsBetaAppLocalizations: String, CaseIterable, Codable, Sendable {
             case app
             case description
             case feedbackEmail
@@ -37,11 +37,11 @@ extension Resources.V1.BetaAppLocalizations {
             case tvOsPrivacyPolicy
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability

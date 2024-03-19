@@ -27,14 +27,14 @@ extension Resources.V1 {
             return encoder.items
         }
 
-        public enum FieldsGameCenterMatchmakingQueues: String, Codable, CaseIterable {
+        public enum FieldsGameCenterMatchmakingQueues: String, CaseIterable, Codable, Sendable {
             case classicMatchmakingBundleIDs = "classicMatchmakingBundleIds"
             case experimentRuleSet
             case referenceName
             case ruleSet
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case experimentRuleSet
             case ruleSet
         }

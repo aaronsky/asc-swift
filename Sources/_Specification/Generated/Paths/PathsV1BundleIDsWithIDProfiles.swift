@@ -26,7 +26,7 @@ extension Resources.V1.BundleIDs.WithID {
             return encoder.items
         }
 
-        public enum FieldsProfiles: String, Codable, CaseIterable {
+        public enum FieldsProfiles: String, CaseIterable, Codable, Sendable {
             case bundleID = "bundleId"
             case certificates
             case createdDate

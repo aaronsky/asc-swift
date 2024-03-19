@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct InAppPurchasePricePointsResponse: Codable, Equatable {
+public struct InAppPurchasePricePointsResponse: Codable, Equatable, Sendable {
     public var data: [InAppPurchasePricePoint]
     public var included: [Territory]?
     public var links: PagedDocumentLinks

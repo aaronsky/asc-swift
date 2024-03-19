@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct ImageAsset: Codable, Equatable {
+public struct ImageAsset: Codable, Equatable, Sendable {
     public var templateURL: String?
     public var width: Int?
     public var height: Int?

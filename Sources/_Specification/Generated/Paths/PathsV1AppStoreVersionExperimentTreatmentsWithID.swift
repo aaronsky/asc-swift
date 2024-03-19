@@ -28,7 +28,7 @@ extension Resources.V1.AppStoreVersionExperimentTreatments {
             return encoder.items
         }
 
-        public enum FieldsAppStoreVersionExperimentTreatments: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionExperimentTreatments: String, CaseIterable, Codable, Sendable {
             case appIcon
             case appIconName
             case appStoreVersionExperiment
@@ -38,13 +38,13 @@ extension Resources.V1.AppStoreVersionExperimentTreatments {
             case promotedDate
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appStoreVersionExperiment
             case appStoreVersionExperimentTreatmentLocalizations
             case appStoreVersionExperimentV2
         }
 
-        public enum FieldsAppStoreVersionExperimentTreatmentLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionExperimentTreatmentLocalizations: String, CaseIterable, Codable, Sendable {
             case appPreviewSets
             case appScreenshotSets
             case appStoreVersionExperimentTreatment

@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct SubscriptionIntroductoryOffersResponse: Codable, Equatable {
+public struct SubscriptionIntroductoryOffersResponse: Codable, Equatable, Sendable {
     public var data: [SubscriptionIntroductoryOffer]
     public var included: [IncludedItem]?
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case subscription(Subscription)
         case territory(Territory)
         case subscriptionPricePoint(SubscriptionPricePoint)

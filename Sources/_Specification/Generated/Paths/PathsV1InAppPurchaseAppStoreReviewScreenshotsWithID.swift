@@ -26,7 +26,7 @@ extension Resources.V1.InAppPurchaseAppStoreReviewScreenshots {
             return encoder.items
         }
 
-        public enum FieldsInAppPurchaseAppStoreReviewScreenshots: String, Codable, CaseIterable {
+        public enum FieldsInAppPurchaseAppStoreReviewScreenshots: String, CaseIterable, Codable, Sendable {
             case assetDeliveryState
             case assetToken
             case assetType
@@ -39,7 +39,7 @@ extension Resources.V1.InAppPurchaseAppStoreReviewScreenshots {
             case uploaded
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case inAppPurchaseV2
         }
 

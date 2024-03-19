@@ -31,14 +31,14 @@ extension Resources.V1.CiProducts.WithID {
             return encoder.items
         }
 
-        public enum FieldsCiXcodeVersions: String, Codable, CaseIterable {
+        public enum FieldsCiXcodeVersions: String, CaseIterable, Codable, Sendable {
             case macOsVersions
             case name
             case testDestinations
             case version
         }
 
-        public enum FieldsCiWorkflows: String, Codable, CaseIterable {
+        public enum FieldsCiWorkflows: String, CaseIterable, Codable, Sendable {
             case actions
             case branchStartCondition
             case buildRuns
@@ -61,13 +61,13 @@ extension Resources.V1.CiProducts.WithID {
             case xcodeVersion
         }
 
-        public enum FieldsCiMacOsVersions: String, Codable, CaseIterable {
+        public enum FieldsCiMacOsVersions: String, CaseIterable, Codable, Sendable {
             case name
             case version
             case xcodeVersions
         }
 
-        public enum FieldsCiProducts: String, Codable, CaseIterable {
+        public enum FieldsCiProducts: String, CaseIterable, Codable, Sendable {
             case additionalRepositories
             case app
             case buildRuns
@@ -79,7 +79,7 @@ extension Resources.V1.CiProducts.WithID {
             case workflows
         }
 
-        public enum FieldsScmRepositories: String, Codable, CaseIterable {
+        public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
             case defaultBranch
             case gitReferences
             case httpCloneURL = "httpCloneUrl"
@@ -91,7 +91,7 @@ extension Resources.V1.CiProducts.WithID {
             case sshCloneURL = "sshCloneUrl"
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case macOsVersion
             case product
             case repository

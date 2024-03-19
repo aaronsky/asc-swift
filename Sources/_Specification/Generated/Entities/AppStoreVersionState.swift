@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum AppStoreVersionState: String, Codable, CaseIterable {
+public enum AppStoreVersionState: String, CaseIterable, Codable, Sendable {
     case accepted = "ACCEPTED"
     case developerRemovedFromSale = "DEVELOPER_REMOVED_FROM_SALE"
     case developerRejected = "DEVELOPER_REJECTED"

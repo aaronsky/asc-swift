@@ -26,7 +26,7 @@ extension Resources.V1.Builds.WithID {
             return encoder.items
         }
 
-        public enum FieldsBetaBuildLocalizations: String, Codable, CaseIterable {
+        public enum FieldsBetaBuildLocalizations: String, CaseIterable, Codable, Sendable {
             case build
             case locale
             case whatsNew

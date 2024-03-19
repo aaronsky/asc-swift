@@ -26,12 +26,12 @@ extension Resources.V1.AppPrices {
             return encoder.items
         }
 
-        public enum FieldsAppPrices: String, Codable, CaseIterable {
+        public enum FieldsAppPrices: String, CaseIterable, Codable, Sendable {
             case app
             case priceTier
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case priceTier
         }

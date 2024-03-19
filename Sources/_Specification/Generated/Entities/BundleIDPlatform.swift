@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum BundleIDPlatform: String, Codable, CaseIterable {
+public enum BundleIDPlatform: String, CaseIterable, Codable, Sendable {
     case ios = "IOS"
     case macOs = "MAC_OS"
 }

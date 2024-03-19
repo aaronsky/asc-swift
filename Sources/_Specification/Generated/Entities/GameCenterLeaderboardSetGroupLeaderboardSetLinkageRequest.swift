@@ -5,14 +5,14 @@
 
 import Foundation
 
-public struct GameCenterLeaderboardSetGroupLeaderboardSetLinkageRequest: Codable, Equatable {
+public struct GameCenterLeaderboardSetGroupLeaderboardSetLinkageRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable, Sendable {
         public var type: `Type`
         public var id: String
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case gameCenterLeaderboardSets
         }
 

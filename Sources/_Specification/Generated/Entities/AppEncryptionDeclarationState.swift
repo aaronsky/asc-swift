@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum AppEncryptionDeclarationState: String, Codable, CaseIterable {
+public enum AppEncryptionDeclarationState: String, CaseIterable, Codable, Sendable {
     case created = "CREATED"
     case inReview = "IN_REVIEW"
     case approved = "APPROVED"

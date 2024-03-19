@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppClipAppStoreReviewDetailResponse: Codable, Equatable {
+public struct AppClipAppStoreReviewDetailResponse: Codable, Equatable, Sendable {
     /// AppClipAppStoreReviewDetail
     public var data: AppClipAppStoreReviewDetail
     public var included: [AppClipDefaultExperience]?

@@ -28,7 +28,7 @@ extension Resources.V1.Users {
             return encoder.items
         }
 
-        public enum FieldsUsers: String, Codable, CaseIterable {
+        public enum FieldsUsers: String, CaseIterable, Codable, Sendable {
             case allAppsVisible
             case firstName
             case lastName
@@ -38,11 +38,11 @@ extension Resources.V1.Users {
             case visibleApps
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case visibleApps
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability

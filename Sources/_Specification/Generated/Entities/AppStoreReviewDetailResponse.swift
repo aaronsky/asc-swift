@@ -5,13 +5,13 @@
 
 import Foundation
 
-public struct AppStoreReviewDetailResponse: Codable, Equatable {
+public struct AppStoreReviewDetailResponse: Codable, Equatable, Sendable {
     /// AppStoreReviewDetail
     public var data: AppStoreReviewDetail
     public var included: [IncludedItem]?
     public var links: DocumentLinks
 
-    public enum IncludedItem: Codable, Equatable {
+    public enum IncludedItem: Codable, Equatable, Sendable {
         case appStoreVersion(AppStoreVersion)
         case appStoreReviewAttachment(AppStoreReviewAttachment)
 

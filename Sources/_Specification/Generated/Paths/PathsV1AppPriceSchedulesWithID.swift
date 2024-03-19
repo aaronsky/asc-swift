@@ -30,21 +30,21 @@ extension Resources.V1.AppPriceSchedules {
             return encoder.items
         }
 
-        public enum FieldsAppPriceSchedules: String, Codable, CaseIterable {
+        public enum FieldsAppPriceSchedules: String, CaseIterable, Codable, Sendable {
             case app
             case automaticPrices
             case baseTerritory
             case manualPrices
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case automaticPrices
             case baseTerritory
             case manualPrices
         }
 
-        public enum FieldsAppPrices: String, Codable, CaseIterable {
+        public enum FieldsAppPrices: String, CaseIterable, Codable, Sendable {
             case appPricePoint
             case endDate
             case manual
@@ -52,7 +52,7 @@ extension Resources.V1.AppPriceSchedules {
             case territory
         }
 
-        public enum FieldsTerritories: String, Codable, CaseIterable {
+        public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
             case currency
         }
     }

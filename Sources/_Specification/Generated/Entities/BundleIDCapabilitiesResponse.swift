@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BundleIDCapabilitiesResponse: Codable, Equatable {
+public struct BundleIDCapabilitiesResponse: Codable, Equatable, Sendable {
     public var data: [BundleIDCapability]
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?

@@ -25,7 +25,7 @@ extension Resources.V1.AppEncryptionDeclarationDocuments {
             return encoder.items
         }
 
-        public enum FieldsAppEncryptionDeclarationDocuments: String, Codable, CaseIterable {
+        public enum FieldsAppEncryptionDeclarationDocuments: String, CaseIterable, Codable, Sendable {
             case appEncryptionDeclaration
             case assetDeliveryState
             case assetToken

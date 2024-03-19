@@ -30,22 +30,22 @@ extension Resources.V1.AppPriceTiers.WithID {
             return encoder.items
         }
 
-        public enum FieldsAppPriceTiers: String, Codable, CaseIterable {
+        public enum FieldsAppPriceTiers: String, CaseIterable, Codable, Sendable {
             case pricePoints
         }
 
-        public enum FieldsAppPricePoints: String, Codable, CaseIterable {
+        public enum FieldsAppPricePoints: String, CaseIterable, Codable, Sendable {
             case customerPrice
             case priceTier
             case proceeds
             case territory
         }
 
-        public enum FieldsTerritories: String, Codable, CaseIterable {
+        public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
             case currency
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case priceTier
             case territory
         }

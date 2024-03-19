@@ -28,7 +28,7 @@ extension Resources.V1.CiBuildRuns.WithID {
             return encoder.items
         }
 
-        public enum FieldsCiBuildRuns: String, Codable, CaseIterable {
+        public enum FieldsCiBuildRuns: String, CaseIterable, Codable, Sendable {
             case actions
             case buildRun
             case builds
@@ -52,7 +52,7 @@ extension Resources.V1.CiBuildRuns.WithID {
             case workflow
         }
 
-        public enum FieldsCiBuildActions: String, Codable, CaseIterable {
+        public enum FieldsCiBuildActions: String, CaseIterable, Codable, Sendable {
             case actionType
             case artifacts
             case buildRun
@@ -67,7 +67,7 @@ extension Resources.V1.CiBuildRuns.WithID {
             case testResults
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case buildRun
         }
     }

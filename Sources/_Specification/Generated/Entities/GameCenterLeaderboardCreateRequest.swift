@@ -5,19 +5,19 @@
 
 import Foundation
 
-public struct GameCenterLeaderboardCreateRequest: Codable, Equatable {
+public struct GameCenterLeaderboardCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable {
+    public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var attributes: Attributes
         public var relationships: Relationships?
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case gameCenterLeaderboards
         }
 
-        public struct Attributes: Codable, Equatable {
+        public struct Attributes: Codable, Equatable, Sendable {
             public var defaultFormatter: GameCenterLeaderboardFormatter
             public var referenceName: String
             public var vendorIdentifier: String
@@ -29,12 +29,12 @@ public struct GameCenterLeaderboardCreateRequest: Codable, Equatable {
             public var recurrenceDuration: String?
             public var recurrenceRule: String?
 
-            public enum SubmissionType: String, Codable, CaseIterable {
+            public enum SubmissionType: String, CaseIterable, Codable, Sendable {
                 case bestScore = "BEST_SCORE"
                 case mostRecentScore = "MOST_RECENT_SCORE"
             }
 
-            public enum ScoreSortType: String, Codable, CaseIterable {
+            public enum ScoreSortType: String, CaseIterable, Codable, Sendable {
                 case asc = "ASC"
                 case desc = "DESC"
             }
@@ -53,19 +53,19 @@ public struct GameCenterLeaderboardCreateRequest: Codable, Equatable {
             }
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var gameCenterDetail: GameCenterDetail?
             public var gameCenterGroup: GameCenterGroup?
             public var gameCenterLeaderboardSets: GameCenterLeaderboardSets?
 
-            public struct GameCenterDetail: Codable, Equatable {
+            public struct GameCenterDetail: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case gameCenterDetails
                     }
 
@@ -80,14 +80,14 @@ public struct GameCenterLeaderboardCreateRequest: Codable, Equatable {
                 }
             }
 
-            public struct GameCenterGroup: Codable, Equatable {
+            public struct GameCenterGroup: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case gameCenterGroups
                     }
 
@@ -102,14 +102,14 @@ public struct GameCenterLeaderboardCreateRequest: Codable, Equatable {
                 }
             }
 
-            public struct GameCenterLeaderboardSets: Codable, Equatable {
+            public struct GameCenterLeaderboardSets: Codable, Equatable, Sendable {
                 public var data: [Datum]?
 
-                public struct Datum: Codable, Equatable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case gameCenterLeaderboardSets
                     }
 

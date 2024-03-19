@@ -29,7 +29,7 @@ extension Resources.V1.GameCenterLeaderboards.WithID {
             return encoder.items
         }
 
-        public enum FieldsGameCenterLeaderboardLocalizations: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardLocalizations: String, CaseIterable, Codable, Sendable {
             case formatterOverride
             case formatterSuffix
             case formatterSuffixSingular
@@ -39,7 +39,7 @@ extension Resources.V1.GameCenterLeaderboards.WithID {
             case name
         }
 
-        public enum FieldsGameCenterLeaderboardImages: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboardImages: String, CaseIterable, Codable, Sendable {
             case assetDeliveryState
             case fileName
             case fileSize
@@ -49,7 +49,7 @@ extension Resources.V1.GameCenterLeaderboards.WithID {
             case uploaded
         }
 
-        public enum FieldsGameCenterLeaderboards: String, Codable, CaseIterable {
+        public enum FieldsGameCenterLeaderboards: String, CaseIterable, Codable, Sendable {
             case archived
             case defaultFormatter
             case gameCenterDetail
@@ -69,7 +69,7 @@ extension Resources.V1.GameCenterLeaderboards.WithID {
             case vendorIdentifier
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case gameCenterLeaderboard
             case gameCenterLeaderboardImage
         }

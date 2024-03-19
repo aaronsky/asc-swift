@@ -33,19 +33,19 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FilterPlatform: String, Codable, CaseIterable {
+        public enum FilterPlatform: String, CaseIterable, Codable, Sendable {
             case ios = "IOS"
             case macOs = "MAC_OS"
             case tvOs = "TV_OS"
             case visionOs = "VISION_OS"
         }
 
-        public enum Sort: String, Codable, CaseIterable {
+        public enum Sort: String, CaseIterable, Codable, Sendable {
             case versionString
             case minusversionString = "-versionString"
         }
 
-        public enum FieldsGameCenterEnabledVersions: String, Codable, CaseIterable {
+        public enum FieldsGameCenterEnabledVersions: String, CaseIterable, Codable, Sendable {
             case app
             case compatibleVersions
             case iconAsset
@@ -53,7 +53,7 @@ extension Resources.V1.Apps.WithID {
             case versionString
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability
@@ -103,7 +103,7 @@ extension Resources.V1.Apps.WithID {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case compatibleVersions
         }

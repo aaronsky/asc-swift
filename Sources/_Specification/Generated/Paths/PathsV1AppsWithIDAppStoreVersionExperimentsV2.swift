@@ -33,7 +33,7 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
-        public enum FilterState: String, Codable, CaseIterable {
+        public enum FilterState: String, CaseIterable, Codable, Sendable {
             case prepareForSubmission = "PREPARE_FOR_SUBMISSION"
             case readyForReview = "READY_FOR_REVIEW"
             case waitingForReview = "WAITING_FOR_REVIEW"
@@ -45,7 +45,7 @@ extension Resources.V1.Apps.WithID {
             case stopped = "STOPPED"
         }
 
-        public enum FieldsAppStoreVersionExperiments: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionExperiments: String, CaseIterable, Codable, Sendable {
             case app
             case appStoreVersionExperimentTreatments
             case controlVersions
@@ -60,7 +60,7 @@ extension Resources.V1.Apps.WithID {
             case trafficProportion
         }
 
-        public enum FieldsAppStoreVersionExperimentTreatments: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionExperimentTreatments: String, CaseIterable, Codable, Sendable {
             case appIcon
             case appIconName
             case appStoreVersionExperiment
@@ -70,7 +70,7 @@ extension Resources.V1.Apps.WithID {
             case promotedDate
         }
 
-        public enum FieldsAppStoreVersions: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
             case ageRatingDeclaration
             case alternativeDistributionPackage
             case app
@@ -96,7 +96,7 @@ extension Resources.V1.Apps.WithID {
             case versionString
         }
 
-        public enum FieldsApps: String, Codable, CaseIterable {
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKey
             case analyticsReportRequests
             case appAvailability
@@ -146,7 +146,7 @@ extension Resources.V1.Apps.WithID {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case appStoreVersionExperimentTreatments
             case controlVersions

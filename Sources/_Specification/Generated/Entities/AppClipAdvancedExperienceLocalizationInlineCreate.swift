@@ -5,16 +5,16 @@
 
 import Foundation
 
-public struct AppClipAdvancedExperienceLocalizationInlineCreate: Codable, Equatable, Identifiable {
+public struct AppClipAdvancedExperienceLocalizationInlineCreate: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String?
     public var attributes: Attributes?
 
-    public enum `Type`: String, Codable, CaseIterable {
+    public enum `Type`: String, CaseIterable, Codable, Sendable {
         case appClipAdvancedExperienceLocalizations
     }
 
-    public struct Attributes: Codable, Equatable {
+    public struct Attributes: Codable, Equatable, Sendable {
         public var language: AppClipAdvancedExperienceLanguage?
         public var title: String?
         public var subtitle: String?

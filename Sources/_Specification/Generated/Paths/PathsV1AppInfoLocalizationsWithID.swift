@@ -26,7 +26,7 @@ extension Resources.V1.AppInfoLocalizations {
             return encoder.items
         }
 
-        public enum FieldsAppInfoLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppInfoLocalizations: String, CaseIterable, Codable, Sendable {
             case appInfo
             case locale
             case name
@@ -36,7 +36,7 @@ extension Resources.V1.AppInfoLocalizations {
             case subtitle
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appInfo
         }
 

@@ -35,7 +35,7 @@ extension Resources.V1.AppStoreVersionExperimentTreatmentLocalizations.WithID {
             return encoder.items
         }
 
-        public enum FilterScreenshotDisplayType: String, Codable, CaseIterable {
+        public enum FilterScreenshotDisplayType: String, CaseIterable, Codable, Sendable {
             case appIphone67 = "APP_IPHONE_67"
             case appIphone61 = "APP_IPHONE_61"
             case appIphone65 = "APP_IPHONE_65"
@@ -70,7 +70,7 @@ extension Resources.V1.AppStoreVersionExperimentTreatmentLocalizations.WithID {
             case imessageAppIpad97 = "IMESSAGE_APP_IPAD_97"
         }
 
-        public enum FieldsAppScreenshotSets: String, Codable, CaseIterable {
+        public enum FieldsAppScreenshotSets: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageLocalization
             case appScreenshots
             case appStoreVersionExperimentTreatmentLocalization
@@ -78,7 +78,7 @@ extension Resources.V1.AppStoreVersionExperimentTreatmentLocalizations.WithID {
             case screenshotDisplayType
         }
 
-        public enum FieldsAppCustomProductPageLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppCustomProductPageLocalizations: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageVersion
             case appPreviewSets
             case appScreenshotSets
@@ -86,14 +86,14 @@ extension Resources.V1.AppStoreVersionExperimentTreatmentLocalizations.WithID {
             case promotionalText
         }
 
-        public enum FieldsAppStoreVersionExperimentTreatmentLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionExperimentTreatmentLocalizations: String, CaseIterable, Codable, Sendable {
             case appPreviewSets
             case appScreenshotSets
             case appStoreVersionExperimentTreatment
             case locale
         }
 
-        public enum FieldsAppScreenshots: String, Codable, CaseIterable {
+        public enum FieldsAppScreenshots: String, CaseIterable, Codable, Sendable {
             case appScreenshotSet
             case assetDeliveryState
             case assetToken
@@ -106,7 +106,7 @@ extension Resources.V1.AppStoreVersionExperimentTreatmentLocalizations.WithID {
             case uploaded
         }
 
-        public enum FieldsAppStoreVersionLocalizations: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersionLocalizations: String, CaseIterable, Codable, Sendable {
             case appPreviewSets
             case appScreenshotSets
             case appStoreVersion
@@ -119,7 +119,7 @@ extension Resources.V1.AppStoreVersionExperimentTreatmentLocalizations.WithID {
             case whatsNew
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageLocalization
             case appScreenshots
             case appStoreVersionExperimentTreatmentLocalization

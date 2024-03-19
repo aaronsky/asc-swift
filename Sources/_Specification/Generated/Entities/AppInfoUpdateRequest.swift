@@ -5,19 +5,19 @@
 
 import Foundation
 
-public struct AppInfoUpdateRequest: Codable, Equatable {
+public struct AppInfoUpdateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable, Identifiable {
+    public struct Data: Codable, Equatable, Identifiable, Sendable {
         public var type: `Type`
         public var id: String
         public var relationships: Relationships?
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case appInfos
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var primaryCategory: PrimaryCategory?
             public var primarySubcategoryOne: PrimarySubcategoryOne?
             public var primarySubcategoryTwo: PrimarySubcategoryTwo?
@@ -25,14 +25,14 @@ public struct AppInfoUpdateRequest: Codable, Equatable {
             public var secondarySubcategoryOne: SecondarySubcategoryOne?
             public var secondarySubcategoryTwo: SecondarySubcategoryTwo?
 
-            public struct PrimaryCategory: Codable, Equatable {
+            public struct PrimaryCategory: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appCategories
                     }
 
@@ -47,14 +47,14 @@ public struct AppInfoUpdateRequest: Codable, Equatable {
                 }
             }
 
-            public struct PrimarySubcategoryOne: Codable, Equatable {
+            public struct PrimarySubcategoryOne: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appCategories
                     }
 
@@ -69,14 +69,14 @@ public struct AppInfoUpdateRequest: Codable, Equatable {
                 }
             }
 
-            public struct PrimarySubcategoryTwo: Codable, Equatable {
+            public struct PrimarySubcategoryTwo: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appCategories
                     }
 
@@ -91,14 +91,14 @@ public struct AppInfoUpdateRequest: Codable, Equatable {
                 }
             }
 
-            public struct SecondaryCategory: Codable, Equatable {
+            public struct SecondaryCategory: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appCategories
                     }
 
@@ -113,14 +113,14 @@ public struct AppInfoUpdateRequest: Codable, Equatable {
                 }
             }
 
-            public struct SecondarySubcategoryOne: Codable, Equatable {
+            public struct SecondarySubcategoryOne: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appCategories
                     }
 
@@ -135,14 +135,14 @@ public struct AppInfoUpdateRequest: Codable, Equatable {
                 }
             }
 
-            public struct SecondarySubcategoryTwo: Codable, Equatable {
+            public struct SecondarySubcategoryTwo: Codable, Equatable, Sendable {
                 public var data: Data?
 
-                public struct Data: Codable, Equatable, Identifiable {
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case appCategories
                     }
 

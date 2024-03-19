@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum AppStoreAgeRating: String, Codable, CaseIterable {
+public enum AppStoreAgeRating: String, CaseIterable, Codable, Sendable {
     case fourPlus = "FOUR_PLUS"
     case ninePlus = "NINE_PLUS"
     case twelvePlus = "TWELVE_PLUS"

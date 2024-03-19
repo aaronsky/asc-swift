@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppEventVideoClipsResponse: Codable, Equatable {
+public struct AppEventVideoClipsResponse: Codable, Equatable, Sendable {
     public var data: [AppEventVideoClip]
     public var included: [AppEventLocalization]?
     public var links: PagedDocumentLinks

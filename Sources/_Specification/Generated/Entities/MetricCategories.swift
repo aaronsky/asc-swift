@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum MetricCategories: String, Codable, CaseIterable {
+public enum MetricCategories: String, CaseIterable, Codable, Sendable {
     case hang = "HANG"
     case launch = "LAUNCH"
     case memory = "MEMORY"

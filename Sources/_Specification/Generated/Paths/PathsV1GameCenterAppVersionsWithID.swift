@@ -28,18 +28,18 @@ extension Resources.V1.GameCenterAppVersions {
             return encoder.items
         }
 
-        public enum FieldsGameCenterAppVersions: String, Codable, CaseIterable {
+        public enum FieldsGameCenterAppVersions: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
             case compatibilityVersions
             case enabled
         }
 
-        public enum Include: String, Codable, CaseIterable {
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
             case compatibilityVersions
         }
 
-        public enum FieldsAppStoreVersions: String, Codable, CaseIterable {
+        public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
             case ageRatingDeclaration
             case alternativeDistributionPackage
             case app

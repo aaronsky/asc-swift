@@ -5,28 +5,28 @@
 
 import Foundation
 
-public struct SandboxTestersClearPurchaseHistoryRequestV2CreateRequest: Codable, Equatable {
+public struct SandboxTestersClearPurchaseHistoryRequestV2CreateRequest: Codable, Equatable, Sendable {
     public var data: Data
 
-    public struct Data: Codable, Equatable {
+    public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var relationships: Relationships
 
-        public enum `Type`: String, Codable, CaseIterable {
+        public enum `Type`: String, CaseIterable, Codable, Sendable {
             case sandboxTestersClearPurchaseHistoryRequest
         }
 
-        public struct Relationships: Codable, Equatable {
+        public struct Relationships: Codable, Equatable, Sendable {
             public var sandboxTesters: SandboxTesters
 
-            public struct SandboxTesters: Codable, Equatable {
+            public struct SandboxTesters: Codable, Equatable, Sendable {
                 public var data: [Datum]
 
-                public struct Datum: Codable, Equatable, Identifiable {
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
                     public var id: String
 
-                    public enum `Type`: String, Codable, CaseIterable {
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
                         case sandboxTesters
                     }
 
