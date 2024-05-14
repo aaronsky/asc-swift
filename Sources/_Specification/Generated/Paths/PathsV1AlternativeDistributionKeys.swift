@@ -15,6 +15,23 @@ extension Resources.V1 {
         /// Path: `/v1/alternativeDistributionKeys`
         public let path: String
 
+        public func get(isExistsApp: Bool? = nil, fieldsAlternativeDistributionKeys: [FieldsAlternativeDistributionKeys]? = nil, limit: Int? = nil) -> Request<_Specification.AlternativeDistributionKeysResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(isExistsApp, fieldsAlternativeDistributionKeys, limit), id: "alternativeDistributionKeys-get_collection")
+        }
+
+        private func makeGetQuery(_ isExistsApp: Bool?, _ fieldsAlternativeDistributionKeys: [FieldsAlternativeDistributionKeys]?, _ limit: Int?) -> [(String, String?)] {
+            let encoder = URLQueryEncoder(explode: false)
+            encoder.encode(isExistsApp, forKey: "exists[app]")
+            encoder.encode(fieldsAlternativeDistributionKeys, forKey: "fields[alternativeDistributionKeys]")
+            encoder.encode(limit, forKey: "limit")
+            return encoder.items
+        }
+
+        public enum FieldsAlternativeDistributionKeys: String, CaseIterable, Codable, Sendable {
+            case app
+            case publicKey
+        }
+
         public func post(_ body: _Specification.AlternativeDistributionKeyCreateRequest) -> Request<_Specification.AlternativeDistributionKeyResponse> {
             Request(path: path, method: "POST", body: body, id: "alternativeDistributionKeys-create_instance")
         }

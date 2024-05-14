@@ -11,7 +11,7 @@ public struct AlternativeDistributionKeyCreateRequest: Codable, Equatable, Senda
     public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var attributes: Attributes
-        public var relationships: Relationships
+        public var relationships: Relationships?
 
         public enum `Type`: String, CaseIterable, Codable, Sendable {
             case alternativeDistributionKeys
@@ -26,10 +26,10 @@ public struct AlternativeDistributionKeyCreateRequest: Codable, Equatable, Senda
         }
 
         public struct Relationships: Codable, Equatable, Sendable {
-            public var app: App
+            public var app: App?
 
             public struct App: Codable, Equatable, Sendable {
-                public var data: Data
+                public var data: Data?
 
                 public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
@@ -45,17 +45,17 @@ public struct AlternativeDistributionKeyCreateRequest: Codable, Equatable, Senda
                     }
                 }
 
-                public init(data: Data) {
+                public init(data: Data? = nil) {
                     self.data = data
                 }
             }
 
-            public init(app: App) {
+            public init(app: App? = nil) {
                 self.app = app
             }
         }
 
-        public init(type: `Type` = .alternativeDistributionKeys, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .alternativeDistributionKeys, attributes: Attributes, relationships: Relationships? = nil) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships
