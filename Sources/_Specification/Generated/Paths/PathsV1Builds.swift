@@ -135,6 +135,7 @@ extension Resources.V1 {
 
         public enum FieldsDiagnosticSignatures: String, CaseIterable, Codable, Sendable {
             case diagnosticType
+            case insight
             case logs
             case signature
             case weight
@@ -167,6 +168,7 @@ extension Resources.V1 {
             case firstName
             case inviteType
             case lastName
+            case state
         }
 
         public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
@@ -241,8 +243,6 @@ extension Resources.V1 {
             case appPriceSchedule
             case appStoreVersionExperimentsV2
             case appStoreVersions
-            case availableInNewTerritories
-            case availableTerritories
             case betaAppLocalizations
             case betaAppReviewDetail
             case betaGroups
@@ -264,8 +264,6 @@ extension Resources.V1 {
             case perfPowerMetrics
             case preOrder
             case preReleaseVersions
-            case pricePoints
-            case prices
             case primaryLocale
             case promotedPurchases
             case reviewSubmissions

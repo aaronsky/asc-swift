@@ -15,13 +15,12 @@ extension Resources.V2.InAppPurchases.WithID {
         /// Path: `/v2/inAppPurchases/{id}/pricePoints`
         public let path: String
 
-        public func get(filterPriceTier: [String]? = nil, filterTerritory: [String]? = nil, fieldsInAppPurchasePricePoints: [FieldsInAppPurchasePricePoints]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<_Specification.InAppPurchasePricePointsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterPriceTier, filterTerritory, fieldsInAppPurchasePricePoints, fieldsTerritories, limit, include), id: "inAppPurchasesV2-pricePoints-get_to_many_related")
+        public func get(filterTerritory: [String]? = nil, fieldsInAppPurchasePricePoints: [FieldsInAppPurchasePricePoints]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<_Specification.InAppPurchasePricePointsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterTerritory, fieldsInAppPurchasePricePoints, fieldsTerritories, limit, include), id: "inAppPurchasesV2-pricePoints-get_to_many_related")
         }
 
-        private func makeGetQuery(_ filterPriceTier: [String]?, _ filterTerritory: [String]?, _ fieldsInAppPurchasePricePoints: [FieldsInAppPurchasePricePoints]?, _ fieldsTerritories: [FieldsTerritories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterTerritory: [String]?, _ fieldsInAppPurchasePricePoints: [FieldsInAppPurchasePricePoints]?, _ fieldsTerritories: [FieldsTerritories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(filterPriceTier, forKey: "filter[priceTier]")
             encoder.encode(filterTerritory, forKey: "filter[territory]")
             encoder.encode(fieldsInAppPurchasePricePoints, forKey: "fields[inAppPurchasePricePoints]")
             encoder.encode(fieldsTerritories, forKey: "fields[territories]")
@@ -33,7 +32,6 @@ extension Resources.V2.InAppPurchases.WithID {
         public enum FieldsInAppPurchasePricePoints: String, CaseIterable, Codable, Sendable {
             case customerPrice
             case inAppPurchaseV2
-            case priceTier
             case proceeds
             case territory
         }

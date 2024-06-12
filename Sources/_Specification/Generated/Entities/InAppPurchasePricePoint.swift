@@ -19,12 +19,10 @@ public struct InAppPurchasePricePoint: Codable, Equatable, Identifiable, Sendabl
     public struct Attributes: Codable, Equatable, Sendable {
         public var customerPrice: String?
         public var proceeds: String?
-        public var priceTier: String?
 
-        public init(customerPrice: String? = nil, proceeds: String? = nil, priceTier: String? = nil) {
+        public init(customerPrice: String? = nil, proceeds: String? = nil) {
             self.customerPrice = customerPrice
             self.proceeds = proceeds
-            self.priceTier = priceTier
         }
     }
 

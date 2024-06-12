@@ -143,6 +143,7 @@ extension Resources.V1.CiBuildRuns.WithID {
             case firstName
             case inviteType
             case lastName
+            case state
         }
 
         public enum FieldsPreReleaseVersions: String, CaseIterable, Codable, Sendable {
@@ -217,8 +218,6 @@ extension Resources.V1.CiBuildRuns.WithID {
             case appPriceSchedule
             case appStoreVersionExperimentsV2
             case appStoreVersions
-            case availableInNewTerritories
-            case availableTerritories
             case betaAppLocalizations
             case betaAppReviewDetail
             case betaGroups
@@ -240,8 +239,6 @@ extension Resources.V1.CiBuildRuns.WithID {
             case perfPowerMetrics
             case preOrder
             case preReleaseVersions
-            case pricePoints
-            case prices
             case primaryLocale
             case promotedPurchases
             case reviewSubmissions

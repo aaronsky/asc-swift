@@ -8,10 +8,19 @@ import Foundation
 public struct AppCustomProductPageVersionInlineCreate: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String?
+    public var attributes: Attributes?
     public var relationships: Relationships?
 
     public enum `Type`: String, CaseIterable, Codable, Sendable {
         case appCustomProductPageVersions
+    }
+
+    public struct Attributes: Codable, Equatable, Sendable {
+        public var deepLink: URL?
+
+        public init(deepLink: URL? = nil) {
+            self.deepLink = deepLink
+        }
     }
 
     public struct Relationships: Codable, Equatable, Sendable {
@@ -68,9 +77,10 @@ public struct AppCustomProductPageVersionInlineCreate: Codable, Equatable, Ident
         }
     }
 
-    public init(type: `Type` = .appCustomProductPageVersions, id: String? = nil, relationships: Relationships? = nil) {
+    public init(type: `Type` = .appCustomProductPageVersions, id: String? = nil, attributes: Attributes? = nil, relationships: Relationships? = nil) {
         self.type = type
         self.id = id
+        self.attributes = attributes
         self.relationships = relationships
     }
 }

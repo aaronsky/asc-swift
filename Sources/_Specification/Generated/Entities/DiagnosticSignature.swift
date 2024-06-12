@@ -19,16 +19,19 @@ public struct DiagnosticSignature: Codable, Equatable, Identifiable, Sendable {
         public var diagnosticType: DiagnosticType?
         public var signature: String?
         public var weight: Double?
+        public var insight: DiagnosticInsight?
 
         public enum DiagnosticType: String, CaseIterable, Codable, Sendable {
             case diskWrites = "DISK_WRITES"
             case hangs = "HANGS"
+            case launches = "LAUNCHES"
         }
 
-        public init(diagnosticType: DiagnosticType? = nil, signature: String? = nil, weight: Double? = nil) {
+        public init(diagnosticType: DiagnosticType? = nil, signature: String? = nil, weight: Double? = nil, insight: DiagnosticInsight? = nil) {
             self.diagnosticType = diagnosticType
             self.signature = signature
             self.weight = weight
+            self.insight = insight
         }
     }
 

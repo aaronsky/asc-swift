@@ -10,10 +10,19 @@ public struct AppCustomProductPageVersionCreateRequest: Codable, Equatable, Send
 
     public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
+        public var attributes: Attributes?
         public var relationships: Relationships
 
         public enum `Type`: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageVersions
+        }
+
+        public struct Attributes: Codable, Equatable, Sendable {
+            public var deepLink: URL?
+
+            public init(deepLink: URL? = nil) {
+                self.deepLink = deepLink
+            }
         }
 
         public struct Relationships: Codable, Equatable, Sendable {
@@ -70,8 +79,9 @@ public struct AppCustomProductPageVersionCreateRequest: Codable, Equatable, Send
             }
         }
 
-        public init(type: `Type` = .appCustomProductPageVersions, relationships: Relationships) {
+        public init(type: `Type` = .appCustomProductPageVersions, attributes: Attributes? = nil, relationships: Relationships) {
             self.type = type
+            self.attributes = attributes
             self.relationships = relationships
         }
     }
