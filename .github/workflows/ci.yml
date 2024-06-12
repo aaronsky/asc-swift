@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         xcode:
-          - '15.2'
+          - '15.4'
         appleos:
           - ios
           - macos
@@ -40,7 +40,7 @@ jobs:
   examples-linux:
     runs-on: ubuntu-latest
     container:
-      image: swift:5.9
+      image: swift:5.10
     steps:
       - uses: actions/checkout@v4
       - name: Install make
