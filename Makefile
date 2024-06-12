@@ -2,7 +2,7 @@
 GIT_REPO_TOPLEVEL := $(shell git rev-parse --show-toplevel)
 OPENAPI_SPEC_URL := https://developer.apple.com/sample-code/app-store-connect/app-store-connect-openapi-specification.zip
 OPENAPI_SPEC_OUTDIR := $(GIT_REPO_TOPLEVEL)/Sources/_Specification
-OPENAPI_SPEC_OUTFILE := $(OPENAPI_SPEC_OUTDIR)/app_store_connect_api_3.4.2_openapi.json
+OPENAPI_SPEC_OUTFILE := $(OPENAPI_SPEC_OUTDIR)/app_store_connect_api_3.5_openapi.json
 OPENAPI_SPEC_PATCHFILE_AWK := $(OPENAPI_SPEC_OUTDIR)/patches.awk
 OPENAPI_SPEC_PATCHFILE_JQ := $(OPENAPI_SPEC_OUTDIR)/patches.jq
 

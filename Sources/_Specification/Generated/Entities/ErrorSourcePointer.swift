@@ -7,9 +7,9 @@ import Foundation
 
 /// JsonPointer
 public struct ErrorSourcePointer: Codable, Equatable, Sendable {
-    public var pointer: String?
+    public var pointer: String
 
-    public init(pointer: String? = nil) {
+    public init(pointer: String) {
         self.pointer = pointer
     }
 }

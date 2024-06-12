@@ -36,7 +36,7 @@ let package = Package(
             ],
             exclude: [
                 ".create-api.yml",
-                "app_store_connect_api_3.4.2_openapi.json",
+                "app_store_connect_api_3.5_openapi.json",
                 "patches.awk",
                 "patches.jq",
             ]

@@ -62,6 +62,7 @@ extension Resources.V1.BetaGroups {
             case firstName
             case inviteType
             case lastName
+            case state
         }
 
         public enum FieldsApps: String, CaseIterable, Codable, Sendable {
@@ -77,8 +78,6 @@ extension Resources.V1.BetaGroups {
             case appPriceSchedule
             case appStoreVersionExperimentsV2
             case appStoreVersions
-            case availableInNewTerritories
-            case availableTerritories
             case betaAppLocalizations
             case betaAppReviewDetail
             case betaGroups
@@ -100,8 +99,6 @@ extension Resources.V1.BetaGroups {
             case perfPowerMetrics
             case preOrder
             case preReleaseVersions
-            case pricePoints
-            case prices
             case primaryLocale
             case promotedPurchases
             case reviewSubmissions

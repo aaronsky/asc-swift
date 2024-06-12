@@ -31,6 +31,7 @@ extension Resources.V1.AppCustomProductPageVersions {
         public enum FieldsAppCustomProductPageVersions: String, CaseIterable, Codable, Sendable {
             case appCustomProductPage
             case appCustomProductPageLocalizations
+            case deepLink
             case state
             case version
         }
@@ -46,6 +47,10 @@ extension Resources.V1.AppCustomProductPageVersions {
             case appScreenshotSets
             case locale
             case promotionalText
+        }
+
+        public func patch(_ body: _Specification.AppCustomProductPageVersionUpdateRequest) -> Request<_Specification.AppCustomProductPageVersionResponse> {
+            Request(path: path, method: "PATCH", body: body, id: "appCustomProductPageVersions-update_instance")
         }
     }
 }

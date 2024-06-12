@@ -19,6 +19,7 @@ public struct AppCustomProductPageVersion: Codable, Equatable, Identifiable, Sen
     public struct Attributes: Codable, Equatable, Sendable {
         public var version: String?
         public var state: State?
+        public var deepLink: URL?
 
         public enum State: String, CaseIterable, Codable, Sendable {
             case prepareForSubmission = "PREPARE_FOR_SUBMISSION"
@@ -31,9 +32,10 @@ public struct AppCustomProductPageVersion: Codable, Equatable, Identifiable, Sen
             case rejected = "REJECTED"
         }
 
-        public init(version: String? = nil, state: State? = nil) {
+        public init(version: String? = nil, state: State? = nil, deepLink: URL? = nil) {
             self.version = version
             self.state = state
+            self.deepLink = deepLink
         }
     }
 

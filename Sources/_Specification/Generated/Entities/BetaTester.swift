@@ -21,12 +21,14 @@ public struct BetaTester: Codable, Equatable, Identifiable, Sendable {
         public var lastName: String?
         public var email: String?
         public var inviteType: BetaInviteType?
+        public var state: BetaTesterState?
 
-        public init(firstName: String? = nil, lastName: String? = nil, email: String? = nil, inviteType: BetaInviteType? = nil) {
+        public init(firstName: String? = nil, lastName: String? = nil, email: String? = nil, inviteType: BetaInviteType? = nil, state: BetaTesterState? = nil) {
             self.firstName = firstName
             self.lastName = lastName
             self.email = email
             self.inviteType = inviteType
+            self.state = state
         }
     }
 

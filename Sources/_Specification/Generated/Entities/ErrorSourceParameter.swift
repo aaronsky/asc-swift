@@ -7,9 +7,9 @@ import Foundation
 
 /// Parameter
 public struct ErrorSourceParameter: Codable, Equatable, Sendable {
-    public var parameter: String?
+    public var parameter: String
 
-    public init(parameter: String? = nil) {
+    public init(parameter: String) {
         self.parameter = parameter
     }
 }

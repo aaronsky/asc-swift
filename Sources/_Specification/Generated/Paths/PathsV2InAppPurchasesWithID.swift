@@ -95,7 +95,6 @@ extension Resources.V2.InAppPurchases {
         public enum FieldsInAppPurchasePricePoints: String, CaseIterable, Codable, Sendable {
             case customerPrice
             case inAppPurchaseV2
-            case priceTier
             case proceeds
             case territory
         }

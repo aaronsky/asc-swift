@@ -7,13 +7,11 @@ import Foundation
 
 public struct AppUpdateRequest: Codable, Equatable, Sendable {
     public var data: Data
-    public var included: [AppPriceInlineCreate]?
 
     public struct Data: Codable, Equatable, Identifiable, Sendable {
         public var type: `Type`
         public var id: String
         public var attributes: Attributes?
-        public var relationships: Relationships?
 
         public enum `Type`: String, CaseIterable, Codable, Sendable {
             case apps
@@ -26,7 +24,6 @@ public struct AppUpdateRequest: Codable, Equatable, Sendable {
             public var subscriptionStatusURLVersion: SubscriptionStatusURLVersion?
             public var subscriptionStatusURLForSandbox: URL?
             public var subscriptionStatusURLVersionForSandbox: SubscriptionStatusURLVersion?
-            public var isAvailableInNewTerritories: Bool?
             public var contentRightsDeclaration: ContentRightsDeclaration?
 
             public enum ContentRightsDeclaration: String, CaseIterable, Codable, Sendable {
@@ -34,14 +31,13 @@ public struct AppUpdateRequest: Codable, Equatable, Sendable {
                 case usesThirdPartyContent = "USES_THIRD_PARTY_CONTENT"
             }
 
-            public init(bundleID: String? = nil, primaryLocale: String? = nil, subscriptionStatusURL: URL? = nil, subscriptionStatusURLVersion: SubscriptionStatusURLVersion? = nil, subscriptionStatusURLForSandbox: URL? = nil, subscriptionStatusURLVersionForSandbox: SubscriptionStatusURLVersion? = nil, isAvailableInNewTerritories: Bool? = nil, contentRightsDeclaration: ContentRightsDeclaration? = nil) {
+            public init(bundleID: String? = nil, primaryLocale: String? = nil, subscriptionStatusURL: URL? = nil, subscriptionStatusURLVersion: SubscriptionStatusURLVersion? = nil, subscriptionStatusURLForSandbox: URL? = nil, subscriptionStatusURLVersionForSandbox: SubscriptionStatusURLVersion? = nil, contentRightsDeclaration: ContentRightsDeclaration? = nil) {
                 self.bundleID = bundleID
                 self.primaryLocale = primaryLocale
                 self.subscriptionStatusURL = subscriptionStatusURL
                 self.subscriptionStatusURLVersion = subscriptionStatusURLVersion
                 self.subscriptionStatusURLForSandbox = subscriptionStatusURLForSandbox
                 self.subscriptionStatusURLVersionForSandbox = subscriptionStatusURLVersionForSandbox
-                self.isAvailableInNewTerritories = isAvailableInNewTerritories
                 self.contentRightsDeclaration = contentRightsDeclaration
             }
 
@@ -52,75 +48,18 @@ public struct AppUpdateRequest: Codable, Equatable, Sendable {
                 case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
                 case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
                 case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
-                case isAvailableInNewTerritories = "availableInNewTerritories"
                 case contentRightsDeclaration
             }
         }
 
-        public struct Relationships: Codable, Equatable, Sendable {
-            public var prices: Prices?
-            public var availableTerritories: AvailableTerritories?
-
-            public struct Prices: Codable, Equatable, Sendable {
-                public var data: [Datum]?
-
-                public struct Datum: Codable, Equatable, Identifiable, Sendable {
-                    public var type: `Type`
-                    public var id: String
-
-                    public enum `Type`: String, CaseIterable, Codable, Sendable {
-                        case appPrices
-                    }
-
-                    public init(type: `Type` = .appPrices, id: String) {
-                        self.type = type
-                        self.id = id
-                    }
-                }
-
-                public init(data: [Datum]? = nil) {
-                    self.data = data
-                }
-            }
-
-            public struct AvailableTerritories: Codable, Equatable, Sendable {
-                public var data: [Datum]?
-
-                public struct Datum: Codable, Equatable, Identifiable, Sendable {
-                    public var type: `Type`
-                    public var id: String
-
-                    public enum `Type`: String, CaseIterable, Codable, Sendable {
-                        case territories
-                    }
-
-                    public init(type: `Type` = .territories, id: String) {
-                        self.type = type
-                        self.id = id
-                    }
-                }
-
-                public init(data: [Datum]? = nil) {
-                    self.data = data
-                }
-            }
-
-            public init(prices: Prices? = nil, availableTerritories: AvailableTerritories? = nil) {
-                self.prices = prices
-                self.availableTerritories = availableTerritories
-            }
-        }
-
-        public init(type: `Type` = .apps, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil) {
+        public init(type: `Type` = .apps, id: String, attributes: Attributes? = nil) {
             self.type = type
             self.id = id
             self.attributes = attributes
-            self.relationships = relationships
         }
     }
 
-    public init(data: Data, included: [AppPriceInlineCreate]? = nil) {
+    public init(data: Data) {
         self.data = data
-        self.included = included
     }
 }

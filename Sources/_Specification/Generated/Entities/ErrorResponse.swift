@@ -15,6 +15,7 @@ public struct ErrorResponse: Codable, Equatable, Sendable {
         public var title: String
         public var detail: String
         public var source: Source?
+        public var links: ErrorLinks?
         public var meta: [String: AnyJSON]?
 
         public enum Source: Codable, Equatable, Sendable {
@@ -44,13 +45,14 @@ public struct ErrorResponse: Codable, Equatable, Sendable {
             }
         }
 
-        public init(id: String? = nil, status: String, code: String, title: String, detail: String, source: Source? = nil, meta: [String: AnyJSON]? = nil) {
+        public init(id: String? = nil, status: String, code: String, title: String, detail: String, source: Source? = nil, links: ErrorLinks? = nil, meta: [String: AnyJSON]? = nil) {
             self.id = id
             self.status = status
             self.code = code
             self.title = title
             self.detail = detail
             self.source = source
+            self.links = links
             self.meta = meta
         }
     }

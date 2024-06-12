@@ -46,6 +46,7 @@ extension Resources.V1.AppCustomProductPages {
         public enum FieldsAppCustomProductPageVersions: String, CaseIterable, Codable, Sendable {
             case appCustomProductPage
             case appCustomProductPageLocalizations
+            case deepLink
             case state
             case version
         }

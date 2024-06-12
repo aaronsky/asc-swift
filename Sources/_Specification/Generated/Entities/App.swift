@@ -26,7 +26,6 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
         public var subscriptionStatusURLVersion: SubscriptionStatusURLVersion?
         public var subscriptionStatusURLForSandbox: URL?
         public var subscriptionStatusURLVersionForSandbox: SubscriptionStatusURLVersion?
-        public var isAvailableInNewTerritories: Bool?
         public var contentRightsDeclaration: ContentRightsDeclaration?
 
         public enum ContentRightsDeclaration: String, CaseIterable, Codable, Sendable {
@@ -34,7 +33,7 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
             case usesThirdPartyContent = "USES_THIRD_PARTY_CONTENT"
         }
 
-        public init(name: String? = nil, bundleID: String? = nil, sku: String? = nil, primaryLocale: String? = nil, isOrEverWasMadeForKids: Bool? = nil, subscriptionStatusURL: URL? = nil, subscriptionStatusURLVersion: SubscriptionStatusURLVersion? = nil, subscriptionStatusURLForSandbox: URL? = nil, subscriptionStatusURLVersionForSandbox: SubscriptionStatusURLVersion? = nil, isAvailableInNewTerritories: Bool? = nil, contentRightsDeclaration: ContentRightsDeclaration? = nil) {
+        public init(name: String? = nil, bundleID: String? = nil, sku: String? = nil, primaryLocale: String? = nil, isOrEverWasMadeForKids: Bool? = nil, subscriptionStatusURL: URL? = nil, subscriptionStatusURLVersion: SubscriptionStatusURLVersion? = nil, subscriptionStatusURLForSandbox: URL? = nil, subscriptionStatusURLVersionForSandbox: SubscriptionStatusURLVersion? = nil, contentRightsDeclaration: ContentRightsDeclaration? = nil) {
             self.name = name
             self.bundleID = bundleID
             self.sku = sku
@@ -44,7 +43,6 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
             self.subscriptionStatusURLVersion = subscriptionStatusURLVersion
             self.subscriptionStatusURLForSandbox = subscriptionStatusURLForSandbox
             self.subscriptionStatusURLVersionForSandbox = subscriptionStatusURLVersionForSandbox
-            self.isAvailableInNewTerritories = isAvailableInNewTerritories
             self.contentRightsDeclaration = contentRightsDeclaration
         }
 
@@ -58,7 +56,6 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
             case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
             case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
-            case isAvailableInNewTerritories = "availableInNewTerritories"
             case contentRightsDeclaration
         }
     }
@@ -77,8 +74,6 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
         public var appClips: AppClips?
         public var endUserLicenseAgreement: EndUserLicenseAgreement?
         public var preOrder: PreOrder?
-        public var prices: Prices?
-        public var availableTerritories: AvailableTerritories?
         public var inAppPurchases: InAppPurchases?
         public var subscriptionGroups: SubscriptionGroups?
         public var gameCenterEnabledVersions: GameCenterEnabledVersions?
@@ -614,88 +609,6 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public struct Prices: Codable, Equatable, Sendable {
-            public var links: Links?
-            public var meta: PagingInformation?
-            public var data: [Datum]?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
-
-            public struct Datum: Codable, Equatable, Identifiable, Sendable {
-                public var type: `Type`
-                public var id: String
-
-                public enum `Type`: String, CaseIterable, Codable, Sendable {
-                    case appPrices
-                }
-
-                public init(type: `Type` = .appPrices, id: String) {
-                    self.type = type
-                    self.id = id
-                }
-            }
-
-            public init(links: Links? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
-                self.links = links
-                self.meta = meta
-                self.data = data
-            }
-        }
-
-        public struct AvailableTerritories: Codable, Equatable, Sendable {
-            public var links: Links?
-            public var meta: PagingInformation?
-            public var data: [Datum]?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
-
-            public struct Datum: Codable, Equatable, Identifiable, Sendable {
-                public var type: `Type`
-                public var id: String
-
-                public enum `Type`: String, CaseIterable, Codable, Sendable {
-                    case territories
-                }
-
-                public init(type: `Type` = .territories, id: String) {
-                    self.type = type
-                    self.id = id
-                }
-            }
-
-            public init(links: Links? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
-                self.links = links
-                self.meta = meta
-                self.data = data
-            }
-        }
-
         public struct InAppPurchases: Codable, Equatable, Sendable {
             public var links: Links?
             public var meta: PagingInformation?
@@ -1143,7 +1056,7 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(appEncryptionDeclarations: AppEncryptionDeclarations? = nil, ciProduct: CiProduct? = nil, betaGroups: BetaGroups? = nil, appStoreVersions: AppStoreVersions? = nil, preReleaseVersions: PreReleaseVersions? = nil, betaAppLocalizations: BetaAppLocalizations? = nil, builds: Builds? = nil, betaLicenseAgreement: BetaLicenseAgreement? = nil, betaAppReviewDetail: BetaAppReviewDetail? = nil, appInfos: AppInfos? = nil, appClips: AppClips? = nil, endUserLicenseAgreement: EndUserLicenseAgreement? = nil, preOrder: PreOrder? = nil, prices: Prices? = nil, availableTerritories: AvailableTerritories? = nil, inAppPurchases: InAppPurchases? = nil, subscriptionGroups: SubscriptionGroups? = nil, gameCenterEnabledVersions: GameCenterEnabledVersions? = nil, appCustomProductPages: AppCustomProductPages? = nil, inAppPurchasesV2: InAppPurchasesV2? = nil, promotedPurchases: PromotedPurchases? = nil, appEvents: AppEvents? = nil, reviewSubmissions: ReviewSubmissions? = nil, subscriptionGracePeriod: SubscriptionGracePeriod? = nil, gameCenterDetail: GameCenterDetail? = nil, appStoreVersionExperimentsV2: AppStoreVersionExperimentsV2? = nil) {
+        public init(appEncryptionDeclarations: AppEncryptionDeclarations? = nil, ciProduct: CiProduct? = nil, betaGroups: BetaGroups? = nil, appStoreVersions: AppStoreVersions? = nil, preReleaseVersions: PreReleaseVersions? = nil, betaAppLocalizations: BetaAppLocalizations? = nil, builds: Builds? = nil, betaLicenseAgreement: BetaLicenseAgreement? = nil, betaAppReviewDetail: BetaAppReviewDetail? = nil, appInfos: AppInfos? = nil, appClips: AppClips? = nil, endUserLicenseAgreement: EndUserLicenseAgreement? = nil, preOrder: PreOrder? = nil, inAppPurchases: InAppPurchases? = nil, subscriptionGroups: SubscriptionGroups? = nil, gameCenterEnabledVersions: GameCenterEnabledVersions? = nil, appCustomProductPages: AppCustomProductPages? = nil, inAppPurchasesV2: InAppPurchasesV2? = nil, promotedPurchases: PromotedPurchases? = nil, appEvents: AppEvents? = nil, reviewSubmissions: ReviewSubmissions? = nil, subscriptionGracePeriod: SubscriptionGracePeriod? = nil, gameCenterDetail: GameCenterDetail? = nil, appStoreVersionExperimentsV2: AppStoreVersionExperimentsV2? = nil) {
             self.appEncryptionDeclarations = appEncryptionDeclarations
             self.ciProduct = ciProduct
             self.betaGroups = betaGroups
@@ -1157,8 +1070,6 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
             self.appClips = appClips
             self.endUserLicenseAgreement = endUserLicenseAgreement
             self.preOrder = preOrder
-            self.prices = prices
-            self.availableTerritories = availableTerritories
             self.inAppPurchases = inAppPurchases
             self.subscriptionGroups = subscriptionGroups
             self.gameCenterEnabledVersions = gameCenterEnabledVersions

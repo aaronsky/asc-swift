@@ -30,10 +30,12 @@ extension Resources.V1.Builds.WithID {
         public enum FilterDiagnosticType: String, CaseIterable, Codable, Sendable {
             case diskWrites = "DISK_WRITES"
             case hangs = "HANGS"
+            case launches = "LAUNCHES"
         }
 
         public enum FieldsDiagnosticSignatures: String, CaseIterable, Codable, Sendable {
             case diagnosticType
+            case insight
             case logs
             case signature
             case weight
