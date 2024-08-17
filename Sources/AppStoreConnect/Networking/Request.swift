@@ -1,5 +1,5 @@
+import AppStoreAPI
 import Foundation
-import _Specification
 
 #if canImport(FoundationNetworking)
     import FoundationNetworking

@@ -5,7 +5,7 @@ import PackagePlugin
 struct Plugin: CommandPlugin {
     func performCommand(context: PluginContext, arguments: [String]) async throws {
         let createAPI = try context.tool(named: "create-api")
-        let workingDirectory = context.package.directory.appending("Sources", "_Specification")
+        let workingDirectory = context.package.directory.appending("Sources", "AppStoreAPI")
         let specPath = arguments[0]
 
         let process = Process()
