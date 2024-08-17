@@ -22,6 +22,7 @@ import XCTest
 final class JWTTests: XCTestCase {
     func testToken() throws {
         var jwt = try JWT(
+            api: .appStoreConnect,
             keyID: "TEST",
             issuerID: "TEST",
             expiryDuration: 20 * 60,  // 20 minutes
@@ -48,6 +49,7 @@ final class JWTTests: XCTestCase {
     func testTokenBadPEM() throws {
         XCTAssertThrowsError(
             try JWT(
+                api: .appStoreConnect,
                 keyID: "TEST",
                 issuerID: "TEST",
                 expiryDuration: 20 * 60,  // 20 minutes
@@ -65,7 +67,10 @@ final class JWTTests: XCTestCase {
                 "eyJ0eXAiOiJKV1QiLCJraWQiOiJURVNUIiwiYWxnIjoiRVMyNTYifQ.eyJhdWQiOiJhcHBzdG9yZWNvbm5lY3QtdjEiLCJpc3MiOiJURVNUIiwiZXhwIjoyMjAwfQ.8miqcPXzOqo1IP-mi86yb6LBJq4UHWd9jm5W7H64gEoHfVgExT5-qq3WqPYhIq8ZHHXivUUGco6O6I9o35kVAw"
         )
         XCTAssertEqual(header, JWT.Header(key: "TEST"))
-        XCTAssertEqual(payload, JWT.Payload(issuer: "TEST", issuedAt: nil, expiry: 2200, scope: nil))
+        XCTAssertEqual(
+            payload,
+            JWT.Payload(audience: API.appStoreConnect.audience, issuer: "TEST", issuedAt: nil, expiry: 2200, scope: nil)
+        )
 
         XCTAssertThrowsError(
             try JWT.decode(

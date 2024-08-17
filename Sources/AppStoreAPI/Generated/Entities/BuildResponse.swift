@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public struct BuildResponse: Codable, Equatable, Sendable {
     /// Build

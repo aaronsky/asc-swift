@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`

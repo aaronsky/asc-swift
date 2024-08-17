@@ -6,6 +6,8 @@ import Foundation
 #endif
 
 final class MockAuthenticator: Authenticator {
+    var api: API = .appStoreConnect
+
     func token() throws -> String {
         return "TEST"
     }

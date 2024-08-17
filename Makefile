@@ -1,10 +1,12 @@
 # Facts
 GIT_REPO_TOPLEVEL := $(shell git rev-parse --show-toplevel)
-OPENAPI_SPEC_URL := https://developer.apple.com/sample-code/app-store-connect/app-store-connect-openapi-specification.zip
-OPENAPI_SPEC_OUTDIR := $(GIT_REPO_TOPLEVEL)/Sources/AppStoreAPI
-OPENAPI_SPEC_OUTFILE := $(OPENAPI_SPEC_OUTDIR)/app_store_connect_api_3.5_openapi.json
-OPENAPI_SPEC_PATCHFILE_AWK := $(OPENAPI_SPEC_OUTDIR)/patches.awk
-OPENAPI_SPEC_PATCHFILE_JQ := $(OPENAPI_SPEC_OUTDIR)/patches.jq
+
+APPSTORE_SPEC_TARGET := AppStoreAPI
+APPSTORE_OPENAPI_SPEC_URL := https://developer.apple.com/sample-code/app-store-connect/app-store-connect-openapi-specification.zip
+APPSTORE_OPENAPI_SPEC_OUTDIR := $(GIT_REPO_TOPLEVEL)/Sources/$(APPSTORE_SPEC_TARGET)
+APPSTORE_OPENAPI_SPEC_OUTFILE := $(APPSTORE_OPENAPI_SPEC_OUTDIR)/app_store_connect_api_3.5_openapi.json
+APPSTORE_OPENAPI_SPEC_PATCHFILE_AWK := $(APPSTORE_OPENAPI_SPEC_OUTDIR)/patches.awk
+APPSTORE_OPENAPI_SPEC_PATCHFILE_JQ := $(APPSTORE_OPENAPI_SPEC_OUTDIR)/patches.jq
 
 # Apple Platform Destinations
 DESTINATION_PLATFORM_IOS_SIMULATOR = platform=iOS Simulator,name=iPhone 15 Pro Max
@@ -18,6 +20,7 @@ SWIFT_FORMAT_BIN := swift format
 SWIFT_FORMAT_CONFIG_FILE := $(GIT_REPO_TOPLEVEL)/.swift-format
 FORMAT_PATHS := \
 	$(GIT_REPO_TOPLEVEL)/Package.swift \
+	$(GIT_REPO_TOPLEVEL)/Plugins \
 	$(GIT_REPO_TOPLEVEL)/Sources \
 	$(GIT_REPO_TOPLEVEL)/Tests \
 	$(GIT_REPO_TOPLEVEL)/Examples/Package.swift \
@@ -39,16 +42,20 @@ default: test-all
 spec: spec-download spec-generate
 
 .PHONY: spec-download
-spec-download:
-	curl --fail --silent --show-error --location --output - $(OPENAPI_SPEC_URL) \
+spec-download: spec-download-appstore
+
+.PHONY: spec-download-appstore
+spec-download-appstore:
+	curl --fail --silent --show-error --location --output - $(APPSTORE_OPENAPI_SPEC_URL) \
 		| tar --extract --to-stdout --file - \
-		| awk -f $(OPENAPI_SPEC_PATCHFILE_AWK) - \
-		| jq --from-file $(OPENAPI_SPEC_PATCHFILE_JQ) \
-		> $(OPENAPI_SPEC_OUTFILE)
+		| awk -f $(APPSTORE_OPENAPI_SPEC_PATCHFILE_AWK) - \
+		| jq --from-file $(APPSTORE_OPENAPI_SPEC_PATCHFILE_JQ) \
+		> $(APPSTORE_OPENAPI_SPEC_OUTFILE)
 
 .PHONY: spec-generate
 spec-generate:
-	swift package --allow-writing-to-package-directory generate-openapi $(OPENAPI_SPEC_OUTFILE)
+	swift package --allow-writing-to-package-directory generate-openapi \
+		--spec $(APPSTORE_OPENAPI_SPEC_OUTFILE)
 
 .PHONY: test-all
 test-all: test-library test-library-xcode test-examples

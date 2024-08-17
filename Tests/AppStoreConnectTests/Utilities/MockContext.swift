@@ -9,14 +9,11 @@ struct MockContext {
     var client: AppStoreConnectClient
     var transport: MockTransport
     var authenticator: MockAuthenticator
-    var uploadOperations: [UploadOperation]
 
     init() {
-        self.init(
-            responses: [
-                .data(MockData.mockingSuccessNoContent())
-            ]
-        )
+        self.init(responses: [
+            .data(MockData.mockingSuccessNoContent())
+        ])
     }
 
     init<Content: Codable>(
@@ -25,13 +22,11 @@ struct MockContext {
         try self.init(
             responses: content.map {
                 try .data(MockData.mockingSuccess(with: $0))
-            }
-        )
+            })
     }
 
     init(
-        responses: [MockTransport.Output],
-        uploadOperations: [UploadOperation] = []
+        responses: [MockTransport.Output]
     ) {
         self.transport = MockTransport(responses: responses)
         self.authenticator = MockAuthenticator()
@@ -39,7 +34,6 @@ struct MockContext {
             transport: transport,
             authenticator: authenticator
         )
-        self.uploadOperations = uploadOperations
     }
 
     func request<T>() -> Request<T> {

@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public enum AppStoreAgeRating: String, CaseIterable, Codable, Sendable {
     case fourPlus = "FOUR_PLUS"

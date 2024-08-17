@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public enum PreviewType: String, CaseIterable, Codable, Sendable {
     case iphone67 = "IPHONE_67"

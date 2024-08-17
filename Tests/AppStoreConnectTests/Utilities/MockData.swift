@@ -56,37 +56,6 @@ struct MockResources {
 
     var downloadURL = URL(string: "https://apple.com/hello-app-store")!
 
-    var uploadOperationSingle = UploadOperation(
-        method: "POST",
-        url: "test",
-        length: 64,
-        offset: 0,
-        requestHeaders: nil
-    )
-    var uploadOperationMultipart = [
-        UploadOperation(
-            method: "POST",
-            url: "test",
-            length: 32,
-            offset: 0,
-            requestHeaders: nil
-        ),
-        UploadOperation(
-            method: "POST",
-            url: "test",
-            length: 32,
-            offset: 32,
-            requestHeaders: nil
-        ),
-        UploadOperation(
-            method: "POST",
-            url: "test",
-            length: 16,
-            offset: 64,
-            requestHeaders: nil
-        ),
-    ]
-
     init() {}
 }
 

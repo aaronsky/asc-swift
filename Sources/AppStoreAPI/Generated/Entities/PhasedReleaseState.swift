@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public enum PhasedReleaseState: String, CaseIterable, Codable, Sendable {
     case inactive = "INACTIVE"

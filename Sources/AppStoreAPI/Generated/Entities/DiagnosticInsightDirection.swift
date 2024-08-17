@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public enum DiagnosticInsightDirection: String, CaseIterable, Codable, Sendable {
     case up = "UP"

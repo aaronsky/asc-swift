@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public enum SubscriptionStatusURLVersion: String, CaseIterable, Codable, Sendable {
     case v1 = "V1"

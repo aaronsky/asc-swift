@@ -1,3 +1,4 @@
+import AppStoreAPI
 import AppStoreConnect
 import ArgumentParser
 import Foundation

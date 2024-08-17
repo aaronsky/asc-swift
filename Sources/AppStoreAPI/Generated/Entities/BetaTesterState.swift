@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public enum BetaTesterState: String, CaseIterable, Codable, Sendable {
     case notInvited = "NOT_INVITED"

@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public enum AppEncryptionDeclarationState: String, CaseIterable, Codable, Sendable {
     case created = "CREATED"

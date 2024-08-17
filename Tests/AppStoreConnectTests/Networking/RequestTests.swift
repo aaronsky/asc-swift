@@ -9,13 +9,13 @@ import XCTest
 
 final class RequestTests: XCTestCase {
     func testURLRequestInitRequest() throws {
-        let baseURL = URL()
+        let baseURL = API.appStoreConnect.baseURL
         let mockBody = MockResources.Body(name: "test3", age: 88)
         let encoder = JSONEncoder()
         var mockAuthenticator: Authenticator = MockAuthenticator()
 
         let request = Request<MockResources.Content>
-            .post("test", baseURL: baseURL, body: mockBody, headers: ["Test": "test"])
+            .post("test", body: mockBody, headers: ["Test": "test"])
         let urlRequest = try URLRequest(request: request, encoder: encoder, authenticator: &mockAuthenticator)
         XCTAssertEqual(urlRequest.url, baseURL.appendingPathComponent("test"))
         XCTAssertEqual(urlRequest.httpMethod, "POST")
@@ -30,71 +30,6 @@ final class RequestTests: XCTestCase {
         let decoder = JSONDecoder()
         let requestBody = try decoder.decode(MockResources.Body.self, from: XCTUnwrap(urlRequest.httpBody))
         XCTAssertEqual(requestBody, mockBody)
-    }
-
-    func testURLRequestInitUploadOperation() throws {
-        let encoder = JSONEncoder()
-        var mockAuthenticator: Authenticator = MockAuthenticator()
-
-        let goodUploadOperation = UploadOperation(
-            method: "GET",
-            url: "test",
-            length: 64,
-            offset: 0,
-            requestHeaders: [
-                .init(name: "Test", value: "test"),
-                .init(name: "Test2", value: nil),
-            ]
-        )
-        let goodUploadOperationNoHeaders = UploadOperation(
-            method: "GET",
-            url: "test",
-            length: 64,
-            offset: 0,
-            requestHeaders: [
-                .init(name: nil, value: "test")
-            ]
-        )
-        let badUploadOperation = UploadOperation()
-
-        let goodRequest = try URLRequest(
-            uploadOperation: goodUploadOperation,
-            encoder: encoder,
-            authenticator: &mockAuthenticator
-        )
-        XCTAssertEqual(
-            goodRequest.allHTTPHeaderFields,
-            [
-                "Authorization": "Bearer TEST",
-                "Test": "test",
-            ]
-        )
-
-        let goodRequestNoHeaders = try URLRequest(
-            uploadOperation: goodUploadOperationNoHeaders,
-            encoder: encoder,
-            authenticator: &mockAuthenticator
-        )
-        XCTAssertEqual(
-            goodRequestNoHeaders.allHTTPHeaderFields,
-            ["Authorization": "Bearer TEST"]
-        )
-
-        XCTAssertThrowsError(
-            try URLRequest(
-                uploadOperation: badUploadOperation,
-                encoder: encoder,
-                authenticator: &mockAuthenticator
-            )
-        ) { error in
-            XCTAssertEqual(
-                error as? UploadOperation.Error,
-                UploadOperation.Error.missingDestination(
-                    url: nil,
-                    method: nil
-                )
-            )
-        }
     }
 
     func testRequestShorthandMethods() {
