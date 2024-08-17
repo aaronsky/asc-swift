@@ -15,6 +15,14 @@ public struct API {
         baseURL: URL(string: "https://api.appstoreconnect.apple.com")!
     )
 
+    /// Enterprise Program API.
+    ///
+    /// <https://developer.apple.com/documentation/enterpriseprogramapi>
+    public static let enterpriseProgram = Self(
+        audience: "apple-developer-enterprise-v1",
+        baseURL: URL(string: "https://api.enterprise.developer.apple.com")!
+    )
+
     let audience: String
     let baseURL: URL
 

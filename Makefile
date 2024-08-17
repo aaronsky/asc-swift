@@ -8,6 +8,11 @@ APPSTORE_OPENAPI_SPEC_OUTFILE := $(APPSTORE_OPENAPI_SPEC_OUTDIR)/app_store_conne
 APPSTORE_OPENAPI_SPEC_PATCHFILE_AWK := $(APPSTORE_OPENAPI_SPEC_OUTDIR)/patches.awk
 APPSTORE_OPENAPI_SPEC_PATCHFILE_JQ := $(APPSTORE_OPENAPI_SPEC_OUTDIR)/patches.jq
 
+ENTERPRISE_SPEC_TARGET := EnterpriseAPI
+ENTERPRISE_OPENAPI_SPEC_URL := https://developer.apple.com/sample-code/enterprise/enterprise-program-openapi-oas.zip
+ENTERPRISE_OPENAPI_SPEC_OUTDIR := $(GIT_REPO_TOPLEVEL)/Sources/$(ENTERPRISE_SPEC_TARGET)
+ENTERPRISE_OPENAPI_SPEC_OUTFILE := $(ENTERPRISE_OPENAPI_SPEC_OUTDIR)/enterprise_api_1.0_openapi.json
+
 # Apple Platform Destinations
 DESTINATION_PLATFORM_IOS_SIMULATOR = platform=iOS Simulator,name=iPhone 15 Pro Max
 DESTINATION_PLATFORM_MACOS = platform=macOS
@@ -42,7 +47,7 @@ default: test-all
 spec: spec-download spec-generate
 
 .PHONY: spec-download
-spec-download: spec-download-appstore
+spec-download: spec-download-appstore spec-download-enterprise
 
 .PHONY: spec-download-appstore
 spec-download-appstore:
@@ -52,10 +57,17 @@ spec-download-appstore:
 		| jq --from-file $(APPSTORE_OPENAPI_SPEC_PATCHFILE_JQ) \
 		> $(APPSTORE_OPENAPI_SPEC_OUTFILE)
 
+.PHONY: spec-download-enterprise
+spec-download-enterprise:
+	curl --fail --silent --show-error --location --output - $(ENTERPRISE_OPENAPI_SPEC_URL) \
+		| tar --extract --to-stdout --file - \
+		> $(ENTERPRISE_OPENAPI_SPEC_OUTFILE)
+
 .PHONY: spec-generate
 spec-generate:
 	swift package --allow-writing-to-package-directory generate-openapi \
-		--spec $(APPSTORE_OPENAPI_SPEC_OUTFILE)
+		--spec $(APPSTORE_OPENAPI_SPEC_OUTFILE) \
+		--spec $(ENTERPRISE_OPENAPI_SPEC_OUTFILE)
 
 .PHONY: test-all
 test-all: test-library test-library-xcode test-examples
