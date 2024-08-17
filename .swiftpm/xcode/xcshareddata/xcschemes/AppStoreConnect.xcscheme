@@ -56,9 +56,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "_Specification"
-               BuildableName = "_Specification"
-               BlueprintName = "_Specification"
+               BlueprintIdentifier = "AppStoreAPI"
+               BuildableName = "AppStoreAPI"
+               BlueprintName = "AppStoreAPI"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>

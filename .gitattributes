@@ -1,2 +1,2 @@
-Sources/_Specification/Generated/**/*                  linguist-generated
-Sources/_Specification/app_store_connect_api_*.json    linguist-generated
+Sources/AppStoreAPI/Generated/**/*                  linguist-generated
+Sources/AppStoreAPI/app_store_connect_api_*.json    linguist-generated

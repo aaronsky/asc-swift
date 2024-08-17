@@ -25,12 +25,12 @@ let package = Package(
         .target(
             name: "AppStoreConnect",
             dependencies: [
-                "_Specification",
+                "AppStoreAPI",
                 .product(name: "Crypto", package: "swift-crypto"),
             ]
         ),
         .target(
-            name: "_Specification",
+            name: "AppStoreAPI",
             dependencies: [
                 .product(name: "URLQueryEncoder", package: "URLQueryEncoder")
             ],

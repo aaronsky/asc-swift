@@ -1,5 +1,5 @@
 #if swift(>=5.11)
-    public import _Specification
+    public import AppStoreAPI
 #else
-    @_exported import _Specification
+    @_exported import AppStoreAPI
 #endif
