@@ -24,7 +24,7 @@ print(apps)
 
 ## Installation
 
-This project uses the Swift Package Manager. It supports Swift 5.10 and higher, and has minimum requirements of iOS 15, macOS 12, tvOS 15, and watchOS 8. It also strives to be fully supported for deployment on all other platforms outlined by Swift.org [Platform Support page](https://www.swift.org/platform-support/#deployment-only), such as the various Linux flavors and Windows. App Store Connect API version 3.5 and Enterprise Program 1.0 are supported.
+This project uses the Swift Package Manager. It supports Swift 5.9 and higher, and has minimum requirements of iOS 15, macOS 12, tvOS 15, and watchOS 8. It also strives to be fully supported for deployment on all other platforms outlined by Swift.org [Platform Support page](https://www.swift.org/platform-support/#deployment-only), such as the various Linux flavors and Windows. App Store Connect API version 3.5 and Enterprise Program 1.0 are supported.
 
 The package defines two products: `AppStoreConnect` and `EnterpriseProgram`. Each product provides the `AppStoreConnect` module, which contains the client and authentication logic, and either the `AppStoreAPI` or `EnterpriseAPI` modules, respectively.
 
