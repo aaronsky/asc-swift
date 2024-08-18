@@ -7,7 +7,12 @@ import Foundation
 
 /// Interface for the authorization provider used by ``AppStoreConnectClient``.
 public protocol Authenticator {
+    /// The API this ``Authenticator`` is compatible with.
+    var api: API { get }
+
     /// Returns the token to use for authentication with the App Store Connect API.
+    /// - Parameters:
+    ///   - audience: An identifier supplied to the "aud" parameter on the JWT payload.
     /// - Returns: The token to use for authentication.
     /// - Throws: An error if an issue was encountered during token signing.
     mutating func token() throws -> String
@@ -42,9 +47,7 @@ public struct JWT: Authenticator {
     /// Claims about the authenticating user.
     struct Payload: Codable, Equatable {
         /// Audience of the token.
-        ///
-        /// Should always be `"appstoreconnect-v1"`.
-        let audience: String = "appstoreconnect-v1"
+        var audience: String
         /// Your issuer ID from the API Keys page in App Store Connect.
         ///
         /// Unique to an App Store Connect team.
@@ -114,6 +117,8 @@ public struct JWT: Authenticator {
         case dataCorrupted(Context)
     }
 
+    /// The API this ``Authenticator`` is compatible with.
+    public private(set) var api: API
     /// The token header.
     var header: Header
     /// ID of the App Store Connect team, issued by Apple.
@@ -139,6 +144,7 @@ public struct JWT: Authenticator {
     /// Create a JWT authenticator for ``AppStoreConnectClient``.
     ///
     /// - Parameters:
+    ///   - api: The API this ``Authenticator`` is compatible with.
     ///   - keyID: Private key ID from App Store Connect.
     ///   - issuerID: ID of the App Store Connect team, issued by Apple.
     ///   - issuedAt: Optional timestamp of when the token was issued by Apple, in Unix epoch time.
@@ -146,6 +152,7 @@ public struct JWT: Authenticator {
     ///   - scopes: Optional scopes to restrict access to the App Store Connect API to specific endpoints.
     ///   - privateKey: The private key.
     public init(
+        api: API,
         keyID: String,
         issuerID: String,
         issuedAt: TimeInterval? = nil,
@@ -154,6 +161,7 @@ public struct JWT: Authenticator {
         privateKey: PrivateKey
     ) {
         self.init(
+            api: api,
             keyID: keyID,
             issuerID: issuerID,
             issuedAt: issuedAt,
@@ -167,6 +175,7 @@ public struct JWT: Authenticator {
     /// Create a JWT authenticator for ``AppStoreConnectClient``.
     ///
     /// - Parameters:
+    ///   - api: The API this ``Authenticator`` is compatible with.
     ///   - keyID: Private key ID from App Store Connect.
     ///   - issuerID: ID of the App Store Connect team, issued by Apple.
     ///   - issuedAt: Optional timestamp of when the token was issued by Apple, in Unix epoch time.
@@ -175,6 +184,7 @@ public struct JWT: Authenticator {
     ///   - privateKey: The private key.
     ///   - date: Dependency on the current date. Useful in testing.
     init(
+        api: API,
         keyID: String,
         issuerID: String,
         issuedAt: TimeInterval? = nil,
@@ -183,6 +193,7 @@ public struct JWT: Authenticator {
         privateKey: PrivateKey,
         date: @autoclosure @escaping () -> Date
     ) {
+        self.api = api
         self.header = Header(key: keyID)
         self.issuer = issuerID
         self.issuedAt = issuedAt
@@ -222,6 +233,7 @@ public struct JWT: Authenticator {
     func digest() throws -> String {
         let now = date()
         let payload = Payload(
+            audience: api.audience,
             issuer: issuer,
             issuedAt: issuedAt,
             expiry: now.addingTimeInterval(expiryDuration).timeIntervalSince1970,

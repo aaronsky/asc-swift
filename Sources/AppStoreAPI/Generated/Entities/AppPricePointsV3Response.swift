@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public struct AppPricePointsV3Response: Codable, Equatable, Sendable {
     public var data: [AppPricePointV3]

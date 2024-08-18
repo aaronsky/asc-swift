@@ -1,4 +1,3 @@
-import AppStoreAPI
 import Foundation
 
 #if canImport(FoundationNetworking)
@@ -13,41 +12,17 @@ extension URLRequest {
     ///   - authenticator: Authorization provider.
     /// - Throws: An error if the URL constructed from the request is invalid
     ///           or if there is a problem retrieving an authentication token.
-    init<Response>(
+    public init<Response>(
         request: Request<Response>,
         encoder: JSONEncoder,
         authenticator: inout any Authenticator
     ) throws {
-        let url = try URL(request: request)
+        let url = try URL(request: request, api: authenticator.api)
         try self.init(
             url: url,
             method: request.method,
             headers: request.headers?.map { ($0.key, $0.value) } ?? [],
             body: request.body,
-            encoder: encoder,
-            authenticator: &authenticator
-        )
-    }
-
-    init(
-        uploadOperation: UploadOperation,
-        encoder: JSONEncoder,
-        authenticator: inout any Authenticator
-    ) throws {
-        guard let url = uploadOperation.url.flatMap(URL.init), let method = uploadOperation.method else {
-            throw UploadOperation.Error.missingDestination(url: uploadOperation.url, method: uploadOperation.method)
-        }
-        let headers: [(String, String?)] =
-            uploadOperation.requestHeaders?
-            .compactMap { header in
-                guard let name = header.name else { return nil }
-                return (name, header.value)
-            } ?? []
-        try self.init(
-            url: url,
-            method: method,
-            headers: headers,
-            body: nil,
             encoder: encoder,
             authenticator: &authenticator
         )
@@ -62,7 +37,7 @@ extension URLRequest {
     ///   - encoder: An encoder.
     ///   - authenticator: Authorization provider.
     /// - Throws: An error if there is a problem retrieving an authentication token.
-    init(
+    public init(
         url: URL,
         method: String? = nil,
         headers: [(String, String?)] = [],
@@ -91,13 +66,17 @@ extension URLRequest {
 
 extension URL {
     /// Creates a ``URL`` out of a ``Request``.
-    /// - Parameter request: A request.
+    /// - Parameters:
+    ///   - request: A request.
+    ///   - api: API this request is designed around.
     /// - Throws: An error if the URL could not be constructed out of the path
     ///           or queries declared in the request.
     init<Response>(
-        request: Request<Response>
+        request: Request<Response>,
+        api: API
     ) throws {
-        let url = request.baseURL.appendingPathComponent(request.path)
+        let baseURL = request.baseURL ?? api.baseURL
+        let url = baseURL.appendingPathComponent(request.path)
 
         guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
             throw URLError(.badURL)
@@ -115,22 +94,65 @@ extension URL {
     }
 }
 
-extension Request {
+/// A request model used to describe a resource's attributes.
+public struct Request<Response> {
+    /// Path to the resource.
+    public var path: String
+    /// Base URL that the request should be based on.
+    public var baseURL: URL?
+    /// HTTP method.
+    public var method: String
+    /// Query string encoded parameters.
+    public var query: [(String, String?)]?
+    /// Body of the request.
+    public var body: (any Encodable)?
+    /// Request headers.
+    public var headers: [String: String]?
+    /// Operation ID.
+    ///
+    /// Not used by the library, but required by the generated paths.
+    public var id: String?
+
+    /// Create a Request model.
+    ///
+    /// - Parameters:
+    ///   - path: Path to the resource.
+    ///   - method: HTTP method.
+    ///   - query: Query string encoded parameters.
+    ///   - body: Body of the request.
+    ///   - headers: Request headers.
+    ///   - id: Operation ID. Unused.
+    public init(
+        path: String,
+        baseURL: URL? = nil,
+        method: String,
+        query: [(String, String?)]? = nil,
+        body: (any Encodable)? = nil,
+        headers: [String: String]? = nil,
+        id: String? = nil
+    ) {
+        self.path = path
+        self.baseURL = baseURL
+        self.method = method
+        self.query = query
+        self.body = body
+        self.headers = headers
+        self.id = id
+    }
+
     /// Construct a "GET" request.
     ///
     /// - Parameters:
     ///   - path: Path to the resource.
-    ///   - baseURL: Base URL of the resource.
     ///   - query: Query string encoded parameters.
     ///   - headers: Request headers.
     /// - Returns: The request.
     public static func get(
         _ path: String,
-        baseURL: URL? = nil,
         query: [(String, String?)]? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(path: path, baseURL: baseURL, method: "GET", query: query, headers: headers)
+        .init(path: path, method: "GET", query: query, headers: headers)
     }
 
     /// Construct a "POST" request.
@@ -144,12 +166,11 @@ extension Request {
     /// - Returns: The request.
     public static func post(
         _ path: String,
-        baseURL: URL? = nil,
         query: [(String, String?)]? = nil,
         body: Encodable? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(path: path, baseURL: baseURL, method: "POST", query: query, body: body, headers: headers)
+        .init(path: path, method: "POST", query: query, body: body, headers: headers)
     }
 
     /// Construct a "PUT" request.
@@ -163,12 +184,11 @@ extension Request {
     /// - Returns: The request.
     public static func put(
         _ path: String,
-        baseURL: URL? = nil,
         query: [(String, String?)]? = nil,
         body: (any Encodable)? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(path: path, baseURL: baseURL, method: "PUT", query: query, body: body, headers: headers)
+        .init(path: path, method: "PUT", query: query, body: body, headers: headers)
     }
 
     /// Construct a "PATCH" request.
@@ -182,12 +202,11 @@ extension Request {
     /// - Returns: The request.
     public static func patch(
         _ path: String,
-        baseURL: URL? = nil,
         query: [(String, String?)]? = nil,
         body: (any Encodable)? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(path: path, baseURL: baseURL, method: "PATCH", query: query, body: body, headers: headers)
+        .init(path: path, method: "PATCH", query: query, body: body, headers: headers)
     }
 
     /// Construct a "DELETE" request.
@@ -201,12 +220,11 @@ extension Request {
     /// - Returns: The request.
     public static func delete(
         _ path: String,
-        baseURL: URL? = nil,
         query: [(String, String?)]? = nil,
         body: (any Encodable)? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(path: path, baseURL: baseURL, method: "DELETE", query: query, body: body, headers: headers)
+        .init(path: path, method: "DELETE", query: query, body: body, headers: headers)
     }
 
     /// Construct a "OPTIONS" request.
@@ -219,11 +237,10 @@ extension Request {
     /// - Returns: The request.
     public static func options(
         _ path: String,
-        baseURL: URL? = nil,
         query: [(String, String?)]? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(path: path, baseURL: baseURL, method: "OPTIONS", query: query, headers: headers)
+        .init(path: path, method: "OPTIONS", query: query, headers: headers)
     }
 
     /// Construct a "HEAD" request.
@@ -240,7 +257,7 @@ extension Request {
         query: [(String, String?)]? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(path: path, baseURL: baseURL, method: "HEAD", query: query, headers: headers)
+        .init(path: path, method: "HEAD", query: query, headers: headers)
     }
 
     /// Construct a "TRACE" request.
@@ -257,11 +274,9 @@ extension Request {
         query: [(String, String?)]? = nil,
         headers: [String: String]? = nil
     ) -> Request {
-        .init(path: path, baseURL: baseURL, method: "TRACE", query: query, headers: headers)
+        .init(path: path, method: "TRACE", query: query, headers: headers)
     }
-}
 
-extension Request {
     /// Construct a "GET" request.
     ///
     /// - Parameters:

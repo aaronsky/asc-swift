@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public enum CiGitRefKind: String, CaseIterable, Codable, Sendable {
     case branch = "BRANCH"

@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public struct CiTagPatterns: Codable, Equatable, Sendable {
     public var isAllMatch: Bool?

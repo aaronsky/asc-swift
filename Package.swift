@@ -1,20 +1,20 @@
-// swift-tools-version: 5.7
+// swift-tools-version: 5.10
 
 import PackageDescription
 
 let package = Package(
     name: "AppStoreConnect",
     platforms: [
-        .iOS(.v15),
-        .macOS(.v12),
-        .tvOS(.v15),
-        .watchOS(.v8),
+        .iOS(.v16),
+        .macOS(.v13),
+        .tvOS(.v16),
+        .watchOS(.v9),
     ],
     products: [
         .library(
             name: "AppStoreConnect",
-            targets: ["AppStoreConnect"]
-        )
+            targets: ["AppStoreConnect", "AppStoreAPI"]
+        ),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-crypto.git", .upToNextMajor(from: "3.2.0")),
@@ -25,17 +25,16 @@ let package = Package(
         .target(
             name: "AppStoreConnect",
             dependencies: [
-                "AppStoreAPI",
-                .product(name: "Crypto", package: "swift-crypto"),
+                .product(name: "Crypto", package: "swift-crypto")
             ]
         ),
         .target(
             name: "AppStoreAPI",
             dependencies: [
-                .product(name: "URLQueryEncoder", package: "URLQueryEncoder")
+                "AppStoreConnect",
+                .product(name: "URLQueryEncoder", package: "URLQueryEncoder"),
             ],
             exclude: [
-                ".create-api.yml",
                 "app_store_connect_api_3.5_openapi.json",
                 "patches.awk",
                 "patches.jq",

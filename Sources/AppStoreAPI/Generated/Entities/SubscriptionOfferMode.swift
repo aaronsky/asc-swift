@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public enum SubscriptionOfferMode: String, CaseIterable, Codable, Sendable {
     case payAsYouGo = "PAY_AS_YOU_GO"

@@ -1,4 +1,3 @@
-module: AppStoreAPI
 access: public
 generate:
   - entities
@@ -18,6 +17,8 @@ dataTypes:
     uri-reference: URL
 
 entities:
+  imports:
+    - AppStoreConnect
   alwaysIncludeDecodableImplementation: false
   alwaysIncludeEncodableImplementation: false
   includeIdentifiableConformance: true
@@ -36,7 +37,8 @@ enums:
 
 paths:
   style: rest
-  imports: []
+  imports:
+    - AppStoreConnect
   namespace: Resources
   inlineSimpleRequests: true
   inlineSimpleQueryParameters: true

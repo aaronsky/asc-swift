@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public struct CiBranchStartCondition: Codable, Equatable, Sendable {
     public var source: CiBranchPatterns?

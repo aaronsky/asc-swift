@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public struct BetaTesterBuildsLinkagesRequest: Codable, Equatable, Sendable {
     public var data: [Datum]

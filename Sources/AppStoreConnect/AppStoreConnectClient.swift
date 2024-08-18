@@ -13,20 +13,20 @@ public actor AppStoreConnectClient {
     /// The network (or whatever) transport layer.
     ///
     /// Implemented by ``URLSession`` by default.
-    var transport: Transport
+    package var transport: Transport
 
     /// Authorization provider.
     ///
     /// Used to authenticate with the App Store Connect API. Implemented by ``JWT`` by default.
-    var authenticator: Authenticator
+    package var authenticator: Authenticator
 
-    nonisolated var encoder: JSONEncoder {
+    package var encoder: JSONEncoder {
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .custom(encodeISO8601Date(_:encoder:))
         return encoder
     }
 
-    nonisolated var decoder: JSONDecoder {
+    package var decoder: JSONDecoder {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
         return decoder
@@ -60,7 +60,8 @@ public actor AppStoreConnectClient {
     /// - Parameter request: A request.
     /// - Returns: The response from the App Store Connect API.
     /// - Throws: An error describing the manner in which the request failed to complete.
-    public func send<Response>(_ request: Request<Response>) async throws -> Response where Response: Decodable {
+    public func send<Response>(_ request: Request<Response>) async throws -> Response
+    where Response: Decodable {
         let urlRequest = try URLRequest(request: request, encoder: encoder, authenticator: &authenticator)
         let response = try await transport.send(request: urlRequest, decoder: decoder)
         try response.check()
@@ -73,7 +74,9 @@ public actor AppStoreConnectClient {
     /// Convenience method for accessing a series of paged resources in a sequence asynchronously.
     /// - Parameter request: The initial request of the sequence.
     /// - Returns: A ``PagedResponses`` sequence which will provide with each page's response asynchronously.
-    public nonisolated func pages<Response>(_ request: Request<Response>) -> PagedResponses<Response> {
+    public nonisolated func pages<Response>(_ request: Request<Response>)
+        -> PagedResponses<Response>
+    {
         PagedResponses(request: request, client: self)
     }
 
@@ -118,35 +121,5 @@ public actor AppStoreConnectClient {
         try response.check()
 
         return try response.decode()
-    }
-
-    // MARK: - Uploads
-
-    /// Uploads a chunk of data asynchronously given an ``UploadOperation`` model.
-    /// - Parameters:
-    ///   - operation: Information about the expected size of the chunk and its upload destination.
-    ///   - data: The data representation of the uploaded resource.
-    /// - Throws: An error describing the manner in which the upload failed to complete.
-    public func upload(operation: UploadOperation, from data: Data) async throws {
-        guard let offset = operation.offset, let length = operation.length else {
-            throw UploadOperation.Error.chunkBoundsMismatch(offset: operation.offset, length: operation.length)
-        }
-
-        let dataChunk = data[offset..<(length + offset)]
-        let urlRequest = try URLRequest(
-            uploadOperation: operation,
-            encoder: encoder,
-            authenticator: &authenticator
-        )
-        let response = try await transport.upload(request: urlRequest, data: dataChunk, decoder: decoder)
-        try response.check()
-    }
-}
-
-extension UploadOperation {
-    /// Describes missing required information about the ``UploadOperation``.
-    public enum Error: Swift.Error, Equatable {
-        case missingDestination(url: String?, method: String?)
-        case chunkBoundsMismatch(offset: Int?, length: Int?)
     }
 }

@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public enum UserRole: String, CaseIterable, Codable, Sendable {
     case admin = "ADMIN"

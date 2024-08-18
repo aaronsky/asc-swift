@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public enum ScreenshotDisplayType: String, CaseIterable, Codable, Sendable {
     case appIphone67 = "APP_IPHONE_67"

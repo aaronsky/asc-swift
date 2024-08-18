@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public enum CertificateType: String, CaseIterable, Codable, Sendable {
     case iosDevelopment = "IOS_DEVELOPMENT"

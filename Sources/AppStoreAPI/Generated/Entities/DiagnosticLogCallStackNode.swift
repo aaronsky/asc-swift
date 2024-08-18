@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public struct DiagnosticLogCallStackNode: Codable, Equatable, Sendable {
     public var sampleCount: Int?

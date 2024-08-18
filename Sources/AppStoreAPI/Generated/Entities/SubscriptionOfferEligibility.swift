@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public enum SubscriptionOfferEligibility: String, CaseIterable, Codable, Sendable {
     case stackWithIntroOffers = "STACK_WITH_INTRO_OFFERS"

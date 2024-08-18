@@ -22,6 +22,8 @@ public struct EnvAuthenticator: Authenticator {
 
     var jwt: JWT
 
+    public var api: API { jwt.api }
+
     /// Creates an ``EnvAuthenticator`` using predefined environment names for its internal inputs.
     ///
     /// - Parameters:
@@ -33,6 +35,7 @@ public struct EnvAuthenticator: Authenticator {
     /// - Throws: ``Error`` if there is a missing environment variable, or ``Environment/FileParserError`` if the environment file is malformed.
     public init(
         from environmentFile: URL? = nil,
+        api: API = .appStoreConnect,
         keyIDVariableName: String = "ASC_KEY_ID",
         issuerIDVariableName: String = "ASC_ISSUER_ID",
         privateKeyPathVariableName: String = "ASC_PRIVATE_KEY_PATH",
@@ -53,6 +56,7 @@ public struct EnvAuthenticator: Authenticator {
         let privateKey = try JWT.PrivateKey(contentsOf: URL(fileURLWithPath: privateKeyPath))
 
         self.jwt = JWT(
+            api: api,
             keyID: keyID,
             issuerID: issuerID,
             expiryDuration: 20 * 60,

@@ -4,6 +4,7 @@
 // swift-format-ignore-file
 
 import Foundation
+import AppStoreConnect
 
 public enum SubscriptionOfferDuration: String, CaseIterable, Codable, Sendable {
     case oneDay = "ONE_DAY"
