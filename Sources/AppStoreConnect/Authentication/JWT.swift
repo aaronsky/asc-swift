@@ -1,4 +1,4 @@
-import Crypto
+@preconcurrency import Crypto
 import Foundation
 
 #if canImport(FoundationNetworking)
@@ -6,7 +6,7 @@ import Foundation
 #endif
 
 /// Interface for the authorization provider used by ``AppStoreConnectClient``.
-public protocol Authenticator {
+public protocol Authenticator: Sendable {
     /// The API this ``Authenticator`` is compatible with.
     var api: API { get }
 
@@ -74,7 +74,7 @@ public struct JWT: Authenticator {
     }
 
     /// Signing identity used to generate the signature component of the token.
-    public struct PrivateKey {
+    public struct PrivateKey: Sendable {
         /// Private key used to sign the digest of the header and payload.
         var key: P256.Signing.PrivateKey
 
@@ -137,7 +137,7 @@ public struct JWT: Authenticator {
     /// Dependency on the current date.
     ///
     /// Useful in testing.
-    private var date: () -> Date
+    private var date: @Sendable () -> Date
     /// The last token generated.
     private var cachedToken: String?
 
@@ -191,7 +191,7 @@ public struct JWT: Authenticator {
         expiryDuration: TimeInterval,
         scopes: [String]? = nil,
         privateKey: PrivateKey,
-        date: @autoclosure @escaping () -> Date
+        date: @autoclosure @escaping @Sendable () -> Date
     ) {
         self.api = api
         self.header = Header(key: keyID)

@@ -5,7 +5,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-public struct MockContext {
+public struct MockContext: Sendable {
     public var client: AppStoreConnectClient
     public var transport: MockTransport
     public var authenticator: MockAuthenticator

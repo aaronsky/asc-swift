@@ -5,14 +5,14 @@ import Foundation
 #endif
 
 /// ISO 8601 date formatter with fractional seconds support.
-let iso8601WithFractionalSecondsFormatter: ISO8601DateFormatter = {
+nonisolated(unsafe) let iso8601WithFractionalSecondsFormatter: ISO8601DateFormatter = {
     let formatter = ISO8601DateFormatter()
     formatter.formatOptions.insert(.withFractionalSeconds)
     return formatter
 }()
 
 /// ISO 8601 date formatter with default options.
-let iso8601Formatter: ISO8601DateFormatter = {
+nonisolated(unsafe) let iso8601Formatter: ISO8601DateFormatter = {
     let formatter = ISO8601DateFormatter()
     return formatter
 }()
