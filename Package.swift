@@ -13,14 +13,13 @@ let package = Package(
     products: [
         .library(
             name: "AppStoreConnect",
-            targets: ["AppStoreConnect", "AppStoreAPI"]
-        ),
+            targets: ["AppStoreConnect", "AppStoreAPI"]),
         .library(
             name: "EnterpriseProgram",
-            targets: ["AppStoreConnect", "EnterpriseAPI"]
-        ),
+            targets: ["AppStoreConnect", "EnterpriseAPI"]),
     ],
     dependencies: [
+        .package(url: "https://github.com/apple/swift-argument-parser", from: "1.3.0"),
         .package(url: "https://github.com/apple/swift-crypto.git", .upToNextMajor(from: "3.2.0")),
         .package(url: "https://github.com/CreateAPI/URLQueryEncoder.git", .upToNextMajor(from: "0.2.1")),
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.3.0"),
@@ -30,63 +29,116 @@ let package = Package(
             name: "AppStoreConnect",
             dependencies: [
                 .product(name: "Crypto", package: "swift-crypto")
-            ]
-        ),
+            ],
+            exclude: ["BUILD.bazel"]),
         .target(
             name: "AppStoreAPI",
             dependencies: [
                 "AppStoreConnect",
                 .product(name: "URLQueryEncoder", package: "URLQueryEncoder"),
             ],
-            exclude: [
-                "app_store_connect_api_3.5_openapi.json",
-                "patches.awk",
-                "patches.jq",
-            ]
-        ),
+            exclude: ["BUILD.bazel"]),
         .target(
             name: "EnterpriseAPI",
             dependencies: [
                 "AppStoreConnect",
                 .product(name: "URLQueryEncoder", package: "URLQueryEncoder"),
             ],
-            exclude: [
-                "enterprise_api_1.0_openapi.json"
-            ]
-        ),
+            exclude: ["BUILD.bazel"]),
+
+        // Examples
+        .executableTarget(
+            name: "invite_beta_tester",
+            dependencies: [
+                "AppStoreAPI",
+                "AppStoreConnect",
+                "Utilities",
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+            ],
+            path: "Examples/invite_beta_tester",
+            exclude: ["BUILD.bazel"]),
+        .executableTarget(
+            name: "invite_user",
+            dependencies: [
+                "AppStoreAPI",
+                "AppStoreConnect",
+                "EnterpriseAPI",
+                "Utilities",
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+            ],
+            path: "Examples/invite_user",
+            exclude: ["BUILD.bazel"]),
+        .executableTarget(
+            name: "list_builds",
+            dependencies: [
+                "AppStoreAPI",
+                "AppStoreConnect",
+                "Utilities",
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+            ],
+            path: "Examples/list_builds",
+            exclude: ["BUILD.bazel"]),
+        .executableTarget(
+            name: "register_device",
+            dependencies: [
+                "AppStoreAPI",
+                "AppStoreConnect",
+                "Utilities",
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+            ],
+            path: "Examples/register_device",
+            exclude: ["BUILD.bazel"]),
+        .executableTarget(
+            name: "sales_finance_reports",
+            dependencies: [
+                "AppStoreAPI",
+                "AppStoreConnect",
+                "Utilities",
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+            ],
+            path: "Examples/sales_finance_reports",
+            exclude: ["BUILD.bazel"]),
+        .executableTarget(
+            name: "upload_preview",
+            dependencies: [
+                "AppStoreAPI",
+                "AppStoreConnect",
+                "Utilities",
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                .product(name: "Crypto", package: "swift-crypto"),
+            ],
+            path: "Examples/upload_preview",
+            exclude: ["BUILD.bazel"]),
+        .executableTarget(
+            name: "upload_screenshot",
+            dependencies: [
+                "AppStoreAPI",
+                "AppStoreConnect",
+                "Utilities",
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                .product(name: "Crypto", package: "swift-crypto"),
+            ],
+            path: "Examples/upload_screenshot",
+            exclude: ["BUILD.bazel"]),
+        .target(
+            name: "Utilities",
+            dependencies: ["AppStoreConnect"],
+            path: "Examples/Utilities",
+            exclude: ["BUILD.bazel"]),
+
+        // Tests
         .target(
             name: "Mocks",
             dependencies: ["AppStoreConnect"],
-            path: "Tests/Mocks"
-        ),
+            path: "Tests/Mocks",
+            exclude: ["BUILD.bazel"]),
         .testTarget(
             name: "AppStoreConnectTests",
-            dependencies: ["AppStoreConnect", "Mocks"]
-        ),
+            dependencies: ["AppStoreConnect", "Mocks"],
+            exclude: ["BUILD.bazel"]),
         .testTarget(
             name: "AppStoreAPITests",
-            dependencies: ["AppStoreAPI", "AppStoreConnect", "Mocks"]
-        ),
-        .binaryTarget(
-            name: "create-api",
-            url: "https://github.com/aaronsky/CreateAPI/releases/download/0.2.0-alpha.3/create-api.artifactbundle.zip",
-            checksum: "87cca616f8e80c08773e5da7f1267abeecbca44162ac67f7dd3f853464a0ed1e"
-                // path: "create-api.artifactbundle.zip"
-        ),
-        .plugin(
-            name: "CreateAPI",
-            capability: .command(
-                intent: .custom(
-                    verb: "generate-openapi",
-                    description: "Generates the OpenAPI entities and paths using CreateAPI"
-                ),
-                permissions: [
-                    .writeToPackageDirectory(reason: "To output the generated source code")
-                ]
-            ),
-            dependencies: [
-                .target(name: "create-api")
-            ]
-        ),
+            dependencies: ["AppStoreAPI", "AppStoreConnect", "Mocks"],
+            exclude: ["BUILD.bazel"]),
     ]
 )

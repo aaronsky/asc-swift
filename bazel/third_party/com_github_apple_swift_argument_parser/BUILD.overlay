@@ -1,0 +1,19 @@
+"""
+Swift Argument Parser is a straightforward, type-safe argument parsing for Swift.
+"""
+
+load("@rules_swift//swift:swift_library.bzl", "swift_library")
+
+swift_library(
+    name = "ArgumentParser",
+    module_name = "ArgumentParser",
+    visibility = ["//visibility:public"],
+    srcs = glob(["Sources/ArgumentParser/**/*.swift"]),
+    deps = [":ArgumentParserToolInfo"],
+)
+
+swift_library(
+    name = "ArgumentParserToolInfo",
+    module_name = "ArgumentParserToolInfo",
+    srcs = glob(["Sources/ArgumentParserToolInfo/**/*.swift"]),
+)

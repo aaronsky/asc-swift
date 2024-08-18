@@ -1,0 +1,4 @@
+.build/
+/.github/
+.swiftpm/
+/.vscode/

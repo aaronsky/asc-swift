@@ -22,7 +22,7 @@ public struct Environment {
         }
 
         /// Context for the error thrown.
-        public struct ParseContext: Equatable {
+        public struct ParseContext: Equatable, Sendable {
             /// The content of the line the error occurred at.
             public var content: String
             /// The line number.

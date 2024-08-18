@@ -1,0 +1,12 @@
+load("@rules_swift//swift:swift_test.bzl", "swift_test")
+
+swift_test(
+    name = "AppStoreConnectTests",
+    package_name = "AppStoreConnect",
+    srcs = glob(["*.swift"]),
+    module_name = "AppStoreConnectTests",
+    deps = [
+        "//Sources/AppStoreConnect",
+        "//Tests/Mocks",
+    ],
+)

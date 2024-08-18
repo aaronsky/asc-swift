@@ -17,8 +17,18 @@ import Utilities
 
     enum UserRole: String, ExpressibleByArgument {
         case admin
+        case finance
         case accountHolder
+        case sales
+        case marketing
+        case appManager
         case developer
+        case accessToReports
+        case customerSupport
+        case createApps
+        case cloudManagedDeveloperID
+        case cloudManagedAppDistribution
+        case generateIndividualKeys
     }
 
     @Option var api: API = .appStore
@@ -135,10 +145,30 @@ extension AppStoreAPI.UserRole {
         switch role {
         case .admin:
             self = .admin
+        case .finance:
+            self = .finance
         case .accountHolder:
             self = .accountHolder
+        case .sales:
+            self = .sales
+        case .marketing:
+            self = .marketing
+        case .appManager:
+            self = .appManager
         case .developer:
             self = .developer
+        case .accessToReports:
+            self = .accessToReports
+        case .customerSupport:
+            self = .customerSupport
+        case .createApps:
+            self = .createApps
+        case .cloudManagedDeveloperID:
+            self = .cloudManagedDeveloperID
+        case .cloudManagedAppDistribution:
+            self = .cloudManagedAppDistribution
+        case .generateIndividualKeys:
+            self = .generateIndividualKeys
         }
     }
 }
@@ -152,6 +182,8 @@ extension EnterpriseAPI.UserRole {
             self = .accountHolder
         case .developer:
             self = .developer
+        default:
+            fatalError("role \(role) not supported by Enterprise Program API")
         }
     }
 }

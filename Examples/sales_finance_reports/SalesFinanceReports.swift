@@ -9,7 +9,7 @@ import Utilities
 #endif
 
 @main struct SalesFinanceReports: AsyncParsableCommand {
-    static var configuration = CommandConfiguration(
+    static let configuration = CommandConfiguration(
         abstract: "A utility for downloading sales and finance reports.",
         version: "0.1.0",
         subcommands: [Sales.self, Finance.self],

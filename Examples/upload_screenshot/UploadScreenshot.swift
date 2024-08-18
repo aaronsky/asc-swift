@@ -10,8 +10,50 @@ import Utilities
 #endif
 
 @main struct UploadScreenshot: AsyncParsableCommand {
+    enum Platform: String, ExpressibleByArgument {
+        case iOS
+        case macOS
+        case tvOS
+        case visionOS
+    }
+
+    enum ScreenshotDisplayType: String, ExpressibleByArgument {
+        case appIphone67
+        case appIphone61
+        case appIphone65
+        case appIphone58
+        case appIphone55
+        case appIphone47
+        case appIphone40
+        case appIphone35
+        case appIpadPro3gen129
+        case appIpadPro3gen11
+        case appIpadPro129
+        case appIpad105
+        case appIpad97
+        case appDesktop
+        case appWatchUltra
+        case appWatchSeries7
+        case appWatchSeries4
+        case appWatchSeries3
+        case appAppleTv
+        case appAppleVisionPro
+        case imessageAppIphone67
+        case imessageAppIphone61
+        case imessageAppIphone65
+        case imessageAppIphone58
+        case imessageAppIphone55
+        case imessageAppIphone47
+        case imessageAppIphone40
+        case imessageAppIpadPro3gen129
+        case imessageAppIpadPro3gen11
+        case imessageAppIpadPro129
+        case imessageAppIpad105
+        case imessageAppIpad97
+    }
+
     @Option var bundleID: String
-    @Option var platform: Resources.V1.Apps.WithID.AppStoreVersions.FilterPlatform
+    @Option var platform: Platform
     @Option var version: String
     @Option var locale: String
     @Option var screenshotType: ScreenshotDisplayType
@@ -47,7 +89,7 @@ import Utilities
         let version = try await client
             .send(
                 Resources.v1.apps.id(app.id).appStoreVersions
-                    .get(filterPlatform: [platform], filterVersionString: [version])
+                    .get(filterPlatform: [.init(platform)], filterVersionString: [version])
             )
             .data.first!
 
@@ -80,7 +122,7 @@ import Utilities
                 let screenshotSetsResponse: AppScreenshotSetsResponse = try await client.send(.get(related))
                 screenshotSets.append(
                     contentsOf: screenshotSetsResponse.data.filter {
-                        $0.attributes?.screenshotDisplayType == screenshotType
+                        $0.attributes?.screenshotDisplayType == .init(screenshotType)
                     }
                 )
             }
@@ -89,7 +131,7 @@ import Utilities
                     Resources.v1.appScreenshotSets.post(
                         .init(
                             data: .init(
-                                attributes: .init(screenshotDisplayType: screenshotType),
+                                attributes: .init(screenshotDisplayType: .init(screenshotType)),
                                 relationships: .init(
                                     appStoreVersionLocalization: .init(data: .init(id: localization.id))
                                 )
@@ -160,5 +202,88 @@ import Utilities
     }
 }
 
-extension Resources.V1.Apps.WithID.AppStoreVersions.FilterPlatform: ExpressibleByArgument {}
-extension ScreenshotDisplayType: ExpressibleByArgument {}
+extension Resources.V1.Apps.WithID.AppStoreVersions.FilterPlatform {
+    init(_ platform: UploadScreenshot.Platform) {
+        switch platform {
+        case .iOS:
+            self = .ios
+        case .macOS:
+            self = .macOs
+        case .tvOS:
+            self = .tvOs
+        case .visionOS:
+            self = .visionOs
+        }
+    }
+}
+
+extension ScreenshotDisplayType {
+    init(_ screenshotType: UploadScreenshot.ScreenshotDisplayType) {
+        switch screenshotType {
+        case .appIphone67:
+            self = .appIphone67
+        case .appIphone61:
+            self = .appIphone61
+        case .appIphone65:
+            self = .appIphone65
+        case .appIphone58:
+            self = .appIphone58
+        case .appIphone55:
+            self = .appIphone55
+        case .appIphone47:
+            self = .appIphone47
+        case .appIphone40:
+            self = .appIphone40
+        case .appIphone35:
+            self = .appIphone35
+        case .appIpadPro3gen129:
+            self = .appIpadPro3gen129
+        case .appIpadPro3gen11:
+            self = .appIpadPro3gen11
+        case .appIpadPro129:
+            self = .appIpadPro129
+        case .appIpad105:
+            self = .appIpad105
+        case .appIpad97:
+            self = .appIpad97
+        case .appDesktop:
+            self = .appDesktop
+        case .appWatchUltra:
+            self = .appWatchUltra
+        case .appWatchSeries7:
+            self = .appWatchSeries7
+        case .appWatchSeries4:
+            self = .appWatchSeries4
+        case .appWatchSeries3:
+            self = .appWatchSeries3
+        case .appAppleTv:
+            self = .appAppleTv
+        case .appAppleVisionPro:
+            self = .appAppleVisionPro
+        case .imessageAppIphone67:
+            self = .imessageAppIphone67
+        case .imessageAppIphone61:
+            self = .imessageAppIphone61
+        case .imessageAppIphone65:
+            self = .imessageAppIphone65
+        case .imessageAppIphone58:
+            self = .imessageAppIphone58
+        case .imessageAppIphone55:
+            self = .imessageAppIphone55
+        case .imessageAppIphone47:
+            self = .imessageAppIphone47
+        case .imessageAppIphone40:
+            self = .imessageAppIphone40
+        case .imessageAppIpadPro3gen129:
+            self = .imessageAppIpadPro3gen129
+        case .imessageAppIpadPro3gen11:
+            self = .imessageAppIpadPro3gen11
+        case .imessageAppIpadPro129:
+            self = .imessageAppIpadPro129
+        case .imessageAppIpad105:
+            self = .imessageAppIpad105
+        case .imessageAppIpad97:
+            self = .imessageAppIpad97
+        }
+    }
+}

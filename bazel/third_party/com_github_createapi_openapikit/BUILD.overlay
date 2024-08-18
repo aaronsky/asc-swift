@@ -1,0 +1,29 @@
+"""
+OpenAPIKit is a library containing Swift types that encode to- and decode from
+[OpenAPI](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md)
+Documents and their components.
+"""
+
+load("@rules_swift//swift:swift_library.bzl", "swift_library")
+
+swift_library(
+    name = "OpenAPIKit30",
+    module_name = "OpenAPIKit30",
+    visibility = ["//visibility:public"],
+    srcs = glob(["Sources/OpenAPIKit30/**/*.swift"]),
+    deps = [":OpenAPIKitCore"],
+)
+
+swift_library(
+    name = "OpenAPIKit",
+    module_name = "OpenAPIKit",
+    visibility = ["//visibility:public"],
+    srcs = glob(["Sources/OpenAPIKit/**/*.swift"]),
+    deps = [":OpenAPIKitCore"],
+)
+
+swift_library(
+    name = "OpenAPIKitCore",
+    module_name = "OpenAPIKitCore",
+    srcs = glob(["Sources/OpenAPIKitCore/**/*.swift"]),
+)

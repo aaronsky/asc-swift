@@ -1,0 +1,13 @@
+load("@rules_swift//swift:swift_library.bzl", "swift_library")
+
+swift_library(
+    name = "EnterpriseAPI",
+    package_name = "AppStoreConnect",
+    srcs = glob(["Generated/**/*.swift"]),
+    module_name = "EnterpriseAPI",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//Sources/AppStoreConnect",
+        "@com_github_createapi_urlqueryencoder//:URLQueryEncoder",
+    ],
+)

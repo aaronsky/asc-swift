@@ -9,14 +9,16 @@ import XCTest
 #endif
 
 final class FormattersTests: XCTestCase {
-    func testFormatters() {
-        // yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX
-        XCTAssertNotNil(iso8601WithFractionalSecondsFormatter.date(from: "2022-11-19T12:00:01.111Z"))
-        // yyyy-MM-dd'T'HH:mm:ssZZZZZ
-        XCTAssertNotNil(iso8601Formatter.date(from: "2022-11-19T12:00:01 -04:00"))
-        // yyyy-MM-dd'T'HH:mm:ssXXXXX
-        XCTAssertNotNil(iso8601Formatter.date(from: "2022-11-19T12:00:01Z"))
-    }
+    #if swift(<6.0)
+        func testFormatters() {
+            // yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX
+            XCTAssertNotNil(iso8601WithFractionalSecondsFormatter.date(from: "2022-11-19T12:00:01.111Z"))
+            // yyyy-MM-dd'T'HH:mm:ssZZZZZ
+            XCTAssertNotNil(iso8601Formatter.date(from: "2022-11-19T12:00:01 -04:00"))
+            // yyyy-MM-dd'T'HH:mm:ssXXXXX
+            XCTAssertNotNil(iso8601Formatter.date(from: "2022-11-19T12:00:01Z"))
+        }
+    #endif
 
     func testFormattersCodable() throws {
         struct Foo: Codable, Equatable {

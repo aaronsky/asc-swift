@@ -1,0 +1,12 @@
+"""
+GrammaticalNumber turns singular words to plurals.
+"""
+
+load("@rules_swift//swift:swift_library.bzl", "swift_library")
+
+swift_library(
+    name = "GrammaticalNumber",
+    module_name = "GrammaticalNumber",
+    visibility = ["//visibility:public"],
+    srcs = glob(["Sources/GrammaticalNumber/*.swift"]),
+)

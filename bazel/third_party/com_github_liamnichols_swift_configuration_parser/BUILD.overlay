@@ -1,0 +1,12 @@
+"""
+ConfigurationParser is a simple configuration file parser for Swift.
+"""
+
+load("@rules_swift//swift:swift_library.bzl", "swift_library")
+
+swift_library(
+    name = "ConfigurationParser",
+    module_name = "ConfigurationParser",
+    visibility = ["//visibility:public"],
+    srcs = glob(["Sources/ConfigurationParser/**/*.swift"]),
+)

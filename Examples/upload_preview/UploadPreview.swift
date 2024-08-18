@@ -10,8 +10,34 @@ import Utilities
 #endif
 
 @main struct UploadPreview: AsyncParsableCommand {
+    enum Platform: String, ExpressibleByArgument {
+        case iOS
+        case macOS
+        case tvOS
+        case visionOS
+    }
+
+    enum PreviewType: String, ExpressibleByArgument {
+        case iphone67
+        case iphone61
+        case iphone65
+        case iphone58
+        case iphone55
+        case iphone47
+        case iphone40
+        case iphone35
+        case ipadPro3gen129
+        case ipadPro3gen11
+        case ipadPro129
+        case ipad105
+        case ipad97
+        case desktop
+        case appleTv
+        case appleVisionPro
+    }
+
     @Option var bundleID: String
-    @Option var platform: Resources.V1.Apps.WithID.AppStoreVersions.FilterPlatform
+    @Option var platform: Platform
     @Option var version: String
     @Option var locale: String
     @Option var previewType: PreviewType
@@ -47,7 +73,7 @@ import Utilities
         let version = try await client
             .send(
                 Resources.v1.apps.id(app.id).appStoreVersions
-                    .get(filterPlatform: [platform], filterVersionString: [version])
+                    .get(filterPlatform: [.init(platform)], filterVersionString: [version])
             )
             .data.first!
 
@@ -79,7 +105,7 @@ import Utilities
             if let related = localization.relationships?.appPreviewSets?.links?.related {
                 let previewSetsResponse: AppPreviewSetsResponse = try await client.send(.get(related))
                 previewSets.append(
-                    contentsOf: previewSetsResponse.data.filter { $0.attributes?.previewType == previewType }
+                    contentsOf: previewSetsResponse.data.filter { $0.attributes?.previewType == .init(previewType) }
                 )
             }
             if previewSets.isEmpty {
@@ -87,7 +113,7 @@ import Utilities
                     Resources.v1.appPreviewSets.post(
                         .init(
                             data: .init(
-                                attributes: .init(previewType: previewType),
+                                attributes: .init(previewType: .init(previewType)),
                                 relationships: .init(
                                     appStoreVersionLocalization: .init(data: .init(id: localization.id))
                                 )
@@ -158,5 +184,56 @@ import Utilities
     }
 }
 
-extension Resources.V1.Apps.WithID.AppStoreVersions.FilterPlatform: ExpressibleByArgument {}
-extension PreviewType: ExpressibleByArgument {}
+extension Resources.V1.Apps.WithID.AppStoreVersions.FilterPlatform {
+    init(_ platform: UploadPreview.Platform) {
+        switch platform {
+        case .iOS:
+            self = .ios
+        case .macOS:
+            self = .macOs
+        case .tvOS:
+            self = .tvOs
+        case .visionOS:
+            self = .visionOs
+        }
+    }
+}
+
+extension PreviewType {
+    init(_ previewType: UploadPreview.PreviewType) {
+        switch previewType {
+        case .iphone67:
+            self = .iphone67
+        case .iphone61:
+            self = .iphone61
+        case .iphone65:
+            self = .iphone65
+        case .iphone58:
+            self = .iphone58
+        case .iphone55:
+            self = .iphone55
+        case .iphone47:
+            self = .iphone47
+        case .iphone40:
+            self = .iphone40
+        case .iphone35:
+            self = .iphone35
+        case .ipadPro3gen129:
+            self = .ipadPro3gen129
+        case .ipadPro3gen11:
+            self = .ipadPro3gen11
+        case .ipadPro129:
+            self = .ipadPro129
+        case .ipad105:
+            self = .ipad105
+        case .ipad97:
+            self = .ipad97
+        case .desktop:
+            self = .desktop
+        case .appleTv:
+            self = .appleTv
+        case .appleVisionPro:
+            self = .appleVisionPro
+        }
+    }
+}
