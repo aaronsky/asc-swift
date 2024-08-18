@@ -40,6 +40,7 @@ let package = Package(
                 "Utilities",
                 .product(name: "AppStoreConnect", package: "AppStoreConnect"),
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                .product(name: "EnterpriseProgram", package: "AppStoreConnect"),
             ],
             path: "invite_user"
         ),

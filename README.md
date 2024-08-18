@@ -44,7 +44,7 @@ Then, include `"AppStoreConnect"` as a dependency of your target:
 
 Finally, add `import AppStoreConnect` to your code to import the client, and `import AppStoreAPI` to import the API bindings.
 
-To use the Enterprise Program API, add the `"EnterpriseProgram"` product as a target dependency instead of `"AppStoreConnect"`. It is also supported to include both products as dependencies of the same target.
+To use the Enterprise Program API, add the `"EnterpriseProgram"` product as a target dependency instead of `"AppStoreConnect"`. It is also supported to include both products as dependencies of the same target. See the [invite_user](/Examples/invite_user/InviteUser.swift) sample for a rough example of this.
 
 ## Usage
 
