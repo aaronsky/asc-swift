@@ -82,35 +82,35 @@ test-library-xcode: test-library-xcode-ios test-library-xcode-macos test-library
 .PHONY: test-library-xcode-ios
 test-library-xcode-ios:
 	xcodebuild test \
-		-scheme AppStoreConnect \
+		-scheme AppStoreConnect-Package \
 		-destination "$(DESTINATION_PLATFORM_IOS_SIMULATOR)" \
 		-quiet
 
 .PHONY: test-library-xcode-macos
 test-library-xcode-macos:
 	xcodebuild test \
-		-scheme AppStoreConnect \
+		-scheme AppStoreConnect-Package \
 		-destination "$(DESTINATION_PLATFORM_MACOS)" \
 		-quiet
 
 .PHONY: test-library-xcode-tvos
 test-library-xcode-tvos:
 	xcodebuild test \
-		-scheme AppStoreConnect \
+		-scheme AppStoreConnect-Package \
 		-destination "$(DESTINATION_PLATFORM_TVOS_SIMULATOR)" \
 		-quiet
 
 .PHONY: test-library-xcode-watchos
 test-library-xcode-watchos:
 	xcodebuild \
-		-scheme AppStoreConnect \
+		-scheme AppStoreConnect-Package \
 		-destination "$(DESTINATION_PLATFORM_WATCHOS_SIMULATOR)" \
 		-quiet
 
 .PHONY: test-library-xcode-visionos
 test-library-xcode-visionos:
 	xcodebuild \
-		-scheme AppStoreConnect \
+		-scheme AppStoreConnect-Package \
 		-destination "$(DESTINATION_PLATFORM_VISIONOS_SIMULATOR)" \
 		-quiet
 
