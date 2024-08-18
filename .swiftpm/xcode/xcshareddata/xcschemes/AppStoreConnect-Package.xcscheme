@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AppStoreAPI"
-               BuildableName = "AppStoreAPI"
-               BlueprintName = "AppStoreAPI"
+               BlueprintIdentifier = "AppStoreConnect"
+               BuildableName = "AppStoreConnect"
+               BlueprintName = "AppStoreConnect"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,9 +29,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AppStoreConnect"
-               BuildableName = "AppStoreConnect"
-               BlueprintName = "AppStoreConnect"
+               BlueprintIdentifier = "EnterpriseProgram"
+               BuildableName = "EnterpriseProgram"
+               BlueprintName = "EnterpriseProgram"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -76,9 +76,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AppStoreAPI"
-            BuildableName = "AppStoreAPI"
-            BlueprintName = "AppStoreAPI"
+            BlueprintIdentifier = "AppStoreConnect"
+            BuildableName = "AppStoreConnect"
+            BlueprintName = "AppStoreConnect"
             ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>

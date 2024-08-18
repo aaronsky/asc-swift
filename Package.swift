@@ -15,6 +15,10 @@ let package = Package(
             name: "AppStoreConnect",
             targets: ["AppStoreConnect", "AppStoreAPI"]
         ),
+        .library(
+            name: "EnterpriseProgram",
+            targets: ["AppStoreConnect", "EnterpriseAPI"]
+        ),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-crypto.git", .upToNextMajor(from: "3.2.0")),
@@ -38,6 +42,16 @@ let package = Package(
                 "app_store_connect_api_3.5_openapi.json",
                 "patches.awk",
                 "patches.jq",
+            ]
+        ),
+        .target(
+            name: "EnterpriseAPI",
+            dependencies: [
+                "AppStoreConnect",
+                .product(name: "URLQueryEncoder", package: "URLQueryEncoder"),
+            ],
+            exclude: [
+                "enterprise_api_1.0_openapi.json"
             ]
         ),
         .testTarget(

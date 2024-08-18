@@ -8,62 +8,83 @@ struct Plugin: CommandPlugin {
     }
 
     func performCommand(context: PluginContext, arguments: [String]) async throws {
-        let createAPI = try context.tool(named: "create-api")
-        let executableURL = URL(filePath: createAPI.path.string)
-
         let packageURL = URL(filePath: context.package.directory.string)
-        let configURL = packageURL.appending(components: "Plugins", "CreateAPI", ".create-api.yml")
 
         var argExtractor = ArgumentExtractor(arguments)
         let specURLs = argExtractor.extractOption(named: "spec").map { URL(filePath: $0, relativeTo: packageURL) }
+
+        try runCreateAPI(context: context, specURLs: specURLs)
+
         let specTargetURLs = specURLs.map { $0.deletingLastPathComponent() }
 
+        try syncFiles(
+            [
+                "Generated/Entities/ErrorLinks.swift",
+                "Generated/Entities/ErrorResponse.swift",
+                "Generated/Entities/ErrorSourceParameter.swift",
+                "Generated/Entities/ErrorSourcePointer.swift",
+                "Generated/Entities/PagedDocumentLinks.swift",
+                "Generated/Extensions/AnyJSON.swift",
+            ],
+            relativeTo: specTargetURLs,
+            to: packageURL.appending(components: "Sources", "AppStoreConnect", "Entities")
+        )
+
+        try deleteFiles(
+            ["Generated/Extensions/StringCodingKey.swift"],
+            relativeTo: specTargetURLs
+        )
+
+    }
+
+    func runCreateAPI(context: PluginContext, specURLs: [URL]) throws {
         if specURLs.isEmpty {
             print("no specs to generate for")
             return
         }
 
         for specURL in specURLs {
-            let specDirectoryURL = specURL.deletingLastPathComponent()
-            let moduleName = specDirectoryURL.lastPathComponent
-            let outputURL = specDirectoryURL.appending(component: "Generated")
-
-            let createAPIArguments = [
-                "generate",
-                specURL.path,
-                "--config",
-                configURL.path,
-                "--config-option",
-                "module=\(moduleName)",
-                "--output",
-                outputURL.path,
-                "--clean",
-            ]
-
-            let process = Process()
-            process.executableURL = executableURL
-            process.currentDirectoryURL = packageURL
-            process.arguments = createAPIArguments
-
-            try process.run()
-            process.waitUntilExit()
+            try runCreateAPI(with: specURL, context: context)
         }
+    }
 
-        let sharedFiles = [
-            "Generated/Entities/ErrorLinks.swift",
-            "Generated/Entities/ErrorResponse.swift",
-            "Generated/Entities/ErrorSourceParameter.swift",
-            "Generated/Entities/ErrorSourcePointer.swift",
-            "Generated/Entities/PagedDocumentLinks.swift",
-            "Generated/Extensions/AnyJSON.swift",
+    func runCreateAPI(with specURL: URL, context: PluginContext) throws {
+        let createAPI = try context.tool(named: "create-api")
+        let executableURL = URL(filePath: createAPI.path.string)
+
+        let packageURL = URL(filePath: context.package.directory.string)
+        let configURL = packageURL.appending(components: "Plugins", "CreateAPI", ".create-api.yml")
+
+        let specDirectoryURL = specURL.deletingLastPathComponent()
+        let moduleName = specDirectoryURL.lastPathComponent
+        let outputURL = specDirectoryURL.appending(component: "Generated")
+
+        let createAPIArguments = [
+            "generate",
+            specURL.path,
+            "--config",
+            configURL.path,
+            "--config-option",
+            "module=\(moduleName)",
+            "--output",
+            outputURL.path,
+            "--clean",
         ]
 
-        for sharedFile in sharedFiles {
-            let compareURLs = specTargetURLs.map { URL(filePath: sharedFile, relativeTo: $0) }
+        let process = Process()
+        process.executableURL = executableURL
+        process.currentDirectoryURL = packageURL
+        process.arguments = createAPIArguments
 
-            let fileSet: Set<Data> = try compareURLs.reduce(into: []) { acc, curr in
-                try acc.insert(Data(contentsOf: curr))
-            }
+        try process.run()
+        process.waitUntilExit()
+    }
+
+    func syncFiles(_ files: [String], relativeTo targetURLs: [URL], to destination: URL) throws {
+        for file in files {
+            let compareURLs = targetURLs.map { URL(filePath: file, relativeTo: $0) }
+
+            let fileSet = try compareURLs.reduce(into: Set()) { try $0.insert(Data(contentsOf: $1)) }
 
             if fileSet.count > 1 {
                 throw Error.mismatchedFileContents(compareURLs)
@@ -72,22 +93,22 @@ struct Plugin: CommandPlugin {
             var contents = String(data: fileSet.first!, encoding: .utf8)!
             contents = contents.replacingOccurrences(of: "import AppStoreConnect\n", with: "")
 
-            let src = compareURLs.first!
-            let dest = packageURL.appending(components: "Sources", "AppStoreConnect", "Entities", src.lastPathComponent)
+            let dest = destination.appending(component: compareURLs.first!.lastPathComponent)
 
-            try? FileManager.default.removeItem(at: src)
+            for url in compareURLs {
+                try? FileManager.default.removeItem(at: url)
+            }
+
             try? FileManager.default.removeItem(at: dest)
 
             try contents.write(to: dest, atomically: true, encoding: .utf8)
         }
+    }
 
-        let deleteFiles = [
-            "Generated/Extensions/StringCodingKey.swift"
-        ]
-
-        for delete in deleteFiles {
-            for targetURL in specTargetURLs {
-                try FileManager.default.removeItem(at: URL(filePath: delete, relativeTo: targetURL))
+    func deleteFiles(_ files: [String], relativeTo targetURLs: [URL]) throws {
+        for file in files {
+            for baseURL in targetURLs {
+                try FileManager.default.removeItem(at: URL(filePath: file, relativeTo: baseURL))
             }
         }
     }

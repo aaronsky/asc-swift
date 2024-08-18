@@ -10,7 +10,7 @@ public protocol Authenticator {
     /// The API this ``Authenticator`` is compatible with.
     var api: API { get }
 
-    /// Returns the token to use for authentication with the App Store Connect API.
+    /// Returns the token to use for authentication with the App Store Connect or Enterprise Program APIs.
     /// - Parameters:
     ///   - audience: An identifier supplied to the "aud" parameter on the JWT payload.
     /// - Returns: The token to use for authentication.
