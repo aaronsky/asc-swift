@@ -8,7 +8,11 @@ struct Plugin: CommandPlugin {
     }
 
     func performCommand(context: PluginContext, arguments: [String]) async throws {
+#if swift(>=6.0)
+        let packageURL = context.package.directoryURL
+#else
         let packageURL = URL(fileURLWithPath: context.package.directory.string)
+#endif
 
         var argExtractor = ArgumentExtractor(arguments)
         let specURLs = argExtractor.extractOption(named: "spec").map {
@@ -56,9 +60,17 @@ struct Plugin: CommandPlugin {
 
     func runCreateAPI(with specURL: URL, context: PluginContext) throws {
         let createAPI = try context.tool(named: "create-api")
+#if swift(>=6.0)
+        let executableURL = createAPI.url
+#else
         let executableURL = URL(fileURLWithPath: createAPI.path.string)
+#endif
 
+#if swift(>=6.0)
+        let packageURL = context.package.directoryURL
+#else
         let packageURL = URL(fileURLWithPath: context.package.directory.string)
+#endif
         let configURL =
             packageURL
             .appendingPathComponent("Plugins", isDirectory: true)

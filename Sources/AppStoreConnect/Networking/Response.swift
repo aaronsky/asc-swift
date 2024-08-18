@@ -5,7 +5,7 @@ import Foundation
 #endif
 
 /// Response from sending a ``Request``.
-public struct Response<Received: Equatable>: Equatable {
+public struct Response<Received: Equatable & Sendable>: Equatable, Sendable {
     /// Error thrown when the response from the ``Transport`` fails to meet expectations.
     public enum Error: Swift.Error, Equatable {
         /// The response as requested was unsuccessful, as described by the `statusCode` and `error`.
@@ -19,7 +19,7 @@ public struct Response<Received: Equatable>: Equatable {
     /// The rate limit for the current client.
     ///
     /// https://developer.apple.com/documentation/appstoreconnectapi/identifying_rate_limits
-    public struct Rate: Equatable {
+    public struct Rate: Equatable, Sendable {
         /// The number of requests per hour the client is currently limited to.
         public var limit: Int
         /// The number of remaining requests the client can make this hour.

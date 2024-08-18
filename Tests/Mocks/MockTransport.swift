@@ -6,7 +6,7 @@ import Foundation
 #endif
 
 public actor MockTransport: Transport {
-    public enum Output: Equatable {
+    public enum Output: Equatable, Sendable {
         case data(Response<Data>)
         case fileURL(Response<URL>)
     }

@@ -5,7 +5,7 @@ import Foundation
 #endif
 
 /// A structure for iterating on paged resources asynchronously.
-public struct PagedResponses<Response>: AsyncSequence, AsyncIteratorProtocol where Response: Decodable {
+public struct PagedResponses<Response: Sendable>: AsyncSequence, AsyncIteratorProtocol, Sendable where Response: Decodable {
     /// The type of element produced by this asynchronous sequence.
     public typealias Element = Response
 

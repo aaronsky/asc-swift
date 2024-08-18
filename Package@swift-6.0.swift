@@ -1,4 +1,4 @@
-// swift-tools-version: 5.9
+// swift-tools-version: 6.0
 
 import PackageDescription
 
@@ -88,5 +88,6 @@ let package = Package(
                 .target(name: "create-api")
             ]
         ),
-    ]
+    ],
+    swiftLanguageModes: [.v6]
 )

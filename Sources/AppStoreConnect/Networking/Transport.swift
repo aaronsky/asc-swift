@@ -13,7 +13,7 @@ public enum TransportError: Error, Equatable {
 }
 
 /// Interface for the asynchronous communication layer the ``AppStoreConnectClient`` uses.
-public protocol Transport {
+public protocol Transport: Sendable {
     /// Send the request and receive a ``Response`` asynchronously.
     /// - Parameters:
     ///   - request: A request.
@@ -79,7 +79,7 @@ extension URLSession: Transport {
     func send(
         request: URLRequest,
         decoder: JSONDecoder,
-        completion: @escaping (Result<Response<Data>, any Error>) -> Void
+        completion: @escaping @Sendable (Result<Response<Data>, any Error>) -> Void
     ) {
         let task = dataTask(with: request) { data, response, error in
             completion(
@@ -138,7 +138,7 @@ extension URLSession: Transport {
     ///   - completion: A completion handler. Executed on an arbitrary queue.
     func download(
         request: URLRequest,
-        completion: @escaping (Result<Response<URL>, any Error>) -> Void
+        completion: @escaping @Sendable (Result<Response<URL>, any Error>) -> Void
     ) {
         let task = downloadTask(with: request) { fileURL, response, error in
             completion(
@@ -204,7 +204,7 @@ extension URLSession: Transport {
         request: URLRequest,
         data: Data,
         decoder: JSONDecoder,
-        completion: @escaping (Result<Response<Data>, any Error>) -> Void
+        completion: @escaping @Sendable (Result<Response<Data>, any Error>) -> Void
     ) {
         let task = uploadTask(with: request, from: data) { responseData, response, error in
             completion(

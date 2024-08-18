@@ -95,7 +95,7 @@ extension URL {
 }
 
 /// A request model used to describe a resource's attributes.
-public struct Request<Response> {
+public struct Request<Response>: Sendable {
     /// Path to the resource.
     public var path: String
     /// Base URL that the request should be based on.
@@ -105,7 +105,7 @@ public struct Request<Response> {
     /// Query string encoded parameters.
     public var query: [(String, String?)]?
     /// Body of the request.
-    public var body: (any Encodable)?
+    public var body: (any Encodable & Sendable)?
     /// Request headers.
     public var headers: [String: String]?
     /// Operation ID.
@@ -127,7 +127,7 @@ public struct Request<Response> {
         baseURL: URL? = nil,
         method: String,
         query: [(String, String?)]? = nil,
-        body: (any Encodable)? = nil,
+        body: (any Encodable & Sendable)? = nil,
         headers: [String: String]? = nil,
         id: String? = nil
     ) {
@@ -167,7 +167,7 @@ public struct Request<Response> {
     public static func post(
         _ path: String,
         query: [(String, String?)]? = nil,
-        body: (any Encodable)? = nil,
+        body: (any Encodable & Sendable)? = nil,
         headers: [String: String]? = nil
     ) -> Request {
         .init(path: path, method: "POST", query: query, body: body, headers: headers)
@@ -185,7 +185,7 @@ public struct Request<Response> {
     public static func put(
         _ path: String,
         query: [(String, String?)]? = nil,
-        body: (any Encodable)? = nil,
+        body: (any Encodable & Sendable)? = nil,
         headers: [String: String]? = nil
     ) -> Request {
         .init(path: path, method: "PUT", query: query, body: body, headers: headers)
@@ -203,7 +203,7 @@ public struct Request<Response> {
     public static func patch(
         _ path: String,
         query: [(String, String?)]? = nil,
-        body: (any Encodable)? = nil,
+        body: (any Encodable & Sendable)? = nil,
         headers: [String: String]? = nil
     ) -> Request {
         .init(path: path, method: "PATCH", query: query, body: body, headers: headers)
@@ -221,7 +221,7 @@ public struct Request<Response> {
     public static func delete(
         _ path: String,
         query: [(String, String?)]? = nil,
-        body: (any Encodable)? = nil,
+        body: (any Encodable & Sendable)? = nil,
         headers: [String: String]? = nil
     ) -> Request {
         .init(path: path, method: "DELETE", query: query, body: body, headers: headers)
@@ -303,7 +303,7 @@ public struct Request<Response> {
     public static func post(
         _ url: URL,
         query: [(String, String?)]? = nil,
-        body: (any Encodable)? = nil,
+        body: (any Encodable & Sendable)? = nil,
         headers: [String: String]? = nil
     ) -> Request {
         .init(path: "", baseURL: url, method: "POST", query: query, body: body, headers: headers)
@@ -320,7 +320,7 @@ public struct Request<Response> {
     public static func put(
         _ url: URL,
         query: [(String, String?)]? = nil,
-        body: (any Encodable)? = nil,
+        body: (any Encodable & Sendable)? = nil,
         headers: [String: String]? = nil
     ) -> Request {
         .init(path: "", baseURL: url, method: "PUT", query: query, body: body, headers: headers)
@@ -337,7 +337,7 @@ public struct Request<Response> {
     public static func patch(
         _ url: URL,
         query: [(String, String?)]? = nil,
-        body: (any Encodable)? = nil,
+        body: (any Encodable & Sendable)? = nil,
         headers: [String: String]? = nil
     ) -> Request {
         .init(path: "", baseURL: url, method: "PATCH", query: query, body: body, headers: headers)
@@ -354,7 +354,7 @@ public struct Request<Response> {
     public static func delete(
         _ url: URL,
         query: [(String, String?)]? = nil,
-        body: (any Encodable)? = nil,
+        body: (any Encodable & Sendable)? = nil,
         headers: [String: String]? = nil
     ) -> Request {
         .init(path: "", baseURL: url, method: "DELETE", query: query, body: body, headers: headers)

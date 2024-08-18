@@ -7,7 +7,7 @@ import Foundation
 #endif
 
 public struct MockResources {
-    public struct Content: Codable, Equatable {
+    public struct Content: Codable, Equatable, Sendable {
         public var name: String
         public var age: Int
 
@@ -19,7 +19,7 @@ public struct MockResources {
 
     public let content = Content(name: "test", age: 10)
 
-    public struct PagedContent: Codable, Equatable {
+    public struct PagedContent: Codable, Equatable, Sendable {
         public var name: String
         public var age: Int
         public var links: PagedDocumentLinks?
@@ -53,7 +53,7 @@ public struct MockResources {
         )
     )
 
-    public struct Body: Codable, Equatable {
+    public struct Body: Codable, Equatable, Sendable {
         public var name: String
         public var age: Int
 
