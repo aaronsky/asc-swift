@@ -1,4 +1,5 @@
 import Foundation
+import Mocks
 import XCTest
 
 @testable import AppStoreConnect
@@ -69,7 +70,7 @@ final class AppStoreConnectTests: XCTestCase {
             testData.resources.pagedContentNext,
             testData.resources.pagedContentLast,
         ]
-        for try await response: MockResources.PagedContent in testData.context.client.pages(
+        for try await response: MockResources.PagedContent in await testData.context.client.pages(
             testData.context.request()
         ) {
             defer { page += 1 }

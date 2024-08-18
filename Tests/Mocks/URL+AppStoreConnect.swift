@@ -5,7 +5,7 @@ import Foundation
 #endif
 
 extension URL {
-    init() {
+    public init() {
         self.init(string: "https://www.apple.com")!
     }
 }

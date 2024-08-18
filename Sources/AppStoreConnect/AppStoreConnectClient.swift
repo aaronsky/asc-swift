@@ -60,8 +60,7 @@ public actor AppStoreConnectClient {
     /// - Parameter request: A request.
     /// - Returns: The response from the App Store Connect API.
     /// - Throws: An error describing the manner in which the request failed to complete.
-    public func send<Response>(_ request: Request<Response>) async throws -> Response
-    where Response: Decodable {
+    public func send<Response>(_ request: Request<Response>) async throws -> Response where Response: Decodable {
         let urlRequest = try URLRequest(request: request, encoder: encoder, authenticator: &authenticator)
         let response = try await transport.send(request: urlRequest, decoder: decoder)
         try response.check()
@@ -74,9 +73,7 @@ public actor AppStoreConnectClient {
     /// Convenience method for accessing a series of paged resources in a sequence asynchronously.
     /// - Parameter request: The initial request of the sequence.
     /// - Returns: A ``PagedResponses`` sequence which will provide with each page's response asynchronously.
-    public nonisolated func pages<Response>(_ request: Request<Response>)
-        -> PagedResponses<Response>
-    {
+    public nonisolated func pages<Response>(_ request: Request<Response>) -> PagedResponses<Response> {
         PagedResponses(request: request, client: self)
     }
 

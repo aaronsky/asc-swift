@@ -12,7 +12,7 @@ extension URLRequest {
     ///   - authenticator: Authorization provider.
     /// - Throws: An error if the URL constructed from the request is invalid
     ///           or if there is a problem retrieving an authentication token.
-    public init<Response>(
+    package init<Response>(
         request: Request<Response>,
         encoder: JSONEncoder,
         authenticator: inout any Authenticator
@@ -37,7 +37,7 @@ extension URLRequest {
     ///   - encoder: An encoder.
     ///   - authenticator: Authorization provider.
     /// - Throws: An error if there is a problem retrieving an authentication token.
-    public init(
+    package init(
         url: URL,
         method: String? = nil,
         headers: [(String, String?)] = [],

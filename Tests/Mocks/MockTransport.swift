@@ -5,31 +5,31 @@ import Foundation
     import FoundationNetworking
 #endif
 
-final class MockTransport: Transport {
-    enum Output: Equatable {
+public actor MockTransport: Transport {
+    public enum Output: Equatable {
         case data(Response<Data>)
         case fileURL(Response<URL>)
     }
 
-    enum Error: Swift.Error, Equatable {
+    public enum Error: Swift.Error, Equatable {
         case tooManyRequests
         case unexpectedResponse(Output)
     }
 
-    var history: [URLRequest] = []
-    var responses: [Output]
+    public var history: [URLRequest] = []
+    public var responses: [Output]
 
-    init(
+    public init(
         responses: [Output]
     ) {
         self.responses = responses
     }
 
-    func request<T>() -> Request<T> {
+    public func request<T>() -> Request<T> {
         .init(path: "test", method: "GET")
     }
 
-    func send(request: URLRequest, decoder: JSONDecoder) async throws -> Response<Data> {
+    public func send(request: URLRequest, decoder: JSONDecoder) async throws -> Response<Data> {
         history.append(request)
 
         if responses.isEmpty {
@@ -44,7 +44,7 @@ final class MockTransport: Transport {
         }
     }
 
-    func download(request: URLRequest) async throws -> Response<URL> {
+    public func download(request: URLRequest) async throws -> Response<URL> {
         history.append(request)
 
         if responses.isEmpty {
@@ -59,7 +59,7 @@ final class MockTransport: Transport {
         }
     }
 
-    func upload(request: URLRequest, data: Data, decoder: JSONDecoder) async throws -> Response<Data> {
+    public func upload(request: URLRequest, data: Data, decoder: JSONDecoder) async throws -> Response<Data> {
         try await send(request: request, decoder: decoder)
     }
 }

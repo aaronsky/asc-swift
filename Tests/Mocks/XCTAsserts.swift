@@ -6,7 +6,7 @@ import XCTest
 #endif
 
 // swift-format-ignore: AlwaysUseLowerCamelCase
-func XCTAssertThrowsError<T>(
+public func XCTAssertThrowsError<T>(
     _ expression: @autoclosure () async throws -> T,
     _ message: @autoclosure () -> String = "",
     file: StaticString = #filePath,
