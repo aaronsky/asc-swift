@@ -6,7 +6,7 @@ Upload screenshots, app previews, attachments for App Review, and routing app co
 
 In this document, the process of uploading an app screenshot to App Store Connect will be explained. The workflow is the same for uploading other types of assets. 
 
-Uploading assets to the App Store Connect API can be complex, despite being rigorously procedural. Anything that is not answered by this document may be answered and applicable to Apple's own documentation page via [Uploading Assets to App Store Connect](https://developer.apple.com/documentation/appstoreconnectapi/uploading_assets_to_app_store_connect). This document also presumes that you have an authenticated ``AppStoreConnectClient`` instance at the ready. 
+Uploading assets to the App Store Connect API can be complex, despite being rigorously procedural. Anything that is not answered by this document may be answered and applicable to Apple's own documentation page via [Uploading Assets to App Store Connect](https://developer.apple.com/documentation/appstoreconnectapi/uploading_assets_to_app_store_connect). This document also presumes that you have an authenticated ``AppStoreConnect/AppStoreConnectClient`` instance at the ready. 
 
 ### Uploading a Screenshot
 

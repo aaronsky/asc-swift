@@ -134,7 +134,7 @@ public struct Response<Received: Equatable>: Equatable {
 
     /// Checks the response for any unacceptable properties, such as a non-2XX status code, in order to verify integrity.
     /// - Throws: A ``Response/Error`` if the status code is not indicative of success.
-    public func check() throws {
+    package func check() throws {
         switch statusCode {
         case 429:
             throw Error.rateLimitExceeded(error: errorResponse, rate: rate, response: response)

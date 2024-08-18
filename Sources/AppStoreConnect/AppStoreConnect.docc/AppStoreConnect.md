@@ -1,12 +1,10 @@
 # ``AppStoreConnect``
 
-A Swift library for accessing Apple's App Store Connect API.
+A Swift library for accessing Apple's App Store Connect API and Enterprise Program API.
 
 ## Overview
 
-The entire [publicly documented API surface](https://developer.apple.com/documentation/appstoreconnectapi) is supported by this package.
-
-[App Store Connect API Release Notes](https://developer.apple.com/documentation/appstoreconnectapi/app_store_connect_api_release_notes)
+This target is the client, networking layer, authentication layer, and queueing system for requests to the App Store Connect API and Enterprise Program API. The `AppStoreAPI` and `EnterpriseAPI` targets are the API layers.
 
 ## Topics
 
@@ -14,7 +12,6 @@ The entire [publicly documented API surface](https://developer.apple.com/documen
 
 - <doc:GettingStarted>
 - ``AppStoreConnectClient``
-- ``Resources``
 
 ### Authentication
 
@@ -31,18 +28,6 @@ The entire [publicly documented API surface](https://developer.apple.com/documen
 - ``AppStoreConnectClient/pages(_:)``
 - ``PagedResponses``
 - ``PagedDocumentLinks``
-- ``PagingInformation``
-- ``ResourceLinks``
-- ``DocumentLinks``
-
-### Uploading Files
-
-- <doc:UploadingFiles>
-- ``AppStoreConnectClient/upload(operation:from:)``
-- ``UploadOperation``
-- ``HTTPHeader``
-- ``AppMediaAssetState``
-- ``AppMediaStateError``
 
 ### Internals
 

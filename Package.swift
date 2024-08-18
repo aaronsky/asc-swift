@@ -80,14 +80,19 @@ let package = Package(
             ],
             swiftSettings: swift6UpcomingFeatures + swift7UpcomingFeatures
         ),
+        .target(
+            name: "Mocks",
+            dependencies: ["AppStoreConnect"],
+            path: "Tests/Mocks"
+        ),
         .testTarget(
             name: "AppStoreConnectTests",
-            dependencies: ["AppStoreConnect"],
+            dependencies: ["AppStoreConnect", "Mocks"],
             swiftSettings: swift6UpcomingFeatures + swift7UpcomingFeatures
         ),
         .testTarget(
             name: "AppStoreAPITests",
-            dependencies: ["AppStoreAPI", "AppStoreConnect"],
+            dependencies: ["AppStoreAPI", "AppStoreConnect", "Mocks"],
             swiftSettings: swift6UpcomingFeatures + swift7UpcomingFeatures
         ),
         .binaryTarget(

@@ -5,18 +5,18 @@ import Foundation
     import FoundationNetworking
 #endif
 
-struct MockContext {
-    var client: AppStoreConnectClient
-    var transport: MockTransport
-    var authenticator: MockAuthenticator
+public struct MockContext {
+    public var client: AppStoreConnectClient
+    public var transport: MockTransport
+    public var authenticator: MockAuthenticator
 
-    init() {
+    public init() {
         self.init(responses: [
             .data(MockData.mockingSuccessNoContent())
         ])
     }
 
-    init<Content: Codable>(
+    public init<Content: Codable>(
         content: Content...
     ) throws {
         try self.init(
@@ -25,7 +25,7 @@ struct MockContext {
             })
     }
 
-    init(
+    public init(
         responses: [MockTransport.Output]
     ) {
         self.transport = MockTransport(responses: responses)
@@ -36,7 +36,7 @@ struct MockContext {
         )
     }
 
-    func request<T>() -> Request<T> {
-        transport.request()
+    public func request<T>() async -> Request<T> {
+        await transport.request()
     }
 }

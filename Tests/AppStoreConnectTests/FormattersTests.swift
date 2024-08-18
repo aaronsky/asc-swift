@@ -1,4 +1,5 @@
 import Foundation
+import Mocks
 import XCTest
 
 @testable import AppStoreConnect

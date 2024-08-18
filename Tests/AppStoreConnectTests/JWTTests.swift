@@ -1,4 +1,5 @@
 import Foundation
+import Mocks
 import XCTest
 
 @testable import AppStoreConnect
@@ -22,7 +23,6 @@ import XCTest
 final class JWTTests: XCTestCase {
     func testToken() throws {
         var jwt = try JWT(
-            api: .appStoreConnect,
             keyID: "TEST",
             issuerID: "TEST",
             expiryDuration: 20 * 60,  // 20 minutes
@@ -49,7 +49,6 @@ final class JWTTests: XCTestCase {
     func testTokenBadPEM() throws {
         XCTAssertThrowsError(
             try JWT(
-                api: .appStoreConnect,
                 keyID: "TEST",
                 issuerID: "TEST",
                 expiryDuration: 20 * 60,  // 20 minutes

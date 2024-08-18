@@ -8,15 +8,15 @@
 
 ### Sending Requests
 
-- ``send(_:)-24kzs``
-- ``send(_:)-41wgn``
+- ``send(_:)-4zqp1``
+- ``send(_:)-5w42d``
+- ``send(_:pageAfter:)``
 
 #### Pagination
 
 - ``pages(_:)``
 - ``send(_:pageAfter:)``
 
-### Downloading and Uploading Files
+### Downloading Files
 
 - ``download(_:)``
-- ``upload(operation:from:)``
