@@ -16,7 +16,7 @@ public struct GameCenterLeaderboardSetLocalizationsResponse: Codable, Equatable,
         case gameCenterLeaderboardSet(GameCenterLeaderboardSet)
         case gameCenterLeaderboardSetImage(GameCenterLeaderboardSetImage)
 
-        public init(from decoder: Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
             if let value = try? container.decode(GameCenterLeaderboardSet.self) {
                 self = .gameCenterLeaderboardSet(value)
@@ -30,7 +30,7 @@ public struct GameCenterLeaderboardSetLocalizationsResponse: Codable, Equatable,
             }
         }
 
-        public func encode(to encoder: Encoder) throws {
+        public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
             case .gameCenterLeaderboardSet(let value): try container.encode(value)

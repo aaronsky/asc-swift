@@ -16,7 +16,7 @@ public struct AppPricesV2Response: Codable, Equatable, Sendable {
         case appPricePointV3(AppPricePointV3)
         case territory(Territory)
 
-        public init(from decoder: Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
             if let value = try? container.decode(AppPricePointV3.self) {
                 self = .appPricePointV3(value)
@@ -30,7 +30,7 @@ public struct AppPricesV2Response: Codable, Equatable, Sendable {
             }
         }
 
-        public func encode(to encoder: Encoder) throws {
+        public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
             case .appPricePointV3(let value): try container.encode(value)

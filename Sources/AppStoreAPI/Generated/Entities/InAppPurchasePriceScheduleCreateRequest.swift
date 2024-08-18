@@ -106,7 +106,7 @@ public struct InAppPurchasePriceScheduleCreateRequest: Codable, Equatable, Senda
         case inAppPurchasePriceInlineCreate(InAppPurchasePriceInlineCreate)
         case territoryInlineCreate(TerritoryInlineCreate)
 
-        public init(from decoder: Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
             if let value = try? container.decode(InAppPurchasePriceInlineCreate.self) {
                 self = .inAppPurchasePriceInlineCreate(value)
@@ -120,7 +120,7 @@ public struct InAppPurchasePriceScheduleCreateRequest: Codable, Equatable, Senda
             }
         }
 
-        public func encode(to encoder: Encoder) throws {
+        public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
             case .inAppPurchasePriceInlineCreate(let value): try container.encode(value)

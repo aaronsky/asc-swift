@@ -16,7 +16,7 @@ public struct AppCustomProductPageVersionResponse: Codable, Equatable, Sendable 
         case appCustomProductPage(AppCustomProductPage)
         case appCustomProductPageLocalization(AppCustomProductPageLocalization)
 
-        public init(from decoder: Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
             if let value = try? container.decode(AppCustomProductPage.self) {
                 self = .appCustomProductPage(value)
@@ -30,7 +30,7 @@ public struct AppCustomProductPageVersionResponse: Codable, Equatable, Sendable 
             }
         }
 
-        public func encode(to encoder: Encoder) throws {
+        public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
             case .appCustomProductPage(let value): try container.encode(value)

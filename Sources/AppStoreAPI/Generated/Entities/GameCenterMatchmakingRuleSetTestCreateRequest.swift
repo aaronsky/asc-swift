@@ -82,7 +82,7 @@ public struct GameCenterMatchmakingRuleSetTestCreateRequest: Codable, Equatable,
         case gameCenterMatchmakingTestPlayerPropertyInlineCreate(GameCenterMatchmakingTestPlayerPropertyInlineCreate)
         case gameCenterMatchmakingTestRequestInlineCreate(GameCenterMatchmakingTestRequestInlineCreate)
 
-        public init(from decoder: Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
             if let value = try? container.decode(GameCenterMatchmakingTestPlayerPropertyInlineCreate.self) {
                 self = .gameCenterMatchmakingTestPlayerPropertyInlineCreate(value)
@@ -96,7 +96,7 @@ public struct GameCenterMatchmakingRuleSetTestCreateRequest: Codable, Equatable,
             }
         }
 
-        public func encode(to encoder: Encoder) throws {
+        public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
             case .gameCenterMatchmakingTestPlayerPropertyInlineCreate(let value): try container.encode(value)

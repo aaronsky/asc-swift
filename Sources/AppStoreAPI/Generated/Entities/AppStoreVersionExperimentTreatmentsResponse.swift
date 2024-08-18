@@ -17,7 +17,7 @@ public struct AppStoreVersionExperimentTreatmentsResponse: Codable, Equatable, S
         case appStoreVersionExperimentV2(AppStoreVersionExperimentV2)
         case appStoreVersionExperimentTreatmentLocalization(AppStoreVersionExperimentTreatmentLocalization)
 
-        public init(from decoder: Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
             if let value = try? container.decode(AppStoreVersionExperiment.self) {
                 self = .appStoreVersionExperiment(value)
@@ -33,7 +33,7 @@ public struct AppStoreVersionExperimentTreatmentsResponse: Codable, Equatable, S
             }
         }
 
-        public func encode(to encoder: Encoder) throws {
+        public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
             case .appStoreVersionExperiment(let value): try container.encode(value)

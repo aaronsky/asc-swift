@@ -167,7 +167,7 @@ public struct Request<Response> {
     public static func post(
         _ path: String,
         query: [(String, String?)]? = nil,
-        body: Encodable? = nil,
+        body: (any Encodable)? = nil,
         headers: [String: String]? = nil
     ) -> Request {
         .init(path: path, method: "POST", query: query, body: body, headers: headers)
@@ -303,7 +303,7 @@ public struct Request<Response> {
     public static func post(
         _ url: URL,
         query: [(String, String?)]? = nil,
-        body: Encodable? = nil,
+        body: (any Encodable)? = nil,
         headers: [String: String]? = nil
     ) -> Request {
         .init(path: "", baseURL: url, method: "POST", query: query, body: body, headers: headers)

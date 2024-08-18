@@ -12,7 +12,7 @@ final class RequestTests: XCTestCase {
         let baseURL = API.appStoreConnect.baseURL
         let mockBody = MockResources.Body(name: "test3", age: 88)
         let encoder = JSONEncoder()
-        var mockAuthenticator: Authenticator = MockAuthenticator()
+        var mockAuthenticator: any Authenticator = MockAuthenticator()
 
         let request = Request<MockResources.Content>
             .post("test", body: mockBody, headers: ["Test": "test"])

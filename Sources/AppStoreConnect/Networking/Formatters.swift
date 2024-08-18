@@ -19,7 +19,7 @@ let iso8601Formatter: ISO8601DateFormatter = {
 
 /// Helper to encode an ISO 8601 date permissively.
 @Sendable
-func encodeISO8601Date(_ date: Date, encoder: Encoder) throws {
+func encodeISO8601Date(_ date: Date, encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     let dateString = iso8601WithFractionalSecondsFormatter.string(from: date)
     try container.encode(dateString)
@@ -27,7 +27,7 @@ func encodeISO8601Date(_ date: Date, encoder: Encoder) throws {
 
 /// Helper to decode an ISO 8601 date string permissively.
 @Sendable
-func decodeISO8601Date(with decoder: Decoder) throws -> Date {
+func decodeISO8601Date(with decoder: any Decoder) throws -> Date {
     let container = try decoder.singleValueContainer()
     let dateString = try container.decode(String.self)
     guard let date = Date(iso8601String: dateString) else {

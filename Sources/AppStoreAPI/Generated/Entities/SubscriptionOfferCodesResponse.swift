@@ -18,7 +18,7 @@ public struct SubscriptionOfferCodesResponse: Codable, Equatable, Sendable {
         case subscriptionOfferCodeCustomCode(SubscriptionOfferCodeCustomCode)
         case subscriptionOfferCodePrice(SubscriptionOfferCodePrice)
 
-        public init(from decoder: Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
             if let value = try? container.decode(Subscription.self) {
                 self = .subscription(value)
@@ -36,7 +36,7 @@ public struct SubscriptionOfferCodesResponse: Codable, Equatable, Sendable {
             }
         }
 
-        public func encode(to encoder: Encoder) throws {
+        public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
             case .subscription(let value): try container.encode(value)

@@ -21,7 +21,7 @@ class TransportTests: XCTestCase {
     }
 
     private class MockURLProtocol: URLProtocol {
-        static var results: [URLRequest: Result<(Data, URLResponse), Error>] = [:]
+        nonisolated(unsafe) static var results: [URLRequest: Result<(Data, URLResponse), any Error>] = [:]
 
         override class func canInit(with request: URLRequest) -> Bool {
             results.keys.contains(request)

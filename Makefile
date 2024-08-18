@@ -41,7 +41,7 @@ FORMAT_PATHS := \
 # Tasks
 
 .PHONY: default
-default: test-all
+default: spec format lint test-library build-examples
 
 .PHONY: spec
 spec: spec-download spec-generate

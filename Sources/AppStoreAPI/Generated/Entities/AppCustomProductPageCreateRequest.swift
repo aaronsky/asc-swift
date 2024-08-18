@@ -140,7 +140,7 @@ public struct AppCustomProductPageCreateRequest: Codable, Equatable, Sendable {
         case appCustomProductPageLocalizationInlineCreate(AppCustomProductPageLocalizationInlineCreate)
         case appCustomProductPageVersionInlineCreate(AppCustomProductPageVersionInlineCreate)
 
-        public init(from decoder: Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
             if let value = try? container.decode(AppCustomProductPageLocalizationInlineCreate.self) {
                 self = .appCustomProductPageLocalizationInlineCreate(value)
@@ -154,7 +154,7 @@ public struct AppCustomProductPageCreateRequest: Codable, Equatable, Sendable {
             }
         }
 
-        public func encode(to encoder: Encoder) throws {
+        public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
             case .appCustomProductPageLocalizationInlineCreate(let value): try container.encode(value)

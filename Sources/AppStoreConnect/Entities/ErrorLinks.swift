@@ -31,7 +31,7 @@ public struct ErrorLinks: Codable, Equatable, Sendable {
             }
         }
 
-        public init(from decoder: Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
             if let value = try? container.decode(URL.self) {
                 self = .url(value)
@@ -45,7 +45,7 @@ public struct ErrorLinks: Codable, Equatable, Sendable {
             }
         }
 
-        public func encode(to encoder: Encoder) throws {
+        public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
             case .url(let value): try container.encode(value)

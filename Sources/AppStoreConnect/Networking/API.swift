@@ -6,7 +6,7 @@ import Foundation
 
 /// APIs this client is compatible with. Used by ``AppStoreConnectClient`` and
 /// ``Authenticator``s to control the base URL and token payload for requests.
-public struct API {
+public struct API: Equatable, Sendable {
     /// App Store Connect API. Default in most contexts.
     ///
     /// <https://developer.apple.com/documentation/appstoreconnectapi>

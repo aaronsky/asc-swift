@@ -79,7 +79,7 @@ extension URLSession: Transport {
     func send(
         request: URLRequest,
         decoder: JSONDecoder,
-        completion: @escaping (Result<Response<Data>, Error>) -> Void
+        completion: @escaping (Result<Response<Data>, any Error>) -> Void
     ) {
         let task = dataTask(with: request) { data, response, error in
             completion(
@@ -138,7 +138,7 @@ extension URLSession: Transport {
     ///   - completion: A completion handler. Executed on an arbitrary queue.
     func download(
         request: URLRequest,
-        completion: @escaping (Result<Response<URL>, Error>) -> Void
+        completion: @escaping (Result<Response<URL>, any Error>) -> Void
     ) {
         let task = downloadTask(with: request) { fileURL, response, error in
             completion(
@@ -204,7 +204,7 @@ extension URLSession: Transport {
         request: URLRequest,
         data: Data,
         decoder: JSONDecoder,
-        completion: @escaping (Result<Response<Data>, Error>) -> Void
+        completion: @escaping (Result<Response<Data>, any Error>) -> Void
     ) {
         let task = uploadTask(with: request, from: data) { responseData, response, error in
             completion(
