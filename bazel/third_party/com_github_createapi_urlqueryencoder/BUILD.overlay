@@ -1,0 +1,13 @@
+"""
+URLQueryEncoder is a customizable Swift `Encoder` that encodes instances of data types as
+URL query items. Supports all OpenAPI [serialization options](https://swagger.io/docs/specification/serialization/).
+"""
+
+load("@rules_swift//swift:swift_library.bzl", "swift_library")
+
+swift_library(
+    name = "URLQueryEncoder",
+    module_name = "URLQueryEncoder",
+    visibility = ["//visibility:public"],
+    srcs = glob(["Sources/URLQueryEncoder/*.swift"]),
+)

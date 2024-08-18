@@ -1,0 +1,11 @@
+load("@rules_swift//swift:swift_library.bzl", "swift_library")
+
+swift_library(
+    name = "Mocks",
+    package_name = "AppStoreConnect",
+    testonly = True,
+    srcs = glob(["*.swift"]),
+    module_name = "Mocks",
+    visibility = ["//Tests:__subpackages__"],
+    deps = ["//Sources/AppStoreConnect"],
+)

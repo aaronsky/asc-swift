@@ -9,6 +9,22 @@ import Utilities
 #endif
 
 @main struct InviteBetaTester: AsyncParsableCommand {
+    enum UserRole: String, ExpressibleByArgument {
+        case admin
+        case finance
+        case accountHolder
+        case sales
+        case marketing
+        case appManager
+        case developer
+        case accessToReports
+        case customerSupport
+        case createApps
+        case cloudManagedDeveloperID
+        case cloudManagedAppDistribution
+        case generateIndividualKeys
+    }
+
     @Option var lastName: String?
     @Option var firstName: String?
     @Option var email: String
@@ -68,4 +84,35 @@ import Utilities
     }
 }
 
-extension UserRole: ExpressibleByArgument {}
+extension UserRole {
+    init(_ role: InviteBetaTester.UserRole) {
+        switch role {
+        case .admin:
+            self = .admin
+        case .finance:
+            self = .finance
+        case .accountHolder:
+            self = .accountHolder
+        case .sales:
+            self = .sales
+        case .marketing:
+            self = .marketing
+        case .appManager:
+            self = .appManager
+        case .developer:
+            self = .developer
+        case .accessToReports:
+            self = .accessToReports
+        case .customerSupport:
+            self = .customerSupport
+        case .createApps:
+            self = .createApps
+        case .cloudManagedDeveloperID:
+            self = .cloudManagedDeveloperID
+        case .cloudManagedAppDistribution:
+            self = .cloudManagedAppDistribution
+        case .generateIndividualKeys:
+            self = .generateIndividualKeys
+        }
+    }
+}

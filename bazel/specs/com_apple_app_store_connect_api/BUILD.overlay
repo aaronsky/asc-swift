@@ -1,5 +1,35 @@
-#!/usr/bin/env jq
+"""
+App Store Connect API spec, patched for correctness. Apple doesn't host historical iterations of this file
+so if the checksum is ever invalid, chances are we need to update.
+"""
 
+load("@asc_swift//bazel/specs:versions.bzl", "APP_STORE_CONNECT_API_SPEC_VERSION")
+load("@aspect_bazel_lib//lib:copy_file.bzl", "copy_file")
+load("@aspect_bazel_lib//lib:jq.bzl", "jq")
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_file")
+
+SPEC_FILE_NAME = "app_store_connect_api_%s_openapi.json" % APP_STORE_CONNECT_API_SPEC_VERSION
+
+filegroup(
+    name = "original_spec",
+    srcs = ["openapi.json"],
+)
+
+genrule(
+    name = "patch_awk",
+    srcs = [
+        ":original_spec",
+        "@asc_swift//bazel/specs:app_store_connect_api_patches_awk_prog",
+    ],
+    outs = ["openapi_patched_awk.json"],
+    cmd = "awk -f $(location @asc_swift//bazel/specs:app_store_connect_api_patches_awk_prog) $(locations :original_spec) > $(OUTS)",
+)
+
+jq(
+    name = "patch_jq",
+    srcs = [":patch_awk"],
+    out = "openapi_patched_jq.json",
+    filter = """\
 delpaths([
     ["components", "schemas", "AgeRatingDeclarationWithoutIncludesResponse"],
     ["components", "schemas", "AppCategoriesWithoutIncludesResponse"],
@@ -30,3 +60,24 @@ delpaths([
     ["components", "schemas", "RoutingAppCoverageWithoutIncludesResponse"],
     ["components", "schemas", "TerritoriesWithoutIncludesResponse"]
 ])
+""",
+)
+
+copy_file(
+    name = "spec_copy",
+    src = ":patch_jq",
+    out = SPEC_FILE_NAME,
+)
+
+filegroup(
+    name = "spec",
+    srcs = [":spec_copy"],
+    visibility = ["//visibility:public"],
+)
+
+write_source_file(
+    name = "write_spec",
+    in_file = ":spec_copy",
+    out_file = "bazel/specs/com_apple_app_store_connect_api/%s" % SPEC_FILE_NAME,
+    visibility = ["//visibility:public"],
+)

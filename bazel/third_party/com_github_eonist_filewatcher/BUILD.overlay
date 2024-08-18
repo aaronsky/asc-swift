@@ -1,0 +1,12 @@
+"""
+FileWatcher is a simple file watcher in Swift.
+"""
+
+load("@rules_swift//swift:swift_library.bzl", "swift_library")
+
+swift_library(
+    name = "FileWatcher",
+    module_name = "FileWatcher",
+    visibility = ["//visibility:public"],
+    srcs = glob(["Sources/FileWatcher/*.swift"]),
+)

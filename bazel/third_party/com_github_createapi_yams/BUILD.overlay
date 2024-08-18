@@ -1,0 +1,35 @@
+"""
+Yams is a sweet and swifty [YAML](http://yaml.org/) parser built on
+[LibYAML](https://github.com/yaml/libyaml).
+"""
+
+load("@rules_cc//cc:defs.bzl", "cc_library")
+load("@rules_swift//swift:swift_library.bzl", "swift_library")
+load("@rules_swift//swift:swift_interop_hint.bzl", "swift_interop_hint")
+
+swift_library(
+    name = "Yams",
+    module_name = "Yams",
+    defines = ["SWIFT_PACKAGE"],
+    visibility = ["//visibility:public"],
+    srcs = glob(["Sources/Yams/*.swift"]),
+    deps = [":CYaml"],
+)
+
+cc_library(
+    name = "CYaml",
+    copts = ["-fPIC"],
+    defines = ["YAML_DECLARE_EXPORT"],
+    hdrs = ["Sources/CYaml/include/yaml.h"],
+    includes = ["Sources/CYaml/include"],
+    srcs = glob([
+        "Sources/CYaml/src/*.c",
+        "Sources/CYaml/src/*.h",
+    ]),
+    aspect_hints = [":CYaml_interop"],
+)
+
+swift_interop_hint(
+    name = "CYaml_interop",
+    module_name = "CYaml",
+)

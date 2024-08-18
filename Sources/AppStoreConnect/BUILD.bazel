@@ -1,0 +1,20 @@
+load("@rules_apple//apple:docc.bzl", "docc_archive")
+load("@rules_swift//swift:swift_library.bzl", "swift_library")
+
+swift_library(
+    name = "AppStoreConnect",
+    package_name = "AppStoreConnect",
+    srcs = glob(["**/*.swift"]),
+    data = glob(["AppStoreConnect.docc/**/*.md"]),
+    module_name = "AppStoreConnect",
+    visibility = ["//:__subpackages__"],
+    deps = ["@com_github_apple_swift_crypto//:Crypto"],
+)
+
+docc_archive(
+    name = "AppStoreConnect.doccarchive",
+    dep = ":AppStoreConnect",
+    fallback_bundle_identifier = "com.sky.appstoreconnect",
+    fallback_bundle_version = "1.0.0",
+    fallback_display_name = "AppStoreConnect",
+)

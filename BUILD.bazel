@@ -1,0 +1,28 @@
+load("@rules_multirun//:defs.bzl", "multirun")
+load("@rules_swift//swift:swift_library_group.bzl", "swift_library_group")
+
+swift_library_group(
+    name = "AppStoreConnect",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//Sources/AppStoreAPI",
+        "//Sources/AppStoreConnect",
+    ],
+)
+
+swift_library_group(
+    name = "EnterpriseProgram",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//Sources/AppStoreConnect",
+        "//Sources/EnterpriseAPI",
+    ],
+)
+
+multirun(
+    name = "update",
+    commands = [
+        "//bazel/specs",
+        "//bazel/tools/create_api",
+    ],
+)

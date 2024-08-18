@@ -1,0 +1,26 @@
+load("@aspect_bazel_lib//lib:expand_template.bzl", "expand_template")
+load("//bazel/specs:versions.bzl", "APP_STORE_CONNECT_API_SPEC_VERSION", "ENTERPRISE_PROGRAM_API_SPEC_VERSION")
+
+expand_template(
+    name = "create_api_wrapper",
+    out = "create_api.sh",
+    is_executable = True,
+    substitutions = {
+        "@@APPSTORE_API_VERSION@@": APP_STORE_CONNECT_API_SPEC_VERSION,
+        "@@ENTERPRISE_API_VERSION@@": ENTERPRISE_PROGRAM_API_SPEC_VERSION,
+    },
+    template = "create_api.tpl.sh",
+)
+
+sh_binary(
+    name = "create_api",
+    srcs = [":create_api_wrapper"],
+    data = [
+        ".create-api.yml",
+        "@com_apple_app_store_connect_api//:spec",
+        "@com_apple_enterprise_program_api//:spec",
+        "@com_github_aaronsky_createapi//:create-api",
+    ],
+    visibility = ["//:__pkg__"],
+    deps = ["@bazel_tools//tools/bash/runfiles"],
+)

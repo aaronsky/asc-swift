@@ -1,0 +1,49 @@
+name: xcodebuild
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/xcodebuild.yml'
+      - 'Examples/**/*.swift'
+      - 'Package*'
+      - 'Sources/**/*.swift'
+      - 'Tests/**/*.swift'
+  pull_request:
+    paths:
+      - '.github/workflows/xcodebuild.yml'
+      - 'Examples/**/*.swift'
+      - 'Package*'
+      - 'Sources/**/*.swift'
+      - 'Tests/**/*.swift'
+  workflow_dispatch: ~
+
+concurrency:
+  group: xcodebuild-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  macOS:
+    runs-on: macos-14
+    strategy:
+      matrix:
+        xcode: ['15.4']
+        xcode_flags: ['-scheme AppStoreConnect-Package']
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v4
+      - run: xcodebuild -version
+      - name: macOS
+        if: always()
+        run: |-
+          set -o pipefail
+
+          xcodebuild test ${{ matrix.xcode_flags }} -destination "platform=macOS" | xcbeautify --renderer github-actions
+      - name: iOS Simulator
+        if: always()
+        run: |-
+          set -o pipefail
+
+          xcodebuild test ${{ matrix.xcode_flags }} -destination "platform=iOS Simulator,name=iPhone 15 Pro Max" | xcbeautify --renderer github-actions

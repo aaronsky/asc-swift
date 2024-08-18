@@ -9,9 +9,14 @@ import Utilities
 #endif
 
 @main struct RegisterDevice: AsyncParsableCommand {
+    enum Platform: String, ExpressibleByArgument {
+        case iOS
+        case macOS
+    }
+
     @Option var name: String
     @Option var udid: String
-    @Option var platform: BundleIDPlatform
+    @Option var platform: Platform
 
     mutating func run() async throws {
         let client = try AppStoreConnectClient(authenticator: EnvAuthenticator())
@@ -22,7 +27,7 @@ import Utilities
                     data: .init(
                         attributes: .init(
                             name: name,
-                            platform: platform,
+                            platform: BundleIDPlatform(platform),
                             udid: udid
                         )
                     )
@@ -36,4 +41,13 @@ import Utilities
     }
 }
 
-extension BundleIDPlatform: ExpressibleByArgument {}
+extension BundleIDPlatform {
+    init(_ platform: RegisterDevice.Platform) {
+        switch platform {
+        case .iOS:
+            self = .ios
+        case .macOS:
+            self = .macOs
+        }
+    }
+}

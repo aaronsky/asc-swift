@@ -1,0 +1,52 @@
+name: Bazel
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.bazelrc'
+      - '.bazelversion'
+      - '.github/workflows/bazel.yml'
+      - '**/BUILD.bazel'
+      - '**/BUILD.overlay'
+      - 'bazel/*'
+      - 'Examples/**/*.swift'
+      - 'MODULE.bazel'
+      - 'Sources/**/*.swift'
+      - 'Tests/**/*.swift'
+  pull_request:
+    paths:
+      - '.bazelrc'
+      - '.bazelversion'
+      - '.github/workflows/bazel.yml'
+      - '**/BUILD.bazel'
+      - '**/BUILD.overlay'
+      - 'bazel/*'
+      - 'Examples/**/*.swift'
+      - 'MODULE.bazel'
+      - 'Sources/**/*.swift'
+      - 'Tests/**/*.swift'
+  workflow_dispatch: ~
+
+concurrency:
+  group: bazel-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  macOS:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - run: bazel test //...
+  Linux:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tag: ['5.9', '5.10']
+    container:
+      image: swift:${{ matrix.tag }}-focal
+    steps:
+      - uses: actions/checkout@v4
+      - uses: bazelbuild/setup-bazelisk@v3
+      - run: bazel test --test_output=all //Tests/AppStoreConnectTests

@@ -1,0 +1,29 @@
+"""
+Enterprise Program API spec, patched for correctness. Apple doesn't host historical iterations of this file
+so if the checksum is ever invalid, chances are we need to update.
+"""
+
+load("@asc_swift//bazel/specs:versions.bzl", "ENTERPRISE_PROGRAM_API_SPEC_VERSION")
+load("@aspect_bazel_lib//lib:copy_file.bzl", "copy_file")
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_file")
+
+SPEC_FILE_NAME = "enterprise_program_api_%s_openapi.json" % ENTERPRISE_PROGRAM_API_SPEC_VERSION
+
+copy_file(
+    name = "spec_copy",
+    src = "openapi-deployment-adepPublicApi-adepPublicApi.oas.json",
+    out = SPEC_FILE_NAME,
+)
+
+filegroup(
+    name = "spec",
+    srcs = [":spec_copy"],
+    visibility = ["//visibility:public"],
+)
+
+write_source_file(
+    name = "write_spec",
+    in_file = ":spec_copy",
+    out_file = "bazel/specs/com_apple_enterprise_program_api/%s" % SPEC_FILE_NAME,
+    visibility = ["//visibility:public"],
+)

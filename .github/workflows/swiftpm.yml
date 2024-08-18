@@ -1,0 +1,47 @@
+name: SwiftPM
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/swiftpm.yml'
+      - 'Examples/**/*.swift'
+      - 'Package*'
+      - 'Sources/**/*.swift'
+      - 'Tests/**/*.swift'
+  pull_request:
+    paths:
+      - '.github/workflows/swiftpm.yml'
+      - 'Examples/**/*.swift'
+      - 'Package*'
+      - 'Sources/**/*.swift'
+      - 'Tests/**/*.swift'
+  workflow_dispatch: ~
+
+concurrency:
+  group: swiftpm-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  macOS:
+    runs-on: macos-14
+    strategy:
+      matrix:
+        xcode: ['15.4', '16_beta_5']
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift -version
+      - run: swift test --parallel
+  Linux:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tag: ['5.9', '5.10']
+    container:
+      image: swift:${{ matrix.tag }}-focal
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift test --parallel
