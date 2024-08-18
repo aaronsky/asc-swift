@@ -18,7 +18,7 @@ public struct AppClipDefaultExperienceResponse: Codable, Equatable, Sendable {
         case appClipDefaultExperienceLocalization(AppClipDefaultExperienceLocalization)
         case appClipAppStoreReviewDetail(AppClipAppStoreReviewDetail)
 
-        public init(from decoder: Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
             if let value = try? container.decode(AppClip.self) {
                 self = .appClip(value)
@@ -36,7 +36,7 @@ public struct AppClipDefaultExperienceResponse: Codable, Equatable, Sendable {
             }
         }
 
-        public func encode(to encoder: Encoder) throws {
+        public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
             case .appClip(let value): try container.encode(value)

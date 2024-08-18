@@ -16,7 +16,7 @@ public struct AppStoreReviewDetailResponse: Codable, Equatable, Sendable {
         case appStoreVersion(AppStoreVersion)
         case appStoreReviewAttachment(AppStoreReviewAttachment)
 
-        public init(from decoder: Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
             if let value = try? container.decode(AppStoreVersion.self) {
                 self = .appStoreVersion(value)
@@ -30,7 +30,7 @@ public struct AppStoreReviewDetailResponse: Codable, Equatable, Sendable {
             }
         }
 
-        public func encode(to encoder: Encoder) throws {
+        public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
             case .appStoreVersion(let value): try container.encode(value)

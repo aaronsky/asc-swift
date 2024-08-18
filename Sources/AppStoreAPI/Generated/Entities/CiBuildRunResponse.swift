@@ -19,7 +19,7 @@ public struct CiBuildRunResponse: Codable, Equatable, Sendable {
         case scmGitReference(ScmGitReference)
         case scmPullRequest(ScmPullRequest)
 
-        public init(from decoder: Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
             if let value = try? container.decode(Build.self) {
                 self = .build(value)
@@ -39,7 +39,7 @@ public struct CiBuildRunResponse: Codable, Equatable, Sendable {
             }
         }
 
-        public func encode(to encoder: Encoder) throws {
+        public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
             case .build(let value): try container.encode(value)

@@ -13,12 +13,12 @@ public actor AppStoreConnectClient {
     /// The network (or whatever) transport layer.
     ///
     /// Implemented by ``URLSession`` by default.
-    package var transport: Transport
+    package var transport: any Transport
 
     /// Authorization provider.
     ///
     /// Used to authenticate with the App Store Connect API. Implemented by ``JWT`` by default.
-    package var authenticator: Authenticator
+    package var authenticator: any Authenticator
 
     package var encoder: JSONEncoder {
         let encoder = JSONEncoder()
@@ -38,8 +38,8 @@ public actor AppStoreConnectClient {
     ///   - transport: Transport layer used for API communication. Uses the shared `URLSession` by default.
     ///   - authenticator: Responsible for generating and managing access tokens. ``JWT`` is the default implementation.
     public init(
-        transport: Transport = URLSession.shared,
-        authenticator: Authenticator
+        transport: any Transport = URLSession.shared,
+        authenticator: any Authenticator
     ) {
         self.transport = transport
         self.authenticator = authenticator

@@ -16,7 +16,7 @@ public struct SubscriptionOfferCodePricesResponse: Codable, Equatable, Sendable 
         case territory(Territory)
         case subscriptionPricePoint(SubscriptionPricePoint)
 
-        public init(from decoder: Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
             if let value = try? container.decode(Territory.self) {
                 self = .territory(value)
@@ -30,7 +30,7 @@ public struct SubscriptionOfferCodePricesResponse: Codable, Equatable, Sendable 
             }
         }
 
-        public func encode(to encoder: Encoder) throws {
+        public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
             case .territory(let value): try container.encode(value)

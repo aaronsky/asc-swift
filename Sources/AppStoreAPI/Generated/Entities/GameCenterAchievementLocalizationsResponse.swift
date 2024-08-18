@@ -16,7 +16,7 @@ public struct GameCenterAchievementLocalizationsResponse: Codable, Equatable, Se
         case gameCenterAchievement(GameCenterAchievement)
         case gameCenterAchievementImage(GameCenterAchievementImage)
 
-        public init(from decoder: Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
             if let value = try? container.decode(GameCenterAchievement.self) {
                 self = .gameCenterAchievement(value)
@@ -30,7 +30,7 @@ public struct GameCenterAchievementLocalizationsResponse: Codable, Equatable, Se
             }
         }
 
-        public func encode(to encoder: Encoder) throws {
+        public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
             case .gameCenterAchievement(let value): try container.encode(value)

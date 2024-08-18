@@ -18,7 +18,7 @@ public struct CiWorkflowResponse: Codable, Equatable, Sendable {
         case ciXcodeVersion(CiXcodeVersion)
         case ciMacOsVersion(CiMacOsVersion)
 
-        public init(from decoder: Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
             if let value = try? container.decode(CiProduct.self) {
                 self = .ciProduct(value)
@@ -36,7 +36,7 @@ public struct CiWorkflowResponse: Codable, Equatable, Sendable {
             }
         }
 
-        public func encode(to encoder: Encoder) throws {
+        public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
             case .ciProduct(let value): try container.encode(value)

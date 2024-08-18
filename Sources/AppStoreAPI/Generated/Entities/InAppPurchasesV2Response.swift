@@ -21,7 +21,7 @@ public struct InAppPurchasesV2Response: Codable, Equatable, Sendable {
         case inAppPurchasePriceSchedule(InAppPurchasePriceSchedule)
         case inAppPurchaseAvailability(InAppPurchaseAvailability)
 
-        public init(from decoder: Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
             if let value = try? container.decode(InAppPurchaseLocalization.self) {
                 self = .inAppPurchaseLocalization(value)
@@ -45,7 +45,7 @@ public struct InAppPurchasesV2Response: Codable, Equatable, Sendable {
             }
         }
 
-        public func encode(to encoder: Encoder) throws {
+        public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
             case .inAppPurchaseLocalization(let value): try container.encode(value)

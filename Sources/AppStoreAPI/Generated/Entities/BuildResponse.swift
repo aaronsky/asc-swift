@@ -25,7 +25,7 @@ public struct BuildResponse: Codable, Equatable, Sendable {
         case buildIcon(BuildIcon)
         case buildBundle(BuildBundle)
 
-        public init(from decoder: Decoder) throws {
+        public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
             if let value = try? container.decode(PrereleaseVersion.self) {
                 self = .prereleaseVersion(value)
@@ -57,7 +57,7 @@ public struct BuildResponse: Codable, Equatable, Sendable {
             }
         }
 
-        public func encode(to encoder: Encoder) throws {
+        public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
             case .prereleaseVersion(let value): try container.encode(value)

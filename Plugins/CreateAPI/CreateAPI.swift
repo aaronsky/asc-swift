@@ -8,10 +8,12 @@ struct Plugin: CommandPlugin {
     }
 
     func performCommand(context: PluginContext, arguments: [String]) async throws {
-        let packageURL = URL(filePath: context.package.directory.string)
+        let packageURL = URL(fileURLWithPath: context.package.directory.string)
 
         var argExtractor = ArgumentExtractor(arguments)
-        let specURLs = argExtractor.extractOption(named: "spec").map { URL(filePath: $0, relativeTo: packageURL) }
+        let specURLs = argExtractor.extractOption(named: "spec").map {
+            URL(fileURLWithPath: $0, relativeTo: packageURL)
+        }
 
         try runCreateAPI(context: context, specURLs: specURLs)
 
@@ -27,7 +29,11 @@ struct Plugin: CommandPlugin {
                 "Generated/Extensions/AnyJSON.swift",
             ],
             relativeTo: specTargetURLs,
-            to: packageURL.appending(components: "Sources", "AppStoreConnect", "Entities")
+            to:
+                packageURL
+                .appendingPathComponent("Sources", isDirectory: true)
+                .appendingPathComponent("AppStoreConnect", isDirectory: true)
+                .appendingPathComponent("Entities", isDirectory: true)
         )
 
         try deleteFiles(
@@ -50,14 +56,18 @@ struct Plugin: CommandPlugin {
 
     func runCreateAPI(with specURL: URL, context: PluginContext) throws {
         let createAPI = try context.tool(named: "create-api")
-        let executableURL = URL(filePath: createAPI.path.string)
+        let executableURL = URL(fileURLWithPath: createAPI.path.string)
 
-        let packageURL = URL(filePath: context.package.directory.string)
-        let configURL = packageURL.appending(components: "Plugins", "CreateAPI", ".create-api.yml")
+        let packageURL = URL(fileURLWithPath: context.package.directory.string)
+        let configURL =
+            packageURL
+            .appendingPathComponent("Plugins", isDirectory: true)
+            .appendingPathComponent("CreateAPI", isDirectory: true)
+            .appendingPathComponent(".create-api.yml", isDirectory: false)
 
         let specDirectoryURL = specURL.deletingLastPathComponent()
         let moduleName = specDirectoryURL.lastPathComponent
-        let outputURL = specDirectoryURL.appending(component: "Generated")
+        let outputURL = specDirectoryURL.appendingPathComponent("Generated", isDirectory: true)
 
         let createAPIArguments = [
             "generate",
@@ -82,7 +92,7 @@ struct Plugin: CommandPlugin {
 
     func syncFiles(_ files: [String], relativeTo targetURLs: [URL], to destination: URL) throws {
         for file in files {
-            let compareURLs = targetURLs.map { URL(filePath: file, relativeTo: $0) }
+            let compareURLs = targetURLs.map { URL(fileURLWithPath: file, relativeTo: $0) }
 
             let fileSet = try compareURLs.reduce(into: Set()) { try $0.insert(Data(contentsOf: $1)) }
 
@@ -93,7 +103,7 @@ struct Plugin: CommandPlugin {
             var contents = String(data: fileSet.first!, encoding: .utf8)!
             contents = contents.replacingOccurrences(of: "import AppStoreConnect\n", with: "")
 
-            let dest = destination.appending(component: compareURLs.first!.lastPathComponent)
+            let dest = destination.appendingPathComponent(compareURLs.first!.lastPathComponent, isDirectory: false)
 
             for url in compareURLs {
                 try? FileManager.default.removeItem(at: url)
@@ -108,7 +118,7 @@ struct Plugin: CommandPlugin {
     func deleteFiles(_ files: [String], relativeTo targetURLs: [URL]) throws {
         for file in files {
             for baseURL in targetURLs {
-                try FileManager.default.removeItem(at: URL(filePath: file, relativeTo: baseURL))
+                try FileManager.default.removeItem(at: URL(fileURLWithPath: file, relativeTo: baseURL))
             }
         }
     }

@@ -2,13 +2,36 @@
 
 import PackageDescription
 
+let swift6UpcomingFeatures: [SwiftSetting] = [
+    .enableUpcomingFeature("BareSlashRegexLiterals"),
+    .enableUpcomingFeature("ConciseMagicFile"),
+    .enableUpcomingFeature("DeprecateApplicationMain"),
+    .enableUpcomingFeature("DisableOutwardActorInference"),
+    .enableUpcomingFeature("DynamicActorIsolation"),
+    .enableUpcomingFeature("ForwardTrailingClosures"),
+    .enableUpcomingFeature("GlobalActorIsolatedTypesUsability"),
+    .enableUpcomingFeature("GlobalConcurrency"),
+    .enableUpcomingFeature("ImplicitOpenExistentials"),
+    .enableUpcomingFeature("ImportObjcForwardDeclarations"),
+    .enableUpcomingFeature("InferSendableFromCaptures"),
+    .enableUpcomingFeature("IsolatedDefaultValues"),
+    .enableUpcomingFeature("NonfrozenEnumExhaustivity"),
+    .enableUpcomingFeature("RegionBasedIsolation"),
+    .enableUpcomingFeature("StrictConcurrency"),
+]
+
+let swift7UpcomingFeatures: [SwiftSetting] = [
+    .enableUpcomingFeature("ExistentialAny"),
+    .enableUpcomingFeature("InternalImportsByDefault"),
+]
+
 let package = Package(
     name: "AppStoreConnect",
     platforms: [
-        .iOS(.v16),
-        .macOS(.v13),
-        .tvOS(.v16),
-        .watchOS(.v9),
+        .iOS(.v15),
+        .macOS(.v12),
+        .tvOS(.v15),
+        .watchOS(.v8),
     ],
     products: [
         .library(
@@ -30,7 +53,8 @@ let package = Package(
             name: "AppStoreConnect",
             dependencies: [
                 .product(name: "Crypto", package: "swift-crypto")
-            ]
+            ],
+            swiftSettings: swift6UpcomingFeatures + swift7UpcomingFeatures
         ),
         .target(
             name: "AppStoreAPI",
@@ -42,7 +66,8 @@ let package = Package(
                 "app_store_connect_api_3.5_openapi.json",
                 "patches.awk",
                 "patches.jq",
-            ]
+            ],
+            swiftSettings: swift6UpcomingFeatures + swift7UpcomingFeatures
         ),
         .target(
             name: "EnterpriseAPI",
@@ -52,16 +77,23 @@ let package = Package(
             ],
             exclude: [
                 "enterprise_api_1.0_openapi.json"
-            ]
+            ],
+            swiftSettings: swift6UpcomingFeatures + swift7UpcomingFeatures
         ),
         .testTarget(
             name: "AppStoreConnectTests",
-            dependencies: ["AppStoreConnect"]
+            dependencies: ["AppStoreConnect"],
+            swiftSettings: swift6UpcomingFeatures + swift7UpcomingFeatures
+        ),
+        .testTarget(
+            name: "AppStoreAPITests",
+            dependencies: ["AppStoreAPI", "AppStoreConnect"],
+            swiftSettings: swift6UpcomingFeatures + swift7UpcomingFeatures
         ),
         .binaryTarget(
             name: "create-api",
-            url: "https://github.com/aaronsky/CreateAPI/releases/download/0.2.0-alpha.2/create-api.artifactbundle.zip",
-            checksum: "f0e34391c3c7b980d5e1b31e8b0b45680a74321b7013eeb11ace4c83aae69a75"
+            url: "https://github.com/aaronsky/CreateAPI/releases/download/0.2.0-alpha.3/create-api.artifactbundle.zip",
+            checksum: "87cca616f8e80c08773e5da7f1267abeecbca44162ac67f7dd3f853464a0ed1e"
                 // path: "create-api.artifactbundle.zip"
         ),
         .plugin(
