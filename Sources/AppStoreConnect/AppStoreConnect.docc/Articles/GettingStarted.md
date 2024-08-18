@@ -15,6 +15,8 @@ The App Store Connect API requires authentication with every request. In order t
 Creating a client object is as simple as calling the default initializer with the requisite authentication data. 
 
 ```swift
+import AppStoreConnect
+
 let privateKey = try JWT.PrivateKey(contentsOf: URL(filePath: "..."))
 let client = AppStoreConnectClient(
     authenticator: JWT(
@@ -31,5 +33,7 @@ let client = AppStoreConnectClient(
 To send a request, use one of the `send` methods on the client. 
 
 ```swift
+import AppStoreAPI
+
 let apps = try await client.send(Resources.v1.apps.get())
 ```

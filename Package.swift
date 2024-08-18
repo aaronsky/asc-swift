@@ -82,6 +82,7 @@ let package = Package(
         ),
         .target(
             name: "Mocks",
+            dependencies: ["AppStoreConnect"],
             path: "Tests/Mocks"
         ),
         .testTarget(

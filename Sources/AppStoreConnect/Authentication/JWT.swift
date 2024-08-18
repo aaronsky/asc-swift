@@ -152,7 +152,7 @@ public struct JWT: Authenticator {
     ///   - scopes: Optional scopes to restrict access to the App Store Connect API to specific endpoints.
     ///   - privateKey: The private key.
     public init(
-        api: API,
+        api: API = .appStoreConnect,
         keyID: String,
         issuerID: String,
         issuedAt: TimeInterval? = nil,
@@ -184,7 +184,7 @@ public struct JWT: Authenticator {
     ///   - privateKey: The private key.
     ///   - date: Dependency on the current date. Useful in testing.
     init(
-        api: API,
+        api: API = .appStoreConnect,
         keyID: String,
         issuerID: String,
         issuedAt: TimeInterval? = nil,
