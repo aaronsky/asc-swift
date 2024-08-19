@@ -1,0 +1,10 @@
+load("@rules_multirun//:defs.bzl", "multirun")
+
+multirun(
+    name = "update",
+    commands = [
+        "//bazel/specs",
+        "//bazel/tools/create_api",
+    ],
+    visibility = ["//:__pkg__"],
+)

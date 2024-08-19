@@ -4,8 +4,7 @@ A Swift library for accessing Apple's App Store Connect API and Enterprise Progr
 
 module(
     name = "asc_swift",
-    version = "0.7.0",
-    compatibility_level = 1,
+    version = "0.0.0",
 )
 
 bazel_dep(name = "apple_support", version = "1.16.0")

@@ -1,0 +1,11 @@
+common --enable_bzlmod
+
+common --enable_platform_specific_config
+common --incompatible_strict_action_env
+common --incompatible_default_to_explicit_init_py
+common --incompatible_disallow_empty_glob
+common --incompatible_disable_starlark_host_transitions
+
+common:linux --repo_env=CC=clang
+
+try-import %workspace%/../../user.bazelrc

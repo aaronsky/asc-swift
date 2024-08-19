@@ -1,0 +1,12 @@
+"""
+Demonstrating integration of asc_swift into a Bzlmod repo.
+"""
+
+bazel_dep(name = "asc_swift", version = "0.0.0")
+local_path_override(
+    module_name = "asc_swift",
+    path = "../..",
+)
+
+bazel_dep(name = "apple_support", version = "1.16.0")
+bazel_dep(name = "rules_swift", version = "2.1.1")

@@ -1,10 +1,25 @@
+# macOS
+#
 .DS_Store
-*.env*
+
+# editor
+#
 /.vscode
+
+# SwiftPM
+#
 .build/
 Package.resolved
 *.xcodeproj/
 xcuserdata/
 /Packages
-/bazel-*
-/MODULE.bazel.lock
+
+# dotenv
+#
+.env
+
+# Bazel
+#
+bazel-*
+MODULE.bazel.lock
+user.bazelrc

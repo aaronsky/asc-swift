@@ -1,0 +1,11 @@
+load("@rules_swift//swift:swift_binary.bzl", "swift_binary")
+
+swift_binary(
+    name = "my_asc_tool",
+    srcs = ["MyASCTool.swift"],
+    module_name = "MyASCTool",
+    deps = [
+        "@asc_swift//:AppStoreConnect",
+        "@asc_swift//:EnterpriseProgram",
+    ],
+)

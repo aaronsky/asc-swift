@@ -24,9 +24,12 @@ print(apps)
 
 ## Installation
 
-This project uses the Swift Package Manager. It supports Swift 5.9 and higher, and has minimum requirements of iOS 15, macOS 12, tvOS 15, and watchOS 8. It also strives to be fully supported for deployment on all other platforms outlined by Swift.org [Platform Support page](https://www.swift.org/platform-support/#deployment-only), such as the various Linux flavors and Windows. App Store Connect API version 3.5 and Enterprise Program 1.0 are supported.
+This project supports Swift 5.9 and higher, and has minimum requirements of iOS 15, macOS 12, tvOS 15, and watchOS 8. It strives to be fully supported for deployment on all other platforms outlined by Swift.org [Platform Support page](https://www.swift.org/platform-support/#deployment-only), such as the various Linux flavors and Windows. App Store Connect API version 3.5 and Enterprise Program 1.0 are supported.
 
-The package defines two products: `AppStoreConnect` and `EnterpriseProgram`. Each product provides the `AppStoreConnect` module, which contains the client and authentication logic, and either the `AppStoreAPI` or `EnterpriseAPI` modules, respectively.
+The package defines two products: `AppStoreConnect` and `EnterpriseProgram`. Each product provides the `AppStoreConnect` module, which contains the client and authentication logic, and either the `AppStoreAPI` or `EnterpriseAPI` modules, respectively. To integrate with App Store Connect, you would add a dependency on the `"AppStoreConnect"` product. To use the Enterprise Program API, add the `"EnterpriseProgram"` product as a target dependency instead. Finally, both products can be made dependencies of the same target without significant conflict. See the [invite_user](/Examples/invite_user/InviteUser.swift) sample for a rough example of this.
+
+### Swift Package Manager
+
 
 To use `AppStoreConnect` in your project, add the following line to the dependencies in your `Package.swift` file:
 
@@ -44,7 +47,15 @@ Then, include `"AppStoreConnect"` as a dependency of your target:
 
 Finally, add `import AppStoreConnect` to your code to import the client, and `import AppStoreAPI` to import the API bindings.
 
-To use the Enterprise Program API, add the `"EnterpriseProgram"` product as a target dependency instead of `"AppStoreConnect"`. It is also supported to include both products as dependencies of the same target. See the [invite_user](/Examples/invite_user/InviteUser.swift) sample for a rough example of this.
+### Bazel
+
+This project is available on the [Bazel Central Registry](https://registry.bazel.build/modules/asc_swift). Much like other modules there, all that's required to add the dependency is to insert the following line into your `MODULE.bazel`. Note that this requires your project to be using [Bzlmod](https://bazel.build/external/overview#bzlmod).
+
+```python
+bazel_dep(name = "asc_swift", version = "<version>")
+```
+
+An example of how to set this up can be found in [`Examples/bzlmod`](/Examples/bzlmod/MODULE.bazel).
 
 ## Usage
 
