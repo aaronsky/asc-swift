@@ -20,6 +20,8 @@ jobs:
         with:
           bazelisk-cache: true
       - uses: actions/checkout@v4
+        with:
+          fetch-tags: true
       - name: Prepare release
         run: |-
           set -euo pipefail
