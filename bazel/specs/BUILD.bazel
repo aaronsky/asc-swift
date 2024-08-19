@@ -7,7 +7,7 @@ write_source_files(
         "@com_apple_app_store_connect_api//:write_spec",
         "@com_apple_enterprise_program_api//:write_spec",
     ],
-    visibility = ["//:__pkg__"],
+    visibility = ["//bazel:__pkg__"],
 )
 
 filegroup(

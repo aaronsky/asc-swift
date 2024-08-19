@@ -21,6 +21,6 @@ sh_binary(
         "@com_apple_enterprise_program_api//:spec",
         "@com_github_aaronsky_createapi//:create-api",
     ],
-    visibility = ["//:__pkg__"],
+    visibility = ["//bazel:__pkg__"],
     deps = ["@bazel_tools//tools/bash/runfiles"],
 )
