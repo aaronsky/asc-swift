@@ -22,12 +22,15 @@ jobs:
       - uses: actions/checkout@v4
       - name: Prepare release
         run: |-
+          set -euo pipefail
+
           PREFIX="asc_swift-${{ inputs.tag }}"
           ARCHIVE="asc_swift-${{ inputs.tag }}.tar.gz"
           git archive --format=tar --prefix="${PREFIX}/" "${{ inputs.tag }}" | gzip > $ARCHIVE
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: ${{ inputs.tag }}
           files: "asc_swift-*.tar.gz"
           fail_on_unmatched_files: true
           prerelease: ${{ inputs.prerelease }}
