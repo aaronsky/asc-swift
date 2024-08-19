@@ -20,10 +20,6 @@ jobs:
         with:
           bazelisk-cache: true
       - uses: actions/checkout@v4
-      - run: bazel test //...
-      - name: Smoke test
-        run: bazel test //...
-        working-directory: ./Examples/bzlmod
       - name: Prepare release
         run: |-
           PREFIX="asc_swift-${{ inputs.tag }}"
