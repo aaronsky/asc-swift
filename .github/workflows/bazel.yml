@@ -37,6 +37,9 @@ jobs:
   macOS:
     runs-on: macos-14
     steps:
+      - uses: bazel-contrib/setup-bazel@0.8.5
+        with:
+          bazelisk-cache: true
       - uses: actions/checkout@v4
       - run: bazel test //...
   Linux:
@@ -47,6 +50,9 @@ jobs:
     container:
       image: swift:${{ matrix.tag }}-focal
     steps:
+      - uses: bazel-contrib/setup-bazel@0.8.5
+        with:
+          bazelisk-cache: true
+          bazelisk-version: 1.x
       - uses: actions/checkout@v4
-      - uses: bazelbuild/setup-bazelisk@v3
       - run: bazel test --test_output=all //Tests/AppStoreConnectTests
