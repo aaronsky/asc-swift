@@ -21,4 +21,5 @@ swift_library_group(
 alias(
     name = "update",
     actual = "//bazel:update_specs",
+    tags = ["manual"],
 )

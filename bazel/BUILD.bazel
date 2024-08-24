@@ -7,4 +7,5 @@ multirun(
         "//bazel/tools/create_api",
     ],
     visibility = ["//:__pkg__"],
+    tags = ["manual"],
 )

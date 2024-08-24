@@ -22,4 +22,5 @@ docc_archive(
     fallback_bundle_identifier = "com.sky.appstoreapi",
     fallback_bundle_version = "1.0.0",
     fallback_display_name = "AppStoreAPI",
+    tags = ["manual"],
 )

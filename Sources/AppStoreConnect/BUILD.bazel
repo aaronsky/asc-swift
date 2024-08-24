@@ -17,4 +17,5 @@ docc_archive(
     fallback_bundle_identifier = "com.sky.appstoreconnect",
     fallback_bundle_version = "1.0.0",
     fallback_display_name = "AppStoreConnect",
+    tags = ["manual"],
 )
