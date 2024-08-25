@@ -38,7 +38,7 @@ extension Resources.V1.CiWorkflows.WithID {
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case number
-            case minusnumber = "-number"
+            case minusNumber = "-number"
         }
 
         public enum FieldsScmGitReferences: String, CaseIterable, Codable, Sendable {

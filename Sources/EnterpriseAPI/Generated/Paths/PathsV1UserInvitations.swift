@@ -39,9 +39,9 @@ extension Resources {
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case email
-            case minusemail = "-email"
+            case minusEmail = "-email"
             case lastName
-            case minuslastName = "-lastName"
+            case minusLastName = "-lastName"
         }
 
         public enum FieldsUserInvitations: String, CaseIterable, Codable, Sendable {

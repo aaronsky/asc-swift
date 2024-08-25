@@ -206,13 +206,13 @@ extension Resources.V1.Apps.WithID.AppStoreVersions.FilterPlatform {
     init(_ platform: UploadScreenshot.Platform) {
         switch platform {
         case .iOS:
-            self = .ios
+            self = .iOS
         case .macOS:
-            self = .macOs
+            self = .macOS
         case .tvOS:
-            self = .tvOs
+            self = .tvOS
         case .visionOS:
-            self = .visionOs
+            self = .visionOS
         }
     }
 }

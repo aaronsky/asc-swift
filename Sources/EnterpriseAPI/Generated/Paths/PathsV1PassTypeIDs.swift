@@ -37,11 +37,11 @@ extension Resources {
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case id
-            case minusid = "-id"
+            case minusID = "-id"
             case identifier
-            case minusidentifier = "-identifier"
+            case minusIdentifier = "-identifier"
             case name
-            case minusname = "-name"
+            case minusName = "-name"
         }
 
         public enum FieldsPassTypeIDs: String, CaseIterable, Codable, Sendable {

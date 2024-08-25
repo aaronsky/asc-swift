@@ -44,13 +44,13 @@ extension Resources.V1 {
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case createdDate
-            case minuscreatedDate = "-createdDate"
+            case minusCreatedDate = "-createdDate"
             case name
-            case minusname = "-name"
+            case minusName = "-name"
             case publicLinkEnabled
-            case minuspublicLinkEnabled = "-publicLinkEnabled"
+            case minusPublicLinkEnabled = "-publicLinkEnabled"
             case publicLinkLimit
-            case minuspublicLinkLimit = "-publicLinkLimit"
+            case minusPublicLinkLimit = "-publicLinkLimit"
         }
 
         public enum FieldsBetaGroups: String, CaseIterable, Codable, Sendable {

@@ -128,19 +128,19 @@ extension Resources.V1 {
         }
 
         public enum FilterAppStoreVersionsPlatform: String, CaseIterable, Codable, Sendable {
-            case ios = "IOS"
-            case macOs = "MAC_OS"
-            case tvOs = "TV_OS"
-            case visionOs = "VISION_OS"
+            case iOS = "IOS"
+            case macOS = "MAC_OS"
+            case tvOS = "TV_OS"
+            case visionOS = "VISION_OS"
         }
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case bundleID = "bundleId"
-            case minusbundleID = "-bundleId"
+            case minusBundleID = "-bundleId"
             case name
-            case minusname = "-name"
+            case minusName = "-name"
             case sku
-            case minussku = "-sku"
+            case minusSku = "-sku"
         }
 
         public enum FieldsApps: String, CaseIterable, Codable, Sendable {

@@ -45,17 +45,17 @@ extension Resources {
         }
 
         public enum FilterProfileType: String, CaseIterable, Codable, Sendable {
-            case iosAppDevelopment = "IOS_APP_DEVELOPMENT"
-            case iosAppStore = "IOS_APP_STORE"
-            case iosAppAdhoc = "IOS_APP_ADHOC"
-            case iosAppInhouse = "IOS_APP_INHOUSE"
+            case iOSAppDevelopment = "IOS_APP_DEVELOPMENT"
+            case iOSAppStore = "IOS_APP_STORE"
+            case iOSAppAdhoc = "IOS_APP_ADHOC"
+            case iOSAppInhouse = "IOS_APP_INHOUSE"
             case macAppDevelopment = "MAC_APP_DEVELOPMENT"
             case macAppStore = "MAC_APP_STORE"
             case macAppDirect = "MAC_APP_DIRECT"
-            case tvosAppDevelopment = "TVOS_APP_DEVELOPMENT"
-            case tvosAppStore = "TVOS_APP_STORE"
-            case tvosAppAdhoc = "TVOS_APP_ADHOC"
-            case tvosAppInhouse = "TVOS_APP_INHOUSE"
+            case tvOSAppDevelopment = "TVOS_APP_DEVELOPMENT"
+            case tvOSAppStore = "TVOS_APP_STORE"
+            case tvOSAppAdhoc = "TVOS_APP_ADHOC"
+            case tvOSAppInhouse = "TVOS_APP_INHOUSE"
             case macCatalystAppDevelopment = "MAC_CATALYST_APP_DEVELOPMENT"
             case macCatalystAppStore = "MAC_CATALYST_APP_STORE"
             case macCatalystAppDirect = "MAC_CATALYST_APP_DIRECT"
@@ -63,13 +63,13 @@ extension Resources {
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case id
-            case minusid = "-id"
+            case minusID = "-id"
             case name
-            case minusname = "-name"
+            case minusName = "-name"
             case profileState
-            case minusprofileState = "-profileState"
+            case minusProfileState = "-profileState"
             case profileType
-            case minusprofileType = "-profileType"
+            case minusProfileType = "-profileType"
         }
 
         public enum FieldsProfiles: String, CaseIterable, Codable, Sendable {

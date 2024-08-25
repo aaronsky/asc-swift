@@ -7,6 +7,6 @@ import Foundation
 import AppStoreConnect
 
 public enum BundleIDPlatform: String, CaseIterable, Codable, Sendable {
-    case ios = "IOS"
-    case macOs = "MAC_OS"
+    case iOS = "IOS"
+    case macOS = "MAC_OS"
 }

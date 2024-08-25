@@ -40,21 +40,21 @@ extension Resources {
         }
 
         public enum FilterPlatform: String, CaseIterable, Codable, Sendable {
-            case ios = "IOS"
-            case macOs = "MAC_OS"
+            case iOS = "IOS"
+            case macOS = "MAC_OS"
         }
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case id
-            case minusid = "-id"
+            case minusID = "-id"
             case identifier
-            case minusidentifier = "-identifier"
+            case minusIdentifier = "-identifier"
             case name
-            case minusname = "-name"
+            case minusName = "-name"
             case platform
-            case minusplatform = "-platform"
+            case minusPlatform = "-platform"
             case seedID = "seedId"
-            case minusseedID = "-seedId"
+            case minusSeedID = "-seedId"
         }
 
         public enum FieldsBundleIDs: String, CaseIterable, Codable, Sendable {

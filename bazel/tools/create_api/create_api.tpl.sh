@@ -23,16 +23,19 @@ sed_i() {
 }
 
 workspace_dir="${BUILD_WORKSPACE_DIRECTORY}"
+workspace_sources_dir="$workspace_dir/Sources"
 create_api_tool="$(rlocation com_github_aaronsky_createapi/create-api)"
 create_api_config="$(rlocation asc_swift/bazel/tools/create_api/.create-api.yml)"
 
 appstore_api_version="@@APPSTORE_API_VERSION@@"
 enterprise_api_version="@@ENTERPRISE_API_VERSION@@"
 
+# Keep these two arrays in sync, order-wise
 specs=(
     "$(rlocation com_apple_app_store_connect_api/app_store_connect_api_${appstore_api_version}_openapi.json)"
     "$(rlocation com_apple_enterprise_program_api/enterprise_program_api_${enterprise_api_version}_openapi.json)"
 )
+modules=(AppStoreAPI EnterpriseAPI)
 
 output_files_to_merge=(
     "Entities/ErrorLinks.swift"
@@ -42,20 +45,23 @@ output_files_to_merge=(
     "Entities/PagedDocumentLinks.swift"
     "Extensions/AnyJSON.swift"
 )
-merge_to_path="$workspace_dir/Sources/AppStoreConnect/Entities"
+merge_to_path="$workspace_sources_dir/AppStoreConnect/Entities"
 output_files_to_delete=(
     "Extensions/StringCodingKey.swift"
 )
 
-for spec in "${specs[@]}"; do
+for index in "${!specs[@]}"; do
+    spec="${specs[$index]}"
+    module_name="${modules[$index]}"
+
     if [ -z "$spec" ]; then
         echo "path to spec is empty. cannot run create-api"
         exit 1
     fi
 
     spec_dir="$(dirname "$spec")"
-    module_name="$(basename "$spec_dir")"
     output_dir="$spec_dir/Generated"
+    dest_dir="$workspace_sources_dir/$module_name/Generated"
 
     "$create_api_tool" \
         generate "$spec" \
@@ -84,4 +90,7 @@ for spec in "${specs[@]}"; do
     for file in "${output_files_to_delete[@]}"; do
         rm "$output_dir/$file"
     done
+
+    rm -rf "$dest_dir" || true
+    cp -R "$output_dir" "$dest_dir"
 done

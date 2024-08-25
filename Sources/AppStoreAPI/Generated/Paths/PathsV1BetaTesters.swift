@@ -50,15 +50,15 @@ extension Resources.V1 {
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case email
-            case minusemail = "-email"
+            case minusEmail = "-email"
             case firstName
-            case minusfirstName = "-firstName"
+            case minusFirstName = "-firstName"
             case inviteType
-            case minusinviteType = "-inviteType"
+            case minusInviteType = "-inviteType"
             case lastName
-            case minuslastName = "-lastName"
+            case minusLastName = "-lastName"
             case state
-            case minusstate = "-state"
+            case minusState = "-state"
         }
 
         public enum FieldsBetaTesters: String, CaseIterable, Codable, Sendable {

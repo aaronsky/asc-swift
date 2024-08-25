@@ -7,8 +7,8 @@ import Foundation
 import AppStoreConnect
 
 public enum Platform: String, CaseIterable, Codable, Sendable {
-    case ios = "IOS"
-    case macOs = "MAC_OS"
-    case tvOs = "TV_OS"
-    case visionOs = "VISION_OS"
+    case iOS = "IOS"
+    case macOS = "MAC_OS"
+    case tvOS = "TV_OS"
+    case visionOS = "VISION_OS"
 }

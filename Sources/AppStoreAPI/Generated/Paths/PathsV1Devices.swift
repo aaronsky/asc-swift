@@ -34,8 +34,8 @@ extension Resources.V1 {
         }
 
         public enum FilterPlatform: String, CaseIterable, Codable, Sendable {
-            case ios = "IOS"
-            case macOs = "MAC_OS"
+            case iOS = "IOS"
+            case macOS = "MAC_OS"
         }
 
         public enum FilterStatus: String, CaseIterable, Codable, Sendable {
@@ -45,15 +45,15 @@ extension Resources.V1 {
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case id
-            case minusid = "-id"
+            case minusID = "-id"
             case name
-            case minusname = "-name"
+            case minusName = "-name"
             case platform
-            case minusplatform = "-platform"
+            case minusPlatform = "-platform"
             case status
-            case minusstatus = "-status"
+            case minusStatus = "-status"
             case udid
-            case minusudid = "-udid"
+            case minusUdid = "-udid"
         }
 
         public enum FieldsDevices: String, CaseIterable, Codable, Sendable {

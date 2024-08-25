@@ -48,13 +48,13 @@ extension Resources.V1.GameCenterDetails.WithID.Metrics {
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case averageSecondsInQueue
-            case minusaverageSecondsInQueue = "-averageSecondsInQueue"
+            case minusAverageSecondsInQueue = "-averageSecondsInQueue"
             case count
-            case minuscount = "-count"
+            case minusCount = "-count"
             case p50SecondsInQueue
-            case minusp50SecondsInQueue = "-p50SecondsInQueue"
+            case minusP50SecondsInQueue = "-p50SecondsInQueue"
             case p95SecondsInQueue
-            case minusp95SecondsInQueue = "-p95SecondsInQueue"
+            case minusP95SecondsInQueue = "-p95SecondsInQueue"
         }
     }
 }

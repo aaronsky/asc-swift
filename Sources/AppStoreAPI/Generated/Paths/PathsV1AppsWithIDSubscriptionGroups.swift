@@ -50,7 +50,7 @@ extension Resources.V1.Apps.WithID {
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case referenceName
-            case minusreferenceName = "-referenceName"
+            case minusReferenceName = "-referenceName"
         }
 
         public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {

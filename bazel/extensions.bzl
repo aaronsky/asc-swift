@@ -36,9 +36,9 @@ def _asc_swift_dev_deps_impl(_mctx):
     http_archive(
         name = "com_github_aaronsky_createapi",
         build_file = "@asc_swift//bazel/third_party:com_github_aaronsky_createapi/BUILD.overlay",
-        sha256 = "ceafb020bbbb35dbccd12be691f767cd643ef27aff4ae34e72ee314ff3e4474f",
-        strip_prefix = "CreateAPI-0.2.0-alpha.3",
-        url = "https://github.com/aaronsky/CreateAPI/archive/refs/tags/0.2.0-alpha.3.zip",
+        sha256 = "69ae5a4822e5950dafd92ff5c07cf681adbfb1e0141ee751065289c7ed2f837d",
+        strip_prefix = "CreateAPI-0.2.0-alpha.4",
+        url = "https://github.com/aaronsky/CreateAPI/archive/refs/tags/0.2.0-alpha.4.zip",
     )
     http_archive(
         name = "com_github_apple_swift_argument_parser",

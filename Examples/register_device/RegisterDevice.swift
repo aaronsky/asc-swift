@@ -45,9 +45,9 @@ extension BundleIDPlatform {
     init(_ platform: RegisterDevice.Platform) {
         switch platform {
         case .iOS:
-            self = .ios
+            self = .iOS
         case .macOS:
-            self = .macOs
+            self = .macOS
         }
     }
 }
