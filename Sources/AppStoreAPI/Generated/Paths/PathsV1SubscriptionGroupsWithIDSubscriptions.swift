@@ -61,7 +61,7 @@ extension Resources.V1.SubscriptionGroups.WithID {
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case name
-            case minusname = "-name"
+            case minusName = "-name"
         }
 
         public enum FieldsPromotedPurchases: String, CaseIterable, Codable, Sendable {

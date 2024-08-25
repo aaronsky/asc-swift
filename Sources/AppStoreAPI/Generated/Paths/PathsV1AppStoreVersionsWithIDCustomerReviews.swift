@@ -270,9 +270,9 @@ extension Resources.V1.AppStoreVersions.WithID {
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case createdDate
-            case minuscreatedDate = "-createdDate"
+            case minusCreatedDate = "-createdDate"
             case rating
-            case minusrating = "-rating"
+            case minusRating = "-rating"
         }
 
         public enum FieldsCustomerReviews: String, CaseIterable, Codable, Sendable {

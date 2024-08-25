@@ -71,10 +71,10 @@ extension Resources.V1.CiBuildRuns.WithID {
         }
 
         public enum FilterPreReleaseVersionPlatform: String, CaseIterable, Codable, Sendable {
-            case ios = "IOS"
-            case macOs = "MAC_OS"
-            case tvOs = "TV_OS"
-            case visionOs = "VISION_OS"
+            case iOS = "IOS"
+            case macOS = "MAC_OS"
+            case tvOS = "TV_OS"
+            case visionOS = "VISION_OS"
         }
 
         public enum FilterProcessingState: String, CaseIterable, Codable, Sendable {
@@ -86,11 +86,11 @@ extension Resources.V1.CiBuildRuns.WithID {
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case preReleaseVersion
-            case minuspreReleaseVersion = "-preReleaseVersion"
+            case minusPreReleaseVersion = "-preReleaseVersion"
             case uploadedDate
-            case minusuploadedDate = "-uploadedDate"
+            case minusUploadedDate = "-uploadedDate"
             case version
-            case minusversion = "-version"
+            case minusVersion = "-version"
         }
 
         public enum FieldsBuildBundles: String, CaseIterable, Codable, Sendable {

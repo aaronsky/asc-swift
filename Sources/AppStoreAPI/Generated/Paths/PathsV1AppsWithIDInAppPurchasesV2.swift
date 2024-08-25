@@ -63,9 +63,9 @@ extension Resources.V1.Apps.WithID {
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case inAppPurchaseType
-            case minusinAppPurchaseType = "-inAppPurchaseType"
+            case minusInAppPurchaseType = "-inAppPurchaseType"
             case name
-            case minusname = "-name"
+            case minusName = "-name"
         }
 
         public enum FieldsInAppPurchaseAppStoreReviewScreenshots: String, CaseIterable, Codable, Sendable {

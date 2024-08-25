@@ -42,13 +42,13 @@ extension Resources.V1.GameCenterMatchmakingRules.WithID.Metrics {
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case averageResult
-            case minusaverageResult = "-averageResult"
+            case minusAverageResult = "-averageResult"
             case count
-            case minuscount = "-count"
+            case minusCount = "-count"
             case p50Result
-            case minusp50Result = "-p50Result"
+            case minusP50Result = "-p50Result"
             case p95Result
-            case minusp95Result = "-p95Result"
+            case minusP95Result = "-p95Result"
         }
     }
 }

@@ -42,7 +42,7 @@ extension Resources.V1.GameCenterMatchmakingRules.WithID.Metrics {
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case count
-            case minuscount = "-count"
+            case minusCount = "-count"
         }
     }
 }

@@ -17,16 +17,16 @@ public struct CiAction: Codable, Equatable, Sendable {
     public var isRequiredToPass: Bool?
 
     public enum Destination: String, CaseIterable, Codable, Sendable {
-        case anyIosDevice = "ANY_IOS_DEVICE"
-        case anyIosSimulator = "ANY_IOS_SIMULATOR"
-        case anyTvosDevice = "ANY_TVOS_DEVICE"
-        case anyTvosSimulator = "ANY_TVOS_SIMULATOR"
-        case anyWatchosDevice = "ANY_WATCHOS_DEVICE"
-        case anyWatchosSimulator = "ANY_WATCHOS_SIMULATOR"
+        case anyiOSDevice = "ANY_IOS_DEVICE"
+        case anyiOSSimulator = "ANY_IOS_SIMULATOR"
+        case anytvOSDevice = "ANY_TVOS_DEVICE"
+        case anytvOSSimulator = "ANY_TVOS_SIMULATOR"
+        case anywatchOSDevice = "ANY_WATCHOS_DEVICE"
+        case anywatchOSSimulator = "ANY_WATCHOS_SIMULATOR"
         case anyMac = "ANY_MAC"
         case anyMacCatalyst = "ANY_MAC_CATALYST"
-        case anyVisionosDevice = "ANY_VISIONOS_DEVICE"
-        case anyVisionosSimulator = "ANY_VISIONOS_SIMULATOR"
+        case anyvisionOSDevice = "ANY_VISIONOS_DEVICE"
+        case anyvisionOSSimulator = "ANY_VISIONOS_SIMULATOR"
     }
 
     public struct TestConfiguration: Codable, Equatable, Sendable {
@@ -47,11 +47,11 @@ public struct CiAction: Codable, Equatable, Sendable {
     }
 
     public enum Platform: String, CaseIterable, Codable, Sendable {
-        case macos = "MACOS"
-        case ios = "IOS"
-        case tvos = "TVOS"
-        case watchos = "WATCHOS"
-        case visionos = "VISIONOS"
+        case macOS = "MACOS"
+        case iOS = "IOS"
+        case tvOS = "TVOS"
+        case watchOS = "WATCHOS"
+        case visionOS = "VISIONOS"
     }
 
     public init(name: String? = nil, actionType: CiActionType? = nil, destination: Destination? = nil, buildDistributionAudience: BuildAudienceType? = nil, testConfiguration: TestConfiguration? = nil, scheme: String? = nil, platform: Platform? = nil, isRequiredToPass: Bool? = nil) {

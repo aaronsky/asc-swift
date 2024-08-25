@@ -39,7 +39,7 @@ extension Resources.V1.Builds.WithID {
         }
 
         public enum FilterPlatform: String, CaseIterable, Codable, Sendable {
-            case ios = "IOS"
+            case iOS = "IOS"
         }
     }
 }

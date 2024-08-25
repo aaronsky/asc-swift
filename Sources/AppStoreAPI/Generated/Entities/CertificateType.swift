@@ -7,8 +7,8 @@ import Foundation
 import AppStoreConnect
 
 public enum CertificateType: String, CaseIterable, Codable, Sendable {
-    case iosDevelopment = "IOS_DEVELOPMENT"
-    case iosDistribution = "IOS_DISTRIBUTION"
+    case iOSDevelopment = "IOS_DEVELOPMENT"
+    case iOSDistribution = "IOS_DISTRIBUTION"
     case macAppDistribution = "MAC_APP_DISTRIBUTION"
     case macInstallerDistribution = "MAC_INSTALLER_DISTRIBUTION"
     case macAppDevelopment = "MAC_APP_DEVELOPMENT"

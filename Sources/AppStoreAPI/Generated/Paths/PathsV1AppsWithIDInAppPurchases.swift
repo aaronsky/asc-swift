@@ -43,11 +43,11 @@ extension Resources.V1.Apps.WithID {
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case inAppPurchaseType
-            case minusinAppPurchaseType = "-inAppPurchaseType"
+            case minusInAppPurchaseType = "-inAppPurchaseType"
             case productID = "productId"
-            case minusproductID = "-productId"
+            case minusProductID = "-productId"
             case referenceName
-            case minusreferenceName = "-referenceName"
+            case minusReferenceName = "-referenceName"
         }
 
         public enum FieldsInAppPurchases: String, CaseIterable, Codable, Sendable {

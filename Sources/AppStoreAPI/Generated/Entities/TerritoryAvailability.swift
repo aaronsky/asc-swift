@@ -40,7 +40,7 @@ public struct TerritoryAvailability: Codable, Equatable, Identifiable, Sendable 
             case unverifiedGrn = "UNVERIFIED_GRN"
             case cannotSellSeventeenPlusApps = "CANNOT_SELL_SEVENTEEN_PLUS_APPS"
             case cannotSellSexuallyExplicit = "CANNOT_SELL_SEXUALLY_EXPLICIT"
-            case cannotSellNonIosGames = "CANNOT_SELL_NON_IOS_GAMES"
+            case cannotSellNoniOSGames = "CANNOT_SELL_NON_IOS_GAMES"
             case cannotSellSeventeenPlusGames = "CANNOT_SELL_SEVENTEEN_PLUS_GAMES"
             case cannotSellFrequentIntenseGambling = "CANNOT_SELL_FREQUENT_INTENSE_GAMBLING"
             case cannotSellCasino = "CANNOT_SELL_CASINO"

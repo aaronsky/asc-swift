@@ -36,8 +36,8 @@ extension Resources.PassTypeIDs.WithID {
         }
 
         public enum FilterCertificateType: String, CaseIterable, Codable, Sendable {
-            case iosDevelopment = "IOS_DEVELOPMENT"
-            case iosDistribution = "IOS_DISTRIBUTION"
+            case iOSDevelopment = "IOS_DEVELOPMENT"
+            case iOSDistribution = "IOS_DISTRIBUTION"
             case macAppDistribution = "MAC_APP_DISTRIBUTION"
             case macInstallerDistribution = "MAC_INSTALLER_DISTRIBUTION"
             case macAppDevelopment = "MAC_APP_DEVELOPMENT"
@@ -51,13 +51,13 @@ extension Resources.PassTypeIDs.WithID {
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case certificateType
-            case minuscertificateType = "-certificateType"
+            case minusCertificateType = "-certificateType"
             case displayName
-            case minusdisplayName = "-displayName"
+            case minusDisplayName = "-displayName"
             case id
-            case minusid = "-id"
+            case minusID = "-id"
             case serialNumber
-            case minusserialNumber = "-serialNumber"
+            case minusSerialNumber = "-serialNumber"
         }
 
         public enum FieldsCertificates: String, CaseIterable, Codable, Sendable {

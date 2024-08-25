@@ -36,13 +36,13 @@ extension Resources.V1.GameCenterMatchmakingQueues.WithID.Metrics {
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case averageNumberOfRequests
-            case minusaverageNumberOfRequests = "-averageNumberOfRequests"
+            case minusAverageNumberOfRequests = "-averageNumberOfRequests"
             case count
-            case minuscount = "-count"
+            case minusCount = "-count"
             case p50NumberOfRequests
-            case minusp50NumberOfRequests = "-p50NumberOfRequests"
+            case minusP50NumberOfRequests = "-p50NumberOfRequests"
             case p95NumberOfRequests
-            case minusp95NumberOfRequests = "-p95NumberOfRequests"
+            case minusP95NumberOfRequests = "-p95NumberOfRequests"
         }
     }
 }

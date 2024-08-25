@@ -22,7 +22,7 @@ public struct PerfPowerMetric: Codable, Equatable, Identifiable, Sendable {
         public var deviceType: String?
 
         public enum Platform: String, CaseIterable, Codable, Sendable {
-            case ios = "IOS"
+            case iOS = "IOS"
         }
 
         public enum MetricType: String, CaseIterable, Codable, Sendable {
