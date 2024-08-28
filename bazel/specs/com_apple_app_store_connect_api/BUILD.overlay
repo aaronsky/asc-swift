@@ -15,9 +15,16 @@ filegroup(
     srcs = ["openapi.json"],
 )
 
+jq(
+    name = "patch_jq",
+    srcs = [":original_spec"],
+    out = "openapi_patched_jq.json",
+    filter = ".",
+)
+
 copy_file(
     name = "spec_copy",
-    src = ":original_spec",
+    src = ":patch_jq",
     out = SPEC_FILE_NAME,
 )
 

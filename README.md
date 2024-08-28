@@ -34,7 +34,7 @@ The package defines two products: `AppStoreConnect` and `EnterpriseProgram`. Eac
 To use `AppStoreConnect` in your project, add the following line to the dependencies in your `Package.swift` file:
 
 ```swift
-.package(url: "https://github.com/aaronsky/asc-swift", from: "0.7.0"),
+.package(url: "https://github.com/aaronsky/asc-swift", from: "1.0.0"),
 ```
 
 Then, include `"AppStoreConnect"` as a dependency of your target:
@@ -77,7 +77,8 @@ let client = AppStoreConnectClient(
 )
 ```
 
-`JWT` instances are bound to the API they are intended for, as credentials are not portable between teams. The designated default is the App Store Connect API. To use the Enterprise Program API, provide `api: .enterpriseProgram` as the first argument to the `JWT` initializer.
+> [!NOTE]
+> `JWT` instances are bound to the API they are intended for, as credentials are not portable between teams. The designated default is the App Store Connect API. To use the Enterprise Program API, provide `api: .enterpriseProgram` as the first argument to the `JWT` initializer.
 
 You can learn more about creating the necessary credentials for the App Store Connect API at Apple's documentation page via [Creating API Keys for App Store Connect API](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api), or the corresponding Enterprise Program API documentation [here](https://developer.apple.com/documentation/enterpriseprogramapi/creating-api-keys-for-enterprise-program-api). All App Store Connect and Enterprise Program APIs are scoped to the credentials of the pre-configured key, so you can't use this API to make queries against the entire App Store.
 
