@@ -16,7 +16,7 @@ extension Resources.V1.AppStoreVersions.WithID {
         /// Path: `/v1/appStoreVersions/{id}/appStoreVersionPhasedRelease`
         public let path: String
 
-        public func get(fieldsAppStoreVersionPhasedReleases: [FieldsAppStoreVersionPhasedReleases]? = nil) -> Request<AppStoreAPI.AppStoreVersionPhasedReleaseResponse> {
+        public func get(fieldsAppStoreVersionPhasedReleases: [FieldsAppStoreVersionPhasedReleases]? = nil) -> Request<AppStoreAPI.AppStoreVersionPhasedReleaseWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionPhasedReleases), id: "appStoreVersions-appStoreVersionPhasedRelease-get_to_one_related")
         }
 

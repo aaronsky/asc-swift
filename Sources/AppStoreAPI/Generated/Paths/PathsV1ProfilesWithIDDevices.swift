@@ -16,7 +16,7 @@ extension Resources.V1.Profiles.WithID {
         /// Path: `/v1/profiles/{id}/devices`
         public let path: String
 
-        public func get(fieldsDevices: [FieldsDevices]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.DevicesResponse> {
+        public func get(fieldsDevices: [FieldsDevices]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.DevicesWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsDevices, limit), id: "profiles-devices-get_to_many_related")
         }
 

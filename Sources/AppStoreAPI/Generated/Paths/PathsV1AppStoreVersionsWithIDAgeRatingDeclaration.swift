@@ -16,7 +16,7 @@ extension Resources.V1.AppStoreVersions.WithID {
         /// Path: `/v1/appStoreVersions/{id}/ageRatingDeclaration`
         public let path: String
 
-        public func get(fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]? = nil) -> Request<AppStoreAPI.AgeRatingDeclarationResponse> {
+        public func get(fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]? = nil) -> Request<AppStoreAPI.AgeRatingDeclarationWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsAgeRatingDeclarations), id: "appStoreVersions-ageRatingDeclaration-get_to_one_related")
         }
 

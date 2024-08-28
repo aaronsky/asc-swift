@@ -16,7 +16,7 @@ extension Resources.V1.AppEncryptionDeclarations.WithID {
         /// Path: `/v1/appEncryptionDeclarations/{id}/app`
         public let path: String
 
-        public func get(fieldsApps: [FieldsApps]? = nil) -> Request<AppStoreAPI.AppResponse> {
+        public func get(fieldsApps: [FieldsApps]? = nil) -> Request<AppStoreAPI.AppWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsApps), id: "appEncryptionDeclarations-app-get_to_one_related")
         }
 

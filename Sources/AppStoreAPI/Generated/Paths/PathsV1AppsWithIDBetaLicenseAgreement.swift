@@ -16,7 +16,7 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/betaLicenseAgreement`
         public let path: String
 
-        public func get(fieldsBetaLicenseAgreements: [FieldsBetaLicenseAgreements]? = nil) -> Request<AppStoreAPI.BetaLicenseAgreementResponse> {
+        public func get(fieldsBetaLicenseAgreements: [FieldsBetaLicenseAgreements]? = nil) -> Request<AppStoreAPI.BetaLicenseAgreementWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaLicenseAgreements), id: "apps-betaLicenseAgreement-get_to_one_related")
         }
 

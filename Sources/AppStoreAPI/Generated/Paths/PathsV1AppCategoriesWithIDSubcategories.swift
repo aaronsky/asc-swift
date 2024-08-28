@@ -16,7 +16,7 @@ extension Resources.V1.AppCategories.WithID {
         /// Path: `/v1/appCategories/{id}/subcategories`
         public let path: String
 
-        public func get(fieldsAppCategories: [FieldsAppCategories]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.AppCategoriesResponse> {
+        public func get(fieldsAppCategories: [FieldsAppCategories]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.AppCategoriesWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsAppCategories, limit), id: "appCategories-subcategories-get_to_many_related")
         }
 

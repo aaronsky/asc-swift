@@ -16,7 +16,7 @@ extension Resources.V1.BundleIDs.WithID {
         /// Path: `/v1/bundleIds/{id}/app`
         public let path: String
 
-        public func get(fieldsApps: [FieldsApps]? = nil) -> Request<AppStoreAPI.AppResponse> {
+        public func get(fieldsApps: [FieldsApps]? = nil) -> Request<AppStoreAPI.AppWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsApps), id: "bundleIds-app-get_to_one_related")
         }
 

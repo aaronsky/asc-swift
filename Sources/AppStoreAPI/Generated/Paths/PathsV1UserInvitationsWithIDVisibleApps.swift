@@ -16,7 +16,7 @@ extension Resources.V1.UserInvitations.WithID {
         /// Path: `/v1/userInvitations/{id}/visibleApps`
         public let path: String
 
-        public func get(fieldsApps: [FieldsApps]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.AppsResponse> {
+        public func get(fieldsApps: [FieldsApps]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.AppsWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsApps, limit), id: "userInvitations-visibleApps-get_to_many_related")
         }
 

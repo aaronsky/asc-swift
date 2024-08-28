@@ -16,7 +16,7 @@ extension Resources.V1.Builds.WithID {
         /// Path: `/v1/builds/{id}/betaBuildLocalizations`
         public let path: String
 
-        public func get(fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.BetaBuildLocalizationsResponse> {
+        public func get(fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.BetaBuildLocalizationsWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaBuildLocalizations, limit), id: "builds-betaBuildLocalizations-get_to_many_related")
         }
 

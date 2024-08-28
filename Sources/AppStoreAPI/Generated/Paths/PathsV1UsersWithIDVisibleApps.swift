@@ -16,7 +16,7 @@ extension Resources.V1.Users.WithID {
         /// Path: `/v1/users/{id}/visibleApps`
         public let path: String
 
-        public func get(fieldsApps: [FieldsApps]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.AppsResponse> {
+        public func get(fieldsApps: [FieldsApps]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.AppsWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsApps, limit), id: "users-visibleApps-get_to_many_related")
         }
 

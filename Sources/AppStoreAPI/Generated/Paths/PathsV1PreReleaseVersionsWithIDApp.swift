@@ -16,7 +16,7 @@ extension Resources.V1.PreReleaseVersions.WithID {
         /// Path: `/v1/preReleaseVersions/{id}/app`
         public let path: String
 
-        public func get(fieldsApps: [FieldsApps]? = nil) -> Request<AppStoreAPI.AppResponse> {
+        public func get(fieldsApps: [FieldsApps]? = nil) -> Request<AppStoreAPI.AppWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsApps), id: "preReleaseVersions-app-get_to_one_related")
         }
 

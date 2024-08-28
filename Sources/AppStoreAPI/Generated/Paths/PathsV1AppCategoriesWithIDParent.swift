@@ -16,7 +16,7 @@ extension Resources.V1.AppCategories.WithID {
         /// Path: `/v1/appCategories/{id}/parent`
         public let path: String
 
-        public func get(fieldsAppCategories: [FieldsAppCategories]? = nil) -> Request<AppStoreAPI.AppCategoryResponse> {
+        public func get(fieldsAppCategories: [FieldsAppCategories]? = nil) -> Request<AppStoreAPI.AppCategoryWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsAppCategories), id: "appCategories-parent-get_to_one_related")
         }
 

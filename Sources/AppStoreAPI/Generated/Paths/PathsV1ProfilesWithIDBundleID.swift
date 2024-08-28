@@ -16,7 +16,7 @@ extension Resources.V1.Profiles.WithID {
         /// Path: `/v1/profiles/{id}/bundleId`
         public let path: String
 
-        public func get(fieldsBundleIDs: [FieldsBundleIDs]? = nil) -> Request<AppStoreAPI.BundleIDResponse> {
+        public func get(fieldsBundleIDs: [FieldsBundleIDs]? = nil) -> Request<AppStoreAPI.BundleIDWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsBundleIDs), id: "profiles-bundleId-get_to_one_related")
         }
 

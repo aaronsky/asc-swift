@@ -16,7 +16,7 @@ extension Resources.V1.Profiles.WithID {
         /// Path: `/v1/profiles/{id}/certificates`
         public let path: String
 
-        public func get(fieldsCertificates: [FieldsCertificates]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.CertificatesResponse> {
+        public func get(fieldsCertificates: [FieldsCertificates]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.CertificatesWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsCertificates, limit), id: "profiles-certificates-get_to_many_related")
         }
 

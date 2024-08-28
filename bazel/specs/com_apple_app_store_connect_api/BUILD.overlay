@@ -15,57 +15,9 @@ filegroup(
     srcs = ["openapi.json"],
 )
 
-genrule(
-    name = "patch_awk",
-    srcs = [
-        ":original_spec",
-        "@asc_swift//bazel/specs:app_store_connect_api_patches_awk_prog",
-    ],
-    outs = ["openapi_patched_awk.json"],
-    cmd = "awk -f $(location @asc_swift//bazel/specs:app_store_connect_api_patches_awk_prog) $(locations :original_spec) > $(OUTS)",
-)
-
-jq(
-    name = "patch_jq",
-    srcs = [":patch_awk"],
-    out = "openapi_patched_jq.json",
-    filter = """\
-delpaths([
-    ["components", "schemas", "AgeRatingDeclarationWithoutIncludesResponse"],
-    ["components", "schemas", "AppCategoriesWithoutIncludesResponse"],
-    ["components", "schemas", "AppCategoryWithoutIncludesResponse"],
-    ["components", "schemas", "AppEncryptionDeclarationWithoutIncludesResponse"],
-    ["components", "schemas", "AppPreOrderWithoutIncludesResponse"],
-    ["components", "schemas", "AppStoreVersionPhasedReleaseWithoutIncludesResponse"],
-    ["components", "schemas", "AppsWithoutIncludesResponse"],
-    ["components", "schemas", "AppWithoutIncludesResponse"],
-    ["components", "schemas", "BetaAppLocalizationsWithoutIncludesResponse"],
-    ["components", "schemas", "BetaAppReviewDetailWithoutIncludesResponse"],
-    ["components", "schemas", "BetaAppReviewSubmissionWithoutIncludesResponse"],
-    ["components", "schemas", "BetaBuildLocalizationsWithoutIncludesResponse"],
-    ["components", "schemas", "BetaGroupsWithoutIncludesResponse"],
-    ["components", "schemas", "BetaLicenseAgreementWithoutIncludesResponse"],
-    ["components", "schemas", "BetaTestersWithoutIncludesResponse"],
-    ["components", "schemas", "BuildIconsWithoutIncludesResponse"],
-    ["components", "schemas", "BuildsWithoutIncludesResponse"],
-    ["components", "schemas", "BuildWithoutIncludesResponse"],
-    ["components", "schemas", "BundleIdCapabilitiesWithoutIncludesResponse"],
-    ["components", "schemas", "BundleIdWithoutIncludesResponse"],
-    ["components", "schemas", "CertificatesWithoutIncludesResponse"],
-    ["components", "schemas", "DevicesWithoutIncludesResponse"],
-    ["components", "schemas", "EndUserLicenseAgreementWithoutIncludesResponse"],
-    ["components", "schemas", "PreReleaseVersionsWithoutIncludesResponse"],
-    ["components", "schemas", "PrereleaseVersionWithoutIncludesResponse"],
-    ["components", "schemas", "ProfilesWithoutIncludesResponse"],
-    ["components", "schemas", "RoutingAppCoverageWithoutIncludesResponse"],
-    ["components", "schemas", "TerritoriesWithoutIncludesResponse"]
-])
-""",
-)
-
 copy_file(
     name = "spec_copy",
-    src = ":patch_jq",
+    src = ":original_spec",
     out = SPEC_FILE_NAME,
 )
 

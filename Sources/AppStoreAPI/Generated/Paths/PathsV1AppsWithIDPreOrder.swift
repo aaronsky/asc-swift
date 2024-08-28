@@ -16,7 +16,7 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/preOrder`
         public let path: String
 
-        public func get(fieldsAppPreOrders: [FieldsAppPreOrders]? = nil) -> Request<AppStoreAPI.AppPreOrderResponse> {
+        public func get(fieldsAppPreOrders: [FieldsAppPreOrders]? = nil) -> Request<AppStoreAPI.AppPreOrderWithoutIncludesResponse> {
             Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPreOrders), id: "apps-preOrder-get_to_one_related")
         }
 
