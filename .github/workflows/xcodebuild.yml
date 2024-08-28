@@ -28,22 +28,21 @@ jobs:
     runs-on: macos-14
     strategy:
       matrix:
-        xcode: ['15.4']
-        xcode_flags: ['-scheme AppStoreConnect-Package']
+        xcode:
+          - '15.4'
+        destination:
+          - 'platform=macOS'
+          - 'platform=iOS Simulator,name=iPhone 15 Pro Max'
     env:
       DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
     steps:
       - uses: actions/checkout@v4
       - run: xcodebuild -version
-      - name: macOS
-        if: always()
+      - name: Build with Xcode
         run: |-
           set -o pipefail
 
-          xcodebuild test ${{ matrix.xcode_flags }} -destination "platform=macOS" | xcbeautify --renderer github-actions
-      - name: iOS Simulator
-        if: always()
-        run: |-
-          set -o pipefail
-
-          xcodebuild test ${{ matrix.xcode_flags }} -destination "platform=iOS Simulator,name=iPhone 15 Pro Max" | xcbeautify --renderer github-actions
+          xcodebuild test \
+            -scheme AppStoreConnect-Package \
+            -destination "${{ matrix.destination }}" \
+          | xcbeautify --renderer github-actions
