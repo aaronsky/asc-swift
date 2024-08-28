@@ -10,4 +10,7 @@ public enum UserRole: String, CaseIterable, Codable, Sendable {
     case admin = "ADMIN"
     case accountHolder = "ACCOUNT_HOLDER"
     case developer = "DEVELOPER"
+    case cloudManagedDeveloperID = "CLOUD_MANAGED_DEVELOPER_ID"
+    case cloudManagedAppDistribution = "CLOUD_MANAGED_APP_DISTRIBUTION"
+    case generateIndividualKeys = "GENERATE_INDIVIDUAL_KEYS"
 }

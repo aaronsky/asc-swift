@@ -5,13 +5,30 @@ so if the checksum is ever invalid, chances are we need to update.
 
 load("@asc_swift//bazel/specs:versions.bzl", "ENTERPRISE_PROGRAM_API_SPEC_VERSION")
 load("@aspect_bazel_lib//lib:copy_file.bzl", "copy_file")
+load("@aspect_bazel_lib//lib:jq.bzl", "jq")
 load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_file")
 
 SPEC_FILE_NAME = "enterprise_program_api_%s_openapi.json" % ENTERPRISE_PROGRAM_API_SPEC_VERSION
 
+filegroup(
+    name = "original_spec",
+    srcs = ["openapi-deployment-adepPublicApi-adepPublicApi.oas.json"],
+)
+
+jq(
+    name = "patch_jq",
+    srcs = [":original_spec"],
+    out = "openapi_patched_jq.json",
+    filter = """\
+.components.schemas.UserRole.enum |= . + ["CLOUD_MANAGED_DEVELOPER_ID"]     |
+.components.schemas.UserRole.enum |= . + ["CLOUD_MANAGED_APP_DISTRIBUTION"] |
+.components.schemas.UserRole.enum |= . + ["GENERATE_INDIVIDUAL_KEYS"]
+""",
+)
+
 copy_file(
     name = "spec_copy",
-    src = "openapi-deployment-adepPublicApi-adepPublicApi.oas.json",
+    src = ":patch_jq",
     out = SPEC_FILE_NAME,
 )
 
@@ -23,7 +40,7 @@ filegroup(
 
 write_source_file(
     name = "write_spec",
-    in_file = ":spec_copy",
+    in_file = ":spec",
     out_file = "bazel/specs/com_apple_enterprise_program_api/%s" % SPEC_FILE_NAME,
     visibility = ["//visibility:public"],
 )

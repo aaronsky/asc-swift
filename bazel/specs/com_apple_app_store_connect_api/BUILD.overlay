@@ -77,7 +77,7 @@ filegroup(
 
 write_source_file(
     name = "write_spec",
-    in_file = ":spec_copy",
+    in_file = ":spec",
     out_file = "bazel/specs/com_apple_app_store_connect_api/%s" % SPEC_FILE_NAME,
     visibility = ["//visibility:public"],
 )
