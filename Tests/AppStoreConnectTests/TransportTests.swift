@@ -8,25 +8,31 @@ import XCTest
     import FoundationNetworking
 #endif
 
-private extension URLRequest {
-    init?(string urlString: String) {
+extension URLRequest {
+    fileprivate init?(string urlString: String) {
         guard let url = URL(string: urlString) else { return nil }
 
         self.init(url: url)
     }
 
-    static var testSendAsync: Self { .init(string: "https://example.com/test-send-async")! }
-    static var testSendAsyncError: Self { .init(string: "https://example.com/test-send-async-error")! }
-    static var testSendClosure: Self { .init(string: "https://example.com/test-send-closure")! }
-    static var testSendClosureError: Self { .init(string: "https://example.com/test-send-closure-error")! }
-    static var testDownloadAsync: Self { .init(string: "https://example.com/test-download-async")! }
-    static var testDownloadAsyncError: Self { .init(string: "https://example.com/test-download-async-error")! }
-    static var testDownloadClosure: Self { .init(string: "https://example.com/test-download-closure")! }
-    static var testDownloadClosureError: Self { .init(string: "https://example.com/test-download-closure-error")! }
-    static var testUploadAsync: Self { .init(string: "https://example.com/test-upload-async")! }
-    static var testUploadAsyncError: Self { .init(string: "https://example.com/test-upload-async-error")! }
-    static var testUploadClosure: Self { .init(string: "https://example.com/test-upload-closure")! }
-    static var testUploadClosureError: Self { .init(string: "https://example.com/test-upload-closure-error")! }
+    fileprivate static var testSendAsync: Self { .init(string: "https://example.com/test-send-async")! }
+    fileprivate static var testSendAsyncError: Self { .init(string: "https://example.com/test-send-async-error")! }
+    fileprivate static var testSendClosure: Self { .init(string: "https://example.com/test-send-closure")! }
+    fileprivate static var testSendClosureError: Self { .init(string: "https://example.com/test-send-closure-error")! }
+    fileprivate static var testDownloadAsync: Self { .init(string: "https://example.com/test-download-async")! }
+    fileprivate static var testDownloadAsyncError: Self {
+        .init(string: "https://example.com/test-download-async-error")!
+    }
+    fileprivate static var testDownloadClosure: Self { .init(string: "https://example.com/test-download-closure")! }
+    fileprivate static var testDownloadClosureError: Self {
+        .init(string: "https://example.com/test-download-closure-error")!
+    }
+    fileprivate static var testUploadAsync: Self { .init(string: "https://example.com/test-upload-async")! }
+    fileprivate static var testUploadAsyncError: Self { .init(string: "https://example.com/test-upload-async-error")! }
+    fileprivate static var testUploadClosure: Self { .init(string: "https://example.com/test-upload-closure")! }
+    fileprivate static var testUploadClosureError: Self {
+        .init(string: "https://example.com/test-upload-closure-error")!
+    }
 }
 
 class TransportTests: XCTestCase {
