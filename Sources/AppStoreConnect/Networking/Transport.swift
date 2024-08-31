@@ -53,19 +53,23 @@ extension URLSession: Transport {
                 send(request: request, decoder: decoder, completion: continuation.resume)
             }
         #else
-            let (data, response) = try await data(for: request)
+            let (data, urlResponse) = try await data(for: request)
 
-            guard let response = response as? HTTPURLResponse else {
+            guard let urlResponse = urlResponse as? HTTPURLResponse else {
                 throw TransportError.unrecognizedResponse
             }
 
-            return Response(
+            let response = Response(
                 data: data,
-                response: response,
-                statusCode: response.statusCode,
-                rate: Response.Rate(from: response.value(forHTTPHeaderField: rateLimitHeader)),
+                response: urlResponse,
+                statusCode: urlResponse.statusCode,
+                rate: Rate(from: urlResponse.value(forHTTPHeaderField: rateLimitHeader)),
                 decoder: decoder
             )
+
+            try response.check()
+
+            return response
         #endif
     }
 
@@ -81,22 +85,28 @@ extension URLSession: Transport {
         decoder: JSONDecoder,
         completion: @escaping @Sendable (Result<Response<Data>, any Error>) -> Void
     ) {
-        let task = dataTask(with: request) { data, response, error in
+        let task = dataTask(with: request) { data, urlResponse, error in
             completion(
                 Result {
                     if let error = error {
                         throw error
                     }
-                    guard let response = response as? HTTPURLResponse else {
+
+                    guard let urlResponse = urlResponse as? HTTPURLResponse else {
                         throw TransportError.unrecognizedResponse
                     }
-                    return Response(
+
+                    let response = Response(
                         data: data,
-                        response: response,
-                        statusCode: response.statusCode,
-                        rate: Response.Rate(from: response.value(forHTTPHeaderField: rateLimitHeader)),
+                        response: urlResponse,
+                        statusCode: urlResponse.statusCode,
+                        rate: Rate(from: urlResponse.value(forHTTPHeaderField: rateLimitHeader)),
                         decoder: decoder
                     )
+
+                    try response.check()
+
+                    return response
                 }
             )
         }
@@ -115,18 +125,22 @@ extension URLSession: Transport {
                 download(request: request, completion: continuation.resume)
             }
         #else
-            let (fileURL, response) = try await download(for: request)
+            let (fileURL, urlResponse) = try await download(for: request)
 
-            guard let response = response as? HTTPURLResponse else {
+            guard let urlResponse = urlResponse as? HTTPURLResponse else {
                 throw TransportError.unrecognizedResponse
             }
 
-            return Response(
+            let response = Response(
                 fileURL: fileURL,
-                response: response,
-                statusCode: response.statusCode,
-                rate: Response.Rate(from: response.value(forHTTPHeaderField: rateLimitHeader))
+                response: urlResponse,
+                statusCode: urlResponse.statusCode,
+                rate: Rate(from: urlResponse.value(forHTTPHeaderField: rateLimitHeader))
             )
+
+            try response.check()
+
+            return response
         #endif
     }
 
@@ -140,21 +154,27 @@ extension URLSession: Transport {
         request: URLRequest,
         completion: @escaping @Sendable (Result<Response<URL>, any Error>) -> Void
     ) {
-        let task = downloadTask(with: request) { fileURL, response, error in
+        let task = downloadTask(with: request) { fileURL, urlResponse, error in
             completion(
                 Result {
                     if let error = error {
                         throw error
                     }
-                    guard let response = response as? HTTPURLResponse else {
+
+                    guard let urlResponse = urlResponse as? HTTPURLResponse else {
                         throw TransportError.unrecognizedResponse
                     }
-                    return Response(
+
+                    let response = Response(
                         fileURL: fileURL,
-                        response: response,
-                        statusCode: response.statusCode,
-                        rate: Response.Rate(from: response.value(forHTTPHeaderField: rateLimitHeader))
+                        response: urlResponse,
+                        statusCode: urlResponse.statusCode,
+                        rate: Rate(from: urlResponse.value(forHTTPHeaderField: rateLimitHeader))
                     )
+
+                    try response.check()
+
+                    return response
                 }
             )
         }
@@ -176,19 +196,23 @@ extension URLSession: Transport {
                 upload(request: request, data: data, decoder: decoder, completion: continuation.resume)
             }
         #else
-            let (responseData, response) = try await upload(for: request, from: data)
+            let (responseData, urlResponse) = try await upload(for: request, from: data)
 
-            guard let response = response as? HTTPURLResponse else {
+            guard let urlResponse = urlResponse as? HTTPURLResponse else {
                 throw TransportError.unrecognizedResponse
             }
 
-            return Response(
+            let response = Response(
                 data: responseData,
-                response: response,
-                statusCode: response.statusCode,
-                rate: Response.Rate(from: response.value(forHTTPHeaderField: rateLimitHeader)),
+                response: urlResponse,
+                statusCode: urlResponse.statusCode,
+                rate: Rate(from: urlResponse.value(forHTTPHeaderField: rateLimitHeader)),
                 decoder: decoder
             )
+
+            try response.check()
+
+            return response
         #endif
     }
 
@@ -206,22 +230,28 @@ extension URLSession: Transport {
         decoder: JSONDecoder,
         completion: @escaping @Sendable (Result<Response<Data>, any Error>) -> Void
     ) {
-        let task = uploadTask(with: request, from: data) { responseData, response, error in
+        let task = uploadTask(with: request, from: data) { responseData, urlResponse, error in
             completion(
                 Result {
                     if let error = error {
                         throw error
                     }
-                    guard let response = response as? HTTPURLResponse else {
+
+                    guard let urlResponse = urlResponse as? HTTPURLResponse else {
                         throw TransportError.unrecognizedResponse
                     }
-                    return Response(
+
+                    let response = Response(
                         data: responseData,
-                        response: response,
-                        statusCode: response.statusCode,
-                        rate: Response.Rate(from: response.value(forHTTPHeaderField: rateLimitHeader)),
+                        response: urlResponse,
+                        statusCode: urlResponse.statusCode,
+                        rate: Rate(from: urlResponse.value(forHTTPHeaderField: rateLimitHeader)),
                         decoder: decoder
                     )
+
+                    try response.check()
+
+                    return response
                 }
             )
         }

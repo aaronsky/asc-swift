@@ -117,6 +117,7 @@ public struct Request<Response>: Sendable {
     ///
     /// - Parameters:
     ///   - path: Path to the resource.
+    ///   - baseURL: Base URL of the resource.
     ///   - method: HTTP method.
     ///   - query: Query string encoded parameters.
     ///   - body: Body of the request.
@@ -159,7 +160,6 @@ public struct Request<Response>: Sendable {
     ///
     /// - Parameters:
     ///   - path: Path to the resource.
-    ///   - baseURL: Base URL of the resource.
     ///   - query: Query string encoded parameters.
     ///   - body: Body of the request.
     ///   - headers: Request headers.
@@ -177,7 +177,6 @@ public struct Request<Response>: Sendable {
     ///
     /// - Parameters:
     ///   - path: Path to the resource.
-    ///   - baseURL: Base URL of the resource.
     ///   - query: Query string encoded parameters.
     ///   - body: Body of the request.
     ///   - headers: Request headers.
@@ -195,7 +194,6 @@ public struct Request<Response>: Sendable {
     ///
     /// - Parameters:
     ///   - path: Path to the resource.
-    ///   - baseURL: Base URL of the resource.
     ///   - query: Query string encoded parameters.
     ///   - body: Body of the request.
     ///   - headers: Request headers.
@@ -213,7 +211,6 @@ public struct Request<Response>: Sendable {
     ///
     /// - Parameters:
     ///   - path: Path to the resource.
-    ///   - baseURL: Base URL of the resource.
     ///   - query: Query string encoded parameters.
     ///   - body: Body of the request.
     ///   - headers: Request headers.
@@ -231,7 +228,6 @@ public struct Request<Response>: Sendable {
     ///
     /// - Parameters:
     ///   - path: Path to the resource.
-    ///   - baseURL: Base URL of the resource.
     ///   - query: Query string encoded parameters.
     ///   - headers: Request headers.
     /// - Returns: The request.

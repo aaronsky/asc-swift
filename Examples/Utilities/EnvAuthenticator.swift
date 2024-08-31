@@ -27,6 +27,7 @@ public struct EnvAuthenticator: Authenticator {
     /// Creates an ``EnvAuthenticator`` using predefined environment names for its internal inputs.
     ///
     /// - Parameters:
+    ///   - api: The Apple API this token is compatible.
     ///   - environmentFile: Path to an environment file. Defaults to a `.env` file in the current directory.
     ///   - keyIDVariableName: The environment variable name to refer to the API private key ID.
     ///   - issuerIDVariableName: The environment variable name to refer to the API issuer ID.

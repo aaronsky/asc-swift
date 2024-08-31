@@ -1,4 +1,4 @@
-# ``AppStoreConnect``
+# ``AppStoreAPI``
 
 A Swift library for accessing Apple's App Store Connect API.
 
@@ -13,7 +13,7 @@ The entire [publicly documented API surface](https://developer.apple.com/documen
 ### Uploading Files
 
 - <doc:UploadingFiles>
-- ``AppStoreConnectClient/upload(operation:from:)``
+- ``AppStoreConnect/AppStoreConnectClient/upload(operation:from:)``
 - ``UploadOperation``
 - ``HTTPHeader``
 - ``AppMediaAssetState``
