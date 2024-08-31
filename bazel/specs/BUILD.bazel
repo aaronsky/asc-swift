@@ -21,9 +21,3 @@ filegroup(
     srcs = ["com_apple_enterprise_program_api/enterprise_program_api_%s_openapi.json" % ENTERPRISE_PROGRAM_API_SPEC_VERSION],
     visibility = ["//bazel/tools/create_api:__pkg__"],
 )
-
-filegroup(
-    name = "app_store_connect_api_patches_awk_prog",
-    srcs = ["com_apple_app_store_connect_api/patches.awk"],
-    visibility = ["@com_apple_app_store_connect_api//:__pkg__"],
-)
