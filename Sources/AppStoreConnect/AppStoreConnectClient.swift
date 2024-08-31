@@ -84,8 +84,10 @@ public actor AppStoreConnectClient {
     ///   - currentPage: The API object representing the current page.
     /// - Returns: The response from the App Store Connect API.
     /// - Throws: An error describing the manner in which the request failed to complete.
-    public func send<Response>(_ request: Request<Response>, pageAfter currentPage: Response) async throws -> Response?
-    where Response: Decodable {
+    public func send<Response>(
+        _ request: Request<Response>,
+        pageAfter currentPage: Response
+    ) async throws -> Response? where Response: Decodable {
         guard let nextPage = pagedDocumentLinks(currentPage)?.next else {
             return nil
         }

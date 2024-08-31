@@ -8,7 +8,7 @@ import XCTest
     import FoundationNetworking
 #endif
 
-final class AppStoreConnectTests: XCTestCase {
+final class AppStoreConnectClientTests: XCTestCase {
     private struct TestData {
         enum Case {
             case success
