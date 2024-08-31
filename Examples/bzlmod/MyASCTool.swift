@@ -15,7 +15,7 @@ public struct MyASCTool {
                 keyID: "...",
                 issuerID: "...",
                 expiryDuration: 20 * 60,  // 20 minutes
-                privateKey: JWT.PrivateKey(contentsOf: URL(filePath: "..."))
+                privateKey: JWT.PrivateKey(contentsOf: URL(fileURLWithPath: "..."))
             )
         )
 
