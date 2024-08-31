@@ -78,6 +78,7 @@ public enum MockData {
 }
 
 extension MockData {
+    @Sendable
     public static func mockingSuccess<Content: Codable>(
         with content: Content,
         url: URL = URL()
@@ -86,26 +87,32 @@ extension MockData {
         return .init(data: data, response: urlResponse(for: url, statusCode: 200), statusCode: 200, rate: nil)
     }
 
+    @Sendable
     public static func mockingSuccessNoContent(url: URL = URL()) -> Response<Data> {
         return .init(data: nil, response: urlResponse(for: url, statusCode: 200), statusCode: 200, rate: nil)
     }
 
+    @Sendable
     public static func mockingSuccessNoContent(for request: URLRequest) -> Response<Data> {
         return .init(data: nil, response: urlResponse(for: request.url!, statusCode: 200), statusCode: 200, rate: nil)
     }
 
+    @Sendable
     public static func mockingSuccessDownload(to fileURL: URL, for url: URL = URL()) -> Response<URL> {
         return .init(fileURL: fileURL, response: urlResponse(for: url, statusCode: 200), statusCode: 200, rate: nil)
     }
 
+    @Sendable
     public static func mockingSuccessUpload(for url: URL = URL()) -> Response<Data> {
         return .init(data: nil, response: urlResponse(for: url, statusCode: 200), statusCode: 200, rate: nil)
     }
 
+    @Sendable
     public static func mockingIncompatibleResponse(for url: URL = URL()) -> Response<Data> {
         return .init(data: nil, response: urlResponse(for: url, statusCode: -128), statusCode: -128, rate: nil)
     }
 
+    @Sendable
     public static func mockingUnsuccessfulResponse(for url: URL = URL()) -> Response<Data> {
         let json = """
             {"errors":[{"code":"test","status":400,"title":"test","detail":"test"}]}
@@ -115,10 +122,12 @@ extension MockData {
         return .init(data: json, response: urlResponse(for: url, statusCode: 400), statusCode: 400, rate: nil)
     }
 
+    @Sendable
     public static func mockingError(for request: URLRequest) throws -> Response<Data> {
         throw URLError(.badURL)
     }
 
+    @Sendable
     public static func mockingError(_ error: any Error) throws -> Response<Data> {
         throw error
     }
