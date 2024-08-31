@@ -56,13 +56,27 @@ jobs:
           bazelisk-version: 1.x
       - uses: actions/checkout@v4
       - run: bazel test --test_output=all //Tests/AppStoreConnectTests
-  bzlmod-e2e:
-    name: Bzlmod end-to-end test
+  bzlmod-e2e-macOS:
     runs-on: macos-14
     steps:
       - uses: bazel-contrib/setup-bazel@0.8.5
         with:
           bazelisk-cache: true
+      - uses: actions/checkout@v4
+      - run: bazel build //...
+        working-directory: Examples/bzlmod
+  bzlmod-e2e-linux:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tag: ['5.9']
+    container:
+      image: swift:${{ matrix.tag }}-focal
+    steps:
+      - uses: bazel-contrib/setup-bazel@0.8.5
+        with:
+          bazelisk-cache: true
+          bazelisk-version: 1.x
       - uses: actions/checkout@v4
       - run: bazel build //...
         working-directory: Examples/bzlmod
