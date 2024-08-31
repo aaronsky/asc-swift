@@ -36,12 +36,18 @@ public actor MockTransport: Transport {
             throw Error.tooManyRequests
         }
 
+        let response: Response<Data>
+
         switch responses.removeFirst() {
         case .fileURL(let url):
             throw Error.unexpectedResponse(.fileURL(url))
         case .data(let data):
-            return data
+            response = data
         }
+
+        try response.check()
+
+        return response
     }
 
     public func download(request: URLRequest) async throws -> Response<URL> {
@@ -51,12 +57,18 @@ public actor MockTransport: Transport {
             throw Error.tooManyRequests
         }
 
+        let response: Response<URL>
+
         switch responses.removeFirst() {
         case .fileURL(let url):
-            return url
+            response = url
         case .data(let data):
             throw Error.unexpectedResponse(.data(data))
         }
+
+        try response.check()
+
+        return response
     }
 
     public func upload(request: URLRequest, data: Data, decoder: JSONDecoder) async throws -> Response<Data> {

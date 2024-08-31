@@ -19,9 +19,8 @@ This target is the client, networking layer, authentication layer, and queueing 
 
 ### Error Handling
 
+- ``Rate``
 - ``ErrorResponse``
-- ``ErrorSourceParameter``
-- ``ErrorSourcePointer``
 
 ### Paging Large Data Sets
 

@@ -4,65 +4,11 @@ import Foundation
     import FoundationNetworking
 #endif
 
+/// Typealias for the status code returned by the App Store Connect API.
+public typealias StatusCode = Int
+
 /// Response from sending a ``Request``.
 public struct Response<Received: Equatable & Sendable>: Equatable, Sendable {
-    /// Error thrown when the response from the ``Transport`` fails to meet expectations.
-    public enum Error: Swift.Error, Equatable {
-        /// The response as requested was unsuccessful, as described by the `statusCode` and `error`.
-        case requestFailure(error: ErrorResponse?, statusCode: StatusCode, response: URLResponse)
-        /// The client has exceeded the rate limit for the current period.
-        case rateLimitExceeded(error: ErrorResponse?, rate: Rate?, response: URLResponse)
-        /// Data was expected to exist or conform to some format but failed.
-        case dataAssertionFailed
-    }
-
-    /// The rate limit for the current client.
-    ///
-    /// https://developer.apple.com/documentation/appstoreconnectapi/identifying_rate_limits
-    public struct Rate: Equatable, Sendable {
-        /// The number of requests per hour the client is currently limited to.
-        public var limit: Int
-        /// The number of remaining requests the client can make this hour.
-        public var remaining: Int
-
-        init?(
-            from header: String?
-        ) {
-            guard let header = header, !header.isEmpty else { return nil }
-
-            let pairs: [String: Int] = Dictionary(
-                uniqueKeysWithValues:
-                    header
-                    .components(separatedBy: ";")
-                    .compactMap { $0.isEmpty ? nil : $0 }
-                    .compactMap {
-                        let kvp = $0.components(separatedBy: ":")
-                        guard kvp.count == 2 else { return nil }
-
-                        let key = kvp[0]
-                        guard let value = Int(kvp[1]) else { return nil }
-
-                        return (key, value)
-                    }
-            )
-
-            guard let limit = pairs["user-hour-lim"], let remaining = pairs["user-hour-rem"] else { return nil }
-
-            self.init(limit: limit, remaining: remaining)
-        }
-
-        init(
-            limit: Int,
-            remaining: Int
-        ) {
-            self.limit = limit
-            self.remaining = remaining
-        }
-    }
-
-    /// Typealias for the status code returned by the App Store Connect API.
-    public typealias StatusCode = Int
-
     /// Raw data returned by the ``Transport``.
     let data: Received?
     /// Response returned by the ``Transport``.
@@ -133,38 +79,92 @@ public struct Response<Received: Equatable & Sendable>: Equatable, Sendable {
     }
 
     /// Checks the response for any unacceptable properties, such as a non-2XX status code, in order to verify integrity.
-    /// - Throws: A ``Response/Error`` if the status code is not indicative of success.
-    package func check() throws {
+    /// - Throws: A ``ResponseError`` if the status code is not indicative of success.
+    public func check() throws {
         switch statusCode {
         case 429:
-            throw Error.rateLimitExceeded(error: errorResponse, rate: rate, response: response)
+            throw ResponseError.rateLimitExceeded(error: errorResponse, rate: rate, response: response)
         case ..<200, 300...:
-            throw Error.requestFailure(error: errorResponse, statusCode: statusCode, response: response)
+            throw ResponseError.requestFailure(error: errorResponse, statusCode: statusCode, response: response)
         default:
             break
         }
     }
 
-    /// Decodes the ``data`` into the intended container type.
+    /// Decodes the `data` into the intended container type.
     /// - Parameter decoder: The decoder to decode the data with.
     /// - Returns: The decoded data.
-    /// - Throws: An error if ``data`` is `nil` or cannot be decoded as the expected type.
-    func decode<Output>(using decoder: JSONDecoder) throws -> Output where Output: Decodable, Received == Data {
+    /// - Throws: An error if `data` is `nil` or cannot be decoded as the expected type.
+    public func decode<Output>(using decoder: JSONDecoder) throws -> Output where Output: Decodable, Received == Data {
         guard let data = data else {
-            throw Error.dataAssertionFailed
+            throw ResponseError.dataAssertionFailed
         }
 
         return try decoder.decode(Output.self, from: data)
     }
 
-    /// Unwraps the stored ``URL`` and returns it.
+    /// Unwraps the stored `URL` and returns it.
     /// - Returns: URL to a downloaded file on-disk.
-    /// - Throws: An error if ``data`` is nil.
-    func decode() throws -> URL where Received == URL {
+    /// - Throws: An error if `data` is nil.
+    public func decode() throws -> URL where Received == URL {
         guard let data = data else {
-            throw Error.dataAssertionFailed
+            throw ResponseError.dataAssertionFailed
         }
 
         return data
+    }
+}
+
+/// Error thrown when the response from the ``Transport`` fails to meet expectations.
+public enum ResponseError: Swift.Error, Equatable {
+    /// The response as requested was unsuccessful, as described by the `statusCode` and `error`.
+    case requestFailure(error: ErrorResponse?, statusCode: StatusCode, response: URLResponse)
+    /// The client has exceeded the rate limit for the current period.
+    case rateLimitExceeded(error: ErrorResponse?, rate: Rate?, response: URLResponse)
+    /// Data was expected to exist or conform to some format but failed.
+    case dataAssertionFailed
+}
+
+/// The rate limit for the current client.
+///
+/// - SeeAlso: [Identifying Rate Limits](https://developer.apple.com/documentation/appstoreconnectapi/identifying_rate_limits)
+public struct Rate: Equatable, Sendable {
+    /// The number of requests per hour the client is currently limited to.
+    public var limit: Int
+    /// The number of remaining requests the client can make this hour.
+    public var remaining: Int
+
+    init?(
+        from header: String?
+    ) {
+        guard let header = header, !header.isEmpty else { return nil }
+
+        let pairs: [String: Int] = Dictionary(
+            uniqueKeysWithValues:
+                header
+                .components(separatedBy: ";")
+                .compactMap { $0.isEmpty ? nil : $0 }
+                .compactMap {
+                    let kvp = $0.components(separatedBy: ":")
+                    guard kvp.count == 2 else { return nil }
+
+                    let key = kvp[0]
+                    guard let value = Int(kvp[1]) else { return nil }
+
+                    return (key, value)
+                }
+        )
+
+        guard let limit = pairs["user-hour-lim"], let remaining = pairs["user-hour-rem"] else { return nil }
+
+        self.init(limit: limit, remaining: remaining)
+    }
+
+    init(
+        limit: Int,
+        remaining: Int
+    ) {
+        self.limit = limit
+        self.remaining = remaining
     }
 }

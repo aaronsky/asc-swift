@@ -20,3 +20,8 @@
 ### Downloading Files
 
 - ``download(_:)``
+
+### Error Handling
+
+- ``Rate``
+- ``ErrorResponse``

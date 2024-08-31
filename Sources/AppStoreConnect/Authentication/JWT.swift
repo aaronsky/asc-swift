@@ -11,8 +11,7 @@ public protocol Authenticator: Sendable {
     var api: API { get }
 
     /// Returns the token to use for authentication with the App Store Connect or Enterprise Program APIs.
-    /// - Parameters:
-    ///   - audience: An identifier supplied to the "aud" parameter on the JWT payload.
+    ///
     /// - Returns: The token to use for authentication.
     /// - Throws: An error if an issue was encountered during token signing.
     mutating func token() throws -> String
@@ -22,7 +21,7 @@ public protocol Authenticator: Sendable {
 ///
 /// Uses [swift-crypto](https://github.com/apple/swift-crypto) to assist signing the Apple-provided
 /// PKCS#8 private key.
-/// - SeeAlso: https://developer.apple.com/documentation/appstoreconnectapi/generating_tokens_for_api_requests
+/// - SeeAlso: [Generating Tokens for API Requests](https://developer.apple.com/documentation/appstoreconnectapi/generating_tokens_for_api_requests)
 public struct JWT: Authenticator {
     /// The header of the token, which contains the token type, signing algorithm, and an ID for the private key provided by Apple.
     struct Header: Codable, Equatable {

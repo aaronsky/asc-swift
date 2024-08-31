@@ -24,8 +24,8 @@ extension AppStoreConnectClient {
             encoder: encoder,
             authenticator: &authenticator
         )
-        let response = try await transport.upload(request: urlRequest, data: dataChunk, decoder: decoder)
-        try response.check()
+
+        _ = try await transport.upload(request: urlRequest, data: dataChunk, decoder: decoder)
     }
 }
 
