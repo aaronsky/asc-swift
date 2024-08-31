@@ -78,9 +78,10 @@ public enum MockData {
 }
 
 extension MockData {
-    public static func mockingSuccess<Content: Codable>(with content: Content, url: URL = URL()) throws -> Response<
-        Data
-    > {
+    public static func mockingSuccess<Content: Codable>(
+        with content: Content,
+        url: URL = URL()
+    ) throws -> Response<Data> {
         let data = try MockData.encoder.encode(content)
         return .init(data: data, response: urlResponse(for: url, statusCode: 200), statusCode: 200, rate: nil)
     }
