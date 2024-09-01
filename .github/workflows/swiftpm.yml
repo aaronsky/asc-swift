@@ -39,9 +39,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: ['5.9', '5.10']
+        tag: ['5.9-focal', '5.10-focal', 'nightly-6.0-focal']
     container:
-      image: swift:${{ matrix.tag }}-focal
+      image: swift:${{ matrix.tag }}
     steps:
       - uses: actions/checkout@v4
       - run: swift test --parallel

@@ -17,18 +17,18 @@ extension URLRequest {
 
     fileprivate static var testSendAsync: Self { .init(string: "https://example.com/test-send-async")! }
     fileprivate static var testSendAsyncError: Self { .init(string: "https://example.com/test-send-async-error")! }
-    fileprivate static var testSendClosure: Self { .init(string: "https://example.com/test-send-closure")! }
-    fileprivate static var testSendClosureError: Self { .init(string: "https://example.com/test-send-closure-error")! }
     fileprivate static var testDownloadAsync: Self { .init(string: "https://example.com/test-download-async")! }
     fileprivate static var testDownloadAsyncError: Self {
         .init(string: "https://example.com/test-download-async-error")!
     }
+    fileprivate static var testUploadAsync: Self { .init(string: "https://example.com/test-upload-async")! }
+    fileprivate static var testUploadAsyncError: Self { .init(string: "https://example.com/test-upload-async-error")! }
+    fileprivate static var testSendClosure: Self { .init(string: "https://example.com/test-send-closure")! }
+    fileprivate static var testSendClosureError: Self { .init(string: "https://example.com/test-send-closure-error")! }
     fileprivate static var testDownloadClosure: Self { .init(string: "https://example.com/test-download-closure")! }
     fileprivate static var testDownloadClosureError: Self {
         .init(string: "https://example.com/test-download-closure-error")!
     }
-    fileprivate static var testUploadAsync: Self { .init(string: "https://example.com/test-upload-async")! }
-    fileprivate static var testUploadAsyncError: Self { .init(string: "https://example.com/test-upload-async-error")! }
     fileprivate static var testUploadClosure: Self { .init(string: "https://example.com/test-upload-closure")! }
     fileprivate static var testUploadClosureError: Self {
         .init(string: "https://example.com/test-upload-closure-error")!
@@ -49,14 +49,15 @@ class TransportTests: XCTestCase {
         static let knownRequests: [URLRequest: ResponseMaker] = [
             .testSendAsync: MockData.mockingSuccessNoContent(for:),
             .testSendAsyncError: MockData.mockingError(for:),
-            .testSendClosure: MockData.mockingSuccessNoContent(for:),
-            .testSendClosureError: MockData.mockingError(for:),
             .testDownloadAsync: MockData.mockingSuccessNoContent(for:),
             .testDownloadAsyncError: MockData.mockingError(for:),
-            .testDownloadClosure: MockData.mockingSuccessNoContent(for:),
-            .testDownloadClosureError: MockData.mockingError(for:),
             .testUploadAsync: MockData.mockingSuccessNoContent(for:),
             .testUploadAsyncError: MockData.mockingError(for:),
+
+            .testSendClosure: MockData.mockingSuccessNoContent(for:),
+            .testSendClosureError: MockData.mockingError(for:),
+            .testDownloadClosure: MockData.mockingSuccessNoContent(for:),
+            .testDownloadClosureError: MockData.mockingError(for:),
             .testUploadClosure: MockData.mockingSuccessNoContent(for:),
             .testUploadClosureError: MockData.mockingError(for:),
         ]
@@ -101,27 +102,6 @@ class TransportTests: XCTestCase {
         )
     }
 
-    func testURLSessionSendRequestCompletion() {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
-        let expectation = XCTestExpectation(description: "test-send-closure")
-        createSession()
-            .send(request: .testSendClosure, decoder: decoder) { result in
-                XCTAssertNoThrow({ try result.get() })
-                expectation.fulfill()
-            }
-    }
-
-    func testURLSessionSendRequestCompletionFailure() {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
-        let expectation = XCTestExpectation(description: "test-send-closure-error")
-        createSession()
-            .send(request: .testSendClosureError, decoder: decoder) { result in
-                expectation.fulfill()
-            }
-    }
-
     func testURLSessionDownloadRequest() async throws {
         _ = try await createSession()
             .download(request: .testDownloadAsync)
@@ -131,23 +111,6 @@ class TransportTests: XCTestCase {
         try await XCTAssertThrowsError(
             await createSession().download(request: .testDownloadAsyncError)
         )
-    }
-
-    func testURLSessionDownloadRequestCompletion() {
-        let expectation = XCTestExpectation(description: "test-download-closure")
-        createSession()
-            .download(request: .testDownloadClosure) { result in
-                XCTAssertNoThrow({ try result.get() })
-                expectation.fulfill()
-            }
-    }
-
-    func testURLSessionDownloadRequestCompletionFailure() {
-        let expectation = XCTestExpectation(description: "test-download-closure-error")
-        createSession()
-            .download(request: .testDownloadClosureError) { result in
-                expectation.fulfill()
-            }
     }
 
     func testURLSessionUploadRequest() async throws {
@@ -165,25 +128,68 @@ class TransportTests: XCTestCase {
                 .upload(request: .testUploadAsyncError, data: Data(), decoder: decoder)
         )
     }
-
-    func testURLSessionUploadRequestCompletion() {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
-        let expectation = XCTestExpectation(description: "test-upload-closure")
-        createSession()
-            .upload(request: .testUploadClosure, data: Data(), decoder: decoder) { result in
-                XCTAssertNoThrow({ try result.get() })
-                expectation.fulfill()
-            }
-    }
-
-    func testURLSessionUploadRequestCompletionFailure() {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
-        let expectation = XCTestExpectation(description: "test-upload-closure-error")
-        createSession()
-            .upload(request: .testUploadClosureError, data: Data(), decoder: decoder) { result in
-                expectation.fulfill()
-            }
-    }
 }
+
+#if compiler(<6.0) && (os(Linux) || os(Windows))
+    extension TransportTests {
+        func testURLSessionSendRequestCompletion() {
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
+            let expectation = XCTestExpectation(description: "test-send-closure")
+            createSession()
+                .send(request: .testSendClosure, decoder: decoder) { result in
+                    XCTAssertNoThrow({ try result.get() })
+                    expectation.fulfill()
+                }
+        }
+
+        func testURLSessionSendRequestCompletionFailure() {
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
+            let expectation = XCTestExpectation(description: "test-send-closure-error")
+            createSession()
+                .send(request: .testSendClosureError, decoder: decoder) { result in
+                    expectation.fulfill()
+                }
+        }
+
+        func testURLSessionDownloadRequestCompletion() {
+            let expectation = XCTestExpectation(description: "test-download-closure")
+            createSession()
+                .download(request: .testDownloadClosure) { result in
+                    XCTAssertNoThrow({ try result.get() })
+                    expectation.fulfill()
+                }
+        }
+
+        func testURLSessionDownloadRequestCompletionFailure() {
+            let expectation = XCTestExpectation(description: "test-download-closure-error")
+            createSession()
+                .download(request: .testDownloadClosureError) { result in
+                    expectation.fulfill()
+                }
+        }
+
+        func testURLSessionUploadRequestCompletion() {
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
+            let expectation = XCTestExpectation(description: "test-upload-closure")
+            createSession()
+                .upload(request: .testUploadClosure, data: Data(), decoder: decoder) { result in
+                    XCTAssertNoThrow({ try result.get() })
+                    expectation.fulfill()
+                }
+        }
+
+        func testURLSessionUploadRequestCompletionFailure() {
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
+            let expectation = XCTestExpectation(description: "test-upload-closure-error")
+            createSession()
+                .upload(request: .testUploadClosureError, data: Data(), decoder: decoder) { result in
+                    expectation.fulfill()
+                }
+        }
+
+    }
+#endif
