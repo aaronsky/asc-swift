@@ -28,7 +28,7 @@ jobs:
     runs-on: macos-14
     strategy:
       matrix:
-        xcode: ['15.4', '16.1_beta']
+        xcode: ['15.4', '16.0']
     env:
       DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
     steps:
@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: ['5.9', '5.10']
+        tag: ['5.9', '6.0']
     container:
       image: swift:${{ matrix.tag }}-focal
     steps:
