@@ -18,25 +18,25 @@ final class FormattersTests: XCTestCase {
             // yyyy-MM-dd'T'HH:mm:ssXXXXX
             XCTAssertNotNil(iso8601Formatter.date(from: "2022-11-19T12:00:01Z"))
         }
-    #endif
 
-    func testFormattersCodable() throws {
-        struct Foo: Codable, Equatable {
-            var date: Date
+        func testFormattersCodable() throws {
+            struct Foo: Codable, Equatable {
+                var date: Date
+            }
+
+            let expected = Foo(date: Date(timeIntervalSince1970: 1584216283.567))
+
+            let encoder = JSONEncoder()
+            encoder.dateEncodingStrategy = .custom(encodeISO8601Date(_:encoder:))
+            let data = try encoder.encode(expected)
+
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
+            let actual = try decoder.decode(Foo.self, from: data)
+
+            XCTAssertEqual(expected, actual)
         }
-
-        let expected = Foo(date: Date(timeIntervalSince1970: 1584216283.567))
-
-        let encoder = JSONEncoder()
-        encoder.dateEncodingStrategy = .custom(encodeISO8601Date(_:encoder:))
-        let data = try encoder.encode(expected)
-
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
-        let actual = try decoder.decode(Foo.self, from: data)
-
-        XCTAssertEqual(expected, actual)
-    }
+    #endif
 
     func testFormattersCodableError() throws {
         struct Foo: Codable, Equatable {
