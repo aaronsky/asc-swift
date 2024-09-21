@@ -48,7 +48,7 @@ extension URLSession: Transport {
     public func send(request: URLRequest, decoder: JSONDecoder) async throws -> Response<Data> {
         // These depend on swift-corelibs-foundation, which have not implemented the
         // Task-based API for URLSession.
-        #if os(Linux) || os(Windows)
+        #if (os(Linux) || os(Windows)) && swift(<6.0)
             return try await withCheckedThrowingContinuation { continuation in
                 send(request: request, decoder: decoder, completion: continuation.resume)
             }
@@ -120,7 +120,7 @@ extension URLSession: Transport {
     public func download(request: URLRequest) async throws -> Response<URL> {
         // These depend on swift-corelibs-foundation, which have not implemented the
         // Task-based API for URLSession.
-        #if os(Linux) || os(Windows)
+        #if (os(Linux) || os(Windows)) && swift(<6.0)
             return try await withCheckedThrowingContinuation { continuation in
                 download(request: request, completion: continuation.resume)
             }
@@ -191,7 +191,7 @@ extension URLSession: Transport {
     public func upload(request: URLRequest, data: Data, decoder: JSONDecoder) async throws -> Response<Data> {
         // These depend on swift-corelibs-foundation, which have not implemented the
         // Task-based API for URLSession.
-        #if os(Linux) || os(Windows)
+        #if (os(Linux) || os(Windows)) && swift(<6.0)
             return try await withCheckedThrowingContinuation { continuation in
                 upload(request: request, data: data, decoder: decoder, completion: continuation.resume)
             }
