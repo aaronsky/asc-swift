@@ -9,7 +9,7 @@ import XCTest
 #endif
 
 final class AppStoreConnectClientTests: XCTestCase {
-    private struct TestData {
+    private struct TestData: Sendable {
         enum Case {
             case success
             case successPaginated
