@@ -19,12 +19,13 @@ This target is the client, networking layer, authentication layer, and queueing 
 
 ### Error Handling
 
+- ``RetryStrategy``
 - ``Rate``
 - ``ErrorResponse``
 
 ### Paging Large Data Sets
 
-- ``AppStoreConnectClient/pages(_:)``
+- ``AppStoreConnectClient/pages(_:retry:)``
 - ``PagedResponses``
 - ``PagedDocumentLinks``
 

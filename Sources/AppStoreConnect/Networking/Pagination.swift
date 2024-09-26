@@ -15,6 +15,8 @@ public struct PagedResponses<Response: Decodable & Sendable>: AsyncSequence, Asy
     let request: Request<Response>
     /// A reference to the API client.
     let client: AppStoreConnectClient
+    /// The retry strategy.
+    let retryStrategy: any RetryStrategy
 
     /// Creates the sequence.
     /// - Parameters:
@@ -22,10 +24,12 @@ public struct PagedResponses<Response: Decodable & Sendable>: AsyncSequence, Asy
     ///   - client: The API client.
     init(
         request: Request<Response>,
-        client: AppStoreConnectClient
+        client: AppStoreConnectClient,
+        retry strategy: some RetryStrategy
     ) {
         self.request = request
         self.client = client
+        self.retryStrategy = strategy
     }
 
     private var currentElement: Element?
@@ -39,9 +43,9 @@ public struct PagedResponses<Response: Decodable & Sendable>: AsyncSequence, Asy
         }
 
         if let current = currentElement {
-            currentElement = try await client.send(request, pageAfter: current)
+            currentElement = try await client.send(request, pageAfter: current, retry: retryStrategy)
         } else {
-            currentElement = try await client.send(request)
+            currentElement = try await client.send(request, retry: retryStrategy)
         }
 
         return currentElement

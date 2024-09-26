@@ -104,6 +104,9 @@ do {
 
 You can learn more about how to handle errors from the App Store Connect API at Apple's documentation page via [Interpreting and Handling Errors](https://developer.apple.com/documentation/appstoreconnectapi/interpreting_and_handling_errors). You can learn more about rate limiting at Apple's documentation page via [Identifying Rate Limits](https://developer.apple.com/documentation/appstoreconnectapi/identifying_rate_limits). Corresponding documentation for the Enterprise Program API can be found [here](https://developer.apple.com/documentation/enterpriseprogramapi/interpreting-and-handling-errors) and [here](https://developer.apple.com/documentation/enterpriseprogramapi/identifying-rate-limits), respectively.
 
+
+Finally, `AppStoreConnectClient` can automatically retry API errors with a status code of 500. Pass a `RetryStrategy` value to the `retry:` parameter on any `AppStoreConnectClient` method. Supported values are `.never` (default), `.fixedInterval`, `.exponentialBackoff`, or a `.custom` handler.
+
 ### Paging Large Data Sets
 
 All requests for resource collections (apps, builds, beta groups, etc.) support pagination. Responses for paginated resources will contain a `links` property of type `PagedDocumentLinks`, with "reference" URLs for `first`, `next`, and `self`. You can also find more information about the per-page limit and total count of resources in the response's `meta` field of type `PagingInformation`. You typically shouldn't require any of this information for typical pagination.
@@ -116,7 +119,7 @@ for try await appsPage in client.pages(Resources.v1.apps.get()) {
 }
 ```
 
-You can also page forward manually using the `send(_:pageAfter:)` method on `AppStoreConnectClient`.
+You can also page forward manually using the `send(_:pageAfter:retry:)` method on `AppStoreConnectClient`.
 
 ### Uploading Assets
 
