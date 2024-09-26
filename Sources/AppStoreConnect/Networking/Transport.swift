@@ -48,9 +48,9 @@ extension URLSession: Transport {
     public func send(request: URLRequest, decoder: JSONDecoder) async throws -> Response<Data> {
         // These depend on swift-corelibs-foundation, which have not implemented the
         // Task-based API for URLSession.
-        #if (os(Linux) || os(Windows)) && swift(<6.0)
+        #if (os(Linux) || os(Windows))
             return try await withCheckedThrowingContinuation { continuation in
-                send(request: request, decoder: decoder, completion: continuation.resume)
+                send(request: request, decoder: decoder) { result in continuation.resume(with: result) }
             }
         #else
             let (data, urlResponse) = try await data(for: request)
@@ -120,9 +120,9 @@ extension URLSession: Transport {
     public func download(request: URLRequest) async throws -> Response<URL> {
         // These depend on swift-corelibs-foundation, which have not implemented the
         // Task-based API for URLSession.
-        #if (os(Linux) || os(Windows)) && swift(<6.0)
+        #if (os(Linux) || os(Windows))
             return try await withCheckedThrowingContinuation { continuation in
-                download(request: request, completion: continuation.resume)
+                download(request: request) { result in continuation.resume(with: result) }
             }
         #else
             let (fileURL, urlResponse) = try await download(for: request)
@@ -191,9 +191,9 @@ extension URLSession: Transport {
     public func upload(request: URLRequest, data: Data, decoder: JSONDecoder) async throws -> Response<Data> {
         // These depend on swift-corelibs-foundation, which have not implemented the
         // Task-based API for URLSession.
-        #if (os(Linux) || os(Windows)) && swift(<6.0)
+        #if (os(Linux) || os(Windows))
             return try await withCheckedThrowingContinuation { continuation in
-                upload(request: request, data: data, decoder: decoder, completion: continuation.resume)
+                upload(request: request, data: data, decoder: decoder) { result in continuation.resume(with: result) }
             }
         #else
             let (responseData, urlResponse) = try await upload(for: request, from: data)

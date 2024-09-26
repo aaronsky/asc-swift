@@ -6,7 +6,7 @@ import Foundation
     import FoundationNetworking
 #endif
 
-public struct MockResources {
+public struct MockResources: Sendable {
     public struct Content: Codable, Equatable, Sendable {
         public var name: String
         public var age: Int

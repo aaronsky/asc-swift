@@ -36,7 +36,7 @@ extension URLRequest {
 }
 
 class TransportTests: XCTestCase {
-    private func createSession() -> URLSession {
+    private static func createSession() -> URLSession {
         let config = URLSessionConfiguration.ephemeral
         config.protocolClasses = [MockURLProtocol.self]
 
@@ -88,7 +88,7 @@ class TransportTests: XCTestCase {
     func testURLSessionSendRequest() async throws {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
-        _ = try await createSession()
+        _ = try await Self.createSession()
             .send(request: .testSendAsync, decoder: decoder)
     }
 
@@ -96,7 +96,7 @@ class TransportTests: XCTestCase {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
         try await XCTAssertThrowsError(
-            await createSession()
+            await Self.createSession()
                 .send(request: .testSendAsyncError, decoder: decoder)
         )
     }
@@ -105,7 +105,7 @@ class TransportTests: XCTestCase {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
         let expectation = XCTestExpectation(description: "test-send-closure")
-        createSession()
+        Self.createSession()
             .send(request: .testSendClosure, decoder: decoder) { result in
                 XCTAssertNoThrow({ try result.get() })
                 expectation.fulfill()
@@ -116,26 +116,26 @@ class TransportTests: XCTestCase {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
         let expectation = XCTestExpectation(description: "test-send-closure-error")
-        createSession()
+        Self.createSession()
             .send(request: .testSendClosureError, decoder: decoder) { result in
                 expectation.fulfill()
             }
     }
 
     func testURLSessionDownloadRequest() async throws {
-        _ = try await createSession()
+        _ = try await Self.createSession()
             .download(request: .testDownloadAsync)
     }
 
     func testURLSessionDownloadRequestFailure() async throws {
         try await XCTAssertThrowsError(
-            await createSession().download(request: .testDownloadAsyncError)
+            await Self.createSession().download(request: .testDownloadAsyncError)
         )
     }
 
     func testURLSessionDownloadRequestCompletion() {
         let expectation = XCTestExpectation(description: "test-download-closure")
-        createSession()
+        Self.createSession()
             .download(request: .testDownloadClosure) { result in
                 XCTAssertNoThrow({ try result.get() })
                 expectation.fulfill()
@@ -144,7 +144,7 @@ class TransportTests: XCTestCase {
 
     func testURLSessionDownloadRequestCompletionFailure() {
         let expectation = XCTestExpectation(description: "test-download-closure-error")
-        createSession()
+        Self.createSession()
             .download(request: .testDownloadClosureError) { result in
                 expectation.fulfill()
             }
@@ -153,7 +153,7 @@ class TransportTests: XCTestCase {
     func testURLSessionUploadRequest() async throws {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
-        _ = try await createSession()
+        _ = try await Self.createSession()
             .upload(request: .testUploadAsync, data: Data(), decoder: decoder)
     }
 
@@ -161,7 +161,7 @@ class TransportTests: XCTestCase {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
         try await XCTAssertThrowsError(
-            await createSession()
+            await Self.createSession()
                 .upload(request: .testUploadAsyncError, data: Data(), decoder: decoder)
         )
     }
@@ -170,7 +170,7 @@ class TransportTests: XCTestCase {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
         let expectation = XCTestExpectation(description: "test-upload-closure")
-        createSession()
+        Self.createSession()
             .upload(request: .testUploadClosure, data: Data(), decoder: decoder) { result in
                 XCTAssertNoThrow({ try result.get() })
                 expectation.fulfill()
@@ -181,7 +181,7 @@ class TransportTests: XCTestCase {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
         let expectation = XCTestExpectation(description: "test-upload-closure-error")
-        createSession()
+        Self.createSession()
             .upload(request: .testUploadClosureError, data: Data(), decoder: decoder) { result in
                 expectation.fulfill()
             }
