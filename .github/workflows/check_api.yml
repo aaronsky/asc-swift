@@ -7,7 +7,7 @@ on:
 
 jobs:
   diff_spec:
-    runs-on: macos-latest
+    runs-on: macos-14
     steps:
       - uses: bazel-contrib/setup-bazel@0.8.5
         with:
