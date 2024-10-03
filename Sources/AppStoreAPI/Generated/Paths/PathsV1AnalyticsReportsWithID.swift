@@ -16,27 +16,20 @@ extension Resources.V1.AnalyticsReports {
         /// Path: `/v1/analyticsReports/{id}`
         public let path: String
 
-        public func get(fieldsAnalyticsReports: [FieldsAnalyticsReports]? = nil, fieldsAnalyticsReportInstances: [FieldsAnalyticsReportInstances]? = nil) -> Request<AppStoreAPI.AnalyticsReportResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAnalyticsReports, fieldsAnalyticsReportInstances), id: "analyticsReports-get_instance")
+        public func get(fieldsAnalyticsReports: [FieldsAnalyticsReports]? = nil) -> Request<AppStoreAPI.AnalyticsReportResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAnalyticsReports), id: "analyticsReports_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAnalyticsReports: [FieldsAnalyticsReports]?, _ fieldsAnalyticsReportInstances: [FieldsAnalyticsReportInstances]?) -> [(String, String?)] {
-            let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(fieldsAnalyticsReports, forKey: "fields[analyticsReports]")
-            encoder.encode(fieldsAnalyticsReportInstances, forKey: "fields[analyticsReportInstances]")
+        private func makeGetQuery(_ fieldsAnalyticsReports: [FieldsAnalyticsReports]?) -> [(String, String?)] {
+            let encoder = URLQueryEncoder()
+            encoder.encode(fieldsAnalyticsReports, forKey: "fields[analyticsReports]", explode: false)
             return encoder.items
         }
 
         public enum FieldsAnalyticsReports: String, CaseIterable, Codable, Sendable {
+            case name
             case category
             case instances
-            case name
-        }
-
-        public enum FieldsAnalyticsReportInstances: String, CaseIterable, Codable, Sendable {
-            case granularity
-            case processingDate
-            case segments
         }
     }
 }

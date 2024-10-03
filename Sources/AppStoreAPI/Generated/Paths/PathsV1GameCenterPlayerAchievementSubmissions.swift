@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.GameCenterPlayerAchievementSubmissionCreateRequest) -> Request<AppStoreAPI.GameCenterPlayerAchievementSubmissionResponse> {
-            Request(path: path, method: "POST", body: body, id: "gameCenterPlayerAchievementSubmissions-create_instance")
+            Request(path: path, method: "POST", body: body, id: "gameCenterPlayerAchievementSubmissions_createInstance")
         }
     }
 }

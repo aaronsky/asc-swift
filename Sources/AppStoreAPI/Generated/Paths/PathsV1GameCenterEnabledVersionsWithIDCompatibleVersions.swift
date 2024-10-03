@@ -16,11 +16,11 @@ extension Resources.V1.GameCenterEnabledVersions.WithID {
         /// Path: `/v1/gameCenterEnabledVersions/{id}/compatibleVersions`
         public let path: String
 
-        public func get(filterPlatform: [FilterPlatform]? = nil, filterVersionString: [String]? = nil, filterApp: [String]? = nil, filterID: [String]? = nil, sort: [Sort]? = nil, fieldsGameCenterEnabledVersions: [FieldsGameCenterEnabledVersions]? = nil, fieldsApps: [FieldsApps]? = nil, limit: Int? = nil, limitCompatibleVersions: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterEnabledVersionsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterPlatform, filterVersionString, filterApp, filterID, sort, fieldsGameCenterEnabledVersions, fieldsApps, limit, limitCompatibleVersions, include), id: "gameCenterEnabledVersions-compatibleVersions-get_to_many_related")
+        public func get(filterPlatform: [FilterPlatform]? = nil, filterVersionString: [String]? = nil, filterApp: [String]? = nil, filterID: [String]? = nil, sort: [Sort]? = nil, fieldsGameCenterEnabledVersions: [FieldsGameCenterEnabledVersions]? = nil, fieldsApps: [FieldsApps]? = nil, limit: Int? = nil, include: [Include]? = nil, limitCompatibleVersions: Int? = nil) -> Request<AppStoreAPI.GameCenterEnabledVersionsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterPlatform, filterVersionString, filterApp, filterID, sort, fieldsGameCenterEnabledVersions, fieldsApps, limit, include, limitCompatibleVersions), id: "gameCenterEnabledVersions_compatibleVersions_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterPlatform: [FilterPlatform]?, _ filterVersionString: [String]?, _ filterApp: [String]?, _ filterID: [String]?, _ sort: [Sort]?, _ fieldsGameCenterEnabledVersions: [FieldsGameCenterEnabledVersions]?, _ fieldsApps: [FieldsApps]?, _ limit: Int?, _ limitCompatibleVersions: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterPlatform: [FilterPlatform]?, _ filterVersionString: [String]?, _ filterApp: [String]?, _ filterID: [String]?, _ sort: [Sort]?, _ fieldsGameCenterEnabledVersions: [FieldsGameCenterEnabledVersions]?, _ fieldsApps: [FieldsApps]?, _ limit: Int?, _ include: [Include]?, _ limitCompatibleVersions: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterPlatform, forKey: "filter[platform]")
             encoder.encode(filterVersionString, forKey: "filter[versionString]")
@@ -30,8 +30,8 @@ extension Resources.V1.GameCenterEnabledVersions.WithID {
             encoder.encode(fieldsGameCenterEnabledVersions, forKey: "fields[gameCenterEnabledVersions]")
             encoder.encode(fieldsApps, forKey: "fields[apps]")
             encoder.encode(limit, forKey: "limit")
-            encoder.encode(limitCompatibleVersions, forKey: "limit[compatibleVersions]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitCompatibleVersions, forKey: "limit[compatibleVersions]")
             return encoder.items
         }
 
@@ -48,62 +48,64 @@ extension Resources.V1.GameCenterEnabledVersions.WithID {
         }
 
         public enum FieldsGameCenterEnabledVersions: String, CaseIterable, Codable, Sendable {
-            case app
-            case compatibleVersions
-            case iconAsset
             case platform
             case versionString
+            case iconAsset
+            case compatibleVersions
+            case app
         }
 
         public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case name
+            case bundleID = "bundleId"
+            case sku
+            case primaryLocale
+            case isOrEverWasMadeForKids
+            case subscriptionStatusURL = "subscriptionStatusUrl"
+            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
+            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
+            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
+            case contentRightsDeclaration
+            case streamlinedPurchasingEnabled
+            case appEncryptionDeclarations
+            case ciProduct
+            case betaTesters
+            case betaGroups
+            case appStoreVersions
+            case preReleaseVersions
+            case betaAppLocalizations
+            case builds
+            case betaLicenseAgreement
+            case betaAppReviewDetail
+            case appInfos
+            case appClips
+            case appPricePoints
+            case endUserLicenseAgreement
+            case preOrder
+            case appPriceSchedule
+            case appAvailability
+            case appAvailabilityV2
+            case inAppPurchases
+            case subscriptionGroups
+            case gameCenterEnabledVersions
+            case perfPowerMetrics
+            case appCustomProductPages
+            case inAppPurchasesV2
+            case promotedPurchases
+            case appEvents
+            case reviewSubmissions
+            case subscriptionGracePeriod
+            case customerReviews
+            case gameCenterDetail
+            case appStoreVersionExperimentsV2
             case alternativeDistributionKey
             case analyticsReportRequests
-            case appAvailability
-            case appClips
-            case appCustomProductPages
-            case appEncryptionDeclarations
-            case appEvents
-            case appInfos
-            case appPricePoints
-            case appPriceSchedule
-            case appStoreVersionExperimentsV2
-            case appStoreVersions
-            case betaAppLocalizations
-            case betaAppReviewDetail
-            case betaGroups
-            case betaLicenseAgreement
-            case betaTesters
-            case builds
-            case bundleID = "bundleId"
-            case ciProduct
-            case contentRightsDeclaration
-            case customerReviews
-            case endUserLicenseAgreement
-            case gameCenterDetail
-            case gameCenterEnabledVersions
-            case inAppPurchases
-            case inAppPurchasesV2
-            case isOrEverWasMadeForKids
             case marketplaceSearchDetail
-            case name
-            case perfPowerMetrics
-            case preOrder
-            case preReleaseVersions
-            case primaryLocale
-            case promotedPurchases
-            case reviewSubmissions
-            case sku
-            case subscriptionGracePeriod
-            case subscriptionGroups
-            case subscriptionStatusURL = "subscriptionStatusUrl"
-            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
-            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
-            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case app
             case compatibleVersions
+            case app
         }
     }
 }

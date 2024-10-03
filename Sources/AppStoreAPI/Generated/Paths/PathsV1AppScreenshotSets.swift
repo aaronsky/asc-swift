@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.AppScreenshotSetCreateRequest) -> Request<AppStoreAPI.AppScreenshotSetResponse> {
-            Request(path: path, method: "POST", body: body, id: "appScreenshotSets-create_instance")
+            Request(path: path, method: "POST", body: body, id: "appScreenshotSets_createInstance")
         }
     }
 }

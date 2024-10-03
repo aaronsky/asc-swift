@@ -17,7 +17,7 @@ extension Resources.V1.Profiles.WithID {
         public let path: String
 
         public func get(fieldsBundleIDs: [FieldsBundleIDs]? = nil) -> Request<AppStoreAPI.BundleIDWithoutIncludesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBundleIDs), id: "profiles-bundleId-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBundleIDs), id: "profiles_bundleId_getToOneRelated")
         }
 
         private func makeGetQuery(_ fieldsBundleIDs: [FieldsBundleIDs]?) -> [(String, String?)] {
@@ -27,13 +27,13 @@ extension Resources.V1.Profiles.WithID {
         }
 
         public enum FieldsBundleIDs: String, CaseIterable, Codable, Sendable {
-            case app
-            case bundleIDCapabilities = "bundleIdCapabilities"
-            case identifier
             case name
             case platform
-            case profiles
+            case identifier
             case seedID = "seedId"
+            case profiles
+            case bundleIDCapabilities = "bundleIdCapabilities"
+            case app
         }
     }
 }

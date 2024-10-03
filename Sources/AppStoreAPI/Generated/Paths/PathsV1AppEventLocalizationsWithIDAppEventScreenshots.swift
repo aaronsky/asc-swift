@@ -17,7 +17,7 @@ extension Resources.V1.AppEventLocalizations.WithID {
         public let path: String
 
         public func get(fieldsAppEventScreenshots: [FieldsAppEventScreenshots]? = nil, fieldsAppEventLocalizations: [FieldsAppEventLocalizations]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppEventScreenshotsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEventScreenshots, fieldsAppEventLocalizations, limit, include), id: "appEventLocalizations-appEventScreenshots-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEventScreenshots, fieldsAppEventLocalizations, limit, include), id: "appEventLocalizations_appEventScreenshots_getToManyRelated")
         }
 
         private func makeGetQuery(_ fieldsAppEventScreenshots: [FieldsAppEventScreenshots]?, _ fieldsAppEventLocalizations: [FieldsAppEventLocalizations]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
@@ -30,25 +30,25 @@ extension Resources.V1.AppEventLocalizations.WithID {
         }
 
         public enum FieldsAppEventScreenshots: String, CaseIterable, Codable, Sendable {
+            case fileSize
+            case fileName
+            case imageAsset
+            case assetToken
+            case uploadOperations
+            case assetDeliveryState
+            case uploaded
             case appEventAssetType
             case appEventLocalization
-            case assetDeliveryState
-            case assetToken
-            case fileName
-            case fileSize
-            case imageAsset
-            case uploadOperations
-            case uploaded
         }
 
         public enum FieldsAppEventLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case name
+            case shortDescription
+            case longDescription
             case appEvent
             case appEventScreenshots
             case appEventVideoClips
-            case locale
-            case longDescription
-            case name
-            case shortDescription
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

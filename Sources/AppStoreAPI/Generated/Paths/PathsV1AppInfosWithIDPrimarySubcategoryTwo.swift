@@ -16,27 +16,27 @@ extension Resources.V1.AppInfos.WithID {
         /// Path: `/v1/appInfos/{id}/primarySubcategoryTwo`
         public let path: String
 
-        public func get(fieldsAppCategories: [FieldsAppCategories]? = nil, limitSubcategories: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppCategoryResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppCategories, limitSubcategories, include), id: "appInfos-primarySubcategoryTwo-get_to_one_related")
+        public func get(fieldsAppCategories: [FieldsAppCategories]? = nil, include: [Include]? = nil, limitSubcategories: Int? = nil) -> Request<AppStoreAPI.AppCategoryResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppCategories, include, limitSubcategories), id: "appInfos_primarySubcategoryTwo_getToOneRelated")
         }
 
-        private func makeGetQuery(_ fieldsAppCategories: [FieldsAppCategories]?, _ limitSubcategories: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppCategories: [FieldsAppCategories]?, _ include: [Include]?, _ limitSubcategories: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppCategories, forKey: "fields[appCategories]")
-            encoder.encode(limitSubcategories, forKey: "limit[subcategories]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitSubcategories, forKey: "limit[subcategories]")
             return encoder.items
         }
 
         public enum FieldsAppCategories: String, CaseIterable, Codable, Sendable {
-            case parent
             case platforms
             case subcategories
+            case parent
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case parent
             case subcategories
+            case parent
         }
     }
 }

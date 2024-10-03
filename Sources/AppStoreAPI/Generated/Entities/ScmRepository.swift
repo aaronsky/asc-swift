@@ -44,25 +44,11 @@ public struct ScmRepository: Codable, Equatable, Identifiable, Sendable {
     public struct Relationships: Codable, Equatable, Sendable {
         public var scmProvider: ScmProvider?
         public var defaultBranch: DefaultBranch?
+        public var gitReferences: GitReferences?
+        public var pullRequests: PullRequests?
 
         public struct ScmProvider: Codable, Equatable, Sendable {
-            public var links: Links?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -78,30 +64,13 @@ public struct ScmRepository: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
-                self.links = links
+            public init(data: Data? = nil) {
                 self.data = data
             }
         }
 
         public struct DefaultBranch: Codable, Equatable, Sendable {
-            public var links: Links?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -117,15 +86,32 @@ public struct ScmRepository: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
-                self.links = links
+            public init(data: Data? = nil) {
                 self.data = data
             }
         }
 
-        public init(scmProvider: ScmProvider? = nil, defaultBranch: DefaultBranch? = nil) {
+        public struct GitReferences: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
+            }
+        }
+
+        public struct PullRequests: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
+            }
+        }
+
+        public init(scmProvider: ScmProvider? = nil, defaultBranch: DefaultBranch? = nil, gitReferences: GitReferences? = nil, pullRequests: PullRequests? = nil) {
             self.scmProvider = scmProvider
             self.defaultBranch = defaultBranch
+            self.gitReferences = gitReferences
+            self.pullRequests = pullRequests
         }
     }
 

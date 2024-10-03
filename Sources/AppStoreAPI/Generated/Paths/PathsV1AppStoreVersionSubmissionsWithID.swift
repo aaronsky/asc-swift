@@ -17,7 +17,7 @@ extension Resources.V1.AppStoreVersionSubmissions {
         public let path: String
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "appStoreVersionSubmissions-delete_instance")
+            Request(path: path, method: "DELETE", id: "appStoreVersionSubmissions_deleteInstance")
         }
     }
 }

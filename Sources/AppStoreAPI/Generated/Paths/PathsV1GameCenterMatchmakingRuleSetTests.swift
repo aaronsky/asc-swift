@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.GameCenterMatchmakingRuleSetTestCreateRequest) -> Request<AppStoreAPI.GameCenterMatchmakingRuleSetTestResponse> {
-            Request(path: path, method: "POST", body: body, id: "gameCenterMatchmakingRuleSetTests-create_instance")
+            Request(path: path, method: "POST", body: body, id: "gameCenterMatchmakingRuleSetTests_createInstance")
         }
     }
 }

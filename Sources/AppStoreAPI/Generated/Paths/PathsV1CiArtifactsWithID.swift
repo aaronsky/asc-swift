@@ -17,7 +17,7 @@ extension Resources.V1.CiArtifacts {
         public let path: String
 
         public func get(fieldsCiArtifacts: [FieldsCiArtifacts]? = nil) -> Request<AppStoreAPI.CiArtifactResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiArtifacts), id: "ciArtifacts-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiArtifacts), id: "ciArtifacts_getInstance")
         }
 
         private func makeGetQuery(_ fieldsCiArtifacts: [FieldsCiArtifacts]?) -> [(String, String?)] {
@@ -27,10 +27,10 @@ extension Resources.V1.CiArtifacts {
         }
 
         public enum FieldsCiArtifacts: String, CaseIterable, Codable, Sendable {
-            case downloadURL = "downloadUrl"
+            case fileType
             case fileName
             case fileSize
-            case fileType
+            case downloadURL = "downloadUrl"
         }
     }
 }

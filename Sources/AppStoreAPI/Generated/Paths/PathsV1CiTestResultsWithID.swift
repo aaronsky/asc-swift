@@ -17,7 +17,7 @@ extension Resources.V1.CiTestResults {
         public let path: String
 
         public func get(fieldsCiTestResults: [FieldsCiTestResults]? = nil) -> Request<AppStoreAPI.CiTestResultResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiTestResults), id: "ciTestResults-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiTestResults), id: "ciTestResults_getInstance")
         }
 
         private func makeGetQuery(_ fieldsCiTestResults: [FieldsCiTestResults]?) -> [(String, String?)] {
@@ -28,11 +28,11 @@ extension Resources.V1.CiTestResults {
 
         public enum FieldsCiTestResults: String, CaseIterable, Codable, Sendable {
             case className
-            case destinationTestResults
-            case fileSource
-            case message
             case name
             case status
+            case fileSource
+            case message
+            case destinationTestResults
         }
     }
 }

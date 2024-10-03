@@ -16,99 +16,101 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/ciProduct`
         public let path: String
 
-        public func get(fieldsCiProducts: [FieldsCiProducts]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, fieldsBundleIDs: [FieldsBundleIDs]? = nil, limitPrimaryRepositories: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CiProductResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiProducts, fieldsApps, fieldsScmRepositories, fieldsBundleIDs, limitPrimaryRepositories, include), id: "apps-ciProduct-get_to_one_related")
+        public func get(fieldsCiProducts: [FieldsCiProducts]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBundleIDs: [FieldsBundleIDs]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, include: [Include]? = nil, limitPrimaryRepositories: Int? = nil) -> Request<AppStoreAPI.CiProductResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiProducts, fieldsApps, fieldsBundleIDs, fieldsScmRepositories, include, limitPrimaryRepositories), id: "apps_ciProduct_getToOneRelated")
         }
 
-        private func makeGetQuery(_ fieldsCiProducts: [FieldsCiProducts]?, _ fieldsApps: [FieldsApps]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ fieldsBundleIDs: [FieldsBundleIDs]?, _ limitPrimaryRepositories: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsCiProducts: [FieldsCiProducts]?, _ fieldsApps: [FieldsApps]?, _ fieldsBundleIDs: [FieldsBundleIDs]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ include: [Include]?, _ limitPrimaryRepositories: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsCiProducts, forKey: "fields[ciProducts]")
             encoder.encode(fieldsApps, forKey: "fields[apps]")
-            encoder.encode(fieldsScmRepositories, forKey: "fields[scmRepositories]")
             encoder.encode(fieldsBundleIDs, forKey: "fields[bundleIds]")
-            encoder.encode(limitPrimaryRepositories, forKey: "limit[primaryRepositories]")
+            encoder.encode(fieldsScmRepositories, forKey: "fields[scmRepositories]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitPrimaryRepositories, forKey: "limit[primaryRepositories]")
             return encoder.items
         }
 
         public enum FieldsCiProducts: String, CaseIterable, Codable, Sendable {
-            case additionalRepositories
-            case app
-            case buildRuns
-            case bundleID = "bundleId"
-            case createdDate
             case name
-            case primaryRepositories
+            case createdDate
             case productType
+            case app
+            case bundleID = "bundleId"
             case workflows
+            case primaryRepositories
+            case additionalRepositories
+            case buildRuns
         }
 
         public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case name
+            case bundleID = "bundleId"
+            case sku
+            case primaryLocale
+            case isOrEverWasMadeForKids
+            case subscriptionStatusURL = "subscriptionStatusUrl"
+            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
+            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
+            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
+            case contentRightsDeclaration
+            case streamlinedPurchasingEnabled
+            case appEncryptionDeclarations
+            case ciProduct
+            case betaTesters
+            case betaGroups
+            case appStoreVersions
+            case preReleaseVersions
+            case betaAppLocalizations
+            case builds
+            case betaLicenseAgreement
+            case betaAppReviewDetail
+            case appInfos
+            case appClips
+            case appPricePoints
+            case endUserLicenseAgreement
+            case preOrder
+            case appPriceSchedule
+            case appAvailability
+            case appAvailabilityV2
+            case inAppPurchases
+            case subscriptionGroups
+            case gameCenterEnabledVersions
+            case perfPowerMetrics
+            case appCustomProductPages
+            case inAppPurchasesV2
+            case promotedPurchases
+            case appEvents
+            case reviewSubmissions
+            case subscriptionGracePeriod
+            case customerReviews
+            case gameCenterDetail
+            case appStoreVersionExperimentsV2
             case alternativeDistributionKey
             case analyticsReportRequests
-            case appAvailability
-            case appClips
-            case appCustomProductPages
-            case appEncryptionDeclarations
-            case appEvents
-            case appInfos
-            case appPricePoints
-            case appPriceSchedule
-            case appStoreVersionExperimentsV2
-            case appStoreVersions
-            case betaAppLocalizations
-            case betaAppReviewDetail
-            case betaGroups
-            case betaLicenseAgreement
-            case betaTesters
-            case builds
-            case bundleID = "bundleId"
-            case ciProduct
-            case contentRightsDeclaration
-            case customerReviews
-            case endUserLicenseAgreement
-            case gameCenterDetail
-            case gameCenterEnabledVersions
-            case inAppPurchases
-            case inAppPurchasesV2
-            case isOrEverWasMadeForKids
             case marketplaceSearchDetail
-            case name
-            case perfPowerMetrics
-            case preOrder
-            case preReleaseVersions
-            case primaryLocale
-            case promotedPurchases
-            case reviewSubmissions
-            case sku
-            case subscriptionGracePeriod
-            case subscriptionGroups
-            case subscriptionStatusURL = "subscriptionStatusUrl"
-            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
-            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
-            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
-        }
-
-        public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
-            case defaultBranch
-            case gitReferences
-            case httpCloneURL = "httpCloneUrl"
-            case lastAccessedDate
-            case ownerName
-            case pullRequests
-            case repositoryName
-            case scmProvider
-            case sshCloneURL = "sshCloneUrl"
         }
 
         public enum FieldsBundleIDs: String, CaseIterable, Codable, Sendable {
-            case app
-            case bundleIDCapabilities = "bundleIdCapabilities"
-            case identifier
             case name
             case platform
-            case profiles
+            case identifier
             case seedID = "seedId"
+            case profiles
+            case bundleIDCapabilities = "bundleIdCapabilities"
+            case app
+        }
+
+        public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
+            case lastAccessedDate
+            case httpCloneURL = "httpCloneUrl"
+            case sshCloneURL = "sshCloneUrl"
+            case ownerName
+            case repositoryName
+            case scmProvider
+            case defaultBranch
+            case gitReferences
+            case pullRequests
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

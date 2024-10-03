@@ -16,55 +16,38 @@ extension Resources.V1.AppClips {
         /// Path: `/v1/appClips/{id}`
         public let path: String
 
-        public func get(fieldsAppClips: [FieldsAppClips]? = nil, include: [Include]? = nil, fieldsAppClipAdvancedExperiences: [FieldsAppClipAdvancedExperiences]? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, limitAppClipDefaultExperiences: Int? = nil) -> Request<AppStoreAPI.AppClipResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClips, include, fieldsAppClipAdvancedExperiences, fieldsAppClipDefaultExperiences, limitAppClipDefaultExperiences), id: "appClips-get_instance")
+        public func get(fieldsAppClips: [FieldsAppClips]? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, include: [Include]? = nil, limitAppClipDefaultExperiences: Int? = nil) -> Request<AppStoreAPI.AppClipResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClips, fieldsAppClipDefaultExperiences, include, limitAppClipDefaultExperiences), id: "appClips_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppClips: [FieldsAppClips]?, _ include: [Include]?, _ fieldsAppClipAdvancedExperiences: [FieldsAppClipAdvancedExperiences]?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ limitAppClipDefaultExperiences: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppClips: [FieldsAppClips]?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ include: [Include]?, _ limitAppClipDefaultExperiences: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppClips, forKey: "fields[appClips]")
-            encoder.encode(include, forKey: "include")
-            encoder.encode(fieldsAppClipAdvancedExperiences, forKey: "fields[appClipAdvancedExperiences]")
             encoder.encode(fieldsAppClipDefaultExperiences, forKey: "fields[appClipDefaultExperiences]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitAppClipDefaultExperiences, forKey: "limit[appClipDefaultExperiences]")
             return encoder.items
         }
 
         public enum FieldsAppClips: String, CaseIterable, Codable, Sendable {
-            case app
-            case appClipAdvancedExperiences
-            case appClipDefaultExperiences
             case bundleID = "bundleId"
-        }
-
-        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case appClipDefaultExperiences
-        }
-
-        public enum FieldsAppClipAdvancedExperiences: String, CaseIterable, Codable, Sendable {
-            case action
-            case appClip
-            case businessCategory
-            case defaultLanguage
-            case headerImage
-            case isPoweredBy
-            case link
-            case localizations
-            case place
-            case placeStatus
-            case removed
-            case status
-            case version
+            case appClipAdvancedExperiences
         }
 
         public enum FieldsAppClipDefaultExperiences: String, CaseIterable, Codable, Sendable {
             case action
             case appClip
-            case appClipAppStoreReviewDetail
-            case appClipDefaultExperienceLocalizations
-            case appClipDefaultExperienceTemplate
             case releaseWithAppStoreVersion
+            case appClipDefaultExperienceLocalizations
+            case appClipAppStoreReviewDetail
+            case appClipDefaultExperienceTemplate
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case app
+            case appClipDefaultExperiences
         }
     }
 }

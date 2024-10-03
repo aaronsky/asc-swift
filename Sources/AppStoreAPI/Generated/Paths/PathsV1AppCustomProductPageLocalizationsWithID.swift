@@ -16,57 +16,57 @@ extension Resources.V1.AppCustomProductPageLocalizations {
         /// Path: `/v1/appCustomProductPageLocalizations/{id}`
         public let path: String
 
-        public func get(fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]? = nil, include: [Include]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, limitAppPreviewSets: Int? = nil, limitAppScreenshotSets: Int? = nil) -> Request<AppStoreAPI.AppCustomProductPageLocalizationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppCustomProductPageLocalizations, include, fieldsAppScreenshotSets, fieldsAppPreviewSets, limitAppPreviewSets, limitAppScreenshotSets), id: "appCustomProductPageLocalizations-get_instance")
+        public func get(fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, include: [Include]? = nil, limitAppPreviewSets: Int? = nil, limitAppScreenshotSets: Int? = nil) -> Request<AppStoreAPI.AppCustomProductPageLocalizationResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppCustomProductPageLocalizations, fieldsAppScreenshotSets, fieldsAppPreviewSets, include, limitAppPreviewSets, limitAppScreenshotSets), id: "appCustomProductPageLocalizations_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]?, _ include: [Include]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ limitAppPreviewSets: Int?, _ limitAppScreenshotSets: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ include: [Include]?, _ limitAppPreviewSets: Int?, _ limitAppScreenshotSets: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppCustomProductPageLocalizations, forKey: "fields[appCustomProductPageLocalizations]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsAppScreenshotSets, forKey: "fields[appScreenshotSets]")
             encoder.encode(fieldsAppPreviewSets, forKey: "fields[appPreviewSets]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitAppPreviewSets, forKey: "limit[appPreviewSets]")
             encoder.encode(limitAppScreenshotSets, forKey: "limit[appScreenshotSets]")
             return encoder.items
         }
 
         public enum FieldsAppCustomProductPageLocalizations: String, CaseIterable, Codable, Sendable {
-            case appCustomProductPageVersion
-            case appPreviewSets
-            case appScreenshotSets
             case locale
             case promotionalText
+            case appCustomProductPageVersion
+            case appScreenshotSets
+            case appPreviewSets
+        }
+
+        public enum FieldsAppScreenshotSets: String, CaseIterable, Codable, Sendable {
+            case screenshotDisplayType
+            case appStoreVersionLocalization
+            case appCustomProductPageLocalization
+            case appStoreVersionExperimentTreatmentLocalization
+            case appScreenshots
+        }
+
+        public enum FieldsAppPreviewSets: String, CaseIterable, Codable, Sendable {
+            case previewType
+            case appStoreVersionLocalization
+            case appCustomProductPageLocalization
+            case appStoreVersionExperimentTreatmentLocalization
+            case appPreviews
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageVersion
-            case appPreviewSets
             case appScreenshotSets
-        }
-
-        public enum FieldsAppScreenshotSets: String, CaseIterable, Codable, Sendable {
-            case appCustomProductPageLocalization
-            case appScreenshots
-            case appStoreVersionExperimentTreatmentLocalization
-            case appStoreVersionLocalization
-            case screenshotDisplayType
-        }
-
-        public enum FieldsAppPreviewSets: String, CaseIterable, Codable, Sendable {
-            case appCustomProductPageLocalization
-            case appPreviews
-            case appStoreVersionExperimentTreatmentLocalization
-            case appStoreVersionLocalization
-            case previewType
+            case appPreviewSets
         }
 
         public func patch(_ body: AppStoreAPI.AppCustomProductPageLocalizationUpdateRequest) -> Request<AppStoreAPI.AppCustomProductPageLocalizationResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "appCustomProductPageLocalizations-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appCustomProductPageLocalizations_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "appCustomProductPageLocalizations-delete_instance")
+            Request(path: path, method: "DELETE", id: "appCustomProductPageLocalizations_deleteInstance")
         }
     }
 }

@@ -76,25 +76,10 @@ public struct CiWorkflow: Codable, Equatable, Identifiable, Sendable {
         public var repository: Repository?
         public var xcodeVersion: XcodeVersion?
         public var macOsVersion: MacOsVersion?
+        public var buildRuns: BuildRuns?
 
         public struct Product: Codable, Equatable, Sendable {
-            public var links: Links?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -110,30 +95,14 @@ public struct CiWorkflow: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
-                self.links = links
+            public init(data: Data? = nil) {
                 self.data = data
             }
         }
 
         public struct Repository: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -149,30 +118,14 @@ public struct CiWorkflow: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
                 self.links = links
                 self.data = data
             }
         }
 
         public struct XcodeVersion: Codable, Equatable, Sendable {
-            public var links: Links?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -188,30 +141,13 @@ public struct CiWorkflow: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
-                self.links = links
+            public init(data: Data? = nil) {
                 self.data = data
             }
         }
 
         public struct MacOsVersion: Codable, Equatable, Sendable {
-            public var links: Links?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -227,17 +163,25 @@ public struct CiWorkflow: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
-                self.links = links
+            public init(data: Data? = nil) {
                 self.data = data
             }
         }
 
-        public init(product: Product? = nil, repository: Repository? = nil, xcodeVersion: XcodeVersion? = nil, macOsVersion: MacOsVersion? = nil) {
+        public struct BuildRuns: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
+            }
+        }
+
+        public init(product: Product? = nil, repository: Repository? = nil, xcodeVersion: XcodeVersion? = nil, macOsVersion: MacOsVersion? = nil, buildRuns: BuildRuns? = nil) {
             self.product = product
             self.repository = repository
             self.xcodeVersion = xcodeVersion
             self.macOsVersion = macOsVersion
+            self.buildRuns = buildRuns
         }
     }
 

@@ -17,11 +17,11 @@ extension Resources.V1.Builds.WithID.Relationships {
         public let path: String
 
         public var get: Request<AppStoreAPI.BuildAppEncryptionDeclarationLinkageResponse> {
-            Request(path: path, method: "GET", id: "builds-appEncryptionDeclaration-get_to_one_relationship")
+            Request(path: path, method: "GET", id: "builds_appEncryptionDeclaration_getToOneRelationship")
         }
 
         public func patch(_ body: AppStoreAPI.BuildAppEncryptionDeclarationLinkageRequest) -> Request<Void> {
-            Request(path: path, method: "PATCH", body: body, id: "builds-appEncryptionDeclaration-update_to_one_relationship")
+            Request(path: path, method: "PATCH", body: body, id: "builds_appEncryptionDeclaration_updateToOneRelationship")
         }
     }
 }

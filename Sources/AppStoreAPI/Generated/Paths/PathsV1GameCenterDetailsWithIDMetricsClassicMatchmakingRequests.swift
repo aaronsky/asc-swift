@@ -16,17 +16,17 @@ extension Resources.V1.GameCenterDetails.WithID.Metrics {
         /// Path: `/v1/gameCenterDetails/{id}/metrics/classicMatchmakingRequests`
         public let path: String
 
-        public func get(limit: Int? = nil, granularity: Granularity, groupBy: [GroupBy]? = nil, filterResult: FilterResult? = nil, sort: [Sort]? = nil) -> Request<AppStoreAPI.GameCenterMatchmakingAppRequestsV1MetricResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(limit, granularity, groupBy, filterResult, sort), id: "gameCenterDetails-classicMatchmakingRequests-get_metrics")
+        public func get(granularity: Granularity, groupBy: [GroupBy]? = nil, filterResult: FilterResult? = nil, sort: [Sort]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.GameCenterMatchmakingAppRequestsV1MetricResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(granularity, groupBy, filterResult, sort, limit), id: "gameCenterDetails_classicMatchmakingRequests_getMetrics")
         }
 
-        private func makeGetQuery(_ limit: Int?, _ granularity: Granularity, _ groupBy: [GroupBy]?, _ filterResult: FilterResult?, _ sort: [Sort]?) -> [(String, String?)] {
+        private func makeGetQuery(_ granularity: Granularity, _ groupBy: [GroupBy]?, _ filterResult: FilterResult?, _ sort: [Sort]?, _ limit: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(limit, forKey: "limit")
             encoder.encode(granularity, forKey: "granularity")
             encoder.encode(groupBy, forKey: "groupBy")
             encoder.encode(filterResult, forKey: "filter[result]")
             encoder.encode(sort, forKey: "sort")
+            encoder.encode(limit, forKey: "limit")
             return encoder.items
         }
 
@@ -47,10 +47,10 @@ extension Resources.V1.GameCenterDetails.WithID.Metrics {
         }
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
-            case averageSecondsInQueue
-            case minusAverageSecondsInQueue = "-averageSecondsInQueue"
             case count
             case minusCount = "-count"
+            case averageSecondsInQueue
+            case minusAverageSecondsInQueue = "-averageSecondsInQueue"
             case p50SecondsInQueue
             case minusP50SecondsInQueue = "-p50SecondsInQueue"
             case p95SecondsInQueue

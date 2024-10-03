@@ -16,16 +16,20 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/perfPowerMetrics`
         public let path: String
 
-        public func get(filterDeviceType: [String]? = nil, filterMetricType: [FilterMetricType]? = nil, filterPlatform: [FilterPlatform]? = nil) -> Request<XcodeMetrics> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterDeviceType, filterMetricType, filterPlatform), id: "apps-perfPowerMetrics-get_to_many_related")
+        public func get(filterPlatform: [FilterPlatform]? = nil, filterMetricType: [FilterMetricType]? = nil, filterDeviceType: [String]? = nil) -> Request<XcodeMetrics> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterPlatform, filterMetricType, filterDeviceType), id: "apps_perfPowerMetrics_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterDeviceType: [String]?, _ filterMetricType: [FilterMetricType]?, _ filterPlatform: [FilterPlatform]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterPlatform: [FilterPlatform]?, _ filterMetricType: [FilterMetricType]?, _ filterDeviceType: [String]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(filterDeviceType, forKey: "filter[deviceType]")
-            encoder.encode(filterMetricType, forKey: "filter[metricType]")
             encoder.encode(filterPlatform, forKey: "filter[platform]")
+            encoder.encode(filterMetricType, forKey: "filter[metricType]")
+            encoder.encode(filterDeviceType, forKey: "filter[deviceType]")
             return encoder.items
+        }
+
+        public enum FilterPlatform: String, CaseIterable, Codable, Sendable {
+            case iOS = "IOS"
         }
 
         public enum FilterMetricType: String, CaseIterable, Codable, Sendable {
@@ -36,10 +40,6 @@ extension Resources.V1.Apps.WithID {
             case memory = "MEMORY"
             case animation = "ANIMATION"
             case termination = "TERMINATION"
-        }
-
-        public enum FilterPlatform: String, CaseIterable, Codable, Sendable {
-            case iOS = "IOS"
         }
     }
 }

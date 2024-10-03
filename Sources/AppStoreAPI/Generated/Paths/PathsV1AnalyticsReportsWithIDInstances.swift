@@ -17,7 +17,7 @@ extension Resources.V1.AnalyticsReports.WithID {
         public let path: String
 
         public func get(filterGranularity: [FilterGranularity]? = nil, filterProcessingDate: [String]? = nil, fieldsAnalyticsReportInstances: [FieldsAnalyticsReportInstances]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.AnalyticsReportInstancesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterGranularity, filterProcessingDate, fieldsAnalyticsReportInstances, limit), id: "analyticsReports-instances-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterGranularity, filterProcessingDate, fieldsAnalyticsReportInstances, limit), id: "analyticsReports_instances_getToManyRelated")
         }
 
         private func makeGetQuery(_ filterGranularity: [FilterGranularity]?, _ filterProcessingDate: [String]?, _ fieldsAnalyticsReportInstances: [FieldsAnalyticsReportInstances]?, _ limit: Int?) -> [(String, String?)] {

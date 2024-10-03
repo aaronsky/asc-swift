@@ -17,7 +17,7 @@ extension Resources.V3.AppPricePoints {
         public let path: String
 
         public func get(fieldsAppPricePoints: [FieldsAppPricePoints]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppPricePointV3Response> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPricePoints, include), id: "appPricePointsV3-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPricePoints, include), id: "appPricePointsV3_getInstance")
         }
 
         private func makeGetQuery(_ fieldsAppPricePoints: [FieldsAppPricePoints]?, _ include: [Include]?) -> [(String, String?)] {
@@ -28,10 +28,10 @@ extension Resources.V3.AppPricePoints {
         }
 
         public enum FieldsAppPricePoints: String, CaseIterable, Codable, Sendable {
-            case app
             case customerPrice
-            case equalizations
             case proceeds
+            case app
+            case equalizations
             case territory
         }
 

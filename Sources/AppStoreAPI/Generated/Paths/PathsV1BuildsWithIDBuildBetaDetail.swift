@@ -17,7 +17,7 @@ extension Resources.V1.Builds.WithID {
         public let path: String
 
         public func get(fieldsBuildBetaDetails: [FieldsBuildBetaDetails]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.BuildBetaDetailResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBuildBetaDetails, fieldsBuilds, include), id: "builds-buildBetaDetail-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBuildBetaDetails, fieldsBuilds, include), id: "builds_buildBetaDetail_getToOneRelated")
         }
 
         private func makeGetQuery(_ fieldsBuildBetaDetails: [FieldsBuildBetaDetails]?, _ fieldsBuilds: [FieldsBuilds]?, _ include: [Include]?) -> [(String, String?)] {
@@ -30,36 +30,36 @@ extension Resources.V1.Builds.WithID {
 
         public enum FieldsBuildBetaDetails: String, CaseIterable, Codable, Sendable {
             case autoNotifyEnabled
-            case build
-            case externalBuildState
             case internalBuildState
+            case externalBuildState
+            case build
         }
 
         public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
-            case app
-            case appEncryptionDeclaration
-            case appStoreVersion
-            case betaAppReviewSubmission
-            case betaBuildLocalizations
-            case betaGroups
-            case buildAudienceType
-            case buildBetaDetail
-            case buildBundles
-            case computedMinMacOsVersion
-            case diagnosticSignatures
+            case version
+            case uploadedDate
             case expirationDate
             case expired
-            case iconAssetToken
-            case icons
-            case individualTesters
-            case lsMinimumSystemVersion
             case minOsVersion
-            case perfPowerMetrics
-            case preReleaseVersion
+            case lsMinimumSystemVersion
+            case computedMinMacOsVersion
+            case iconAssetToken
             case processingState
-            case uploadedDate
+            case buildAudienceType
             case usesNonExemptEncryption
-            case version
+            case preReleaseVersion
+            case individualTesters
+            case betaGroups
+            case betaBuildLocalizations
+            case appEncryptionDeclaration
+            case betaAppReviewSubmission
+            case app
+            case buildBetaDetail
+            case appStoreVersion
+            case icons
+            case buildBundles
+            case perfPowerMetrics
+            case diagnosticSignatures
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

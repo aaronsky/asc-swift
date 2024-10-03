@@ -17,7 +17,7 @@ extension Resources.V2 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.AppAvailabilityV2CreateRequest) -> Request<AppStoreAPI.AppAvailabilityV2Response> {
-            Request(path: path, method: "POST", body: body, id: "appAvailabilitiesV2-create_instance")
+            Request(path: path, method: "POST", body: body, id: "appAvailabilitiesV2_createInstance")
         }
     }
 }

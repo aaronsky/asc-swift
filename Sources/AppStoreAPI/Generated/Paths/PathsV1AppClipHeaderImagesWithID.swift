@@ -17,7 +17,7 @@ extension Resources.V1.AppClipHeaderImages {
         public let path: String
 
         public func get(fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppClipHeaderImageResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipHeaderImages, include), id: "appClipHeaderImages-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipHeaderImages, include), id: "appClipHeaderImages_getInstance")
         }
 
         private func makeGetQuery(_ fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]?, _ include: [Include]?) -> [(String, String?)] {
@@ -28,14 +28,14 @@ extension Resources.V1.AppClipHeaderImages {
         }
 
         public enum FieldsAppClipHeaderImages: String, CaseIterable, Codable, Sendable {
-            case appClipDefaultExperienceLocalization
-            case assetDeliveryState
-            case fileName
             case fileSize
-            case imageAsset
+            case fileName
             case sourceFileChecksum
+            case imageAsset
             case uploadOperations
+            case assetDeliveryState
             case uploaded
+            case appClipDefaultExperienceLocalization
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
@@ -43,11 +43,11 @@ extension Resources.V1.AppClipHeaderImages {
         }
 
         public func patch(_ body: AppStoreAPI.AppClipHeaderImageUpdateRequest) -> Request<AppStoreAPI.AppClipHeaderImageResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "appClipHeaderImages-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appClipHeaderImages_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "appClipHeaderImages-delete_instance")
+            Request(path: path, method: "DELETE", id: "appClipHeaderImages_deleteInstance")
         }
     }
 }

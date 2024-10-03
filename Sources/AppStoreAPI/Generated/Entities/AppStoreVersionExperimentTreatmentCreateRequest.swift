@@ -12,7 +12,7 @@ public struct AppStoreVersionExperimentTreatmentCreateRequest: Codable, Equatabl
     public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var attributes: Attributes
-        public var relationships: Relationships
+        public var relationships: Relationships?
 
         public enum `Type`: String, CaseIterable, Codable, Sendable {
             case appStoreVersionExperimentTreatments
@@ -29,11 +29,11 @@ public struct AppStoreVersionExperimentTreatmentCreateRequest: Codable, Equatabl
         }
 
         public struct Relationships: Codable, Equatable, Sendable {
-            public var appStoreVersionExperiment: AppStoreVersionExperiment
+            public var appStoreVersionExperiment: AppStoreVersionExperiment?
             public var appStoreVersionExperimentV2: AppStoreVersionExperimentV2?
 
             public struct AppStoreVersionExperiment: Codable, Equatable, Sendable {
-                public var data: Data
+                public var data: Data?
 
                 public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
@@ -49,7 +49,7 @@ public struct AppStoreVersionExperimentTreatmentCreateRequest: Codable, Equatabl
                     }
                 }
 
-                public init(data: Data) {
+                public init(data: Data? = nil) {
                     self.data = data
                 }
             }
@@ -76,13 +76,13 @@ public struct AppStoreVersionExperimentTreatmentCreateRequest: Codable, Equatabl
                 }
             }
 
-            public init(appStoreVersionExperiment: AppStoreVersionExperiment, appStoreVersionExperimentV2: AppStoreVersionExperimentV2? = nil) {
+            public init(appStoreVersionExperiment: AppStoreVersionExperiment? = nil, appStoreVersionExperimentV2: AppStoreVersionExperimentV2? = nil) {
                 self.appStoreVersionExperiment = appStoreVersionExperiment
                 self.appStoreVersionExperimentV2 = appStoreVersionExperimentV2
             }
         }
 
-        public init(type: `Type` = .appStoreVersionExperimentTreatments, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .appStoreVersionExperimentTreatments, attributes: Attributes, relationships: Relationships? = nil) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

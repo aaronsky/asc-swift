@@ -17,7 +17,7 @@ extension Resources.V1.ScmRepositories.WithID {
         public let path: String
 
         public func get(fieldsScmPullRequests: [FieldsScmPullRequests]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.ScmPullRequestsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsScmPullRequests, fieldsScmRepositories, limit, include), id: "scmRepositories-pullRequests-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsScmPullRequests, fieldsScmRepositories, limit, include), id: "scmRepositories_pullRequests_getToManyRelated")
         }
 
         private func makeGetQuery(_ fieldsScmPullRequests: [FieldsScmPullRequests]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
@@ -30,30 +30,30 @@ extension Resources.V1.ScmRepositories.WithID {
         }
 
         public enum FieldsScmPullRequests: String, CaseIterable, Codable, Sendable {
-            case destinationBranchName
-            case destinationRepositoryName
+            case title
+            case number
+            case webURL = "webUrl"
+            case sourceRepositoryOwner
+            case sourceRepositoryName
+            case sourceBranchName
             case destinationRepositoryOwner
+            case destinationRepositoryName
+            case destinationBranchName
             case isClosed
             case isCrossRepository
-            case number
             case repository
-            case sourceBranchName
-            case sourceRepositoryName
-            case sourceRepositoryOwner
-            case title
-            case webURL = "webUrl"
         }
 
         public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
-            case defaultBranch
-            case gitReferences
-            case httpCloneURL = "httpCloneUrl"
             case lastAccessedDate
+            case httpCloneURL = "httpCloneUrl"
+            case sshCloneURL = "sshCloneUrl"
             case ownerName
-            case pullRequests
             case repositoryName
             case scmProvider
-            case sshCloneURL = "sshCloneUrl"
+            case defaultBranch
+            case gitReferences
+            case pullRequests
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

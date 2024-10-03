@@ -16,60 +16,60 @@ extension Resources.V1 {
         /// Path: `/v1/betaBuildLocalizations`
         public let path: String
 
-        public func get(filterLocale: [String]? = nil, filterBuild: [String]? = nil, fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsBuilds: [FieldsBuilds]? = nil) -> Request<AppStoreAPI.BetaBuildLocalizationsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterLocale, filterBuild, fieldsBetaBuildLocalizations, limit, include, fieldsBuilds), id: "betaBuildLocalizations-get_collection")
+        public func get(filterLocale: [String]? = nil, filterBuild: [String]? = nil, fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.BetaBuildLocalizationsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterLocale, filterBuild, fieldsBetaBuildLocalizations, fieldsBuilds, limit, include), id: "betaBuildLocalizations_getCollection")
         }
 
-        private func makeGetQuery(_ filterLocale: [String]?, _ filterBuild: [String]?, _ fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]?, _ limit: Int?, _ include: [Include]?, _ fieldsBuilds: [FieldsBuilds]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterLocale: [String]?, _ filterBuild: [String]?, _ fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]?, _ fieldsBuilds: [FieldsBuilds]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterLocale, forKey: "filter[locale]")
             encoder.encode(filterBuild, forKey: "filter[build]")
             encoder.encode(fieldsBetaBuildLocalizations, forKey: "fields[betaBuildLocalizations]")
+            encoder.encode(fieldsBuilds, forKey: "fields[builds]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
-            encoder.encode(fieldsBuilds, forKey: "fields[builds]")
             return encoder.items
         }
 
         public enum FieldsBetaBuildLocalizations: String, CaseIterable, Codable, Sendable {
-            case build
-            case locale
             case whatsNew
+            case locale
+            case build
+        }
+
+        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
+            case version
+            case uploadedDate
+            case expirationDate
+            case expired
+            case minOsVersion
+            case lsMinimumSystemVersion
+            case computedMinMacOsVersion
+            case iconAssetToken
+            case processingState
+            case buildAudienceType
+            case usesNonExemptEncryption
+            case preReleaseVersion
+            case individualTesters
+            case betaGroups
+            case betaBuildLocalizations
+            case appEncryptionDeclaration
+            case betaAppReviewSubmission
+            case app
+            case buildBetaDetail
+            case appStoreVersion
+            case icons
+            case buildBundles
+            case perfPowerMetrics
+            case diagnosticSignatures
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case build
         }
 
-        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
-            case app
-            case appEncryptionDeclaration
-            case appStoreVersion
-            case betaAppReviewSubmission
-            case betaBuildLocalizations
-            case betaGroups
-            case buildAudienceType
-            case buildBetaDetail
-            case buildBundles
-            case computedMinMacOsVersion
-            case diagnosticSignatures
-            case expirationDate
-            case expired
-            case iconAssetToken
-            case icons
-            case individualTesters
-            case lsMinimumSystemVersion
-            case minOsVersion
-            case perfPowerMetrics
-            case preReleaseVersion
-            case processingState
-            case uploadedDate
-            case usesNonExemptEncryption
-            case version
-        }
-
         public func post(_ body: AppStoreAPI.BetaBuildLocalizationCreateRequest) -> Request<AppStoreAPI.BetaBuildLocalizationResponse> {
-            Request(path: path, method: "POST", body: body, id: "betaBuildLocalizations-create_instance")
+            Request(path: path, method: "POST", body: body, id: "betaBuildLocalizations_createInstance")
         }
     }
 }

@@ -38,23 +38,7 @@ public struct GameCenterLeaderboardLocalization: Codable, Equatable, Identifiabl
         public var gameCenterLeaderboardImage: GameCenterLeaderboardImage?
 
         public struct GameCenterLeaderboard: Codable, Equatable, Sendable {
-            public var links: Links?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -70,30 +54,14 @@ public struct GameCenterLeaderboardLocalization: Codable, Equatable, Identifiabl
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
-                self.links = links
+            public init(data: Data? = nil) {
                 self.data = data
             }
         }
 
         public struct GameCenterLeaderboardImage: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -109,7 +77,7 @@ public struct GameCenterLeaderboardLocalization: Codable, Equatable, Identifiabl
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
                 self.links = links
                 self.data = data
             }

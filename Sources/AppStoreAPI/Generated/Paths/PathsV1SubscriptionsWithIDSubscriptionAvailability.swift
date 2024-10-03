@@ -16,44 +16,46 @@ extension Resources.V1.Subscriptions.WithID {
         /// Path: `/v1/subscriptions/{id}/subscriptionAvailability`
         public let path: String
 
-        public func get(fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limitAvailableTerritories: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionAvailabilityResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionAvailabilities, fieldsSubscriptions, fieldsTerritories, limitAvailableTerritories, include), id: "subscriptions-subscriptionAvailability-get_to_one_related")
+        public func get(fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, include: [Include]? = nil, limitAvailableTerritories: Int? = nil) -> Request<AppStoreAPI.SubscriptionAvailabilityResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionAvailabilities, fieldsSubscriptions, fieldsTerritories, include, limitAvailableTerritories), id: "subscriptions_subscriptionAvailability_getToOneRelated")
         }
 
-        private func makeGetQuery(_ fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsTerritories: [FieldsTerritories]?, _ limitAvailableTerritories: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsTerritories: [FieldsTerritories]?, _ include: [Include]?, _ limitAvailableTerritories: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsSubscriptionAvailabilities, forKey: "fields[subscriptionAvailabilities]")
             encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
             encoder.encode(fieldsTerritories, forKey: "fields[territories]")
-            encoder.encode(limitAvailableTerritories, forKey: "limit[availableTerritories]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitAvailableTerritories, forKey: "limit[availableTerritories]")
             return encoder.items
         }
 
         public enum FieldsSubscriptionAvailabilities: String, CaseIterable, Codable, Sendable {
             case availableInNewTerritories
-            case availableTerritories
             case subscription
+            case availableTerritories
         }
 
         public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
-            case appStoreReviewScreenshot
-            case familySharable
-            case group
-            case groupLevel
-            case introductoryOffers
             case name
-            case offerCodes
-            case pricePoints
-            case prices
             case productID = "productId"
-            case promotedPurchase
-            case promotionalOffers
-            case reviewNote
+            case familySharable
             case state
-            case subscriptionAvailability
-            case subscriptionLocalizations
             case subscriptionPeriod
+            case reviewNote
+            case groupLevel
+            case subscriptionLocalizations
+            case appStoreReviewScreenshot
+            case group
+            case introductoryOffers
+            case promotionalOffers
+            case offerCodes
+            case prices
+            case pricePoints
+            case promotedPurchase
+            case subscriptionAvailability
+            case winBackOffers
+            case images
         }
 
         public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
@@ -61,8 +63,8 @@ extension Resources.V1.Subscriptions.WithID {
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case availableTerritories
             case subscription
+            case availableTerritories
         }
     }
 }

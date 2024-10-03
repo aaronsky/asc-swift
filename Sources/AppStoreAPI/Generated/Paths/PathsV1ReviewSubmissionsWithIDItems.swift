@@ -16,105 +16,106 @@ extension Resources.V1.ReviewSubmissions.WithID {
         /// Path: `/v1/reviewSubmissions/{id}/items`
         public let path: String
 
-        public func get(fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]? = nil, fieldsAppEvents: [FieldsAppEvents]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.ReviewSubmissionItemsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionExperiments, fieldsReviewSubmissionItems, fieldsAppStoreVersions, fieldsAppCustomProductPageVersions, fieldsAppEvents, limit, include), id: "reviewSubmissions-items-get_to_many_related")
+        public func get(fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]? = nil, fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAppEvents: [FieldsAppEvents]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.ReviewSubmissionItemsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsReviewSubmissionItems, fieldsAppStoreVersions, fieldsAppCustomProductPageVersions, fieldsAppStoreVersionExperiments, fieldsAppEvents, limit, include), id: "reviewSubmissions_items_getToManyRelated")
         }
 
-        private func makeGetQuery(_ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]?, _ fieldsAppEvents: [FieldsAppEvents]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]?, _ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsAppEvents: [FieldsAppEvents]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(fieldsAppStoreVersionExperiments, forKey: "fields[appStoreVersionExperiments]")
             encoder.encode(fieldsReviewSubmissionItems, forKey: "fields[reviewSubmissionItems]")
             encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
             encoder.encode(fieldsAppCustomProductPageVersions, forKey: "fields[appCustomProductPageVersions]")
+            encoder.encode(fieldsAppStoreVersionExperiments, forKey: "fields[appStoreVersionExperiments]")
             encoder.encode(fieldsAppEvents, forKey: "fields[appEvents]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
-        public enum FieldsAppStoreVersionExperiments: String, CaseIterable, Codable, Sendable {
-            case app
-            case appStoreVersion
-            case appStoreVersionExperimentTreatments
-            case controlVersions
-            case endDate
-            case latestControlVersion
-            case name
-            case platform
-            case reviewRequired
-            case startDate
-            case started
-            case state
-            case trafficProportion
-        }
-
         public enum FieldsReviewSubmissionItems: String, CaseIterable, Codable, Sendable {
-            case appCustomProductPageVersion
-            case appEvent
+            case state
+            case resolved
+            case removed
+            case reviewSubmission
             case appStoreVersion
+            case appCustomProductPageVersion
             case appStoreVersionExperiment
             case appStoreVersionExperimentV2
-            case removed
-            case resolved
-            case reviewSubmission
-            case state
+            case appEvent
         }
 
         public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
-            case ageRatingDeclaration
-            case alternativeDistributionPackage
-            case app
-            case appClipDefaultExperience
-            case appStoreReviewDetail
+            case platform
+            case versionString
             case appStoreState
+            case appVersionState
+            case copyright
+            case reviewType
+            case releaseType
+            case earliestReleaseDate
+            case downloadable
+            case createdDate
+            case app
+            case ageRatingDeclaration
+            case appStoreVersionLocalizations
+            case build
+            case appStoreVersionPhasedRelease
+            case gameCenterAppVersion
+            case routingAppCoverage
+            case appStoreReviewDetail
+            case appStoreVersionSubmission
+            case appClipDefaultExperience
             case appStoreVersionExperiments
             case appStoreVersionExperimentsV2
-            case appStoreVersionLocalizations
-            case appStoreVersionPhasedRelease
-            case appStoreVersionSubmission
-            case appVersionState
-            case build
-            case copyright
-            case createdDate
             case customerReviews
-            case downloadable
-            case earliestReleaseDate
-            case platform
-            case releaseType
-            case reviewType
-            case routingAppCoverage
-            case versionString
+            case alternativeDistributionPackage
         }
 
         public enum FieldsAppCustomProductPageVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case state
+            case deepLink
             case appCustomProductPage
             case appCustomProductPageLocalizations
-            case deepLink
+        }
+
+        public enum FieldsAppStoreVersionExperiments: String, CaseIterable, Codable, Sendable {
+            case name
+            case trafficProportion
             case state
-            case version
+            case reviewRequired
+            case startDate
+            case endDate
+            case started
+            case appStoreVersion
+            case appStoreVersionExperimentTreatments
+            case platform
+            case app
+            case latestControlVersion
+            case controlVersions
         }
 
         public enum FieldsAppEvents: String, CaseIterable, Codable, Sendable {
-            case app
-            case archivedTerritorySchedules
+            case referenceName
             case badge
-            case deepLink
             case eventState
-            case localizations
+            case deepLink
+            case purchaseRequirement
             case primaryLocale
             case priority
-            case purchaseRequirement
             case purpose
-            case referenceName
             case territorySchedules
+            case archivedTerritorySchedules
+            case app
+            case localizations
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case appCustomProductPageVersion
-            case appEvent
             case appStoreVersion
+            case appCustomProductPageVersion
             case appStoreVersionExperiment
             case appStoreVersionExperimentV2
+            case appEvent
         }
     }
 }

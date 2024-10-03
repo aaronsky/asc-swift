@@ -29,26 +29,11 @@ public struct AppPricePointV3: Codable, Equatable, Identifiable, Sendable {
 
     public struct Relationships: Codable, Equatable, Sendable {
         public var app: App?
+        public var equalizations: Equalizations?
         public var territory: Territory?
 
         public struct App: Codable, Equatable, Sendable {
-            public var links: Links?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -64,30 +49,21 @@ public struct AppPricePointV3: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
-                self.links = links
+            public init(data: Data? = nil) {
                 self.data = data
             }
         }
 
-        public struct Territory: Codable, Equatable, Sendable {
-            public var links: Links?
-            public var data: Data?
+        public struct Equalizations: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
 
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
             }
+        }
+
+        public struct Territory: Codable, Equatable, Sendable {
+            public var data: Data?
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -103,14 +79,14 @@ public struct AppPricePointV3: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
-                self.links = links
+            public init(data: Data? = nil) {
                 self.data = data
             }
         }
 
-        public init(app: App? = nil, territory: Territory? = nil) {
+        public init(app: App? = nil, equalizations: Equalizations? = nil, territory: Territory? = nil) {
             self.app = app
+            self.equalizations = equalizations
             self.territory = territory
         }
     }

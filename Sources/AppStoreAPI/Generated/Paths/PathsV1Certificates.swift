@@ -16,14 +16,14 @@ extension Resources.V1 {
         /// Path: `/v1/certificates`
         public let path: String
 
-        public func get(filterCertificateType: [FilterCertificateType]? = nil, filterDisplayName: [String]? = nil, filterSerialNumber: [String]? = nil, filterID: [String]? = nil, sort: [Sort]? = nil, fieldsCertificates: [FieldsCertificates]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.CertificatesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterCertificateType, filterDisplayName, filterSerialNumber, filterID, sort, fieldsCertificates, limit), id: "certificates-get_collection")
+        public func get(filterDisplayName: [String]? = nil, filterCertificateType: [FilterCertificateType]? = nil, filterSerialNumber: [String]? = nil, filterID: [String]? = nil, sort: [Sort]? = nil, fieldsCertificates: [FieldsCertificates]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.CertificatesResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterDisplayName, filterCertificateType, filterSerialNumber, filterID, sort, fieldsCertificates, limit), id: "certificates_getCollection")
         }
 
-        private func makeGetQuery(_ filterCertificateType: [FilterCertificateType]?, _ filterDisplayName: [String]?, _ filterSerialNumber: [String]?, _ filterID: [String]?, _ sort: [Sort]?, _ fieldsCertificates: [FieldsCertificates]?, _ limit: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterDisplayName: [String]?, _ filterCertificateType: [FilterCertificateType]?, _ filterSerialNumber: [String]?, _ filterID: [String]?, _ sort: [Sort]?, _ fieldsCertificates: [FieldsCertificates]?, _ limit: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(filterCertificateType, forKey: "filter[certificateType]")
             encoder.encode(filterDisplayName, forKey: "filter[displayName]")
+            encoder.encode(filterCertificateType, forKey: "filter[certificateType]")
             encoder.encode(filterSerialNumber, forKey: "filter[serialNumber]")
             encoder.encode(filterID, forKey: "filter[id]")
             encoder.encode(sort, forKey: "sort")
@@ -47,29 +47,29 @@ extension Resources.V1 {
         }
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
-            case certificateType
-            case minusCertificateType = "-certificateType"
             case displayName
             case minusDisplayName = "-displayName"
-            case id
-            case minusID = "-id"
+            case certificateType
+            case minusCertificateType = "-certificateType"
             case serialNumber
             case minusSerialNumber = "-serialNumber"
+            case id
+            case minusID = "-id"
         }
 
         public enum FieldsCertificates: String, CaseIterable, Codable, Sendable {
-            case certificateContent
-            case certificateType
-            case csrContent
-            case displayName
-            case expirationDate
             case name
-            case platform
+            case csrContent
+            case certificateType
+            case displayName
             case serialNumber
+            case platform
+            case expirationDate
+            case certificateContent
         }
 
         public func post(_ body: AppStoreAPI.CertificateCreateRequest) -> Request<AppStoreAPI.CertificateResponse> {
-            Request(path: path, method: "POST", body: body, id: "certificates-create_instance")
+            Request(path: path, method: "POST", body: body, id: "certificates_createInstance")
         }
     }
 }

@@ -16,16 +16,16 @@ extension Resources.V1 {
         /// Path: `/v1/financeReports`
         public let path: String
 
-        public func get(filterRegionCode: [String], filterReportDate: [String], filterReportType: [FilterReportType], filterVendorNumber: [String]) -> Request<Data> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterRegionCode, filterReportDate, filterReportType, filterVendorNumber), id: "financeReports-get_collection")
+        public func get(filterVendorNumber: [String], filterReportType: [FilterReportType], filterRegionCode: [String], filterReportDate: [String]) -> Request<Data> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterVendorNumber, filterReportType, filterRegionCode, filterReportDate), id: "financeReports_getCollection")
         }
 
-        private func makeGetQuery(_ filterRegionCode: [String], _ filterReportDate: [String], _ filterReportType: [FilterReportType], _ filterVendorNumber: [String]) -> [(String, String?)] {
+        private func makeGetQuery(_ filterVendorNumber: [String], _ filterReportType: [FilterReportType], _ filterRegionCode: [String], _ filterReportDate: [String]) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
+            encoder.encode(filterVendorNumber, forKey: "filter[vendorNumber]")
+            encoder.encode(filterReportType, forKey: "filter[reportType]")
             encoder.encode(filterRegionCode, forKey: "filter[regionCode]")
             encoder.encode(filterReportDate, forKey: "filter[reportDate]")
-            encoder.encode(filterReportType, forKey: "filter[reportType]")
-            encoder.encode(filterVendorNumber, forKey: "filter[vendorNumber]")
             return encoder.items
         }
 

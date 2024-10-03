@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.BetaAppClipInvocationLocalizationCreateRequest) -> Request<AppStoreAPI.BetaAppClipInvocationLocalizationResponse> {
-            Request(path: path, method: "POST", body: body, id: "betaAppClipInvocationLocalizations-create_instance")
+            Request(path: path, method: "POST", body: body, id: "betaAppClipInvocationLocalizations_createInstance")
         }
     }
 }

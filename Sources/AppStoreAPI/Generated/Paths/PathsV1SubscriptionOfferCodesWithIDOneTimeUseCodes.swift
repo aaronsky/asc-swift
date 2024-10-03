@@ -16,41 +16,41 @@ extension Resources.V1.SubscriptionOfferCodes.WithID {
         /// Path: `/v1/subscriptionOfferCodes/{id}/oneTimeUseCodes`
         public let path: String
 
-        public func get(fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionOfferCodeOneTimeUseCodesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionOfferCodes, fieldsSubscriptionOfferCodeOneTimeUseCodes, limit, include), id: "subscriptionOfferCodes-oneTimeUseCodes-get_to_many_related")
+        public func get(fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]? = nil, fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionOfferCodeOneTimeUseCodesResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionOfferCodeOneTimeUseCodes, fieldsSubscriptionOfferCodes, limit, include), id: "subscriptionOfferCodes_oneTimeUseCodes_getToManyRelated")
         }
 
-        private func makeGetQuery(_ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]?, _ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(fieldsSubscriptionOfferCodes, forKey: "fields[subscriptionOfferCodes]")
             encoder.encode(fieldsSubscriptionOfferCodeOneTimeUseCodes, forKey: "fields[subscriptionOfferCodeOneTimeUseCodes]")
+            encoder.encode(fieldsSubscriptionOfferCodes, forKey: "fields[subscriptionOfferCodes]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
-        public enum FieldsSubscriptionOfferCodes: String, CaseIterable, Codable, Sendable {
-            case active
-            case customCodes
-            case customerEligibilities
-            case duration
-            case name
-            case numberOfPeriods
-            case offerEligibility
-            case offerMode
-            case oneTimeUseCodes
-            case prices
-            case subscription
-            case totalNumberOfCodes
-        }
-
         public enum FieldsSubscriptionOfferCodeOneTimeUseCodes: String, CaseIterable, Codable, Sendable {
-            case active
+            case numberOfCodes
             case createdDate
             case expirationDate
-            case numberOfCodes
+            case active
             case offerCode
             case values
+        }
+
+        public enum FieldsSubscriptionOfferCodes: String, CaseIterable, Codable, Sendable {
+            case name
+            case customerEligibilities
+            case offerEligibility
+            case duration
+            case offerMode
+            case numberOfPeriods
+            case totalNumberOfCodes
+            case active
+            case subscription
+            case oneTimeUseCodes
+            case customCodes
+            case prices
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

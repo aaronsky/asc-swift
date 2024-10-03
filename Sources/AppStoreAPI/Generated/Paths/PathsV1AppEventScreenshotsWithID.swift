@@ -17,7 +17,7 @@ extension Resources.V1.AppEventScreenshots {
         public let path: String
 
         public func get(fieldsAppEventScreenshots: [FieldsAppEventScreenshots]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppEventScreenshotResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEventScreenshots, include), id: "appEventScreenshots-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEventScreenshots, include), id: "appEventScreenshots_getInstance")
         }
 
         private func makeGetQuery(_ fieldsAppEventScreenshots: [FieldsAppEventScreenshots]?, _ include: [Include]?) -> [(String, String?)] {
@@ -28,15 +28,15 @@ extension Resources.V1.AppEventScreenshots {
         }
 
         public enum FieldsAppEventScreenshots: String, CaseIterable, Codable, Sendable {
+            case fileSize
+            case fileName
+            case imageAsset
+            case assetToken
+            case uploadOperations
+            case assetDeliveryState
+            case uploaded
             case appEventAssetType
             case appEventLocalization
-            case assetDeliveryState
-            case assetToken
-            case fileName
-            case fileSize
-            case imageAsset
-            case uploadOperations
-            case uploaded
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
@@ -44,11 +44,11 @@ extension Resources.V1.AppEventScreenshots {
         }
 
         public func patch(_ body: AppStoreAPI.AppEventScreenshotUpdateRequest) -> Request<AppStoreAPI.AppEventScreenshotResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "appEventScreenshots-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appEventScreenshots_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "appEventScreenshots-delete_instance")
+            Request(path: path, method: "DELETE", id: "appEventScreenshots_deleteInstance")
         }
     }
 }

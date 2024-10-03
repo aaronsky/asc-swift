@@ -16,16 +16,16 @@ extension Resources.V1.AppStoreVersions.WithID {
         /// Path: `/v1/appStoreVersions/{id}/alternativeDistributionPackage`
         public let path: String
 
-        public func get(fieldsAlternativeDistributionPackages: [FieldsAlternativeDistributionPackages]? = nil, fieldsAlternativeDistributionPackageVersions: [FieldsAlternativeDistributionPackageVersions]? = nil, limitVersions: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AlternativeDistributionPackageResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAlternativeDistributionPackages, fieldsAlternativeDistributionPackageVersions, limitVersions, include), id: "appStoreVersions-alternativeDistributionPackage-get_to_one_related")
+        public func get(fieldsAlternativeDistributionPackages: [FieldsAlternativeDistributionPackages]? = nil, fieldsAlternativeDistributionPackageVersions: [FieldsAlternativeDistributionPackageVersions]? = nil, include: [Include]? = nil, limitVersions: Int? = nil) -> Request<AppStoreAPI.AlternativeDistributionPackageResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAlternativeDistributionPackages, fieldsAlternativeDistributionPackageVersions, include, limitVersions), id: "appStoreVersions_alternativeDistributionPackage_getToOneRelated")
         }
 
-        private func makeGetQuery(_ fieldsAlternativeDistributionPackages: [FieldsAlternativeDistributionPackages]?, _ fieldsAlternativeDistributionPackageVersions: [FieldsAlternativeDistributionPackageVersions]?, _ limitVersions: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAlternativeDistributionPackages: [FieldsAlternativeDistributionPackages]?, _ fieldsAlternativeDistributionPackageVersions: [FieldsAlternativeDistributionPackageVersions]?, _ include: [Include]?, _ limitVersions: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAlternativeDistributionPackages, forKey: "fields[alternativeDistributionPackages]")
             encoder.encode(fieldsAlternativeDistributionPackageVersions, forKey: "fields[alternativeDistributionPackageVersions]")
-            encoder.encode(limitVersions, forKey: "limit[versions]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitVersions, forKey: "limit[versions]")
             return encoder.items
         }
 
@@ -35,14 +35,14 @@ extension Resources.V1.AppStoreVersions.WithID {
         }
 
         public enum FieldsAlternativeDistributionPackageVersions: String, CaseIterable, Codable, Sendable {
-            case alternativeDistributionPackage
-            case deltas
-            case fileChecksum
-            case state
             case url
             case urlExpirationDate
-            case variants
             case version
+            case fileChecksum
+            case state
+            case variants
+            case deltas
+            case alternativeDistributionPackage
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

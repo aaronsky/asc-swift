@@ -26,13 +26,14 @@ public struct AppUpdateRequest: Codable, Equatable, Sendable {
             public var subscriptionStatusURLForSandbox: URL?
             public var subscriptionStatusURLVersionForSandbox: SubscriptionStatusURLVersion?
             public var contentRightsDeclaration: ContentRightsDeclaration?
+            public var isStreamlinedPurchasingEnabled: Bool?
 
             public enum ContentRightsDeclaration: String, CaseIterable, Codable, Sendable {
                 case doesNotUseThirdPartyContent = "DOES_NOT_USE_THIRD_PARTY_CONTENT"
                 case usesThirdPartyContent = "USES_THIRD_PARTY_CONTENT"
             }
 
-            public init(bundleID: String? = nil, primaryLocale: String? = nil, subscriptionStatusURL: URL? = nil, subscriptionStatusURLVersion: SubscriptionStatusURLVersion? = nil, subscriptionStatusURLForSandbox: URL? = nil, subscriptionStatusURLVersionForSandbox: SubscriptionStatusURLVersion? = nil, contentRightsDeclaration: ContentRightsDeclaration? = nil) {
+            public init(bundleID: String? = nil, primaryLocale: String? = nil, subscriptionStatusURL: URL? = nil, subscriptionStatusURLVersion: SubscriptionStatusURLVersion? = nil, subscriptionStatusURLForSandbox: URL? = nil, subscriptionStatusURLVersionForSandbox: SubscriptionStatusURLVersion? = nil, contentRightsDeclaration: ContentRightsDeclaration? = nil, isStreamlinedPurchasingEnabled: Bool? = nil) {
                 self.bundleID = bundleID
                 self.primaryLocale = primaryLocale
                 self.subscriptionStatusURL = subscriptionStatusURL
@@ -40,6 +41,7 @@ public struct AppUpdateRequest: Codable, Equatable, Sendable {
                 self.subscriptionStatusURLForSandbox = subscriptionStatusURLForSandbox
                 self.subscriptionStatusURLVersionForSandbox = subscriptionStatusURLVersionForSandbox
                 self.contentRightsDeclaration = contentRightsDeclaration
+                self.isStreamlinedPurchasingEnabled = isStreamlinedPurchasingEnabled
             }
 
             private enum CodingKeys: String, CodingKey {
@@ -50,6 +52,7 @@ public struct AppUpdateRequest: Codable, Equatable, Sendable {
                 case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
                 case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
                 case contentRightsDeclaration
+                case isStreamlinedPurchasingEnabled = "streamlinedPurchasingEnabled"
             }
         }
 

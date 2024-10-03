@@ -16,139 +16,139 @@ extension Resources.V1.CiBuildActions.WithID {
         /// Path: `/v1/ciBuildActions/{id}/buildRun`
         public let path: String
 
-        public func get(fieldsScmGitReferences: [FieldsScmGitReferences]? = nil, fieldsCiBuildRuns: [FieldsCiBuildRuns]? = nil, fieldsCiWorkflows: [FieldsCiWorkflows]? = nil, fieldsScmPullRequests: [FieldsScmPullRequests]? = nil, fieldsCiProducts: [FieldsCiProducts]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, limitBuilds: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CiBuildRunResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsScmGitReferences, fieldsCiBuildRuns, fieldsCiWorkflows, fieldsScmPullRequests, fieldsCiProducts, fieldsBuilds, limitBuilds, include), id: "ciBuildActions-buildRun-get_to_one_related")
+        public func get(fieldsCiBuildRuns: [FieldsCiBuildRuns]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsCiWorkflows: [FieldsCiWorkflows]? = nil, fieldsCiProducts: [FieldsCiProducts]? = nil, fieldsScmGitReferences: [FieldsScmGitReferences]? = nil, fieldsScmPullRequests: [FieldsScmPullRequests]? = nil, include: [Include]? = nil, limitBuilds: Int? = nil) -> Request<AppStoreAPI.CiBuildRunResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiBuildRuns, fieldsBuilds, fieldsCiWorkflows, fieldsCiProducts, fieldsScmGitReferences, fieldsScmPullRequests, include, limitBuilds), id: "ciBuildActions_buildRun_getToOneRelated")
         }
 
-        private func makeGetQuery(_ fieldsScmGitReferences: [FieldsScmGitReferences]?, _ fieldsCiBuildRuns: [FieldsCiBuildRuns]?, _ fieldsCiWorkflows: [FieldsCiWorkflows]?, _ fieldsScmPullRequests: [FieldsScmPullRequests]?, _ fieldsCiProducts: [FieldsCiProducts]?, _ fieldsBuilds: [FieldsBuilds]?, _ limitBuilds: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsCiBuildRuns: [FieldsCiBuildRuns]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsCiWorkflows: [FieldsCiWorkflows]?, _ fieldsCiProducts: [FieldsCiProducts]?, _ fieldsScmGitReferences: [FieldsScmGitReferences]?, _ fieldsScmPullRequests: [FieldsScmPullRequests]?, _ include: [Include]?, _ limitBuilds: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(fieldsScmGitReferences, forKey: "fields[scmGitReferences]")
             encoder.encode(fieldsCiBuildRuns, forKey: "fields[ciBuildRuns]")
-            encoder.encode(fieldsCiWorkflows, forKey: "fields[ciWorkflows]")
-            encoder.encode(fieldsScmPullRequests, forKey: "fields[scmPullRequests]")
-            encoder.encode(fieldsCiProducts, forKey: "fields[ciProducts]")
             encoder.encode(fieldsBuilds, forKey: "fields[builds]")
-            encoder.encode(limitBuilds, forKey: "limit[builds]")
+            encoder.encode(fieldsCiWorkflows, forKey: "fields[ciWorkflows]")
+            encoder.encode(fieldsCiProducts, forKey: "fields[ciProducts]")
+            encoder.encode(fieldsScmGitReferences, forKey: "fields[scmGitReferences]")
+            encoder.encode(fieldsScmPullRequests, forKey: "fields[scmPullRequests]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitBuilds, forKey: "limit[builds]")
             return encoder.items
         }
 
-        public enum FieldsScmGitReferences: String, CaseIterable, Codable, Sendable {
-            case canonicalName
-            case isDeleted
-            case kind
-            case name
-            case repository
-        }
-
         public enum FieldsCiBuildRuns: String, CaseIterable, Codable, Sendable {
-            case actions
-            case buildRun
-            case builds
-            case cancelReason
             case clean
-            case completionStatus
+            case number
             case createdDate
-            case destinationBranch
-            case destinationCommit
-            case executionProgress
+            case startedDate
             case finishedDate
+            case sourceCommit
+            case destinationCommit
             case isPullRequestBuild
             case issueCounts
-            case number
-            case product
-            case pullRequest
-            case sourceBranchOrTag
-            case sourceCommit
+            case executionProgress
+            case completionStatus
             case startReason
-            case startedDate
+            case cancelReason
+            case buildRun
+            case builds
             case workflow
-        }
-
-        public enum FieldsCiWorkflows: String, CaseIterable, Codable, Sendable {
-            case actions
-            case branchStartCondition
-            case buildRuns
-            case clean
-            case containerFilePath
-            case description
-            case isEnabled
-            case isLockedForEditing
-            case lastModifiedDate
-            case macOsVersion
-            case manualBranchStartCondition
-            case manualPullRequestStartCondition
-            case manualTagStartCondition
-            case name
             case product
-            case pullRequestStartCondition
-            case repository
-            case scheduledStartCondition
-            case tagStartCondition
-            case xcodeVersion
-        }
-
-        public enum FieldsScmPullRequests: String, CaseIterable, Codable, Sendable {
-            case destinationBranchName
-            case destinationRepositoryName
-            case destinationRepositoryOwner
-            case isClosed
-            case isCrossRepository
-            case number
-            case repository
-            case sourceBranchName
-            case sourceRepositoryName
-            case sourceRepositoryOwner
-            case title
-            case webURL = "webUrl"
-        }
-
-        public enum FieldsCiProducts: String, CaseIterable, Codable, Sendable {
-            case additionalRepositories
-            case app
-            case buildRuns
-            case bundleID = "bundleId"
-            case createdDate
-            case name
-            case primaryRepositories
-            case productType
-            case workflows
+            case sourceBranchOrTag
+            case destinationBranch
+            case actions
+            case pullRequest
         }
 
         public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
-            case app
-            case appEncryptionDeclaration
-            case appStoreVersion
-            case betaAppReviewSubmission
-            case betaBuildLocalizations
-            case betaGroups
-            case buildAudienceType
-            case buildBetaDetail
-            case buildBundles
-            case computedMinMacOsVersion
-            case diagnosticSignatures
+            case version
+            case uploadedDate
             case expirationDate
             case expired
-            case iconAssetToken
-            case icons
-            case individualTesters
-            case lsMinimumSystemVersion
             case minOsVersion
-            case perfPowerMetrics
-            case preReleaseVersion
+            case lsMinimumSystemVersion
+            case computedMinMacOsVersion
+            case iconAssetToken
             case processingState
-            case uploadedDate
+            case buildAudienceType
             case usesNonExemptEncryption
-            case version
+            case preReleaseVersion
+            case individualTesters
+            case betaGroups
+            case betaBuildLocalizations
+            case appEncryptionDeclaration
+            case betaAppReviewSubmission
+            case app
+            case buildBetaDetail
+            case appStoreVersion
+            case icons
+            case buildBundles
+            case perfPowerMetrics
+            case diagnosticSignatures
+        }
+
+        public enum FieldsCiWorkflows: String, CaseIterable, Codable, Sendable {
+            case name
+            case description
+            case branchStartCondition
+            case tagStartCondition
+            case pullRequestStartCondition
+            case scheduledStartCondition
+            case manualBranchStartCondition
+            case manualTagStartCondition
+            case manualPullRequestStartCondition
+            case actions
+            case isEnabled
+            case isLockedForEditing
+            case clean
+            case containerFilePath
+            case lastModifiedDate
+            case product
+            case repository
+            case xcodeVersion
+            case macOsVersion
+            case buildRuns
+        }
+
+        public enum FieldsCiProducts: String, CaseIterable, Codable, Sendable {
+            case name
+            case createdDate
+            case productType
+            case app
+            case bundleID = "bundleId"
+            case workflows
+            case primaryRepositories
+            case additionalRepositories
+            case buildRuns
+        }
+
+        public enum FieldsScmGitReferences: String, CaseIterable, Codable, Sendable {
+            case name
+            case canonicalName
+            case isDeleted
+            case kind
+            case repository
+        }
+
+        public enum FieldsScmPullRequests: String, CaseIterable, Codable, Sendable {
+            case title
+            case number
+            case webURL = "webUrl"
+            case sourceRepositoryOwner
+            case sourceRepositoryName
+            case sourceBranchName
+            case destinationRepositoryOwner
+            case destinationRepositoryName
+            case destinationBranchName
+            case isClosed
+            case isCrossRepository
+            case repository
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case builds
-            case destinationBranch
-            case product
-            case pullRequest
-            case sourceBranchOrTag
             case workflow
+            case product
+            case sourceBranchOrTag
+            case destinationBranch
+            case pullRequest
         }
     }
 }

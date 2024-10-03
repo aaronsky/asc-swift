@@ -17,7 +17,7 @@ extension Resources.V1.BuildBundles.WithID {
         public let path: String
 
         public func get(fieldsAppClipDomainStatuses: [FieldsAppClipDomainStatuses]? = nil) -> Request<AppStoreAPI.AppClipDomainStatusResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipDomainStatuses), id: "buildBundles-appClipDomainDebugStatus-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipDomainStatuses), id: "buildBundles_appClipDomainDebugStatus_getToOneRelated")
         }
 
         private func makeGetQuery(_ fieldsAppClipDomainStatuses: [FieldsAppClipDomainStatuses]?) -> [(String, String?)] {

@@ -17,7 +17,7 @@ extension Resources.V1.AlternativeDistributionKeys {
         public let path: String
 
         public func get(fieldsAlternativeDistributionKeys: [FieldsAlternativeDistributionKeys]? = nil) -> Request<AppStoreAPI.AlternativeDistributionKeyResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAlternativeDistributionKeys), id: "alternativeDistributionKeys-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAlternativeDistributionKeys), id: "alternativeDistributionKeys_getInstance")
         }
 
         private func makeGetQuery(_ fieldsAlternativeDistributionKeys: [FieldsAlternativeDistributionKeys]?) -> [(String, String?)] {
@@ -27,12 +27,12 @@ extension Resources.V1.AlternativeDistributionKeys {
         }
 
         public enum FieldsAlternativeDistributionKeys: String, CaseIterable, Codable, Sendable {
-            case app
             case publicKey
+            case app
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "alternativeDistributionKeys-delete_instance")
+            Request(path: path, method: "DELETE", id: "alternativeDistributionKeys_deleteInstance")
         }
     }
 }

@@ -17,7 +17,7 @@ extension Resources.V2 {
         public let path: String
 
         public func get(fieldsSandboxTesters: [FieldsSandboxTesters]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.SandboxTestersV2Response> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSandboxTesters, limit), id: "sandboxTestersV2-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSandboxTesters, limit), id: "sandboxTestersV2_getCollection")
         }
 
         private func makeGetQuery(_ fieldsSandboxTesters: [FieldsSandboxTesters]?, _ limit: Int?) -> [(String, String?)] {
@@ -28,13 +28,13 @@ extension Resources.V2 {
         }
 
         public enum FieldsSandboxTesters: String, CaseIterable, Codable, Sendable {
-            case acAccountName
-            case applePayCompatible
             case firstName
-            case interruptPurchases
             case lastName
-            case subscriptionRenewalRate
+            case acAccountName
             case territory
+            case applePayCompatible
+            case interruptPurchases
+            case subscriptionRenewalRate
         }
     }
 }

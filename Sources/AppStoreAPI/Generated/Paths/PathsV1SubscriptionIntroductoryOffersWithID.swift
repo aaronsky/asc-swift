@@ -17,11 +17,11 @@ extension Resources.V1.SubscriptionIntroductoryOffers {
         public let path: String
 
         public func patch(_ body: AppStoreAPI.SubscriptionIntroductoryOfferUpdateRequest) -> Request<AppStoreAPI.SubscriptionIntroductoryOfferResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "subscriptionIntroductoryOffers-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "subscriptionIntroductoryOffers_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "subscriptionIntroductoryOffers-delete_instance")
+            Request(path: path, method: "DELETE", id: "subscriptionIntroductoryOffers_deleteInstance")
         }
     }
 }

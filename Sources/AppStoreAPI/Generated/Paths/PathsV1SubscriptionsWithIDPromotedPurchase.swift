@@ -16,86 +16,89 @@ extension Resources.V1.Subscriptions.WithID {
         /// Path: `/v1/subscriptions/{id}/promotedPurchase`
         public let path: String
 
-        public func get(fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, fieldsPromotedPurchaseImages: [FieldsPromotedPurchaseImages]? = nil, limitPromotionImages: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.PromotedPurchaseResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsPromotedPurchases, fieldsSubscriptions, fieldsInAppPurchases, fieldsPromotedPurchaseImages, limitPromotionImages, include), id: "subscriptions-promotedPurchase-get_to_one_related")
+        public func get(fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsPromotedPurchaseImages: [FieldsPromotedPurchaseImages]? = nil, include: [Include]? = nil, limitPromotionImages: Int? = nil) -> Request<AppStoreAPI.PromotedPurchaseResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsPromotedPurchases, fieldsInAppPurchases, fieldsSubscriptions, fieldsPromotedPurchaseImages, include, limitPromotionImages), id: "subscriptions_promotedPurchase_getToOneRelated")
         }
 
-        private func makeGetQuery(_ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ fieldsPromotedPurchaseImages: [FieldsPromotedPurchaseImages]?, _ limitPromotionImages: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsPromotedPurchaseImages: [FieldsPromotedPurchaseImages]?, _ include: [Include]?, _ limitPromotionImages: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsPromotedPurchases, forKey: "fields[promotedPurchases]")
-            encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
             encoder.encode(fieldsInAppPurchases, forKey: "fields[inAppPurchases]")
+            encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
             encoder.encode(fieldsPromotedPurchaseImages, forKey: "fields[promotedPurchaseImages]")
-            encoder.encode(limitPromotionImages, forKey: "limit[promotionImages]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitPromotionImages, forKey: "limit[promotionImages]")
             return encoder.items
         }
 
         public enum FieldsPromotedPurchases: String, CaseIterable, Codable, Sendable {
-            case app
-            case enabled
-            case inAppPurchaseV2
-            case promotionImages
-            case state
-            case subscription
             case visibleForAllUsers
-        }
-
-        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
-            case appStoreReviewScreenshot
-            case familySharable
-            case group
-            case groupLevel
-            case introductoryOffers
-            case name
-            case offerCodes
-            case pricePoints
-            case prices
-            case productID = "productId"
-            case promotedPurchase
-            case promotionalOffers
-            case reviewNote
+            case enabled
             case state
-            case subscriptionAvailability
-            case subscriptionLocalizations
-            case subscriptionPeriod
+            case app
+            case inAppPurchaseV2
+            case subscription
+            case promotionImages
         }
 
         public enum FieldsInAppPurchases: String, CaseIterable, Codable, Sendable {
-            case app
-            case appStoreReviewScreenshot
-            case content
-            case contentHosting
+            case name
+            case productID = "productId"
+            case inAppPurchaseType
+            case state
+            case reviewNote
             case familySharable
+            case contentHosting
+            case app
+            case inAppPurchaseLocalizations
+            case pricePoints
+            case content
+            case appStoreReviewScreenshot
+            case promotedPurchase
             case iapPriceSchedule
             case inAppPurchaseAvailability
-            case inAppPurchaseLocalizations
-            case inAppPurchaseType
+            case images
+        }
+
+        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
             case name
-            case pricePoints
             case productID = "productId"
-            case promotedPurchase
-            case reviewNote
+            case familySharable
             case state
+            case subscriptionPeriod
+            case reviewNote
+            case groupLevel
+            case subscriptionLocalizations
+            case appStoreReviewScreenshot
+            case group
+            case introductoryOffers
+            case promotionalOffers
+            case offerCodes
+            case prices
+            case pricePoints
+            case promotedPurchase
+            case subscriptionAvailability
+            case winBackOffers
+            case images
         }
 
         public enum FieldsPromotedPurchaseImages: String, CaseIterable, Codable, Sendable {
-            case assetToken
-            case assetType
-            case fileName
             case fileSize
-            case imageAsset
-            case promotedPurchase
+            case fileName
             case sourceFileChecksum
-            case state
+            case assetToken
+            case imageAsset
+            case assetType
             case uploadOperations
             case uploaded
+            case state
+            case promotedPurchase
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case inAppPurchaseV2
-            case promotionImages
             case subscription
+            case promotionImages
         }
     }
 }

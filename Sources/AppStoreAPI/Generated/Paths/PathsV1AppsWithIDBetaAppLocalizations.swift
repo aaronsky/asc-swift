@@ -17,7 +17,7 @@ extension Resources.V1.Apps.WithID {
         public let path: String
 
         public func get(fieldsBetaAppLocalizations: [FieldsBetaAppLocalizations]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.BetaAppLocalizationsWithoutIncludesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaAppLocalizations, limit), id: "apps-betaAppLocalizations-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaAppLocalizations, limit), id: "apps_betaAppLocalizations_getToManyRelated")
         }
 
         private func makeGetQuery(_ fieldsBetaAppLocalizations: [FieldsBetaAppLocalizations]?, _ limit: Int?) -> [(String, String?)] {
@@ -28,13 +28,13 @@ extension Resources.V1.Apps.WithID {
         }
 
         public enum FieldsBetaAppLocalizations: String, CaseIterable, Codable, Sendable {
-            case app
-            case description
             case feedbackEmail
-            case locale
             case marketingURL = "marketingUrl"
             case privacyPolicyURL = "privacyPolicyUrl"
             case tvOsPrivacyPolicy
+            case description
+            case locale
+            case app
         }
     }
 }

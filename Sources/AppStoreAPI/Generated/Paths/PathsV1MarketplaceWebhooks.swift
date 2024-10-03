@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(fieldsMarketplaceWebhooks: [FieldsMarketplaceWebhooks]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.MarketplaceWebhooksResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsMarketplaceWebhooks, limit), id: "marketplaceWebhooks-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsMarketplaceWebhooks, limit), id: "marketplaceWebhooks_getCollection")
         }
 
         private func makeGetQuery(_ fieldsMarketplaceWebhooks: [FieldsMarketplaceWebhooks]?, _ limit: Int?) -> [(String, String?)] {
@@ -33,7 +33,7 @@ extension Resources.V1 {
         }
 
         public func post(_ body: AppStoreAPI.MarketplaceWebhookCreateRequest) -> Request<AppStoreAPI.MarketplaceWebhookResponse> {
-            Request(path: path, method: "POST", body: body, id: "marketplaceWebhooks-create_instance")
+            Request(path: path, method: "POST", body: body, id: "marketplaceWebhooks_createInstance")
         }
     }
 }

@@ -16,71 +16,71 @@ extension Resources.V1.AppEvents.WithID {
         /// Path: `/v1/appEvents/{id}/localizations`
         public let path: String
 
-        public func get(fieldsAppEventScreenshots: [FieldsAppEventScreenshots]? = nil, fieldsAppEventVideoClips: [FieldsAppEventVideoClips]? = nil, fieldsAppEventLocalizations: [FieldsAppEventLocalizations]? = nil, fieldsAppEvents: [FieldsAppEvents]? = nil, limit: Int? = nil, limitAppEventScreenshots: Int? = nil, limitAppEventVideoClips: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppEventLocalizationsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEventScreenshots, fieldsAppEventVideoClips, fieldsAppEventLocalizations, fieldsAppEvents, limit, limitAppEventScreenshots, limitAppEventVideoClips, include), id: "appEvents-localizations-get_to_many_related")
+        public func get(fieldsAppEventLocalizations: [FieldsAppEventLocalizations]? = nil, fieldsAppEvents: [FieldsAppEvents]? = nil, fieldsAppEventScreenshots: [FieldsAppEventScreenshots]? = nil, fieldsAppEventVideoClips: [FieldsAppEventVideoClips]? = nil, limit: Int? = nil, include: [Include]? = nil, limitAppEventScreenshots: Int? = nil, limitAppEventVideoClips: Int? = nil) -> Request<AppStoreAPI.AppEventLocalizationsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEventLocalizations, fieldsAppEvents, fieldsAppEventScreenshots, fieldsAppEventVideoClips, limit, include, limitAppEventScreenshots, limitAppEventVideoClips), id: "appEvents_localizations_getToManyRelated")
         }
 
-        private func makeGetQuery(_ fieldsAppEventScreenshots: [FieldsAppEventScreenshots]?, _ fieldsAppEventVideoClips: [FieldsAppEventVideoClips]?, _ fieldsAppEventLocalizations: [FieldsAppEventLocalizations]?, _ fieldsAppEvents: [FieldsAppEvents]?, _ limit: Int?, _ limitAppEventScreenshots: Int?, _ limitAppEventVideoClips: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppEventLocalizations: [FieldsAppEventLocalizations]?, _ fieldsAppEvents: [FieldsAppEvents]?, _ fieldsAppEventScreenshots: [FieldsAppEventScreenshots]?, _ fieldsAppEventVideoClips: [FieldsAppEventVideoClips]?, _ limit: Int?, _ include: [Include]?, _ limitAppEventScreenshots: Int?, _ limitAppEventVideoClips: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(fieldsAppEventScreenshots, forKey: "fields[appEventScreenshots]")
-            encoder.encode(fieldsAppEventVideoClips, forKey: "fields[appEventVideoClips]")
             encoder.encode(fieldsAppEventLocalizations, forKey: "fields[appEventLocalizations]")
             encoder.encode(fieldsAppEvents, forKey: "fields[appEvents]")
+            encoder.encode(fieldsAppEventScreenshots, forKey: "fields[appEventScreenshots]")
+            encoder.encode(fieldsAppEventVideoClips, forKey: "fields[appEventVideoClips]")
             encoder.encode(limit, forKey: "limit")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitAppEventScreenshots, forKey: "limit[appEventScreenshots]")
             encoder.encode(limitAppEventVideoClips, forKey: "limit[appEventVideoClips]")
-            encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
-        public enum FieldsAppEventScreenshots: String, CaseIterable, Codable, Sendable {
-            case appEventAssetType
-            case appEventLocalization
-            case assetDeliveryState
-            case assetToken
-            case fileName
-            case fileSize
-            case imageAsset
-            case uploadOperations
-            case uploaded
-        }
-
-        public enum FieldsAppEventVideoClips: String, CaseIterable, Codable, Sendable {
-            case appEventAssetType
-            case appEventLocalization
-            case assetDeliveryState
-            case fileName
-            case fileSize
-            case previewFrameTimeCode
-            case previewImage
-            case uploadOperations
-            case uploaded
-            case videoURL = "videoUrl"
-        }
-
         public enum FieldsAppEventLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case name
+            case shortDescription
+            case longDescription
             case appEvent
             case appEventScreenshots
             case appEventVideoClips
-            case locale
-            case longDescription
-            case name
-            case shortDescription
         }
 
         public enum FieldsAppEvents: String, CaseIterable, Codable, Sendable {
-            case app
-            case archivedTerritorySchedules
+            case referenceName
             case badge
-            case deepLink
             case eventState
-            case localizations
+            case deepLink
+            case purchaseRequirement
             case primaryLocale
             case priority
-            case purchaseRequirement
             case purpose
-            case referenceName
             case territorySchedules
+            case archivedTerritorySchedules
+            case app
+            case localizations
+        }
+
+        public enum FieldsAppEventScreenshots: String, CaseIterable, Codable, Sendable {
+            case fileSize
+            case fileName
+            case imageAsset
+            case assetToken
+            case uploadOperations
+            case assetDeliveryState
+            case uploaded
+            case appEventAssetType
+            case appEventLocalization
+        }
+
+        public enum FieldsAppEventVideoClips: String, CaseIterable, Codable, Sendable {
+            case fileSize
+            case fileName
+            case previewFrameTimeCode
+            case videoURL = "videoUrl"
+            case previewImage
+            case uploadOperations
+            case assetDeliveryState
+            case uploaded
+            case appEventAssetType
+            case appEventLocalization
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

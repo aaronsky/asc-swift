@@ -17,7 +17,7 @@ extension Resources.V1.Builds.WithID.Relationships {
         public let path: String
 
         public func get(limit: Int? = nil) -> Request<AppStoreAPI.BuildIndividualTestersLinkagesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(limit), id: "builds-individualTesters-get_to_many_relationship")
+            Request(path: path, method: "GET", query: makeGetQuery(limit), id: "builds_individualTesters_getToManyRelationship")
         }
 
         private func makeGetQuery(_ limit: Int?) -> [(String, String?)] {
@@ -27,11 +27,11 @@ extension Resources.V1.Builds.WithID.Relationships {
         }
 
         public func post(_ body: AppStoreAPI.BuildIndividualTestersLinkagesRequest) -> Request<Void> {
-            Request(path: path, method: "POST", body: body, id: "builds-individualTesters-create_to_many_relationship")
+            Request(path: path, method: "POST", body: body, id: "builds_individualTesters_createToManyRelationship")
         }
 
         public func delete(_ body: AppStoreAPI.BuildIndividualTestersLinkagesRequest) -> Request<Void> {
-            Request(path: path, method: "DELETE", body: body, id: "builds-individualTesters-delete_to_many_relationship")
+            Request(path: path, method: "DELETE", body: body, id: "builds_individualTesters_deleteToManyRelationship")
         }
     }
 }

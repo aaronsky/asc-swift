@@ -16,93 +16,77 @@ extension Resources.V1.CiBuildRuns {
         /// Path: `/v1/ciBuildRuns/{id}`
         public let path: String
 
-        public func get(fieldsCiBuildRuns: [FieldsCiBuildRuns]? = nil, include: [Include]? = nil, fieldsCiBuildActions: [FieldsCiBuildActions]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, limitBuilds: Int? = nil) -> Request<AppStoreAPI.CiBuildRunResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiBuildRuns, include, fieldsCiBuildActions, fieldsBuilds, limitBuilds), id: "ciBuildRuns-get_instance")
+        public func get(fieldsCiBuildRuns: [FieldsCiBuildRuns]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, include: [Include]? = nil, limitBuilds: Int? = nil) -> Request<AppStoreAPI.CiBuildRunResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiBuildRuns, fieldsBuilds, include, limitBuilds), id: "ciBuildRuns_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsCiBuildRuns: [FieldsCiBuildRuns]?, _ include: [Include]?, _ fieldsCiBuildActions: [FieldsCiBuildActions]?, _ fieldsBuilds: [FieldsBuilds]?, _ limitBuilds: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsCiBuildRuns: [FieldsCiBuildRuns]?, _ fieldsBuilds: [FieldsBuilds]?, _ include: [Include]?, _ limitBuilds: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsCiBuildRuns, forKey: "fields[ciBuildRuns]")
-            encoder.encode(include, forKey: "include")
-            encoder.encode(fieldsCiBuildActions, forKey: "fields[ciBuildActions]")
             encoder.encode(fieldsBuilds, forKey: "fields[builds]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitBuilds, forKey: "limit[builds]")
             return encoder.items
         }
 
         public enum FieldsCiBuildRuns: String, CaseIterable, Codable, Sendable {
-            case actions
-            case buildRun
-            case builds
-            case cancelReason
             case clean
-            case completionStatus
+            case number
             case createdDate
-            case destinationBranch
-            case destinationCommit
-            case executionProgress
+            case startedDate
             case finishedDate
+            case sourceCommit
+            case destinationCommit
             case isPullRequestBuild
             case issueCounts
-            case number
-            case product
-            case pullRequest
-            case sourceBranchOrTag
-            case sourceCommit
+            case executionProgress
+            case completionStatus
             case startReason
-            case startedDate
+            case cancelReason
+            case buildRun
+            case builds
             case workflow
+            case product
+            case sourceBranchOrTag
+            case destinationBranch
+            case actions
+            case pullRequest
+        }
+
+        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
+            case version
+            case uploadedDate
+            case expirationDate
+            case expired
+            case minOsVersion
+            case lsMinimumSystemVersion
+            case computedMinMacOsVersion
+            case iconAssetToken
+            case processingState
+            case buildAudienceType
+            case usesNonExemptEncryption
+            case preReleaseVersion
+            case individualTesters
+            case betaGroups
+            case betaBuildLocalizations
+            case appEncryptionDeclaration
+            case betaAppReviewSubmission
+            case app
+            case buildBetaDetail
+            case appStoreVersion
+            case icons
+            case buildBundles
+            case perfPowerMetrics
+            case diagnosticSignatures
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case builds
-            case destinationBranch
-            case product
-            case pullRequest
-            case sourceBranchOrTag
             case workflow
-        }
-
-        public enum FieldsCiBuildActions: String, CaseIterable, Codable, Sendable {
-            case actionType
-            case artifacts
-            case buildRun
-            case completionStatus
-            case executionProgress
-            case finishedDate
-            case isRequiredToPass
-            case issueCounts
-            case issues
-            case name
-            case startedDate
-            case testResults
-        }
-
-        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
-            case app
-            case appEncryptionDeclaration
-            case appStoreVersion
-            case betaAppReviewSubmission
-            case betaBuildLocalizations
-            case betaGroups
-            case buildAudienceType
-            case buildBetaDetail
-            case buildBundles
-            case computedMinMacOsVersion
-            case diagnosticSignatures
-            case expirationDate
-            case expired
-            case iconAssetToken
-            case icons
-            case individualTesters
-            case lsMinimumSystemVersion
-            case minOsVersion
-            case perfPowerMetrics
-            case preReleaseVersion
-            case processingState
-            case uploadedDate
-            case usesNonExemptEncryption
-            case version
+            case product
+            case sourceBranchOrTag
+            case destinationBranch
+            case pullRequest
         }
     }
 }

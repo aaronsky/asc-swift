@@ -16,46 +16,46 @@ extension Resources.V1.AppClipDefaultExperiences.WithID {
         /// Path: `/v1/appClipDefaultExperiences/{id}/appClipDefaultExperienceLocalizations`
         public let path: String
 
-        public func get(filterLocale: [String]? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]? = nil, fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppClipDefaultExperienceLocalizationsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterLocale, fieldsAppClipDefaultExperiences, fieldsAppClipDefaultExperienceLocalizations, fieldsAppClipHeaderImages, limit, include), id: "appClipDefaultExperiences-appClipDefaultExperienceLocalizations-get_to_many_related")
+        public func get(filterLocale: [String]? = nil, fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppClipDefaultExperienceLocalizationsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterLocale, fieldsAppClipDefaultExperienceLocalizations, fieldsAppClipDefaultExperiences, fieldsAppClipHeaderImages, limit, include), id: "appClipDefaultExperiences_appClipDefaultExperienceLocalizations_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterLocale: [String]?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]?, _ fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterLocale: [String]?, _ fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterLocale, forKey: "filter[locale]")
-            encoder.encode(fieldsAppClipDefaultExperiences, forKey: "fields[appClipDefaultExperiences]")
             encoder.encode(fieldsAppClipDefaultExperienceLocalizations, forKey: "fields[appClipDefaultExperienceLocalizations]")
+            encoder.encode(fieldsAppClipDefaultExperiences, forKey: "fields[appClipDefaultExperiences]")
             encoder.encode(fieldsAppClipHeaderImages, forKey: "fields[appClipHeaderImages]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
+        public enum FieldsAppClipDefaultExperienceLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case subtitle
+            case appClipDefaultExperience
+            case appClipHeaderImage
+        }
+
         public enum FieldsAppClipDefaultExperiences: String, CaseIterable, Codable, Sendable {
             case action
             case appClip
-            case appClipAppStoreReviewDetail
-            case appClipDefaultExperienceLocalizations
-            case appClipDefaultExperienceTemplate
             case releaseWithAppStoreVersion
-        }
-
-        public enum FieldsAppClipDefaultExperienceLocalizations: String, CaseIterable, Codable, Sendable {
-            case appClipDefaultExperience
-            case appClipHeaderImage
-            case locale
-            case subtitle
+            case appClipDefaultExperienceLocalizations
+            case appClipAppStoreReviewDetail
+            case appClipDefaultExperienceTemplate
         }
 
         public enum FieldsAppClipHeaderImages: String, CaseIterable, Codable, Sendable {
-            case appClipDefaultExperienceLocalization
-            case assetDeliveryState
-            case fileName
             case fileSize
-            case imageAsset
+            case fileName
             case sourceFileChecksum
+            case imageAsset
             case uploadOperations
+            case assetDeliveryState
             case uploaded
+            case appClipDefaultExperienceLocalization
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

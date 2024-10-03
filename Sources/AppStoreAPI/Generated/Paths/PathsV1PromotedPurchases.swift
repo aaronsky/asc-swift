@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.PromotedPurchaseCreateRequest) -> Request<AppStoreAPI.PromotedPurchaseResponse> {
-            Request(path: path, method: "POST", body: body, id: "promotedPurchases-create_instance")
+            Request(path: path, method: "POST", body: body, id: "promotedPurchases_createInstance")
         }
     }
 }

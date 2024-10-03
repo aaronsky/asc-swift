@@ -17,7 +17,7 @@ extension Resources.V1.AppClipAdvancedExperiences {
         public let path: String
 
         public func get(fieldsAppClipAdvancedExperiences: [FieldsAppClipAdvancedExperiences]? = nil, include: [Include]? = nil, limitLocalizations: Int? = nil) -> Request<AppStoreAPI.AppClipAdvancedExperienceResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipAdvancedExperiences, include, limitLocalizations), id: "appClipAdvancedExperiences-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipAdvancedExperiences, include, limitLocalizations), id: "appClipAdvancedExperiences_getInstance")
         }
 
         private func makeGetQuery(_ fieldsAppClipAdvancedExperiences: [FieldsAppClipAdvancedExperiences]?, _ include: [Include]?, _ limitLocalizations: Int?) -> [(String, String?)] {
@@ -29,19 +29,19 @@ extension Resources.V1.AppClipAdvancedExperiences {
         }
 
         public enum FieldsAppClipAdvancedExperiences: String, CaseIterable, Codable, Sendable {
-            case action
-            case appClip
-            case businessCategory
-            case defaultLanguage
-            case headerImage
-            case isPoweredBy
             case link
-            case localizations
+            case version
+            case status
+            case action
+            case isPoweredBy
             case place
             case placeStatus
+            case businessCategory
+            case defaultLanguage
             case removed
-            case status
-            case version
+            case appClip
+            case headerImage
+            case localizations
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
@@ -51,7 +51,7 @@ extension Resources.V1.AppClipAdvancedExperiences {
         }
 
         public func patch(_ body: AppStoreAPI.AppClipAdvancedExperienceUpdateRequest) -> Request<AppStoreAPI.AppClipAdvancedExperienceResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "appClipAdvancedExperiences-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appClipAdvancedExperiences_updateInstance")
         }
     }
 }

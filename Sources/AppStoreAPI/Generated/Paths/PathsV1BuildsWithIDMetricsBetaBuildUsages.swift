@@ -17,7 +17,7 @@ extension Resources.V1.Builds.WithID.Metrics {
         public let path: String
 
         public func get(limit: Int? = nil) -> Request<AppStoreAPI.BetaBuildUsagesV1MetricResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(limit), id: "builds-betaBuildUsages-get_metrics")
+            Request(path: path, method: "GET", query: makeGetQuery(limit), id: "builds_betaBuildUsages_getMetrics")
         }
 
         private func makeGetQuery(_ limit: Int?) -> [(String, String?)] {

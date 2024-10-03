@@ -16,42 +16,42 @@ extension Resources.V1.SubscriptionOfferCodes.WithID {
         /// Path: `/v1/subscriptionOfferCodes/{id}/prices`
         public let path: String
 
-        public func get(filterTerritory: [String]? = nil, fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, fieldsSubscriptionOfferCodePrices: [FieldsSubscriptionOfferCodePrices]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionOfferCodePricesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterTerritory, fieldsSubscriptionPricePoints, fieldsTerritories, fieldsSubscriptionOfferCodePrices, limit, include), id: "subscriptionOfferCodes-prices-get_to_many_related")
+        public func get(filterTerritory: [String]? = nil, fieldsSubscriptionOfferCodePrices: [FieldsSubscriptionOfferCodePrices]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionOfferCodePricesResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterTerritory, fieldsSubscriptionOfferCodePrices, fieldsTerritories, fieldsSubscriptionPricePoints, limit, include), id: "subscriptionOfferCodes_prices_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterTerritory: [String]?, _ fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]?, _ fieldsTerritories: [FieldsTerritories]?, _ fieldsSubscriptionOfferCodePrices: [FieldsSubscriptionOfferCodePrices]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterTerritory: [String]?, _ fieldsSubscriptionOfferCodePrices: [FieldsSubscriptionOfferCodePrices]?, _ fieldsTerritories: [FieldsTerritories]?, _ fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterTerritory, forKey: "filter[territory]")
-            encoder.encode(fieldsSubscriptionPricePoints, forKey: "fields[subscriptionPricePoints]")
-            encoder.encode(fieldsTerritories, forKey: "fields[territories]")
             encoder.encode(fieldsSubscriptionOfferCodePrices, forKey: "fields[subscriptionOfferCodePrices]")
+            encoder.encode(fieldsTerritories, forKey: "fields[territories]")
+            encoder.encode(fieldsSubscriptionPricePoints, forKey: "fields[subscriptionPricePoints]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
-        public enum FieldsSubscriptionPricePoints: String, CaseIterable, Codable, Sendable {
-            case customerPrice
-            case equalizations
-            case proceeds
-            case proceedsYear2
-            case subscription
+        public enum FieldsSubscriptionOfferCodePrices: String, CaseIterable, Codable, Sendable {
             case territory
+            case subscriptionPricePoint
         }
 
         public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
             case currency
         }
 
-        public enum FieldsSubscriptionOfferCodePrices: String, CaseIterable, Codable, Sendable {
-            case subscriptionPricePoint
+        public enum FieldsSubscriptionPricePoints: String, CaseIterable, Codable, Sendable {
+            case customerPrice
+            case proceeds
+            case proceedsYear2
             case territory
+            case subscription
+            case equalizations
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case subscriptionPricePoint
             case territory
+            case subscriptionPricePoint
         }
     }
 }

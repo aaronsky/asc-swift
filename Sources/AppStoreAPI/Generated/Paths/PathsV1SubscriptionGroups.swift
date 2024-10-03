@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.SubscriptionGroupCreateRequest) -> Request<AppStoreAPI.SubscriptionGroupResponse> {
-            Request(path: path, method: "POST", body: body, id: "subscriptionGroups-create_instance")
+            Request(path: path, method: "POST", body: body, id: "subscriptionGroups_createInstance")
         }
     }
 }

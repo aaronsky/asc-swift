@@ -13,7 +13,6 @@ public struct BetaBuildUsagesV1MetricResponse: Codable, Equatable, Sendable {
 
     public struct Datum: Codable, Equatable, Sendable {
         public var dataPoints: DataPoints?
-        public var dimensions: Dimensions?
 
         public struct DataPoints: Codable, Equatable, Sendable {
             public var start: Date?
@@ -43,37 +42,8 @@ public struct BetaBuildUsagesV1MetricResponse: Codable, Equatable, Sendable {
             }
         }
 
-        public struct Dimensions: Codable, Equatable, Sendable {
-            public var bundleIDs: BundleIDs?
-
-            public struct BundleIDs: Codable, Equatable, Sendable {
-                public var links: Links?
-
-                public struct Links: Codable, Equatable, Sendable {
-                    public var groupBy: URL?
-
-                    public init(groupBy: URL? = nil) {
-                        self.groupBy = groupBy
-                    }
-                }
-
-                public init(links: Links? = nil) {
-                    self.links = links
-                }
-            }
-
-            public init(bundleIDs: BundleIDs? = nil) {
-                self.bundleIDs = bundleIDs
-            }
-
-            private enum CodingKeys: String, CodingKey {
-                case bundleIDs = "bundleIds"
-            }
-        }
-
-        public init(dataPoints: DataPoints? = nil, dimensions: Dimensions? = nil) {
+        public init(dataPoints: DataPoints? = nil) {
             self.dataPoints = dataPoints
-            self.dimensions = dimensions
         }
     }
 

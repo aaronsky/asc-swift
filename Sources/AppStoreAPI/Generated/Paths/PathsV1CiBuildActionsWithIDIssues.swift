@@ -17,7 +17,7 @@ extension Resources.V1.CiBuildActions.WithID {
         public let path: String
 
         public func get(fieldsCiIssues: [FieldsCiIssues]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.CiIssuesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiIssues, limit), id: "ciBuildActions-issues-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiIssues, limit), id: "ciBuildActions_issues_getToManyRelated")
         }
 
         private func makeGetQuery(_ fieldsCiIssues: [FieldsCiIssues]?, _ limit: Int?) -> [(String, String?)] {
@@ -28,10 +28,10 @@ extension Resources.V1.CiBuildActions.WithID {
         }
 
         public enum FieldsCiIssues: String, CaseIterable, Codable, Sendable {
-            case category
-            case fileSource
             case issueType
             case message
+            case fileSource
+            case category
         }
     }
 }

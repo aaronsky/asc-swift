@@ -17,7 +17,7 @@ extension Resources.V2.InAppPurchases.WithID {
         public let path: String
 
         public func get(fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]? = nil, fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.InAppPurchaseAppStoreReviewScreenshotResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchaseAppStoreReviewScreenshots, fieldsInAppPurchases, include), id: "inAppPurchasesV2-appStoreReviewScreenshot-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchaseAppStoreReviewScreenshots, fieldsInAppPurchases, include), id: "inAppPurchasesV2_appStoreReviewScreenshot_getToOneRelated")
         }
 
         private func makeGetQuery(_ fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]?, _ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ include: [Include]?) -> [(String, String?)] {
@@ -29,34 +29,35 @@ extension Resources.V2.InAppPurchases.WithID {
         }
 
         public enum FieldsInAppPurchaseAppStoreReviewScreenshots: String, CaseIterable, Codable, Sendable {
-            case assetDeliveryState
+            case fileSize
+            case fileName
+            case sourceFileChecksum
+            case imageAsset
             case assetToken
             case assetType
-            case fileName
-            case fileSize
-            case imageAsset
-            case inAppPurchaseV2
-            case sourceFileChecksum
             case uploadOperations
+            case assetDeliveryState
             case uploaded
+            case inAppPurchaseV2
         }
 
         public enum FieldsInAppPurchases: String, CaseIterable, Codable, Sendable {
-            case app
-            case appStoreReviewScreenshot
-            case content
-            case contentHosting
+            case name
+            case productID = "productId"
+            case inAppPurchaseType
+            case state
+            case reviewNote
             case familySharable
+            case contentHosting
+            case app
+            case inAppPurchaseLocalizations
+            case pricePoints
+            case content
+            case appStoreReviewScreenshot
+            case promotedPurchase
             case iapPriceSchedule
             case inAppPurchaseAvailability
-            case inAppPurchaseLocalizations
-            case inAppPurchaseType
-            case name
-            case pricePoints
-            case productID = "productId"
-            case promotedPurchase
-            case reviewNote
-            case state
+            case images
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

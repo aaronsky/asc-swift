@@ -16,15 +16,15 @@ extension Resources.V1.GameCenterMatchmakingQueues.WithID.Metrics {
         /// Path: `/v1/gameCenterMatchmakingQueues/{id}/metrics/experimentMatchmakingQueueSizes`
         public let path: String
 
-        public func get(limit: Int? = nil, granularity: Granularity, sort: [Sort]? = nil) -> Request<AppStoreAPI.GameCenterMatchmakingQueueSizesV1MetricResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(limit, granularity, sort), id: "gameCenterMatchmakingQueues-experimentMatchmakingQueueSizes-get_metrics")
+        public func get(granularity: Granularity, sort: [Sort]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.GameCenterMatchmakingQueueSizesV1MetricResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(granularity, sort, limit), id: "gameCenterMatchmakingQueues_experimentMatchmakingQueueSizes_getMetrics")
         }
 
-        private func makeGetQuery(_ limit: Int?, _ granularity: Granularity, _ sort: [Sort]?) -> [(String, String?)] {
+        private func makeGetQuery(_ granularity: Granularity, _ sort: [Sort]?, _ limit: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(limit, forKey: "limit")
             encoder.encode(granularity, forKey: "granularity")
             encoder.encode(sort, forKey: "sort")
+            encoder.encode(limit, forKey: "limit")
             return encoder.items
         }
 
@@ -35,10 +35,10 @@ extension Resources.V1.GameCenterMatchmakingQueues.WithID.Metrics {
         }
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
-            case averageNumberOfRequests
-            case minusAverageNumberOfRequests = "-averageNumberOfRequests"
             case count
             case minusCount = "-count"
+            case averageNumberOfRequests
+            case minusAverageNumberOfRequests = "-averageNumberOfRequests"
             case p50NumberOfRequests
             case minusP50NumberOfRequests = "-p50NumberOfRequests"
             case p95NumberOfRequests

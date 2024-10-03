@@ -16,15 +16,15 @@ extension Resources.V1.AlternativeDistributionPackages {
         /// Path: `/v1/alternativeDistributionPackages/{id}`
         public let path: String
 
-        public func get(fieldsAlternativeDistributionPackages: [FieldsAlternativeDistributionPackages]? = nil, include: [Include]? = nil, fieldsAlternativeDistributionPackageVersions: [FieldsAlternativeDistributionPackageVersions]? = nil, limitVersions: Int? = nil) -> Request<AppStoreAPI.AlternativeDistributionPackageResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAlternativeDistributionPackages, include, fieldsAlternativeDistributionPackageVersions, limitVersions), id: "alternativeDistributionPackages-get_instance")
+        public func get(fieldsAlternativeDistributionPackages: [FieldsAlternativeDistributionPackages]? = nil, fieldsAlternativeDistributionPackageVersions: [FieldsAlternativeDistributionPackageVersions]? = nil, include: [Include]? = nil, limitVersions: Int? = nil) -> Request<AppStoreAPI.AlternativeDistributionPackageResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAlternativeDistributionPackages, fieldsAlternativeDistributionPackageVersions, include, limitVersions), id: "alternativeDistributionPackages_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAlternativeDistributionPackages: [FieldsAlternativeDistributionPackages]?, _ include: [Include]?, _ fieldsAlternativeDistributionPackageVersions: [FieldsAlternativeDistributionPackageVersions]?, _ limitVersions: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAlternativeDistributionPackages: [FieldsAlternativeDistributionPackages]?, _ fieldsAlternativeDistributionPackageVersions: [FieldsAlternativeDistributionPackageVersions]?, _ include: [Include]?, _ limitVersions: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAlternativeDistributionPackages, forKey: "fields[alternativeDistributionPackages]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsAlternativeDistributionPackageVersions, forKey: "fields[alternativeDistributionPackageVersions]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitVersions, forKey: "limit[versions]")
             return encoder.items
         }
@@ -34,19 +34,19 @@ extension Resources.V1.AlternativeDistributionPackages {
             case versions
         }
 
-        public enum Include: String, CaseIterable, Codable, Sendable {
-            case versions
-        }
-
         public enum FieldsAlternativeDistributionPackageVersions: String, CaseIterable, Codable, Sendable {
-            case alternativeDistributionPackage
-            case deltas
-            case fileChecksum
-            case state
             case url
             case urlExpirationDate
-            case variants
             case version
+            case fileChecksum
+            case state
+            case variants
+            case deltas
+            case alternativeDistributionPackage
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case versions
         }
     }
 }

@@ -16,17 +16,17 @@ extension Resources.V1.GameCenterMatchmakingRules.WithID.Metrics {
         /// Path: `/v1/gameCenterMatchmakingRules/{id}/metrics/matchmakingNumberRuleResults`
         public let path: String
 
-        public func get(limit: Int? = nil, granularity: Granularity, groupBy: [GroupBy]? = nil, filterGameCenterMatchmakingQueue: String? = nil, sort: [Sort]? = nil) -> Request<AppStoreAPI.GameCenterMatchmakingNumberRuleResultsV1MetricResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(limit, granularity, groupBy, filterGameCenterMatchmakingQueue, sort), id: "gameCenterMatchmakingRules-matchmakingNumberRuleResults-get_metrics")
+        public func get(granularity: Granularity, groupBy: [GroupBy]? = nil, filterGameCenterMatchmakingQueue: String? = nil, sort: [Sort]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.GameCenterMatchmakingNumberRuleResultsV1MetricResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(granularity, groupBy, filterGameCenterMatchmakingQueue, sort, limit), id: "gameCenterMatchmakingRules_matchmakingNumberRuleResults_getMetrics")
         }
 
-        private func makeGetQuery(_ limit: Int?, _ granularity: Granularity, _ groupBy: [GroupBy]?, _ filterGameCenterMatchmakingQueue: String?, _ sort: [Sort]?) -> [(String, String?)] {
+        private func makeGetQuery(_ granularity: Granularity, _ groupBy: [GroupBy]?, _ filterGameCenterMatchmakingQueue: String?, _ sort: [Sort]?, _ limit: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(limit, forKey: "limit")
             encoder.encode(granularity, forKey: "granularity")
             encoder.encode(groupBy, forKey: "groupBy")
             encoder.encode(filterGameCenterMatchmakingQueue, forKey: "filter[gameCenterMatchmakingQueue]")
             encoder.encode(sort, forKey: "sort")
+            encoder.encode(limit, forKey: "limit")
             return encoder.items
         }
 
@@ -41,10 +41,10 @@ extension Resources.V1.GameCenterMatchmakingRules.WithID.Metrics {
         }
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
-            case averageResult
-            case minusAverageResult = "-averageResult"
             case count
             case minusCount = "-count"
+            case averageResult
+            case minusAverageResult = "-averageResult"
             case p50Result
             case minusP50Result = "-p50Result"
             case p95Result

@@ -17,7 +17,7 @@ extension Resources.V1.AnalyticsReportSegments {
         public let path: String
 
         public func get(fieldsAnalyticsReportSegments: [FieldsAnalyticsReportSegments]? = nil) -> Request<AppStoreAPI.AnalyticsReportSegmentResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAnalyticsReportSegments), id: "analyticsReportSegments-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAnalyticsReportSegments), id: "analyticsReportSegments_getInstance")
         }
 
         private func makeGetQuery(_ fieldsAnalyticsReportSegments: [FieldsAnalyticsReportSegments]?) -> [(String, String?)] {

@@ -16,19 +16,19 @@ extension Resources.V1 {
         /// Path: `/v1/reviewSubmissions`
         public let path: String
 
-        public func get(filterPlatform: [FilterPlatform]? = nil, filterState: [FilterState]? = nil, filterApp: [String], fieldsReviewSubmissions: [FieldsReviewSubmissions]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]? = nil, limitItems: Int? = nil) -> Request<AppStoreAPI.ReviewSubmissionsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterPlatform, filterState, filterApp, fieldsReviewSubmissions, limit, include, fieldsReviewSubmissionItems, limitItems), id: "reviewSubmissions-get_collection")
+        public func get(filterPlatform: [FilterPlatform]? = nil, filterState: [FilterState]? = nil, filterApp: [String], fieldsReviewSubmissions: [FieldsReviewSubmissions]? = nil, fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]? = nil, limit: Int? = nil, include: [Include]? = nil, limitItems: Int? = nil) -> Request<AppStoreAPI.ReviewSubmissionsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterPlatform, filterState, filterApp, fieldsReviewSubmissions, fieldsReviewSubmissionItems, limit, include, limitItems), id: "reviewSubmissions_getCollection")
         }
 
-        private func makeGetQuery(_ filterPlatform: [FilterPlatform]?, _ filterState: [FilterState]?, _ filterApp: [String], _ fieldsReviewSubmissions: [FieldsReviewSubmissions]?, _ limit: Int?, _ include: [Include]?, _ fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]?, _ limitItems: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterPlatform: [FilterPlatform]?, _ filterState: [FilterState]?, _ filterApp: [String], _ fieldsReviewSubmissions: [FieldsReviewSubmissions]?, _ fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]?, _ limit: Int?, _ include: [Include]?, _ limitItems: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterPlatform, forKey: "filter[platform]")
             encoder.encode(filterState, forKey: "filter[state]")
             encoder.encode(filterApp, forKey: "filter[app]")
             encoder.encode(fieldsReviewSubmissions, forKey: "fields[reviewSubmissions]")
+            encoder.encode(fieldsReviewSubmissionItems, forKey: "fields[reviewSubmissionItems]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
-            encoder.encode(fieldsReviewSubmissionItems, forKey: "fields[reviewSubmissionItems]")
             encoder.encode(limitItems, forKey: "limit[items]")
             return encoder.items
         }
@@ -51,40 +51,40 @@ extension Resources.V1 {
         }
 
         public enum FieldsReviewSubmissions: String, CaseIterable, Codable, Sendable {
-            case app
-            case appStoreVersionForReview
-            case canceled
-            case items
-            case lastUpdatedByActor
             case platform
+            case submittedDate
             case state
             case submitted
+            case canceled
+            case app
+            case items
+            case appStoreVersionForReview
             case submittedByActor
-            case submittedDate
+            case lastUpdatedByActor
+        }
+
+        public enum FieldsReviewSubmissionItems: String, CaseIterable, Codable, Sendable {
+            case state
+            case resolved
+            case removed
+            case reviewSubmission
+            case appStoreVersion
+            case appCustomProductPageVersion
+            case appStoreVersionExperiment
+            case appStoreVersionExperimentV2
+            case appEvent
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case app
-            case appStoreVersionForReview
             case items
-            case lastUpdatedByActor
+            case appStoreVersionForReview
             case submittedByActor
-        }
-
-        public enum FieldsReviewSubmissionItems: String, CaseIterable, Codable, Sendable {
-            case appCustomProductPageVersion
-            case appEvent
-            case appStoreVersion
-            case appStoreVersionExperiment
-            case appStoreVersionExperimentV2
-            case removed
-            case resolved
-            case reviewSubmission
-            case state
+            case lastUpdatedByActor
         }
 
         public func post(_ body: AppStoreAPI.ReviewSubmissionCreateRequest) -> Request<AppStoreAPI.ReviewSubmissionResponse> {
-            Request(path: path, method: "POST", body: body, id: "reviewSubmissions-create_instance")
+            Request(path: path, method: "POST", body: body, id: "reviewSubmissions_createInstance")
         }
     }
 }

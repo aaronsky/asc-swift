@@ -17,7 +17,7 @@ extension Resources.V1.SubscriptionAppStoreReviewScreenshots {
         public let path: String
 
         public func get(fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionAppStoreReviewScreenshotResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionAppStoreReviewScreenshots, include), id: "subscriptionAppStoreReviewScreenshots-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionAppStoreReviewScreenshots, include), id: "subscriptionAppStoreReviewScreenshots_getInstance")
         }
 
         private func makeGetQuery(_ fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]?, _ include: [Include]?) -> [(String, String?)] {
@@ -28,16 +28,16 @@ extension Resources.V1.SubscriptionAppStoreReviewScreenshots {
         }
 
         public enum FieldsSubscriptionAppStoreReviewScreenshots: String, CaseIterable, Codable, Sendable {
-            case assetDeliveryState
+            case fileSize
+            case fileName
+            case sourceFileChecksum
+            case imageAsset
             case assetToken
             case assetType
-            case fileName
-            case fileSize
-            case imageAsset
-            case sourceFileChecksum
-            case subscription
             case uploadOperations
+            case assetDeliveryState
             case uploaded
+            case subscription
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
@@ -45,11 +45,11 @@ extension Resources.V1.SubscriptionAppStoreReviewScreenshots {
         }
 
         public func patch(_ body: AppStoreAPI.SubscriptionAppStoreReviewScreenshotUpdateRequest) -> Request<AppStoreAPI.SubscriptionAppStoreReviewScreenshotResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "subscriptionAppStoreReviewScreenshots-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "subscriptionAppStoreReviewScreenshots_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "subscriptionAppStoreReviewScreenshots-delete_instance")
+            Request(path: path, method: "DELETE", id: "subscriptionAppStoreReviewScreenshots_deleteInstance")
         }
     }
 }

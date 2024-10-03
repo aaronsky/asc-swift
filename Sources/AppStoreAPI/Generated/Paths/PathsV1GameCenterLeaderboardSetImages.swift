@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.GameCenterLeaderboardSetImageCreateRequest) -> Request<AppStoreAPI.GameCenterLeaderboardSetImageResponse> {
-            Request(path: path, method: "POST", body: body, id: "gameCenterLeaderboardSetImages-create_instance")
+            Request(path: path, method: "POST", body: body, id: "gameCenterLeaderboardSetImages_createInstance")
         }
     }
 }

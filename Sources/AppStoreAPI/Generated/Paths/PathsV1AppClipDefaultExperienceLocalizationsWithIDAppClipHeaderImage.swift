@@ -17,7 +17,7 @@ extension Resources.V1.AppClipDefaultExperienceLocalizations.WithID {
         public let path: String
 
         public func get(fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]? = nil, fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppClipHeaderImageResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipHeaderImages, fieldsAppClipDefaultExperienceLocalizations, include), id: "appClipDefaultExperienceLocalizations-appClipHeaderImage-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipHeaderImages, fieldsAppClipDefaultExperienceLocalizations, include), id: "appClipDefaultExperienceLocalizations_appClipHeaderImage_getToOneRelated")
         }
 
         private func makeGetQuery(_ fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]?, _ fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]?, _ include: [Include]?) -> [(String, String?)] {
@@ -29,21 +29,21 @@ extension Resources.V1.AppClipDefaultExperienceLocalizations.WithID {
         }
 
         public enum FieldsAppClipHeaderImages: String, CaseIterable, Codable, Sendable {
-            case appClipDefaultExperienceLocalization
-            case assetDeliveryState
-            case fileName
             case fileSize
-            case imageAsset
+            case fileName
             case sourceFileChecksum
+            case imageAsset
             case uploadOperations
+            case assetDeliveryState
             case uploaded
+            case appClipDefaultExperienceLocalization
         }
 
         public enum FieldsAppClipDefaultExperienceLocalizations: String, CaseIterable, Codable, Sendable {
-            case appClipDefaultExperience
-            case appClipHeaderImage
             case locale
             case subtitle
+            case appClipDefaultExperience
+            case appClipHeaderImage
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

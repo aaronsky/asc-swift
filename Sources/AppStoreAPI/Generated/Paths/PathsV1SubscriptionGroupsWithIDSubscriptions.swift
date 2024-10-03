@@ -16,33 +16,37 @@ extension Resources.V1.SubscriptionGroups.WithID {
         /// Path: `/v1/subscriptionGroups/{id}/subscriptions`
         public let path: String
 
-        public func get(filterName: [String]? = nil, filterProductID: [String]? = nil, filterState: [FilterState]? = nil, sort: [Sort]? = nil, fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]? = nil, fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]? = nil, fieldsSubscriptionGroups: [FieldsSubscriptionGroups]? = nil, fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]? = nil, fieldsSubscriptionPrices: [FieldsSubscriptionPrices]? = nil, fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]? = nil, limit: Int? = nil, limitSubscriptionLocalizations: Int? = nil, limitIntroductoryOffers: Int? = nil, limitPromotionalOffers: Int? = nil, limitOfferCodes: Int? = nil, limitPrices: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterName, filterProductID, filterState, sort, fieldsPromotedPurchases, fieldsSubscriptionPromotionalOffers, fieldsSubscriptionOfferCodes, fieldsSubscriptionAppStoreReviewScreenshots, fieldsSubscriptions, fieldsSubscriptionAvailabilities, fieldsSubscriptionGroups, fieldsSubscriptionIntroductoryOffers, fieldsSubscriptionPrices, fieldsSubscriptionLocalizations, limit, limitSubscriptionLocalizations, limitIntroductoryOffers, limitPromotionalOffers, limitOfferCodes, limitPrices, include), id: "subscriptionGroups-subscriptions-get_to_many_related")
+        public func get(filterProductID: [String]? = nil, filterName: [String]? = nil, filterState: [FilterState]? = nil, sort: [Sort]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]? = nil, fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]? = nil, fieldsSubscriptionGroups: [FieldsSubscriptionGroups]? = nil, fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]? = nil, fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]? = nil, fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, fieldsSubscriptionPrices: [FieldsSubscriptionPrices]? = nil, fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]? = nil, fieldsWinBackOffers: [FieldsWinBackOffers]? = nil, fieldsSubscriptionImages: [FieldsSubscriptionImages]? = nil, limit: Int? = nil, include: [Include]? = nil, limitSubscriptionLocalizations: Int? = nil, limitIntroductoryOffers: Int? = nil, limitPromotionalOffers: Int? = nil, limitOfferCodes: Int? = nil, limitPrices: Int? = nil, limitWinBackOffers: Int? = nil, limitImages: Int? = nil) -> Request<AppStoreAPI.SubscriptionsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterProductID, filterName, filterState, sort, fieldsSubscriptions, fieldsSubscriptionLocalizations, fieldsSubscriptionAppStoreReviewScreenshots, fieldsSubscriptionGroups, fieldsSubscriptionIntroductoryOffers, fieldsSubscriptionPromotionalOffers, fieldsSubscriptionOfferCodes, fieldsSubscriptionPrices, fieldsPromotedPurchases, fieldsSubscriptionAvailabilities, fieldsWinBackOffers, fieldsSubscriptionImages, limit, include, limitSubscriptionLocalizations, limitIntroductoryOffers, limitPromotionalOffers, limitOfferCodes, limitPrices, limitWinBackOffers, limitImages), id: "subscriptionGroups_subscriptions_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterName: [String]?, _ filterProductID: [String]?, _ filterState: [FilterState]?, _ sort: [Sort]?, _ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]?, _ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]?, _ fieldsSubscriptionGroups: [FieldsSubscriptionGroups]?, _ fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]?, _ fieldsSubscriptionPrices: [FieldsSubscriptionPrices]?, _ fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]?, _ limit: Int?, _ limitSubscriptionLocalizations: Int?, _ limitIntroductoryOffers: Int?, _ limitPromotionalOffers: Int?, _ limitOfferCodes: Int?, _ limitPrices: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterProductID: [String]?, _ filterName: [String]?, _ filterState: [FilterState]?, _ sort: [Sort]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]?, _ fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]?, _ fieldsSubscriptionGroups: [FieldsSubscriptionGroups]?, _ fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]?, _ fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]?, _ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ fieldsSubscriptionPrices: [FieldsSubscriptionPrices]?, _ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]?, _ fieldsWinBackOffers: [FieldsWinBackOffers]?, _ fieldsSubscriptionImages: [FieldsSubscriptionImages]?, _ limit: Int?, _ include: [Include]?, _ limitSubscriptionLocalizations: Int?, _ limitIntroductoryOffers: Int?, _ limitPromotionalOffers: Int?, _ limitOfferCodes: Int?, _ limitPrices: Int?, _ limitWinBackOffers: Int?, _ limitImages: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(filterName, forKey: "filter[name]")
             encoder.encode(filterProductID, forKey: "filter[productId]")
+            encoder.encode(filterName, forKey: "filter[name]")
             encoder.encode(filterState, forKey: "filter[state]")
             encoder.encode(sort, forKey: "sort")
-            encoder.encode(fieldsPromotedPurchases, forKey: "fields[promotedPurchases]")
-            encoder.encode(fieldsSubscriptionPromotionalOffers, forKey: "fields[subscriptionPromotionalOffers]")
-            encoder.encode(fieldsSubscriptionOfferCodes, forKey: "fields[subscriptionOfferCodes]")
-            encoder.encode(fieldsSubscriptionAppStoreReviewScreenshots, forKey: "fields[subscriptionAppStoreReviewScreenshots]")
             encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
-            encoder.encode(fieldsSubscriptionAvailabilities, forKey: "fields[subscriptionAvailabilities]")
+            encoder.encode(fieldsSubscriptionLocalizations, forKey: "fields[subscriptionLocalizations]")
+            encoder.encode(fieldsSubscriptionAppStoreReviewScreenshots, forKey: "fields[subscriptionAppStoreReviewScreenshots]")
             encoder.encode(fieldsSubscriptionGroups, forKey: "fields[subscriptionGroups]")
             encoder.encode(fieldsSubscriptionIntroductoryOffers, forKey: "fields[subscriptionIntroductoryOffers]")
+            encoder.encode(fieldsSubscriptionPromotionalOffers, forKey: "fields[subscriptionPromotionalOffers]")
+            encoder.encode(fieldsSubscriptionOfferCodes, forKey: "fields[subscriptionOfferCodes]")
             encoder.encode(fieldsSubscriptionPrices, forKey: "fields[subscriptionPrices]")
-            encoder.encode(fieldsSubscriptionLocalizations, forKey: "fields[subscriptionLocalizations]")
+            encoder.encode(fieldsPromotedPurchases, forKey: "fields[promotedPurchases]")
+            encoder.encode(fieldsSubscriptionAvailabilities, forKey: "fields[subscriptionAvailabilities]")
+            encoder.encode(fieldsWinBackOffers, forKey: "fields[winBackOffers]")
+            encoder.encode(fieldsSubscriptionImages, forKey: "fields[subscriptionImages]")
             encoder.encode(limit, forKey: "limit")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitSubscriptionLocalizations, forKey: "limit[subscriptionLocalizations]")
             encoder.encode(limitIntroductoryOffers, forKey: "limit[introductoryOffers]")
             encoder.encode(limitPromotionalOffers, forKey: "limit[promotionalOffers]")
             encoder.encode(limitOfferCodes, forKey: "limit[offerCodes]")
             encoder.encode(limitPrices, forKey: "limit[prices]")
-            encoder.encode(include, forKey: "include")
+            encoder.encode(limitWinBackOffers, forKey: "limit[winBackOffers]")
+            encoder.encode(limitImages, forKey: "limit[images]")
             return encoder.items
         }
 
@@ -64,125 +68,158 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case minusName = "-name"
         }
 
-        public enum FieldsPromotedPurchases: String, CaseIterable, Codable, Sendable {
-            case app
-            case enabled
-            case inAppPurchaseV2
-            case promotionImages
+        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
+            case name
+            case productID = "productId"
+            case familySharable
+            case state
+            case subscriptionPeriod
+            case reviewNote
+            case groupLevel
+            case subscriptionLocalizations
+            case appStoreReviewScreenshot
+            case group
+            case introductoryOffers
+            case promotionalOffers
+            case offerCodes
+            case prices
+            case pricePoints
+            case promotedPurchase
+            case subscriptionAvailability
+            case winBackOffers
+            case images
+        }
+
+        public enum FieldsSubscriptionLocalizations: String, CaseIterable, Codable, Sendable {
+            case name
+            case locale
+            case description
             case state
             case subscription
-            case visibleForAllUsers
-        }
-
-        public enum FieldsSubscriptionPromotionalOffers: String, CaseIterable, Codable, Sendable {
-            case duration
-            case name
-            case numberOfPeriods
-            case offerCode
-            case offerMode
-            case prices
-            case subscription
-        }
-
-        public enum FieldsSubscriptionOfferCodes: String, CaseIterable, Codable, Sendable {
-            case active
-            case customCodes
-            case customerEligibilities
-            case duration
-            case name
-            case numberOfPeriods
-            case offerEligibility
-            case offerMode
-            case oneTimeUseCodes
-            case prices
-            case subscription
-            case totalNumberOfCodes
         }
 
         public enum FieldsSubscriptionAppStoreReviewScreenshots: String, CaseIterable, Codable, Sendable {
-            case assetDeliveryState
+            case fileSize
+            case fileName
+            case sourceFileChecksum
+            case imageAsset
             case assetToken
             case assetType
-            case fileName
-            case fileSize
-            case imageAsset
-            case sourceFileChecksum
-            case subscription
             case uploadOperations
+            case assetDeliveryState
             case uploaded
-        }
-
-        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
-            case appStoreReviewScreenshot
-            case familySharable
-            case group
-            case groupLevel
-            case introductoryOffers
-            case name
-            case offerCodes
-            case pricePoints
-            case prices
-            case productID = "productId"
-            case promotedPurchase
-            case promotionalOffers
-            case reviewNote
-            case state
-            case subscriptionAvailability
-            case subscriptionLocalizations
-            case subscriptionPeriod
-        }
-
-        public enum FieldsSubscriptionAvailabilities: String, CaseIterable, Codable, Sendable {
-            case availableInNewTerritories
-            case availableTerritories
             case subscription
         }
 
         public enum FieldsSubscriptionGroups: String, CaseIterable, Codable, Sendable {
-            case app
             case referenceName
-            case subscriptionGroupLocalizations
+            case app
             case subscriptions
+            case subscriptionGroupLocalizations
         }
 
         public enum FieldsSubscriptionIntroductoryOffers: String, CaseIterable, Codable, Sendable {
-            case duration
-            case endDate
-            case numberOfPeriods
-            case offerMode
             case startDate
+            case endDate
+            case duration
+            case offerMode
+            case numberOfPeriods
             case subscription
-            case subscriptionPricePoint
             case territory
+            case subscriptionPricePoint
+        }
+
+        public enum FieldsSubscriptionPromotionalOffers: String, CaseIterable, Codable, Sendable {
+            case name
+            case offerCode
+            case duration
+            case offerMode
+            case numberOfPeriods
+            case subscription
+            case prices
+        }
+
+        public enum FieldsSubscriptionOfferCodes: String, CaseIterable, Codable, Sendable {
+            case name
+            case customerEligibilities
+            case offerEligibility
+            case duration
+            case offerMode
+            case numberOfPeriods
+            case totalNumberOfCodes
+            case active
+            case subscription
+            case oneTimeUseCodes
+            case customCodes
+            case prices
         }
 
         public enum FieldsSubscriptionPrices: String, CaseIterable, Codable, Sendable {
-            case preserveCurrentPrice
-            case preserved
             case startDate
+            case preserved
+            case preserveCurrentPrice
             case subscription
-            case subscriptionPricePoint
             case territory
+            case subscriptionPricePoint
         }
 
-        public enum FieldsSubscriptionLocalizations: String, CaseIterable, Codable, Sendable {
-            case description
-            case locale
-            case name
+        public enum FieldsPromotedPurchases: String, CaseIterable, Codable, Sendable {
+            case visibleForAllUsers
+            case enabled
+            case state
+            case app
+            case inAppPurchaseV2
+            case subscription
+            case promotionImages
+        }
+
+        public enum FieldsSubscriptionAvailabilities: String, CaseIterable, Codable, Sendable {
+            case availableInNewTerritories
+            case subscription
+            case availableTerritories
+        }
+
+        public enum FieldsWinBackOffers: String, CaseIterable, Codable, Sendable {
+            case referenceName
+            case offerID = "offerId"
+            case duration
+            case offerMode
+            case periodCount
+            case customerEligibilityPaidSubscriptionDurationInMonths
+            case customerEligibilityTimeSinceLastSubscribedInMonths
+            case customerEligibilityWaitBetweenOffersInMonths
+            case startDate
+            case endDate
+            case priority
+            case promotionIntent
+            case subscription
+            case prices
+        }
+
+        public enum FieldsSubscriptionImages: String, CaseIterable, Codable, Sendable {
+            case fileSize
+            case fileName
+            case sourceFileChecksum
+            case assetToken
+            case imageAsset
+            case uploadOperations
+            case uploaded
             case state
             case subscription
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
+            case subscriptionLocalizations
             case appStoreReviewScreenshot
             case group
             case introductoryOffers
+            case promotionalOffers
             case offerCodes
             case prices
             case promotedPurchase
-            case promotionalOffers
             case subscriptionAvailability
-            case subscriptionLocalizations
+            case winBackOffers
+            case images
         }
     }
 }

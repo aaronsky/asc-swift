@@ -16,18 +16,18 @@ extension Resources.V1 {
         /// Path: `/v1/gameCenterMatchmakingRuleSets`
         public let path: String
 
-        public func get(fieldsGameCenterMatchmakingRuleSets: [FieldsGameCenterMatchmakingRuleSets]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsGameCenterMatchmakingQueues: [FieldsGameCenterMatchmakingQueues]? = nil, fieldsGameCenterMatchmakingTeams: [FieldsGameCenterMatchmakingTeams]? = nil, fieldsGameCenterMatchmakingRules: [FieldsGameCenterMatchmakingRules]? = nil, limitMatchmakingQueues: Int? = nil, limitRules: Int? = nil, limitTeams: Int? = nil) -> Request<AppStoreAPI.GameCenterMatchmakingRuleSetsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterMatchmakingRuleSets, limit, include, fieldsGameCenterMatchmakingQueues, fieldsGameCenterMatchmakingTeams, fieldsGameCenterMatchmakingRules, limitMatchmakingQueues, limitRules, limitTeams), id: "gameCenterMatchmakingRuleSets-get_collection")
+        public func get(fieldsGameCenterMatchmakingRuleSets: [FieldsGameCenterMatchmakingRuleSets]? = nil, fieldsGameCenterMatchmakingTeams: [FieldsGameCenterMatchmakingTeams]? = nil, fieldsGameCenterMatchmakingRules: [FieldsGameCenterMatchmakingRules]? = nil, fieldsGameCenterMatchmakingQueues: [FieldsGameCenterMatchmakingQueues]? = nil, limit: Int? = nil, include: [Include]? = nil, limitMatchmakingQueues: Int? = nil, limitRules: Int? = nil, limitTeams: Int? = nil) -> Request<AppStoreAPI.GameCenterMatchmakingRuleSetsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterMatchmakingRuleSets, fieldsGameCenterMatchmakingTeams, fieldsGameCenterMatchmakingRules, fieldsGameCenterMatchmakingQueues, limit, include, limitMatchmakingQueues, limitRules, limitTeams), id: "gameCenterMatchmakingRuleSets_getCollection")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterMatchmakingRuleSets: [FieldsGameCenterMatchmakingRuleSets]?, _ limit: Int?, _ include: [Include]?, _ fieldsGameCenterMatchmakingQueues: [FieldsGameCenterMatchmakingQueues]?, _ fieldsGameCenterMatchmakingTeams: [FieldsGameCenterMatchmakingTeams]?, _ fieldsGameCenterMatchmakingRules: [FieldsGameCenterMatchmakingRules]?, _ limitMatchmakingQueues: Int?, _ limitRules: Int?, _ limitTeams: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterMatchmakingRuleSets: [FieldsGameCenterMatchmakingRuleSets]?, _ fieldsGameCenterMatchmakingTeams: [FieldsGameCenterMatchmakingTeams]?, _ fieldsGameCenterMatchmakingRules: [FieldsGameCenterMatchmakingRules]?, _ fieldsGameCenterMatchmakingQueues: [FieldsGameCenterMatchmakingQueues]?, _ limit: Int?, _ include: [Include]?, _ limitMatchmakingQueues: Int?, _ limitRules: Int?, _ limitTeams: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterMatchmakingRuleSets, forKey: "fields[gameCenterMatchmakingRuleSets]")
-            encoder.encode(limit, forKey: "limit")
-            encoder.encode(include, forKey: "include")
-            encoder.encode(fieldsGameCenterMatchmakingQueues, forKey: "fields[gameCenterMatchmakingQueues]")
             encoder.encode(fieldsGameCenterMatchmakingTeams, forKey: "fields[gameCenterMatchmakingTeams]")
             encoder.encode(fieldsGameCenterMatchmakingRules, forKey: "fields[gameCenterMatchmakingRules]")
+            encoder.encode(fieldsGameCenterMatchmakingQueues, forKey: "fields[gameCenterMatchmakingQueues]")
+            encoder.encode(limit, forKey: "limit")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitMatchmakingQueues, forKey: "limit[matchmakingQueues]")
             encoder.encode(limitRules, forKey: "limit[rules]")
             encoder.encode(limitTeams, forKey: "limit[teams]")
@@ -35,46 +35,46 @@ extension Resources.V1 {
         }
 
         public enum FieldsGameCenterMatchmakingRuleSets: String, CaseIterable, Codable, Sendable {
-            case matchmakingQueues
-            case maxPlayers
-            case minPlayers
             case referenceName
             case ruleLanguageVersion
-            case rules
+            case minPlayers
+            case maxPlayers
             case teams
-        }
-
-        public enum Include: String, CaseIterable, Codable, Sendable {
+            case rules
             case matchmakingQueues
-            case rules
-            case teams
-        }
-
-        public enum FieldsGameCenterMatchmakingQueues: String, CaseIterable, Codable, Sendable {
-            case classicMatchmakingBundleIDs = "classicMatchmakingBundleIds"
-            case experimentRuleSet
-            case referenceName
-            case ruleSet
         }
 
         public enum FieldsGameCenterMatchmakingTeams: String, CaseIterable, Codable, Sendable {
-            case maxPlayers
-            case minPlayers
             case referenceName
+            case minPlayers
+            case maxPlayers
             case ruleSet
         }
 
         public enum FieldsGameCenterMatchmakingRules: String, CaseIterable, Codable, Sendable {
-            case description
-            case expression
             case referenceName
-            case ruleSet
+            case description
             case type
+            case expression
             case weight
+            case ruleSet
+        }
+
+        public enum FieldsGameCenterMatchmakingQueues: String, CaseIterable, Codable, Sendable {
+            case referenceName
+            case classicMatchmakingBundleIDs = "classicMatchmakingBundleIds"
+            case ruleSet
+            case experimentRuleSet
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case teams
+            case rules
+            case matchmakingQueues
         }
 
         public func post(_ body: AppStoreAPI.GameCenterMatchmakingRuleSetCreateRequest) -> Request<AppStoreAPI.GameCenterMatchmakingRuleSetResponse> {
-            Request(path: path, method: "POST", body: body, id: "gameCenterMatchmakingRuleSets-create_instance")
+            Request(path: path, method: "POST", body: body, id: "gameCenterMatchmakingRuleSets_createInstance")
         }
     }
 }

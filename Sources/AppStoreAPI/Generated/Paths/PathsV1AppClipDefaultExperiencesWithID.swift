@@ -16,17 +16,17 @@ extension Resources.V1.AppClipDefaultExperiences {
         /// Path: `/v1/appClipDefaultExperiences/{id}`
         public let path: String
 
-        public func get(fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, include: [Include]? = nil, fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]? = nil, limitAppClipDefaultExperienceLocalizations: Int? = nil) -> Request<AppStoreAPI.AppClipDefaultExperienceResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipDefaultExperiences, include, fieldsAppClipAppStoreReviewDetails, fieldsAppStoreVersions, fieldsAppClipDefaultExperienceLocalizations, limitAppClipDefaultExperienceLocalizations), id: "appClipDefaultExperiences-get_instance")
+        public func get(fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]? = nil, fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]? = nil, include: [Include]? = nil, limitAppClipDefaultExperienceLocalizations: Int? = nil) -> Request<AppStoreAPI.AppClipDefaultExperienceResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipDefaultExperiences, fieldsAppStoreVersions, fieldsAppClipDefaultExperienceLocalizations, fieldsAppClipAppStoreReviewDetails, include, limitAppClipDefaultExperienceLocalizations), id: "appClipDefaultExperiences_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ include: [Include]?, _ fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]?, _ limitAppClipDefaultExperienceLocalizations: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]?, _ fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]?, _ include: [Include]?, _ limitAppClipDefaultExperienceLocalizations: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppClipDefaultExperiences, forKey: "fields[appClipDefaultExperiences]")
-            encoder.encode(include, forKey: "include")
-            encoder.encode(fieldsAppClipAppStoreReviewDetails, forKey: "fields[appClipAppStoreReviewDetails]")
             encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
             encoder.encode(fieldsAppClipDefaultExperienceLocalizations, forKey: "fields[appClipDefaultExperienceLocalizations]")
+            encoder.encode(fieldsAppClipAppStoreReviewDetails, forKey: "fields[appClipAppStoreReviewDetails]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitAppClipDefaultExperienceLocalizations, forKey: "limit[appClipDefaultExperienceLocalizations]")
             return encoder.items
         }
@@ -34,63 +34,64 @@ extension Resources.V1.AppClipDefaultExperiences {
         public enum FieldsAppClipDefaultExperiences: String, CaseIterable, Codable, Sendable {
             case action
             case appClip
-            case appClipAppStoreReviewDetail
-            case appClipDefaultExperienceLocalizations
-            case appClipDefaultExperienceTemplate
             case releaseWithAppStoreVersion
+            case appClipDefaultExperienceLocalizations
+            case appClipAppStoreReviewDetail
+            case appClipDefaultExperienceTemplate
+        }
+
+        public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
+            case platform
+            case versionString
+            case appStoreState
+            case appVersionState
+            case copyright
+            case reviewType
+            case releaseType
+            case earliestReleaseDate
+            case downloadable
+            case createdDate
+            case app
+            case ageRatingDeclaration
+            case appStoreVersionLocalizations
+            case build
+            case appStoreVersionPhasedRelease
+            case gameCenterAppVersion
+            case routingAppCoverage
+            case appStoreReviewDetail
+            case appStoreVersionSubmission
+            case appClipDefaultExperience
+            case appStoreVersionExperiments
+            case appStoreVersionExperimentsV2
+            case customerReviews
+            case alternativeDistributionPackage
+        }
+
+        public enum FieldsAppClipDefaultExperienceLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case subtitle
+            case appClipDefaultExperience
+            case appClipHeaderImage
+        }
+
+        public enum FieldsAppClipAppStoreReviewDetails: String, CaseIterable, Codable, Sendable {
+            case invocationURLs = "invocationUrls"
+            case appClipDefaultExperience
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case appClip
-            case appClipAppStoreReviewDetail
-            case appClipDefaultExperienceLocalizations
             case releaseWithAppStoreVersion
-        }
-
-        public enum FieldsAppClipAppStoreReviewDetails: String, CaseIterable, Codable, Sendable {
-            case appClipDefaultExperience
-            case invocationURLs = "invocationUrls"
-        }
-
-        public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
-            case ageRatingDeclaration
-            case alternativeDistributionPackage
-            case app
-            case appClipDefaultExperience
-            case appStoreReviewDetail
-            case appStoreState
-            case appStoreVersionExperiments
-            case appStoreVersionExperimentsV2
-            case appStoreVersionLocalizations
-            case appStoreVersionPhasedRelease
-            case appStoreVersionSubmission
-            case appVersionState
-            case build
-            case copyright
-            case createdDate
-            case customerReviews
-            case downloadable
-            case earliestReleaseDate
-            case platform
-            case releaseType
-            case reviewType
-            case routingAppCoverage
-            case versionString
-        }
-
-        public enum FieldsAppClipDefaultExperienceLocalizations: String, CaseIterable, Codable, Sendable {
-            case appClipDefaultExperience
-            case appClipHeaderImage
-            case locale
-            case subtitle
+            case appClipDefaultExperienceLocalizations
+            case appClipAppStoreReviewDetail
         }
 
         public func patch(_ body: AppStoreAPI.AppClipDefaultExperienceUpdateRequest) -> Request<AppStoreAPI.AppClipDefaultExperienceResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "appClipDefaultExperiences-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appClipDefaultExperiences_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "appClipDefaultExperiences-delete_instance")
+            Request(path: path, method: "DELETE", id: "appClipDefaultExperiences_deleteInstance")
         }
     }
 }

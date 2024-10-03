@@ -17,7 +17,7 @@ extension Resources.V1.AlternativeDistributionPackageVersions.WithID {
         public let path: String
 
         public func get(fieldsAlternativeDistributionPackageVariants: [FieldsAlternativeDistributionPackageVariants]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.AlternativeDistributionPackageVariantsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAlternativeDistributionPackageVariants, limit), id: "alternativeDistributionPackageVersions-variants-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAlternativeDistributionPackageVariants, limit), id: "alternativeDistributionPackageVersions_variants_getToManyRelated")
         }
 
         private func makeGetQuery(_ fieldsAlternativeDistributionPackageVariants: [FieldsAlternativeDistributionPackageVariants]?, _ limit: Int?) -> [(String, String?)] {
@@ -28,10 +28,10 @@ extension Resources.V1.AlternativeDistributionPackageVersions.WithID {
         }
 
         public enum FieldsAlternativeDistributionPackageVariants: String, CaseIterable, Codable, Sendable {
-            case alternativeDistributionKeyBlob
-            case fileChecksum
             case url
             case urlExpirationDate
+            case alternativeDistributionKeyBlob
+            case fileChecksum
         }
     }
 }

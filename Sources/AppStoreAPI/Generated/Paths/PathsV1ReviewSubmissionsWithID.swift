@@ -16,54 +16,54 @@ extension Resources.V1.ReviewSubmissions {
         /// Path: `/v1/reviewSubmissions/{id}`
         public let path: String
 
-        public func get(fieldsReviewSubmissions: [FieldsReviewSubmissions]? = nil, include: [Include]? = nil, fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]? = nil, limitItems: Int? = nil) -> Request<AppStoreAPI.ReviewSubmissionResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsReviewSubmissions, include, fieldsReviewSubmissionItems, limitItems), id: "reviewSubmissions-get_instance")
+        public func get(fieldsReviewSubmissions: [FieldsReviewSubmissions]? = nil, fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]? = nil, include: [Include]? = nil, limitItems: Int? = nil) -> Request<AppStoreAPI.ReviewSubmissionResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsReviewSubmissions, fieldsReviewSubmissionItems, include, limitItems), id: "reviewSubmissions_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsReviewSubmissions: [FieldsReviewSubmissions]?, _ include: [Include]?, _ fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]?, _ limitItems: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsReviewSubmissions: [FieldsReviewSubmissions]?, _ fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]?, _ include: [Include]?, _ limitItems: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsReviewSubmissions, forKey: "fields[reviewSubmissions]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsReviewSubmissionItems, forKey: "fields[reviewSubmissionItems]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitItems, forKey: "limit[items]")
             return encoder.items
         }
 
         public enum FieldsReviewSubmissions: String, CaseIterable, Codable, Sendable {
-            case app
-            case appStoreVersionForReview
-            case canceled
-            case items
-            case lastUpdatedByActor
             case platform
+            case submittedDate
             case state
             case submitted
+            case canceled
+            case app
+            case items
+            case appStoreVersionForReview
             case submittedByActor
-            case submittedDate
+            case lastUpdatedByActor
+        }
+
+        public enum FieldsReviewSubmissionItems: String, CaseIterable, Codable, Sendable {
+            case state
+            case resolved
+            case removed
+            case reviewSubmission
+            case appStoreVersion
+            case appCustomProductPageVersion
+            case appStoreVersionExperiment
+            case appStoreVersionExperimentV2
+            case appEvent
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case app
-            case appStoreVersionForReview
             case items
-            case lastUpdatedByActor
+            case appStoreVersionForReview
             case submittedByActor
-        }
-
-        public enum FieldsReviewSubmissionItems: String, CaseIterable, Codable, Sendable {
-            case appCustomProductPageVersion
-            case appEvent
-            case appStoreVersion
-            case appStoreVersionExperiment
-            case appStoreVersionExperimentV2
-            case removed
-            case resolved
-            case reviewSubmission
-            case state
+            case lastUpdatedByActor
         }
 
         public func patch(_ body: AppStoreAPI.ReviewSubmissionUpdateRequest) -> Request<AppStoreAPI.ReviewSubmissionResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "reviewSubmissions-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "reviewSubmissions_updateInstance")
         }
     }
 }

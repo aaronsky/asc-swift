@@ -17,7 +17,7 @@ extension Resources.V1.Profiles.WithID {
         public let path: String
 
         public func get(fieldsCertificates: [FieldsCertificates]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.CertificatesWithoutIncludesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCertificates, limit), id: "profiles-certificates-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCertificates, limit), id: "profiles_certificates_getToManyRelated")
         }
 
         private func makeGetQuery(_ fieldsCertificates: [FieldsCertificates]?, _ limit: Int?) -> [(String, String?)] {
@@ -28,14 +28,14 @@ extension Resources.V1.Profiles.WithID {
         }
 
         public enum FieldsCertificates: String, CaseIterable, Codable, Sendable {
-            case certificateContent
-            case certificateType
-            case csrContent
-            case displayName
-            case expirationDate
             case name
-            case platform
+            case csrContent
+            case certificateType
+            case displayName
             case serialNumber
+            case platform
+            case expirationDate
+            case certificateContent
         }
     }
 }

@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.RoutingAppCoverageCreateRequest) -> Request<AppStoreAPI.RoutingAppCoverageResponse> {
-            Request(path: path, method: "POST", body: body, id: "routingAppCoverages-create_instance")
+            Request(path: path, method: "POST", body: body, id: "routingAppCoverages_createInstance")
         }
     }
 }

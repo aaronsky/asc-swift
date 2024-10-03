@@ -17,7 +17,7 @@ extension Resources.V1.GameCenterDetails.WithID.Relationships {
         public let path: String
 
         public func get(limit: Int? = nil) -> Request<AppStoreAPI.GameCenterDetailGameCenterLeaderboardsLinkagesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(limit), id: "gameCenterDetails-gameCenterLeaderboards-get_to_many_relationship")
+            Request(path: path, method: "GET", query: makeGetQuery(limit), id: "gameCenterDetails_gameCenterLeaderboards_getToManyRelationship")
         }
 
         private func makeGetQuery(_ limit: Int?) -> [(String, String?)] {
@@ -27,7 +27,7 @@ extension Resources.V1.GameCenterDetails.WithID.Relationships {
         }
 
         public func patch(_ body: AppStoreAPI.GameCenterDetailGameCenterLeaderboardsLinkagesRequest) -> Request<Void> {
-            Request(path: path, method: "PATCH", body: body, id: "gameCenterDetails-gameCenterLeaderboards-replace_to_many_relationship")
+            Request(path: path, method: "PATCH", body: body, id: "gameCenterDetails_gameCenterLeaderboards_replaceToManyRelationship")
         }
     }
 }

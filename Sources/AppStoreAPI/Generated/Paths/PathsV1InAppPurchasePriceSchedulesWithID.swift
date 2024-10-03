@@ -16,46 +16,46 @@ extension Resources.V1.InAppPurchasePriceSchedules {
         /// Path: `/v1/inAppPurchasePriceSchedules/{id}`
         public let path: String
 
-        public func get(fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]? = nil, include: [Include]? = nil, fieldsInAppPurchasePrices: [FieldsInAppPurchasePrices]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limitAutomaticPrices: Int? = nil, limitManualPrices: Int? = nil) -> Request<AppStoreAPI.InAppPurchasePriceScheduleResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchasePriceSchedules, include, fieldsInAppPurchasePrices, fieldsTerritories, limitAutomaticPrices, limitManualPrices), id: "inAppPurchasePriceSchedules-get_instance")
+        public func get(fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, fieldsInAppPurchasePrices: [FieldsInAppPurchasePrices]? = nil, include: [Include]? = nil, limitAutomaticPrices: Int? = nil, limitManualPrices: Int? = nil) -> Request<AppStoreAPI.InAppPurchasePriceScheduleResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchasePriceSchedules, fieldsTerritories, fieldsInAppPurchasePrices, include, limitAutomaticPrices, limitManualPrices), id: "inAppPurchasePriceSchedules_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]?, _ include: [Include]?, _ fieldsInAppPurchasePrices: [FieldsInAppPurchasePrices]?, _ fieldsTerritories: [FieldsTerritories]?, _ limitAutomaticPrices: Int?, _ limitManualPrices: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]?, _ fieldsTerritories: [FieldsTerritories]?, _ fieldsInAppPurchasePrices: [FieldsInAppPurchasePrices]?, _ include: [Include]?, _ limitAutomaticPrices: Int?, _ limitManualPrices: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsInAppPurchasePriceSchedules, forKey: "fields[inAppPurchasePriceSchedules]")
-            encoder.encode(include, forKey: "include")
-            encoder.encode(fieldsInAppPurchasePrices, forKey: "fields[inAppPurchasePrices]")
             encoder.encode(fieldsTerritories, forKey: "fields[territories]")
+            encoder.encode(fieldsInAppPurchasePrices, forKey: "fields[inAppPurchasePrices]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitAutomaticPrices, forKey: "limit[automaticPrices]")
             encoder.encode(limitManualPrices, forKey: "limit[manualPrices]")
             return encoder.items
         }
 
         public enum FieldsInAppPurchasePriceSchedules: String, CaseIterable, Codable, Sendable {
-            case automaticPrices
-            case baseTerritory
             case inAppPurchase
-            case manualPrices
-        }
-
-        public enum Include: String, CaseIterable, Codable, Sendable {
-            case automaticPrices
             case baseTerritory
-            case inAppPurchase
             case manualPrices
-        }
-
-        public enum FieldsInAppPurchasePrices: String, CaseIterable, Codable, Sendable {
-            case endDate
-            case inAppPurchasePricePoint
-            case inAppPurchaseV2
-            case manual
-            case startDate
-            case territory
+            case automaticPrices
         }
 
         public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
             case currency
+        }
+
+        public enum FieldsInAppPurchasePrices: String, CaseIterable, Codable, Sendable {
+            case startDate
+            case endDate
+            case manual
+            case inAppPurchaseV2
+            case inAppPurchasePricePoint
+            case territory
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case inAppPurchase
+            case baseTerritory
+            case manualPrices
+            case automaticPrices
         }
     }
 }

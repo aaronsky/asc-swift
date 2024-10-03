@@ -39,24 +39,9 @@ public struct BetaTester: Codable, Equatable, Identifiable, Sendable {
         public var builds: Builds?
 
         public struct Apps: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var meta: PagingInformation?
             public var data: [Datum]?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -72,7 +57,7 @@ public struct BetaTester: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
                 self.links = links
                 self.meta = meta
                 self.data = data
@@ -80,24 +65,9 @@ public struct BetaTester: Codable, Equatable, Identifiable, Sendable {
         }
 
         public struct BetaGroups: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var meta: PagingInformation?
             public var data: [Datum]?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -113,7 +83,7 @@ public struct BetaTester: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
                 self.links = links
                 self.meta = meta
                 self.data = data
@@ -121,24 +91,9 @@ public struct BetaTester: Codable, Equatable, Identifiable, Sendable {
         }
 
         public struct Builds: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var meta: PagingInformation?
             public var data: [Datum]?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -154,7 +109,7 @@ public struct BetaTester: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
                 self.links = links
                 self.meta = meta
                 self.data = data

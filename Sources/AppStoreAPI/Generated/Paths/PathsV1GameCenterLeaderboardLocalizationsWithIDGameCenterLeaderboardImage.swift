@@ -17,7 +17,7 @@ extension Resources.V1.GameCenterLeaderboardLocalizations.WithID {
         public let path: String
 
         public func get(fieldsGameCenterLeaderboardImages: [FieldsGameCenterLeaderboardImages]? = nil, fieldsGameCenterLeaderboardLocalizations: [FieldsGameCenterLeaderboardLocalizations]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardImageResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardImages, fieldsGameCenterLeaderboardLocalizations, include), id: "gameCenterLeaderboardLocalizations-gameCenterLeaderboardImage-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardImages, fieldsGameCenterLeaderboardLocalizations, include), id: "gameCenterLeaderboardLocalizations_gameCenterLeaderboardImage_getToOneRelated")
         }
 
         private func makeGetQuery(_ fieldsGameCenterLeaderboardImages: [FieldsGameCenterLeaderboardImages]?, _ fieldsGameCenterLeaderboardLocalizations: [FieldsGameCenterLeaderboardLocalizations]?, _ include: [Include]?) -> [(String, String?)] {
@@ -29,23 +29,23 @@ extension Resources.V1.GameCenterLeaderboardLocalizations.WithID {
         }
 
         public enum FieldsGameCenterLeaderboardImages: String, CaseIterable, Codable, Sendable {
-            case assetDeliveryState
-            case fileName
             case fileSize
-            case gameCenterLeaderboardLocalization
+            case fileName
             case imageAsset
             case uploadOperations
+            case assetDeliveryState
             case uploaded
+            case gameCenterLeaderboardLocalization
         }
 
         public enum FieldsGameCenterLeaderboardLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case name
             case formatterOverride
             case formatterSuffix
             case formatterSuffixSingular
             case gameCenterLeaderboard
             case gameCenterLeaderboardImage
-            case locale
-            case name
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

@@ -16,67 +16,67 @@ extension Resources.V1 {
         /// Path: `/v1/gameCenterLeaderboardSetMemberLocalizations`
         public let path: String
 
-        public func get(filterGameCenterLeaderboard: [String], filterGameCenterLeaderboardSet: [String], fieldsGameCenterLeaderboardSetMemberLocalizations: [FieldsGameCenterLeaderboardSetMemberLocalizations]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsGameCenterLeaderboardSets: [FieldsGameCenterLeaderboardSets]? = nil, fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardSetMemberLocalizationsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterGameCenterLeaderboard, filterGameCenterLeaderboardSet, fieldsGameCenterLeaderboardSetMemberLocalizations, limit, include, fieldsGameCenterLeaderboardSets, fieldsGameCenterLeaderboards), id: "gameCenterLeaderboardSetMemberLocalizations-get_collection")
+        public func get(filterGameCenterLeaderboardSet: [String], filterGameCenterLeaderboard: [String], fieldsGameCenterLeaderboardSetMemberLocalizations: [FieldsGameCenterLeaderboardSetMemberLocalizations]? = nil, fieldsGameCenterLeaderboardSets: [FieldsGameCenterLeaderboardSets]? = nil, fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardSetMemberLocalizationsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterGameCenterLeaderboardSet, filterGameCenterLeaderboard, fieldsGameCenterLeaderboardSetMemberLocalizations, fieldsGameCenterLeaderboardSets, fieldsGameCenterLeaderboards, limit, include), id: "gameCenterLeaderboardSetMemberLocalizations_getCollection")
         }
 
-        private func makeGetQuery(_ filterGameCenterLeaderboard: [String], _ filterGameCenterLeaderboardSet: [String], _ fieldsGameCenterLeaderboardSetMemberLocalizations: [FieldsGameCenterLeaderboardSetMemberLocalizations]?, _ limit: Int?, _ include: [Include]?, _ fieldsGameCenterLeaderboardSets: [FieldsGameCenterLeaderboardSets]?, _ fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterGameCenterLeaderboardSet: [String], _ filterGameCenterLeaderboard: [String], _ fieldsGameCenterLeaderboardSetMemberLocalizations: [FieldsGameCenterLeaderboardSetMemberLocalizations]?, _ fieldsGameCenterLeaderboardSets: [FieldsGameCenterLeaderboardSets]?, _ fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(filterGameCenterLeaderboard, forKey: "filter[gameCenterLeaderboard]")
             encoder.encode(filterGameCenterLeaderboardSet, forKey: "filter[gameCenterLeaderboardSet]")
+            encoder.encode(filterGameCenterLeaderboard, forKey: "filter[gameCenterLeaderboard]")
             encoder.encode(fieldsGameCenterLeaderboardSetMemberLocalizations, forKey: "fields[gameCenterLeaderboardSetMemberLocalizations]")
-            encoder.encode(limit, forKey: "limit")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsGameCenterLeaderboardSets, forKey: "fields[gameCenterLeaderboardSets]")
             encoder.encode(fieldsGameCenterLeaderboards, forKey: "fields[gameCenterLeaderboards]")
+            encoder.encode(limit, forKey: "limit")
+            encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
         public enum FieldsGameCenterLeaderboardSetMemberLocalizations: String, CaseIterable, Codable, Sendable {
-            case gameCenterLeaderboard
-            case gameCenterLeaderboardSet
-            case locale
             case name
-        }
-
-        public enum Include: String, CaseIterable, Codable, Sendable {
-            case gameCenterLeaderboard
+            case locale
             case gameCenterLeaderboardSet
+            case gameCenterLeaderboard
         }
 
         public enum FieldsGameCenterLeaderboardSets: String, CaseIterable, Codable, Sendable {
+            case referenceName
+            case vendorIdentifier
             case gameCenterDetail
             case gameCenterGroup
-            case gameCenterLeaderboards
             case groupLeaderboardSet
             case localizations
-            case referenceName
+            case gameCenterLeaderboards
             case releases
-            case vendorIdentifier
         }
 
         public enum FieldsGameCenterLeaderboards: String, CaseIterable, Codable, Sendable {
-            case archived
             case defaultFormatter
-            case gameCenterDetail
-            case gameCenterGroup
-            case gameCenterLeaderboardSets
-            case groupLeaderboard
-            case localizations
+            case referenceName
+            case vendorIdentifier
+            case submissionType
+            case scoreSortType
+            case scoreRangeStart
+            case scoreRangeEnd
+            case recurrenceStartDate
             case recurrenceDuration
             case recurrenceRule
-            case recurrenceStartDate
-            case referenceName
+            case archived
+            case gameCenterDetail
+            case gameCenterGroup
+            case groupLeaderboard
+            case gameCenterLeaderboardSets
+            case localizations
             case releases
-            case scoreRangeEnd
-            case scoreRangeStart
-            case scoreSortType
-            case submissionType
-            case vendorIdentifier
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case gameCenterLeaderboardSet
+            case gameCenterLeaderboard
         }
 
         public func post(_ body: AppStoreAPI.GameCenterLeaderboardSetMemberLocalizationCreateRequest) -> Request<AppStoreAPI.GameCenterLeaderboardSetMemberLocalizationResponse> {
-            Request(path: path, method: "POST", body: body, id: "gameCenterLeaderboardSetMemberLocalizations-create_instance")
+            Request(path: path, method: "POST", body: body, id: "gameCenterLeaderboardSetMemberLocalizations_createInstance")
         }
     }
 }

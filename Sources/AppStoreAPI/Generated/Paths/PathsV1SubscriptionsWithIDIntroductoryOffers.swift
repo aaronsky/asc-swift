@@ -16,70 +16,72 @@ extension Resources.V1.Subscriptions.WithID {
         /// Path: `/v1/subscriptions/{id}/introductoryOffers`
         public let path: String
 
-        public func get(filterTerritory: [String]? = nil, fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionIntroductoryOffersResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterTerritory, fieldsSubscriptionPricePoints, fieldsSubscriptions, fieldsSubscriptionIntroductoryOffers, fieldsTerritories, limit, include), id: "subscriptions-introductoryOffers-get_to_many_related")
+        public func get(filterTerritory: [String]? = nil, fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionIntroductoryOffersResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterTerritory, fieldsSubscriptionIntroductoryOffers, fieldsSubscriptions, fieldsTerritories, fieldsSubscriptionPricePoints, limit, include), id: "subscriptions_introductoryOffers_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterTerritory: [String]?, _ fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]?, _ fieldsTerritories: [FieldsTerritories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterTerritory: [String]?, _ fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsTerritories: [FieldsTerritories]?, _ fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterTerritory, forKey: "filter[territory]")
-            encoder.encode(fieldsSubscriptionPricePoints, forKey: "fields[subscriptionPricePoints]")
-            encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
             encoder.encode(fieldsSubscriptionIntroductoryOffers, forKey: "fields[subscriptionIntroductoryOffers]")
+            encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
             encoder.encode(fieldsTerritories, forKey: "fields[territories]")
+            encoder.encode(fieldsSubscriptionPricePoints, forKey: "fields[subscriptionPricePoints]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
-        public enum FieldsSubscriptionPricePoints: String, CaseIterable, Codable, Sendable {
-            case customerPrice
-            case equalizations
-            case proceeds
-            case proceedsYear2
+        public enum FieldsSubscriptionIntroductoryOffers: String, CaseIterable, Codable, Sendable {
+            case startDate
+            case endDate
+            case duration
+            case offerMode
+            case numberOfPeriods
             case subscription
             case territory
+            case subscriptionPricePoint
         }
 
         public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
-            case appStoreReviewScreenshot
-            case familySharable
-            case group
-            case groupLevel
-            case introductoryOffers
             case name
-            case offerCodes
-            case pricePoints
-            case prices
             case productID = "productId"
-            case promotedPurchase
-            case promotionalOffers
-            case reviewNote
+            case familySharable
             case state
-            case subscriptionAvailability
-            case subscriptionLocalizations
             case subscriptionPeriod
-        }
-
-        public enum FieldsSubscriptionIntroductoryOffers: String, CaseIterable, Codable, Sendable {
-            case duration
-            case endDate
-            case numberOfPeriods
-            case offerMode
-            case startDate
-            case subscription
-            case subscriptionPricePoint
-            case territory
+            case reviewNote
+            case groupLevel
+            case subscriptionLocalizations
+            case appStoreReviewScreenshot
+            case group
+            case introductoryOffers
+            case promotionalOffers
+            case offerCodes
+            case prices
+            case pricePoints
+            case promotedPurchase
+            case subscriptionAvailability
+            case winBackOffers
+            case images
         }
 
         public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
             case currency
         }
 
+        public enum FieldsSubscriptionPricePoints: String, CaseIterable, Codable, Sendable {
+            case customerPrice
+            case proceeds
+            case proceedsYear2
+            case territory
+            case subscription
+            case equalizations
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case subscription
-            case subscriptionPricePoint
             case territory
+            case subscriptionPricePoint
         }
     }
 }

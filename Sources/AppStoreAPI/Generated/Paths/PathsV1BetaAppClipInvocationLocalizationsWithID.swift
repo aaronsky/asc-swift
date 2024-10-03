@@ -17,11 +17,11 @@ extension Resources.V1.BetaAppClipInvocationLocalizations {
         public let path: String
 
         public func patch(_ body: AppStoreAPI.BetaAppClipInvocationLocalizationUpdateRequest) -> Request<AppStoreAPI.BetaAppClipInvocationLocalizationResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "betaAppClipInvocationLocalizations-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "betaAppClipInvocationLocalizations_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "betaAppClipInvocationLocalizations-delete_instance")
+            Request(path: path, method: "DELETE", id: "betaAppClipInvocationLocalizations_deleteInstance")
         }
     }
 }

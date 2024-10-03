@@ -17,7 +17,7 @@ extension Resources.V1.AppPriceSchedules.WithID {
         public let path: String
 
         public func get(fieldsTerritories: [FieldsTerritories]? = nil) -> Request<AppStoreAPI.TerritoryResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsTerritories), id: "appPriceSchedules-baseTerritory-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsTerritories), id: "appPriceSchedules_baseTerritory_getToOneRelated")
         }
 
         private func makeGetQuery(_ fieldsTerritories: [FieldsTerritories]?) -> [(String, String?)] {

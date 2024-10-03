@@ -41,25 +41,13 @@ public struct CiBuildAction: Codable, Equatable, Identifiable, Sendable {
 
     public struct Relationships: Codable, Equatable, Sendable {
         public var buildRun: BuildRun?
+        public var artifacts: Artifacts?
+        public var issues: Issues?
+        public var testResults: TestResults?
 
         public struct BuildRun: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -75,14 +63,41 @@ public struct CiBuildAction: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
                 self.links = links
                 self.data = data
             }
         }
 
-        public init(buildRun: BuildRun? = nil) {
+        public struct Artifacts: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
+            }
+        }
+
+        public struct Issues: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
+            }
+        }
+
+        public struct TestResults: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
+            }
+        }
+
+        public init(buildRun: BuildRun? = nil, artifacts: Artifacts? = nil, issues: Issues? = nil, testResults: TestResults? = nil) {
             self.buildRun = buildRun
+            self.artifacts = artifacts
+            self.issues = issues
+            self.testResults = testResults
         }
     }
 

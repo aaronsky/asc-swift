@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.EndUserLicenseAgreementCreateRequest) -> Request<AppStoreAPI.EndUserLicenseAgreementResponse> {
-            Request(path: path, method: "POST", body: body, id: "endUserLicenseAgreements-create_instance")
+            Request(path: path, method: "POST", body: body, id: "endUserLicenseAgreements_createInstance")
         }
     }
 }

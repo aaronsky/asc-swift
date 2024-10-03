@@ -16,14 +16,14 @@ extension Resources.V1.AnalyticsReportRequests.WithID {
         /// Path: `/v1/analyticsReportRequests/{id}/reports`
         public let path: String
 
-        public func get(filterCategory: [FilterCategory]? = nil, filterName: [String]? = nil, fieldsAnalyticsReports: [FieldsAnalyticsReports]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.AnalyticsReportsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterCategory, filterName, fieldsAnalyticsReports, limit), id: "analyticsReportRequests-reports-get_to_many_related")
+        public func get(filterName: [String]? = nil, filterCategory: [FilterCategory]? = nil, fieldsAnalyticsReports: [FieldsAnalyticsReports]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.AnalyticsReportsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterName, filterCategory, fieldsAnalyticsReports, limit), id: "analyticsReportRequests_reports_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterCategory: [FilterCategory]?, _ filterName: [String]?, _ fieldsAnalyticsReports: [FieldsAnalyticsReports]?, _ limit: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterName: [String]?, _ filterCategory: [FilterCategory]?, _ fieldsAnalyticsReports: [FieldsAnalyticsReports]?, _ limit: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(filterCategory, forKey: "filter[category]")
             encoder.encode(filterName, forKey: "filter[name]")
+            encoder.encode(filterCategory, forKey: "filter[category]")
             encoder.encode(fieldsAnalyticsReports, forKey: "fields[analyticsReports]")
             encoder.encode(limit, forKey: "limit")
             return encoder.items
@@ -38,9 +38,9 @@ extension Resources.V1.AnalyticsReportRequests.WithID {
         }
 
         public enum FieldsAnalyticsReports: String, CaseIterable, Codable, Sendable {
+            case name
             case category
             case instances
-            case name
         }
     }
 }

@@ -16,48 +16,48 @@ extension Resources.V1.CiWorkflows.WithID {
         /// Path: `/v1/ciWorkflows/{id}/repository`
         public let path: String
 
-        public func get(fieldsScmGitReferences: [FieldsScmGitReferences]? = nil, fieldsScmProviders: [FieldsScmProviders]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.ScmRepositoryResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsScmGitReferences, fieldsScmProviders, fieldsScmRepositories, include), id: "ciWorkflows-repository-get_to_one_related")
+        public func get(fieldsScmRepositories: [FieldsScmRepositories]? = nil, fieldsScmProviders: [FieldsScmProviders]? = nil, fieldsScmGitReferences: [FieldsScmGitReferences]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.ScmRepositoryResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsScmRepositories, fieldsScmProviders, fieldsScmGitReferences, include), id: "ciWorkflows_repository_getToOneRelated")
         }
 
-        private func makeGetQuery(_ fieldsScmGitReferences: [FieldsScmGitReferences]?, _ fieldsScmProviders: [FieldsScmProviders]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsScmRepositories: [FieldsScmRepositories]?, _ fieldsScmProviders: [FieldsScmProviders]?, _ fieldsScmGitReferences: [FieldsScmGitReferences]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(fieldsScmGitReferences, forKey: "fields[scmGitReferences]")
-            encoder.encode(fieldsScmProviders, forKey: "fields[scmProviders]")
             encoder.encode(fieldsScmRepositories, forKey: "fields[scmRepositories]")
+            encoder.encode(fieldsScmProviders, forKey: "fields[scmProviders]")
+            encoder.encode(fieldsScmGitReferences, forKey: "fields[scmGitReferences]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
-        public enum FieldsScmGitReferences: String, CaseIterable, Codable, Sendable {
-            case canonicalName
-            case isDeleted
-            case kind
-            case name
-            case repository
+        public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
+            case lastAccessedDate
+            case httpCloneURL = "httpCloneUrl"
+            case sshCloneURL = "sshCloneUrl"
+            case ownerName
+            case repositoryName
+            case scmProvider
+            case defaultBranch
+            case gitReferences
+            case pullRequests
         }
 
         public enum FieldsScmProviders: String, CaseIterable, Codable, Sendable {
-            case repositories
             case scmProviderType
             case url
+            case repositories
         }
 
-        public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
-            case defaultBranch
-            case gitReferences
-            case httpCloneURL = "httpCloneUrl"
-            case lastAccessedDate
-            case ownerName
-            case pullRequests
-            case repositoryName
-            case scmProvider
-            case sshCloneURL = "sshCloneUrl"
+        public enum FieldsScmGitReferences: String, CaseIterable, Codable, Sendable {
+            case name
+            case canonicalName
+            case isDeleted
+            case kind
+            case repository
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case defaultBranch
             case scmProvider
+            case defaultBranch
         }
     }
 }

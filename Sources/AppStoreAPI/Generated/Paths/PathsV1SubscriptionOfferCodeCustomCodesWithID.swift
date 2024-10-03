@@ -17,7 +17,7 @@ extension Resources.V1.SubscriptionOfferCodeCustomCodes {
         public let path: String
 
         public func get(fieldsSubscriptionOfferCodeCustomCodes: [FieldsSubscriptionOfferCodeCustomCodes]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionOfferCodeCustomCodeResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionOfferCodeCustomCodes, include), id: "subscriptionOfferCodeCustomCodes-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionOfferCodeCustomCodes, include), id: "subscriptionOfferCodeCustomCodes_getInstance")
         }
 
         private func makeGetQuery(_ fieldsSubscriptionOfferCodeCustomCodes: [FieldsSubscriptionOfferCodeCustomCodes]?, _ include: [Include]?) -> [(String, String?)] {
@@ -28,11 +28,11 @@ extension Resources.V1.SubscriptionOfferCodeCustomCodes {
         }
 
         public enum FieldsSubscriptionOfferCodeCustomCodes: String, CaseIterable, Codable, Sendable {
-            case active
-            case createdDate
             case customCode
-            case expirationDate
             case numberOfCodes
+            case createdDate
+            case expirationDate
+            case active
             case offerCode
         }
 
@@ -41,7 +41,7 @@ extension Resources.V1.SubscriptionOfferCodeCustomCodes {
         }
 
         public func patch(_ body: AppStoreAPI.SubscriptionOfferCodeCustomCodeUpdateRequest) -> Request<AppStoreAPI.SubscriptionOfferCodeCustomCodeResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "subscriptionOfferCodeCustomCodes-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "subscriptionOfferCodeCustomCodes_updateInstance")
         }
     }
 }

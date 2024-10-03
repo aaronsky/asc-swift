@@ -17,7 +17,7 @@ extension Resources.V1.AppCategories {
         public let path: String
 
         public func get(fieldsAppCategories: [FieldsAppCategories]? = nil, include: [Include]? = nil, limitSubcategories: Int? = nil) -> Request<AppStoreAPI.AppCategoryResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppCategories, include, limitSubcategories), id: "appCategories-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppCategories, include, limitSubcategories), id: "appCategories_getInstance")
         }
 
         private func makeGetQuery(_ fieldsAppCategories: [FieldsAppCategories]?, _ include: [Include]?, _ limitSubcategories: Int?) -> [(String, String?)] {
@@ -29,14 +29,14 @@ extension Resources.V1.AppCategories {
         }
 
         public enum FieldsAppCategories: String, CaseIterable, Codable, Sendable {
-            case parent
             case platforms
             case subcategories
+            case parent
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case parent
             case subcategories
+            case parent
         }
     }
 }

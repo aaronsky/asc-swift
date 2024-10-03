@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.InAppPurchaseAppStoreReviewScreenshotCreateRequest) -> Request<AppStoreAPI.InAppPurchaseAppStoreReviewScreenshotResponse> {
-            Request(path: path, method: "POST", body: body, id: "inAppPurchaseAppStoreReviewScreenshots-create_instance")
+            Request(path: path, method: "POST", body: body, id: "inAppPurchaseAppStoreReviewScreenshots_createInstance")
         }
     }
 }

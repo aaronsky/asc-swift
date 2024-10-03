@@ -16,48 +16,48 @@ extension Resources.V1.AppStoreVersionExperimentTreatments {
         /// Path: `/v1/appStoreVersionExperimentTreatments/{id}`
         public let path: String
 
-        public func get(fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]? = nil, include: [Include]? = nil, fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]? = nil, limitAppStoreVersionExperimentTreatmentLocalizations: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionExperimentTreatmentResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionExperimentTreatments, include, fieldsAppStoreVersionExperimentTreatmentLocalizations, limitAppStoreVersionExperimentTreatmentLocalizations), id: "appStoreVersionExperimentTreatments-get_instance")
+        public func get(fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]? = nil, fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]? = nil, include: [Include]? = nil, limitAppStoreVersionExperimentTreatmentLocalizations: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionExperimentTreatmentResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionExperimentTreatments, fieldsAppStoreVersionExperimentTreatmentLocalizations, include, limitAppStoreVersionExperimentTreatmentLocalizations), id: "appStoreVersionExperimentTreatments_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]?, _ include: [Include]?, _ fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]?, _ limitAppStoreVersionExperimentTreatmentLocalizations: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]?, _ fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]?, _ include: [Include]?, _ limitAppStoreVersionExperimentTreatmentLocalizations: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppStoreVersionExperimentTreatments, forKey: "fields[appStoreVersionExperimentTreatments]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsAppStoreVersionExperimentTreatmentLocalizations, forKey: "fields[appStoreVersionExperimentTreatmentLocalizations]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitAppStoreVersionExperimentTreatmentLocalizations, forKey: "limit[appStoreVersionExperimentTreatmentLocalizations]")
             return encoder.items
         }
 
         public enum FieldsAppStoreVersionExperimentTreatments: String, CaseIterable, Codable, Sendable {
+            case name
             case appIcon
             case appIconName
-            case appStoreVersionExperiment
-            case appStoreVersionExperimentTreatmentLocalizations
-            case appStoreVersionExperimentV2
-            case name
             case promotedDate
+            case appStoreVersionExperiment
+            case appStoreVersionExperimentV2
+            case appStoreVersionExperimentTreatmentLocalizations
+        }
+
+        public enum FieldsAppStoreVersionExperimentTreatmentLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case appStoreVersionExperimentTreatment
+            case appScreenshotSets
+            case appPreviewSets
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case appStoreVersionExperiment
-            case appStoreVersionExperimentTreatmentLocalizations
             case appStoreVersionExperimentV2
-        }
-
-        public enum FieldsAppStoreVersionExperimentTreatmentLocalizations: String, CaseIterable, Codable, Sendable {
-            case appPreviewSets
-            case appScreenshotSets
-            case appStoreVersionExperimentTreatment
-            case locale
+            case appStoreVersionExperimentTreatmentLocalizations
         }
 
         public func patch(_ body: AppStoreAPI.AppStoreVersionExperimentTreatmentUpdateRequest) -> Request<AppStoreAPI.AppStoreVersionExperimentTreatmentResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "appStoreVersionExperimentTreatments-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appStoreVersionExperimentTreatments_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "appStoreVersionExperimentTreatments-delete_instance")
+            Request(path: path, method: "DELETE", id: "appStoreVersionExperimentTreatments_deleteInstance")
         }
     }
 }

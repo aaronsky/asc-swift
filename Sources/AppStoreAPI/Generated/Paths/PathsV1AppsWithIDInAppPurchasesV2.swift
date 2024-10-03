@@ -16,34 +16,30 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/inAppPurchasesV2`
         public let path: String
 
-        public func get(filterInAppPurchaseType: [FilterInAppPurchaseType]? = nil, filterName: [String]? = nil, filterProductID: [String]? = nil, filterState: [FilterState]? = nil, sort: [Sort]? = nil, fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]? = nil, fieldsInAppPurchaseAvailabilities: [FieldsInAppPurchaseAvailabilities]? = nil, fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsInAppPurchaseLocalizations: [FieldsInAppPurchaseLocalizations]? = nil, fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]? = nil, fieldsInAppPurchaseContents: [FieldsInAppPurchaseContents]? = nil, limit: Int? = nil, limitInAppPurchaseLocalizations: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.InAppPurchasesV2Response> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterInAppPurchaseType, filterName, filterProductID, filterState, sort, fieldsInAppPurchaseAppStoreReviewScreenshots, fieldsInAppPurchaseAvailabilities, fieldsPromotedPurchases, fieldsInAppPurchaseLocalizations, fieldsInAppPurchases, fieldsInAppPurchasePriceSchedules, fieldsInAppPurchaseContents, limit, limitInAppPurchaseLocalizations, include), id: "apps-inAppPurchasesV2-get_to_many_related")
+        public func get(filterProductID: [String]? = nil, filterName: [String]? = nil, filterState: [FilterState]? = nil, filterInAppPurchaseType: [FilterInAppPurchaseType]? = nil, sort: [Sort]? = nil, fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, fieldsInAppPurchaseLocalizations: [FieldsInAppPurchaseLocalizations]? = nil, fieldsInAppPurchaseContents: [FieldsInAppPurchaseContents]? = nil, fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]? = nil, fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]? = nil, fieldsInAppPurchaseAvailabilities: [FieldsInAppPurchaseAvailabilities]? = nil, fieldsInAppPurchaseImages: [FieldsInAppPurchaseImages]? = nil, limit: Int? = nil, include: [Include]? = nil, limitInAppPurchaseLocalizations: Int? = nil, limitImages: Int? = nil) -> Request<AppStoreAPI.InAppPurchasesV2Response> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterProductID, filterName, filterState, filterInAppPurchaseType, sort, fieldsInAppPurchases, fieldsInAppPurchaseLocalizations, fieldsInAppPurchaseContents, fieldsInAppPurchaseAppStoreReviewScreenshots, fieldsPromotedPurchases, fieldsInAppPurchasePriceSchedules, fieldsInAppPurchaseAvailabilities, fieldsInAppPurchaseImages, limit, include, limitInAppPurchaseLocalizations, limitImages), id: "apps_inAppPurchasesV2_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterInAppPurchaseType: [FilterInAppPurchaseType]?, _ filterName: [String]?, _ filterProductID: [String]?, _ filterState: [FilterState]?, _ sort: [Sort]?, _ fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]?, _ fieldsInAppPurchaseAvailabilities: [FieldsInAppPurchaseAvailabilities]?, _ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsInAppPurchaseLocalizations: [FieldsInAppPurchaseLocalizations]?, _ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]?, _ fieldsInAppPurchaseContents: [FieldsInAppPurchaseContents]?, _ limit: Int?, _ limitInAppPurchaseLocalizations: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterProductID: [String]?, _ filterName: [String]?, _ filterState: [FilterState]?, _ filterInAppPurchaseType: [FilterInAppPurchaseType]?, _ sort: [Sort]?, _ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ fieldsInAppPurchaseLocalizations: [FieldsInAppPurchaseLocalizations]?, _ fieldsInAppPurchaseContents: [FieldsInAppPurchaseContents]?, _ fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]?, _ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]?, _ fieldsInAppPurchaseAvailabilities: [FieldsInAppPurchaseAvailabilities]?, _ fieldsInAppPurchaseImages: [FieldsInAppPurchaseImages]?, _ limit: Int?, _ include: [Include]?, _ limitInAppPurchaseLocalizations: Int?, _ limitImages: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(filterInAppPurchaseType, forKey: "filter[inAppPurchaseType]")
-            encoder.encode(filterName, forKey: "filter[name]")
             encoder.encode(filterProductID, forKey: "filter[productId]")
+            encoder.encode(filterName, forKey: "filter[name]")
             encoder.encode(filterState, forKey: "filter[state]")
+            encoder.encode(filterInAppPurchaseType, forKey: "filter[inAppPurchaseType]")
             encoder.encode(sort, forKey: "sort")
-            encoder.encode(fieldsInAppPurchaseAppStoreReviewScreenshots, forKey: "fields[inAppPurchaseAppStoreReviewScreenshots]")
-            encoder.encode(fieldsInAppPurchaseAvailabilities, forKey: "fields[inAppPurchaseAvailabilities]")
-            encoder.encode(fieldsPromotedPurchases, forKey: "fields[promotedPurchases]")
-            encoder.encode(fieldsInAppPurchaseLocalizations, forKey: "fields[inAppPurchaseLocalizations]")
             encoder.encode(fieldsInAppPurchases, forKey: "fields[inAppPurchases]")
-            encoder.encode(fieldsInAppPurchasePriceSchedules, forKey: "fields[inAppPurchasePriceSchedules]")
+            encoder.encode(fieldsInAppPurchaseLocalizations, forKey: "fields[inAppPurchaseLocalizations]")
             encoder.encode(fieldsInAppPurchaseContents, forKey: "fields[inAppPurchaseContents]")
+            encoder.encode(fieldsInAppPurchaseAppStoreReviewScreenshots, forKey: "fields[inAppPurchaseAppStoreReviewScreenshots]")
+            encoder.encode(fieldsPromotedPurchases, forKey: "fields[promotedPurchases]")
+            encoder.encode(fieldsInAppPurchasePriceSchedules, forKey: "fields[inAppPurchasePriceSchedules]")
+            encoder.encode(fieldsInAppPurchaseAvailabilities, forKey: "fields[inAppPurchaseAvailabilities]")
+            encoder.encode(fieldsInAppPurchaseImages, forKey: "fields[inAppPurchaseImages]")
             encoder.encode(limit, forKey: "limit")
-            encoder.encode(limitInAppPurchaseLocalizations, forKey: "limit[inAppPurchaseLocalizations]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitInAppPurchaseLocalizations, forKey: "limit[inAppPurchaseLocalizations]")
+            encoder.encode(limitImages, forKey: "limit[images]")
             return encoder.items
-        }
-
-        public enum FilterInAppPurchaseType: String, CaseIterable, Codable, Sendable {
-            case consumable = "CONSUMABLE"
-            case nonConsumable = "NON_CONSUMABLE"
-            case nonRenewingSubscription = "NON_RENEWING_SUBSCRIPTION"
         }
 
         public enum FilterState: String, CaseIterable, Codable, Sendable {
@@ -61,89 +57,110 @@ extension Resources.V1.Apps.WithID {
             case rejected = "REJECTED"
         }
 
+        public enum FilterInAppPurchaseType: String, CaseIterable, Codable, Sendable {
+            case consumable = "CONSUMABLE"
+            case nonConsumable = "NON_CONSUMABLE"
+            case nonRenewingSubscription = "NON_RENEWING_SUBSCRIPTION"
+        }
+
         public enum Sort: String, CaseIterable, Codable, Sendable {
-            case inAppPurchaseType
-            case minusInAppPurchaseType = "-inAppPurchaseType"
             case name
             case minusName = "-name"
-        }
-
-        public enum FieldsInAppPurchaseAppStoreReviewScreenshots: String, CaseIterable, Codable, Sendable {
-            case assetDeliveryState
-            case assetToken
-            case assetType
-            case fileName
-            case fileSize
-            case imageAsset
-            case inAppPurchaseV2
-            case sourceFileChecksum
-            case uploadOperations
-            case uploaded
-        }
-
-        public enum FieldsInAppPurchaseAvailabilities: String, CaseIterable, Codable, Sendable {
-            case availableInNewTerritories
-            case availableTerritories
-            case inAppPurchase
-        }
-
-        public enum FieldsPromotedPurchases: String, CaseIterable, Codable, Sendable {
-            case app
-            case enabled
-            case inAppPurchaseV2
-            case promotionImages
-            case state
-            case subscription
-            case visibleForAllUsers
-        }
-
-        public enum FieldsInAppPurchaseLocalizations: String, CaseIterable, Codable, Sendable {
-            case description
-            case inAppPurchaseV2
-            case locale
-            case name
-            case state
+            case inAppPurchaseType
+            case minusInAppPurchaseType = "-inAppPurchaseType"
         }
 
         public enum FieldsInAppPurchases: String, CaseIterable, Codable, Sendable {
-            case app
-            case appStoreReviewScreenshot
-            case content
-            case contentHosting
-            case familySharable
-            case iapPriceSchedule
-            case inAppPurchaseAvailability
-            case inAppPurchaseLocalizations
-            case inAppPurchaseType
             case name
             case productID = "productId"
-            case promotedPurchase
-            case reviewNote
+            case inAppPurchaseType
             case state
+            case reviewNote
+            case familySharable
+            case contentHosting
+            case app
+            case inAppPurchaseLocalizations
+            case pricePoints
+            case content
+            case appStoreReviewScreenshot
+            case promotedPurchase
+            case iapPriceSchedule
+            case inAppPurchaseAvailability
+            case images
         }
 
-        public enum FieldsInAppPurchasePriceSchedules: String, CaseIterable, Codable, Sendable {
-            case automaticPrices
-            case baseTerritory
-            case inAppPurchase
-            case manualPrices
+        public enum FieldsInAppPurchaseLocalizations: String, CaseIterable, Codable, Sendable {
+            case name
+            case locale
+            case description
+            case state
+            case inAppPurchaseV2
         }
 
         public enum FieldsInAppPurchaseContents: String, CaseIterable, Codable, Sendable {
             case fileName
             case fileSize
-            case inAppPurchaseV2
-            case lastModifiedDate
             case url
+            case lastModifiedDate
+            case inAppPurchaseV2
+        }
+
+        public enum FieldsInAppPurchaseAppStoreReviewScreenshots: String, CaseIterable, Codable, Sendable {
+            case fileSize
+            case fileName
+            case sourceFileChecksum
+            case imageAsset
+            case assetToken
+            case assetType
+            case uploadOperations
+            case assetDeliveryState
+            case uploaded
+            case inAppPurchaseV2
+        }
+
+        public enum FieldsPromotedPurchases: String, CaseIterable, Codable, Sendable {
+            case visibleForAllUsers
+            case enabled
+            case state
+            case app
+            case inAppPurchaseV2
+            case subscription
+            case promotionImages
+        }
+
+        public enum FieldsInAppPurchasePriceSchedules: String, CaseIterable, Codable, Sendable {
+            case inAppPurchase
+            case baseTerritory
+            case manualPrices
+            case automaticPrices
+        }
+
+        public enum FieldsInAppPurchaseAvailabilities: String, CaseIterable, Codable, Sendable {
+            case availableInNewTerritories
+            case inAppPurchase
+            case availableTerritories
+        }
+
+        public enum FieldsInAppPurchaseImages: String, CaseIterable, Codable, Sendable {
+            case fileSize
+            case fileName
+            case sourceFileChecksum
+            case assetToken
+            case imageAsset
+            case uploadOperations
+            case uploaded
+            case state
+            case inAppPurchase
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case appStoreReviewScreenshot
+            case inAppPurchaseLocalizations
             case content
+            case appStoreReviewScreenshot
+            case promotedPurchase
             case iapPriceSchedule
             case inAppPurchaseAvailability
-            case inAppPurchaseLocalizations
-            case promotedPurchase
+            case images
         }
     }
 }

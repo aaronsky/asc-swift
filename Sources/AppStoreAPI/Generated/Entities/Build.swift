@@ -78,25 +78,12 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
         public var appStoreVersion: AppStoreVersion?
         public var icons: Icons?
         public var buildBundles: BuildBundles?
+        public var perfPowerMetrics: PerfPowerMetrics?
+        public var diagnosticSignatures: DiagnosticSignatures?
 
         public struct PreReleaseVersion: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -112,31 +99,16 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
                 self.links = links
                 self.data = data
             }
         }
 
         public struct IndividualTesters: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var meta: PagingInformation?
             public var data: [Datum]?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -152,7 +124,7 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
                 self.links = links
                 self.meta = meta
                 self.data = data
@@ -160,24 +132,9 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
         }
 
         public struct BetaGroups: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var meta: PagingInformation?
             public var data: [Datum]?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -193,7 +150,7 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
                 self.links = links
                 self.meta = meta
                 self.data = data
@@ -201,24 +158,9 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
         }
 
         public struct BetaBuildLocalizations: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var meta: PagingInformation?
             public var data: [Datum]?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -234,7 +176,7 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
                 self.links = links
                 self.meta = meta
                 self.data = data
@@ -242,23 +184,8 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
         }
 
         public struct AppEncryptionDeclaration: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -274,30 +201,15 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
                 self.links = links
                 self.data = data
             }
         }
 
         public struct BetaAppReviewSubmission: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -313,30 +225,15 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
                 self.links = links
                 self.data = data
             }
         }
 
         public struct App: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -352,30 +249,15 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
                 self.links = links
                 self.data = data
             }
         }
 
         public struct BuildBetaDetail: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -391,30 +273,15 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
                 self.links = links
                 self.data = data
             }
         }
 
         public struct AppStoreVersion: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -430,31 +297,16 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
                 self.links = links
                 self.data = data
             }
         }
 
         public struct Icons: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var meta: PagingInformation?
             public var data: [Datum]?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -470,7 +322,7 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
                 self.links = links
                 self.meta = meta
                 self.data = data
@@ -478,24 +330,8 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
         }
 
         public struct BuildBundles: Codable, Equatable, Sendable {
-            public var links: Links?
             public var meta: PagingInformation?
             public var data: [Datum]?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -511,14 +347,29 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
-                self.links = links
+            public init(meta: PagingInformation? = nil, data: [Datum]? = nil) {
                 self.meta = meta
                 self.data = data
             }
         }
 
-        public init(preReleaseVersion: PreReleaseVersion? = nil, individualTesters: IndividualTesters? = nil, betaGroups: BetaGroups? = nil, betaBuildLocalizations: BetaBuildLocalizations? = nil, appEncryptionDeclaration: AppEncryptionDeclaration? = nil, betaAppReviewSubmission: BetaAppReviewSubmission? = nil, app: App? = nil, buildBetaDetail: BuildBetaDetail? = nil, appStoreVersion: AppStoreVersion? = nil, icons: Icons? = nil, buildBundles: BuildBundles? = nil) {
+        public struct PerfPowerMetrics: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
+            }
+        }
+
+        public struct DiagnosticSignatures: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
+            }
+        }
+
+        public init(preReleaseVersion: PreReleaseVersion? = nil, individualTesters: IndividualTesters? = nil, betaGroups: BetaGroups? = nil, betaBuildLocalizations: BetaBuildLocalizations? = nil, appEncryptionDeclaration: AppEncryptionDeclaration? = nil, betaAppReviewSubmission: BetaAppReviewSubmission? = nil, app: App? = nil, buildBetaDetail: BuildBetaDetail? = nil, appStoreVersion: AppStoreVersion? = nil, icons: Icons? = nil, buildBundles: BuildBundles? = nil, perfPowerMetrics: PerfPowerMetrics? = nil, diagnosticSignatures: DiagnosticSignatures? = nil) {
             self.preReleaseVersion = preReleaseVersion
             self.individualTesters = individualTesters
             self.betaGroups = betaGroups
@@ -530,6 +381,8 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
             self.appStoreVersion = appStoreVersion
             self.icons = icons
             self.buildBundles = buildBundles
+            self.perfPowerMetrics = perfPowerMetrics
+            self.diagnosticSignatures = diagnosticSignatures
         }
     }
 

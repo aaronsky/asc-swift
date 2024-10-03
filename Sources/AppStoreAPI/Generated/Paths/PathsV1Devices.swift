@@ -16,16 +16,16 @@ extension Resources.V1 {
         /// Path: `/v1/devices`
         public let path: String
 
-        public func get(filterName: [String]? = nil, filterPlatform: [FilterPlatform]? = nil, filterStatus: [FilterStatus]? = nil, filterUdid: [String]? = nil, filterID: [String]? = nil, sort: [Sort]? = nil, fieldsDevices: [FieldsDevices]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.DevicesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterName, filterPlatform, filterStatus, filterUdid, filterID, sort, fieldsDevices, limit), id: "devices-get_collection")
+        public func get(filterName: [String]? = nil, filterPlatform: [FilterPlatform]? = nil, filterUdid: [String]? = nil, filterStatus: [FilterStatus]? = nil, filterID: [String]? = nil, sort: [Sort]? = nil, fieldsDevices: [FieldsDevices]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.DevicesResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterName, filterPlatform, filterUdid, filterStatus, filterID, sort, fieldsDevices, limit), id: "devices_getCollection")
         }
 
-        private func makeGetQuery(_ filterName: [String]?, _ filterPlatform: [FilterPlatform]?, _ filterStatus: [FilterStatus]?, _ filterUdid: [String]?, _ filterID: [String]?, _ sort: [Sort]?, _ fieldsDevices: [FieldsDevices]?, _ limit: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterName: [String]?, _ filterPlatform: [FilterPlatform]?, _ filterUdid: [String]?, _ filterStatus: [FilterStatus]?, _ filterID: [String]?, _ sort: [Sort]?, _ fieldsDevices: [FieldsDevices]?, _ limit: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterName, forKey: "filter[name]")
             encoder.encode(filterPlatform, forKey: "filter[platform]")
-            encoder.encode(filterStatus, forKey: "filter[status]")
             encoder.encode(filterUdid, forKey: "filter[udid]")
+            encoder.encode(filterStatus, forKey: "filter[status]")
             encoder.encode(filterID, forKey: "filter[id]")
             encoder.encode(sort, forKey: "sort")
             encoder.encode(fieldsDevices, forKey: "fields[devices]")
@@ -44,30 +44,30 @@ extension Resources.V1 {
         }
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
-            case id
-            case minusID = "-id"
             case name
             case minusName = "-name"
             case platform
             case minusPlatform = "-platform"
-            case status
-            case minusStatus = "-status"
             case udid
             case minusUdid = "-udid"
+            case status
+            case minusStatus = "-status"
+            case id
+            case minusID = "-id"
         }
 
         public enum FieldsDevices: String, CaseIterable, Codable, Sendable {
-            case addedDate
-            case deviceClass
-            case model
             case name
             case platform
-            case status
             case udid
+            case deviceClass
+            case status
+            case model
+            case addedDate
         }
 
         public func post(_ body: AppStoreAPI.DeviceCreateRequest) -> Request<AppStoreAPI.DeviceResponse> {
-            Request(path: path, method: "POST", body: body, id: "devices-create_instance")
+            Request(path: path, method: "POST", body: body, id: "devices_createInstance")
         }
     }
 }

@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(fieldsMarketplaceDomains: [FieldsMarketplaceDomains]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.MarketplaceDomainsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsMarketplaceDomains, limit), id: "marketplaceDomains-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsMarketplaceDomains, limit), id: "marketplaceDomains_getCollection")
         }
 
         private func makeGetQuery(_ fieldsMarketplaceDomains: [FieldsMarketplaceDomains]?, _ limit: Int?) -> [(String, String?)] {
@@ -28,13 +28,13 @@ extension Resources.V1 {
         }
 
         public enum FieldsMarketplaceDomains: String, CaseIterable, Codable, Sendable {
-            case createdDate
             case domain
             case referenceName
+            case createdDate
         }
 
         public func post(_ body: AppStoreAPI.MarketplaceDomainCreateRequest) -> Request<AppStoreAPI.MarketplaceDomainResponse> {
-            Request(path: path, method: "POST", body: body, id: "marketplaceDomains-create_instance")
+            Request(path: path, method: "POST", body: body, id: "marketplaceDomains_createInstance")
         }
     }
 }

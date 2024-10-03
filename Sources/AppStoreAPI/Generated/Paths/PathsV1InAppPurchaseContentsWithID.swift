@@ -17,7 +17,7 @@ extension Resources.V1.InAppPurchaseContents {
         public let path: String
 
         public func get(fieldsInAppPurchaseContents: [FieldsInAppPurchaseContents]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.InAppPurchaseContentResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchaseContents, include), id: "inAppPurchaseContents-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchaseContents, include), id: "inAppPurchaseContents_getInstance")
         }
 
         private func makeGetQuery(_ fieldsInAppPurchaseContents: [FieldsInAppPurchaseContents]?, _ include: [Include]?) -> [(String, String?)] {
@@ -30,9 +30,9 @@ extension Resources.V1.InAppPurchaseContents {
         public enum FieldsInAppPurchaseContents: String, CaseIterable, Codable, Sendable {
             case fileName
             case fileSize
-            case inAppPurchaseV2
-            case lastModifiedDate
             case url
+            case lastModifiedDate
+            case inAppPurchaseV2
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

@@ -17,7 +17,7 @@ extension Resources.V1.GameCenterMatchmakingRuleSets.WithID {
         public let path: String
 
         public func get(fieldsGameCenterMatchmakingQueues: [FieldsGameCenterMatchmakingQueues]? = nil, fieldsGameCenterMatchmakingRuleSets: [FieldsGameCenterMatchmakingRuleSets]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterMatchmakingQueuesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterMatchmakingQueues, fieldsGameCenterMatchmakingRuleSets, limit, include), id: "gameCenterMatchmakingRuleSets-matchmakingQueues-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterMatchmakingQueues, fieldsGameCenterMatchmakingRuleSets, limit, include), id: "gameCenterMatchmakingRuleSets_matchmakingQueues_getToManyRelated")
         }
 
         private func makeGetQuery(_ fieldsGameCenterMatchmakingQueues: [FieldsGameCenterMatchmakingQueues]?, _ fieldsGameCenterMatchmakingRuleSets: [FieldsGameCenterMatchmakingRuleSets]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
@@ -30,25 +30,25 @@ extension Resources.V1.GameCenterMatchmakingRuleSets.WithID {
         }
 
         public enum FieldsGameCenterMatchmakingQueues: String, CaseIterable, Codable, Sendable {
-            case classicMatchmakingBundleIDs = "classicMatchmakingBundleIds"
-            case experimentRuleSet
             case referenceName
+            case classicMatchmakingBundleIDs = "classicMatchmakingBundleIds"
             case ruleSet
+            case experimentRuleSet
         }
 
         public enum FieldsGameCenterMatchmakingRuleSets: String, CaseIterable, Codable, Sendable {
-            case matchmakingQueues
-            case maxPlayers
-            case minPlayers
             case referenceName
             case ruleLanguageVersion
-            case rules
+            case minPlayers
+            case maxPlayers
             case teams
+            case rules
+            case matchmakingQueues
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case experimentRuleSet
             case ruleSet
+            case experimentRuleSet
         }
     }
 }

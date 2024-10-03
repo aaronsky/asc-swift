@@ -73,32 +73,18 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
         public var appStoreVersionLocalizations: AppStoreVersionLocalizations?
         public var build: Build?
         public var appStoreVersionPhasedRelease: AppStoreVersionPhasedRelease?
+        public var gameCenterAppVersion: GameCenterAppVersion?
         public var routingAppCoverage: RoutingAppCoverage?
         public var appStoreReviewDetail: AppStoreReviewDetail?
         public var appStoreVersionSubmission: AppStoreVersionSubmission?
         public var appClipDefaultExperience: AppClipDefaultExperience?
         public var appStoreVersionExperiments: AppStoreVersionExperiments?
         public var appStoreVersionExperimentsV2: AppStoreVersionExperimentsV2?
+        public var customerReviews: CustomerReviews?
         public var alternativeDistributionPackage: AlternativeDistributionPackage?
 
         public struct App: Codable, Equatable, Sendable {
-            public var links: Links?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -114,30 +100,14 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
-                self.links = links
+            public init(data: Data? = nil) {
                 self.data = data
             }
         }
 
         public struct AgeRatingDeclaration: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -153,31 +123,16 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
                 self.links = links
                 self.data = data
             }
         }
 
         public struct AppStoreVersionLocalizations: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var meta: PagingInformation?
             public var data: [Datum]?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -193,7 +148,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
                 self.links = links
                 self.meta = meta
                 self.data = data
@@ -201,23 +156,8 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
         }
 
         public struct Build: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -233,30 +173,15 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
                 self.links = links
                 self.data = data
             }
         }
 
         public struct AppStoreVersionPhasedRelease: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -272,30 +197,39 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
+                self.links = links
+                self.data = data
+            }
+        }
+
+        public struct GameCenterAppVersion: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case gameCenterAppVersions
+                }
+
+                public init(type: `Type` = .gameCenterAppVersions, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
                 self.links = links
                 self.data = data
             }
         }
 
         public struct RoutingAppCoverage: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -311,30 +245,15 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
                 self.links = links
                 self.data = data
             }
         }
 
         public struct AppStoreReviewDetail: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -350,30 +269,15 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
                 self.links = links
                 self.data = data
             }
         }
 
         public struct AppStoreVersionSubmission: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -389,30 +293,15 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
                 self.links = links
                 self.data = data
             }
         }
 
         public struct AppClipDefaultExperience: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -428,31 +317,16 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
                 self.links = links
                 self.data = data
             }
         }
 
         public struct AppStoreVersionExperiments: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var meta: PagingInformation?
             public var data: [Datum]?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -468,7 +342,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
                 self.links = links
                 self.meta = meta
                 self.data = data
@@ -476,24 +350,9 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
         }
 
         public struct AppStoreVersionExperimentsV2: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var meta: PagingInformation?
             public var data: [Datum]?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -509,31 +368,24 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
                 self.links = links
                 self.meta = meta
                 self.data = data
             }
         }
 
-        public struct AlternativeDistributionPackage: Codable, Equatable, Sendable {
-            public var links: Links?
-            public var data: Data?
+        public struct CustomerReviews: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
 
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
             }
+        }
+
+        public struct AlternativeDistributionPackage: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var data: Data?
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -549,24 +401,26 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
                 self.links = links
                 self.data = data
             }
         }
 
-        public init(app: App? = nil, ageRatingDeclaration: AgeRatingDeclaration? = nil, appStoreVersionLocalizations: AppStoreVersionLocalizations? = nil, build: Build? = nil, appStoreVersionPhasedRelease: AppStoreVersionPhasedRelease? = nil, routingAppCoverage: RoutingAppCoverage? = nil, appStoreReviewDetail: AppStoreReviewDetail? = nil, appStoreVersionSubmission: AppStoreVersionSubmission? = nil, appClipDefaultExperience: AppClipDefaultExperience? = nil, appStoreVersionExperiments: AppStoreVersionExperiments? = nil, appStoreVersionExperimentsV2: AppStoreVersionExperimentsV2? = nil, alternativeDistributionPackage: AlternativeDistributionPackage? = nil) {
+        public init(app: App? = nil, ageRatingDeclaration: AgeRatingDeclaration? = nil, appStoreVersionLocalizations: AppStoreVersionLocalizations? = nil, build: Build? = nil, appStoreVersionPhasedRelease: AppStoreVersionPhasedRelease? = nil, gameCenterAppVersion: GameCenterAppVersion? = nil, routingAppCoverage: RoutingAppCoverage? = nil, appStoreReviewDetail: AppStoreReviewDetail? = nil, appStoreVersionSubmission: AppStoreVersionSubmission? = nil, appClipDefaultExperience: AppClipDefaultExperience? = nil, appStoreVersionExperiments: AppStoreVersionExperiments? = nil, appStoreVersionExperimentsV2: AppStoreVersionExperimentsV2? = nil, customerReviews: CustomerReviews? = nil, alternativeDistributionPackage: AlternativeDistributionPackage? = nil) {
             self.app = app
             self.ageRatingDeclaration = ageRatingDeclaration
             self.appStoreVersionLocalizations = appStoreVersionLocalizations
             self.build = build
             self.appStoreVersionPhasedRelease = appStoreVersionPhasedRelease
+            self.gameCenterAppVersion = gameCenterAppVersion
             self.routingAppCoverage = routingAppCoverage
             self.appStoreReviewDetail = appStoreReviewDetail
             self.appStoreVersionSubmission = appStoreVersionSubmission
             self.appClipDefaultExperience = appClipDefaultExperience
             self.appStoreVersionExperiments = appStoreVersionExperiments
             self.appStoreVersionExperimentsV2 = appStoreVersionExperimentsV2
+            self.customerReviews = customerReviews
             self.alternativeDistributionPackage = alternativeDistributionPackage
         }
     }

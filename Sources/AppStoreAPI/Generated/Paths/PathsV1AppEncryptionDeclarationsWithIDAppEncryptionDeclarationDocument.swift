@@ -17,7 +17,7 @@ extension Resources.V1.AppEncryptionDeclarations.WithID {
         public let path: String
 
         public func get(fieldsAppEncryptionDeclarationDocuments: [FieldsAppEncryptionDeclarationDocuments]? = nil) -> Request<AppStoreAPI.AppEncryptionDeclarationDocumentResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEncryptionDeclarationDocuments), id: "appEncryptionDeclarations-appEncryptionDeclarationDocument-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEncryptionDeclarationDocuments), id: "appEncryptionDeclarations_appEncryptionDeclarationDocument_getToOneRelated")
         }
 
         private func makeGetQuery(_ fieldsAppEncryptionDeclarationDocuments: [FieldsAppEncryptionDeclarationDocuments]?) -> [(String, String?)] {
@@ -27,15 +27,15 @@ extension Resources.V1.AppEncryptionDeclarations.WithID {
         }
 
         public enum FieldsAppEncryptionDeclarationDocuments: String, CaseIterable, Codable, Sendable {
-            case appEncryptionDeclaration
-            case assetDeliveryState
+            case fileSize
+            case fileName
             case assetToken
             case downloadURL = "downloadUrl"
-            case fileName
-            case fileSize
             case sourceFileChecksum
             case uploadOperations
+            case assetDeliveryState
             case uploaded
+            case appEncryptionDeclaration
         }
     }
 }

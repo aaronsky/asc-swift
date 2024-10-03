@@ -16,14 +16,14 @@ extension Resources.V1.AppPriceSchedules.WithID {
         /// Path: `/v1/appPriceSchedules/{id}/manualPrices`
         public let path: String
 
-        public func get(filterEndDate: [String]? = nil, filterStartDate: [String]? = nil, filterTerritory: [String]? = nil, fieldsAppPrices: [FieldsAppPrices]? = nil, fieldsAppPricePoints: [FieldsAppPricePoints]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppPricesV2Response> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterEndDate, filterStartDate, filterTerritory, fieldsAppPrices, fieldsAppPricePoints, fieldsTerritories, limit, include), id: "appPriceSchedules-manualPrices-get_to_many_related")
+        public func get(filterStartDate: [String]? = nil, filterEndDate: [String]? = nil, filterTerritory: [String]? = nil, fieldsAppPrices: [FieldsAppPrices]? = nil, fieldsAppPricePoints: [FieldsAppPricePoints]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppPricesV2Response> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterStartDate, filterEndDate, filterTerritory, fieldsAppPrices, fieldsAppPricePoints, fieldsTerritories, limit, include), id: "appPriceSchedules_manualPrices_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterEndDate: [String]?, _ filterStartDate: [String]?, _ filterTerritory: [String]?, _ fieldsAppPrices: [FieldsAppPrices]?, _ fieldsAppPricePoints: [FieldsAppPricePoints]?, _ fieldsTerritories: [FieldsTerritories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterStartDate: [String]?, _ filterEndDate: [String]?, _ filterTerritory: [String]?, _ fieldsAppPrices: [FieldsAppPrices]?, _ fieldsAppPricePoints: [FieldsAppPricePoints]?, _ fieldsTerritories: [FieldsTerritories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(filterEndDate, forKey: "filter[endDate]")
             encoder.encode(filterStartDate, forKey: "filter[startDate]")
+            encoder.encode(filterEndDate, forKey: "filter[endDate]")
             encoder.encode(filterTerritory, forKey: "filter[territory]")
             encoder.encode(fieldsAppPrices, forKey: "fields[appPrices]")
             encoder.encode(fieldsAppPricePoints, forKey: "fields[appPricePoints]")
@@ -34,18 +34,18 @@ extension Resources.V1.AppPriceSchedules.WithID {
         }
 
         public enum FieldsAppPrices: String, CaseIterable, Codable, Sendable {
-            case appPricePoint
-            case endDate
             case manual
             case startDate
+            case endDate
+            case appPricePoint
             case territory
         }
 
         public enum FieldsAppPricePoints: String, CaseIterable, Codable, Sendable {
-            case app
             case customerPrice
-            case equalizations
             case proceeds
+            case app
+            case equalizations
             case territory
         }
 

@@ -16,15 +16,15 @@ extension Resources.V1.BetaTesters.WithID.Metrics {
         /// Path: `/v1/betaTesters/{id}/metrics/betaTesterUsages`
         public let path: String
 
-        public func get(limit: Int? = nil, filterApps: String, period: Period? = nil) -> Request<AppStoreAPI.BetaTesterUsagesV1MetricResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(limit, filterApps, period), id: "betaTesters-betaTesterUsages-get_metrics")
+        public func get(period: Period? = nil, filterApps: String, limit: Int? = nil) -> Request<AppStoreAPI.BetaTesterUsagesV1MetricResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(period, filterApps, limit), id: "betaTesters_betaTesterUsages_getMetrics")
         }
 
-        private func makeGetQuery(_ limit: Int?, _ filterApps: String, _ period: Period?) -> [(String, String?)] {
+        private func makeGetQuery(_ period: Period?, _ filterApps: String, _ limit: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(limit, forKey: "limit")
-            encoder.encode(filterApps, forKey: "filter[apps]")
             encoder.encode(period, forKey: "period")
+            encoder.encode(filterApps, forKey: "filter[apps]")
+            encoder.encode(limit, forKey: "limit")
             return encoder.items
         }
 

@@ -16,18 +16,18 @@ extension Resources.V1.GameCenterMatchmakingRules.WithID.Metrics {
         /// Path: `/v1/gameCenterMatchmakingRules/{id}/metrics/matchmakingBooleanRuleResults`
         public let path: String
 
-        public func get(limit: Int? = nil, granularity: Granularity, groupBy: [GroupBy]? = nil, filterResult: String? = nil, filterGameCenterMatchmakingQueue: String? = nil, sort: [Sort]? = nil) -> Request<AppStoreAPI.GameCenterMatchmakingBooleanRuleResultsV1MetricResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(limit, granularity, groupBy, filterResult, filterGameCenterMatchmakingQueue, sort), id: "gameCenterMatchmakingRules-matchmakingBooleanRuleResults-get_metrics")
+        public func get(granularity: Granularity, groupBy: [GroupBy]? = nil, filterResult: String? = nil, filterGameCenterMatchmakingQueue: String? = nil, sort: [Sort]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.GameCenterMatchmakingBooleanRuleResultsV1MetricResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(granularity, groupBy, filterResult, filterGameCenterMatchmakingQueue, sort, limit), id: "gameCenterMatchmakingRules_matchmakingBooleanRuleResults_getMetrics")
         }
 
-        private func makeGetQuery(_ limit: Int?, _ granularity: Granularity, _ groupBy: [GroupBy]?, _ filterResult: String?, _ filterGameCenterMatchmakingQueue: String?, _ sort: [Sort]?) -> [(String, String?)] {
+        private func makeGetQuery(_ granularity: Granularity, _ groupBy: [GroupBy]?, _ filterResult: String?, _ filterGameCenterMatchmakingQueue: String?, _ sort: [Sort]?, _ limit: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(limit, forKey: "limit")
             encoder.encode(granularity, forKey: "granularity")
             encoder.encode(groupBy, forKey: "groupBy")
             encoder.encode(filterResult, forKey: "filter[result]")
             encoder.encode(filterGameCenterMatchmakingQueue, forKey: "filter[gameCenterMatchmakingQueue]")
             encoder.encode(sort, forKey: "sort")
+            encoder.encode(limit, forKey: "limit")
             return encoder.items
         }
 
@@ -38,8 +38,8 @@ extension Resources.V1.GameCenterMatchmakingRules.WithID.Metrics {
         }
 
         public enum GroupBy: String, CaseIterable, Codable, Sendable {
-            case gameCenterMatchmakingQueue
             case result
+            case gameCenterMatchmakingQueue
         }
 
         public enum Sort: String, CaseIterable, Codable, Sendable {

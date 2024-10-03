@@ -22,7 +22,7 @@ public struct AppEvent: Codable, Equatable, Identifiable, Sendable {
         public var badge: Badge?
         public var eventState: EventState?
         public var deepLink: URL?
-        public var purchaseRequirement: PurchaseRequirement?
+        public var purchaseRequirement: String?
         public var primaryLocale: String?
         public var priority: Priority?
         public var purpose: Purpose?
@@ -50,14 +50,6 @@ public struct AppEvent: Codable, Equatable, Identifiable, Sendable {
             case published = "PUBLISHED"
             case past = "PAST"
             case archived = "ARCHIVED"
-        }
-
-        public enum PurchaseRequirement: String, CaseIterable, Codable, Sendable {
-            case noCostAssociated = "NO_COST_ASSOCIATED"
-            case inAppPurchase = "IN_APP_PURCHASE"
-            case subscription = "SUBSCRIPTION"
-            case inAppPurchaseAndSubscription = "IN_APP_PURCHASE_AND_SUBSCRIPTION"
-            case inAppPurchaseOrSubscription = "IN_APP_PURCHASE_OR_SUBSCRIPTION"
         }
 
         public enum Priority: String, CaseIterable, Codable, Sendable {
@@ -100,7 +92,7 @@ public struct AppEvent: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(referenceName: String? = nil, badge: Badge? = nil, eventState: EventState? = nil, deepLink: URL? = nil, purchaseRequirement: PurchaseRequirement? = nil, primaryLocale: String? = nil, priority: Priority? = nil, purpose: Purpose? = nil, territorySchedules: [TerritorySchedule]? = nil, archivedTerritorySchedules: [ArchivedTerritorySchedule]? = nil) {
+        public init(referenceName: String? = nil, badge: Badge? = nil, eventState: EventState? = nil, deepLink: URL? = nil, purchaseRequirement: String? = nil, primaryLocale: String? = nil, priority: Priority? = nil, purpose: Purpose? = nil, territorySchedules: [TerritorySchedule]? = nil, archivedTerritorySchedules: [ArchivedTerritorySchedule]? = nil) {
             self.referenceName = referenceName
             self.badge = badge
             self.eventState = eventState
@@ -118,24 +110,9 @@ public struct AppEvent: Codable, Equatable, Identifiable, Sendable {
         public var localizations: Localizations?
 
         public struct Localizations: Codable, Equatable, Sendable {
-            public var links: Links?
+            public var links: RelationshipLinks?
             public var meta: PagingInformation?
             public var data: [Datum]?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Datum: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -151,7 +128,7 @@ public struct AppEvent: Codable, Equatable, Identifiable, Sendable {
                 }
             }
 
-            public init(links: Links? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
                 self.links = links
                 self.meta = meta
                 self.data = data

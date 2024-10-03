@@ -16,58 +16,58 @@ extension Resources.V1.BuildBetaDetails {
         /// Path: `/v1/buildBetaDetails/{id}`
         public let path: String
 
-        public func get(fieldsBuildBetaDetails: [FieldsBuildBetaDetails]? = nil, include: [Include]? = nil, fieldsBuilds: [FieldsBuilds]? = nil) -> Request<AppStoreAPI.BuildBetaDetailResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBuildBetaDetails, include, fieldsBuilds), id: "buildBetaDetails-get_instance")
+        public func get(fieldsBuildBetaDetails: [FieldsBuildBetaDetails]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.BuildBetaDetailResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBuildBetaDetails, fieldsBuilds, include), id: "buildBetaDetails_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsBuildBetaDetails: [FieldsBuildBetaDetails]?, _ include: [Include]?, _ fieldsBuilds: [FieldsBuilds]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsBuildBetaDetails: [FieldsBuildBetaDetails]?, _ fieldsBuilds: [FieldsBuilds]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsBuildBetaDetails, forKey: "fields[buildBetaDetails]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsBuilds, forKey: "fields[builds]")
+            encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
         public enum FieldsBuildBetaDetails: String, CaseIterable, Codable, Sendable {
             case autoNotifyEnabled
-            case build
-            case externalBuildState
             case internalBuildState
+            case externalBuildState
+            case build
+        }
+
+        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
+            case version
+            case uploadedDate
+            case expirationDate
+            case expired
+            case minOsVersion
+            case lsMinimumSystemVersion
+            case computedMinMacOsVersion
+            case iconAssetToken
+            case processingState
+            case buildAudienceType
+            case usesNonExemptEncryption
+            case preReleaseVersion
+            case individualTesters
+            case betaGroups
+            case betaBuildLocalizations
+            case appEncryptionDeclaration
+            case betaAppReviewSubmission
+            case app
+            case buildBetaDetail
+            case appStoreVersion
+            case icons
+            case buildBundles
+            case perfPowerMetrics
+            case diagnosticSignatures
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case build
         }
 
-        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
-            case app
-            case appEncryptionDeclaration
-            case appStoreVersion
-            case betaAppReviewSubmission
-            case betaBuildLocalizations
-            case betaGroups
-            case buildAudienceType
-            case buildBetaDetail
-            case buildBundles
-            case computedMinMacOsVersion
-            case diagnosticSignatures
-            case expirationDate
-            case expired
-            case iconAssetToken
-            case icons
-            case individualTesters
-            case lsMinimumSystemVersion
-            case minOsVersion
-            case perfPowerMetrics
-            case preReleaseVersion
-            case processingState
-            case uploadedDate
-            case usesNonExemptEncryption
-            case version
-        }
-
         public func patch(_ body: AppStoreAPI.BuildBetaDetailUpdateRequest) -> Request<AppStoreAPI.BuildBetaDetailResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "buildBetaDetails-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "buildBetaDetails_updateInstance")
         }
     }
 }

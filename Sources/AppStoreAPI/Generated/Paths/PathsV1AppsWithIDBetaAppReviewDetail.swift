@@ -17,7 +17,7 @@ extension Resources.V1.Apps.WithID {
         public let path: String
 
         public func get(fieldsBetaAppReviewDetails: [FieldsBetaAppReviewDetails]? = nil) -> Request<AppStoreAPI.BetaAppReviewDetailWithoutIncludesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaAppReviewDetails), id: "apps-betaAppReviewDetail-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaAppReviewDetails), id: "apps_betaAppReviewDetail_getToOneRelated")
         }
 
         private func makeGetQuery(_ fieldsBetaAppReviewDetails: [FieldsBetaAppReviewDetails]?) -> [(String, String?)] {
@@ -27,15 +27,15 @@ extension Resources.V1.Apps.WithID {
         }
 
         public enum FieldsBetaAppReviewDetails: String, CaseIterable, Codable, Sendable {
-            case app
-            case contactEmail
             case contactFirstName
             case contactLastName
             case contactPhone
+            case contactEmail
             case demoAccountName
             case demoAccountPassword
             case demoAccountRequired
             case notes
+            case app
         }
     }
 }

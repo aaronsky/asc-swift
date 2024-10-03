@@ -45,6 +45,7 @@ public struct AppsBetaTesterUsagesV1MetricResponse: Codable, Equatable, Sendable
 
             public struct BetaTesters: Codable, Equatable, Sendable {
                 public var links: Links?
+                public var data: String?
 
                 public struct Links: Codable, Equatable, Sendable {
                     public var groupBy: URL?
@@ -56,8 +57,9 @@ public struct AppsBetaTesterUsagesV1MetricResponse: Codable, Equatable, Sendable
                     }
                 }
 
-                public init(links: Links? = nil) {
+                public init(links: Links? = nil, data: String? = nil) {
                     self.links = links
+                    self.data = data
                 }
             }
 

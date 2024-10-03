@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.BuildBetaNotificationCreateRequest) -> Request<AppStoreAPI.BuildBetaNotificationResponse> {
-            Request(path: path, method: "POST", body: body, id: "buildBetaNotifications-create_instance")
+            Request(path: path, method: "POST", body: body, id: "buildBetaNotifications_createInstance")
         }
     }
 }

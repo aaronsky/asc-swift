@@ -16,37 +16,37 @@ extension Resources.V1.CustomerReviews {
         /// Path: `/v1/customerReviews/{id}`
         public let path: String
 
-        public func get(fieldsCustomerReviews: [FieldsCustomerReviews]? = nil, include: [Include]? = nil, fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]? = nil) -> Request<AppStoreAPI.CustomerReviewResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCustomerReviews, include, fieldsCustomerReviewResponses), id: "customerReviews-get_instance")
+        public func get(fieldsCustomerReviews: [FieldsCustomerReviews]? = nil, fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CustomerReviewResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCustomerReviews, fieldsCustomerReviewResponses, include), id: "customerReviews_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsCustomerReviews: [FieldsCustomerReviews]?, _ include: [Include]?, _ fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsCustomerReviews: [FieldsCustomerReviews]?, _ fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsCustomerReviews, forKey: "fields[customerReviews]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsCustomerReviewResponses, forKey: "fields[customerReviewResponses]")
+            encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
         public enum FieldsCustomerReviews: String, CaseIterable, Codable, Sendable {
-            case body
-            case createdDate
             case rating
-            case response
-            case reviewerNickname
-            case territory
             case title
-        }
-
-        public enum Include: String, CaseIterable, Codable, Sendable {
+            case body
+            case reviewerNickname
+            case createdDate
+            case territory
             case response
         }
 
         public enum FieldsCustomerReviewResponses: String, CaseIterable, Codable, Sendable {
-            case lastModifiedDate
             case responseBody
-            case review
+            case lastModifiedDate
             case state
+            case review
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case response
         }
     }
 }

@@ -22,7 +22,7 @@ public struct AppEventCreateRequest: Codable, Equatable, Sendable {
             public var referenceName: String
             public var badge: Badge?
             public var deepLink: URL?
-            public var purchaseRequirement: PurchaseRequirement?
+            public var purchaseRequirement: String?
             public var primaryLocale: String?
             public var priority: Priority?
             public var purpose: Purpose?
@@ -36,14 +36,6 @@ public struct AppEventCreateRequest: Codable, Equatable, Sendable {
                 case newSeason = "NEW_SEASON"
                 case majorUpdate = "MAJOR_UPDATE"
                 case specialEvent = "SPECIAL_EVENT"
-            }
-
-            public enum PurchaseRequirement: String, CaseIterable, Codable, Sendable {
-                case noCostAssociated = "NO_COST_ASSOCIATED"
-                case inAppPurchase = "IN_APP_PURCHASE"
-                case subscription = "SUBSCRIPTION"
-                case inAppPurchaseAndSubscription = "IN_APP_PURCHASE_AND_SUBSCRIPTION"
-                case inAppPurchaseOrSubscription = "IN_APP_PURCHASE_OR_SUBSCRIPTION"
             }
 
             public enum Priority: String, CaseIterable, Codable, Sendable {
@@ -72,7 +64,7 @@ public struct AppEventCreateRequest: Codable, Equatable, Sendable {
                 }
             }
 
-            public init(referenceName: String, badge: Badge? = nil, deepLink: URL? = nil, purchaseRequirement: PurchaseRequirement? = nil, primaryLocale: String? = nil, priority: Priority? = nil, purpose: Purpose? = nil, territorySchedules: [TerritorySchedule]? = nil) {
+            public init(referenceName: String, badge: Badge? = nil, deepLink: URL? = nil, purchaseRequirement: String? = nil, primaryLocale: String? = nil, priority: Priority? = nil, purpose: Purpose? = nil, territorySchedules: [TerritorySchedule]? = nil) {
                 self.referenceName = referenceName
                 self.badge = badge
                 self.deepLink = deepLink

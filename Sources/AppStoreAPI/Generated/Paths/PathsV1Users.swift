@@ -16,20 +16,20 @@ extension Resources.V1 {
         /// Path: `/v1/users`
         public let path: String
 
-        public func get(filterRoles: [FilterRoles]? = nil, filterUsername: [String]? = nil, filterVisibleApps: [String]? = nil, sort: [Sort]? = nil, fieldsUsers: [FieldsUsers]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsApps: [FieldsApps]? = nil, limitVisibleApps: Int? = nil) -> Request<AppStoreAPI.UsersResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterRoles, filterUsername, filterVisibleApps, sort, fieldsUsers, limit, include, fieldsApps, limitVisibleApps), id: "users-get_collection")
+        public func get(filterUsername: [String]? = nil, filterRoles: [FilterRoles]? = nil, filterVisibleApps: [String]? = nil, sort: [Sort]? = nil, fieldsUsers: [FieldsUsers]? = nil, fieldsApps: [FieldsApps]? = nil, limit: Int? = nil, include: [Include]? = nil, limitVisibleApps: Int? = nil) -> Request<AppStoreAPI.UsersResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterUsername, filterRoles, filterVisibleApps, sort, fieldsUsers, fieldsApps, limit, include, limitVisibleApps), id: "users_getCollection")
         }
 
-        private func makeGetQuery(_ filterRoles: [FilterRoles]?, _ filterUsername: [String]?, _ filterVisibleApps: [String]?, _ sort: [Sort]?, _ fieldsUsers: [FieldsUsers]?, _ limit: Int?, _ include: [Include]?, _ fieldsApps: [FieldsApps]?, _ limitVisibleApps: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterUsername: [String]?, _ filterRoles: [FilterRoles]?, _ filterVisibleApps: [String]?, _ sort: [Sort]?, _ fieldsUsers: [FieldsUsers]?, _ fieldsApps: [FieldsApps]?, _ limit: Int?, _ include: [Include]?, _ limitVisibleApps: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(filterRoles, forKey: "filter[roles]")
             encoder.encode(filterUsername, forKey: "filter[username]")
+            encoder.encode(filterRoles, forKey: "filter[roles]")
             encoder.encode(filterVisibleApps, forKey: "filter[visibleApps]")
             encoder.encode(sort, forKey: "sort")
             encoder.encode(fieldsUsers, forKey: "fields[users]")
+            encoder.encode(fieldsApps, forKey: "fields[apps]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
-            encoder.encode(fieldsApps, forKey: "fields[apps]")
             encoder.encode(limitVisibleApps, forKey: "limit[visibleApps]")
             return encoder.items
         }
@@ -51,70 +51,72 @@ extension Resources.V1 {
         }
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
-            case lastName
-            case minusLastName = "-lastName"
             case username
             case minusUsername = "-username"
+            case lastName
+            case minusLastName = "-lastName"
         }
 
         public enum FieldsUsers: String, CaseIterable, Codable, Sendable {
-            case allAppsVisible
+            case username
             case firstName
             case lastName
-            case provisioningAllowed
             case roles
-            case username
-            case visibleApps
-        }
-
-        public enum Include: String, CaseIterable, Codable, Sendable {
+            case allAppsVisible
+            case provisioningAllowed
             case visibleApps
         }
 
         public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case name
+            case bundleID = "bundleId"
+            case sku
+            case primaryLocale
+            case isOrEverWasMadeForKids
+            case subscriptionStatusURL = "subscriptionStatusUrl"
+            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
+            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
+            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
+            case contentRightsDeclaration
+            case streamlinedPurchasingEnabled
+            case appEncryptionDeclarations
+            case ciProduct
+            case betaTesters
+            case betaGroups
+            case appStoreVersions
+            case preReleaseVersions
+            case betaAppLocalizations
+            case builds
+            case betaLicenseAgreement
+            case betaAppReviewDetail
+            case appInfos
+            case appClips
+            case appPricePoints
+            case endUserLicenseAgreement
+            case preOrder
+            case appPriceSchedule
+            case appAvailability
+            case appAvailabilityV2
+            case inAppPurchases
+            case subscriptionGroups
+            case gameCenterEnabledVersions
+            case perfPowerMetrics
+            case appCustomProductPages
+            case inAppPurchasesV2
+            case promotedPurchases
+            case appEvents
+            case reviewSubmissions
+            case subscriptionGracePeriod
+            case customerReviews
+            case gameCenterDetail
+            case appStoreVersionExperimentsV2
             case alternativeDistributionKey
             case analyticsReportRequests
-            case appAvailability
-            case appClips
-            case appCustomProductPages
-            case appEncryptionDeclarations
-            case appEvents
-            case appInfos
-            case appPricePoints
-            case appPriceSchedule
-            case appStoreVersionExperimentsV2
-            case appStoreVersions
-            case betaAppLocalizations
-            case betaAppReviewDetail
-            case betaGroups
-            case betaLicenseAgreement
-            case betaTesters
-            case builds
-            case bundleID = "bundleId"
-            case ciProduct
-            case contentRightsDeclaration
-            case customerReviews
-            case endUserLicenseAgreement
-            case gameCenterDetail
-            case gameCenterEnabledVersions
-            case inAppPurchases
-            case inAppPurchasesV2
-            case isOrEverWasMadeForKids
             case marketplaceSearchDetail
-            case name
-            case perfPowerMetrics
-            case preOrder
-            case preReleaseVersions
-            case primaryLocale
-            case promotedPurchases
-            case reviewSubmissions
-            case sku
-            case subscriptionGracePeriod
-            case subscriptionGroups
-            case subscriptionStatusURL = "subscriptionStatusUrl"
-            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
-            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
-            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case visibleApps
         }
     }
 }

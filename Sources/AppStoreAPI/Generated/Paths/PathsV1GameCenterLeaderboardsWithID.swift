@@ -16,16 +16,16 @@ extension Resources.V1.GameCenterLeaderboards {
         /// Path: `/v1/gameCenterLeaderboards/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]? = nil, include: [Include]? = nil, fieldsGameCenterLeaderboardLocalizations: [FieldsGameCenterLeaderboardLocalizations]? = nil, fieldsGameCenterLeaderboardReleases: [FieldsGameCenterLeaderboardReleases]? = nil, limitGameCenterLeaderboardSets: Int? = nil, limitLocalizations: Int? = nil, limitReleases: Int? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboards, include, fieldsGameCenterLeaderboardLocalizations, fieldsGameCenterLeaderboardReleases, limitGameCenterLeaderboardSets, limitLocalizations, limitReleases), id: "gameCenterLeaderboards-get_instance")
+        public func get(fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]? = nil, fieldsGameCenterLeaderboardLocalizations: [FieldsGameCenterLeaderboardLocalizations]? = nil, fieldsGameCenterLeaderboardReleases: [FieldsGameCenterLeaderboardReleases]? = nil, include: [Include]? = nil, limitGameCenterLeaderboardSets: Int? = nil, limitLocalizations: Int? = nil, limitReleases: Int? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboards, fieldsGameCenterLeaderboardLocalizations, fieldsGameCenterLeaderboardReleases, include, limitGameCenterLeaderboardSets, limitLocalizations, limitReleases), id: "gameCenterLeaderboards_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]?, _ include: [Include]?, _ fieldsGameCenterLeaderboardLocalizations: [FieldsGameCenterLeaderboardLocalizations]?, _ fieldsGameCenterLeaderboardReleases: [FieldsGameCenterLeaderboardReleases]?, _ limitGameCenterLeaderboardSets: Int?, _ limitLocalizations: Int?, _ limitReleases: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]?, _ fieldsGameCenterLeaderboardLocalizations: [FieldsGameCenterLeaderboardLocalizations]?, _ fieldsGameCenterLeaderboardReleases: [FieldsGameCenterLeaderboardReleases]?, _ include: [Include]?, _ limitGameCenterLeaderboardSets: Int?, _ limitLocalizations: Int?, _ limitReleases: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterLeaderboards, forKey: "fields[gameCenterLeaderboards]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsGameCenterLeaderboardLocalizations, forKey: "fields[gameCenterLeaderboardLocalizations]")
             encoder.encode(fieldsGameCenterLeaderboardReleases, forKey: "fields[gameCenterLeaderboardReleases]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitGameCenterLeaderboardSets, forKey: "limit[gameCenterLeaderboardSets]")
             encoder.encode(limitLocalizations, forKey: "limit[localizations]")
             encoder.encode(limitReleases, forKey: "limit[releases]")
@@ -33,56 +33,56 @@ extension Resources.V1.GameCenterLeaderboards {
         }
 
         public enum FieldsGameCenterLeaderboards: String, CaseIterable, Codable, Sendable {
-            case archived
             case defaultFormatter
-            case gameCenterDetail
-            case gameCenterGroup
-            case gameCenterLeaderboardSets
-            case groupLeaderboard
-            case localizations
+            case referenceName
+            case vendorIdentifier
+            case submissionType
+            case scoreSortType
+            case scoreRangeStart
+            case scoreRangeEnd
+            case recurrenceStartDate
             case recurrenceDuration
             case recurrenceRule
-            case recurrenceStartDate
-            case referenceName
-            case releases
-            case scoreRangeEnd
-            case scoreRangeStart
-            case scoreSortType
-            case submissionType
-            case vendorIdentifier
-        }
-
-        public enum Include: String, CaseIterable, Codable, Sendable {
+            case archived
             case gameCenterDetail
             case gameCenterGroup
-            case gameCenterLeaderboardSets
             case groupLeaderboard
+            case gameCenterLeaderboardSets
             case localizations
             case releases
         }
 
         public enum FieldsGameCenterLeaderboardLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case name
             case formatterOverride
             case formatterSuffix
             case formatterSuffixSingular
             case gameCenterLeaderboard
             case gameCenterLeaderboardImage
-            case locale
-            case name
         }
 
         public enum FieldsGameCenterLeaderboardReleases: String, CaseIterable, Codable, Sendable {
+            case live
             case gameCenterDetail
             case gameCenterLeaderboard
-            case live
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case gameCenterDetail
+            case gameCenterGroup
+            case groupLeaderboard
+            case gameCenterLeaderboardSets
+            case localizations
+            case releases
         }
 
         public func patch(_ body: AppStoreAPI.GameCenterLeaderboardUpdateRequest) -> Request<AppStoreAPI.GameCenterLeaderboardResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "gameCenterLeaderboards-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "gameCenterLeaderboards_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "gameCenterLeaderboards-delete_instance")
+            Request(path: path, method: "DELETE", id: "gameCenterLeaderboards_deleteInstance")
         }
     }
 }

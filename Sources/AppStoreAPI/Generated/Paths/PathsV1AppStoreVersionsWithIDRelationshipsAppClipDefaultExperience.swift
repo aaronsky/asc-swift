@@ -17,11 +17,11 @@ extension Resources.V1.AppStoreVersions.WithID.Relationships {
         public let path: String
 
         public var get: Request<AppStoreAPI.AppStoreVersionAppClipDefaultExperienceLinkageResponse> {
-            Request(path: path, method: "GET", id: "appStoreVersions-appClipDefaultExperience-get_to_one_relationship")
+            Request(path: path, method: "GET", id: "appStoreVersions_appClipDefaultExperience_getToOneRelationship")
         }
 
         public func patch(_ body: AppStoreAPI.AppStoreVersionAppClipDefaultExperienceLinkageRequest) -> Request<Void> {
-            Request(path: path, method: "PATCH", body: body, id: "appStoreVersions-appClipDefaultExperience-update_to_one_relationship")
+            Request(path: path, method: "PATCH", body: body, id: "appStoreVersions_appClipDefaultExperience_updateToOneRelationship")
         }
     }
 }

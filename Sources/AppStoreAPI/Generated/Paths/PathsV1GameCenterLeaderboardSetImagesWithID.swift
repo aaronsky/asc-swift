@@ -17,7 +17,7 @@ extension Resources.V1.GameCenterLeaderboardSetImages {
         public let path: String
 
         public func get(fieldsGameCenterLeaderboardSetImages: [FieldsGameCenterLeaderboardSetImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardSetImageResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardSetImages, include), id: "gameCenterLeaderboardSetImages-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardSetImages, include), id: "gameCenterLeaderboardSetImages_getInstance")
         }
 
         private func makeGetQuery(_ fieldsGameCenterLeaderboardSetImages: [FieldsGameCenterLeaderboardSetImages]?, _ include: [Include]?) -> [(String, String?)] {
@@ -28,13 +28,13 @@ extension Resources.V1.GameCenterLeaderboardSetImages {
         }
 
         public enum FieldsGameCenterLeaderboardSetImages: String, CaseIterable, Codable, Sendable {
-            case assetDeliveryState
-            case fileName
             case fileSize
-            case gameCenterLeaderboardSetLocalization
+            case fileName
             case imageAsset
             case uploadOperations
+            case assetDeliveryState
             case uploaded
+            case gameCenterLeaderboardSetLocalization
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
@@ -42,11 +42,11 @@ extension Resources.V1.GameCenterLeaderboardSetImages {
         }
 
         public func patch(_ body: AppStoreAPI.GameCenterLeaderboardSetImageUpdateRequest) -> Request<AppStoreAPI.GameCenterLeaderboardSetImageResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "gameCenterLeaderboardSetImages-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "gameCenterLeaderboardSetImages_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "gameCenterLeaderboardSetImages-delete_instance")
+            Request(path: path, method: "DELETE", id: "gameCenterLeaderboardSetImages_deleteInstance")
         }
     }
 }

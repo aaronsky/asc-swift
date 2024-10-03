@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.AppStoreVersionReleaseRequestCreateRequest) -> Request<AppStoreAPI.AppStoreVersionReleaseRequestResponse> {
-            Request(path: path, method: "POST", body: body, id: "appStoreVersionReleaseRequests-create_instance")
+            Request(path: path, method: "POST", body: body, id: "appStoreVersionReleaseRequests_createInstance")
         }
     }
 }

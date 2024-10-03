@@ -17,7 +17,7 @@ extension Resources.V1.GameCenterAchievementLocalizations.WithID {
         public let path: String
 
         public func get(fieldsGameCenterAchievementImages: [FieldsGameCenterAchievementImages]? = nil, fieldsGameCenterAchievementLocalizations: [FieldsGameCenterAchievementLocalizations]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterAchievementImageResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterAchievementImages, fieldsGameCenterAchievementLocalizations, include), id: "gameCenterAchievementLocalizations-gameCenterAchievementImage-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterAchievementImages, fieldsGameCenterAchievementLocalizations, include), id: "gameCenterAchievementLocalizations_gameCenterAchievementImage_getToOneRelated")
         }
 
         private func makeGetQuery(_ fieldsGameCenterAchievementImages: [FieldsGameCenterAchievementImages]?, _ fieldsGameCenterAchievementLocalizations: [FieldsGameCenterAchievementLocalizations]?, _ include: [Include]?) -> [(String, String?)] {
@@ -29,22 +29,22 @@ extension Resources.V1.GameCenterAchievementLocalizations.WithID {
         }
 
         public enum FieldsGameCenterAchievementImages: String, CaseIterable, Codable, Sendable {
-            case assetDeliveryState
-            case fileName
             case fileSize
-            case gameCenterAchievementLocalization
+            case fileName
             case imageAsset
             case uploadOperations
+            case assetDeliveryState
             case uploaded
+            case gameCenterAchievementLocalization
         }
 
         public enum FieldsGameCenterAchievementLocalizations: String, CaseIterable, Codable, Sendable {
-            case afterEarnedDescription
-            case beforeEarnedDescription
-            case gameCenterAchievement
-            case gameCenterAchievementImage
             case locale
             case name
+            case beforeEarnedDescription
+            case afterEarnedDescription
+            case gameCenterAchievement
+            case gameCenterAchievementImage
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

@@ -17,7 +17,7 @@ extension Resources.V1.GameCenterAppVersions.WithID.Relationships {
         public let path: String
 
         public func get(limit: Int? = nil) -> Request<AppStoreAPI.GameCenterAppVersionCompatibilityVersionsLinkagesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(limit), id: "gameCenterAppVersions-compatibilityVersions-get_to_many_relationship")
+            Request(path: path, method: "GET", query: makeGetQuery(limit), id: "gameCenterAppVersions_compatibilityVersions_getToManyRelationship")
         }
 
         private func makeGetQuery(_ limit: Int?) -> [(String, String?)] {
@@ -27,11 +27,11 @@ extension Resources.V1.GameCenterAppVersions.WithID.Relationships {
         }
 
         public func post(_ body: AppStoreAPI.GameCenterAppVersionCompatibilityVersionsLinkagesRequest) -> Request<Void> {
-            Request(path: path, method: "POST", body: body, id: "gameCenterAppVersions-compatibilityVersions-create_to_many_relationship")
+            Request(path: path, method: "POST", body: body, id: "gameCenterAppVersions_compatibilityVersions_createToManyRelationship")
         }
 
         public func delete(_ body: AppStoreAPI.GameCenterAppVersionCompatibilityVersionsLinkagesRequest) -> Request<Void> {
-            Request(path: path, method: "DELETE", body: body, id: "gameCenterAppVersions-compatibilityVersions-delete_to_many_relationship")
+            Request(path: path, method: "DELETE", body: body, id: "gameCenterAppVersions_compatibilityVersions_deleteToManyRelationship")
         }
     }
 }

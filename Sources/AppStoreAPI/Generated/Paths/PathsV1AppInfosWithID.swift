@@ -16,42 +16,32 @@ extension Resources.V1.AppInfos {
         /// Path: `/v1/appInfos/{id}`
         public let path: String
 
-        public func get(fieldsAppInfos: [FieldsAppInfos]? = nil, include: [Include]? = nil, fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]? = nil, fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]? = nil, fieldsAppCategories: [FieldsAppCategories]? = nil, limitAppInfoLocalizations: Int? = nil) -> Request<AppStoreAPI.AppInfoResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppInfos, include, fieldsAgeRatingDeclarations, fieldsAppInfoLocalizations, fieldsAppCategories, limitAppInfoLocalizations), id: "appInfos-get_instance")
+        public func get(fieldsAppInfos: [FieldsAppInfos]? = nil, fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]? = nil, fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]? = nil, fieldsAppCategories: [FieldsAppCategories]? = nil, include: [Include]? = nil, limitAppInfoLocalizations: Int? = nil) -> Request<AppStoreAPI.AppInfoResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppInfos, fieldsAgeRatingDeclarations, fieldsAppInfoLocalizations, fieldsAppCategories, include, limitAppInfoLocalizations), id: "appInfos_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppInfos: [FieldsAppInfos]?, _ include: [Include]?, _ fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]?, _ fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]?, _ fieldsAppCategories: [FieldsAppCategories]?, _ limitAppInfoLocalizations: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppInfos: [FieldsAppInfos]?, _ fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]?, _ fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]?, _ fieldsAppCategories: [FieldsAppCategories]?, _ include: [Include]?, _ limitAppInfoLocalizations: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppInfos, forKey: "fields[appInfos]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsAgeRatingDeclarations, forKey: "fields[ageRatingDeclarations]")
             encoder.encode(fieldsAppInfoLocalizations, forKey: "fields[appInfoLocalizations]")
             encoder.encode(fieldsAppCategories, forKey: "fields[appCategories]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitAppInfoLocalizations, forKey: "limit[appInfoLocalizations]")
             return encoder.items
         }
 
         public enum FieldsAppInfos: String, CaseIterable, Codable, Sendable {
-            case ageRatingDeclaration
-            case app
-            case appInfoLocalizations
-            case appStoreAgeRating
             case appStoreState
+            case state
+            case appStoreAgeRating
+            case australiaAgeRating
             case brazilAgeRating
             case brazilAgeRatingV2
+            case koreaAgeRating
             case kidsAgeBand
-            case primaryCategory
-            case primarySubcategoryOne
-            case primarySubcategoryTwo
-            case secondaryCategory
-            case secondarySubcategoryOne
-            case secondarySubcategoryTwo
-            case state
-        }
-
-        public enum Include: String, CaseIterable, Codable, Sendable {
-            case ageRatingDeclaration
             case app
+            case ageRatingDeclaration
             case appInfoLocalizations
             case primaryCategory
             case primarySubcategoryOne
@@ -62,44 +52,58 @@ extension Resources.V1.AppInfos {
         }
 
         public enum FieldsAgeRatingDeclarations: String, CaseIterable, Codable, Sendable {
-            case ageRatingOverride
             case alcoholTobaccoOrDrugUseOrReferences
             case contests
-            case gambling
             case gamblingAndContests
+            case gambling
             case gamblingSimulated
-            case horrorOrFearThemes
             case kidsAgeBand
-            case matureOrSuggestiveThemes
+            case lootBox
             case medicalOrTreatmentInformation
             case profanityOrCrudeHumor
-            case seventeenPlus
             case sexualContentGraphicAndNudity
             case sexualContentOrNudity
+            case horrorOrFearThemes
+            case matureOrSuggestiveThemes
             case unrestrictedWebAccess
             case violenceCartoonOrFantasy
-            case violenceRealistic
             case violenceRealisticProlongedGraphicOrSadistic
+            case violenceRealistic
+            case ageRatingOverride
+            case koreaAgeRatingOverride
+            case seventeenPlus
         }
 
         public enum FieldsAppInfoLocalizations: String, CaseIterable, Codable, Sendable {
-            case appInfo
             case locale
             case name
+            case subtitle
+            case privacyPolicyURL = "privacyPolicyUrl"
             case privacyChoicesURL = "privacyChoicesUrl"
             case privacyPolicyText
-            case privacyPolicyURL = "privacyPolicyUrl"
-            case subtitle
+            case appInfo
         }
 
         public enum FieldsAppCategories: String, CaseIterable, Codable, Sendable {
-            case parent
             case platforms
             case subcategories
+            case parent
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case app
+            case ageRatingDeclaration
+            case appInfoLocalizations
+            case primaryCategory
+            case primarySubcategoryOne
+            case primarySubcategoryTwo
+            case secondaryCategory
+            case secondarySubcategoryOne
+            case secondarySubcategoryTwo
         }
 
         public func patch(_ body: AppStoreAPI.AppInfoUpdateRequest) -> Request<AppStoreAPI.AppInfoResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "appInfos-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appInfos_updateInstance")
         }
     }
 }

@@ -16,50 +16,50 @@ extension Resources.V1.AppPreviewSets {
         /// Path: `/v1/appPreviewSets/{id}`
         public let path: String
 
-        public func get(fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, include: [Include]? = nil, fieldsAppPreviews: [FieldsAppPreviews]? = nil, limitAppPreviews: Int? = nil) -> Request<AppStoreAPI.AppPreviewSetResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPreviewSets, include, fieldsAppPreviews, limitAppPreviews), id: "appPreviewSets-get_instance")
+        public func get(fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, fieldsAppPreviews: [FieldsAppPreviews]? = nil, include: [Include]? = nil, limitAppPreviews: Int? = nil) -> Request<AppStoreAPI.AppPreviewSetResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPreviewSets, fieldsAppPreviews, include, limitAppPreviews), id: "appPreviewSets_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ include: [Include]?, _ fieldsAppPreviews: [FieldsAppPreviews]?, _ limitAppPreviews: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ fieldsAppPreviews: [FieldsAppPreviews]?, _ include: [Include]?, _ limitAppPreviews: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppPreviewSets, forKey: "fields[appPreviewSets]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsAppPreviews, forKey: "fields[appPreviews]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitAppPreviews, forKey: "limit[appPreviews]")
             return encoder.items
         }
 
         public enum FieldsAppPreviewSets: String, CaseIterable, Codable, Sendable {
-            case appCustomProductPageLocalization
-            case appPreviews
-            case appStoreVersionExperimentTreatmentLocalization
-            case appStoreVersionLocalization
             case previewType
-        }
-
-        public enum Include: String, CaseIterable, Codable, Sendable {
-            case appCustomProductPageLocalization
-            case appPreviews
-            case appStoreVersionExperimentTreatmentLocalization
             case appStoreVersionLocalization
+            case appCustomProductPageLocalization
+            case appStoreVersionExperimentTreatmentLocalization
+            case appPreviews
         }
 
         public enum FieldsAppPreviews: String, CaseIterable, Codable, Sendable {
-            case appPreviewSet
-            case assetDeliveryState
-            case fileName
             case fileSize
-            case mimeType
-            case previewFrameTimeCode
-            case previewImage
+            case fileName
             case sourceFileChecksum
-            case uploadOperations
-            case uploaded
+            case previewFrameTimeCode
+            case mimeType
             case videoURL = "videoUrl"
+            case previewImage
+            case uploadOperations
+            case assetDeliveryState
+            case uploaded
+            case appPreviewSet
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case appStoreVersionLocalization
+            case appCustomProductPageLocalization
+            case appStoreVersionExperimentTreatmentLocalization
+            case appPreviews
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "appPreviewSets-delete_instance")
+            Request(path: path, method: "DELETE", id: "appPreviewSets_deleteInstance")
         }
     }
 }

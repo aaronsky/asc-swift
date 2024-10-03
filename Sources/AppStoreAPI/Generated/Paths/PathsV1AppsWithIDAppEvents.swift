@@ -16,19 +16,19 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/appEvents`
         public let path: String
 
-        public func get(filterEventState: [FilterEventState]? = nil, filterID: [String]? = nil, fieldsAppEventLocalizations: [FieldsAppEventLocalizations]? = nil, fieldsAppEvents: [FieldsAppEvents]? = nil, limit: Int? = nil, limitLocalizations: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppEventsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterEventState, filterID, fieldsAppEventLocalizations, fieldsAppEvents, limit, limitLocalizations, include), id: "apps-appEvents-get_to_many_related")
+        public func get(filterEventState: [FilterEventState]? = nil, filterID: [String]? = nil, fieldsAppEvents: [FieldsAppEvents]? = nil, fieldsAppEventLocalizations: [FieldsAppEventLocalizations]? = nil, limit: Int? = nil, include: [Include]? = nil, limitLocalizations: Int? = nil) -> Request<AppStoreAPI.AppEventsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterEventState, filterID, fieldsAppEvents, fieldsAppEventLocalizations, limit, include, limitLocalizations), id: "apps_appEvents_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterEventState: [FilterEventState]?, _ filterID: [String]?, _ fieldsAppEventLocalizations: [FieldsAppEventLocalizations]?, _ fieldsAppEvents: [FieldsAppEvents]?, _ limit: Int?, _ limitLocalizations: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterEventState: [FilterEventState]?, _ filterID: [String]?, _ fieldsAppEvents: [FieldsAppEvents]?, _ fieldsAppEventLocalizations: [FieldsAppEventLocalizations]?, _ limit: Int?, _ include: [Include]?, _ limitLocalizations: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterEventState, forKey: "filter[eventState]")
             encoder.encode(filterID, forKey: "filter[id]")
-            encoder.encode(fieldsAppEventLocalizations, forKey: "fields[appEventLocalizations]")
             encoder.encode(fieldsAppEvents, forKey: "fields[appEvents]")
+            encoder.encode(fieldsAppEventLocalizations, forKey: "fields[appEventLocalizations]")
             encoder.encode(limit, forKey: "limit")
-            encoder.encode(limitLocalizations, forKey: "limit[localizations]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitLocalizations, forKey: "limit[localizations]")
             return encoder.items
         }
 
@@ -45,29 +45,29 @@ extension Resources.V1.Apps.WithID {
             case archived = "ARCHIVED"
         }
 
+        public enum FieldsAppEvents: String, CaseIterable, Codable, Sendable {
+            case referenceName
+            case badge
+            case eventState
+            case deepLink
+            case purchaseRequirement
+            case primaryLocale
+            case priority
+            case purpose
+            case territorySchedules
+            case archivedTerritorySchedules
+            case app
+            case localizations
+        }
+
         public enum FieldsAppEventLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case name
+            case shortDescription
+            case longDescription
             case appEvent
             case appEventScreenshots
             case appEventVideoClips
-            case locale
-            case longDescription
-            case name
-            case shortDescription
-        }
-
-        public enum FieldsAppEvents: String, CaseIterable, Codable, Sendable {
-            case app
-            case archivedTerritorySchedules
-            case badge
-            case deepLink
-            case eventState
-            case localizations
-            case primaryLocale
-            case priority
-            case purchaseRequirement
-            case purpose
-            case referenceName
-            case territorySchedules
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

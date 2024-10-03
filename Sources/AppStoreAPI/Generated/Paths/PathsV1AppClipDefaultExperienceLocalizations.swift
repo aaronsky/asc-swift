@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.AppClipDefaultExperienceLocalizationCreateRequest) -> Request<AppStoreAPI.AppClipDefaultExperienceLocalizationResponse> {
-            Request(path: path, method: "POST", body: body, id: "appClipDefaultExperienceLocalizations-create_instance")
+            Request(path: path, method: "POST", body: body, id: "appClipDefaultExperienceLocalizations_createInstance")
         }
     }
 }

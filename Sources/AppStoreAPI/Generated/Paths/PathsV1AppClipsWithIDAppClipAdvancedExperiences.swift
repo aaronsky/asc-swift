@@ -16,35 +16,23 @@ extension Resources.V1.AppClips.WithID {
         /// Path: `/v1/appClips/{id}/appClipAdvancedExperiences`
         public let path: String
 
-        public func get(filterAction: [FilterAction]? = nil, filterPlaceStatus: [FilterPlaceStatus]? = nil, filterStatus: [FilterStatus]? = nil, fieldsAppClipAdvancedExperiences: [FieldsAppClipAdvancedExperiences]? = nil, fieldsAppClips: [FieldsAppClips]? = nil, fieldsAppClipAdvancedExperienceImages: [FieldsAppClipAdvancedExperienceImages]? = nil, fieldsAppClipAdvancedExperienceLocalizations: [FieldsAppClipAdvancedExperienceLocalizations]? = nil, limit: Int? = nil, limitLocalizations: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppClipAdvancedExperiencesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterAction, filterPlaceStatus, filterStatus, fieldsAppClipAdvancedExperiences, fieldsAppClips, fieldsAppClipAdvancedExperienceImages, fieldsAppClipAdvancedExperienceLocalizations, limit, limitLocalizations, include), id: "appClips-appClipAdvancedExperiences-get_to_many_related")
+        public func get(filterStatus: [FilterStatus]? = nil, filterPlaceStatus: [FilterPlaceStatus]? = nil, filterAction: [FilterAction]? = nil, fieldsAppClipAdvancedExperiences: [FieldsAppClipAdvancedExperiences]? = nil, fieldsAppClips: [FieldsAppClips]? = nil, fieldsAppClipAdvancedExperienceImages: [FieldsAppClipAdvancedExperienceImages]? = nil, fieldsAppClipAdvancedExperienceLocalizations: [FieldsAppClipAdvancedExperienceLocalizations]? = nil, limit: Int? = nil, include: [Include]? = nil, limitLocalizations: Int? = nil) -> Request<AppStoreAPI.AppClipAdvancedExperiencesResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterStatus, filterPlaceStatus, filterAction, fieldsAppClipAdvancedExperiences, fieldsAppClips, fieldsAppClipAdvancedExperienceImages, fieldsAppClipAdvancedExperienceLocalizations, limit, include, limitLocalizations), id: "appClips_appClipAdvancedExperiences_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterAction: [FilterAction]?, _ filterPlaceStatus: [FilterPlaceStatus]?, _ filterStatus: [FilterStatus]?, _ fieldsAppClipAdvancedExperiences: [FieldsAppClipAdvancedExperiences]?, _ fieldsAppClips: [FieldsAppClips]?, _ fieldsAppClipAdvancedExperienceImages: [FieldsAppClipAdvancedExperienceImages]?, _ fieldsAppClipAdvancedExperienceLocalizations: [FieldsAppClipAdvancedExperienceLocalizations]?, _ limit: Int?, _ limitLocalizations: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterStatus: [FilterStatus]?, _ filterPlaceStatus: [FilterPlaceStatus]?, _ filterAction: [FilterAction]?, _ fieldsAppClipAdvancedExperiences: [FieldsAppClipAdvancedExperiences]?, _ fieldsAppClips: [FieldsAppClips]?, _ fieldsAppClipAdvancedExperienceImages: [FieldsAppClipAdvancedExperienceImages]?, _ fieldsAppClipAdvancedExperienceLocalizations: [FieldsAppClipAdvancedExperienceLocalizations]?, _ limit: Int?, _ include: [Include]?, _ limitLocalizations: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(filterAction, forKey: "filter[action]")
-            encoder.encode(filterPlaceStatus, forKey: "filter[placeStatus]")
             encoder.encode(filterStatus, forKey: "filter[status]")
+            encoder.encode(filterPlaceStatus, forKey: "filter[placeStatus]")
+            encoder.encode(filterAction, forKey: "filter[action]")
             encoder.encode(fieldsAppClipAdvancedExperiences, forKey: "fields[appClipAdvancedExperiences]")
             encoder.encode(fieldsAppClips, forKey: "fields[appClips]")
             encoder.encode(fieldsAppClipAdvancedExperienceImages, forKey: "fields[appClipAdvancedExperienceImages]")
             encoder.encode(fieldsAppClipAdvancedExperienceLocalizations, forKey: "fields[appClipAdvancedExperienceLocalizations]")
             encoder.encode(limit, forKey: "limit")
-            encoder.encode(limitLocalizations, forKey: "limit[localizations]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitLocalizations, forKey: "limit[localizations]")
             return encoder.items
-        }
-
-        public enum FilterAction: String, CaseIterable, Codable, Sendable {
-            case `open` = "OPEN"
-            case view = "VIEW"
-            case play = "PLAY"
-        }
-
-        public enum FilterPlaceStatus: String, CaseIterable, Codable, Sendable {
-            case pending = "PENDING"
-            case matched = "MATCHED"
-            case noMatch = "NO_MATCH"
         }
 
         public enum FilterStatus: String, CaseIterable, Codable, Sendable {
@@ -53,43 +41,55 @@ extension Resources.V1.AppClips.WithID {
             case appTransferInProgress = "APP_TRANSFER_IN_PROGRESS"
         }
 
+        public enum FilterPlaceStatus: String, CaseIterable, Codable, Sendable {
+            case pending = "PENDING"
+            case matched = "MATCHED"
+            case noMatch = "NO_MATCH"
+        }
+
+        public enum FilterAction: String, CaseIterable, Codable, Sendable {
+            case `open` = "OPEN"
+            case view = "VIEW"
+            case play = "PLAY"
+        }
+
         public enum FieldsAppClipAdvancedExperiences: String, CaseIterable, Codable, Sendable {
-            case action
-            case appClip
-            case businessCategory
-            case defaultLanguage
-            case headerImage
-            case isPoweredBy
             case link
-            case localizations
+            case version
+            case status
+            case action
+            case isPoweredBy
             case place
             case placeStatus
+            case businessCategory
+            case defaultLanguage
             case removed
-            case status
-            case version
+            case appClip
+            case headerImage
+            case localizations
         }
 
         public enum FieldsAppClips: String, CaseIterable, Codable, Sendable {
-            case app
-            case appClipAdvancedExperiences
-            case appClipDefaultExperiences
             case bundleID = "bundleId"
+            case app
+            case appClipDefaultExperiences
+            case appClipAdvancedExperiences
         }
 
         public enum FieldsAppClipAdvancedExperienceImages: String, CaseIterable, Codable, Sendable {
-            case assetDeliveryState
-            case fileName
             case fileSize
-            case imageAsset
+            case fileName
             case sourceFileChecksum
+            case imageAsset
             case uploadOperations
+            case assetDeliveryState
             case uploaded
         }
 
         public enum FieldsAppClipAdvancedExperienceLocalizations: String, CaseIterable, Codable, Sendable {
             case language
-            case subtitle
             case title
+            case subtitle
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

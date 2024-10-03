@@ -17,7 +17,7 @@ extension Resources.V1.BetaTesters.WithID.Relationships {
         public let path: String
 
         public func get(limit: Int? = nil) -> Request<AppStoreAPI.BetaTesterAppsLinkagesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(limit), id: "betaTesters-apps-get_to_many_relationship")
+            Request(path: path, method: "GET", query: makeGetQuery(limit), id: "betaTesters_apps_getToManyRelationship")
         }
 
         private func makeGetQuery(_ limit: Int?) -> [(String, String?)] {
@@ -27,7 +27,7 @@ extension Resources.V1.BetaTesters.WithID.Relationships {
         }
 
         public func delete(_ body: AppStoreAPI.BetaTesterAppsLinkagesRequest) -> Request<Void> {
-            Request(path: path, method: "DELETE", body: body, id: "betaTesters-apps-delete_to_many_relationship")
+            Request(path: path, method: "DELETE", body: body, id: "betaTesters_apps_deleteToManyRelationship")
         }
     }
 }

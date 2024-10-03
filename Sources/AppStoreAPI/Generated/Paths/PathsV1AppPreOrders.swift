@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.AppPreOrderCreateRequest) -> Request<AppStoreAPI.AppPreOrderResponse> {
-            Request(path: path, method: "POST", body: body, id: "appPreOrders-create_instance")
+            Request(path: path, method: "POST", body: body, id: "appPreOrders_createInstance")
         }
     }
 }

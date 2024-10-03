@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.AppPreviewSetCreateRequest) -> Request<AppStoreAPI.AppPreviewSetResponse> {
-            Request(path: path, method: "POST", body: body, id: "appPreviewSets-create_instance")
+            Request(path: path, method: "POST", body: body, id: "appPreviewSets_createInstance")
         }
     }
 }

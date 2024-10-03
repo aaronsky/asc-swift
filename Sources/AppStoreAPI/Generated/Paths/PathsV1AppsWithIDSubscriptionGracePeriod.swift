@@ -17,7 +17,7 @@ extension Resources.V1.Apps.WithID {
         public let path: String
 
         public func get(fieldsSubscriptionGracePeriods: [FieldsSubscriptionGracePeriods]? = nil) -> Request<AppStoreAPI.SubscriptionGracePeriodResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionGracePeriods), id: "apps-subscriptionGracePeriod-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionGracePeriods), id: "apps_subscriptionGracePeriod_getToOneRelated")
         }
 
         private func makeGetQuery(_ fieldsSubscriptionGracePeriods: [FieldsSubscriptionGracePeriods]?) -> [(String, String?)] {
@@ -27,10 +27,10 @@ extension Resources.V1.Apps.WithID {
         }
 
         public enum FieldsSubscriptionGracePeriods: String, CaseIterable, Codable, Sendable {
-            case duration
             case optIn
-            case renewalType
             case sandboxOptIn
+            case duration
+            case renewalType
         }
     }
 }

@@ -16,56 +16,56 @@ extension Resources.V1.CiBuildRuns.WithID {
         /// Path: `/v1/ciBuildRuns/{id}/actions`
         public let path: String
 
-        public func get(fieldsCiBuildRuns: [FieldsCiBuildRuns]? = nil, fieldsCiBuildActions: [FieldsCiBuildActions]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CiBuildActionsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiBuildRuns, fieldsCiBuildActions, limit, include), id: "ciBuildRuns-actions-get_to_many_related")
+        public func get(fieldsCiBuildActions: [FieldsCiBuildActions]? = nil, fieldsCiBuildRuns: [FieldsCiBuildRuns]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CiBuildActionsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiBuildActions, fieldsCiBuildRuns, limit, include), id: "ciBuildRuns_actions_getToManyRelated")
         }
 
-        private func makeGetQuery(_ fieldsCiBuildRuns: [FieldsCiBuildRuns]?, _ fieldsCiBuildActions: [FieldsCiBuildActions]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsCiBuildActions: [FieldsCiBuildActions]?, _ fieldsCiBuildRuns: [FieldsCiBuildRuns]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(fieldsCiBuildRuns, forKey: "fields[ciBuildRuns]")
             encoder.encode(fieldsCiBuildActions, forKey: "fields[ciBuildActions]")
+            encoder.encode(fieldsCiBuildRuns, forKey: "fields[ciBuildRuns]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
-        public enum FieldsCiBuildRuns: String, CaseIterable, Codable, Sendable {
-            case actions
-            case buildRun
-            case builds
-            case cancelReason
-            case clean
-            case completionStatus
-            case createdDate
-            case destinationBranch
-            case destinationCommit
-            case executionProgress
-            case finishedDate
-            case isPullRequestBuild
-            case issueCounts
-            case number
-            case product
-            case pullRequest
-            case sourceBranchOrTag
-            case sourceCommit
-            case startReason
+        public enum FieldsCiBuildActions: String, CaseIterable, Codable, Sendable {
+            case name
+            case actionType
             case startedDate
-            case workflow
+            case finishedDate
+            case issueCounts
+            case executionProgress
+            case completionStatus
+            case isRequiredToPass
+            case buildRun
+            case artifacts
+            case issues
+            case testResults
         }
 
-        public enum FieldsCiBuildActions: String, CaseIterable, Codable, Sendable {
-            case actionType
-            case artifacts
-            case buildRun
-            case completionStatus
-            case executionProgress
-            case finishedDate
-            case isRequiredToPass
-            case issueCounts
-            case issues
-            case name
+        public enum FieldsCiBuildRuns: String, CaseIterable, Codable, Sendable {
+            case clean
+            case number
+            case createdDate
             case startedDate
-            case testResults
+            case finishedDate
+            case sourceCommit
+            case destinationCommit
+            case isPullRequestBuild
+            case issueCounts
+            case executionProgress
+            case completionStatus
+            case startReason
+            case cancelReason
+            case buildRun
+            case builds
+            case workflow
+            case product
+            case sourceBranchOrTag
+            case destinationBranch
+            case actions
+            case pullRequest
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

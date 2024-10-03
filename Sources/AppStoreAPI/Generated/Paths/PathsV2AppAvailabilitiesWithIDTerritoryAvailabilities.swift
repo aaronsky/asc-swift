@@ -17,7 +17,7 @@ extension Resources.V2.AppAvailabilities.WithID {
         public let path: String
 
         public func get(fieldsTerritoryAvailabilities: [FieldsTerritoryAvailabilities]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.TerritoryAvailabilitiesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsTerritoryAvailabilities, fieldsTerritories, limit, include), id: "appAvailabilitiesV2-territoryAvailabilities-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsTerritoryAvailabilities, fieldsTerritories, limit, include), id: "appAvailabilitiesV2_territoryAvailabilities_getToManyRelated")
         }
 
         private func makeGetQuery(_ fieldsTerritoryAvailabilities: [FieldsTerritoryAvailabilities]?, _ fieldsTerritories: [FieldsTerritories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
@@ -31,10 +31,10 @@ extension Resources.V2.AppAvailabilities.WithID {
 
         public enum FieldsTerritoryAvailabilities: String, CaseIterable, Codable, Sendable {
             case available
-            case contentStatuses
+            case releaseDate
             case preOrderEnabled
             case preOrderPublishDate
-            case releaseDate
+            case contentStatuses
             case territory
         }
 

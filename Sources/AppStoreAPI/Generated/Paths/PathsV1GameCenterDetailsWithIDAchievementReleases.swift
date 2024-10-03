@@ -17,7 +17,7 @@ extension Resources.V1.GameCenterDetails.WithID {
         public let path: String
 
         public func get(filterLive: [String]? = nil, filterGameCenterAchievement: [String]? = nil, fieldsGameCenterAchievementReleases: [FieldsGameCenterAchievementReleases]? = nil, fieldsGameCenterDetails: [FieldsGameCenterDetails]? = nil, fieldsGameCenterAchievements: [FieldsGameCenterAchievements]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterAchievementReleasesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterLive, filterGameCenterAchievement, fieldsGameCenterAchievementReleases, fieldsGameCenterDetails, fieldsGameCenterAchievements, limit, include), id: "gameCenterDetails-achievementReleases-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterLive, filterGameCenterAchievement, fieldsGameCenterAchievementReleases, fieldsGameCenterDetails, fieldsGameCenterAchievements, limit, include), id: "gameCenterDetails_achievementReleases_getToManyRelated")
         }
 
         private func makeGetQuery(_ filterLive: [String]?, _ filterGameCenterAchievement: [String]?, _ fieldsGameCenterAchievementReleases: [FieldsGameCenterAchievementReleases]?, _ fieldsGameCenterDetails: [FieldsGameCenterDetails]?, _ fieldsGameCenterAchievements: [FieldsGameCenterAchievements]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
@@ -33,44 +33,44 @@ extension Resources.V1.GameCenterDetails.WithID {
         }
 
         public enum FieldsGameCenterAchievementReleases: String, CaseIterable, Codable, Sendable {
-            case gameCenterAchievement
-            case gameCenterDetail
             case live
+            case gameCenterDetail
+            case gameCenterAchievement
         }
 
         public enum FieldsGameCenterDetails: String, CaseIterable, Codable, Sendable {
-            case achievementReleases
-            case app
             case arcadeEnabled
             case challengeEnabled
-            case defaultGroupLeaderboard
-            case defaultLeaderboard
-            case gameCenterAchievements
+            case app
             case gameCenterAppVersions
             case gameCenterGroup
-            case gameCenterLeaderboardSets
             case gameCenterLeaderboards
+            case gameCenterLeaderboardSets
+            case gameCenterAchievements
+            case defaultLeaderboard
+            case defaultGroupLeaderboard
+            case achievementReleases
             case leaderboardReleases
             case leaderboardSetReleases
         }
 
         public enum FieldsGameCenterAchievements: String, CaseIterable, Codable, Sendable {
+            case referenceName
+            case vendorIdentifier
+            case points
+            case showBeforeEarned
+            case repeatable
             case archived
             case gameCenterDetail
             case gameCenterGroup
             case groupAchievement
             case localizations
-            case points
-            case referenceName
             case releases
-            case repeatable
-            case showBeforeEarned
-            case vendorIdentifier
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case gameCenterAchievement
             case gameCenterDetail
+            case gameCenterAchievement
         }
     }
 }

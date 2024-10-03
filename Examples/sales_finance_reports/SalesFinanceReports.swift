@@ -34,11 +34,11 @@ import Utilities
 
             let url = try await client.download(
                 Resources.v1.salesReports.get(
-                    filterFrequency: [.weekly],
-                    filterReportDate: [options.reportDate],
-                    filterReportSubType: [.summary],
+                    filterVendorNumber: [options.vendorNumber],
                     filterReportType: [.sales],
-                    filterVendorNumber: [options.vendorNumber]
+                    filterReportSubType: [.summary],
+                    filterFrequency: [.weekly],
+                    filterReportDate: [options.reportDate]
                 )
             )
 
@@ -54,10 +54,10 @@ import Utilities
 
             let url = try await client.download(
                 Resources.v1.financeReports.get(
-                    filterRegionCode: ["US"],
-                    filterReportDate: [options.reportDate],
+                    filterVendorNumber: [options.vendorNumber],
                     filterReportType: [.financial],
-                    filterVendorNumber: [options.vendorNumber]
+                    filterRegionCode: ["US"],
+                    filterReportDate: [options.reportDate]
                 )
             )
 

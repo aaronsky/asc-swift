@@ -17,7 +17,7 @@ extension Resources.V1.BetaGroups.WithID {
         public let path: String
 
         public func get(fieldsBetaTesters: [FieldsBetaTesters]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.BetaTestersWithoutIncludesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaTesters, limit), id: "betaGroups-betaTesters-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaTesters, limit), id: "betaGroups_betaTesters_getToManyRelated")
         }
 
         private func makeGetQuery(_ fieldsBetaTesters: [FieldsBetaTesters]?, _ limit: Int?) -> [(String, String?)] {
@@ -28,14 +28,14 @@ extension Resources.V1.BetaGroups.WithID {
         }
 
         public enum FieldsBetaTesters: String, CaseIterable, Codable, Sendable {
+            case firstName
+            case lastName
+            case email
+            case inviteType
+            case state
             case apps
             case betaGroups
             case builds
-            case email
-            case firstName
-            case inviteType
-            case lastName
-            case state
         }
     }
 }
