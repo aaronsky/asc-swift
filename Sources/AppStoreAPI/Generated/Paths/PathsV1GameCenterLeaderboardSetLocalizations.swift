@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.GameCenterLeaderboardSetLocalizationCreateRequest) -> Request<AppStoreAPI.GameCenterLeaderboardSetLocalizationResponse> {
-            Request(path: path, method: "POST", body: body, id: "gameCenterLeaderboardSetLocalizations-create_instance")
+            Request(path: path, method: "POST", body: body, id: "gameCenterLeaderboardSetLocalizations_createInstance")
         }
     }
 }

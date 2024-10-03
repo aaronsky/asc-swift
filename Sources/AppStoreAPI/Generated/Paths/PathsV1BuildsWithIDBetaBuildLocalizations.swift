@@ -17,7 +17,7 @@ extension Resources.V1.Builds.WithID {
         public let path: String
 
         public func get(fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.BetaBuildLocalizationsWithoutIncludesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaBuildLocalizations, limit), id: "builds-betaBuildLocalizations-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaBuildLocalizations, limit), id: "builds_betaBuildLocalizations_getToManyRelated")
         }
 
         private func makeGetQuery(_ fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]?, _ limit: Int?) -> [(String, String?)] {
@@ -28,9 +28,9 @@ extension Resources.V1.Builds.WithID {
         }
 
         public enum FieldsBetaBuildLocalizations: String, CaseIterable, Codable, Sendable {
-            case build
-            case locale
             case whatsNew
+            case locale
+            case build
         }
     }
 }

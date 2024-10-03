@@ -16,23 +16,34 @@ extension Resources.V1.AppClipDefaultExperienceLocalizations {
         /// Path: `/v1/appClipDefaultExperienceLocalizations/{id}`
         public let path: String
 
-        public func get(fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]? = nil, include: [Include]? = nil, fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]? = nil) -> Request<AppStoreAPI.AppClipDefaultExperienceLocalizationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipDefaultExperienceLocalizations, include, fieldsAppClipHeaderImages), id: "appClipDefaultExperienceLocalizations-get_instance")
+        public func get(fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]? = nil, fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppClipDefaultExperienceLocalizationResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipDefaultExperienceLocalizations, fieldsAppClipHeaderImages, include), id: "appClipDefaultExperienceLocalizations_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]?, _ include: [Include]?, _ fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]?, _ fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppClipDefaultExperienceLocalizations, forKey: "fields[appClipDefaultExperienceLocalizations]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsAppClipHeaderImages, forKey: "fields[appClipHeaderImages]")
+            encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
         public enum FieldsAppClipDefaultExperienceLocalizations: String, CaseIterable, Codable, Sendable {
-            case appClipDefaultExperience
-            case appClipHeaderImage
             case locale
             case subtitle
+            case appClipDefaultExperience
+            case appClipHeaderImage
+        }
+
+        public enum FieldsAppClipHeaderImages: String, CaseIterable, Codable, Sendable {
+            case fileSize
+            case fileName
+            case sourceFileChecksum
+            case imageAsset
+            case uploadOperations
+            case assetDeliveryState
+            case uploaded
+            case appClipDefaultExperienceLocalization
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
@@ -40,23 +51,12 @@ extension Resources.V1.AppClipDefaultExperienceLocalizations {
             case appClipHeaderImage
         }
 
-        public enum FieldsAppClipHeaderImages: String, CaseIterable, Codable, Sendable {
-            case appClipDefaultExperienceLocalization
-            case assetDeliveryState
-            case fileName
-            case fileSize
-            case imageAsset
-            case sourceFileChecksum
-            case uploadOperations
-            case uploaded
-        }
-
         public func patch(_ body: AppStoreAPI.AppClipDefaultExperienceLocalizationUpdateRequest) -> Request<AppStoreAPI.AppClipDefaultExperienceLocalizationResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "appClipDefaultExperienceLocalizations-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appClipDefaultExperienceLocalizations_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "appClipDefaultExperienceLocalizations-delete_instance")
+            Request(path: path, method: "DELETE", id: "appClipDefaultExperienceLocalizations_deleteInstance")
         }
     }
 }

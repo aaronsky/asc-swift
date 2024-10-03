@@ -10,6 +10,7 @@ public struct AnalyticsReport: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
+    public var relationships: Relationships?
     public var links: ResourceLinks?
 
     public enum `Type`: String, CaseIterable, Codable, Sendable {
@@ -34,10 +35,27 @@ public struct AnalyticsReport: Codable, Equatable, Identifiable, Sendable {
         }
     }
 
-    public init(type: `Type` = .analyticsReports, id: String, attributes: Attributes? = nil, links: ResourceLinks? = nil) {
+    public struct Relationships: Codable, Equatable, Sendable {
+        public var instances: Instances?
+
+        public struct Instances: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
+            }
+        }
+
+        public init(instances: Instances? = nil) {
+            self.instances = instances
+        }
+    }
+
+    public init(type: `Type` = .analyticsReports, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes
+        self.relationships = relationships
         self.links = links
     }
 }

@@ -17,7 +17,7 @@ extension Resources.V1.ScmRepositories.WithID {
         public let path: String
 
         public func get(fieldsScmGitReferences: [FieldsScmGitReferences]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.ScmGitReferencesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsScmGitReferences, fieldsScmRepositories, limit, include), id: "scmRepositories-gitReferences-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsScmGitReferences, fieldsScmRepositories, limit, include), id: "scmRepositories_gitReferences_getToManyRelated")
         }
 
         private func makeGetQuery(_ fieldsScmGitReferences: [FieldsScmGitReferences]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
@@ -30,23 +30,23 @@ extension Resources.V1.ScmRepositories.WithID {
         }
 
         public enum FieldsScmGitReferences: String, CaseIterable, Codable, Sendable {
+            case name
             case canonicalName
             case isDeleted
             case kind
-            case name
             case repository
         }
 
         public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
-            case defaultBranch
-            case gitReferences
-            case httpCloneURL = "httpCloneUrl"
             case lastAccessedDate
+            case httpCloneURL = "httpCloneUrl"
+            case sshCloneURL = "sshCloneUrl"
             case ownerName
-            case pullRequests
             case repositoryName
             case scmProvider
-            case sshCloneURL = "sshCloneUrl"
+            case defaultBranch
+            case gitReferences
+            case pullRequests
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

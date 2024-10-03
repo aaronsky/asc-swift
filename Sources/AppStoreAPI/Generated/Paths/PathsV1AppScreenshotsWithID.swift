@@ -17,7 +17,7 @@ extension Resources.V1.AppScreenshots {
         public let path: String
 
         public func get(fieldsAppScreenshots: [FieldsAppScreenshots]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppScreenshotResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppScreenshots, include), id: "appScreenshots-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppScreenshots, include), id: "appScreenshots_getInstance")
         }
 
         private func makeGetQuery(_ fieldsAppScreenshots: [FieldsAppScreenshots]?, _ include: [Include]?) -> [(String, String?)] {
@@ -28,16 +28,16 @@ extension Resources.V1.AppScreenshots {
         }
 
         public enum FieldsAppScreenshots: String, CaseIterable, Codable, Sendable {
-            case appScreenshotSet
-            case assetDeliveryState
+            case fileSize
+            case fileName
+            case sourceFileChecksum
+            case imageAsset
             case assetToken
             case assetType
-            case fileName
-            case fileSize
-            case imageAsset
-            case sourceFileChecksum
             case uploadOperations
+            case assetDeliveryState
             case uploaded
+            case appScreenshotSet
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
@@ -45,11 +45,11 @@ extension Resources.V1.AppScreenshots {
         }
 
         public func patch(_ body: AppStoreAPI.AppScreenshotUpdateRequest) -> Request<AppStoreAPI.AppScreenshotResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "appScreenshots-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appScreenshots_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "appScreenshots-delete_instance")
+            Request(path: path, method: "DELETE", id: "appScreenshots_deleteInstance")
         }
     }
 }

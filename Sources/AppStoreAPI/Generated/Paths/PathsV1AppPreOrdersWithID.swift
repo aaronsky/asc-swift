@@ -17,7 +17,7 @@ extension Resources.V1.AppPreOrders {
         public let path: String
 
         public func get(fieldsAppPreOrders: [FieldsAppPreOrders]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppPreOrderResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPreOrders, include), id: "appPreOrders-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPreOrders, include), id: "appPreOrders_getInstance")
         }
 
         private func makeGetQuery(_ fieldsAppPreOrders: [FieldsAppPreOrders]?, _ include: [Include]?) -> [(String, String?)] {
@@ -28,9 +28,9 @@ extension Resources.V1.AppPreOrders {
         }
 
         public enum FieldsAppPreOrders: String, CaseIterable, Codable, Sendable {
-            case app
-            case appReleaseDate
             case preOrderAvailableDate
+            case appReleaseDate
+            case app
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
@@ -38,11 +38,11 @@ extension Resources.V1.AppPreOrders {
         }
 
         public func patch(_ body: AppStoreAPI.AppPreOrderUpdateRequest) -> Request<AppStoreAPI.AppPreOrderResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "appPreOrders-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appPreOrders_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "appPreOrders-delete_instance")
+            Request(path: path, method: "DELETE", id: "appPreOrders_deleteInstance")
         }
     }
 }

@@ -17,7 +17,7 @@ extension Resources.V1.Builds.WithID {
         public let path: String
 
         public func get(filterDiagnosticType: [FilterDiagnosticType]? = nil, fieldsDiagnosticSignatures: [FieldsDiagnosticSignatures]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.DiagnosticSignaturesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterDiagnosticType, fieldsDiagnosticSignatures, limit), id: "builds-diagnosticSignatures-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterDiagnosticType, fieldsDiagnosticSignatures, limit), id: "builds_diagnosticSignatures_getToManyRelated")
         }
 
         private func makeGetQuery(_ filterDiagnosticType: [FilterDiagnosticType]?, _ fieldsDiagnosticSignatures: [FieldsDiagnosticSignatures]?, _ limit: Int?) -> [(String, String?)] {
@@ -36,10 +36,10 @@ extension Resources.V1.Builds.WithID {
 
         public enum FieldsDiagnosticSignatures: String, CaseIterable, Codable, Sendable {
             case diagnosticType
-            case insight
-            case logs
             case signature
             case weight
+            case insight
+            case logs
         }
     }
 }

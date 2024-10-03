@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.AnalyticsReportRequestCreateRequest) -> Request<AppStoreAPI.AnalyticsReportRequestResponse> {
-            Request(path: path, method: "POST", body: body, id: "analyticsReportRequests-create_instance")
+            Request(path: path, method: "POST", body: body, id: "analyticsReportRequests_createInstance")
         }
     }
 }

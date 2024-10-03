@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.GameCenterLeaderboardEntrySubmissionCreateRequest) -> Request<AppStoreAPI.GameCenterLeaderboardEntrySubmissionResponse> {
-            Request(path: path, method: "POST", body: body, id: "gameCenterLeaderboardEntrySubmissions-create_instance")
+            Request(path: path, method: "POST", body: body, id: "gameCenterLeaderboardEntrySubmissions_createInstance")
         }
     }
 }

@@ -16,85 +16,87 @@ extension Resources.V1.Users {
         /// Path: `/v1/users/{id}`
         public let path: String
 
-        public func get(fieldsUsers: [FieldsUsers]? = nil, include: [Include]? = nil, fieldsApps: [FieldsApps]? = nil, limitVisibleApps: Int? = nil) -> Request<AppStoreAPI.UserResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsUsers, include, fieldsApps, limitVisibleApps), id: "users-get_instance")
+        public func get(fieldsUsers: [FieldsUsers]? = nil, fieldsApps: [FieldsApps]? = nil, include: [Include]? = nil, limitVisibleApps: Int? = nil) -> Request<AppStoreAPI.UserResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsUsers, fieldsApps, include, limitVisibleApps), id: "users_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsUsers: [FieldsUsers]?, _ include: [Include]?, _ fieldsApps: [FieldsApps]?, _ limitVisibleApps: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsUsers: [FieldsUsers]?, _ fieldsApps: [FieldsApps]?, _ include: [Include]?, _ limitVisibleApps: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsUsers, forKey: "fields[users]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsApps, forKey: "fields[apps]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitVisibleApps, forKey: "limit[visibleApps]")
             return encoder.items
         }
 
         public enum FieldsUsers: String, CaseIterable, Codable, Sendable {
-            case allAppsVisible
+            case username
             case firstName
             case lastName
-            case provisioningAllowed
             case roles
-            case username
+            case allAppsVisible
+            case provisioningAllowed
             case visibleApps
+        }
+
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case name
+            case bundleID = "bundleId"
+            case sku
+            case primaryLocale
+            case isOrEverWasMadeForKids
+            case subscriptionStatusURL = "subscriptionStatusUrl"
+            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
+            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
+            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
+            case contentRightsDeclaration
+            case streamlinedPurchasingEnabled
+            case appEncryptionDeclarations
+            case ciProduct
+            case betaTesters
+            case betaGroups
+            case appStoreVersions
+            case preReleaseVersions
+            case betaAppLocalizations
+            case builds
+            case betaLicenseAgreement
+            case betaAppReviewDetail
+            case appInfos
+            case appClips
+            case appPricePoints
+            case endUserLicenseAgreement
+            case preOrder
+            case appPriceSchedule
+            case appAvailability
+            case appAvailabilityV2
+            case inAppPurchases
+            case subscriptionGroups
+            case gameCenterEnabledVersions
+            case perfPowerMetrics
+            case appCustomProductPages
+            case inAppPurchasesV2
+            case promotedPurchases
+            case appEvents
+            case reviewSubmissions
+            case subscriptionGracePeriod
+            case customerReviews
+            case gameCenterDetail
+            case appStoreVersionExperimentsV2
+            case alternativeDistributionKey
+            case analyticsReportRequests
+            case marketplaceSearchDetail
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case visibleApps
         }
 
-        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
-            case alternativeDistributionKey
-            case analyticsReportRequests
-            case appAvailability
-            case appClips
-            case appCustomProductPages
-            case appEncryptionDeclarations
-            case appEvents
-            case appInfos
-            case appPricePoints
-            case appPriceSchedule
-            case appStoreVersionExperimentsV2
-            case appStoreVersions
-            case betaAppLocalizations
-            case betaAppReviewDetail
-            case betaGroups
-            case betaLicenseAgreement
-            case betaTesters
-            case builds
-            case bundleID = "bundleId"
-            case ciProduct
-            case contentRightsDeclaration
-            case customerReviews
-            case endUserLicenseAgreement
-            case gameCenterDetail
-            case gameCenterEnabledVersions
-            case inAppPurchases
-            case inAppPurchasesV2
-            case isOrEverWasMadeForKids
-            case marketplaceSearchDetail
-            case name
-            case perfPowerMetrics
-            case preOrder
-            case preReleaseVersions
-            case primaryLocale
-            case promotedPurchases
-            case reviewSubmissions
-            case sku
-            case subscriptionGracePeriod
-            case subscriptionGroups
-            case subscriptionStatusURL = "subscriptionStatusUrl"
-            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
-            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
-            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
-        }
-
         public func patch(_ body: AppStoreAPI.UserUpdateRequest) -> Request<AppStoreAPI.UserResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "users-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "users_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "users-delete_instance")
+            Request(path: path, method: "DELETE", id: "users_deleteInstance")
         }
     }
 }

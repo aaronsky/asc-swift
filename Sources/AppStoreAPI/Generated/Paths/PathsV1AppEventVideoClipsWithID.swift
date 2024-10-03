@@ -17,7 +17,7 @@ extension Resources.V1.AppEventVideoClips {
         public let path: String
 
         public func get(fieldsAppEventVideoClips: [FieldsAppEventVideoClips]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppEventVideoClipResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEventVideoClips, include), id: "appEventVideoClips-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEventVideoClips, include), id: "appEventVideoClips_getInstance")
         }
 
         private func makeGetQuery(_ fieldsAppEventVideoClips: [FieldsAppEventVideoClips]?, _ include: [Include]?) -> [(String, String?)] {
@@ -28,16 +28,16 @@ extension Resources.V1.AppEventVideoClips {
         }
 
         public enum FieldsAppEventVideoClips: String, CaseIterable, Codable, Sendable {
-            case appEventAssetType
-            case appEventLocalization
-            case assetDeliveryState
-            case fileName
             case fileSize
+            case fileName
             case previewFrameTimeCode
+            case videoURL = "videoUrl"
             case previewImage
             case uploadOperations
+            case assetDeliveryState
             case uploaded
-            case videoURL = "videoUrl"
+            case appEventAssetType
+            case appEventLocalization
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
@@ -45,11 +45,11 @@ extension Resources.V1.AppEventVideoClips {
         }
 
         public func patch(_ body: AppStoreAPI.AppEventVideoClipUpdateRequest) -> Request<AppStoreAPI.AppEventVideoClipResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "appEventVideoClips-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appEventVideoClips_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "appEventVideoClips-delete_instance")
+            Request(path: path, method: "DELETE", id: "appEventVideoClips_deleteInstance")
         }
     }
 }

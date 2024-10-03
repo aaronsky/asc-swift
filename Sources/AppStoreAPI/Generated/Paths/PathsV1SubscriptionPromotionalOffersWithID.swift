@@ -16,45 +16,45 @@ extension Resources.V1.SubscriptionPromotionalOffers {
         /// Path: `/v1/subscriptionPromotionalOffers/{id}`
         public let path: String
 
-        public func get(fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]? = nil, include: [Include]? = nil, fieldsSubscriptionPromotionalOfferPrices: [FieldsSubscriptionPromotionalOfferPrices]? = nil, limitPrices: Int? = nil) -> Request<AppStoreAPI.SubscriptionPromotionalOfferResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionPromotionalOffers, include, fieldsSubscriptionPromotionalOfferPrices, limitPrices), id: "subscriptionPromotionalOffers-get_instance")
+        public func get(fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]? = nil, fieldsSubscriptionPromotionalOfferPrices: [FieldsSubscriptionPromotionalOfferPrices]? = nil, include: [Include]? = nil, limitPrices: Int? = nil) -> Request<AppStoreAPI.SubscriptionPromotionalOfferResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionPromotionalOffers, fieldsSubscriptionPromotionalOfferPrices, include, limitPrices), id: "subscriptionPromotionalOffers_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]?, _ include: [Include]?, _ fieldsSubscriptionPromotionalOfferPrices: [FieldsSubscriptionPromotionalOfferPrices]?, _ limitPrices: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]?, _ fieldsSubscriptionPromotionalOfferPrices: [FieldsSubscriptionPromotionalOfferPrices]?, _ include: [Include]?, _ limitPrices: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsSubscriptionPromotionalOffers, forKey: "fields[subscriptionPromotionalOffers]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsSubscriptionPromotionalOfferPrices, forKey: "fields[subscriptionPromotionalOfferPrices]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitPrices, forKey: "limit[prices]")
             return encoder.items
         }
 
         public enum FieldsSubscriptionPromotionalOffers: String, CaseIterable, Codable, Sendable {
-            case duration
             case name
-            case numberOfPeriods
             case offerCode
+            case duration
             case offerMode
-            case prices
+            case numberOfPeriods
             case subscription
-        }
-
-        public enum Include: String, CaseIterable, Codable, Sendable {
             case prices
-            case subscription
         }
 
         public enum FieldsSubscriptionPromotionalOfferPrices: String, CaseIterable, Codable, Sendable {
-            case subscriptionPricePoint
             case territory
+            case subscriptionPricePoint
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case subscription
+            case prices
         }
 
         public func patch(_ body: AppStoreAPI.SubscriptionPromotionalOfferUpdateRequest) -> Request<AppStoreAPI.SubscriptionPromotionalOfferResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "subscriptionPromotionalOffers-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "subscriptionPromotionalOffers_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "subscriptionPromotionalOffers-delete_instance")
+            Request(path: path, method: "DELETE", id: "subscriptionPromotionalOffers_deleteInstance")
         }
     }
 }

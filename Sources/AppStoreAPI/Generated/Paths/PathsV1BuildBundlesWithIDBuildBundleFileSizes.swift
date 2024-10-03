@@ -17,7 +17,7 @@ extension Resources.V1.BuildBundles.WithID {
         public let path: String
 
         public func get(fieldsBuildBundleFileSizes: [FieldsBuildBundleFileSizes]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.BuildBundleFileSizesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBuildBundleFileSizes, limit), id: "buildBundles-buildBundleFileSizes-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBuildBundleFileSizes, limit), id: "buildBundles_buildBundleFileSizes_getToManyRelated")
         }
 
         private func makeGetQuery(_ fieldsBuildBundleFileSizes: [FieldsBuildBundleFileSizes]?, _ limit: Int?) -> [(String, String?)] {
@@ -29,9 +29,9 @@ extension Resources.V1.BuildBundles.WithID {
 
         public enum FieldsBuildBundleFileSizes: String, CaseIterable, Codable, Sendable {
             case deviceModel
+            case osVersion
             case downloadBytes
             case installBytes
-            case osVersion
         }
     }
 }

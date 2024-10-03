@@ -17,7 +17,7 @@ extension Resources.V2.InAppPurchases.WithID {
         public let path: String
 
         public func get(fieldsInAppPurchaseLocalizations: [FieldsInAppPurchaseLocalizations]? = nil, fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.InAppPurchaseLocalizationsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchaseLocalizations, fieldsInAppPurchases, limit, include), id: "inAppPurchasesV2-inAppPurchaseLocalizations-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchaseLocalizations, fieldsInAppPurchases, limit, include), id: "inAppPurchasesV2_inAppPurchaseLocalizations_getToManyRelated")
         }
 
         private func makeGetQuery(_ fieldsInAppPurchaseLocalizations: [FieldsInAppPurchaseLocalizations]?, _ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
@@ -30,29 +30,30 @@ extension Resources.V2.InAppPurchases.WithID {
         }
 
         public enum FieldsInAppPurchaseLocalizations: String, CaseIterable, Codable, Sendable {
-            case description
-            case inAppPurchaseV2
-            case locale
             case name
+            case locale
+            case description
             case state
+            case inAppPurchaseV2
         }
 
         public enum FieldsInAppPurchases: String, CaseIterable, Codable, Sendable {
-            case app
-            case appStoreReviewScreenshot
-            case content
-            case contentHosting
+            case name
+            case productID = "productId"
+            case inAppPurchaseType
+            case state
+            case reviewNote
             case familySharable
+            case contentHosting
+            case app
+            case inAppPurchaseLocalizations
+            case pricePoints
+            case content
+            case appStoreReviewScreenshot
+            case promotedPurchase
             case iapPriceSchedule
             case inAppPurchaseAvailability
-            case inAppPurchaseLocalizations
-            case inAppPurchaseType
-            case name
-            case pricePoints
-            case productID = "productId"
-            case promotedPurchase
-            case reviewNote
-            case state
+            case images
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

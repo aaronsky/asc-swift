@@ -16,22 +16,22 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/subscriptionGroups`
         public let path: String
 
-        public func get(filterReferenceName: [String]? = nil, filterSubscriptionsState: [FilterSubscriptionsState]? = nil, sort: [Sort]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionGroups: [FieldsSubscriptionGroups]? = nil, fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]? = nil, limit: Int? = nil, limitSubscriptions: Int? = nil, limitSubscriptionGroupLocalizations: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionGroupsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterReferenceName, filterSubscriptionsState, sort, fieldsSubscriptions, fieldsSubscriptionGroups, fieldsSubscriptionGroupLocalizations, limit, limitSubscriptions, limitSubscriptionGroupLocalizations, include), id: "apps-subscriptionGroups-get_to_many_related")
+        public func get(filterReferenceName: [String]? = nil, filterSubscriptionsState: [FilterSubscriptionsState]? = nil, sort: [Sort]? = nil, fieldsSubscriptionGroups: [FieldsSubscriptionGroups]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]? = nil, limit: Int? = nil, include: [Include]? = nil, limitSubscriptions: Int? = nil, limitSubscriptionGroupLocalizations: Int? = nil) -> Request<AppStoreAPI.SubscriptionGroupsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterReferenceName, filterSubscriptionsState, sort, fieldsSubscriptionGroups, fieldsSubscriptions, fieldsSubscriptionGroupLocalizations, limit, include, limitSubscriptions, limitSubscriptionGroupLocalizations), id: "apps_subscriptionGroups_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterReferenceName: [String]?, _ filterSubscriptionsState: [FilterSubscriptionsState]?, _ sort: [Sort]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionGroups: [FieldsSubscriptionGroups]?, _ fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]?, _ limit: Int?, _ limitSubscriptions: Int?, _ limitSubscriptionGroupLocalizations: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterReferenceName: [String]?, _ filterSubscriptionsState: [FilterSubscriptionsState]?, _ sort: [Sort]?, _ fieldsSubscriptionGroups: [FieldsSubscriptionGroups]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]?, _ limit: Int?, _ include: [Include]?, _ limitSubscriptions: Int?, _ limitSubscriptionGroupLocalizations: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterReferenceName, forKey: "filter[referenceName]")
             encoder.encode(filterSubscriptionsState, forKey: "filter[subscriptions.state]")
             encoder.encode(sort, forKey: "sort")
-            encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
             encoder.encode(fieldsSubscriptionGroups, forKey: "fields[subscriptionGroups]")
+            encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
             encoder.encode(fieldsSubscriptionGroupLocalizations, forKey: "fields[subscriptionGroupLocalizations]")
             encoder.encode(limit, forKey: "limit")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitSubscriptions, forKey: "limit[subscriptions]")
             encoder.encode(limitSubscriptionGroupLocalizations, forKey: "limit[subscriptionGroupLocalizations]")
-            encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
@@ -53,44 +53,46 @@ extension Resources.V1.Apps.WithID {
             case minusReferenceName = "-referenceName"
         }
 
-        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
-            case appStoreReviewScreenshot
-            case familySharable
-            case group
-            case groupLevel
-            case introductoryOffers
-            case name
-            case offerCodes
-            case pricePoints
-            case prices
-            case productID = "productId"
-            case promotedPurchase
-            case promotionalOffers
-            case reviewNote
-            case state
-            case subscriptionAvailability
-            case subscriptionLocalizations
-            case subscriptionPeriod
+        public enum FieldsSubscriptionGroups: String, CaseIterable, Codable, Sendable {
+            case referenceName
+            case app
+            case subscriptions
+            case subscriptionGroupLocalizations
         }
 
-        public enum FieldsSubscriptionGroups: String, CaseIterable, Codable, Sendable {
-            case app
-            case referenceName
-            case subscriptionGroupLocalizations
-            case subscriptions
+        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
+            case name
+            case productID = "productId"
+            case familySharable
+            case state
+            case subscriptionPeriod
+            case reviewNote
+            case groupLevel
+            case subscriptionLocalizations
+            case appStoreReviewScreenshot
+            case group
+            case introductoryOffers
+            case promotionalOffers
+            case offerCodes
+            case prices
+            case pricePoints
+            case promotedPurchase
+            case subscriptionAvailability
+            case winBackOffers
+            case images
         }
 
         public enum FieldsSubscriptionGroupLocalizations: String, CaseIterable, Codable, Sendable {
+            case name
             case customAppName
             case locale
-            case name
             case state
             case subscriptionGroup
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case subscriptionGroupLocalizations
             case subscriptions
+            case subscriptionGroupLocalizations
         }
     }
 }

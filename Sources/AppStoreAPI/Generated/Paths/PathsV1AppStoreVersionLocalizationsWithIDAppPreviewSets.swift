@@ -16,23 +16,23 @@ extension Resources.V1.AppStoreVersionLocalizations.WithID {
         /// Path: `/v1/appStoreVersionLocalizations/{id}/appPreviewSets`
         public let path: String
 
-        public func get(filterPreviewType: [FilterPreviewType]? = nil, filterAppCustomProductPageLocalization: [String]? = nil, filterAppStoreVersionExperimentTreatmentLocalization: [String]? = nil, fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]? = nil, fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]? = nil, fieldsAppPreviews: [FieldsAppPreviews]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, limit: Int? = nil, limitAppPreviews: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppPreviewSetsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterPreviewType, filterAppCustomProductPageLocalization, filterAppStoreVersionExperimentTreatmentLocalization, fieldsAppCustomProductPageLocalizations, fieldsAppStoreVersionExperimentTreatmentLocalizations, fieldsAppPreviews, fieldsAppPreviewSets, fieldsAppStoreVersionLocalizations, limit, limitAppPreviews, include), id: "appStoreVersionLocalizations-appPreviewSets-get_to_many_related")
+        public func get(filterPreviewType: [FilterPreviewType]? = nil, filterAppCustomProductPageLocalization: [String]? = nil, filterAppStoreVersionExperimentTreatmentLocalization: [String]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]? = nil, fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]? = nil, fieldsAppPreviews: [FieldsAppPreviews]? = nil, limit: Int? = nil, include: [Include]? = nil, limitAppPreviews: Int? = nil) -> Request<AppStoreAPI.AppPreviewSetsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterPreviewType, filterAppCustomProductPageLocalization, filterAppStoreVersionExperimentTreatmentLocalization, fieldsAppPreviewSets, fieldsAppStoreVersionLocalizations, fieldsAppCustomProductPageLocalizations, fieldsAppStoreVersionExperimentTreatmentLocalizations, fieldsAppPreviews, limit, include, limitAppPreviews), id: "appStoreVersionLocalizations_appPreviewSets_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterPreviewType: [FilterPreviewType]?, _ filterAppCustomProductPageLocalization: [String]?, _ filterAppStoreVersionExperimentTreatmentLocalization: [String]?, _ fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]?, _ fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]?, _ fieldsAppPreviews: [FieldsAppPreviews]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ limit: Int?, _ limitAppPreviews: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterPreviewType: [FilterPreviewType]?, _ filterAppCustomProductPageLocalization: [String]?, _ filterAppStoreVersionExperimentTreatmentLocalization: [String]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]?, _ fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]?, _ fieldsAppPreviews: [FieldsAppPreviews]?, _ limit: Int?, _ include: [Include]?, _ limitAppPreviews: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterPreviewType, forKey: "filter[previewType]")
             encoder.encode(filterAppCustomProductPageLocalization, forKey: "filter[appCustomProductPageLocalization]")
             encoder.encode(filterAppStoreVersionExperimentTreatmentLocalization, forKey: "filter[appStoreVersionExperimentTreatmentLocalization]")
+            encoder.encode(fieldsAppPreviewSets, forKey: "fields[appPreviewSets]")
+            encoder.encode(fieldsAppStoreVersionLocalizations, forKey: "fields[appStoreVersionLocalizations]")
             encoder.encode(fieldsAppCustomProductPageLocalizations, forKey: "fields[appCustomProductPageLocalizations]")
             encoder.encode(fieldsAppStoreVersionExperimentTreatmentLocalizations, forKey: "fields[appStoreVersionExperimentTreatmentLocalizations]")
             encoder.encode(fieldsAppPreviews, forKey: "fields[appPreviews]")
-            encoder.encode(fieldsAppPreviewSets, forKey: "fields[appPreviewSets]")
-            encoder.encode(fieldsAppStoreVersionLocalizations, forKey: "fields[appStoreVersionLocalizations]")
             encoder.encode(limit, forKey: "limit")
-            encoder.encode(limitAppPreviews, forKey: "limit[appPreviews]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitAppPreviews, forKey: "limit[appPreviews]")
             return encoder.items
         }
 
@@ -55,61 +55,61 @@ extension Resources.V1.AppStoreVersionLocalizations.WithID {
             case appleVisionPro = "APPLE_VISION_PRO"
         }
 
-        public enum FieldsAppCustomProductPageLocalizations: String, CaseIterable, Codable, Sendable {
-            case appCustomProductPageVersion
-            case appPreviewSets
-            case appScreenshotSets
-            case locale
-            case promotionalText
-        }
-
-        public enum FieldsAppStoreVersionExperimentTreatmentLocalizations: String, CaseIterable, Codable, Sendable {
-            case appPreviewSets
-            case appScreenshotSets
-            case appStoreVersionExperimentTreatment
-            case locale
-        }
-
-        public enum FieldsAppPreviews: String, CaseIterable, Codable, Sendable {
-            case appPreviewSet
-            case assetDeliveryState
-            case fileName
-            case fileSize
-            case mimeType
-            case previewFrameTimeCode
-            case previewImage
-            case sourceFileChecksum
-            case uploadOperations
-            case uploaded
-            case videoURL = "videoUrl"
-        }
-
         public enum FieldsAppPreviewSets: String, CaseIterable, Codable, Sendable {
-            case appCustomProductPageLocalization
-            case appPreviews
-            case appStoreVersionExperimentTreatmentLocalization
-            case appStoreVersionLocalization
             case previewType
+            case appStoreVersionLocalization
+            case appCustomProductPageLocalization
+            case appStoreVersionExperimentTreatmentLocalization
+            case appPreviews
         }
 
         public enum FieldsAppStoreVersionLocalizations: String, CaseIterable, Codable, Sendable {
-            case appPreviewSets
-            case appScreenshotSets
-            case appStoreVersion
             case description
-            case keywords
             case locale
+            case keywords
             case marketingURL = "marketingUrl"
             case promotionalText
             case supportURL = "supportUrl"
             case whatsNew
+            case appStoreVersion
+            case appScreenshotSets
+            case appPreviewSets
+        }
+
+        public enum FieldsAppCustomProductPageLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case promotionalText
+            case appCustomProductPageVersion
+            case appScreenshotSets
+            case appPreviewSets
+        }
+
+        public enum FieldsAppStoreVersionExperimentTreatmentLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case appStoreVersionExperimentTreatment
+            case appScreenshotSets
+            case appPreviewSets
+        }
+
+        public enum FieldsAppPreviews: String, CaseIterable, Codable, Sendable {
+            case fileSize
+            case fileName
+            case sourceFileChecksum
+            case previewFrameTimeCode
+            case mimeType
+            case videoURL = "videoUrl"
+            case previewImage
+            case uploadOperations
+            case assetDeliveryState
+            case uploaded
+            case appPreviewSet
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case appCustomProductPageLocalization
-            case appPreviews
-            case appStoreVersionExperimentTreatmentLocalization
             case appStoreVersionLocalization
+            case appCustomProductPageLocalization
+            case appStoreVersionExperimentTreatmentLocalization
+            case appPreviews
         }
     }
 }

@@ -17,7 +17,7 @@ extension Resources.V1.SubscriptionOfferCodes.WithID {
         public let path: String
 
         public func get(fieldsSubscriptionOfferCodeCustomCodes: [FieldsSubscriptionOfferCodeCustomCodes]? = nil, fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionOfferCodeCustomCodesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionOfferCodeCustomCodes, fieldsSubscriptionOfferCodes, limit, include), id: "subscriptionOfferCodes-customCodes-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionOfferCodeCustomCodes, fieldsSubscriptionOfferCodes, limit, include), id: "subscriptionOfferCodes_customCodes_getToManyRelated")
         }
 
         private func makeGetQuery(_ fieldsSubscriptionOfferCodeCustomCodes: [FieldsSubscriptionOfferCodeCustomCodes]?, _ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
@@ -30,27 +30,27 @@ extension Resources.V1.SubscriptionOfferCodes.WithID {
         }
 
         public enum FieldsSubscriptionOfferCodeCustomCodes: String, CaseIterable, Codable, Sendable {
-            case active
-            case createdDate
             case customCode
-            case expirationDate
             case numberOfCodes
+            case createdDate
+            case expirationDate
+            case active
             case offerCode
         }
 
         public enum FieldsSubscriptionOfferCodes: String, CaseIterable, Codable, Sendable {
-            case active
-            case customCodes
-            case customerEligibilities
-            case duration
             case name
-            case numberOfPeriods
+            case customerEligibilities
             case offerEligibility
+            case duration
             case offerMode
-            case oneTimeUseCodes
-            case prices
-            case subscription
+            case numberOfPeriods
             case totalNumberOfCodes
+            case active
+            case subscription
+            case oneTimeUseCodes
+            case customCodes
+            case prices
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

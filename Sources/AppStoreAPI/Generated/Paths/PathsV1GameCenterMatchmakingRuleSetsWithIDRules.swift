@@ -17,7 +17,7 @@ extension Resources.V1.GameCenterMatchmakingRuleSets.WithID {
         public let path: String
 
         public func get(fieldsGameCenterMatchmakingRules: [FieldsGameCenterMatchmakingRules]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.GameCenterMatchmakingRulesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterMatchmakingRules, limit), id: "gameCenterMatchmakingRuleSets-rules-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterMatchmakingRules, limit), id: "gameCenterMatchmakingRuleSets_rules_getToManyRelated")
         }
 
         private func makeGetQuery(_ fieldsGameCenterMatchmakingRules: [FieldsGameCenterMatchmakingRules]?, _ limit: Int?) -> [(String, String?)] {
@@ -28,12 +28,12 @@ extension Resources.V1.GameCenterMatchmakingRuleSets.WithID {
         }
 
         public enum FieldsGameCenterMatchmakingRules: String, CaseIterable, Codable, Sendable {
-            case description
-            case expression
             case referenceName
-            case ruleSet
+            case description
             case type
+            case expression
             case weight
+            case ruleSet
         }
     }
 }

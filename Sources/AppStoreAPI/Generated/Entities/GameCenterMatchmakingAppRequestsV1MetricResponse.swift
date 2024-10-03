@@ -47,6 +47,7 @@ public struct GameCenterMatchmakingAppRequestsV1MetricResponse: Codable, Equatab
 
             public struct Result: Codable, Equatable, Sendable {
                 public var links: Links?
+                public var data: Data?
 
                 public struct Links: Codable, Equatable, Sendable {
                     public var groupBy: URL?
@@ -56,8 +57,15 @@ public struct GameCenterMatchmakingAppRequestsV1MetricResponse: Codable, Equatab
                     }
                 }
 
-                public init(links: Links? = nil) {
+                public enum Data: String, CaseIterable, Codable, Sendable {
+                    case matched = "MATCHED"
+                    case canceled = "CANCELED"
+                    case expired = "EXPIRED"
+                }
+
+                public init(links: Links? = nil, data: Data? = nil) {
                     self.links = links
+                    self.data = data
                 }
             }
 

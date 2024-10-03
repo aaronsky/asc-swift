@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.AppCustomProductPageCreateRequest) -> Request<AppStoreAPI.AppCustomProductPageResponse> {
-            Request(path: path, method: "POST", body: body, id: "appCustomProductPages-create_instance")
+            Request(path: path, method: "POST", body: body, id: "appCustomProductPages_createInstance")
         }
     }
 }

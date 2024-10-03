@@ -16,26 +16,36 @@ extension Resources.V1.GameCenterLeaderboardLocalizations {
         /// Path: `/v1/gameCenterLeaderboardLocalizations/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterLeaderboardLocalizations: [FieldsGameCenterLeaderboardLocalizations]? = nil, include: [Include]? = nil, fieldsGameCenterLeaderboardImages: [FieldsGameCenterLeaderboardImages]? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardLocalizationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardLocalizations, include, fieldsGameCenterLeaderboardImages), id: "gameCenterLeaderboardLocalizations-get_instance")
+        public func get(fieldsGameCenterLeaderboardLocalizations: [FieldsGameCenterLeaderboardLocalizations]? = nil, fieldsGameCenterLeaderboardImages: [FieldsGameCenterLeaderboardImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardLocalizationResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardLocalizations, fieldsGameCenterLeaderboardImages, include), id: "gameCenterLeaderboardLocalizations_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterLeaderboardLocalizations: [FieldsGameCenterLeaderboardLocalizations]?, _ include: [Include]?, _ fieldsGameCenterLeaderboardImages: [FieldsGameCenterLeaderboardImages]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterLeaderboardLocalizations: [FieldsGameCenterLeaderboardLocalizations]?, _ fieldsGameCenterLeaderboardImages: [FieldsGameCenterLeaderboardImages]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterLeaderboardLocalizations, forKey: "fields[gameCenterLeaderboardLocalizations]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsGameCenterLeaderboardImages, forKey: "fields[gameCenterLeaderboardImages]")
+            encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
         public enum FieldsGameCenterLeaderboardLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case name
             case formatterOverride
             case formatterSuffix
             case formatterSuffixSingular
             case gameCenterLeaderboard
             case gameCenterLeaderboardImage
-            case locale
-            case name
+        }
+
+        public enum FieldsGameCenterLeaderboardImages: String, CaseIterable, Codable, Sendable {
+            case fileSize
+            case fileName
+            case imageAsset
+            case uploadOperations
+            case assetDeliveryState
+            case uploaded
+            case gameCenterLeaderboardLocalization
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
@@ -43,22 +53,12 @@ extension Resources.V1.GameCenterLeaderboardLocalizations {
             case gameCenterLeaderboardImage
         }
 
-        public enum FieldsGameCenterLeaderboardImages: String, CaseIterable, Codable, Sendable {
-            case assetDeliveryState
-            case fileName
-            case fileSize
-            case gameCenterLeaderboardLocalization
-            case imageAsset
-            case uploadOperations
-            case uploaded
-        }
-
         public func patch(_ body: AppStoreAPI.GameCenterLeaderboardLocalizationUpdateRequest) -> Request<AppStoreAPI.GameCenterLeaderboardLocalizationResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "gameCenterLeaderboardLocalizations-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "gameCenterLeaderboardLocalizations_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "gameCenterLeaderboardLocalizations-delete_instance")
+            Request(path: path, method: "DELETE", id: "gameCenterLeaderboardLocalizations_deleteInstance")
         }
     }
 }

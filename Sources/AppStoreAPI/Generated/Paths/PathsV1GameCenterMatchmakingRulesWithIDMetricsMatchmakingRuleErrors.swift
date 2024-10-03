@@ -16,17 +16,17 @@ extension Resources.V1.GameCenterMatchmakingRules.WithID.Metrics {
         /// Path: `/v1/gameCenterMatchmakingRules/{id}/metrics/matchmakingRuleErrors`
         public let path: String
 
-        public func get(limit: Int? = nil, granularity: Granularity, groupBy: [GroupBy]? = nil, filterGameCenterMatchmakingQueue: String? = nil, sort: [Sort]? = nil) -> Request<AppStoreAPI.GameCenterMatchmakingRuleErrorsV1MetricResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(limit, granularity, groupBy, filterGameCenterMatchmakingQueue, sort), id: "gameCenterMatchmakingRules-matchmakingRuleErrors-get_metrics")
+        public func get(granularity: Granularity, groupBy: [GroupBy]? = nil, filterGameCenterMatchmakingQueue: String? = nil, sort: [Sort]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.GameCenterMatchmakingRuleErrorsV1MetricResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(granularity, groupBy, filterGameCenterMatchmakingQueue, sort, limit), id: "gameCenterMatchmakingRules_matchmakingRuleErrors_getMetrics")
         }
 
-        private func makeGetQuery(_ limit: Int?, _ granularity: Granularity, _ groupBy: [GroupBy]?, _ filterGameCenterMatchmakingQueue: String?, _ sort: [Sort]?) -> [(String, String?)] {
+        private func makeGetQuery(_ granularity: Granularity, _ groupBy: [GroupBy]?, _ filterGameCenterMatchmakingQueue: String?, _ sort: [Sort]?, _ limit: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(limit, forKey: "limit")
             encoder.encode(granularity, forKey: "granularity")
             encoder.encode(groupBy, forKey: "groupBy")
             encoder.encode(filterGameCenterMatchmakingQueue, forKey: "filter[gameCenterMatchmakingQueue]")
             encoder.encode(sort, forKey: "sort")
+            encoder.encode(limit, forKey: "limit")
             return encoder.items
         }
 

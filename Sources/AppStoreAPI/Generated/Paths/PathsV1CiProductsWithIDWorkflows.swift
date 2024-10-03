@@ -16,87 +16,87 @@ extension Resources.V1.CiProducts.WithID {
         /// Path: `/v1/ciProducts/{id}/workflows`
         public let path: String
 
-        public func get(fieldsCiXcodeVersions: [FieldsCiXcodeVersions]? = nil, fieldsCiWorkflows: [FieldsCiWorkflows]? = nil, fieldsCiMacOsVersions: [FieldsCiMacOsVersions]? = nil, fieldsCiProducts: [FieldsCiProducts]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CiWorkflowsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiXcodeVersions, fieldsCiWorkflows, fieldsCiMacOsVersions, fieldsCiProducts, fieldsScmRepositories, limit, include), id: "ciProducts-workflows-get_to_many_related")
+        public func get(fieldsCiWorkflows: [FieldsCiWorkflows]? = nil, fieldsCiProducts: [FieldsCiProducts]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, fieldsCiXcodeVersions: [FieldsCiXcodeVersions]? = nil, fieldsCiMacOsVersions: [FieldsCiMacOsVersions]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CiWorkflowsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiWorkflows, fieldsCiProducts, fieldsScmRepositories, fieldsCiXcodeVersions, fieldsCiMacOsVersions, limit, include), id: "ciProducts_workflows_getToManyRelated")
         }
 
-        private func makeGetQuery(_ fieldsCiXcodeVersions: [FieldsCiXcodeVersions]?, _ fieldsCiWorkflows: [FieldsCiWorkflows]?, _ fieldsCiMacOsVersions: [FieldsCiMacOsVersions]?, _ fieldsCiProducts: [FieldsCiProducts]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsCiWorkflows: [FieldsCiWorkflows]?, _ fieldsCiProducts: [FieldsCiProducts]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ fieldsCiXcodeVersions: [FieldsCiXcodeVersions]?, _ fieldsCiMacOsVersions: [FieldsCiMacOsVersions]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(fieldsCiXcodeVersions, forKey: "fields[ciXcodeVersions]")
             encoder.encode(fieldsCiWorkflows, forKey: "fields[ciWorkflows]")
-            encoder.encode(fieldsCiMacOsVersions, forKey: "fields[ciMacOsVersions]")
             encoder.encode(fieldsCiProducts, forKey: "fields[ciProducts]")
             encoder.encode(fieldsScmRepositories, forKey: "fields[scmRepositories]")
+            encoder.encode(fieldsCiXcodeVersions, forKey: "fields[ciXcodeVersions]")
+            encoder.encode(fieldsCiMacOsVersions, forKey: "fields[ciMacOsVersions]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
-        public enum FieldsCiXcodeVersions: String, CaseIterable, Codable, Sendable {
-            case macOsVersions
-            case name
-            case testDestinations
-            case version
-        }
-
         public enum FieldsCiWorkflows: String, CaseIterable, Codable, Sendable {
-            case actions
-            case branchStartCondition
-            case buildRuns
-            case clean
-            case containerFilePath
+            case name
             case description
+            case branchStartCondition
+            case tagStartCondition
+            case pullRequestStartCondition
+            case scheduledStartCondition
+            case manualBranchStartCondition
+            case manualTagStartCondition
+            case manualPullRequestStartCondition
+            case actions
             case isEnabled
             case isLockedForEditing
+            case clean
+            case containerFilePath
             case lastModifiedDate
-            case macOsVersion
-            case manualBranchStartCondition
-            case manualPullRequestStartCondition
-            case manualTagStartCondition
-            case name
             case product
-            case pullRequestStartCondition
             case repository
-            case scheduledStartCondition
-            case tagStartCondition
             case xcodeVersion
-        }
-
-        public enum FieldsCiMacOsVersions: String, CaseIterable, Codable, Sendable {
-            case name
-            case version
-            case xcodeVersions
+            case macOsVersion
+            case buildRuns
         }
 
         public enum FieldsCiProducts: String, CaseIterable, Codable, Sendable {
-            case additionalRepositories
-            case app
-            case buildRuns
-            case bundleID = "bundleId"
-            case createdDate
             case name
-            case primaryRepositories
+            case createdDate
             case productType
+            case app
+            case bundleID = "bundleId"
             case workflows
+            case primaryRepositories
+            case additionalRepositories
+            case buildRuns
         }
 
         public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
-            case defaultBranch
-            case gitReferences
-            case httpCloneURL = "httpCloneUrl"
             case lastAccessedDate
+            case httpCloneURL = "httpCloneUrl"
+            case sshCloneURL = "sshCloneUrl"
             case ownerName
-            case pullRequests
             case repositoryName
             case scmProvider
-            case sshCloneURL = "sshCloneUrl"
+            case defaultBranch
+            case gitReferences
+            case pullRequests
+        }
+
+        public enum FieldsCiXcodeVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case name
+            case testDestinations
+            case macOsVersions
+        }
+
+        public enum FieldsCiMacOsVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case name
+            case xcodeVersions
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case macOsVersion
             case product
             case repository
             case xcodeVersion
+            case macOsVersion
         }
     }
 }

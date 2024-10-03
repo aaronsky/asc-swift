@@ -16,49 +16,49 @@ extension Resources.V1.AppStoreReviewDetails {
         /// Path: `/v1/appStoreReviewDetails/{id}`
         public let path: String
 
-        public func get(fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]? = nil, include: [Include]? = nil, fieldsAppStoreReviewAttachments: [FieldsAppStoreReviewAttachments]? = nil, limitAppStoreReviewAttachments: Int? = nil) -> Request<AppStoreAPI.AppStoreReviewDetailResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreReviewDetails, include, fieldsAppStoreReviewAttachments, limitAppStoreReviewAttachments), id: "appStoreReviewDetails-get_instance")
+        public func get(fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]? = nil, fieldsAppStoreReviewAttachments: [FieldsAppStoreReviewAttachments]? = nil, include: [Include]? = nil, limitAppStoreReviewAttachments: Int? = nil) -> Request<AppStoreAPI.AppStoreReviewDetailResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreReviewDetails, fieldsAppStoreReviewAttachments, include, limitAppStoreReviewAttachments), id: "appStoreReviewDetails_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]?, _ include: [Include]?, _ fieldsAppStoreReviewAttachments: [FieldsAppStoreReviewAttachments]?, _ limitAppStoreReviewAttachments: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]?, _ fieldsAppStoreReviewAttachments: [FieldsAppStoreReviewAttachments]?, _ include: [Include]?, _ limitAppStoreReviewAttachments: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppStoreReviewDetails, forKey: "fields[appStoreReviewDetails]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsAppStoreReviewAttachments, forKey: "fields[appStoreReviewAttachments]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitAppStoreReviewAttachments, forKey: "limit[appStoreReviewAttachments]")
             return encoder.items
         }
 
         public enum FieldsAppStoreReviewDetails: String, CaseIterable, Codable, Sendable {
-            case appStoreReviewAttachments
-            case appStoreVersion
-            case contactEmail
             case contactFirstName
             case contactLastName
             case contactPhone
+            case contactEmail
             case demoAccountName
             case demoAccountPassword
             case demoAccountRequired
             case notes
-        }
-
-        public enum Include: String, CaseIterable, Codable, Sendable {
-            case appStoreReviewAttachments
             case appStoreVersion
+            case appStoreReviewAttachments
         }
 
         public enum FieldsAppStoreReviewAttachments: String, CaseIterable, Codable, Sendable {
-            case appStoreReviewDetail
-            case assetDeliveryState
-            case fileName
             case fileSize
+            case fileName
             case sourceFileChecksum
             case uploadOperations
+            case assetDeliveryState
             case uploaded
+            case appStoreReviewDetail
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case appStoreVersion
+            case appStoreReviewAttachments
         }
 
         public func patch(_ body: AppStoreAPI.AppStoreReviewDetailUpdateRequest) -> Request<AppStoreAPI.AppStoreReviewDetailResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "appStoreReviewDetails-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appStoreReviewDetails_updateInstance")
         }
     }
 }

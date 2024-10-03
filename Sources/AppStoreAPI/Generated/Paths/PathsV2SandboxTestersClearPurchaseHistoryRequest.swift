@@ -17,7 +17,7 @@ extension Resources.V2 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.SandboxTestersClearPurchaseHistoryRequestV2CreateRequest) -> Request<AppStoreAPI.SandboxTestersClearPurchaseHistoryRequestV2Response> {
-            Request(path: path, method: "POST", body: body, id: "sandboxTestersClearPurchaseHistoryRequestV2-create_instance")
+            Request(path: path, method: "POST", body: body, id: "sandboxTestersClearPurchaseHistoryRequestV2_createInstance")
         }
     }
 }

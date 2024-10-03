@@ -17,7 +17,7 @@ extension Resources.V1.TerritoryAvailabilities {
         public let path: String
 
         public func patch(_ body: AppStoreAPI.TerritoryAvailabilityUpdateRequest) -> Request<AppStoreAPI.TerritoryAvailabilityResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "territoryAvailabilities-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "territoryAvailabilities_updateInstance")
         }
     }
 }

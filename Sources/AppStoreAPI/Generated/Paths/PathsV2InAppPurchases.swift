@@ -17,7 +17,7 @@ extension Resources.V2 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.InAppPurchaseV2CreateRequest) -> Request<AppStoreAPI.InAppPurchaseV2Response> {
-            Request(path: path, method: "POST", body: body, id: "inAppPurchasesV2-create_instance")
+            Request(path: path, method: "POST", body: body, id: "inAppPurchasesV2_createInstance")
         }
     }
 }

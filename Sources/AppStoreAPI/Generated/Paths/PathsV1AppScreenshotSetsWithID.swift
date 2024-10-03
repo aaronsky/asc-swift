@@ -16,49 +16,49 @@ extension Resources.V1.AppScreenshotSets {
         /// Path: `/v1/appScreenshotSets/{id}`
         public let path: String
 
-        public func get(fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, include: [Include]? = nil, fieldsAppScreenshots: [FieldsAppScreenshots]? = nil, limitAppScreenshots: Int? = nil) -> Request<AppStoreAPI.AppScreenshotSetResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppScreenshotSets, include, fieldsAppScreenshots, limitAppScreenshots), id: "appScreenshotSets-get_instance")
+        public func get(fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppScreenshots: [FieldsAppScreenshots]? = nil, include: [Include]? = nil, limitAppScreenshots: Int? = nil) -> Request<AppStoreAPI.AppScreenshotSetResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppScreenshotSets, fieldsAppScreenshots, include, limitAppScreenshots), id: "appScreenshotSets_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ include: [Include]?, _ fieldsAppScreenshots: [FieldsAppScreenshots]?, _ limitAppScreenshots: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppScreenshots: [FieldsAppScreenshots]?, _ include: [Include]?, _ limitAppScreenshots: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppScreenshotSets, forKey: "fields[appScreenshotSets]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsAppScreenshots, forKey: "fields[appScreenshots]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitAppScreenshots, forKey: "limit[appScreenshots]")
             return encoder.items
         }
 
         public enum FieldsAppScreenshotSets: String, CaseIterable, Codable, Sendable {
-            case appCustomProductPageLocalization
-            case appScreenshots
-            case appStoreVersionExperimentTreatmentLocalization
-            case appStoreVersionLocalization
             case screenshotDisplayType
-        }
-
-        public enum Include: String, CaseIterable, Codable, Sendable {
-            case appCustomProductPageLocalization
-            case appScreenshots
-            case appStoreVersionExperimentTreatmentLocalization
             case appStoreVersionLocalization
+            case appCustomProductPageLocalization
+            case appStoreVersionExperimentTreatmentLocalization
+            case appScreenshots
         }
 
         public enum FieldsAppScreenshots: String, CaseIterable, Codable, Sendable {
-            case appScreenshotSet
-            case assetDeliveryState
+            case fileSize
+            case fileName
+            case sourceFileChecksum
+            case imageAsset
             case assetToken
             case assetType
-            case fileName
-            case fileSize
-            case imageAsset
-            case sourceFileChecksum
             case uploadOperations
+            case assetDeliveryState
             case uploaded
+            case appScreenshotSet
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case appStoreVersionLocalization
+            case appCustomProductPageLocalization
+            case appStoreVersionExperimentTreatmentLocalization
+            case appScreenshots
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "appScreenshotSets-delete_instance")
+            Request(path: path, method: "DELETE", id: "appScreenshotSets_deleteInstance")
         }
     }
 }

@@ -17,7 +17,7 @@ extension Resources.V1.AppInfoLocalizations {
         public let path: String
 
         public func get(fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppInfoLocalizationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppInfoLocalizations, include), id: "appInfoLocalizations-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppInfoLocalizations, include), id: "appInfoLocalizations_getInstance")
         }
 
         private func makeGetQuery(_ fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]?, _ include: [Include]?) -> [(String, String?)] {
@@ -28,13 +28,13 @@ extension Resources.V1.AppInfoLocalizations {
         }
 
         public enum FieldsAppInfoLocalizations: String, CaseIterable, Codable, Sendable {
-            case appInfo
             case locale
             case name
+            case subtitle
+            case privacyPolicyURL = "privacyPolicyUrl"
             case privacyChoicesURL = "privacyChoicesUrl"
             case privacyPolicyText
-            case privacyPolicyURL = "privacyPolicyUrl"
-            case subtitle
+            case appInfo
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
@@ -42,11 +42,11 @@ extension Resources.V1.AppInfoLocalizations {
         }
 
         public func patch(_ body: AppStoreAPI.AppInfoLocalizationUpdateRequest) -> Request<AppStoreAPI.AppInfoLocalizationResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "appInfoLocalizations-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appInfoLocalizations_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "appInfoLocalizations-delete_instance")
+            Request(path: path, method: "DELETE", id: "appInfoLocalizations_deleteInstance")
         }
     }
 }

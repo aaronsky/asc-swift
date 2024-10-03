@@ -16,58 +16,58 @@ extension Resources.V1.GameCenterLeaderboards.WithID {
         /// Path: `/v1/gameCenterLeaderboards/{id}/localizations`
         public let path: String
 
-        public func get(fieldsGameCenterLeaderboardLocalizations: [FieldsGameCenterLeaderboardLocalizations]? = nil, fieldsGameCenterLeaderboardImages: [FieldsGameCenterLeaderboardImages]? = nil, fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardLocalizationsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardLocalizations, fieldsGameCenterLeaderboardImages, fieldsGameCenterLeaderboards, limit, include), id: "gameCenterLeaderboards-localizations-get_to_many_related")
+        public func get(fieldsGameCenterLeaderboardLocalizations: [FieldsGameCenterLeaderboardLocalizations]? = nil, fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]? = nil, fieldsGameCenterLeaderboardImages: [FieldsGameCenterLeaderboardImages]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardLocalizationsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardLocalizations, fieldsGameCenterLeaderboards, fieldsGameCenterLeaderboardImages, limit, include), id: "gameCenterLeaderboards_localizations_getToManyRelated")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterLeaderboardLocalizations: [FieldsGameCenterLeaderboardLocalizations]?, _ fieldsGameCenterLeaderboardImages: [FieldsGameCenterLeaderboardImages]?, _ fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterLeaderboardLocalizations: [FieldsGameCenterLeaderboardLocalizations]?, _ fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]?, _ fieldsGameCenterLeaderboardImages: [FieldsGameCenterLeaderboardImages]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterLeaderboardLocalizations, forKey: "fields[gameCenterLeaderboardLocalizations]")
-            encoder.encode(fieldsGameCenterLeaderboardImages, forKey: "fields[gameCenterLeaderboardImages]")
             encoder.encode(fieldsGameCenterLeaderboards, forKey: "fields[gameCenterLeaderboards]")
+            encoder.encode(fieldsGameCenterLeaderboardImages, forKey: "fields[gameCenterLeaderboardImages]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
         public enum FieldsGameCenterLeaderboardLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case name
             case formatterOverride
             case formatterSuffix
             case formatterSuffixSingular
             case gameCenterLeaderboard
             case gameCenterLeaderboardImage
-            case locale
-            case name
-        }
-
-        public enum FieldsGameCenterLeaderboardImages: String, CaseIterable, Codable, Sendable {
-            case assetDeliveryState
-            case fileName
-            case fileSize
-            case gameCenterLeaderboardLocalization
-            case imageAsset
-            case uploadOperations
-            case uploaded
         }
 
         public enum FieldsGameCenterLeaderboards: String, CaseIterable, Codable, Sendable {
-            case archived
             case defaultFormatter
-            case gameCenterDetail
-            case gameCenterGroup
-            case gameCenterLeaderboardSets
-            case groupLeaderboard
-            case localizations
+            case referenceName
+            case vendorIdentifier
+            case submissionType
+            case scoreSortType
+            case scoreRangeStart
+            case scoreRangeEnd
+            case recurrenceStartDate
             case recurrenceDuration
             case recurrenceRule
-            case recurrenceStartDate
-            case referenceName
+            case archived
+            case gameCenterDetail
+            case gameCenterGroup
+            case groupLeaderboard
+            case gameCenterLeaderboardSets
+            case localizations
             case releases
-            case scoreRangeEnd
-            case scoreRangeStart
-            case scoreSortType
-            case submissionType
-            case vendorIdentifier
+        }
+
+        public enum FieldsGameCenterLeaderboardImages: String, CaseIterable, Codable, Sendable {
+            case fileSize
+            case fileName
+            case imageAsset
+            case uploadOperations
+            case assetDeliveryState
+            case uploaded
+            case gameCenterLeaderboardLocalization
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

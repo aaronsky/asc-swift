@@ -16,46 +16,48 @@ extension Resources.V1.AppInfos.WithID {
         /// Path: `/v1/appInfos/{id}/appInfoLocalizations`
         public let path: String
 
-        public func get(filterLocale: [String]? = nil, fieldsAppInfos: [FieldsAppInfos]? = nil, fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppInfoLocalizationsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterLocale, fieldsAppInfos, fieldsAppInfoLocalizations, limit, include), id: "appInfos-appInfoLocalizations-get_to_many_related")
+        public func get(filterLocale: [String]? = nil, fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]? = nil, fieldsAppInfos: [FieldsAppInfos]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppInfoLocalizationsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterLocale, fieldsAppInfoLocalizations, fieldsAppInfos, limit, include), id: "appInfos_appInfoLocalizations_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterLocale: [String]?, _ fieldsAppInfos: [FieldsAppInfos]?, _ fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterLocale: [String]?, _ fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]?, _ fieldsAppInfos: [FieldsAppInfos]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterLocale, forKey: "filter[locale]")
-            encoder.encode(fieldsAppInfos, forKey: "fields[appInfos]")
             encoder.encode(fieldsAppInfoLocalizations, forKey: "fields[appInfoLocalizations]")
+            encoder.encode(fieldsAppInfos, forKey: "fields[appInfos]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
+        public enum FieldsAppInfoLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case name
+            case subtitle
+            case privacyPolicyURL = "privacyPolicyUrl"
+            case privacyChoicesURL = "privacyChoicesUrl"
+            case privacyPolicyText
+            case appInfo
+        }
+
         public enum FieldsAppInfos: String, CaseIterable, Codable, Sendable {
-            case ageRatingDeclaration
-            case app
-            case appInfoLocalizations
-            case appStoreAgeRating
             case appStoreState
+            case state
+            case appStoreAgeRating
+            case australiaAgeRating
             case brazilAgeRating
             case brazilAgeRatingV2
+            case koreaAgeRating
             case kidsAgeBand
+            case app
+            case ageRatingDeclaration
+            case appInfoLocalizations
             case primaryCategory
             case primarySubcategoryOne
             case primarySubcategoryTwo
             case secondaryCategory
             case secondarySubcategoryOne
             case secondarySubcategoryTwo
-            case state
-        }
-
-        public enum FieldsAppInfoLocalizations: String, CaseIterable, Codable, Sendable {
-            case appInfo
-            case locale
-            case name
-            case privacyChoicesURL = "privacyChoicesUrl"
-            case privacyPolicyText
-            case privacyPolicyURL = "privacyPolicyUrl"
-            case subtitle
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

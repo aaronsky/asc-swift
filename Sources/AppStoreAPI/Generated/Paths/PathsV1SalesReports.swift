@@ -16,34 +16,19 @@ extension Resources.V1 {
         /// Path: `/v1/salesReports`
         public let path: String
 
-        public func get(filterFrequency: [FilterFrequency], filterReportDate: [String]? = nil, filterReportSubType: [FilterReportSubType], filterReportType: [FilterReportType], filterVendorNumber: [String], filterVersion: [String]? = nil) -> Request<Data> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterFrequency, filterReportDate, filterReportSubType, filterReportType, filterVendorNumber, filterVersion), id: "salesReports-get_collection")
+        public func get(filterVendorNumber: [String], filterReportType: [FilterReportType], filterReportSubType: [FilterReportSubType], filterFrequency: [FilterFrequency], filterReportDate: [String]? = nil, filterVersion: [String]? = nil) -> Request<Data> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterVendorNumber, filterReportType, filterReportSubType, filterFrequency, filterReportDate, filterVersion), id: "salesReports_getCollection")
         }
 
-        private func makeGetQuery(_ filterFrequency: [FilterFrequency], _ filterReportDate: [String]?, _ filterReportSubType: [FilterReportSubType], _ filterReportType: [FilterReportType], _ filterVendorNumber: [String], _ filterVersion: [String]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterVendorNumber: [String], _ filterReportType: [FilterReportType], _ filterReportSubType: [FilterReportSubType], _ filterFrequency: [FilterFrequency], _ filterReportDate: [String]?, _ filterVersion: [String]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
+            encoder.encode(filterVendorNumber, forKey: "filter[vendorNumber]")
+            encoder.encode(filterReportType, forKey: "filter[reportType]")
+            encoder.encode(filterReportSubType, forKey: "filter[reportSubType]")
             encoder.encode(filterFrequency, forKey: "filter[frequency]")
             encoder.encode(filterReportDate, forKey: "filter[reportDate]")
-            encoder.encode(filterReportSubType, forKey: "filter[reportSubType]")
-            encoder.encode(filterReportType, forKey: "filter[reportType]")
-            encoder.encode(filterVendorNumber, forKey: "filter[vendorNumber]")
             encoder.encode(filterVersion, forKey: "filter[version]")
             return encoder.items
-        }
-
-        public enum FilterFrequency: String, CaseIterable, Codable, Sendable {
-            case daily = "DAILY"
-            case weekly = "WEEKLY"
-            case monthly = "MONTHLY"
-            case yearly = "YEARLY"
-        }
-
-        public enum FilterReportSubType: String, CaseIterable, Codable, Sendable {
-            case summary = "SUMMARY"
-            case detailed = "DETAILED"
-            case summaryInstallType = "SUMMARY_INSTALL_TYPE"
-            case summaryTerritory = "SUMMARY_TERRITORY"
-            case summaryChannel = "SUMMARY_CHANNEL"
         }
 
         public enum FilterReportType: String, CaseIterable, Codable, Sendable {
@@ -56,6 +41,21 @@ extension Resources.V1 {
             case subscriptionOfferCodeRedemption = "SUBSCRIPTION_OFFER_CODE_REDEMPTION"
             case installs = "INSTALLS"
             case firstAnnual = "FIRST_ANNUAL"
+        }
+
+        public enum FilterReportSubType: String, CaseIterable, Codable, Sendable {
+            case summary = "SUMMARY"
+            case detailed = "DETAILED"
+            case summaryInstallType = "SUMMARY_INSTALL_TYPE"
+            case summaryTerritory = "SUMMARY_TERRITORY"
+            case summaryChannel = "SUMMARY_CHANNEL"
+        }
+
+        public enum FilterFrequency: String, CaseIterable, Codable, Sendable {
+            case daily = "DAILY"
+            case weekly = "WEEKLY"
+            case monthly = "MONTHLY"
+            case yearly = "YEARLY"
         }
     }
 }

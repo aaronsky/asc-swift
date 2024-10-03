@@ -16,62 +16,62 @@ extension Resources.V1.AppStoreVersionLocalizations {
         /// Path: `/v1/appStoreVersionLocalizations/{id}`
         public let path: String
 
-        public func get(fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, include: [Include]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, limitAppPreviewSets: Int? = nil, limitAppScreenshotSets: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionLocalizationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionLocalizations, include, fieldsAppScreenshotSets, fieldsAppPreviewSets, limitAppPreviewSets, limitAppScreenshotSets), id: "appStoreVersionLocalizations-get_instance")
+        public func get(fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, include: [Include]? = nil, limitAppPreviewSets: Int? = nil, limitAppScreenshotSets: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionLocalizationResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionLocalizations, fieldsAppScreenshotSets, fieldsAppPreviewSets, include, limitAppPreviewSets, limitAppScreenshotSets), id: "appStoreVersionLocalizations_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ include: [Include]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ limitAppPreviewSets: Int?, _ limitAppScreenshotSets: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ include: [Include]?, _ limitAppPreviewSets: Int?, _ limitAppScreenshotSets: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppStoreVersionLocalizations, forKey: "fields[appStoreVersionLocalizations]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsAppScreenshotSets, forKey: "fields[appScreenshotSets]")
             encoder.encode(fieldsAppPreviewSets, forKey: "fields[appPreviewSets]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitAppPreviewSets, forKey: "limit[appPreviewSets]")
             encoder.encode(limitAppScreenshotSets, forKey: "limit[appScreenshotSets]")
             return encoder.items
         }
 
         public enum FieldsAppStoreVersionLocalizations: String, CaseIterable, Codable, Sendable {
-            case appPreviewSets
-            case appScreenshotSets
-            case appStoreVersion
             case description
-            case keywords
             case locale
+            case keywords
             case marketingURL = "marketingUrl"
             case promotionalText
             case supportURL = "supportUrl"
             case whatsNew
-        }
-
-        public enum Include: String, CaseIterable, Codable, Sendable {
-            case appPreviewSets
-            case appScreenshotSets
             case appStoreVersion
+            case appScreenshotSets
+            case appPreviewSets
         }
 
         public enum FieldsAppScreenshotSets: String, CaseIterable, Codable, Sendable {
-            case appCustomProductPageLocalization
-            case appScreenshots
-            case appStoreVersionExperimentTreatmentLocalization
-            case appStoreVersionLocalization
             case screenshotDisplayType
+            case appStoreVersionLocalization
+            case appCustomProductPageLocalization
+            case appStoreVersionExperimentTreatmentLocalization
+            case appScreenshots
         }
 
         public enum FieldsAppPreviewSets: String, CaseIterable, Codable, Sendable {
-            case appCustomProductPageLocalization
-            case appPreviews
-            case appStoreVersionExperimentTreatmentLocalization
-            case appStoreVersionLocalization
             case previewType
+            case appStoreVersionLocalization
+            case appCustomProductPageLocalization
+            case appStoreVersionExperimentTreatmentLocalization
+            case appPreviews
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case appStoreVersion
+            case appScreenshotSets
+            case appPreviewSets
         }
 
         public func patch(_ body: AppStoreAPI.AppStoreVersionLocalizationUpdateRequest) -> Request<AppStoreAPI.AppStoreVersionLocalizationResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "appStoreVersionLocalizations-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appStoreVersionLocalizations_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "appStoreVersionLocalizations-delete_instance")
+            Request(path: path, method: "DELETE", id: "appStoreVersionLocalizations_deleteInstance")
         }
     }
 }

@@ -17,7 +17,7 @@ extension Resources.V1.GameCenterLeaderboardSets.WithID {
         public let path: String
 
         public func get(fieldsGameCenterLeaderboardSetLocalizations: [FieldsGameCenterLeaderboardSetLocalizations]? = nil, fieldsGameCenterLeaderboardSets: [FieldsGameCenterLeaderboardSets]? = nil, fieldsGameCenterLeaderboardSetImages: [FieldsGameCenterLeaderboardSetImages]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardSetLocalizationsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardSetLocalizations, fieldsGameCenterLeaderboardSets, fieldsGameCenterLeaderboardSetImages, limit, include), id: "gameCenterLeaderboardSets-localizations-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardSetLocalizations, fieldsGameCenterLeaderboardSets, fieldsGameCenterLeaderboardSetImages, limit, include), id: "gameCenterLeaderboardSets_localizations_getToManyRelated")
         }
 
         private func makeGetQuery(_ fieldsGameCenterLeaderboardSetLocalizations: [FieldsGameCenterLeaderboardSetLocalizations]?, _ fieldsGameCenterLeaderboardSets: [FieldsGameCenterLeaderboardSets]?, _ fieldsGameCenterLeaderboardSetImages: [FieldsGameCenterLeaderboardSetImages]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
@@ -31,31 +31,31 @@ extension Resources.V1.GameCenterLeaderboardSets.WithID {
         }
 
         public enum FieldsGameCenterLeaderboardSetLocalizations: String, CaseIterable, Codable, Sendable {
-            case gameCenterLeaderboardSet
-            case gameCenterLeaderboardSetImage
             case locale
             case name
+            case gameCenterLeaderboardSet
+            case gameCenterLeaderboardSetImage
         }
 
         public enum FieldsGameCenterLeaderboardSets: String, CaseIterable, Codable, Sendable {
+            case referenceName
+            case vendorIdentifier
             case gameCenterDetail
             case gameCenterGroup
-            case gameCenterLeaderboards
             case groupLeaderboardSet
             case localizations
-            case referenceName
+            case gameCenterLeaderboards
             case releases
-            case vendorIdentifier
         }
 
         public enum FieldsGameCenterLeaderboardSetImages: String, CaseIterable, Codable, Sendable {
-            case assetDeliveryState
-            case fileName
             case fileSize
-            case gameCenterLeaderboardSetLocalization
+            case fileName
             case imageAsset
             case uploadOperations
+            case assetDeliveryState
             case uploaded
+            case gameCenterLeaderboardSetLocalization
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

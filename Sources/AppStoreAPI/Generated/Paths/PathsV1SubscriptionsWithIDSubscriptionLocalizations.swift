@@ -16,45 +16,47 @@ extension Resources.V1.Subscriptions.WithID {
         /// Path: `/v1/subscriptions/{id}/subscriptionLocalizations`
         public let path: String
 
-        public func get(fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionLocalizationsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptions, fieldsSubscriptionLocalizations, limit, include), id: "subscriptions-subscriptionLocalizations-get_to_many_related")
+        public func get(fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionLocalizationsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionLocalizations, fieldsSubscriptions, limit, include), id: "subscriptions_subscriptionLocalizations_getToManyRelated")
         }
 
-        private func makeGetQuery(_ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
             encoder.encode(fieldsSubscriptionLocalizations, forKey: "fields[subscriptionLocalizations]")
+            encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
-        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
-            case appStoreReviewScreenshot
-            case familySharable
-            case group
-            case groupLevel
-            case introductoryOffers
-            case name
-            case offerCodes
-            case pricePoints
-            case prices
-            case productID = "productId"
-            case promotedPurchase
-            case promotionalOffers
-            case reviewNote
-            case state
-            case subscriptionAvailability
-            case subscriptionLocalizations
-            case subscriptionPeriod
-        }
-
         public enum FieldsSubscriptionLocalizations: String, CaseIterable, Codable, Sendable {
-            case description
-            case locale
             case name
+            case locale
+            case description
             case state
             case subscription
+        }
+
+        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
+            case name
+            case productID = "productId"
+            case familySharable
+            case state
+            case subscriptionPeriod
+            case reviewNote
+            case groupLevel
+            case subscriptionLocalizations
+            case appStoreReviewScreenshot
+            case group
+            case introductoryOffers
+            case promotionalOffers
+            case offerCodes
+            case prices
+            case pricePoints
+            case promotedPurchase
+            case subscriptionAvailability
+            case winBackOffers
+            case images
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

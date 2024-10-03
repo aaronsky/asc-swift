@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.AppCustomProductPageLocalizationCreateRequest) -> Request<AppStoreAPI.AppCustomProductPageLocalizationResponse> {
-            Request(path: path, method: "POST", body: body, id: "appCustomProductPageLocalizations-create_instance")
+            Request(path: path, method: "POST", body: body, id: "appCustomProductPageLocalizations_createInstance")
         }
     }
 }

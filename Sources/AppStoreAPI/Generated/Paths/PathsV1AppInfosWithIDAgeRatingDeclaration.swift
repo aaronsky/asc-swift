@@ -17,7 +17,7 @@ extension Resources.V1.AppInfos.WithID {
         public let path: String
 
         public func get(fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]? = nil) -> Request<AppStoreAPI.AgeRatingDeclarationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAgeRatingDeclarations), id: "appInfos-ageRatingDeclaration-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAgeRatingDeclarations), id: "appInfos_ageRatingDeclaration_getToOneRelated")
         }
 
         private func makeGetQuery(_ fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]?) -> [(String, String?)] {
@@ -27,24 +27,26 @@ extension Resources.V1.AppInfos.WithID {
         }
 
         public enum FieldsAgeRatingDeclarations: String, CaseIterable, Codable, Sendable {
-            case ageRatingOverride
             case alcoholTobaccoOrDrugUseOrReferences
             case contests
-            case gambling
             case gamblingAndContests
+            case gambling
             case gamblingSimulated
-            case horrorOrFearThemes
             case kidsAgeBand
-            case matureOrSuggestiveThemes
+            case lootBox
             case medicalOrTreatmentInformation
             case profanityOrCrudeHumor
-            case seventeenPlus
             case sexualContentGraphicAndNudity
             case sexualContentOrNudity
+            case horrorOrFearThemes
+            case matureOrSuggestiveThemes
             case unrestrictedWebAccess
             case violenceCartoonOrFantasy
-            case violenceRealistic
             case violenceRealisticProlongedGraphicOrSadistic
+            case violenceRealistic
+            case ageRatingOverride
+            case koreaAgeRatingOverride
+            case seventeenPlus
         }
     }
 }

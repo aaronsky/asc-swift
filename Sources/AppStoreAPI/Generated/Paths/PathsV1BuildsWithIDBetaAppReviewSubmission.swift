@@ -17,7 +17,7 @@ extension Resources.V1.Builds.WithID {
         public let path: String
 
         public func get(fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]? = nil) -> Request<AppStoreAPI.BetaAppReviewSubmissionWithoutIncludesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaAppReviewSubmissions), id: "builds-betaAppReviewSubmission-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaAppReviewSubmissions), id: "builds_betaAppReviewSubmission_getToOneRelated")
         }
 
         private func makeGetQuery(_ fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]?) -> [(String, String?)] {
@@ -28,8 +28,8 @@ extension Resources.V1.Builds.WithID {
 
         public enum FieldsBetaAppReviewSubmissions: String, CaseIterable, Codable, Sendable {
             case betaReviewState
-            case build
             case submittedDate
+            case build
         }
     }
 }

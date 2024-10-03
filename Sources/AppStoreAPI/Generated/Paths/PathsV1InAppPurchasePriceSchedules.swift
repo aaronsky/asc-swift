@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.InAppPurchasePriceScheduleCreateRequest) -> Request<AppStoreAPI.InAppPurchasePriceScheduleResponse> {
-            Request(path: path, method: "POST", body: body, id: "inAppPurchasePriceSchedules-create_instance")
+            Request(path: path, method: "POST", body: body, id: "inAppPurchasePriceSchedules_createInstance")
         }
     }
 }

@@ -16,11 +16,11 @@ extension Resources.V1 {
         /// Path: `/v1/preReleaseVersions`
         public let path: String
 
-        public func get(filterBuildsExpired: [String]? = nil, filterBuildsProcessingState: [FilterBuildsProcessingState]? = nil, filterBuildsVersion: [String]? = nil, filterPlatform: [FilterPlatform]? = nil, filterVersion: [String]? = nil, filterApp: [String]? = nil, filterBuilds: [String]? = nil, sort: [Sort]? = nil, fieldsPreReleaseVersions: [FieldsPreReleaseVersions]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, limitBuilds: Int? = nil) -> Request<AppStoreAPI.PreReleaseVersionsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterBuildsExpired, filterBuildsProcessingState, filterBuildsVersion, filterPlatform, filterVersion, filterApp, filterBuilds, sort, fieldsPreReleaseVersions, limit, include, fieldsApps, fieldsBuilds, limitBuilds), id: "preReleaseVersions-get_collection")
+        public func get(filterBuildsExpired: [String]? = nil, filterBuildsProcessingState: [FilterBuildsProcessingState]? = nil, filterBuildsVersion: [String]? = nil, filterPlatform: [FilterPlatform]? = nil, filterVersion: [String]? = nil, filterApp: [String]? = nil, filterBuilds: [String]? = nil, sort: [Sort]? = nil, fieldsPreReleaseVersions: [FieldsPreReleaseVersions]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsApps: [FieldsApps]? = nil, limit: Int? = nil, include: [Include]? = nil, limitBuilds: Int? = nil) -> Request<AppStoreAPI.PreReleaseVersionsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterBuildsExpired, filterBuildsProcessingState, filterBuildsVersion, filterPlatform, filterVersion, filterApp, filterBuilds, sort, fieldsPreReleaseVersions, fieldsBuilds, fieldsApps, limit, include, limitBuilds), id: "preReleaseVersions_getCollection")
         }
 
-        private func makeGetQuery(_ filterBuildsExpired: [String]?, _ filterBuildsProcessingState: [FilterBuildsProcessingState]?, _ filterBuildsVersion: [String]?, _ filterPlatform: [FilterPlatform]?, _ filterVersion: [String]?, _ filterApp: [String]?, _ filterBuilds: [String]?, _ sort: [Sort]?, _ fieldsPreReleaseVersions: [FieldsPreReleaseVersions]?, _ limit: Int?, _ include: [Include]?, _ fieldsApps: [FieldsApps]?, _ fieldsBuilds: [FieldsBuilds]?, _ limitBuilds: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterBuildsExpired: [String]?, _ filterBuildsProcessingState: [FilterBuildsProcessingState]?, _ filterBuildsVersion: [String]?, _ filterPlatform: [FilterPlatform]?, _ filterVersion: [String]?, _ filterApp: [String]?, _ filterBuilds: [String]?, _ sort: [Sort]?, _ fieldsPreReleaseVersions: [FieldsPreReleaseVersions]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsApps: [FieldsApps]?, _ limit: Int?, _ include: [Include]?, _ limitBuilds: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterBuildsExpired, forKey: "filter[builds.expired]")
             encoder.encode(filterBuildsProcessingState, forKey: "filter[builds.processingState]")
@@ -31,10 +31,10 @@ extension Resources.V1 {
             encoder.encode(filterBuilds, forKey: "filter[builds]")
             encoder.encode(sort, forKey: "sort")
             encoder.encode(fieldsPreReleaseVersions, forKey: "fields[preReleaseVersions]")
+            encoder.encode(fieldsBuilds, forKey: "fields[builds]")
+            encoder.encode(fieldsApps, forKey: "fields[apps]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
-            encoder.encode(fieldsApps, forKey: "fields[apps]")
-            encoder.encode(fieldsBuilds, forKey: "fields[builds]")
             encoder.encode(limitBuilds, forKey: "limit[builds]")
             return encoder.items
         }
@@ -59,88 +59,90 @@ extension Resources.V1 {
         }
 
         public enum FieldsPreReleaseVersions: String, CaseIterable, Codable, Sendable {
-            case app
-            case builds
-            case platform
             case version
-        }
-
-        public enum Include: String, CaseIterable, Codable, Sendable {
+            case platform
+            case builds
             case app
-            case builds
-        }
-
-        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
-            case alternativeDistributionKey
-            case analyticsReportRequests
-            case appAvailability
-            case appClips
-            case appCustomProductPages
-            case appEncryptionDeclarations
-            case appEvents
-            case appInfos
-            case appPricePoints
-            case appPriceSchedule
-            case appStoreVersionExperimentsV2
-            case appStoreVersions
-            case betaAppLocalizations
-            case betaAppReviewDetail
-            case betaGroups
-            case betaLicenseAgreement
-            case betaTesters
-            case builds
-            case bundleID = "bundleId"
-            case ciProduct
-            case contentRightsDeclaration
-            case customerReviews
-            case endUserLicenseAgreement
-            case gameCenterDetail
-            case gameCenterEnabledVersions
-            case inAppPurchases
-            case inAppPurchasesV2
-            case isOrEverWasMadeForKids
-            case marketplaceSearchDetail
-            case name
-            case perfPowerMetrics
-            case preOrder
-            case preReleaseVersions
-            case primaryLocale
-            case promotedPurchases
-            case reviewSubmissions
-            case sku
-            case subscriptionGracePeriod
-            case subscriptionGroups
-            case subscriptionStatusURL = "subscriptionStatusUrl"
-            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
-            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
-            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
         public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
-            case app
-            case appEncryptionDeclaration
-            case appStoreVersion
-            case betaAppReviewSubmission
-            case betaBuildLocalizations
-            case betaGroups
-            case buildAudienceType
-            case buildBetaDetail
-            case buildBundles
-            case computedMinMacOsVersion
-            case diagnosticSignatures
+            case version
+            case uploadedDate
             case expirationDate
             case expired
-            case iconAssetToken
-            case icons
-            case individualTesters
-            case lsMinimumSystemVersion
             case minOsVersion
-            case perfPowerMetrics
-            case preReleaseVersion
+            case lsMinimumSystemVersion
+            case computedMinMacOsVersion
+            case iconAssetToken
             case processingState
-            case uploadedDate
+            case buildAudienceType
             case usesNonExemptEncryption
-            case version
+            case preReleaseVersion
+            case individualTesters
+            case betaGroups
+            case betaBuildLocalizations
+            case appEncryptionDeclaration
+            case betaAppReviewSubmission
+            case app
+            case buildBetaDetail
+            case appStoreVersion
+            case icons
+            case buildBundles
+            case perfPowerMetrics
+            case diagnosticSignatures
+        }
+
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case name
+            case bundleID = "bundleId"
+            case sku
+            case primaryLocale
+            case isOrEverWasMadeForKids
+            case subscriptionStatusURL = "subscriptionStatusUrl"
+            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
+            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
+            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
+            case contentRightsDeclaration
+            case streamlinedPurchasingEnabled
+            case appEncryptionDeclarations
+            case ciProduct
+            case betaTesters
+            case betaGroups
+            case appStoreVersions
+            case preReleaseVersions
+            case betaAppLocalizations
+            case builds
+            case betaLicenseAgreement
+            case betaAppReviewDetail
+            case appInfos
+            case appClips
+            case appPricePoints
+            case endUserLicenseAgreement
+            case preOrder
+            case appPriceSchedule
+            case appAvailability
+            case appAvailabilityV2
+            case inAppPurchases
+            case subscriptionGroups
+            case gameCenterEnabledVersions
+            case perfPowerMetrics
+            case appCustomProductPages
+            case inAppPurchasesV2
+            case promotedPurchases
+            case appEvents
+            case reviewSubmissions
+            case subscriptionGracePeriod
+            case customerReviews
+            case gameCenterDetail
+            case appStoreVersionExperimentsV2
+            case alternativeDistributionKey
+            case analyticsReportRequests
+            case marketplaceSearchDetail
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case builds
+            case app
         }
     }
 }

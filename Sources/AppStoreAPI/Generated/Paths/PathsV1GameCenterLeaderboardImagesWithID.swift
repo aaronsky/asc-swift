@@ -17,7 +17,7 @@ extension Resources.V1.GameCenterLeaderboardImages {
         public let path: String
 
         public func get(fieldsGameCenterLeaderboardImages: [FieldsGameCenterLeaderboardImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardImageResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardImages, include), id: "gameCenterLeaderboardImages-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardImages, include), id: "gameCenterLeaderboardImages_getInstance")
         }
 
         private func makeGetQuery(_ fieldsGameCenterLeaderboardImages: [FieldsGameCenterLeaderboardImages]?, _ include: [Include]?) -> [(String, String?)] {
@@ -28,13 +28,13 @@ extension Resources.V1.GameCenterLeaderboardImages {
         }
 
         public enum FieldsGameCenterLeaderboardImages: String, CaseIterable, Codable, Sendable {
-            case assetDeliveryState
-            case fileName
             case fileSize
-            case gameCenterLeaderboardLocalization
+            case fileName
             case imageAsset
             case uploadOperations
+            case assetDeliveryState
             case uploaded
+            case gameCenterLeaderboardLocalization
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
@@ -42,11 +42,11 @@ extension Resources.V1.GameCenterLeaderboardImages {
         }
 
         public func patch(_ body: AppStoreAPI.GameCenterLeaderboardImageUpdateRequest) -> Request<AppStoreAPI.GameCenterLeaderboardImageResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "gameCenterLeaderboardImages-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "gameCenterLeaderboardImages_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "gameCenterLeaderboardImages-delete_instance")
+            Request(path: path, method: "DELETE", id: "gameCenterLeaderboardImages_deleteInstance")
         }
     }
 }

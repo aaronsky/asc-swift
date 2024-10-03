@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.MarketplaceSearchDetailCreateRequest) -> Request<AppStoreAPI.MarketplaceSearchDetailResponse> {
-            Request(path: path, method: "POST", body: body, id: "marketplaceSearchDetails-create_instance")
+            Request(path: path, method: "POST", body: body, id: "marketplaceSearchDetails_createInstance")
         }
     }
 }

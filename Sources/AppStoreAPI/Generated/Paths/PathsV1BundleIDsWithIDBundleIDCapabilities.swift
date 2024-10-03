@@ -17,7 +17,7 @@ extension Resources.V1.BundleIDs.WithID {
         public let path: String
 
         public func get(fieldsBundleIDCapabilities: [FieldsBundleIDCapabilities]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.BundleIDCapabilitiesWithoutIncludesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBundleIDCapabilities, limit), id: "bundleIds-bundleIdCapabilities-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBundleIDCapabilities, limit), id: "bundleIds_bundleIdCapabilities_getToManyRelated")
         }
 
         private func makeGetQuery(_ fieldsBundleIDCapabilities: [FieldsBundleIDCapabilities]?, _ limit: Int?) -> [(String, String?)] {
@@ -28,9 +28,9 @@ extension Resources.V1.BundleIDs.WithID {
         }
 
         public enum FieldsBundleIDCapabilities: String, CaseIterable, Codable, Sendable {
-            case bundleID = "bundleId"
             case capabilityType
             case settings
+            case bundleID = "bundleId"
         }
     }
 }

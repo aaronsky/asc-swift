@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.AppClipAdvancedExperienceImageCreateRequest) -> Request<AppStoreAPI.AppClipAdvancedExperienceImageResponse> {
-            Request(path: path, method: "POST", body: body, id: "appClipAdvancedExperienceImages-create_instance")
+            Request(path: path, method: "POST", body: body, id: "appClipAdvancedExperienceImages_createInstance")
         }
     }
 }

@@ -38,6 +38,8 @@ public struct TerritoryAvailability: Codable, Equatable, Identifiable, Sendable 
             case brazilRequiredTaxID = "BRAZIL_REQUIRED_TAX_ID"
             case missingGrn = "MISSING_GRN"
             case unverifiedGrn = "UNVERIFIED_GRN"
+            case icpNumberInvalid = "ICP_NUMBER_INVALID"
+            case icpNumberMissing = "ICP_NUMBER_MISSING"
             case cannotSellSeventeenPlusApps = "CANNOT_SELL_SEVENTEEN_PLUS_APPS"
             case cannotSellSexuallyExplicit = "CANNOT_SELL_SEXUALLY_EXPLICIT"
             case cannotSellNoniOSGames = "CANNOT_SELL_NON_IOS_GAMES"
@@ -81,23 +83,7 @@ public struct TerritoryAvailability: Codable, Equatable, Identifiable, Sendable 
         public var territory: Territory?
 
         public struct Territory: Codable, Equatable, Sendable {
-            public var links: Links?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -113,8 +99,7 @@ public struct TerritoryAvailability: Codable, Equatable, Identifiable, Sendable 
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
-                self.links = links
+            public init(data: Data? = nil) {
                 self.data = data
             }
         }

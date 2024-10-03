@@ -37,23 +37,7 @@ public struct GameCenterLeaderboardSetImage: Codable, Equatable, Identifiable, S
         public var gameCenterLeaderboardSetLocalization: GameCenterLeaderboardSetLocalization?
 
         public struct GameCenterLeaderboardSetLocalization: Codable, Equatable, Sendable {
-            public var links: Links?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -69,8 +53,7 @@ public struct GameCenterLeaderboardSetImage: Codable, Equatable, Identifiable, S
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
-                self.links = links
+            public init(data: Data? = nil) {
                 self.data = data
             }
         }

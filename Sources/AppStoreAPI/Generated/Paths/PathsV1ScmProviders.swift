@@ -16,34 +16,21 @@ extension Resources.V1 {
         /// Path: `/v1/scmProviders`
         public let path: String
 
-        public func get(fieldsScmProviders: [FieldsScmProviders]? = nil, limit: Int? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil) -> Request<AppStoreAPI.ScmProvidersResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsScmProviders, limit, fieldsScmRepositories), id: "scmProviders-get_collection")
+        public func get(fieldsScmProviders: [FieldsScmProviders]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.ScmProvidersResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsScmProviders, limit), id: "scmProviders_getCollection")
         }
 
-        private func makeGetQuery(_ fieldsScmProviders: [FieldsScmProviders]?, _ limit: Int?, _ fieldsScmRepositories: [FieldsScmRepositories]?) -> [(String, String?)] {
-            let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(fieldsScmProviders, forKey: "fields[scmProviders]")
+        private func makeGetQuery(_ fieldsScmProviders: [FieldsScmProviders]?, _ limit: Int?) -> [(String, String?)] {
+            let encoder = URLQueryEncoder()
+            encoder.encode(fieldsScmProviders, forKey: "fields[scmProviders]", explode: false)
             encoder.encode(limit, forKey: "limit")
-            encoder.encode(fieldsScmRepositories, forKey: "fields[scmRepositories]")
             return encoder.items
         }
 
         public enum FieldsScmProviders: String, CaseIterable, Codable, Sendable {
-            case repositories
             case scmProviderType
             case url
-        }
-
-        public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
-            case defaultBranch
-            case gitReferences
-            case httpCloneURL = "httpCloneUrl"
-            case lastAccessedDate
-            case ownerName
-            case pullRequests
-            case repositoryName
-            case scmProvider
-            case sshCloneURL = "sshCloneUrl"
+            case repositories
         }
     }
 }

@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.AlternativeDistributionPackageCreateRequest) -> Request<AppStoreAPI.AlternativeDistributionPackageResponse> {
-            Request(path: path, method: "POST", body: body, id: "alternativeDistributionPackages-create_instance")
+            Request(path: path, method: "POST", body: body, id: "alternativeDistributionPackages_createInstance")
         }
     }
 }

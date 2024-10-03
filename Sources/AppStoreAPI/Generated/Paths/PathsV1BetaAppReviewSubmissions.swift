@@ -16,18 +16,18 @@ extension Resources.V1 {
         /// Path: `/v1/betaAppReviewSubmissions`
         public let path: String
 
-        public func get(filterBetaReviewState: [FilterBetaReviewState]? = nil, filterBuild: [String], fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]? = nil, limit: Int? = nil, include: [Include]? = nil, fieldsBuilds: [FieldsBuilds]? = nil) -> Request<AppStoreAPI.BetaAppReviewSubmissionsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterBetaReviewState, filterBuild, fieldsBetaAppReviewSubmissions, limit, include, fieldsBuilds), id: "betaAppReviewSubmissions-get_collection")
+        public func get(filterBetaReviewState: [FilterBetaReviewState]? = nil, filterBuild: [String], fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.BetaAppReviewSubmissionsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterBetaReviewState, filterBuild, fieldsBetaAppReviewSubmissions, fieldsBuilds, limit, include), id: "betaAppReviewSubmissions_getCollection")
         }
 
-        private func makeGetQuery(_ filterBetaReviewState: [FilterBetaReviewState]?, _ filterBuild: [String], _ fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]?, _ limit: Int?, _ include: [Include]?, _ fieldsBuilds: [FieldsBuilds]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterBetaReviewState: [FilterBetaReviewState]?, _ filterBuild: [String], _ fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]?, _ fieldsBuilds: [FieldsBuilds]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterBetaReviewState, forKey: "filter[betaReviewState]")
             encoder.encode(filterBuild, forKey: "filter[build]")
             encoder.encode(fieldsBetaAppReviewSubmissions, forKey: "fields[betaAppReviewSubmissions]")
+            encoder.encode(fieldsBuilds, forKey: "fields[builds]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
-            encoder.encode(fieldsBuilds, forKey: "fields[builds]")
             return encoder.items
         }
 
@@ -40,43 +40,43 @@ extension Resources.V1 {
 
         public enum FieldsBetaAppReviewSubmissions: String, CaseIterable, Codable, Sendable {
             case betaReviewState
-            case build
             case submittedDate
+            case build
+        }
+
+        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
+            case version
+            case uploadedDate
+            case expirationDate
+            case expired
+            case minOsVersion
+            case lsMinimumSystemVersion
+            case computedMinMacOsVersion
+            case iconAssetToken
+            case processingState
+            case buildAudienceType
+            case usesNonExemptEncryption
+            case preReleaseVersion
+            case individualTesters
+            case betaGroups
+            case betaBuildLocalizations
+            case appEncryptionDeclaration
+            case betaAppReviewSubmission
+            case app
+            case buildBetaDetail
+            case appStoreVersion
+            case icons
+            case buildBundles
+            case perfPowerMetrics
+            case diagnosticSignatures
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case build
         }
 
-        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
-            case app
-            case appEncryptionDeclaration
-            case appStoreVersion
-            case betaAppReviewSubmission
-            case betaBuildLocalizations
-            case betaGroups
-            case buildAudienceType
-            case buildBetaDetail
-            case buildBundles
-            case computedMinMacOsVersion
-            case diagnosticSignatures
-            case expirationDate
-            case expired
-            case iconAssetToken
-            case icons
-            case individualTesters
-            case lsMinimumSystemVersion
-            case minOsVersion
-            case perfPowerMetrics
-            case preReleaseVersion
-            case processingState
-            case uploadedDate
-            case usesNonExemptEncryption
-            case version
-        }
-
         public func post(_ body: AppStoreAPI.BetaAppReviewSubmissionCreateRequest) -> Request<AppStoreAPI.BetaAppReviewSubmissionResponse> {
-            Request(path: path, method: "POST", body: body, id: "betaAppReviewSubmissions-create_instance")
+            Request(path: path, method: "POST", body: body, id: "betaAppReviewSubmissions_createInstance")
         }
     }
 }

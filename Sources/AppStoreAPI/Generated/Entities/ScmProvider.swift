@@ -10,6 +10,7 @@ public struct ScmProvider: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
+    public var relationships: Relationships?
     public var links: ResourceLinks?
 
     public enum `Type`: String, CaseIterable, Codable, Sendable {
@@ -26,10 +27,27 @@ public struct ScmProvider: Codable, Equatable, Identifiable, Sendable {
         }
     }
 
-    public init(type: `Type` = .scmProviders, id: String, attributes: Attributes? = nil, links: ResourceLinks? = nil) {
+    public struct Relationships: Codable, Equatable, Sendable {
+        public var repositories: Repositories?
+
+        public struct Repositories: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
+            }
+        }
+
+        public init(repositories: Repositories? = nil) {
+            self.repositories = repositories
+        }
+    }
+
+    public init(type: `Type` = .scmProviders, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes
+        self.relationships = relationships
         self.links = links
     }
 }

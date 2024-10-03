@@ -16,70 +16,72 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/appAvailability`
         public let path: String
 
-        public func get(fieldsAppAvailabilities: [FieldsAppAvailabilities]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limitAvailableTerritories: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppAvailabilityResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppAvailabilities, fieldsApps, fieldsTerritories, limitAvailableTerritories, include), id: "apps-appAvailability-get_to_one_related")
+        public func get(fieldsAppAvailabilities: [FieldsAppAvailabilities]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, include: [Include]? = nil, limitAvailableTerritories: Int? = nil) -> Request<AppStoreAPI.AppAvailabilityResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppAvailabilities, fieldsApps, fieldsTerritories, include, limitAvailableTerritories), id: "apps_appAvailability_getToOneRelated")
         }
 
-        private func makeGetQuery(_ fieldsAppAvailabilities: [FieldsAppAvailabilities]?, _ fieldsApps: [FieldsApps]?, _ fieldsTerritories: [FieldsTerritories]?, _ limitAvailableTerritories: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppAvailabilities: [FieldsAppAvailabilities]?, _ fieldsApps: [FieldsApps]?, _ fieldsTerritories: [FieldsTerritories]?, _ include: [Include]?, _ limitAvailableTerritories: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppAvailabilities, forKey: "fields[appAvailabilities]")
             encoder.encode(fieldsApps, forKey: "fields[apps]")
             encoder.encode(fieldsTerritories, forKey: "fields[territories]")
-            encoder.encode(limitAvailableTerritories, forKey: "limit[availableTerritories]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitAvailableTerritories, forKey: "limit[availableTerritories]")
             return encoder.items
         }
 
         public enum FieldsAppAvailabilities: String, CaseIterable, Codable, Sendable {
-            case app
             case availableInNewTerritories
+            case app
             case availableTerritories
         }
 
         public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case name
+            case bundleID = "bundleId"
+            case sku
+            case primaryLocale
+            case isOrEverWasMadeForKids
+            case subscriptionStatusURL = "subscriptionStatusUrl"
+            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
+            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
+            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
+            case contentRightsDeclaration
+            case streamlinedPurchasingEnabled
+            case appEncryptionDeclarations
+            case ciProduct
+            case betaTesters
+            case betaGroups
+            case appStoreVersions
+            case preReleaseVersions
+            case betaAppLocalizations
+            case builds
+            case betaLicenseAgreement
+            case betaAppReviewDetail
+            case appInfos
+            case appClips
+            case appPricePoints
+            case endUserLicenseAgreement
+            case preOrder
+            case appPriceSchedule
+            case appAvailability
+            case appAvailabilityV2
+            case inAppPurchases
+            case subscriptionGroups
+            case gameCenterEnabledVersions
+            case perfPowerMetrics
+            case appCustomProductPages
+            case inAppPurchasesV2
+            case promotedPurchases
+            case appEvents
+            case reviewSubmissions
+            case subscriptionGracePeriod
+            case customerReviews
+            case gameCenterDetail
+            case appStoreVersionExperimentsV2
             case alternativeDistributionKey
             case analyticsReportRequests
-            case appAvailability
-            case appClips
-            case appCustomProductPages
-            case appEncryptionDeclarations
-            case appEvents
-            case appInfos
-            case appPricePoints
-            case appPriceSchedule
-            case appStoreVersionExperimentsV2
-            case appStoreVersions
-            case betaAppLocalizations
-            case betaAppReviewDetail
-            case betaGroups
-            case betaLicenseAgreement
-            case betaTesters
-            case builds
-            case bundleID = "bundleId"
-            case ciProduct
-            case contentRightsDeclaration
-            case customerReviews
-            case endUserLicenseAgreement
-            case gameCenterDetail
-            case gameCenterEnabledVersions
-            case inAppPurchases
-            case inAppPurchasesV2
-            case isOrEverWasMadeForKids
             case marketplaceSearchDetail
-            case name
-            case perfPowerMetrics
-            case preOrder
-            case preReleaseVersions
-            case primaryLocale
-            case promotedPurchases
-            case reviewSubmissions
-            case sku
-            case subscriptionGracePeriod
-            case subscriptionGroups
-            case subscriptionStatusURL = "subscriptionStatusUrl"
-            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
-            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
-            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
         public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {

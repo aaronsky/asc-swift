@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.CustomerReviewResponseV1CreateRequest) -> Request<AppStoreAPI.CustomerReviewResponseV1Response> {
-            Request(path: path, method: "POST", body: body, id: "customerReviewResponses-create_instance")
+            Request(path: path, method: "POST", body: body, id: "customerReviewResponses_createInstance")
         }
     }
 }

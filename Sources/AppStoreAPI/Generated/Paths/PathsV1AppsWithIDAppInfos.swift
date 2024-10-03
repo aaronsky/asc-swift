@@ -16,127 +16,133 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/appInfos`
         public let path: String
 
-        public func get(fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]? = nil, fieldsAppInfos: [FieldsAppInfos]? = nil, fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]? = nil, fieldsAppCategories: [FieldsAppCategories]? = nil, fieldsApps: [FieldsApps]? = nil, limit: Int? = nil, limitAppInfoLocalizations: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppInfosResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAgeRatingDeclarations, fieldsAppInfos, fieldsAppInfoLocalizations, fieldsAppCategories, fieldsApps, limit, limitAppInfoLocalizations, include), id: "apps-appInfos-get_to_many_related")
+        public func get(fieldsAppInfos: [FieldsAppInfos]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]? = nil, fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]? = nil, fieldsAppCategories: [FieldsAppCategories]? = nil, limit: Int? = nil, include: [Include]? = nil, limitAppInfoLocalizations: Int? = nil) -> Request<AppStoreAPI.AppInfosResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppInfos, fieldsApps, fieldsAgeRatingDeclarations, fieldsAppInfoLocalizations, fieldsAppCategories, limit, include, limitAppInfoLocalizations), id: "apps_appInfos_getToManyRelated")
         }
 
-        private func makeGetQuery(_ fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]?, _ fieldsAppInfos: [FieldsAppInfos]?, _ fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]?, _ fieldsAppCategories: [FieldsAppCategories]?, _ fieldsApps: [FieldsApps]?, _ limit: Int?, _ limitAppInfoLocalizations: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppInfos: [FieldsAppInfos]?, _ fieldsApps: [FieldsApps]?, _ fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]?, _ fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]?, _ fieldsAppCategories: [FieldsAppCategories]?, _ limit: Int?, _ include: [Include]?, _ limitAppInfoLocalizations: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(fieldsAgeRatingDeclarations, forKey: "fields[ageRatingDeclarations]")
             encoder.encode(fieldsAppInfos, forKey: "fields[appInfos]")
+            encoder.encode(fieldsApps, forKey: "fields[apps]")
+            encoder.encode(fieldsAgeRatingDeclarations, forKey: "fields[ageRatingDeclarations]")
             encoder.encode(fieldsAppInfoLocalizations, forKey: "fields[appInfoLocalizations]")
             encoder.encode(fieldsAppCategories, forKey: "fields[appCategories]")
-            encoder.encode(fieldsApps, forKey: "fields[apps]")
             encoder.encode(limit, forKey: "limit")
-            encoder.encode(limitAppInfoLocalizations, forKey: "limit[appInfoLocalizations]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitAppInfoLocalizations, forKey: "limit[appInfoLocalizations]")
             return encoder.items
         }
 
-        public enum FieldsAgeRatingDeclarations: String, CaseIterable, Codable, Sendable {
-            case ageRatingOverride
-            case alcoholTobaccoOrDrugUseOrReferences
-            case contests
-            case gambling
-            case gamblingAndContests
-            case gamblingSimulated
-            case horrorOrFearThemes
-            case kidsAgeBand
-            case matureOrSuggestiveThemes
-            case medicalOrTreatmentInformation
-            case profanityOrCrudeHumor
-            case seventeenPlus
-            case sexualContentGraphicAndNudity
-            case sexualContentOrNudity
-            case unrestrictedWebAccess
-            case violenceCartoonOrFantasy
-            case violenceRealistic
-            case violenceRealisticProlongedGraphicOrSadistic
-        }
-
         public enum FieldsAppInfos: String, CaseIterable, Codable, Sendable {
-            case ageRatingDeclaration
-            case app
-            case appInfoLocalizations
-            case appStoreAgeRating
             case appStoreState
+            case state
+            case appStoreAgeRating
+            case australiaAgeRating
             case brazilAgeRating
             case brazilAgeRatingV2
+            case koreaAgeRating
             case kidsAgeBand
+            case app
+            case ageRatingDeclaration
+            case appInfoLocalizations
             case primaryCategory
             case primarySubcategoryOne
             case primarySubcategoryTwo
             case secondaryCategory
             case secondarySubcategoryOne
             case secondarySubcategoryTwo
-            case state
-        }
-
-        public enum FieldsAppInfoLocalizations: String, CaseIterable, Codable, Sendable {
-            case appInfo
-            case locale
-            case name
-            case privacyChoicesURL = "privacyChoicesUrl"
-            case privacyPolicyText
-            case privacyPolicyURL = "privacyPolicyUrl"
-            case subtitle
-        }
-
-        public enum FieldsAppCategories: String, CaseIterable, Codable, Sendable {
-            case parent
-            case platforms
-            case subcategories
         }
 
         public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case name
+            case bundleID = "bundleId"
+            case sku
+            case primaryLocale
+            case isOrEverWasMadeForKids
+            case subscriptionStatusURL = "subscriptionStatusUrl"
+            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
+            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
+            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
+            case contentRightsDeclaration
+            case streamlinedPurchasingEnabled
+            case appEncryptionDeclarations
+            case ciProduct
+            case betaTesters
+            case betaGroups
+            case appStoreVersions
+            case preReleaseVersions
+            case betaAppLocalizations
+            case builds
+            case betaLicenseAgreement
+            case betaAppReviewDetail
+            case appInfos
+            case appClips
+            case appPricePoints
+            case endUserLicenseAgreement
+            case preOrder
+            case appPriceSchedule
+            case appAvailability
+            case appAvailabilityV2
+            case inAppPurchases
+            case subscriptionGroups
+            case gameCenterEnabledVersions
+            case perfPowerMetrics
+            case appCustomProductPages
+            case inAppPurchasesV2
+            case promotedPurchases
+            case appEvents
+            case reviewSubmissions
+            case subscriptionGracePeriod
+            case customerReviews
+            case gameCenterDetail
+            case appStoreVersionExperimentsV2
             case alternativeDistributionKey
             case analyticsReportRequests
-            case appAvailability
-            case appClips
-            case appCustomProductPages
-            case appEncryptionDeclarations
-            case appEvents
-            case appInfos
-            case appPricePoints
-            case appPriceSchedule
-            case appStoreVersionExperimentsV2
-            case appStoreVersions
-            case betaAppLocalizations
-            case betaAppReviewDetail
-            case betaGroups
-            case betaLicenseAgreement
-            case betaTesters
-            case builds
-            case bundleID = "bundleId"
-            case ciProduct
-            case contentRightsDeclaration
-            case customerReviews
-            case endUserLicenseAgreement
-            case gameCenterDetail
-            case gameCenterEnabledVersions
-            case inAppPurchases
-            case inAppPurchasesV2
-            case isOrEverWasMadeForKids
             case marketplaceSearchDetail
+        }
+
+        public enum FieldsAgeRatingDeclarations: String, CaseIterable, Codable, Sendable {
+            case alcoholTobaccoOrDrugUseOrReferences
+            case contests
+            case gamblingAndContests
+            case gambling
+            case gamblingSimulated
+            case kidsAgeBand
+            case lootBox
+            case medicalOrTreatmentInformation
+            case profanityOrCrudeHumor
+            case sexualContentGraphicAndNudity
+            case sexualContentOrNudity
+            case horrorOrFearThemes
+            case matureOrSuggestiveThemes
+            case unrestrictedWebAccess
+            case violenceCartoonOrFantasy
+            case violenceRealisticProlongedGraphicOrSadistic
+            case violenceRealistic
+            case ageRatingOverride
+            case koreaAgeRatingOverride
+            case seventeenPlus
+        }
+
+        public enum FieldsAppInfoLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
             case name
-            case perfPowerMetrics
-            case preOrder
-            case preReleaseVersions
-            case primaryLocale
-            case promotedPurchases
-            case reviewSubmissions
-            case sku
-            case subscriptionGracePeriod
-            case subscriptionGroups
-            case subscriptionStatusURL = "subscriptionStatusUrl"
-            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
-            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
-            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
+            case subtitle
+            case privacyPolicyURL = "privacyPolicyUrl"
+            case privacyChoicesURL = "privacyChoicesUrl"
+            case privacyPolicyText
+            case appInfo
+        }
+
+        public enum FieldsAppCategories: String, CaseIterable, Codable, Sendable {
+            case platforms
+            case subcategories
+            case parent
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case ageRatingDeclaration
             case app
+            case ageRatingDeclaration
             case appInfoLocalizations
             case primaryCategory
             case primarySubcategoryOne

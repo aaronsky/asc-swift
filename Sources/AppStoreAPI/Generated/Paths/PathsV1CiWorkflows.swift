@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.CiWorkflowCreateRequest) -> Request<AppStoreAPI.CiWorkflowResponse> {
-            Request(path: path, method: "POST", body: body, id: "ciWorkflows-create_instance")
+            Request(path: path, method: "POST", body: body, id: "ciWorkflows_createInstance")
         }
     }
 }

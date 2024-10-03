@@ -16,18 +16,18 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/analyticsReportRequests`
         public let path: String
 
-        public func get(filterAccessType: [FilterAccessType]? = nil, fieldsAnalyticsReportRequests: [FieldsAnalyticsReportRequests]? = nil, fieldsAnalyticsReports: [FieldsAnalyticsReports]? = nil, limit: Int? = nil, limitReports: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AnalyticsReportRequestsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterAccessType, fieldsAnalyticsReportRequests, fieldsAnalyticsReports, limit, limitReports, include), id: "apps-analyticsReportRequests-get_to_many_related")
+        public func get(filterAccessType: [FilterAccessType]? = nil, fieldsAnalyticsReportRequests: [FieldsAnalyticsReportRequests]? = nil, fieldsAnalyticsReports: [FieldsAnalyticsReports]? = nil, limit: Int? = nil, include: [Include]? = nil, limitReports: Int? = nil) -> Request<AppStoreAPI.AnalyticsReportRequestsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterAccessType, fieldsAnalyticsReportRequests, fieldsAnalyticsReports, limit, include, limitReports), id: "apps_analyticsReportRequests_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterAccessType: [FilterAccessType]?, _ fieldsAnalyticsReportRequests: [FieldsAnalyticsReportRequests]?, _ fieldsAnalyticsReports: [FieldsAnalyticsReports]?, _ limit: Int?, _ limitReports: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterAccessType: [FilterAccessType]?, _ fieldsAnalyticsReportRequests: [FieldsAnalyticsReportRequests]?, _ fieldsAnalyticsReports: [FieldsAnalyticsReports]?, _ limit: Int?, _ include: [Include]?, _ limitReports: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterAccessType, forKey: "filter[accessType]")
             encoder.encode(fieldsAnalyticsReportRequests, forKey: "fields[analyticsReportRequests]")
             encoder.encode(fieldsAnalyticsReports, forKey: "fields[analyticsReports]")
             encoder.encode(limit, forKey: "limit")
-            encoder.encode(limitReports, forKey: "limit[reports]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitReports, forKey: "limit[reports]")
             return encoder.items
         }
 
@@ -38,15 +38,15 @@ extension Resources.V1.Apps.WithID {
 
         public enum FieldsAnalyticsReportRequests: String, CaseIterable, Codable, Sendable {
             case accessType
+            case stoppedDueToInactivity
             case app
             case reports
-            case stoppedDueToInactivity
         }
 
         public enum FieldsAnalyticsReports: String, CaseIterable, Codable, Sendable {
+            case name
             case category
             case instances
-            case name
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

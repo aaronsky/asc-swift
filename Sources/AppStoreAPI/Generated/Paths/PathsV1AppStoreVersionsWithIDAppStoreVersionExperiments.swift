@@ -16,19 +16,19 @@ extension Resources.V1.AppStoreVersions.WithID {
         /// Path: `/v1/appStoreVersions/{id}/appStoreVersionExperiments`
         public let path: String
 
-        public func get(filterState: [FilterState]? = nil, fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, limit: Int? = nil, limitAppStoreVersionExperimentTreatments: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppStoreVersionExperimentsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterState, fieldsAppStoreVersionExperiments, fieldsAppStoreVersionExperimentTreatments, fieldsAppStoreVersions, limit, limitAppStoreVersionExperimentTreatments, include), id: "appStoreVersions-appStoreVersionExperiments-get_to_many_related")
+        public func get(filterState: [FilterState]? = nil, fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]? = nil, limit: Int? = nil, include: [Include]? = nil, limitAppStoreVersionExperimentTreatments: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionExperimentsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterState, fieldsAppStoreVersionExperiments, fieldsAppStoreVersions, fieldsAppStoreVersionExperimentTreatments, limit, include, limitAppStoreVersionExperimentTreatments), id: "appStoreVersions_appStoreVersionExperiments_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterState: [FilterState]?, _ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ limit: Int?, _ limitAppStoreVersionExperimentTreatments: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterState: [FilterState]?, _ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]?, _ limit: Int?, _ include: [Include]?, _ limitAppStoreVersionExperimentTreatments: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterState, forKey: "filter[state]")
             encoder.encode(fieldsAppStoreVersionExperiments, forKey: "fields[appStoreVersionExperiments]")
-            encoder.encode(fieldsAppStoreVersionExperimentTreatments, forKey: "fields[appStoreVersionExperimentTreatments]")
             encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
+            encoder.encode(fieldsAppStoreVersionExperimentTreatments, forKey: "fields[appStoreVersionExperimentTreatments]")
             encoder.encode(limit, forKey: "limit")
-            encoder.encode(limitAppStoreVersionExperimentTreatments, forKey: "limit[appStoreVersionExperimentTreatments]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitAppStoreVersionExperimentTreatments, forKey: "limit[appStoreVersionExperimentTreatments]")
             return encoder.items
         }
 
@@ -45,51 +45,52 @@ extension Resources.V1.AppStoreVersions.WithID {
         }
 
         public enum FieldsAppStoreVersionExperiments: String, CaseIterable, Codable, Sendable {
-            case appStoreVersion
-            case appStoreVersionExperimentTreatments
-            case endDate
             case name
+            case trafficProportion
+            case state
             case reviewRequired
             case startDate
+            case endDate
             case started
-            case state
-            case trafficProportion
-        }
-
-        public enum FieldsAppStoreVersionExperimentTreatments: String, CaseIterable, Codable, Sendable {
-            case appIcon
-            case appIconName
-            case appStoreVersionExperiment
-            case appStoreVersionExperimentTreatmentLocalizations
-            case appStoreVersionExperimentV2
-            case name
-            case promotedDate
+            case appStoreVersion
+            case appStoreVersionExperimentTreatments
         }
 
         public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
-            case ageRatingDeclaration
-            case alternativeDistributionPackage
-            case app
-            case appClipDefaultExperience
-            case appStoreReviewDetail
+            case platform
+            case versionString
             case appStoreState
+            case appVersionState
+            case copyright
+            case reviewType
+            case releaseType
+            case earliestReleaseDate
+            case downloadable
+            case createdDate
+            case app
+            case ageRatingDeclaration
+            case appStoreVersionLocalizations
+            case build
+            case appStoreVersionPhasedRelease
+            case gameCenterAppVersion
+            case routingAppCoverage
+            case appStoreReviewDetail
+            case appStoreVersionSubmission
+            case appClipDefaultExperience
             case appStoreVersionExperiments
             case appStoreVersionExperimentsV2
-            case appStoreVersionLocalizations
-            case appStoreVersionPhasedRelease
-            case appStoreVersionSubmission
-            case appVersionState
-            case build
-            case copyright
-            case createdDate
             case customerReviews
-            case downloadable
-            case earliestReleaseDate
-            case platform
-            case releaseType
-            case reviewType
-            case routingAppCoverage
-            case versionString
+            case alternativeDistributionPackage
+        }
+
+        public enum FieldsAppStoreVersionExperimentTreatments: String, CaseIterable, Codable, Sendable {
+            case name
+            case appIcon
+            case appIconName
+            case promotedDate
+            case appStoreVersionExperiment
+            case appStoreVersionExperimentV2
+            case appStoreVersionExperimentTreatmentLocalizations
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

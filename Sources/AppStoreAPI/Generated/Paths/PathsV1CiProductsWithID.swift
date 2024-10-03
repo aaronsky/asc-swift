@@ -16,32 +16,90 @@ extension Resources.V1.CiProducts {
         /// Path: `/v1/ciProducts/{id}`
         public let path: String
 
-        public func get(fieldsCiProducts: [FieldsCiProducts]? = nil, include: [Include]? = nil, fieldsCiBuildRuns: [FieldsCiBuildRuns]? = nil, fieldsCiWorkflows: [FieldsCiWorkflows]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, limitPrimaryRepositories: Int? = nil) -> Request<AppStoreAPI.CiProductResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiProducts, include, fieldsCiBuildRuns, fieldsCiWorkflows, fieldsApps, fieldsScmRepositories, limitPrimaryRepositories), id: "ciProducts-get_instance")
+        public func get(fieldsCiProducts: [FieldsCiProducts]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, include: [Include]? = nil, limitPrimaryRepositories: Int? = nil) -> Request<AppStoreAPI.CiProductResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiProducts, fieldsApps, fieldsScmRepositories, include, limitPrimaryRepositories), id: "ciProducts_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsCiProducts: [FieldsCiProducts]?, _ include: [Include]?, _ fieldsCiBuildRuns: [FieldsCiBuildRuns]?, _ fieldsCiWorkflows: [FieldsCiWorkflows]?, _ fieldsApps: [FieldsApps]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ limitPrimaryRepositories: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsCiProducts: [FieldsCiProducts]?, _ fieldsApps: [FieldsApps]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ include: [Include]?, _ limitPrimaryRepositories: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsCiProducts, forKey: "fields[ciProducts]")
-            encoder.encode(include, forKey: "include")
-            encoder.encode(fieldsCiBuildRuns, forKey: "fields[ciBuildRuns]")
-            encoder.encode(fieldsCiWorkflows, forKey: "fields[ciWorkflows]")
             encoder.encode(fieldsApps, forKey: "fields[apps]")
             encoder.encode(fieldsScmRepositories, forKey: "fields[scmRepositories]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitPrimaryRepositories, forKey: "limit[primaryRepositories]")
             return encoder.items
         }
 
         public enum FieldsCiProducts: String, CaseIterable, Codable, Sendable {
-            case additionalRepositories
-            case app
-            case buildRuns
-            case bundleID = "bundleId"
-            case createdDate
             case name
-            case primaryRepositories
+            case createdDate
             case productType
+            case app
+            case bundleID = "bundleId"
             case workflows
+            case primaryRepositories
+            case additionalRepositories
+            case buildRuns
+        }
+
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case name
+            case bundleID = "bundleId"
+            case sku
+            case primaryLocale
+            case isOrEverWasMadeForKids
+            case subscriptionStatusURL = "subscriptionStatusUrl"
+            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
+            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
+            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
+            case contentRightsDeclaration
+            case streamlinedPurchasingEnabled
+            case appEncryptionDeclarations
+            case ciProduct
+            case betaTesters
+            case betaGroups
+            case appStoreVersions
+            case preReleaseVersions
+            case betaAppLocalizations
+            case builds
+            case betaLicenseAgreement
+            case betaAppReviewDetail
+            case appInfos
+            case appClips
+            case appPricePoints
+            case endUserLicenseAgreement
+            case preOrder
+            case appPriceSchedule
+            case appAvailability
+            case appAvailabilityV2
+            case inAppPurchases
+            case subscriptionGroups
+            case gameCenterEnabledVersions
+            case perfPowerMetrics
+            case appCustomProductPages
+            case inAppPurchasesV2
+            case promotedPurchases
+            case appEvents
+            case reviewSubmissions
+            case subscriptionGracePeriod
+            case customerReviews
+            case gameCenterDetail
+            case appStoreVersionExperimentsV2
+            case alternativeDistributionKey
+            case analyticsReportRequests
+            case marketplaceSearchDetail
+        }
+
+        public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
+            case lastAccessedDate
+            case httpCloneURL = "httpCloneUrl"
+            case sshCloneURL = "sshCloneUrl"
+            case ownerName
+            case repositoryName
+            case scmProvider
+            case defaultBranch
+            case gitReferences
+            case pullRequests
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
@@ -50,113 +108,8 @@ extension Resources.V1.CiProducts {
             case primaryRepositories
         }
 
-        public enum FieldsCiBuildRuns: String, CaseIterable, Codable, Sendable {
-            case actions
-            case buildRun
-            case builds
-            case cancelReason
-            case clean
-            case completionStatus
-            case createdDate
-            case destinationBranch
-            case destinationCommit
-            case executionProgress
-            case finishedDate
-            case isPullRequestBuild
-            case issueCounts
-            case number
-            case product
-            case pullRequest
-            case sourceBranchOrTag
-            case sourceCommit
-            case startReason
-            case startedDate
-            case workflow
-        }
-
-        public enum FieldsCiWorkflows: String, CaseIterable, Codable, Sendable {
-            case actions
-            case branchStartCondition
-            case buildRuns
-            case clean
-            case containerFilePath
-            case description
-            case isEnabled
-            case isLockedForEditing
-            case lastModifiedDate
-            case macOsVersion
-            case manualBranchStartCondition
-            case manualPullRequestStartCondition
-            case manualTagStartCondition
-            case name
-            case product
-            case pullRequestStartCondition
-            case repository
-            case scheduledStartCondition
-            case tagStartCondition
-            case xcodeVersion
-        }
-
-        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
-            case alternativeDistributionKey
-            case analyticsReportRequests
-            case appAvailability
-            case appClips
-            case appCustomProductPages
-            case appEncryptionDeclarations
-            case appEvents
-            case appInfos
-            case appPricePoints
-            case appPriceSchedule
-            case appStoreVersionExperimentsV2
-            case appStoreVersions
-            case betaAppLocalizations
-            case betaAppReviewDetail
-            case betaGroups
-            case betaLicenseAgreement
-            case betaTesters
-            case builds
-            case bundleID = "bundleId"
-            case ciProduct
-            case contentRightsDeclaration
-            case customerReviews
-            case endUserLicenseAgreement
-            case gameCenterDetail
-            case gameCenterEnabledVersions
-            case inAppPurchases
-            case inAppPurchasesV2
-            case isOrEverWasMadeForKids
-            case marketplaceSearchDetail
-            case name
-            case perfPowerMetrics
-            case preOrder
-            case preReleaseVersions
-            case primaryLocale
-            case promotedPurchases
-            case reviewSubmissions
-            case sku
-            case subscriptionGracePeriod
-            case subscriptionGroups
-            case subscriptionStatusURL = "subscriptionStatusUrl"
-            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
-            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
-            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
-        }
-
-        public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
-            case defaultBranch
-            case gitReferences
-            case httpCloneURL = "httpCloneUrl"
-            case lastAccessedDate
-            case ownerName
-            case pullRequests
-            case repositoryName
-            case scmProvider
-            case sshCloneURL = "sshCloneUrl"
-        }
-
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "ciProducts-delete_instance")
+            Request(path: path, method: "DELETE", id: "ciProducts_deleteInstance")
         }
     }
 }

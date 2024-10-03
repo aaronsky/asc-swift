@@ -12,7 +12,7 @@ SPEC_FILE_NAME = "app_store_connect_api_%s_openapi.json" % APP_STORE_CONNECT_API
 
 filegroup(
     name = "original_spec",
-    srcs = ["openapi.json"],
+    srcs = ["app_store_connect_api_openapi.json"],
 )
 
 jq(

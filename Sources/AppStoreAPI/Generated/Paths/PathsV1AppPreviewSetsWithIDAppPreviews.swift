@@ -17,7 +17,7 @@ extension Resources.V1.AppPreviewSets.WithID {
         public let path: String
 
         public func get(fieldsAppPreviews: [FieldsAppPreviews]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppPreviewsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPreviews, fieldsAppPreviewSets, limit, include), id: "appPreviewSets-appPreviews-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPreviews, fieldsAppPreviewSets, limit, include), id: "appPreviewSets_appPreviews_getToManyRelated")
         }
 
         private func makeGetQuery(_ fieldsAppPreviews: [FieldsAppPreviews]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
@@ -30,25 +30,25 @@ extension Resources.V1.AppPreviewSets.WithID {
         }
 
         public enum FieldsAppPreviews: String, CaseIterable, Codable, Sendable {
-            case appPreviewSet
-            case assetDeliveryState
-            case fileName
             case fileSize
-            case mimeType
-            case previewFrameTimeCode
-            case previewImage
+            case fileName
             case sourceFileChecksum
-            case uploadOperations
-            case uploaded
+            case previewFrameTimeCode
+            case mimeType
             case videoURL = "videoUrl"
+            case previewImage
+            case uploadOperations
+            case assetDeliveryState
+            case uploaded
+            case appPreviewSet
         }
 
         public enum FieldsAppPreviewSets: String, CaseIterable, Codable, Sendable {
-            case appCustomProductPageLocalization
-            case appPreviews
-            case appStoreVersionExperimentTreatmentLocalization
-            case appStoreVersionLocalization
             case previewType
+            case appStoreVersionLocalization
+            case appCustomProductPageLocalization
+            case appStoreVersionExperimentTreatmentLocalization
+            case appPreviews
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

@@ -17,7 +17,7 @@ extension Resources.V1.InAppPurchaseAppStoreReviewScreenshots {
         public let path: String
 
         public func get(fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.InAppPurchaseAppStoreReviewScreenshotResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchaseAppStoreReviewScreenshots, include), id: "inAppPurchaseAppStoreReviewScreenshots-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchaseAppStoreReviewScreenshots, include), id: "inAppPurchaseAppStoreReviewScreenshots_getInstance")
         }
 
         private func makeGetQuery(_ fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]?, _ include: [Include]?) -> [(String, String?)] {
@@ -28,16 +28,16 @@ extension Resources.V1.InAppPurchaseAppStoreReviewScreenshots {
         }
 
         public enum FieldsInAppPurchaseAppStoreReviewScreenshots: String, CaseIterable, Codable, Sendable {
-            case assetDeliveryState
+            case fileSize
+            case fileName
+            case sourceFileChecksum
+            case imageAsset
             case assetToken
             case assetType
-            case fileName
-            case fileSize
-            case imageAsset
-            case inAppPurchaseV2
-            case sourceFileChecksum
             case uploadOperations
+            case assetDeliveryState
             case uploaded
+            case inAppPurchaseV2
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
@@ -45,11 +45,11 @@ extension Resources.V1.InAppPurchaseAppStoreReviewScreenshots {
         }
 
         public func patch(_ body: AppStoreAPI.InAppPurchaseAppStoreReviewScreenshotUpdateRequest) -> Request<AppStoreAPI.InAppPurchaseAppStoreReviewScreenshotResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "inAppPurchaseAppStoreReviewScreenshots-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "inAppPurchaseAppStoreReviewScreenshots_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "inAppPurchaseAppStoreReviewScreenshots-delete_instance")
+            Request(path: path, method: "DELETE", id: "inAppPurchaseAppStoreReviewScreenshots_deleteInstance")
         }
     }
 }

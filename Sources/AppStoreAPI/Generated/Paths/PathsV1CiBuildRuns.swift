@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.CiBuildRunCreateRequest) -> Request<AppStoreAPI.CiBuildRunResponse> {
-            Request(path: path, method: "POST", body: body, id: "ciBuildRuns-create_instance")
+            Request(path: path, method: "POST", body: body, id: "ciBuildRuns_createInstance")
         }
     }
 }

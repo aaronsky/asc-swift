@@ -16,16 +16,16 @@ extension Resources.V1.AppPriceSchedules {
         /// Path: `/v1/appPriceSchedules/{id}`
         public let path: String
 
-        public func get(fieldsAppPriceSchedules: [FieldsAppPriceSchedules]? = nil, include: [Include]? = nil, fieldsAppPrices: [FieldsAppPrices]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limitAutomaticPrices: Int? = nil, limitManualPrices: Int? = nil) -> Request<AppStoreAPI.AppPriceScheduleResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPriceSchedules, include, fieldsAppPrices, fieldsTerritories, limitAutomaticPrices, limitManualPrices), id: "appPriceSchedules-get_instance")
+        public func get(fieldsAppPriceSchedules: [FieldsAppPriceSchedules]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, fieldsAppPrices: [FieldsAppPrices]? = nil, include: [Include]? = nil, limitAutomaticPrices: Int? = nil, limitManualPrices: Int? = nil) -> Request<AppStoreAPI.AppPriceScheduleResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPriceSchedules, fieldsTerritories, fieldsAppPrices, include, limitAutomaticPrices, limitManualPrices), id: "appPriceSchedules_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppPriceSchedules: [FieldsAppPriceSchedules]?, _ include: [Include]?, _ fieldsAppPrices: [FieldsAppPrices]?, _ fieldsTerritories: [FieldsTerritories]?, _ limitAutomaticPrices: Int?, _ limitManualPrices: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppPriceSchedules: [FieldsAppPriceSchedules]?, _ fieldsTerritories: [FieldsTerritories]?, _ fieldsAppPrices: [FieldsAppPrices]?, _ include: [Include]?, _ limitAutomaticPrices: Int?, _ limitManualPrices: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppPriceSchedules, forKey: "fields[appPriceSchedules]")
-            encoder.encode(include, forKey: "include")
-            encoder.encode(fieldsAppPrices, forKey: "fields[appPrices]")
             encoder.encode(fieldsTerritories, forKey: "fields[territories]")
+            encoder.encode(fieldsAppPrices, forKey: "fields[appPrices]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitAutomaticPrices, forKey: "limit[automaticPrices]")
             encoder.encode(limitManualPrices, forKey: "limit[manualPrices]")
             return encoder.items
@@ -33,28 +33,28 @@ extension Resources.V1.AppPriceSchedules {
 
         public enum FieldsAppPriceSchedules: String, CaseIterable, Codable, Sendable {
             case app
-            case automaticPrices
             case baseTerritory
             case manualPrices
-        }
-
-        public enum Include: String, CaseIterable, Codable, Sendable {
-            case app
             case automaticPrices
-            case baseTerritory
-            case manualPrices
-        }
-
-        public enum FieldsAppPrices: String, CaseIterable, Codable, Sendable {
-            case appPricePoint
-            case endDate
-            case manual
-            case startDate
-            case territory
         }
 
         public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
             case currency
+        }
+
+        public enum FieldsAppPrices: String, CaseIterable, Codable, Sendable {
+            case manual
+            case startDate
+            case endDate
+            case appPricePoint
+            case territory
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case app
+            case baseTerritory
+            case manualPrices
+            case automaticPrices
         }
     }
 }

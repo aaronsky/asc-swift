@@ -17,7 +17,7 @@ extension Resources.V1.AgeRatingDeclarations {
         public let path: String
 
         public func patch(_ body: AppStoreAPI.AgeRatingDeclarationUpdateRequest) -> Request<AppStoreAPI.AgeRatingDeclarationResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "ageRatingDeclarations-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "ageRatingDeclarations_updateInstance")
         }
     }
 }

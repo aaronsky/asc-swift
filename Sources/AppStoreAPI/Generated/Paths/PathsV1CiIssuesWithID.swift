@@ -17,7 +17,7 @@ extension Resources.V1.CiIssues {
         public let path: String
 
         public func get(fieldsCiIssues: [FieldsCiIssues]? = nil) -> Request<AppStoreAPI.CiIssueResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiIssues), id: "ciIssues-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiIssues), id: "ciIssues_getInstance")
         }
 
         private func makeGetQuery(_ fieldsCiIssues: [FieldsCiIssues]?) -> [(String, String?)] {
@@ -27,10 +27,10 @@ extension Resources.V1.CiIssues {
         }
 
         public enum FieldsCiIssues: String, CaseIterable, Codable, Sendable {
-            case category
-            case fileSource
             case issueType
             case message
+            case fileSource
+            case category
         }
     }
 }

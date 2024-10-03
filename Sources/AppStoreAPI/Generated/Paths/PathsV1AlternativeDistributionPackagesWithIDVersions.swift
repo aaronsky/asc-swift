@@ -16,21 +16,21 @@ extension Resources.V1.AlternativeDistributionPackages.WithID {
         /// Path: `/v1/alternativeDistributionPackages/{id}/versions`
         public let path: String
 
-        public func get(filterState: [FilterState]? = nil, fieldsAlternativeDistributionPackageVariants: [FieldsAlternativeDistributionPackageVariants]? = nil, fieldsAlternativeDistributionPackages: [FieldsAlternativeDistributionPackages]? = nil, fieldsAlternativeDistributionPackageVersions: [FieldsAlternativeDistributionPackageVersions]? = nil, fieldsAlternativeDistributionPackageDeltas: [FieldsAlternativeDistributionPackageDeltas]? = nil, limit: Int? = nil, limitVariants: Int? = nil, limitDeltas: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AlternativeDistributionPackageVersionsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterState, fieldsAlternativeDistributionPackageVariants, fieldsAlternativeDistributionPackages, fieldsAlternativeDistributionPackageVersions, fieldsAlternativeDistributionPackageDeltas, limit, limitVariants, limitDeltas, include), id: "alternativeDistributionPackages-versions-get_to_many_related")
+        public func get(filterState: [FilterState]? = nil, fieldsAlternativeDistributionPackageVersions: [FieldsAlternativeDistributionPackageVersions]? = nil, fieldsAlternativeDistributionPackageVariants: [FieldsAlternativeDistributionPackageVariants]? = nil, fieldsAlternativeDistributionPackageDeltas: [FieldsAlternativeDistributionPackageDeltas]? = nil, fieldsAlternativeDistributionPackages: [FieldsAlternativeDistributionPackages]? = nil, limit: Int? = nil, include: [Include]? = nil, limitVariants: Int? = nil, limitDeltas: Int? = nil) -> Request<AppStoreAPI.AlternativeDistributionPackageVersionsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterState, fieldsAlternativeDistributionPackageVersions, fieldsAlternativeDistributionPackageVariants, fieldsAlternativeDistributionPackageDeltas, fieldsAlternativeDistributionPackages, limit, include, limitVariants, limitDeltas), id: "alternativeDistributionPackages_versions_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterState: [FilterState]?, _ fieldsAlternativeDistributionPackageVariants: [FieldsAlternativeDistributionPackageVariants]?, _ fieldsAlternativeDistributionPackages: [FieldsAlternativeDistributionPackages]?, _ fieldsAlternativeDistributionPackageVersions: [FieldsAlternativeDistributionPackageVersions]?, _ fieldsAlternativeDistributionPackageDeltas: [FieldsAlternativeDistributionPackageDeltas]?, _ limit: Int?, _ limitVariants: Int?, _ limitDeltas: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterState: [FilterState]?, _ fieldsAlternativeDistributionPackageVersions: [FieldsAlternativeDistributionPackageVersions]?, _ fieldsAlternativeDistributionPackageVariants: [FieldsAlternativeDistributionPackageVariants]?, _ fieldsAlternativeDistributionPackageDeltas: [FieldsAlternativeDistributionPackageDeltas]?, _ fieldsAlternativeDistributionPackages: [FieldsAlternativeDistributionPackages]?, _ limit: Int?, _ include: [Include]?, _ limitVariants: Int?, _ limitDeltas: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterState, forKey: "filter[state]")
-            encoder.encode(fieldsAlternativeDistributionPackageVariants, forKey: "fields[alternativeDistributionPackageVariants]")
-            encoder.encode(fieldsAlternativeDistributionPackages, forKey: "fields[alternativeDistributionPackages]")
             encoder.encode(fieldsAlternativeDistributionPackageVersions, forKey: "fields[alternativeDistributionPackageVersions]")
+            encoder.encode(fieldsAlternativeDistributionPackageVariants, forKey: "fields[alternativeDistributionPackageVariants]")
             encoder.encode(fieldsAlternativeDistributionPackageDeltas, forKey: "fields[alternativeDistributionPackageDeltas]")
+            encoder.encode(fieldsAlternativeDistributionPackages, forKey: "fields[alternativeDistributionPackages]")
             encoder.encode(limit, forKey: "limit")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitVariants, forKey: "limit[variants]")
             encoder.encode(limitDeltas, forKey: "limit[deltas]")
-            encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
@@ -39,11 +39,29 @@ extension Resources.V1.AlternativeDistributionPackages.WithID {
             case replaced = "REPLACED"
         }
 
-        public enum FieldsAlternativeDistributionPackageVariants: String, CaseIterable, Codable, Sendable {
-            case alternativeDistributionKeyBlob
-            case fileChecksum
+        public enum FieldsAlternativeDistributionPackageVersions: String, CaseIterable, Codable, Sendable {
             case url
             case urlExpirationDate
+            case version
+            case fileChecksum
+            case state
+            case variants
+            case deltas
+            case alternativeDistributionPackage
+        }
+
+        public enum FieldsAlternativeDistributionPackageVariants: String, CaseIterable, Codable, Sendable {
+            case url
+            case urlExpirationDate
+            case alternativeDistributionKeyBlob
+            case fileChecksum
+        }
+
+        public enum FieldsAlternativeDistributionPackageDeltas: String, CaseIterable, Codable, Sendable {
+            case url
+            case urlExpirationDate
+            case alternativeDistributionKeyBlob
+            case fileChecksum
         }
 
         public enum FieldsAlternativeDistributionPackages: String, CaseIterable, Codable, Sendable {
@@ -51,28 +69,10 @@ extension Resources.V1.AlternativeDistributionPackages.WithID {
             case versions
         }
 
-        public enum FieldsAlternativeDistributionPackageVersions: String, CaseIterable, Codable, Sendable {
-            case alternativeDistributionPackage
-            case deltas
-            case fileChecksum
-            case state
-            case url
-            case urlExpirationDate
-            case variants
-            case version
-        }
-
-        public enum FieldsAlternativeDistributionPackageDeltas: String, CaseIterable, Codable, Sendable {
-            case alternativeDistributionKeyBlob
-            case fileChecksum
-            case url
-            case urlExpirationDate
-        }
-
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case alternativeDistributionPackage
-            case deltas
             case variants
+            case deltas
+            case alternativeDistributionPackage
         }
     }
 }

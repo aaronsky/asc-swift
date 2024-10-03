@@ -17,7 +17,7 @@ extension Resources.V2.InAppPurchases.WithID {
         public let path: String
 
         public func get(filterTerritory: [String]? = nil, fieldsInAppPurchasePricePoints: [FieldsInAppPurchasePricePoints]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.InAppPurchasePricePointsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterTerritory, fieldsInAppPurchasePricePoints, fieldsTerritories, limit, include), id: "inAppPurchasesV2-pricePoints-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterTerritory, fieldsInAppPurchasePricePoints, fieldsTerritories, limit, include), id: "inAppPurchasesV2_pricePoints_getToManyRelated")
         }
 
         private func makeGetQuery(_ filterTerritory: [String]?, _ fieldsInAppPurchasePricePoints: [FieldsInAppPurchasePricePoints]?, _ fieldsTerritories: [FieldsTerritories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
@@ -32,9 +32,9 @@ extension Resources.V2.InAppPurchases.WithID {
 
         public enum FieldsInAppPurchasePricePoints: String, CaseIterable, Codable, Sendable {
             case customerPrice
-            case inAppPurchaseV2
             case proceeds
             case territory
+            case inAppPurchaseV2
         }
 
         public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {

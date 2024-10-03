@@ -16,32 +16,32 @@ extension Resources.V1.AppAvailabilities {
         /// Path: `/v1/appAvailabilities/{id}`
         public let path: String
 
-        public func get(fieldsAppAvailabilities: [FieldsAppAvailabilities]? = nil, include: [Include]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limitAvailableTerritories: Int? = nil) -> Request<AppStoreAPI.AppAvailabilityResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppAvailabilities, include, fieldsTerritories, limitAvailableTerritories), id: "appAvailabilities-get_instance")
+        public func get(fieldsAppAvailabilities: [FieldsAppAvailabilities]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, include: [Include]? = nil, limitAvailableTerritories: Int? = nil) -> Request<AppStoreAPI.AppAvailabilityResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppAvailabilities, fieldsTerritories, include, limitAvailableTerritories), id: "appAvailabilities_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppAvailabilities: [FieldsAppAvailabilities]?, _ include: [Include]?, _ fieldsTerritories: [FieldsTerritories]?, _ limitAvailableTerritories: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppAvailabilities: [FieldsAppAvailabilities]?, _ fieldsTerritories: [FieldsTerritories]?, _ include: [Include]?, _ limitAvailableTerritories: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppAvailabilities, forKey: "fields[appAvailabilities]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsTerritories, forKey: "fields[territories]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitAvailableTerritories, forKey: "limit[availableTerritories]")
             return encoder.items
         }
 
         public enum FieldsAppAvailabilities: String, CaseIterable, Codable, Sendable {
-            case app
             case availableInNewTerritories
-            case availableTerritories
-        }
-
-        public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case availableTerritories
         }
 
         public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
             case currency
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case app
+            case availableTerritories
         }
     }
 }

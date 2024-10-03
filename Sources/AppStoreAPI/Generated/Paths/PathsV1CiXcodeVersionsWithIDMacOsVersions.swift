@@ -16,31 +16,31 @@ extension Resources.V1.CiXcodeVersions.WithID {
         /// Path: `/v1/ciXcodeVersions/{id}/macOsVersions`
         public let path: String
 
-        public func get(fieldsCiXcodeVersions: [FieldsCiXcodeVersions]? = nil, fieldsCiMacOsVersions: [FieldsCiMacOsVersions]? = nil, limit: Int? = nil, limitXcodeVersions: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CiMacOsVersionsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiXcodeVersions, fieldsCiMacOsVersions, limit, limitXcodeVersions, include), id: "ciXcodeVersions-macOsVersions-get_to_many_related")
+        public func get(fieldsCiMacOsVersions: [FieldsCiMacOsVersions]? = nil, fieldsCiXcodeVersions: [FieldsCiXcodeVersions]? = nil, limit: Int? = nil, include: [Include]? = nil, limitXcodeVersions: Int? = nil) -> Request<AppStoreAPI.CiMacOsVersionsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiMacOsVersions, fieldsCiXcodeVersions, limit, include, limitXcodeVersions), id: "ciXcodeVersions_macOsVersions_getToManyRelated")
         }
 
-        private func makeGetQuery(_ fieldsCiXcodeVersions: [FieldsCiXcodeVersions]?, _ fieldsCiMacOsVersions: [FieldsCiMacOsVersions]?, _ limit: Int?, _ limitXcodeVersions: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsCiMacOsVersions: [FieldsCiMacOsVersions]?, _ fieldsCiXcodeVersions: [FieldsCiXcodeVersions]?, _ limit: Int?, _ include: [Include]?, _ limitXcodeVersions: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(fieldsCiXcodeVersions, forKey: "fields[ciXcodeVersions]")
             encoder.encode(fieldsCiMacOsVersions, forKey: "fields[ciMacOsVersions]")
+            encoder.encode(fieldsCiXcodeVersions, forKey: "fields[ciXcodeVersions]")
             encoder.encode(limit, forKey: "limit")
-            encoder.encode(limitXcodeVersions, forKey: "limit[xcodeVersions]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitXcodeVersions, forKey: "limit[xcodeVersions]")
             return encoder.items
         }
 
-        public enum FieldsCiXcodeVersions: String, CaseIterable, Codable, Sendable {
-            case macOsVersions
-            case name
-            case testDestinations
+        public enum FieldsCiMacOsVersions: String, CaseIterable, Codable, Sendable {
             case version
+            case name
+            case xcodeVersions
         }
 
-        public enum FieldsCiMacOsVersions: String, CaseIterable, Codable, Sendable {
-            case name
+        public enum FieldsCiXcodeVersions: String, CaseIterable, Codable, Sendable {
             case version
-            case xcodeVersions
+            case name
+            case testDestinations
+            case macOsVersions
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

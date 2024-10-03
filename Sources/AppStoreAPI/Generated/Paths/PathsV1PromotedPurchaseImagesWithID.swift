@@ -17,7 +17,7 @@ extension Resources.V1.PromotedPurchaseImages {
         public let path: String
 
         public func get(fieldsPromotedPurchaseImages: [FieldsPromotedPurchaseImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.PromotedPurchaseImageResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsPromotedPurchaseImages, include), id: "promotedPurchaseImages-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsPromotedPurchaseImages, include), id: "promotedPurchaseImages_getInstance")
         }
 
         private func makeGetQuery(_ fieldsPromotedPurchaseImages: [FieldsPromotedPurchaseImages]?, _ include: [Include]?) -> [(String, String?)] {
@@ -28,16 +28,16 @@ extension Resources.V1.PromotedPurchaseImages {
         }
 
         public enum FieldsPromotedPurchaseImages: String, CaseIterable, Codable, Sendable {
-            case assetToken
-            case assetType
-            case fileName
             case fileSize
-            case imageAsset
-            case promotedPurchase
+            case fileName
             case sourceFileChecksum
-            case state
+            case assetToken
+            case imageAsset
+            case assetType
             case uploadOperations
             case uploaded
+            case state
+            case promotedPurchase
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
@@ -45,11 +45,11 @@ extension Resources.V1.PromotedPurchaseImages {
         }
 
         public func patch(_ body: AppStoreAPI.PromotedPurchaseImageUpdateRequest) -> Request<AppStoreAPI.PromotedPurchaseImageResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "promotedPurchaseImages-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "promotedPurchaseImages_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "promotedPurchaseImages-delete_instance")
+            Request(path: path, method: "DELETE", id: "promotedPurchaseImages_deleteInstance")
         }
     }
 }

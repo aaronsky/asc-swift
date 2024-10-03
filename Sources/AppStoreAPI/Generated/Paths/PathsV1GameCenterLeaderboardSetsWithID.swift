@@ -16,17 +16,17 @@ extension Resources.V1.GameCenterLeaderboardSets {
         /// Path: `/v1/gameCenterLeaderboardSets/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterLeaderboardSets: [FieldsGameCenterLeaderboardSets]? = nil, include: [Include]? = nil, fieldsGameCenterLeaderboardSetLocalizations: [FieldsGameCenterLeaderboardSetLocalizations]? = nil, fieldsGameCenterLeaderboardSetReleases: [FieldsGameCenterLeaderboardSetReleases]? = nil, fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]? = nil, limitGameCenterLeaderboards: Int? = nil, limitLocalizations: Int? = nil, limitReleases: Int? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardSetResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardSets, include, fieldsGameCenterLeaderboardSetLocalizations, fieldsGameCenterLeaderboardSetReleases, fieldsGameCenterLeaderboards, limitGameCenterLeaderboards, limitLocalizations, limitReleases), id: "gameCenterLeaderboardSets-get_instance")
+        public func get(fieldsGameCenterLeaderboardSets: [FieldsGameCenterLeaderboardSets]? = nil, fieldsGameCenterLeaderboardSetLocalizations: [FieldsGameCenterLeaderboardSetLocalizations]? = nil, fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]? = nil, fieldsGameCenterLeaderboardSetReleases: [FieldsGameCenterLeaderboardSetReleases]? = nil, include: [Include]? = nil, limitGameCenterLeaderboards: Int? = nil, limitLocalizations: Int? = nil, limitReleases: Int? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardSetResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardSets, fieldsGameCenterLeaderboardSetLocalizations, fieldsGameCenterLeaderboards, fieldsGameCenterLeaderboardSetReleases, include, limitGameCenterLeaderboards, limitLocalizations, limitReleases), id: "gameCenterLeaderboardSets_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterLeaderboardSets: [FieldsGameCenterLeaderboardSets]?, _ include: [Include]?, _ fieldsGameCenterLeaderboardSetLocalizations: [FieldsGameCenterLeaderboardSetLocalizations]?, _ fieldsGameCenterLeaderboardSetReleases: [FieldsGameCenterLeaderboardSetReleases]?, _ fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]?, _ limitGameCenterLeaderboards: Int?, _ limitLocalizations: Int?, _ limitReleases: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterLeaderboardSets: [FieldsGameCenterLeaderboardSets]?, _ fieldsGameCenterLeaderboardSetLocalizations: [FieldsGameCenterLeaderboardSetLocalizations]?, _ fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]?, _ fieldsGameCenterLeaderboardSetReleases: [FieldsGameCenterLeaderboardSetReleases]?, _ include: [Include]?, _ limitGameCenterLeaderboards: Int?, _ limitLocalizations: Int?, _ limitReleases: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterLeaderboardSets, forKey: "fields[gameCenterLeaderboardSets]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsGameCenterLeaderboardSetLocalizations, forKey: "fields[gameCenterLeaderboardSetLocalizations]")
-            encoder.encode(fieldsGameCenterLeaderboardSetReleases, forKey: "fields[gameCenterLeaderboardSetReleases]")
             encoder.encode(fieldsGameCenterLeaderboards, forKey: "fields[gameCenterLeaderboards]")
+            encoder.encode(fieldsGameCenterLeaderboardSetReleases, forKey: "fields[gameCenterLeaderboardSetReleases]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitGameCenterLeaderboards, forKey: "limit[gameCenterLeaderboards]")
             encoder.encode(limitLocalizations, forKey: "limit[localizations]")
             encoder.encode(limitReleases, forKey: "limit[releases]")
@@ -34,64 +34,64 @@ extension Resources.V1.GameCenterLeaderboardSets {
         }
 
         public enum FieldsGameCenterLeaderboardSets: String, CaseIterable, Codable, Sendable {
+            case referenceName
+            case vendorIdentifier
             case gameCenterDetail
             case gameCenterGroup
-            case gameCenterLeaderboards
             case groupLeaderboardSet
             case localizations
-            case referenceName
+            case gameCenterLeaderboards
             case releases
+        }
+
+        public enum FieldsGameCenterLeaderboardSetLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case name
+            case gameCenterLeaderboardSet
+            case gameCenterLeaderboardSetImage
+        }
+
+        public enum FieldsGameCenterLeaderboards: String, CaseIterable, Codable, Sendable {
+            case defaultFormatter
+            case referenceName
             case vendorIdentifier
+            case submissionType
+            case scoreSortType
+            case scoreRangeStart
+            case scoreRangeEnd
+            case recurrenceStartDate
+            case recurrenceDuration
+            case recurrenceRule
+            case archived
+            case gameCenterDetail
+            case gameCenterGroup
+            case groupLeaderboard
+            case gameCenterLeaderboardSets
+            case localizations
+            case releases
+        }
+
+        public enum FieldsGameCenterLeaderboardSetReleases: String, CaseIterable, Codable, Sendable {
+            case live
+            case gameCenterDetail
+            case gameCenterLeaderboardSet
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case gameCenterDetail
             case gameCenterGroup
-            case gameCenterLeaderboards
             case groupLeaderboardSet
             case localizations
+            case gameCenterLeaderboards
             case releases
-        }
-
-        public enum FieldsGameCenterLeaderboardSetLocalizations: String, CaseIterable, Codable, Sendable {
-            case gameCenterLeaderboardSet
-            case gameCenterLeaderboardSetImage
-            case locale
-            case name
-        }
-
-        public enum FieldsGameCenterLeaderboardSetReleases: String, CaseIterable, Codable, Sendable {
-            case gameCenterDetail
-            case gameCenterLeaderboardSet
-            case live
-        }
-
-        public enum FieldsGameCenterLeaderboards: String, CaseIterable, Codable, Sendable {
-            case archived
-            case defaultFormatter
-            case gameCenterDetail
-            case gameCenterGroup
-            case gameCenterLeaderboardSets
-            case groupLeaderboard
-            case localizations
-            case recurrenceDuration
-            case recurrenceRule
-            case recurrenceStartDate
-            case referenceName
-            case releases
-            case scoreRangeEnd
-            case scoreRangeStart
-            case scoreSortType
-            case submissionType
-            case vendorIdentifier
         }
 
         public func patch(_ body: AppStoreAPI.GameCenterLeaderboardSetUpdateRequest) -> Request<AppStoreAPI.GameCenterLeaderboardSetResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "gameCenterLeaderboardSets-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "gameCenterLeaderboardSets_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "gameCenterLeaderboardSets-delete_instance")
+            Request(path: path, method: "DELETE", id: "gameCenterLeaderboardSets_deleteInstance")
         }
     }
 }

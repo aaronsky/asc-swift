@@ -17,7 +17,7 @@ extension Resources.V1.Users.WithID.Relationships {
         public let path: String
 
         public func get(limit: Int? = nil) -> Request<AppStoreAPI.UserVisibleAppsLinkagesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(limit), id: "users-visibleApps-get_to_many_relationship")
+            Request(path: path, method: "GET", query: makeGetQuery(limit), id: "users_visibleApps_getToManyRelationship")
         }
 
         private func makeGetQuery(_ limit: Int?) -> [(String, String?)] {
@@ -27,15 +27,15 @@ extension Resources.V1.Users.WithID.Relationships {
         }
 
         public func post(_ body: AppStoreAPI.UserVisibleAppsLinkagesRequest) -> Request<Void> {
-            Request(path: path, method: "POST", body: body, id: "users-visibleApps-create_to_many_relationship")
+            Request(path: path, method: "POST", body: body, id: "users_visibleApps_createToManyRelationship")
         }
 
         public func patch(_ body: AppStoreAPI.UserVisibleAppsLinkagesRequest) -> Request<Void> {
-            Request(path: path, method: "PATCH", body: body, id: "users-visibleApps-replace_to_many_relationship")
+            Request(path: path, method: "PATCH", body: body, id: "users_visibleApps_replaceToManyRelationship")
         }
 
         public func delete(_ body: AppStoreAPI.UserVisibleAppsLinkagesRequest) -> Request<Void> {
-            Request(path: path, method: "DELETE", body: body, id: "users-visibleApps-delete_to_many_relationship")
+            Request(path: path, method: "DELETE", body: body, id: "users_visibleApps_deleteToManyRelationship")
         }
     }
 }

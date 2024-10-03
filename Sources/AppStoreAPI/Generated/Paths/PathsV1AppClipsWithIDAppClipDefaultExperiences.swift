@@ -16,83 +16,84 @@ extension Resources.V1.AppClips.WithID {
         /// Path: `/v1/appClips/{id}/appClipDefaultExperiences`
         public let path: String
 
-        public func get(isExistsReleaseWithAppStoreVersion: Bool? = nil, fieldsAppClips: [FieldsAppClips]? = nil, fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]? = nil, limit: Int? = nil, limitAppClipDefaultExperienceLocalizations: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppClipDefaultExperiencesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(isExistsReleaseWithAppStoreVersion, fieldsAppClips, fieldsAppClipAppStoreReviewDetails, fieldsAppStoreVersions, fieldsAppClipDefaultExperiences, fieldsAppClipDefaultExperienceLocalizations, limit, limitAppClipDefaultExperienceLocalizations, include), id: "appClips-appClipDefaultExperiences-get_to_many_related")
+        public func get(isExistsReleaseWithAppStoreVersion: Bool? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, fieldsAppClips: [FieldsAppClips]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]? = nil, fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]? = nil, limit: Int? = nil, include: [Include]? = nil, limitAppClipDefaultExperienceLocalizations: Int? = nil) -> Request<AppStoreAPI.AppClipDefaultExperiencesResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(isExistsReleaseWithAppStoreVersion, fieldsAppClipDefaultExperiences, fieldsAppClips, fieldsAppStoreVersions, fieldsAppClipDefaultExperienceLocalizations, fieldsAppClipAppStoreReviewDetails, limit, include, limitAppClipDefaultExperienceLocalizations), id: "appClips_appClipDefaultExperiences_getToManyRelated")
         }
 
-        private func makeGetQuery(_ isExistsReleaseWithAppStoreVersion: Bool?, _ fieldsAppClips: [FieldsAppClips]?, _ fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]?, _ limit: Int?, _ limitAppClipDefaultExperienceLocalizations: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ isExistsReleaseWithAppStoreVersion: Bool?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ fieldsAppClips: [FieldsAppClips]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]?, _ fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]?, _ limit: Int?, _ include: [Include]?, _ limitAppClipDefaultExperienceLocalizations: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(isExistsReleaseWithAppStoreVersion, forKey: "exists[releaseWithAppStoreVersion]")
-            encoder.encode(fieldsAppClips, forKey: "fields[appClips]")
-            encoder.encode(fieldsAppClipAppStoreReviewDetails, forKey: "fields[appClipAppStoreReviewDetails]")
-            encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
             encoder.encode(fieldsAppClipDefaultExperiences, forKey: "fields[appClipDefaultExperiences]")
+            encoder.encode(fieldsAppClips, forKey: "fields[appClips]")
+            encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
             encoder.encode(fieldsAppClipDefaultExperienceLocalizations, forKey: "fields[appClipDefaultExperienceLocalizations]")
+            encoder.encode(fieldsAppClipAppStoreReviewDetails, forKey: "fields[appClipAppStoreReviewDetails]")
             encoder.encode(limit, forKey: "limit")
-            encoder.encode(limitAppClipDefaultExperienceLocalizations, forKey: "limit[appClipDefaultExperienceLocalizations]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitAppClipDefaultExperienceLocalizations, forKey: "limit[appClipDefaultExperienceLocalizations]")
             return encoder.items
-        }
-
-        public enum FieldsAppClips: String, CaseIterable, Codable, Sendable {
-            case app
-            case appClipAdvancedExperiences
-            case appClipDefaultExperiences
-            case bundleID = "bundleId"
-        }
-
-        public enum FieldsAppClipAppStoreReviewDetails: String, CaseIterable, Codable, Sendable {
-            case appClipDefaultExperience
-            case invocationURLs = "invocationUrls"
-        }
-
-        public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
-            case ageRatingDeclaration
-            case alternativeDistributionPackage
-            case app
-            case appClipDefaultExperience
-            case appStoreReviewDetail
-            case appStoreState
-            case appStoreVersionExperiments
-            case appStoreVersionExperimentsV2
-            case appStoreVersionLocalizations
-            case appStoreVersionPhasedRelease
-            case appStoreVersionSubmission
-            case appVersionState
-            case build
-            case copyright
-            case createdDate
-            case customerReviews
-            case downloadable
-            case earliestReleaseDate
-            case platform
-            case releaseType
-            case reviewType
-            case routingAppCoverage
-            case versionString
         }
 
         public enum FieldsAppClipDefaultExperiences: String, CaseIterable, Codable, Sendable {
             case action
             case appClip
-            case appClipAppStoreReviewDetail
-            case appClipDefaultExperienceLocalizations
-            case appClipDefaultExperienceTemplate
             case releaseWithAppStoreVersion
+            case appClipDefaultExperienceLocalizations
+            case appClipAppStoreReviewDetail
+            case appClipDefaultExperienceTemplate
+        }
+
+        public enum FieldsAppClips: String, CaseIterable, Codable, Sendable {
+            case bundleID = "bundleId"
+            case app
+            case appClipDefaultExperiences
+            case appClipAdvancedExperiences
+        }
+
+        public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
+            case platform
+            case versionString
+            case appStoreState
+            case appVersionState
+            case copyright
+            case reviewType
+            case releaseType
+            case earliestReleaseDate
+            case downloadable
+            case createdDate
+            case app
+            case ageRatingDeclaration
+            case appStoreVersionLocalizations
+            case build
+            case appStoreVersionPhasedRelease
+            case gameCenterAppVersion
+            case routingAppCoverage
+            case appStoreReviewDetail
+            case appStoreVersionSubmission
+            case appClipDefaultExperience
+            case appStoreVersionExperiments
+            case appStoreVersionExperimentsV2
+            case customerReviews
+            case alternativeDistributionPackage
         }
 
         public enum FieldsAppClipDefaultExperienceLocalizations: String, CaseIterable, Codable, Sendable {
-            case appClipDefaultExperience
-            case appClipHeaderImage
             case locale
             case subtitle
+            case appClipDefaultExperience
+            case appClipHeaderImage
+        }
+
+        public enum FieldsAppClipAppStoreReviewDetails: String, CaseIterable, Codable, Sendable {
+            case invocationURLs = "invocationUrls"
+            case appClipDefaultExperience
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case appClip
-            case appClipAppStoreReviewDetail
-            case appClipDefaultExperienceLocalizations
             case releaseWithAppStoreVersion
+            case appClipDefaultExperienceLocalizations
+            case appClipAppStoreReviewDetail
         }
     }
 }

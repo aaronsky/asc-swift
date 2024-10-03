@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.AppEventCreateRequest) -> Request<AppStoreAPI.AppEventResponse> {
-            Request(path: path, method: "POST", body: body, id: "appEvents-create_instance")
+            Request(path: path, method: "POST", body: body, id: "appEvents_createInstance")
         }
     }
 }

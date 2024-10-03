@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(fieldsGameCenterMatchmakingQueues: [FieldsGameCenterMatchmakingQueues]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterMatchmakingQueuesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterMatchmakingQueues, limit, include), id: "gameCenterMatchmakingQueues-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterMatchmakingQueues, limit, include), id: "gameCenterMatchmakingQueues_getCollection")
         }
 
         private func makeGetQuery(_ fieldsGameCenterMatchmakingQueues: [FieldsGameCenterMatchmakingQueues]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
@@ -29,19 +29,19 @@ extension Resources.V1 {
         }
 
         public enum FieldsGameCenterMatchmakingQueues: String, CaseIterable, Codable, Sendable {
-            case classicMatchmakingBundleIDs = "classicMatchmakingBundleIds"
-            case experimentRuleSet
             case referenceName
+            case classicMatchmakingBundleIDs = "classicMatchmakingBundleIds"
             case ruleSet
+            case experimentRuleSet
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case experimentRuleSet
             case ruleSet
+            case experimentRuleSet
         }
 
         public func post(_ body: AppStoreAPI.GameCenterMatchmakingQueueCreateRequest) -> Request<AppStoreAPI.GameCenterMatchmakingQueueResponse> {
-            Request(path: path, method: "POST", body: body, id: "gameCenterMatchmakingQueues-create_instance")
+            Request(path: path, method: "POST", body: body, id: "gameCenterMatchmakingQueues_createInstance")
         }
     }
 }

@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.BetaTesterInvitationCreateRequest) -> Request<AppStoreAPI.BetaTesterInvitationResponse> {
-            Request(path: path, method: "POST", body: body, id: "betaTesterInvitations-create_instance")
+            Request(path: path, method: "POST", body: body, id: "betaTesterInvitations_createInstance")
         }
     }
 }

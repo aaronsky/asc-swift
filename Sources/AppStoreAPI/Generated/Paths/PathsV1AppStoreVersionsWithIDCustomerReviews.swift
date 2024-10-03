@@ -16,14 +16,14 @@ extension Resources.V1.AppStoreVersions.WithID {
         /// Path: `/v1/appStoreVersions/{id}/customerReviews`
         public let path: String
 
-        public func get(filterRating: [String]? = nil, filterTerritory: [FilterTerritory]? = nil, isExistsPublishedResponse: Bool? = nil, sort: [Sort]? = nil, fieldsCustomerReviews: [FieldsCustomerReviews]? = nil, fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CustomerReviewsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterRating, filterTerritory, isExistsPublishedResponse, sort, fieldsCustomerReviews, fieldsCustomerReviewResponses, limit, include), id: "appStoreVersions-customerReviews-get_to_many_related")
+        public func get(filterTerritory: [FilterTerritory]? = nil, filterRating: [String]? = nil, isExistsPublishedResponse: Bool? = nil, sort: [Sort]? = nil, fieldsCustomerReviews: [FieldsCustomerReviews]? = nil, fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CustomerReviewsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterTerritory, filterRating, isExistsPublishedResponse, sort, fieldsCustomerReviews, fieldsCustomerReviewResponses, limit, include), id: "appStoreVersions_customerReviews_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterRating: [String]?, _ filterTerritory: [FilterTerritory]?, _ isExistsPublishedResponse: Bool?, _ sort: [Sort]?, _ fieldsCustomerReviews: [FieldsCustomerReviews]?, _ fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterTerritory: [FilterTerritory]?, _ filterRating: [String]?, _ isExistsPublishedResponse: Bool?, _ sort: [Sort]?, _ fieldsCustomerReviews: [FieldsCustomerReviews]?, _ fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(filterRating, forKey: "filter[rating]")
             encoder.encode(filterTerritory, forKey: "filter[territory]")
+            encoder.encode(filterRating, forKey: "filter[rating]")
             encoder.encode(isExistsPublishedResponse, forKey: "exists[publishedResponse]")
             encoder.encode(sort, forKey: "sort")
             encoder.encode(fieldsCustomerReviews, forKey: "fields[customerReviews]")
@@ -269,27 +269,27 @@ extension Resources.V1.AppStoreVersions.WithID {
         }
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
-            case createdDate
-            case minusCreatedDate = "-createdDate"
             case rating
             case minusRating = "-rating"
+            case createdDate
+            case minusCreatedDate = "-createdDate"
         }
 
         public enum FieldsCustomerReviews: String, CaseIterable, Codable, Sendable {
-            case body
-            case createdDate
             case rating
-            case response
-            case reviewerNickname
-            case territory
             case title
+            case body
+            case reviewerNickname
+            case createdDate
+            case territory
+            case response
         }
 
         public enum FieldsCustomerReviewResponses: String, CaseIterable, Codable, Sendable {
-            case lastModifiedDate
             case responseBody
-            case review
+            case lastModifiedDate
             case state
+            case review
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

@@ -17,7 +17,7 @@ extension Resources.V1.GameCenterAchievementImages {
         public let path: String
 
         public func get(fieldsGameCenterAchievementImages: [FieldsGameCenterAchievementImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterAchievementImageResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterAchievementImages, include), id: "gameCenterAchievementImages-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterAchievementImages, include), id: "gameCenterAchievementImages_getInstance")
         }
 
         private func makeGetQuery(_ fieldsGameCenterAchievementImages: [FieldsGameCenterAchievementImages]?, _ include: [Include]?) -> [(String, String?)] {
@@ -28,13 +28,13 @@ extension Resources.V1.GameCenterAchievementImages {
         }
 
         public enum FieldsGameCenterAchievementImages: String, CaseIterable, Codable, Sendable {
-            case assetDeliveryState
-            case fileName
             case fileSize
-            case gameCenterAchievementLocalization
+            case fileName
             case imageAsset
             case uploadOperations
+            case assetDeliveryState
             case uploaded
+            case gameCenterAchievementLocalization
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
@@ -42,11 +42,11 @@ extension Resources.V1.GameCenterAchievementImages {
         }
 
         public func patch(_ body: AppStoreAPI.GameCenterAchievementImageUpdateRequest) -> Request<AppStoreAPI.GameCenterAchievementImageResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "gameCenterAchievementImages-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "gameCenterAchievementImages_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "gameCenterAchievementImages-delete_instance")
+            Request(path: path, method: "DELETE", id: "gameCenterAchievementImages_deleteInstance")
         }
     }
 }

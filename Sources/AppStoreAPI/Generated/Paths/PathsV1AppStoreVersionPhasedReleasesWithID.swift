@@ -17,11 +17,11 @@ extension Resources.V1.AppStoreVersionPhasedReleases {
         public let path: String
 
         public func patch(_ body: AppStoreAPI.AppStoreVersionPhasedReleaseUpdateRequest) -> Request<AppStoreAPI.AppStoreVersionPhasedReleaseResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "appStoreVersionPhasedReleases-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appStoreVersionPhasedReleases_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "appStoreVersionPhasedReleases-delete_instance")
+            Request(path: path, method: "DELETE", id: "appStoreVersionPhasedReleases_deleteInstance")
         }
     }
 }

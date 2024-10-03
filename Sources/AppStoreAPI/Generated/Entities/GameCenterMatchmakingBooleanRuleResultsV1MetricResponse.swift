@@ -42,6 +42,7 @@ public struct GameCenterMatchmakingBooleanRuleResultsV1MetricResponse: Codable, 
 
             public struct Result: Codable, Equatable, Sendable {
                 public var links: Links?
+                public var data: String?
 
                 public struct Links: Codable, Equatable, Sendable {
                     public var groupBy: URL?
@@ -51,13 +52,15 @@ public struct GameCenterMatchmakingBooleanRuleResultsV1MetricResponse: Codable, 
                     }
                 }
 
-                public init(links: Links? = nil) {
+                public init(links: Links? = nil, data: String? = nil) {
                     self.links = links
+                    self.data = data
                 }
             }
 
             public struct GameCenterMatchmakingQueue: Codable, Equatable, Sendable {
                 public var links: Links?
+                public var data: String?
 
                 public struct Links: Codable, Equatable, Sendable {
                     public var groupBy: URL?
@@ -69,8 +72,9 @@ public struct GameCenterMatchmakingBooleanRuleResultsV1MetricResponse: Codable, 
                     }
                 }
 
-                public init(links: Links? = nil) {
+                public init(links: Links? = nil, data: String? = nil) {
                     self.links = links
+                    self.data = data
                 }
             }
 

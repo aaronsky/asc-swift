@@ -10,6 +10,7 @@ public struct DiagnosticSignature: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
+    public var relationships: Relationships?
     public var links: ResourceLinks?
 
     public enum `Type`: String, CaseIterable, Codable, Sendable {
@@ -36,10 +37,27 @@ public struct DiagnosticSignature: Codable, Equatable, Identifiable, Sendable {
         }
     }
 
-    public init(type: `Type` = .diagnosticSignatures, id: String, attributes: Attributes? = nil, links: ResourceLinks? = nil) {
+    public struct Relationships: Codable, Equatable, Sendable {
+        public var logs: Logs?
+
+        public struct Logs: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
+            }
+        }
+
+        public init(logs: Logs? = nil) {
+            self.logs = logs
+        }
+    }
+
+    public init(type: `Type` = .diagnosticSignatures, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes
+        self.relationships = relationships
         self.links = links
     }
 }

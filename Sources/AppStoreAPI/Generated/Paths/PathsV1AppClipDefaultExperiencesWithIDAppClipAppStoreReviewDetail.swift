@@ -17,7 +17,7 @@ extension Resources.V1.AppClipDefaultExperiences.WithID {
         public let path: String
 
         public func get(fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppClipAppStoreReviewDetailResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipAppStoreReviewDetails, fieldsAppClipDefaultExperiences, include), id: "appClipDefaultExperiences-appClipAppStoreReviewDetail-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipAppStoreReviewDetails, fieldsAppClipDefaultExperiences, include), id: "appClipDefaultExperiences_appClipAppStoreReviewDetail_getToOneRelated")
         }
 
         private func makeGetQuery(_ fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ include: [Include]?) -> [(String, String?)] {
@@ -29,17 +29,17 @@ extension Resources.V1.AppClipDefaultExperiences.WithID {
         }
 
         public enum FieldsAppClipAppStoreReviewDetails: String, CaseIterable, Codable, Sendable {
-            case appClipDefaultExperience
             case invocationURLs = "invocationUrls"
+            case appClipDefaultExperience
         }
 
         public enum FieldsAppClipDefaultExperiences: String, CaseIterable, Codable, Sendable {
             case action
             case appClip
-            case appClipAppStoreReviewDetail
-            case appClipDefaultExperienceLocalizations
-            case appClipDefaultExperienceTemplate
             case releaseWithAppStoreVersion
+            case appClipDefaultExperienceLocalizations
+            case appClipAppStoreReviewDetail
+            case appClipDefaultExperienceTemplate
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

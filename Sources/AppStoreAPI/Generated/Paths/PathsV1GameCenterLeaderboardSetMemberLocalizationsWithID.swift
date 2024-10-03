@@ -17,11 +17,11 @@ extension Resources.V1.GameCenterLeaderboardSetMemberLocalizations {
         public let path: String
 
         public func patch(_ body: AppStoreAPI.GameCenterLeaderboardSetMemberLocalizationUpdateRequest) -> Request<AppStoreAPI.GameCenterLeaderboardSetMemberLocalizationResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "gameCenterLeaderboardSetMemberLocalizations-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "gameCenterLeaderboardSetMemberLocalizations_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "gameCenterLeaderboardSetMemberLocalizations-delete_instance")
+            Request(path: path, method: "DELETE", id: "gameCenterLeaderboardSetMemberLocalizations_deleteInstance")
         }
     }
 }

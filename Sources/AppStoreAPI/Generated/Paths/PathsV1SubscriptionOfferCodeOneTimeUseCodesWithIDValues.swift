@@ -17,7 +17,7 @@ extension Resources.V1.SubscriptionOfferCodeOneTimeUseCodes.WithID {
         public let path: String
 
         public var get: Request<String> {
-            Request(path: path, method: "GET", id: "subscriptionOfferCodeOneTimeUseCodes-values-get_to_one_related")
+            Request(path: path, method: "GET", id: "subscriptionOfferCodeOneTimeUseCodes_values_getToOneRelated")
         }
     }
 }

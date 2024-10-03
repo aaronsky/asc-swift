@@ -16,54 +16,54 @@ extension Resources.V1.PromotedPurchases {
         /// Path: `/v1/promotedPurchases/{id}`
         public let path: String
 
-        public func get(fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, include: [Include]? = nil, fieldsPromotedPurchaseImages: [FieldsPromotedPurchaseImages]? = nil, limitPromotionImages: Int? = nil) -> Request<AppStoreAPI.PromotedPurchaseResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsPromotedPurchases, include, fieldsPromotedPurchaseImages, limitPromotionImages), id: "promotedPurchases-get_instance")
+        public func get(fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsPromotedPurchaseImages: [FieldsPromotedPurchaseImages]? = nil, include: [Include]? = nil, limitPromotionImages: Int? = nil) -> Request<AppStoreAPI.PromotedPurchaseResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsPromotedPurchases, fieldsPromotedPurchaseImages, include, limitPromotionImages), id: "promotedPurchases_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ include: [Include]?, _ fieldsPromotedPurchaseImages: [FieldsPromotedPurchaseImages]?, _ limitPromotionImages: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsPromotedPurchaseImages: [FieldsPromotedPurchaseImages]?, _ include: [Include]?, _ limitPromotionImages: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsPromotedPurchases, forKey: "fields[promotedPurchases]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsPromotedPurchaseImages, forKey: "fields[promotedPurchaseImages]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitPromotionImages, forKey: "limit[promotionImages]")
             return encoder.items
         }
 
         public enum FieldsPromotedPurchases: String, CaseIterable, Codable, Sendable {
-            case app
-            case enabled
-            case inAppPurchaseV2
-            case promotionImages
-            case state
-            case subscription
             case visibleForAllUsers
+            case enabled
+            case state
+            case app
+            case inAppPurchaseV2
+            case subscription
+            case promotionImages
+        }
+
+        public enum FieldsPromotedPurchaseImages: String, CaseIterable, Codable, Sendable {
+            case fileSize
+            case fileName
+            case sourceFileChecksum
+            case assetToken
+            case imageAsset
+            case assetType
+            case uploadOperations
+            case uploaded
+            case state
+            case promotedPurchase
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case inAppPurchaseV2
-            case promotionImages
             case subscription
-        }
-
-        public enum FieldsPromotedPurchaseImages: String, CaseIterable, Codable, Sendable {
-            case assetToken
-            case assetType
-            case fileName
-            case fileSize
-            case imageAsset
-            case promotedPurchase
-            case sourceFileChecksum
-            case state
-            case uploadOperations
-            case uploaded
+            case promotionImages
         }
 
         public func patch(_ body: AppStoreAPI.PromotedPurchaseUpdateRequest) -> Request<AppStoreAPI.PromotedPurchaseResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "promotedPurchases-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "promotedPurchases_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "promotedPurchases-delete_instance")
+            Request(path: path, method: "DELETE", id: "promotedPurchases_deleteInstance")
         }
     }
 }

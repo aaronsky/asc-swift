@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.SubscriptionLocalizationCreateRequest) -> Request<AppStoreAPI.SubscriptionLocalizationResponse> {
-            Request(path: path, method: "POST", body: body, id: "subscriptionLocalizations-create_instance")
+            Request(path: path, method: "POST", body: body, id: "subscriptionLocalizations_createInstance")
         }
     }
 }

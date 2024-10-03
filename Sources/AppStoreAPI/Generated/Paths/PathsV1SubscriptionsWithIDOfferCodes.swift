@@ -16,89 +16,91 @@ extension Resources.V1.Subscriptions.WithID {
         /// Path: `/v1/subscriptions/{id}/offerCodes`
         public let path: String
 
-        public func get(filterTerritory: [String]? = nil, fieldsSubscriptionOfferCodeCustomCodes: [FieldsSubscriptionOfferCodeCustomCodes]? = nil, fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionOfferCodePrices: [FieldsSubscriptionOfferCodePrices]? = nil, limit: Int? = nil, limitOneTimeUseCodes: Int? = nil, limitCustomCodes: Int? = nil, limitPrices: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionOfferCodesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterTerritory, fieldsSubscriptionOfferCodeCustomCodes, fieldsSubscriptionOfferCodes, fieldsSubscriptionOfferCodeOneTimeUseCodes, fieldsSubscriptions, fieldsSubscriptionOfferCodePrices, limit, limitOneTimeUseCodes, limitCustomCodes, limitPrices, include), id: "subscriptions-offerCodes-get_to_many_related")
+        public func get(filterTerritory: [String]? = nil, fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]? = nil, fieldsSubscriptionOfferCodeCustomCodes: [FieldsSubscriptionOfferCodeCustomCodes]? = nil, fieldsSubscriptionOfferCodePrices: [FieldsSubscriptionOfferCodePrices]? = nil, limit: Int? = nil, include: [Include]? = nil, limitOneTimeUseCodes: Int? = nil, limitCustomCodes: Int? = nil, limitPrices: Int? = nil) -> Request<AppStoreAPI.SubscriptionOfferCodesResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterTerritory, fieldsSubscriptionOfferCodes, fieldsSubscriptions, fieldsSubscriptionOfferCodeOneTimeUseCodes, fieldsSubscriptionOfferCodeCustomCodes, fieldsSubscriptionOfferCodePrices, limit, include, limitOneTimeUseCodes, limitCustomCodes, limitPrices), id: "subscriptions_offerCodes_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterTerritory: [String]?, _ fieldsSubscriptionOfferCodeCustomCodes: [FieldsSubscriptionOfferCodeCustomCodes]?, _ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionOfferCodePrices: [FieldsSubscriptionOfferCodePrices]?, _ limit: Int?, _ limitOneTimeUseCodes: Int?, _ limitCustomCodes: Int?, _ limitPrices: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterTerritory: [String]?, _ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]?, _ fieldsSubscriptionOfferCodeCustomCodes: [FieldsSubscriptionOfferCodeCustomCodes]?, _ fieldsSubscriptionOfferCodePrices: [FieldsSubscriptionOfferCodePrices]?, _ limit: Int?, _ include: [Include]?, _ limitOneTimeUseCodes: Int?, _ limitCustomCodes: Int?, _ limitPrices: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterTerritory, forKey: "filter[territory]")
-            encoder.encode(fieldsSubscriptionOfferCodeCustomCodes, forKey: "fields[subscriptionOfferCodeCustomCodes]")
             encoder.encode(fieldsSubscriptionOfferCodes, forKey: "fields[subscriptionOfferCodes]")
-            encoder.encode(fieldsSubscriptionOfferCodeOneTimeUseCodes, forKey: "fields[subscriptionOfferCodeOneTimeUseCodes]")
             encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
+            encoder.encode(fieldsSubscriptionOfferCodeOneTimeUseCodes, forKey: "fields[subscriptionOfferCodeOneTimeUseCodes]")
+            encoder.encode(fieldsSubscriptionOfferCodeCustomCodes, forKey: "fields[subscriptionOfferCodeCustomCodes]")
             encoder.encode(fieldsSubscriptionOfferCodePrices, forKey: "fields[subscriptionOfferCodePrices]")
             encoder.encode(limit, forKey: "limit")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitOneTimeUseCodes, forKey: "limit[oneTimeUseCodes]")
             encoder.encode(limitCustomCodes, forKey: "limit[customCodes]")
             encoder.encode(limitPrices, forKey: "limit[prices]")
-            encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
-        public enum FieldsSubscriptionOfferCodeCustomCodes: String, CaseIterable, Codable, Sendable {
+        public enum FieldsSubscriptionOfferCodes: String, CaseIterable, Codable, Sendable {
+            case name
+            case customerEligibilities
+            case offerEligibility
+            case duration
+            case offerMode
+            case numberOfPeriods
+            case totalNumberOfCodes
             case active
-            case createdDate
-            case customCode
-            case expirationDate
-            case numberOfCodes
-            case offerCode
+            case subscription
+            case oneTimeUseCodes
+            case customCodes
+            case prices
         }
 
-        public enum FieldsSubscriptionOfferCodes: String, CaseIterable, Codable, Sendable {
-            case active
-            case customCodes
-            case customerEligibilities
-            case duration
+        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
             case name
-            case numberOfPeriods
-            case offerEligibility
-            case offerMode
-            case oneTimeUseCodes
+            case productID = "productId"
+            case familySharable
+            case state
+            case subscriptionPeriod
+            case reviewNote
+            case groupLevel
+            case subscriptionLocalizations
+            case appStoreReviewScreenshot
+            case group
+            case introductoryOffers
+            case promotionalOffers
+            case offerCodes
             case prices
-            case subscription
-            case totalNumberOfCodes
+            case pricePoints
+            case promotedPurchase
+            case subscriptionAvailability
+            case winBackOffers
+            case images
         }
 
         public enum FieldsSubscriptionOfferCodeOneTimeUseCodes: String, CaseIterable, Codable, Sendable {
-            case active
+            case numberOfCodes
             case createdDate
             case expirationDate
-            case numberOfCodes
+            case active
             case offerCode
             case values
         }
 
-        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
-            case appStoreReviewScreenshot
-            case familySharable
-            case group
-            case groupLevel
-            case introductoryOffers
-            case name
-            case offerCodes
-            case pricePoints
-            case prices
-            case productID = "productId"
-            case promotedPurchase
-            case promotionalOffers
-            case reviewNote
-            case state
-            case subscriptionAvailability
-            case subscriptionLocalizations
-            case subscriptionPeriod
+        public enum FieldsSubscriptionOfferCodeCustomCodes: String, CaseIterable, Codable, Sendable {
+            case customCode
+            case numberOfCodes
+            case createdDate
+            case expirationDate
+            case active
+            case offerCode
         }
 
         public enum FieldsSubscriptionOfferCodePrices: String, CaseIterable, Codable, Sendable {
-            case subscriptionPricePoint
             case territory
+            case subscriptionPricePoint
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case customCodes
-            case oneTimeUseCodes
-            case prices
             case subscription
+            case oneTimeUseCodes
+            case customCodes
+            case prices
         }
     }
 }

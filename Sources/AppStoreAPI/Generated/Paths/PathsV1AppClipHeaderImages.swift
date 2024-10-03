@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.AppClipHeaderImageCreateRequest) -> Request<AppStoreAPI.AppClipHeaderImageResponse> {
-            Request(path: path, method: "POST", body: body, id: "appClipHeaderImages-create_instance")
+            Request(path: path, method: "POST", body: body, id: "appClipHeaderImages_createInstance")
         }
     }
 }

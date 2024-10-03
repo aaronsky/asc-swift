@@ -16,21 +16,17 @@ extension Resources.V1.Apps.WithID.Metrics {
         /// Path: `/v1/apps/{id}/metrics/betaTesterUsages`
         public let path: String
 
-        public func get(limit: Int? = nil, groupBy: [GroupBy]? = nil, filterBetaTesters: String? = nil, period: Period? = nil) -> Request<AppStoreAPI.AppsBetaTesterUsagesV1MetricResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(limit, groupBy, filterBetaTesters, period), id: "apps-betaTesterUsages-get_metrics")
+        public func get(period: Period? = nil, groupBy: [GroupBy]? = nil, filterBetaTesters: String? = nil, limit: Int? = nil) -> Request<AppStoreAPI.AppsBetaTesterUsagesV1MetricResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(period, groupBy, filterBetaTesters, limit), id: "apps_betaTesterUsages_getMetrics")
         }
 
-        private func makeGetQuery(_ limit: Int?, _ groupBy: [GroupBy]?, _ filterBetaTesters: String?, _ period: Period?) -> [(String, String?)] {
+        private func makeGetQuery(_ period: Period?, _ groupBy: [GroupBy]?, _ filterBetaTesters: String?, _ limit: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(limit, forKey: "limit")
+            encoder.encode(period, forKey: "period")
             encoder.encode(groupBy, forKey: "groupBy")
             encoder.encode(filterBetaTesters, forKey: "filter[betaTesters]")
-            encoder.encode(period, forKey: "period")
+            encoder.encode(limit, forKey: "limit")
             return encoder.items
-        }
-
-        public enum GroupBy: String, CaseIterable, Codable, Sendable {
-            case betaTesters
         }
 
         public enum Period: String, CaseIterable, Codable, Sendable {
@@ -38,6 +34,10 @@ extension Resources.V1.Apps.WithID.Metrics {
             case p30d = "P30D"
             case p90d = "P90D"
             case p365d = "P365D"
+        }
+
+        public enum GroupBy: String, CaseIterable, Codable, Sendable {
+            case betaTesters
         }
     }
 }

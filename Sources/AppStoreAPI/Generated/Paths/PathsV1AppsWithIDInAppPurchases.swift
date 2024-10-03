@@ -16,11 +16,11 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/inAppPurchases`
         public let path: String
 
-        public func get(filterInAppPurchaseType: [FilterInAppPurchaseType]? = nil, filterCanBeSubmitted: [String]? = nil, sort: [Sort]? = nil, fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, fieldsApps: [FieldsApps]? = nil, limit: Int? = nil, limitApps: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.InAppPurchasesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterInAppPurchaseType, filterCanBeSubmitted, sort, fieldsInAppPurchases, fieldsApps, limit, limitApps, include), id: "apps-inAppPurchases-get_to_many_related")
+        public func get(filterInAppPurchaseType: [FilterInAppPurchaseType]? = nil, filterCanBeSubmitted: [String]? = nil, sort: [Sort]? = nil, fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, fieldsApps: [FieldsApps]? = nil, limit: Int? = nil, include: [Include]? = nil, limitApps: Int? = nil) -> Request<AppStoreAPI.InAppPurchasesResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterInAppPurchaseType, filterCanBeSubmitted, sort, fieldsInAppPurchases, fieldsApps, limit, include, limitApps), id: "apps_inAppPurchases_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterInAppPurchaseType: [FilterInAppPurchaseType]?, _ filterCanBeSubmitted: [String]?, _ sort: [Sort]?, _ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ fieldsApps: [FieldsApps]?, _ limit: Int?, _ limitApps: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterInAppPurchaseType: [FilterInAppPurchaseType]?, _ filterCanBeSubmitted: [String]?, _ sort: [Sort]?, _ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ fieldsApps: [FieldsApps]?, _ limit: Int?, _ include: [Include]?, _ limitApps: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterInAppPurchaseType, forKey: "filter[inAppPurchaseType]")
             encoder.encode(filterCanBeSubmitted, forKey: "filter[canBeSubmitted]")
@@ -28,8 +28,8 @@ extension Resources.V1.Apps.WithID {
             encoder.encode(fieldsInAppPurchases, forKey: "fields[inAppPurchases]")
             encoder.encode(fieldsApps, forKey: "fields[apps]")
             encoder.encode(limit, forKey: "limit")
-            encoder.encode(limitApps, forKey: "limit[apps]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitApps, forKey: "limit[apps]")
             return encoder.items
         }
 
@@ -42,66 +42,68 @@ extension Resources.V1.Apps.WithID {
         }
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
-            case inAppPurchaseType
-            case minusInAppPurchaseType = "-inAppPurchaseType"
-            case productID = "productId"
-            case minusProductID = "-productId"
             case referenceName
             case minusReferenceName = "-referenceName"
+            case productID = "productId"
+            case minusProductID = "-productId"
+            case inAppPurchaseType
+            case minusInAppPurchaseType = "-inAppPurchaseType"
         }
 
         public enum FieldsInAppPurchases: String, CaseIterable, Codable, Sendable {
-            case apps
-            case inAppPurchaseType
-            case productID = "productId"
             case referenceName
+            case productID = "productId"
+            case inAppPurchaseType
             case state
+            case apps
         }
 
         public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case name
+            case bundleID = "bundleId"
+            case sku
+            case primaryLocale
+            case isOrEverWasMadeForKids
+            case subscriptionStatusURL = "subscriptionStatusUrl"
+            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
+            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
+            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
+            case contentRightsDeclaration
+            case streamlinedPurchasingEnabled
+            case appEncryptionDeclarations
+            case ciProduct
+            case betaTesters
+            case betaGroups
+            case appStoreVersions
+            case preReleaseVersions
+            case betaAppLocalizations
+            case builds
+            case betaLicenseAgreement
+            case betaAppReviewDetail
+            case appInfos
+            case appClips
+            case appPricePoints
+            case endUserLicenseAgreement
+            case preOrder
+            case appPriceSchedule
+            case appAvailability
+            case appAvailabilityV2
+            case inAppPurchases
+            case subscriptionGroups
+            case gameCenterEnabledVersions
+            case perfPowerMetrics
+            case appCustomProductPages
+            case inAppPurchasesV2
+            case promotedPurchases
+            case appEvents
+            case reviewSubmissions
+            case subscriptionGracePeriod
+            case customerReviews
+            case gameCenterDetail
+            case appStoreVersionExperimentsV2
             case alternativeDistributionKey
             case analyticsReportRequests
-            case appAvailability
-            case appClips
-            case appCustomProductPages
-            case appEncryptionDeclarations
-            case appEvents
-            case appInfos
-            case appPricePoints
-            case appPriceSchedule
-            case appStoreVersionExperimentsV2
-            case appStoreVersions
-            case betaAppLocalizations
-            case betaAppReviewDetail
-            case betaGroups
-            case betaLicenseAgreement
-            case betaTesters
-            case builds
-            case bundleID = "bundleId"
-            case ciProduct
-            case contentRightsDeclaration
-            case customerReviews
-            case endUserLicenseAgreement
-            case gameCenterDetail
-            case gameCenterEnabledVersions
-            case inAppPurchases
-            case inAppPurchasesV2
-            case isOrEverWasMadeForKids
             case marketplaceSearchDetail
-            case name
-            case perfPowerMetrics
-            case preOrder
-            case preReleaseVersions
-            case primaryLocale
-            case promotedPurchases
-            case reviewSubmissions
-            case sku
-            case subscriptionGracePeriod
-            case subscriptionGroups
-            case subscriptionStatusURL = "subscriptionStatusUrl"
-            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
-            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
-            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

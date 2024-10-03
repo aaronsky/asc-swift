@@ -16,85 +16,59 @@ extension Resources.V1.CiBuildActions {
         /// Path: `/v1/ciBuildActions/{id}`
         public let path: String
 
-        public func get(fieldsCiBuildActions: [FieldsCiBuildActions]? = nil, include: [Include]? = nil, fieldsCiIssues: [FieldsCiIssues]? = nil, fieldsCiBuildRuns: [FieldsCiBuildRuns]? = nil, fieldsCiTestResults: [FieldsCiTestResults]? = nil, fieldsCiArtifacts: [FieldsCiArtifacts]? = nil) -> Request<AppStoreAPI.CiBuildActionResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiBuildActions, include, fieldsCiIssues, fieldsCiBuildRuns, fieldsCiTestResults, fieldsCiArtifacts), id: "ciBuildActions-get_instance")
+        public func get(fieldsCiBuildActions: [FieldsCiBuildActions]? = nil, fieldsCiBuildRuns: [FieldsCiBuildRuns]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CiBuildActionResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiBuildActions, fieldsCiBuildRuns, include), id: "ciBuildActions_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsCiBuildActions: [FieldsCiBuildActions]?, _ include: [Include]?, _ fieldsCiIssues: [FieldsCiIssues]?, _ fieldsCiBuildRuns: [FieldsCiBuildRuns]?, _ fieldsCiTestResults: [FieldsCiTestResults]?, _ fieldsCiArtifacts: [FieldsCiArtifacts]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsCiBuildActions: [FieldsCiBuildActions]?, _ fieldsCiBuildRuns: [FieldsCiBuildRuns]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsCiBuildActions, forKey: "fields[ciBuildActions]")
-            encoder.encode(include, forKey: "include")
-            encoder.encode(fieldsCiIssues, forKey: "fields[ciIssues]")
             encoder.encode(fieldsCiBuildRuns, forKey: "fields[ciBuildRuns]")
-            encoder.encode(fieldsCiTestResults, forKey: "fields[ciTestResults]")
-            encoder.encode(fieldsCiArtifacts, forKey: "fields[ciArtifacts]")
+            encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
         public enum FieldsCiBuildActions: String, CaseIterable, Codable, Sendable {
-            case actionType
-            case artifacts
-            case buildRun
-            case completionStatus
-            case executionProgress
-            case finishedDate
-            case isRequiredToPass
-            case issueCounts
-            case issues
             case name
+            case actionType
             case startedDate
+            case finishedDate
+            case issueCounts
+            case executionProgress
+            case completionStatus
+            case isRequiredToPass
+            case buildRun
+            case artifacts
+            case issues
             case testResults
+        }
+
+        public enum FieldsCiBuildRuns: String, CaseIterable, Codable, Sendable {
+            case clean
+            case number
+            case createdDate
+            case startedDate
+            case finishedDate
+            case sourceCommit
+            case destinationCommit
+            case isPullRequestBuild
+            case issueCounts
+            case executionProgress
+            case completionStatus
+            case startReason
+            case cancelReason
+            case buildRun
+            case builds
+            case workflow
+            case product
+            case sourceBranchOrTag
+            case destinationBranch
+            case actions
+            case pullRequest
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case buildRun
-        }
-
-        public enum FieldsCiIssues: String, CaseIterable, Codable, Sendable {
-            case category
-            case fileSource
-            case issueType
-            case message
-        }
-
-        public enum FieldsCiBuildRuns: String, CaseIterable, Codable, Sendable {
-            case actions
-            case buildRun
-            case builds
-            case cancelReason
-            case clean
-            case completionStatus
-            case createdDate
-            case destinationBranch
-            case destinationCommit
-            case executionProgress
-            case finishedDate
-            case isPullRequestBuild
-            case issueCounts
-            case number
-            case product
-            case pullRequest
-            case sourceBranchOrTag
-            case sourceCommit
-            case startReason
-            case startedDate
-            case workflow
-        }
-
-        public enum FieldsCiTestResults: String, CaseIterable, Codable, Sendable {
-            case className
-            case destinationTestResults
-            case fileSource
-            case message
-            case name
-            case status
-        }
-
-        public enum FieldsCiArtifacts: String, CaseIterable, Codable, Sendable {
-            case downloadURL = "downloadUrl"
-            case fileName
-            case fileSize
-            case fileType
         }
     }
 }

@@ -17,7 +17,7 @@ extension Resources.V1.Subscriptions.WithID {
         public let path: String
 
         public func get(fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionAppStoreReviewScreenshotResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionAppStoreReviewScreenshots, fieldsSubscriptions, include), id: "subscriptions-appStoreReviewScreenshot-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionAppStoreReviewScreenshots, fieldsSubscriptions, include), id: "subscriptions_appStoreReviewScreenshot_getToOneRelated")
         }
 
         private func makeGetQuery(_ fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ include: [Include]?) -> [(String, String?)] {
@@ -29,36 +29,38 @@ extension Resources.V1.Subscriptions.WithID {
         }
 
         public enum FieldsSubscriptionAppStoreReviewScreenshots: String, CaseIterable, Codable, Sendable {
-            case assetDeliveryState
+            case fileSize
+            case fileName
+            case sourceFileChecksum
+            case imageAsset
             case assetToken
             case assetType
-            case fileName
-            case fileSize
-            case imageAsset
-            case sourceFileChecksum
-            case subscription
             case uploadOperations
+            case assetDeliveryState
             case uploaded
+            case subscription
         }
 
         public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
-            case appStoreReviewScreenshot
-            case familySharable
-            case group
-            case groupLevel
-            case introductoryOffers
             case name
-            case offerCodes
-            case pricePoints
-            case prices
             case productID = "productId"
-            case promotedPurchase
-            case promotionalOffers
-            case reviewNote
+            case familySharable
             case state
-            case subscriptionAvailability
-            case subscriptionLocalizations
             case subscriptionPeriod
+            case reviewNote
+            case groupLevel
+            case subscriptionLocalizations
+            case appStoreReviewScreenshot
+            case group
+            case introductoryOffers
+            case promotionalOffers
+            case offerCodes
+            case prices
+            case pricePoints
+            case promotedPurchase
+            case subscriptionAvailability
+            case winBackOffers
+            case images
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

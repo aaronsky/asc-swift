@@ -16,23 +16,23 @@ extension Resources.V1.AppStoreVersionLocalizations.WithID {
         /// Path: `/v1/appStoreVersionLocalizations/{id}/appScreenshotSets`
         public let path: String
 
-        public func get(filterScreenshotDisplayType: [FilterScreenshotDisplayType]? = nil, filterAppCustomProductPageLocalization: [String]? = nil, filterAppStoreVersionExperimentTreatmentLocalization: [String]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]? = nil, fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]? = nil, fieldsAppScreenshots: [FieldsAppScreenshots]? = nil, fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, limit: Int? = nil, limitAppScreenshots: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppScreenshotSetsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterScreenshotDisplayType, filterAppCustomProductPageLocalization, filterAppStoreVersionExperimentTreatmentLocalization, fieldsAppScreenshotSets, fieldsAppCustomProductPageLocalizations, fieldsAppStoreVersionExperimentTreatmentLocalizations, fieldsAppScreenshots, fieldsAppStoreVersionLocalizations, limit, limitAppScreenshots, include), id: "appStoreVersionLocalizations-appScreenshotSets-get_to_many_related")
+        public func get(filterScreenshotDisplayType: [FilterScreenshotDisplayType]? = nil, filterAppCustomProductPageLocalization: [String]? = nil, filterAppStoreVersionExperimentTreatmentLocalization: [String]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]? = nil, fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]? = nil, fieldsAppScreenshots: [FieldsAppScreenshots]? = nil, limit: Int? = nil, include: [Include]? = nil, limitAppScreenshots: Int? = nil) -> Request<AppStoreAPI.AppScreenshotSetsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterScreenshotDisplayType, filterAppCustomProductPageLocalization, filterAppStoreVersionExperimentTreatmentLocalization, fieldsAppScreenshotSets, fieldsAppStoreVersionLocalizations, fieldsAppCustomProductPageLocalizations, fieldsAppStoreVersionExperimentTreatmentLocalizations, fieldsAppScreenshots, limit, include, limitAppScreenshots), id: "appStoreVersionLocalizations_appScreenshotSets_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterScreenshotDisplayType: [FilterScreenshotDisplayType]?, _ filterAppCustomProductPageLocalization: [String]?, _ filterAppStoreVersionExperimentTreatmentLocalization: [String]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]?, _ fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]?, _ fieldsAppScreenshots: [FieldsAppScreenshots]?, _ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ limit: Int?, _ limitAppScreenshots: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterScreenshotDisplayType: [FilterScreenshotDisplayType]?, _ filterAppCustomProductPageLocalization: [String]?, _ filterAppStoreVersionExperimentTreatmentLocalization: [String]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]?, _ fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]?, _ fieldsAppScreenshots: [FieldsAppScreenshots]?, _ limit: Int?, _ include: [Include]?, _ limitAppScreenshots: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterScreenshotDisplayType, forKey: "filter[screenshotDisplayType]")
             encoder.encode(filterAppCustomProductPageLocalization, forKey: "filter[appCustomProductPageLocalization]")
             encoder.encode(filterAppStoreVersionExperimentTreatmentLocalization, forKey: "filter[appStoreVersionExperimentTreatmentLocalization]")
             encoder.encode(fieldsAppScreenshotSets, forKey: "fields[appScreenshotSets]")
+            encoder.encode(fieldsAppStoreVersionLocalizations, forKey: "fields[appStoreVersionLocalizations]")
             encoder.encode(fieldsAppCustomProductPageLocalizations, forKey: "fields[appCustomProductPageLocalizations]")
             encoder.encode(fieldsAppStoreVersionExperimentTreatmentLocalizations, forKey: "fields[appStoreVersionExperimentTreatmentLocalizations]")
             encoder.encode(fieldsAppScreenshots, forKey: "fields[appScreenshots]")
-            encoder.encode(fieldsAppStoreVersionLocalizations, forKey: "fields[appStoreVersionLocalizations]")
             encoder.encode(limit, forKey: "limit")
-            encoder.encode(limitAppScreenshots, forKey: "limit[appScreenshots]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitAppScreenshots, forKey: "limit[appScreenshots]")
             return encoder.items
         }
 
@@ -52,6 +52,7 @@ extension Resources.V1.AppStoreVersionLocalizations.WithID {
             case appIpad97 = "APP_IPAD_97"
             case appDesktop = "APP_DESKTOP"
             case appWatchUltra = "APP_WATCH_ULTRA"
+            case appWatchSeries10 = "APP_WATCH_SERIES_10"
             case appWatchSeries7 = "APP_WATCH_SERIES_7"
             case appWatchSeries4 = "APP_WATCH_SERIES_4"
             case appWatchSeries3 = "APP_WATCH_SERIES_3"
@@ -72,59 +73,59 @@ extension Resources.V1.AppStoreVersionLocalizations.WithID {
         }
 
         public enum FieldsAppScreenshotSets: String, CaseIterable, Codable, Sendable {
-            case appCustomProductPageLocalization
-            case appScreenshots
-            case appStoreVersionExperimentTreatmentLocalization
-            case appStoreVersionLocalization
             case screenshotDisplayType
-        }
-
-        public enum FieldsAppCustomProductPageLocalizations: String, CaseIterable, Codable, Sendable {
-            case appCustomProductPageVersion
-            case appPreviewSets
-            case appScreenshotSets
-            case locale
-            case promotionalText
-        }
-
-        public enum FieldsAppStoreVersionExperimentTreatmentLocalizations: String, CaseIterable, Codable, Sendable {
-            case appPreviewSets
-            case appScreenshotSets
-            case appStoreVersionExperimentTreatment
-            case locale
-        }
-
-        public enum FieldsAppScreenshots: String, CaseIterable, Codable, Sendable {
-            case appScreenshotSet
-            case assetDeliveryState
-            case assetToken
-            case assetType
-            case fileName
-            case fileSize
-            case imageAsset
-            case sourceFileChecksum
-            case uploadOperations
-            case uploaded
+            case appStoreVersionLocalization
+            case appCustomProductPageLocalization
+            case appStoreVersionExperimentTreatmentLocalization
+            case appScreenshots
         }
 
         public enum FieldsAppStoreVersionLocalizations: String, CaseIterable, Codable, Sendable {
-            case appPreviewSets
-            case appScreenshotSets
-            case appStoreVersion
             case description
-            case keywords
             case locale
+            case keywords
             case marketingURL = "marketingUrl"
             case promotionalText
             case supportURL = "supportUrl"
             case whatsNew
+            case appStoreVersion
+            case appScreenshotSets
+            case appPreviewSets
+        }
+
+        public enum FieldsAppCustomProductPageLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case promotionalText
+            case appCustomProductPageVersion
+            case appScreenshotSets
+            case appPreviewSets
+        }
+
+        public enum FieldsAppStoreVersionExperimentTreatmentLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case appStoreVersionExperimentTreatment
+            case appScreenshotSets
+            case appPreviewSets
+        }
+
+        public enum FieldsAppScreenshots: String, CaseIterable, Codable, Sendable {
+            case fileSize
+            case fileName
+            case sourceFileChecksum
+            case imageAsset
+            case assetToken
+            case assetType
+            case uploadOperations
+            case assetDeliveryState
+            case uploaded
+            case appScreenshotSet
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case appCustomProductPageLocalization
-            case appScreenshots
-            case appStoreVersionExperimentTreatmentLocalization
             case appStoreVersionLocalization
+            case appCustomProductPageLocalization
+            case appStoreVersionExperimentTreatmentLocalization
+            case appScreenshots
         }
     }
 }

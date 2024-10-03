@@ -16,91 +16,66 @@ extension Resources.V1.CiWorkflows {
         /// Path: `/v1/ciWorkflows/{id}`
         public let path: String
 
-        public func get(fieldsCiWorkflows: [FieldsCiWorkflows]? = nil, include: [Include]? = nil, fieldsCiBuildRuns: [FieldsCiBuildRuns]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil) -> Request<AppStoreAPI.CiWorkflowResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiWorkflows, include, fieldsCiBuildRuns, fieldsScmRepositories), id: "ciWorkflows-get_instance")
+        public func get(fieldsCiWorkflows: [FieldsCiWorkflows]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CiWorkflowResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiWorkflows, fieldsScmRepositories, include), id: "ciWorkflows_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsCiWorkflows: [FieldsCiWorkflows]?, _ include: [Include]?, _ fieldsCiBuildRuns: [FieldsCiBuildRuns]?, _ fieldsScmRepositories: [FieldsScmRepositories]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsCiWorkflows: [FieldsCiWorkflows]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsCiWorkflows, forKey: "fields[ciWorkflows]")
-            encoder.encode(include, forKey: "include")
-            encoder.encode(fieldsCiBuildRuns, forKey: "fields[ciBuildRuns]")
             encoder.encode(fieldsScmRepositories, forKey: "fields[scmRepositories]")
+            encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
         public enum FieldsCiWorkflows: String, CaseIterable, Codable, Sendable {
-            case actions
-            case branchStartCondition
-            case buildRuns
-            case clean
-            case containerFilePath
+            case name
             case description
+            case branchStartCondition
+            case tagStartCondition
+            case pullRequestStartCondition
+            case scheduledStartCondition
+            case manualBranchStartCondition
+            case manualTagStartCondition
+            case manualPullRequestStartCondition
+            case actions
             case isEnabled
             case isLockedForEditing
-            case lastModifiedDate
-            case macOsVersion
-            case manualBranchStartCondition
-            case manualPullRequestStartCondition
-            case manualTagStartCondition
-            case name
-            case product
-            case pullRequestStartCondition
-            case repository
-            case scheduledStartCondition
-            case tagStartCondition
-            case xcodeVersion
-        }
-
-        public enum Include: String, CaseIterable, Codable, Sendable {
-            case macOsVersion
-            case product
-            case repository
-            case xcodeVersion
-        }
-
-        public enum FieldsCiBuildRuns: String, CaseIterable, Codable, Sendable {
-            case actions
-            case buildRun
-            case builds
-            case cancelReason
             case clean
-            case completionStatus
-            case createdDate
-            case destinationBranch
-            case destinationCommit
-            case executionProgress
-            case finishedDate
-            case isPullRequestBuild
-            case issueCounts
-            case number
+            case containerFilePath
+            case lastModifiedDate
             case product
-            case pullRequest
-            case sourceBranchOrTag
-            case sourceCommit
-            case startReason
-            case startedDate
-            case workflow
+            case repository
+            case xcodeVersion
+            case macOsVersion
+            case buildRuns
         }
 
         public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
-            case defaultBranch
-            case gitReferences
-            case httpCloneURL = "httpCloneUrl"
             case lastAccessedDate
+            case httpCloneURL = "httpCloneUrl"
+            case sshCloneURL = "sshCloneUrl"
             case ownerName
-            case pullRequests
             case repositoryName
             case scmProvider
-            case sshCloneURL = "sshCloneUrl"
+            case defaultBranch
+            case gitReferences
+            case pullRequests
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case product
+            case repository
+            case xcodeVersion
+            case macOsVersion
         }
 
         public func patch(_ body: AppStoreAPI.CiWorkflowUpdateRequest) -> Request<AppStoreAPI.CiWorkflowResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "ciWorkflows-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "ciWorkflows_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "ciWorkflows-delete_instance")
+            Request(path: path, method: "DELETE", id: "ciWorkflows_deleteInstance")
         }
     }
 }

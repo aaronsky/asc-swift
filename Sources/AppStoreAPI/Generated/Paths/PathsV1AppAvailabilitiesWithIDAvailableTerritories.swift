@@ -17,7 +17,7 @@ extension Resources.V1.AppAvailabilities.WithID {
         public let path: String
 
         public func get(fieldsTerritories: [FieldsTerritories]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.TerritoriesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsTerritories, limit), id: "appAvailabilities-availableTerritories-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsTerritories, limit), id: "appAvailabilities_availableTerritories_getToManyRelated")
         }
 
         private func makeGetQuery(_ fieldsTerritories: [FieldsTerritories]?, _ limit: Int?) -> [(String, String?)] {

@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func post(_ body: AppStoreAPI.SubscriptionSubmissionCreateRequest) -> Request<AppStoreAPI.SubscriptionSubmissionResponse> {
-            Request(path: path, method: "POST", body: body, id: "subscriptionSubmissions-create_instance")
+            Request(path: path, method: "POST", body: body, id: "subscriptionSubmissions_createInstance")
         }
     }
 }

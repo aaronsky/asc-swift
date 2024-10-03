@@ -16,17 +16,17 @@ extension Resources.V1.SubscriptionOfferCodes {
         /// Path: `/v1/subscriptionOfferCodes/{id}`
         public let path: String
 
-        public func get(fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, include: [Include]? = nil, fieldsSubscriptionOfferCodeCustomCodes: [FieldsSubscriptionOfferCodeCustomCodes]? = nil, fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]? = nil, fieldsSubscriptionOfferCodePrices: [FieldsSubscriptionOfferCodePrices]? = nil, limitCustomCodes: Int? = nil, limitOneTimeUseCodes: Int? = nil, limitPrices: Int? = nil) -> Request<AppStoreAPI.SubscriptionOfferCodeResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionOfferCodes, include, fieldsSubscriptionOfferCodeCustomCodes, fieldsSubscriptionOfferCodeOneTimeUseCodes, fieldsSubscriptionOfferCodePrices, limitCustomCodes, limitOneTimeUseCodes, limitPrices), id: "subscriptionOfferCodes-get_instance")
+        public func get(fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]? = nil, fieldsSubscriptionOfferCodeCustomCodes: [FieldsSubscriptionOfferCodeCustomCodes]? = nil, fieldsSubscriptionOfferCodePrices: [FieldsSubscriptionOfferCodePrices]? = nil, include: [Include]? = nil, limitCustomCodes: Int? = nil, limitOneTimeUseCodes: Int? = nil, limitPrices: Int? = nil) -> Request<AppStoreAPI.SubscriptionOfferCodeResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionOfferCodes, fieldsSubscriptionOfferCodeOneTimeUseCodes, fieldsSubscriptionOfferCodeCustomCodes, fieldsSubscriptionOfferCodePrices, include, limitCustomCodes, limitOneTimeUseCodes, limitPrices), id: "subscriptionOfferCodes_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ include: [Include]?, _ fieldsSubscriptionOfferCodeCustomCodes: [FieldsSubscriptionOfferCodeCustomCodes]?, _ fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]?, _ fieldsSubscriptionOfferCodePrices: [FieldsSubscriptionOfferCodePrices]?, _ limitCustomCodes: Int?, _ limitOneTimeUseCodes: Int?, _ limitPrices: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]?, _ fieldsSubscriptionOfferCodeCustomCodes: [FieldsSubscriptionOfferCodeCustomCodes]?, _ fieldsSubscriptionOfferCodePrices: [FieldsSubscriptionOfferCodePrices]?, _ include: [Include]?, _ limitCustomCodes: Int?, _ limitOneTimeUseCodes: Int?, _ limitPrices: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsSubscriptionOfferCodes, forKey: "fields[subscriptionOfferCodes]")
-            encoder.encode(include, forKey: "include")
-            encoder.encode(fieldsSubscriptionOfferCodeCustomCodes, forKey: "fields[subscriptionOfferCodeCustomCodes]")
             encoder.encode(fieldsSubscriptionOfferCodeOneTimeUseCodes, forKey: "fields[subscriptionOfferCodeOneTimeUseCodes]")
+            encoder.encode(fieldsSubscriptionOfferCodeCustomCodes, forKey: "fields[subscriptionOfferCodeCustomCodes]")
             encoder.encode(fieldsSubscriptionOfferCodePrices, forKey: "fields[subscriptionOfferCodePrices]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitCustomCodes, forKey: "limit[customCodes]")
             encoder.encode(limitOneTimeUseCodes, forKey: "limit[oneTimeUseCodes]")
             encoder.encode(limitPrices, forKey: "limit[prices]")
@@ -34,52 +34,52 @@ extension Resources.V1.SubscriptionOfferCodes {
         }
 
         public enum FieldsSubscriptionOfferCodes: String, CaseIterable, Codable, Sendable {
-            case active
-            case customCodes
-            case customerEligibilities
-            case duration
             case name
-            case numberOfPeriods
+            case customerEligibilities
             case offerEligibility
+            case duration
             case offerMode
-            case oneTimeUseCodes
-            case prices
-            case subscription
+            case numberOfPeriods
             case totalNumberOfCodes
-        }
-
-        public enum Include: String, CaseIterable, Codable, Sendable {
-            case customCodes
-            case oneTimeUseCodes
-            case prices
-            case subscription
-        }
-
-        public enum FieldsSubscriptionOfferCodeCustomCodes: String, CaseIterable, Codable, Sendable {
             case active
-            case createdDate
-            case customCode
-            case expirationDate
-            case numberOfCodes
-            case offerCode
+            case subscription
+            case oneTimeUseCodes
+            case customCodes
+            case prices
         }
 
         public enum FieldsSubscriptionOfferCodeOneTimeUseCodes: String, CaseIterable, Codable, Sendable {
-            case active
+            case numberOfCodes
             case createdDate
             case expirationDate
-            case numberOfCodes
+            case active
             case offerCode
             case values
         }
 
+        public enum FieldsSubscriptionOfferCodeCustomCodes: String, CaseIterable, Codable, Sendable {
+            case customCode
+            case numberOfCodes
+            case createdDate
+            case expirationDate
+            case active
+            case offerCode
+        }
+
         public enum FieldsSubscriptionOfferCodePrices: String, CaseIterable, Codable, Sendable {
-            case subscriptionPricePoint
             case territory
+            case subscriptionPricePoint
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case subscription
+            case oneTimeUseCodes
+            case customCodes
+            case prices
         }
 
         public func patch(_ body: AppStoreAPI.SubscriptionOfferCodeUpdateRequest) -> Request<AppStoreAPI.SubscriptionOfferCodeResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "subscriptionOfferCodes-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "subscriptionOfferCodes_updateInstance")
         }
     }
 }

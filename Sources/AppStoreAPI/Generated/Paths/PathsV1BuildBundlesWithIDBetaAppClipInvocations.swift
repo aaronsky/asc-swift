@@ -16,30 +16,30 @@ extension Resources.V1.BuildBundles.WithID {
         /// Path: `/v1/buildBundles/{id}/betaAppClipInvocations`
         public let path: String
 
-        public func get(fieldsBetaAppClipInvocations: [FieldsBetaAppClipInvocations]? = nil, fieldsBetaAppClipInvocationLocalizations: [FieldsBetaAppClipInvocationLocalizations]? = nil, limit: Int? = nil, limitBetaAppClipInvocationLocalizations: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.BetaAppClipInvocationsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaAppClipInvocations, fieldsBetaAppClipInvocationLocalizations, limit, limitBetaAppClipInvocationLocalizations, include), id: "buildBundles-betaAppClipInvocations-get_to_many_related")
+        public func get(fieldsBetaAppClipInvocations: [FieldsBetaAppClipInvocations]? = nil, fieldsBetaAppClipInvocationLocalizations: [FieldsBetaAppClipInvocationLocalizations]? = nil, limit: Int? = nil, include: [Include]? = nil, limitBetaAppClipInvocationLocalizations: Int? = nil) -> Request<AppStoreAPI.BetaAppClipInvocationsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaAppClipInvocations, fieldsBetaAppClipInvocationLocalizations, limit, include, limitBetaAppClipInvocationLocalizations), id: "buildBundles_betaAppClipInvocations_getToManyRelated")
         }
 
-        private func makeGetQuery(_ fieldsBetaAppClipInvocations: [FieldsBetaAppClipInvocations]?, _ fieldsBetaAppClipInvocationLocalizations: [FieldsBetaAppClipInvocationLocalizations]?, _ limit: Int?, _ limitBetaAppClipInvocationLocalizations: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsBetaAppClipInvocations: [FieldsBetaAppClipInvocations]?, _ fieldsBetaAppClipInvocationLocalizations: [FieldsBetaAppClipInvocationLocalizations]?, _ limit: Int?, _ include: [Include]?, _ limitBetaAppClipInvocationLocalizations: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsBetaAppClipInvocations, forKey: "fields[betaAppClipInvocations]")
             encoder.encode(fieldsBetaAppClipInvocationLocalizations, forKey: "fields[betaAppClipInvocationLocalizations]")
             encoder.encode(limit, forKey: "limit")
-            encoder.encode(limitBetaAppClipInvocationLocalizations, forKey: "limit[betaAppClipInvocationLocalizations]")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitBetaAppClipInvocationLocalizations, forKey: "limit[betaAppClipInvocationLocalizations]")
             return encoder.items
         }
 
         public enum FieldsBetaAppClipInvocations: String, CaseIterable, Codable, Sendable {
-            case betaAppClipInvocationLocalizations
-            case buildBundle
             case url
+            case buildBundle
+            case betaAppClipInvocationLocalizations
         }
 
         public enum FieldsBetaAppClipInvocationLocalizations: String, CaseIterable, Codable, Sendable {
-            case betaAppClipInvocation
-            case locale
             case title
+            case locale
+            case betaAppClipInvocation
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

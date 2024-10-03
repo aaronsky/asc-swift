@@ -16,33 +16,20 @@ extension Resources.V1.ScmProviders {
         /// Path: `/v1/scmProviders/{id}`
         public let path: String
 
-        public func get(fieldsScmProviders: [FieldsScmProviders]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil) -> Request<AppStoreAPI.ScmProviderResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsScmProviders, fieldsScmRepositories), id: "scmProviders-get_instance")
+        public func get(fieldsScmProviders: [FieldsScmProviders]? = nil) -> Request<AppStoreAPI.ScmProviderResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsScmProviders), id: "scmProviders_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsScmProviders: [FieldsScmProviders]?, _ fieldsScmRepositories: [FieldsScmRepositories]?) -> [(String, String?)] {
-            let encoder = URLQueryEncoder(explode: false)
-            encoder.encode(fieldsScmProviders, forKey: "fields[scmProviders]")
-            encoder.encode(fieldsScmRepositories, forKey: "fields[scmRepositories]")
+        private func makeGetQuery(_ fieldsScmProviders: [FieldsScmProviders]?) -> [(String, String?)] {
+            let encoder = URLQueryEncoder()
+            encoder.encode(fieldsScmProviders, forKey: "fields[scmProviders]", explode: false)
             return encoder.items
         }
 
         public enum FieldsScmProviders: String, CaseIterable, Codable, Sendable {
-            case repositories
             case scmProviderType
             case url
-        }
-
-        public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
-            case defaultBranch
-            case gitReferences
-            case httpCloneURL = "httpCloneUrl"
-            case lastAccessedDate
-            case ownerName
-            case pullRequests
-            case repositoryName
-            case scmProvider
-            case sshCloneURL = "sshCloneUrl"
+            case repositories
         }
     }
 }

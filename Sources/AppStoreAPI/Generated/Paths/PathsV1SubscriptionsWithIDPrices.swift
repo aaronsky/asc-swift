@@ -16,47 +16,47 @@ extension Resources.V1.Subscriptions.WithID {
         /// Path: `/v1/subscriptions/{id}/prices`
         public let path: String
 
-        public func get(filterSubscriptionPricePoint: [String]? = nil, filterTerritory: [String]? = nil, fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]? = nil, fieldsSubscriptionPrices: [FieldsSubscriptionPrices]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionPricesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterSubscriptionPricePoint, filterTerritory, fieldsSubscriptionPricePoints, fieldsSubscriptionPrices, fieldsTerritories, limit, include), id: "subscriptions-prices-get_to_many_related")
+        public func get(filterSubscriptionPricePoint: [String]? = nil, filterTerritory: [String]? = nil, fieldsSubscriptionPrices: [FieldsSubscriptionPrices]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionPricesResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterSubscriptionPricePoint, filterTerritory, fieldsSubscriptionPrices, fieldsTerritories, fieldsSubscriptionPricePoints, limit, include), id: "subscriptions_prices_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterSubscriptionPricePoint: [String]?, _ filterTerritory: [String]?, _ fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]?, _ fieldsSubscriptionPrices: [FieldsSubscriptionPrices]?, _ fieldsTerritories: [FieldsTerritories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterSubscriptionPricePoint: [String]?, _ filterTerritory: [String]?, _ fieldsSubscriptionPrices: [FieldsSubscriptionPrices]?, _ fieldsTerritories: [FieldsTerritories]?, _ fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterSubscriptionPricePoint, forKey: "filter[subscriptionPricePoint]")
             encoder.encode(filterTerritory, forKey: "filter[territory]")
-            encoder.encode(fieldsSubscriptionPricePoints, forKey: "fields[subscriptionPricePoints]")
             encoder.encode(fieldsSubscriptionPrices, forKey: "fields[subscriptionPrices]")
             encoder.encode(fieldsTerritories, forKey: "fields[territories]")
+            encoder.encode(fieldsSubscriptionPricePoints, forKey: "fields[subscriptionPricePoints]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
-        public enum FieldsSubscriptionPricePoints: String, CaseIterable, Codable, Sendable {
-            case customerPrice
-            case equalizations
-            case proceeds
-            case proceedsYear2
-            case subscription
-            case territory
-        }
-
         public enum FieldsSubscriptionPrices: String, CaseIterable, Codable, Sendable {
-            case preserveCurrentPrice
-            case preserved
             case startDate
+            case preserved
+            case preserveCurrentPrice
             case subscription
-            case subscriptionPricePoint
             case territory
+            case subscriptionPricePoint
         }
 
         public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
             case currency
         }
 
-        public enum Include: String, CaseIterable, Codable, Sendable {
-            case subscriptionPricePoint
+        public enum FieldsSubscriptionPricePoints: String, CaseIterable, Codable, Sendable {
+            case customerPrice
+            case proceeds
+            case proceedsYear2
             case territory
+            case subscription
+            case equalizations
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case territory
+            case subscriptionPricePoint
         }
     }
 }

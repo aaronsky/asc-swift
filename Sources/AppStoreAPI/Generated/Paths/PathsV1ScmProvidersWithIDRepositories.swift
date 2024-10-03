@@ -16,50 +16,50 @@ extension Resources.V1.ScmProviders.WithID {
         /// Path: `/v1/scmProviders/{id}/repositories`
         public let path: String
 
-        public func get(filterID: [String]? = nil, fieldsScmGitReferences: [FieldsScmGitReferences]? = nil, fieldsScmProviders: [FieldsScmProviders]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.ScmRepositoriesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterID, fieldsScmGitReferences, fieldsScmProviders, fieldsScmRepositories, limit, include), id: "scmProviders-repositories-get_to_many_related")
+        public func get(filterID: [String]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, fieldsScmProviders: [FieldsScmProviders]? = nil, fieldsScmGitReferences: [FieldsScmGitReferences]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.ScmRepositoriesResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterID, fieldsScmRepositories, fieldsScmProviders, fieldsScmGitReferences, limit, include), id: "scmProviders_repositories_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterID: [String]?, _ fieldsScmGitReferences: [FieldsScmGitReferences]?, _ fieldsScmProviders: [FieldsScmProviders]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterID: [String]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ fieldsScmProviders: [FieldsScmProviders]?, _ fieldsScmGitReferences: [FieldsScmGitReferences]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterID, forKey: "filter[id]")
-            encoder.encode(fieldsScmGitReferences, forKey: "fields[scmGitReferences]")
-            encoder.encode(fieldsScmProviders, forKey: "fields[scmProviders]")
             encoder.encode(fieldsScmRepositories, forKey: "fields[scmRepositories]")
+            encoder.encode(fieldsScmProviders, forKey: "fields[scmProviders]")
+            encoder.encode(fieldsScmGitReferences, forKey: "fields[scmGitReferences]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
-        public enum FieldsScmGitReferences: String, CaseIterable, Codable, Sendable {
-            case canonicalName
-            case isDeleted
-            case kind
-            case name
-            case repository
+        public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
+            case lastAccessedDate
+            case httpCloneURL = "httpCloneUrl"
+            case sshCloneURL = "sshCloneUrl"
+            case ownerName
+            case repositoryName
+            case scmProvider
+            case defaultBranch
+            case gitReferences
+            case pullRequests
         }
 
         public enum FieldsScmProviders: String, CaseIterable, Codable, Sendable {
-            case repositories
             case scmProviderType
             case url
+            case repositories
         }
 
-        public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
-            case defaultBranch
-            case gitReferences
-            case httpCloneURL = "httpCloneUrl"
-            case lastAccessedDate
-            case ownerName
-            case pullRequests
-            case repositoryName
-            case scmProvider
-            case sshCloneURL = "sshCloneUrl"
+        public enum FieldsScmGitReferences: String, CaseIterable, Codable, Sendable {
+            case name
+            case canonicalName
+            case isDeleted
+            case kind
+            case repository
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case defaultBranch
             case scmProvider
+            case defaultBranch
         }
     }
 }

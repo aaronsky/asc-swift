@@ -17,7 +17,7 @@ extension Resources.V1.AppStoreVersions.WithID {
         public let path: String
 
         public func get(fieldsAppStoreVersionSubmissions: [FieldsAppStoreVersionSubmissions]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppStoreVersionSubmissionResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionSubmissions, fieldsAppStoreVersions, include), id: "appStoreVersions-appStoreVersionSubmission-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionSubmissions, fieldsAppStoreVersions, include), id: "appStoreVersions_appStoreVersionSubmission_getToOneRelated")
         }
 
         private func makeGetQuery(_ fieldsAppStoreVersionSubmissions: [FieldsAppStoreVersionSubmissions]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ include: [Include]?) -> [(String, String?)] {
@@ -33,29 +33,30 @@ extension Resources.V1.AppStoreVersions.WithID {
         }
 
         public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
-            case ageRatingDeclaration
-            case alternativeDistributionPackage
-            case app
-            case appClipDefaultExperience
-            case appStoreReviewDetail
+            case platform
+            case versionString
             case appStoreState
+            case appVersionState
+            case copyright
+            case reviewType
+            case releaseType
+            case earliestReleaseDate
+            case downloadable
+            case createdDate
+            case app
+            case ageRatingDeclaration
+            case appStoreVersionLocalizations
+            case build
+            case appStoreVersionPhasedRelease
+            case gameCenterAppVersion
+            case routingAppCoverage
+            case appStoreReviewDetail
+            case appStoreVersionSubmission
+            case appClipDefaultExperience
             case appStoreVersionExperiments
             case appStoreVersionExperimentsV2
-            case appStoreVersionLocalizations
-            case appStoreVersionPhasedRelease
-            case appStoreVersionSubmission
-            case appVersionState
-            case build
-            case copyright
-            case createdDate
             case customerReviews
-            case downloadable
-            case earliestReleaseDate
-            case platform
-            case releaseType
-            case reviewType
-            case routingAppCoverage
-            case versionString
+            case alternativeDistributionPackage
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

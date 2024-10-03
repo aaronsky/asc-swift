@@ -16,75 +16,75 @@ extension Resources.V1.Profiles {
         /// Path: `/v1/profiles/{id}`
         public let path: String
 
-        public func get(fieldsProfiles: [FieldsProfiles]? = nil, include: [Include]? = nil, fieldsCertificates: [FieldsCertificates]? = nil, fieldsDevices: [FieldsDevices]? = nil, fieldsBundleIDs: [FieldsBundleIDs]? = nil, limitCertificates: Int? = nil, limitDevices: Int? = nil) -> Request<AppStoreAPI.ProfileResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsProfiles, include, fieldsCertificates, fieldsDevices, fieldsBundleIDs, limitCertificates, limitDevices), id: "profiles-get_instance")
+        public func get(fieldsProfiles: [FieldsProfiles]? = nil, fieldsBundleIDs: [FieldsBundleIDs]? = nil, fieldsDevices: [FieldsDevices]? = nil, fieldsCertificates: [FieldsCertificates]? = nil, include: [Include]? = nil, limitCertificates: Int? = nil, limitDevices: Int? = nil) -> Request<AppStoreAPI.ProfileResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsProfiles, fieldsBundleIDs, fieldsDevices, fieldsCertificates, include, limitCertificates, limitDevices), id: "profiles_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsProfiles: [FieldsProfiles]?, _ include: [Include]?, _ fieldsCertificates: [FieldsCertificates]?, _ fieldsDevices: [FieldsDevices]?, _ fieldsBundleIDs: [FieldsBundleIDs]?, _ limitCertificates: Int?, _ limitDevices: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsProfiles: [FieldsProfiles]?, _ fieldsBundleIDs: [FieldsBundleIDs]?, _ fieldsDevices: [FieldsDevices]?, _ fieldsCertificates: [FieldsCertificates]?, _ include: [Include]?, _ limitCertificates: Int?, _ limitDevices: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsProfiles, forKey: "fields[profiles]")
-            encoder.encode(include, forKey: "include")
-            encoder.encode(fieldsCertificates, forKey: "fields[certificates]")
-            encoder.encode(fieldsDevices, forKey: "fields[devices]")
             encoder.encode(fieldsBundleIDs, forKey: "fields[bundleIds]")
+            encoder.encode(fieldsDevices, forKey: "fields[devices]")
+            encoder.encode(fieldsCertificates, forKey: "fields[certificates]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitCertificates, forKey: "limit[certificates]")
             encoder.encode(limitDevices, forKey: "limit[devices]")
             return encoder.items
         }
 
         public enum FieldsProfiles: String, CaseIterable, Codable, Sendable {
-            case bundleID = "bundleId"
-            case certificates
-            case createdDate
-            case devices
-            case expirationDate
             case name
             case platform
-            case profileContent
-            case profileState
             case profileType
+            case profileState
+            case profileContent
             case uuid
+            case createdDate
+            case expirationDate
+            case bundleID = "bundleId"
+            case devices
+            case certificates
+        }
+
+        public enum FieldsBundleIDs: String, CaseIterable, Codable, Sendable {
+            case name
+            case platform
+            case identifier
+            case seedID = "seedId"
+            case profiles
+            case bundleIDCapabilities = "bundleIdCapabilities"
+            case app
+        }
+
+        public enum FieldsDevices: String, CaseIterable, Codable, Sendable {
+            case name
+            case platform
+            case udid
+            case deviceClass
+            case status
+            case model
+            case addedDate
+        }
+
+        public enum FieldsCertificates: String, CaseIterable, Codable, Sendable {
+            case name
+            case csrContent
+            case certificateType
+            case displayName
+            case serialNumber
+            case platform
+            case expirationDate
+            case certificateContent
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case bundleID = "bundleId"
-            case certificates
             case devices
-        }
-
-        public enum FieldsCertificates: String, CaseIterable, Codable, Sendable {
-            case certificateContent
-            case certificateType
-            case csrContent
-            case displayName
-            case expirationDate
-            case name
-            case platform
-            case serialNumber
-        }
-
-        public enum FieldsDevices: String, CaseIterable, Codable, Sendable {
-            case addedDate
-            case deviceClass
-            case model
-            case name
-            case platform
-            case status
-            case udid
-        }
-
-        public enum FieldsBundleIDs: String, CaseIterable, Codable, Sendable {
-            case app
-            case bundleIDCapabilities = "bundleIdCapabilities"
-            case identifier
-            case name
-            case platform
-            case profiles
-            case seedID = "seedId"
+            case certificates
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "profiles-delete_instance")
+            Request(path: path, method: "DELETE", id: "profiles_deleteInstance")
         }
     }
 }

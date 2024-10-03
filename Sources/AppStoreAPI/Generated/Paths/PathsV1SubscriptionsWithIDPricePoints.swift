@@ -17,7 +17,7 @@ extension Resources.V1.Subscriptions.WithID {
         public let path: String
 
         public func get(filterTerritory: [String]? = nil, fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionPricePointsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterTerritory, fieldsSubscriptionPricePoints, fieldsTerritories, limit, include), id: "subscriptions-pricePoints-get_to_many_related")
+            Request(path: path, method: "GET", query: makeGetQuery(filterTerritory, fieldsSubscriptionPricePoints, fieldsTerritories, limit, include), id: "subscriptions_pricePoints_getToManyRelated")
         }
 
         private func makeGetQuery(_ filterTerritory: [String]?, _ fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]?, _ fieldsTerritories: [FieldsTerritories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
@@ -32,11 +32,11 @@ extension Resources.V1.Subscriptions.WithID {
 
         public enum FieldsSubscriptionPricePoints: String, CaseIterable, Codable, Sendable {
             case customerPrice
-            case equalizations
             case proceeds
             case proceedsYear2
-            case subscription
             case territory
+            case subscription
+            case equalizations
         }
 
         public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {

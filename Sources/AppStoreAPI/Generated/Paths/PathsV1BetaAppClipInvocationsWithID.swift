@@ -17,7 +17,7 @@ extension Resources.V1.BetaAppClipInvocations {
         public let path: String
 
         public func get(fieldsBetaAppClipInvocations: [FieldsBetaAppClipInvocations]? = nil, include: [Include]? = nil, limitBetaAppClipInvocationLocalizations: Int? = nil) -> Request<AppStoreAPI.BetaAppClipInvocationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaAppClipInvocations, include, limitBetaAppClipInvocationLocalizations), id: "betaAppClipInvocations-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaAppClipInvocations, include, limitBetaAppClipInvocationLocalizations), id: "betaAppClipInvocations_getInstance")
         }
 
         private func makeGetQuery(_ fieldsBetaAppClipInvocations: [FieldsBetaAppClipInvocations]?, _ include: [Include]?, _ limitBetaAppClipInvocationLocalizations: Int?) -> [(String, String?)] {
@@ -29,9 +29,9 @@ extension Resources.V1.BetaAppClipInvocations {
         }
 
         public enum FieldsBetaAppClipInvocations: String, CaseIterable, Codable, Sendable {
-            case betaAppClipInvocationLocalizations
-            case buildBundle
             case url
+            case buildBundle
+            case betaAppClipInvocationLocalizations
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
@@ -39,11 +39,11 @@ extension Resources.V1.BetaAppClipInvocations {
         }
 
         public func patch(_ body: AppStoreAPI.BetaAppClipInvocationUpdateRequest) -> Request<AppStoreAPI.BetaAppClipInvocationResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "betaAppClipInvocations-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "betaAppClipInvocations_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "betaAppClipInvocations-delete_instance")
+            Request(path: path, method: "DELETE", id: "betaAppClipInvocations_deleteInstance")
         }
     }
 }

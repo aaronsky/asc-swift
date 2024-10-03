@@ -17,7 +17,7 @@ extension Resources.V1.AppPreviews {
         public let path: String
 
         public func get(fieldsAppPreviews: [FieldsAppPreviews]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppPreviewResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPreviews, include), id: "appPreviews-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPreviews, include), id: "appPreviews_getInstance")
         }
 
         private func makeGetQuery(_ fieldsAppPreviews: [FieldsAppPreviews]?, _ include: [Include]?) -> [(String, String?)] {
@@ -28,17 +28,17 @@ extension Resources.V1.AppPreviews {
         }
 
         public enum FieldsAppPreviews: String, CaseIterable, Codable, Sendable {
-            case appPreviewSet
-            case assetDeliveryState
-            case fileName
             case fileSize
-            case mimeType
-            case previewFrameTimeCode
-            case previewImage
+            case fileName
             case sourceFileChecksum
-            case uploadOperations
-            case uploaded
+            case previewFrameTimeCode
+            case mimeType
             case videoURL = "videoUrl"
+            case previewImage
+            case uploadOperations
+            case assetDeliveryState
+            case uploaded
+            case appPreviewSet
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
@@ -46,11 +46,11 @@ extension Resources.V1.AppPreviews {
         }
 
         public func patch(_ body: AppStoreAPI.AppPreviewUpdateRequest) -> Request<AppStoreAPI.AppPreviewResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "appPreviews-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appPreviews_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "appPreviews-delete_instance")
+            Request(path: path, method: "DELETE", id: "appPreviews_deleteInstance")
         }
     }
 }

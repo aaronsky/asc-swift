@@ -16,34 +16,34 @@ extension Resources.V1.CiMacOsVersions {
         /// Path: `/v1/ciMacOsVersions/{id}`
         public let path: String
 
-        public func get(fieldsCiMacOsVersions: [FieldsCiMacOsVersions]? = nil, include: [Include]? = nil, fieldsCiXcodeVersions: [FieldsCiXcodeVersions]? = nil, limitXcodeVersions: Int? = nil) -> Request<AppStoreAPI.CiMacOsVersionResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiMacOsVersions, include, fieldsCiXcodeVersions, limitXcodeVersions), id: "ciMacOsVersions-get_instance")
+        public func get(fieldsCiMacOsVersions: [FieldsCiMacOsVersions]? = nil, fieldsCiXcodeVersions: [FieldsCiXcodeVersions]? = nil, include: [Include]? = nil, limitXcodeVersions: Int? = nil) -> Request<AppStoreAPI.CiMacOsVersionResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiMacOsVersions, fieldsCiXcodeVersions, include, limitXcodeVersions), id: "ciMacOsVersions_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsCiMacOsVersions: [FieldsCiMacOsVersions]?, _ include: [Include]?, _ fieldsCiXcodeVersions: [FieldsCiXcodeVersions]?, _ limitXcodeVersions: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsCiMacOsVersions: [FieldsCiMacOsVersions]?, _ fieldsCiXcodeVersions: [FieldsCiXcodeVersions]?, _ include: [Include]?, _ limitXcodeVersions: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsCiMacOsVersions, forKey: "fields[ciMacOsVersions]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsCiXcodeVersions, forKey: "fields[ciXcodeVersions]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitXcodeVersions, forKey: "limit[xcodeVersions]")
             return encoder.items
         }
 
         public enum FieldsCiMacOsVersions: String, CaseIterable, Codable, Sendable {
-            case name
             case version
-            case xcodeVersions
-        }
-
-        public enum Include: String, CaseIterable, Codable, Sendable {
+            case name
             case xcodeVersions
         }
 
         public enum FieldsCiXcodeVersions: String, CaseIterable, Codable, Sendable {
-            case macOsVersions
+            case version
             case name
             case testDestinations
-            case version
+            case macOsVersions
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case xcodeVersions
         }
     }
 }

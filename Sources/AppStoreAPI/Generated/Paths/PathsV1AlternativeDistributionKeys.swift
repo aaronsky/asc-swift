@@ -17,7 +17,7 @@ extension Resources.V1 {
         public let path: String
 
         public func get(isExistsApp: Bool? = nil, fieldsAlternativeDistributionKeys: [FieldsAlternativeDistributionKeys]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.AlternativeDistributionKeysResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(isExistsApp, fieldsAlternativeDistributionKeys, limit), id: "alternativeDistributionKeys-get_collection")
+            Request(path: path, method: "GET", query: makeGetQuery(isExistsApp, fieldsAlternativeDistributionKeys, limit), id: "alternativeDistributionKeys_getCollection")
         }
 
         private func makeGetQuery(_ isExistsApp: Bool?, _ fieldsAlternativeDistributionKeys: [FieldsAlternativeDistributionKeys]?, _ limit: Int?) -> [(String, String?)] {
@@ -29,12 +29,12 @@ extension Resources.V1 {
         }
 
         public enum FieldsAlternativeDistributionKeys: String, CaseIterable, Codable, Sendable {
-            case app
             case publicKey
+            case app
         }
 
         public func post(_ body: AppStoreAPI.AlternativeDistributionKeyCreateRequest) -> Request<AppStoreAPI.AlternativeDistributionKeyResponse> {
-            Request(path: path, method: "POST", body: body, id: "alternativeDistributionKeys-create_instance")
+            Request(path: path, method: "POST", body: body, id: "alternativeDistributionKeys_createInstance")
         }
     }
 }

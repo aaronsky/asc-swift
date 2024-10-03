@@ -16,23 +16,33 @@ extension Resources.V1.GameCenterLeaderboardSetLocalizations {
         /// Path: `/v1/gameCenterLeaderboardSetLocalizations/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterLeaderboardSetLocalizations: [FieldsGameCenterLeaderboardSetLocalizations]? = nil, include: [Include]? = nil, fieldsGameCenterLeaderboardSetImages: [FieldsGameCenterLeaderboardSetImages]? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardSetLocalizationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardSetLocalizations, include, fieldsGameCenterLeaderboardSetImages), id: "gameCenterLeaderboardSetLocalizations-get_instance")
+        public func get(fieldsGameCenterLeaderboardSetLocalizations: [FieldsGameCenterLeaderboardSetLocalizations]? = nil, fieldsGameCenterLeaderboardSetImages: [FieldsGameCenterLeaderboardSetImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardSetLocalizationResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardSetLocalizations, fieldsGameCenterLeaderboardSetImages, include), id: "gameCenterLeaderboardSetLocalizations_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterLeaderboardSetLocalizations: [FieldsGameCenterLeaderboardSetLocalizations]?, _ include: [Include]?, _ fieldsGameCenterLeaderboardSetImages: [FieldsGameCenterLeaderboardSetImages]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterLeaderboardSetLocalizations: [FieldsGameCenterLeaderboardSetLocalizations]?, _ fieldsGameCenterLeaderboardSetImages: [FieldsGameCenterLeaderboardSetImages]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterLeaderboardSetLocalizations, forKey: "fields[gameCenterLeaderboardSetLocalizations]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsGameCenterLeaderboardSetImages, forKey: "fields[gameCenterLeaderboardSetImages]")
+            encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
         public enum FieldsGameCenterLeaderboardSetLocalizations: String, CaseIterable, Codable, Sendable {
-            case gameCenterLeaderboardSet
-            case gameCenterLeaderboardSetImage
             case locale
             case name
+            case gameCenterLeaderboardSet
+            case gameCenterLeaderboardSetImage
+        }
+
+        public enum FieldsGameCenterLeaderboardSetImages: String, CaseIterable, Codable, Sendable {
+            case fileSize
+            case fileName
+            case imageAsset
+            case uploadOperations
+            case assetDeliveryState
+            case uploaded
+            case gameCenterLeaderboardSetLocalization
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
@@ -40,22 +50,12 @@ extension Resources.V1.GameCenterLeaderboardSetLocalizations {
             case gameCenterLeaderboardSetImage
         }
 
-        public enum FieldsGameCenterLeaderboardSetImages: String, CaseIterable, Codable, Sendable {
-            case assetDeliveryState
-            case fileName
-            case fileSize
-            case gameCenterLeaderboardSetLocalization
-            case imageAsset
-            case uploadOperations
-            case uploaded
-        }
-
         public func patch(_ body: AppStoreAPI.GameCenterLeaderboardSetLocalizationUpdateRequest) -> Request<AppStoreAPI.GameCenterLeaderboardSetLocalizationResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "gameCenterLeaderboardSetLocalizations-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "gameCenterLeaderboardSetLocalizations_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "gameCenterLeaderboardSetLocalizations-delete_instance")
+            Request(path: path, method: "DELETE", id: "gameCenterLeaderboardSetLocalizations_deleteInstance")
         }
     }
 }

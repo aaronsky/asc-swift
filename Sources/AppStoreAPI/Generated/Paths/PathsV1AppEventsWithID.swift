@@ -16,54 +16,54 @@ extension Resources.V1.AppEvents {
         /// Path: `/v1/appEvents/{id}`
         public let path: String
 
-        public func get(fieldsAppEvents: [FieldsAppEvents]? = nil, include: [Include]? = nil, fieldsAppEventLocalizations: [FieldsAppEventLocalizations]? = nil, limitLocalizations: Int? = nil) -> Request<AppStoreAPI.AppEventResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEvents, include, fieldsAppEventLocalizations, limitLocalizations), id: "appEvents-get_instance")
+        public func get(fieldsAppEvents: [FieldsAppEvents]? = nil, fieldsAppEventLocalizations: [FieldsAppEventLocalizations]? = nil, include: [Include]? = nil, limitLocalizations: Int? = nil) -> Request<AppStoreAPI.AppEventResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEvents, fieldsAppEventLocalizations, include, limitLocalizations), id: "appEvents_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppEvents: [FieldsAppEvents]?, _ include: [Include]?, _ fieldsAppEventLocalizations: [FieldsAppEventLocalizations]?, _ limitLocalizations: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppEvents: [FieldsAppEvents]?, _ fieldsAppEventLocalizations: [FieldsAppEventLocalizations]?, _ include: [Include]?, _ limitLocalizations: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppEvents, forKey: "fields[appEvents]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsAppEventLocalizations, forKey: "fields[appEventLocalizations]")
+            encoder.encode(include, forKey: "include")
             encoder.encode(limitLocalizations, forKey: "limit[localizations]")
             return encoder.items
         }
 
         public enum FieldsAppEvents: String, CaseIterable, Codable, Sendable {
-            case app
-            case archivedTerritorySchedules
+            case referenceName
             case badge
-            case deepLink
             case eventState
-            case localizations
+            case deepLink
+            case purchaseRequirement
             case primaryLocale
             case priority
-            case purchaseRequirement
             case purpose
-            case referenceName
             case territorySchedules
+            case archivedTerritorySchedules
+            case app
+            case localizations
+        }
+
+        public enum FieldsAppEventLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case name
+            case shortDescription
+            case longDescription
+            case appEvent
+            case appEventScreenshots
+            case appEventVideoClips
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case localizations
         }
 
-        public enum FieldsAppEventLocalizations: String, CaseIterable, Codable, Sendable {
-            case appEvent
-            case appEventScreenshots
-            case appEventVideoClips
-            case locale
-            case longDescription
-            case name
-            case shortDescription
-        }
-
         public func patch(_ body: AppStoreAPI.AppEventUpdateRequest) -> Request<AppStoreAPI.AppEventResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "appEvents-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appEvents_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "appEvents-delete_instance")
+            Request(path: path, method: "DELETE", id: "appEvents_deleteInstance")
         }
     }
 }

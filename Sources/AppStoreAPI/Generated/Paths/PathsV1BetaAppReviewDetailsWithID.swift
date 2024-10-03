@@ -16,82 +16,84 @@ extension Resources.V1.BetaAppReviewDetails {
         /// Path: `/v1/betaAppReviewDetails/{id}`
         public let path: String
 
-        public func get(fieldsBetaAppReviewDetails: [FieldsBetaAppReviewDetails]? = nil, include: [Include]? = nil, fieldsApps: [FieldsApps]? = nil) -> Request<AppStoreAPI.BetaAppReviewDetailResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaAppReviewDetails, include, fieldsApps), id: "betaAppReviewDetails-get_instance")
+        public func get(fieldsBetaAppReviewDetails: [FieldsBetaAppReviewDetails]? = nil, fieldsApps: [FieldsApps]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.BetaAppReviewDetailResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaAppReviewDetails, fieldsApps, include), id: "betaAppReviewDetails_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsBetaAppReviewDetails: [FieldsBetaAppReviewDetails]?, _ include: [Include]?, _ fieldsApps: [FieldsApps]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsBetaAppReviewDetails: [FieldsBetaAppReviewDetails]?, _ fieldsApps: [FieldsApps]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsBetaAppReviewDetails, forKey: "fields[betaAppReviewDetails]")
-            encoder.encode(include, forKey: "include")
             encoder.encode(fieldsApps, forKey: "fields[apps]")
+            encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
         public enum FieldsBetaAppReviewDetails: String, CaseIterable, Codable, Sendable {
-            case app
-            case contactEmail
             case contactFirstName
             case contactLastName
             case contactPhone
+            case contactEmail
             case demoAccountName
             case demoAccountPassword
             case demoAccountRequired
             case notes
+            case app
+        }
+
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case name
+            case bundleID = "bundleId"
+            case sku
+            case primaryLocale
+            case isOrEverWasMadeForKids
+            case subscriptionStatusURL = "subscriptionStatusUrl"
+            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
+            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
+            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
+            case contentRightsDeclaration
+            case streamlinedPurchasingEnabled
+            case appEncryptionDeclarations
+            case ciProduct
+            case betaTesters
+            case betaGroups
+            case appStoreVersions
+            case preReleaseVersions
+            case betaAppLocalizations
+            case builds
+            case betaLicenseAgreement
+            case betaAppReviewDetail
+            case appInfos
+            case appClips
+            case appPricePoints
+            case endUserLicenseAgreement
+            case preOrder
+            case appPriceSchedule
+            case appAvailability
+            case appAvailabilityV2
+            case inAppPurchases
+            case subscriptionGroups
+            case gameCenterEnabledVersions
+            case perfPowerMetrics
+            case appCustomProductPages
+            case inAppPurchasesV2
+            case promotedPurchases
+            case appEvents
+            case reviewSubmissions
+            case subscriptionGracePeriod
+            case customerReviews
+            case gameCenterDetail
+            case appStoreVersionExperimentsV2
+            case alternativeDistributionKey
+            case analyticsReportRequests
+            case marketplaceSearchDetail
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case app
         }
 
-        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
-            case alternativeDistributionKey
-            case analyticsReportRequests
-            case appAvailability
-            case appClips
-            case appCustomProductPages
-            case appEncryptionDeclarations
-            case appEvents
-            case appInfos
-            case appPricePoints
-            case appPriceSchedule
-            case appStoreVersionExperimentsV2
-            case appStoreVersions
-            case betaAppLocalizations
-            case betaAppReviewDetail
-            case betaGroups
-            case betaLicenseAgreement
-            case betaTesters
-            case builds
-            case bundleID = "bundleId"
-            case ciProduct
-            case contentRightsDeclaration
-            case customerReviews
-            case endUserLicenseAgreement
-            case gameCenterDetail
-            case gameCenterEnabledVersions
-            case inAppPurchases
-            case inAppPurchasesV2
-            case isOrEverWasMadeForKids
-            case marketplaceSearchDetail
-            case name
-            case perfPowerMetrics
-            case preOrder
-            case preReleaseVersions
-            case primaryLocale
-            case promotedPurchases
-            case reviewSubmissions
-            case sku
-            case subscriptionGracePeriod
-            case subscriptionGroups
-            case subscriptionStatusURL = "subscriptionStatusUrl"
-            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
-            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
-            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
-        }
-
         public func patch(_ body: AppStoreAPI.BetaAppReviewDetailUpdateRequest) -> Request<AppStoreAPI.BetaAppReviewDetailResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "betaAppReviewDetails-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "betaAppReviewDetails_updateInstance")
         }
     }
 }

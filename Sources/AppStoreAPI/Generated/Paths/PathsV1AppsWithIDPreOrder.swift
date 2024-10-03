@@ -17,7 +17,7 @@ extension Resources.V1.Apps.WithID {
         public let path: String
 
         public func get(fieldsAppPreOrders: [FieldsAppPreOrders]? = nil) -> Request<AppStoreAPI.AppPreOrderWithoutIncludesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPreOrders), id: "apps-preOrder-get_to_one_related")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPreOrders), id: "apps_preOrder_getToOneRelated")
         }
 
         private func makeGetQuery(_ fieldsAppPreOrders: [FieldsAppPreOrders]?) -> [(String, String?)] {
@@ -27,9 +27,9 @@ extension Resources.V1.Apps.WithID {
         }
 
         public enum FieldsAppPreOrders: String, CaseIterable, Codable, Sendable {
-            case app
-            case appReleaseDate
             case preOrderAvailableDate
+            case appReleaseDate
+            case app
         }
     }
 }

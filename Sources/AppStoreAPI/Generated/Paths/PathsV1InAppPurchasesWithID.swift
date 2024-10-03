@@ -17,7 +17,7 @@ extension Resources.V1.InAppPurchases {
         public let path: String
 
         public func get(fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, include: [Include]? = nil, limitApps: Int? = nil) -> Request<AppStoreAPI.InAppPurchaseResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchases, include, limitApps), id: "inAppPurchases-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchases, include, limitApps), id: "inAppPurchases_getInstance")
         }
 
         private func makeGetQuery(_ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ include: [Include]?, _ limitApps: Int?) -> [(String, String?)] {
@@ -29,11 +29,11 @@ extension Resources.V1.InAppPurchases {
         }
 
         public enum FieldsInAppPurchases: String, CaseIterable, Codable, Sendable {
-            case apps
-            case inAppPurchaseType
-            case productID = "productId"
             case referenceName
+            case productID = "productId"
+            case inAppPurchaseType
             case state
+            case apps
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

@@ -17,7 +17,7 @@ extension Resources.V1.AppStoreReviewAttachments {
         public let path: String
 
         public func get(fieldsAppStoreReviewAttachments: [FieldsAppStoreReviewAttachments]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppStoreReviewAttachmentResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreReviewAttachments, include), id: "appStoreReviewAttachments-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreReviewAttachments, include), id: "appStoreReviewAttachments_getInstance")
         }
 
         private func makeGetQuery(_ fieldsAppStoreReviewAttachments: [FieldsAppStoreReviewAttachments]?, _ include: [Include]?) -> [(String, String?)] {
@@ -28,13 +28,13 @@ extension Resources.V1.AppStoreReviewAttachments {
         }
 
         public enum FieldsAppStoreReviewAttachments: String, CaseIterable, Codable, Sendable {
-            case appStoreReviewDetail
-            case assetDeliveryState
-            case fileName
             case fileSize
+            case fileName
             case sourceFileChecksum
             case uploadOperations
+            case assetDeliveryState
             case uploaded
+            case appStoreReviewDetail
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
@@ -42,11 +42,11 @@ extension Resources.V1.AppStoreReviewAttachments {
         }
 
         public func patch(_ body: AppStoreAPI.AppStoreReviewAttachmentUpdateRequest) -> Request<AppStoreAPI.AppStoreReviewAttachmentResponse> {
-            Request(path: path, method: "PATCH", body: body, id: "appStoreReviewAttachments-update_instance")
+            Request(path: path, method: "PATCH", body: body, id: "appStoreReviewAttachments_updateInstance")
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "appStoreReviewAttachments-delete_instance")
+            Request(path: path, method: "DELETE", id: "appStoreReviewAttachments_deleteInstance")
         }
     }
 }

@@ -40,25 +40,10 @@ public struct SubscriptionOfferCodeOneTimeUseCode: Codable, Equatable, Identifia
 
     public struct Relationships: Codable, Equatable, Sendable {
         public var offerCode: OfferCode?
+        public var values: Values?
 
         public struct OfferCode: Codable, Equatable, Sendable {
-            public var links: Links?
             public var data: Data?
-
-            public struct Links: Codable, Equatable, Sendable {
-                public var this: URL?
-                public var related: URL?
-
-                public init(this: URL? = nil, related: URL? = nil) {
-                    self.this = this
-                    self.related = related
-                }
-
-                private enum CodingKeys: String, CodingKey {
-                    case this = "self"
-                    case related
-                }
-            }
 
             public struct Data: Codable, Equatable, Identifiable, Sendable {
                 public var type: `Type`
@@ -74,14 +59,22 @@ public struct SubscriptionOfferCodeOneTimeUseCode: Codable, Equatable, Identifia
                 }
             }
 
-            public init(links: Links? = nil, data: Data? = nil) {
-                self.links = links
+            public init(data: Data? = nil) {
                 self.data = data
             }
         }
 
-        public init(offerCode: OfferCode? = nil) {
+        public struct Values: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
+            }
+        }
+
+        public init(offerCode: OfferCode? = nil, values: Values? = nil) {
             self.offerCode = offerCode
+            self.values = values
         }
     }
 

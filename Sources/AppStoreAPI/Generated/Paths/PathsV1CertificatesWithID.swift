@@ -17,7 +17,7 @@ extension Resources.V1.Certificates {
         public let path: String
 
         public func get(fieldsCertificates: [FieldsCertificates]? = nil) -> Request<AppStoreAPI.CertificateResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCertificates), id: "certificates-get_instance")
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCertificates), id: "certificates_getInstance")
         }
 
         private func makeGetQuery(_ fieldsCertificates: [FieldsCertificates]?) -> [(String, String?)] {
@@ -27,18 +27,18 @@ extension Resources.V1.Certificates {
         }
 
         public enum FieldsCertificates: String, CaseIterable, Codable, Sendable {
-            case certificateContent
-            case certificateType
-            case csrContent
-            case displayName
-            case expirationDate
             case name
-            case platform
+            case csrContent
+            case certificateType
+            case displayName
             case serialNumber
+            case platform
+            case expirationDate
+            case certificateContent
         }
 
         public var delete: Request<Void> {
-            Request(path: path, method: "DELETE", id: "certificates-delete_instance")
+            Request(path: path, method: "DELETE", id: "certificates_deleteInstance")
         }
     }
 }
