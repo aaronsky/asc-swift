@@ -18,6 +18,7 @@ final class AppStoreConnectClientTests: XCTestCase {
             case badResponse
             case unsuccessfulResponse
             case noData
+            case serverError
         }
 
         var context: MockContext
@@ -51,6 +52,12 @@ final class AppStoreConnectClientTests: XCTestCase {
                 ])
             case .noData:
                 context = MockContext(responses: [])
+            case .serverError:
+                context = MockContext(responses: [
+                    .data(MockData.mockingServerErrorResponse()),
+                    .data(MockData.mockingServerErrorResponse()),
+                    .data(MockData.mockingServerErrorResponse()),
+                ])
             }
         }
     }
@@ -115,5 +122,25 @@ final class AppStoreConnectClientTests: XCTestCase {
         let testData = try TestData(testCase: .successDownload)
         let response: URL = try await testData.context.client.download(testData.context.request())
         XCTAssertEqual(testData.resources.downloadURL, response)
+    }
+
+    func testRequestWithCustomRetry() async throws {
+        struct MockRetryStrategy: RetryStrategy {
+            var limit: Int
+
+            func waitAndContinue(for error: any Error, iteration: Int) async throws -> Bool {
+                guard iteration < limit else { return false }
+
+                return true
+            }
+        }
+
+        let testData = try TestData(testCase: .serverError)
+        try await XCTAssertThrowsError(
+            await testData.context.client.send(
+                testData.context.request(),
+                retry: MockRetryStrategy(limit: 3)
+            )
+        )
     }
 }
