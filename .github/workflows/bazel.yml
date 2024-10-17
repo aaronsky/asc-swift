@@ -46,9 +46,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: ['5.9', '6.0']
+        tag: ['5.9-focal', '6.0-focal']
     container:
-      image: swift:${{ matrix.tag }}-focal
+      image: swift:${{ matrix.tag }}
     steps:
       - uses: bazel-contrib/setup-bazel@0.8.5
         with:
@@ -69,9 +69,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: ['5.9']
+        tag: ['5.9-focal']
     container:
-      image: swift:${{ matrix.tag }}-focal
+      image: swift:${{ matrix.tag }}
     steps:
       - uses: bazel-contrib/setup-bazel@0.8.5
         with:
