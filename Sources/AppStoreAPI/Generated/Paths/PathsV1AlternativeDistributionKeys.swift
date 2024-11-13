@@ -30,7 +30,6 @@ extension Resources.V1 {
 
         public enum FieldsAlternativeDistributionKeys: String, CaseIterable, Codable, Sendable {
             case publicKey
-            case app
         }
 
         public func post(_ body: AppStoreAPI.AlternativeDistributionKeyCreateRequest) -> Request<AppStoreAPI.AlternativeDistributionKeyResponse> {

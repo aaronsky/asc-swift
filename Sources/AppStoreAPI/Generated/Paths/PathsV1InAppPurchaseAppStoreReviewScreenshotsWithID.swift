@@ -36,7 +36,6 @@ extension Resources.V1.InAppPurchaseAppStoreReviewScreenshots {
             case assetType
             case uploadOperations
             case assetDeliveryState
-            case uploaded
             case inAppPurchaseV2
         }
 

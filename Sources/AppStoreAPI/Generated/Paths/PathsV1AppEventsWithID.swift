@@ -40,7 +40,6 @@ extension Resources.V1.AppEvents {
             case purpose
             case territorySchedules
             case archivedTerritorySchedules
-            case app
             case localizations
         }
 

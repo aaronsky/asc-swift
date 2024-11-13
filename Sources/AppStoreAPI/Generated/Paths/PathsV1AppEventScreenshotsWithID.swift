@@ -34,7 +34,6 @@ extension Resources.V1.AppEventScreenshots {
             case assetToken
             case uploadOperations
             case assetDeliveryState
-            case uploaded
             case appEventAssetType
             case appEventLocalization
         }

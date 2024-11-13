@@ -29,6 +29,7 @@ public struct InAppPurchasePricePoint: Codable, Equatable, Identifiable, Sendabl
 
     public struct Relationships: Codable, Equatable, Sendable {
         public var territory: Territory?
+        public var equalizations: Equalizations?
 
         public struct Territory: Codable, Equatable, Sendable {
             public var data: Data?
@@ -52,8 +53,17 @@ public struct InAppPurchasePricePoint: Codable, Equatable, Identifiable, Sendabl
             }
         }
 
-        public init(territory: Territory? = nil) {
+        public struct Equalizations: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
+            }
+        }
+
+        public init(territory: Territory? = nil, equalizations: Equalizations? = nil) {
             self.territory = territory
+            self.equalizations = equalizations
         }
     }
 

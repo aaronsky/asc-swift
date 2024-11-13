@@ -78,7 +78,6 @@ extension Resources.V1.Apps.WithID {
             case reviewNote
             case familySharable
             case contentHosting
-            case app
             case inAppPurchaseLocalizations
             case pricePoints
             case content
@@ -114,7 +113,6 @@ extension Resources.V1.Apps.WithID {
             case assetType
             case uploadOperations
             case assetDeliveryState
-            case uploaded
             case inAppPurchaseV2
         }
 
@@ -122,14 +120,12 @@ extension Resources.V1.Apps.WithID {
             case visibleForAllUsers
             case enabled
             case state
-            case app
             case inAppPurchaseV2
             case subscription
             case promotionImages
         }
 
         public enum FieldsInAppPurchasePriceSchedules: String, CaseIterable, Codable, Sendable {
-            case inAppPurchase
             case baseTerritory
             case manualPrices
             case automaticPrices
@@ -137,7 +133,6 @@ extension Resources.V1.Apps.WithID {
 
         public enum FieldsInAppPurchaseAvailabilities: String, CaseIterable, Codable, Sendable {
             case availableInNewTerritories
-            case inAppPurchase
             case availableTerritories
         }
 
@@ -148,7 +143,6 @@ extension Resources.V1.Apps.WithID {
             case assetToken
             case imageAsset
             case uploadOperations
-            case uploaded
             case state
             case inAppPurchase
         }

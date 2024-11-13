@@ -32,7 +32,6 @@ extension Resources.V1.AnalyticsReportRequests {
         public enum FieldsAnalyticsReportRequests: String, CaseIterable, Codable, Sendable {
             case accessType
             case stoppedDueToInactivity
-            case app
             case reports
         }
 

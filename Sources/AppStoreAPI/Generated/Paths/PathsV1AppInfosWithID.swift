@@ -38,6 +38,7 @@ extension Resources.V1.AppInfos {
             case australiaAgeRating
             case brazilAgeRating
             case brazilAgeRatingV2
+            case franceAgeRating
             case koreaAgeRating
             case kidsAgeBand
             case app

@@ -76,7 +76,6 @@ extension Resources.V1.AppStoreVersions.WithID {
             case sourceFileChecksum
             case uploadOperations
             case assetDeliveryState
-            case uploaded
             case appStoreReviewDetail
         }
 

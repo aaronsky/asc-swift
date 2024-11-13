@@ -36,7 +36,6 @@ extension Resources.V1.AppEventLocalizations.WithID {
             case assetToken
             case uploadOperations
             case assetDeliveryState
-            case uploaded
             case appEventAssetType
             case appEventLocalization
         }

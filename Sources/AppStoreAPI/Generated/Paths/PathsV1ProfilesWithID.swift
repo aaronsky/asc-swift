@@ -68,7 +68,6 @@ extension Resources.V1.Profiles {
 
         public enum FieldsCertificates: String, CaseIterable, Codable, Sendable {
             case name
-            case csrContent
             case certificateType
             case displayName
             case serialNumber

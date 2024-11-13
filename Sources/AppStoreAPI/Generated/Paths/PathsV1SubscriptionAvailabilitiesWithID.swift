@@ -31,7 +31,6 @@ extension Resources.V1.SubscriptionAvailabilities {
 
         public enum FieldsSubscriptionAvailabilities: String, CaseIterable, Codable, Sendable {
             case availableInNewTerritories
-            case subscription
             case availableTerritories
         }
 
@@ -40,7 +39,6 @@ extension Resources.V1.SubscriptionAvailabilities {
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case subscription
             case availableTerritories
         }
     }

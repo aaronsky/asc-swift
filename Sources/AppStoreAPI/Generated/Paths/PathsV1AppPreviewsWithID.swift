@@ -34,10 +34,11 @@ extension Resources.V1.AppPreviews {
             case previewFrameTimeCode
             case mimeType
             case videoURL = "videoUrl"
+            case previewFrameImage
             case previewImage
             case uploadOperations
             case assetDeliveryState
-            case uploaded
+            case videoDeliveryState
             case appPreviewSet
         }
 

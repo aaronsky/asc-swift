@@ -35,8 +35,6 @@ extension Resources.V1.AppCustomProductPages {
             case visible
             case app
             case appCustomProductPageVersions
-            case appStoreVersionTemplate
-            case customProductPageTemplate
         }
 
         public enum FieldsAppCustomProductPageVersions: String, CaseIterable, Codable, Sendable {

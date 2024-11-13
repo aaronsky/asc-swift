@@ -32,10 +32,11 @@ extension Resources.V1.AppEventVideoClips {
             case fileName
             case previewFrameTimeCode
             case videoURL = "videoUrl"
+            case previewFrameImage
             case previewImage
             case uploadOperations
             case assetDeliveryState
-            case uploaded
+            case videoDeliveryState
             case appEventAssetType
             case appEventLocalization
         }

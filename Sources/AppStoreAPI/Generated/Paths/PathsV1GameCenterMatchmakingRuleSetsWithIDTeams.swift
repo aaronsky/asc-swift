@@ -31,7 +31,6 @@ extension Resources.V1.GameCenterMatchmakingRuleSets.WithID {
             case referenceName
             case minPlayers
             case maxPlayers
-            case ruleSet
         }
     }
 }

@@ -33,7 +33,6 @@ extension Resources.V1.AppStoreReviewAttachments {
             case sourceFileChecksum
             case uploadOperations
             case assetDeliveryState
-            case uploaded
             case appStoreReviewDetail
         }
 

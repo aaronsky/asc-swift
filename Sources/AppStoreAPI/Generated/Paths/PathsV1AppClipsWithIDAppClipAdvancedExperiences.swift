@@ -63,7 +63,6 @@ extension Resources.V1.AppClips.WithID {
             case placeStatus
             case businessCategory
             case defaultLanguage
-            case removed
             case appClip
             case headerImage
             case localizations
@@ -83,7 +82,6 @@ extension Resources.V1.AppClips.WithID {
             case imageAsset
             case uploadOperations
             case assetDeliveryState
-            case uploaded
         }
 
         public enum FieldsAppClipAdvancedExperienceLocalizations: String, CaseIterable, Codable, Sendable {

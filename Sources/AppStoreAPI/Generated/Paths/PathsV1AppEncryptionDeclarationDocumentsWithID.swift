@@ -34,8 +34,6 @@ extension Resources.V1.AppEncryptionDeclarationDocuments {
             case sourceFileChecksum
             case uploadOperations
             case assetDeliveryState
-            case uploaded
-            case appEncryptionDeclaration
         }
 
         public func patch(_ body: AppStoreAPI.AppEncryptionDeclarationDocumentUpdateRequest) -> Request<AppStoreAPI.AppEncryptionDeclarationDocumentResponse> {

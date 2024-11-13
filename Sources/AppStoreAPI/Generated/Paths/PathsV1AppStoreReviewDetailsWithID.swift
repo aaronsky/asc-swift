@@ -48,7 +48,6 @@ extension Resources.V1.AppStoreReviewDetails {
             case sourceFileChecksum
             case uploadOperations
             case assetDeliveryState
-            case uploaded
             case appStoreReviewDetail
         }
 

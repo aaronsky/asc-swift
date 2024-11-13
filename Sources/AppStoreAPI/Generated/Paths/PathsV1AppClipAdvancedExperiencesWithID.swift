@@ -38,7 +38,6 @@ extension Resources.V1.AppClipAdvancedExperiences {
             case placeStatus
             case businessCategory
             case defaultLanguage
-            case removed
             case appClip
             case headerImage
             case localizations

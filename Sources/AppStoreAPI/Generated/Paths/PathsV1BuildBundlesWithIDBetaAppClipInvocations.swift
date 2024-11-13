@@ -32,14 +32,12 @@ extension Resources.V1.BuildBundles.WithID {
 
         public enum FieldsBetaAppClipInvocations: String, CaseIterable, Codable, Sendable {
             case url
-            case buildBundle
             case betaAppClipInvocationLocalizations
         }
 
         public enum FieldsBetaAppClipInvocationLocalizations: String, CaseIterable, Codable, Sendable {
             case title
             case locale
-            case betaAppClipInvocation
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

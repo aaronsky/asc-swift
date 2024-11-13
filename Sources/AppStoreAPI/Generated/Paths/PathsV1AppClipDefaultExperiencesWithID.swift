@@ -37,7 +37,6 @@ extension Resources.V1.AppClipDefaultExperiences {
             case releaseWithAppStoreVersion
             case appClipDefaultExperienceLocalizations
             case appClipAppStoreReviewDetail
-            case appClipDefaultExperienceTemplate
         }
 
         public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {

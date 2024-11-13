@@ -44,7 +44,6 @@ extension Resources.V1.AppClipDefaultExperiences.WithID {
             case releaseWithAppStoreVersion
             case appClipDefaultExperienceLocalizations
             case appClipAppStoreReviewDetail
-            case appClipDefaultExperienceTemplate
         }
 
         public enum FieldsAppClipHeaderImages: String, CaseIterable, Codable, Sendable {
@@ -54,7 +53,6 @@ extension Resources.V1.AppClipDefaultExperiences.WithID {
             case imageAsset
             case uploadOperations
             case assetDeliveryState
-            case uploaded
             case appClipDefaultExperienceLocalization
         }
 

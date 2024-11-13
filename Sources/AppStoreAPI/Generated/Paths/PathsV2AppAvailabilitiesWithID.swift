@@ -31,7 +31,6 @@ extension Resources.V2.AppAvailabilities {
 
         public enum FieldsAppAvailabilities: String, CaseIterable, Codable, Sendable {
             case availableInNewTerritories
-            case app
             case territoryAvailabilities
         }
 

@@ -28,7 +28,6 @@ extension Resources.V1.AlternativeDistributionKeys {
 
         public enum FieldsAlternativeDistributionKeys: String, CaseIterable, Codable, Sendable {
             case publicKey
-            case app
         }
 
         public var delete: Request<Void> {

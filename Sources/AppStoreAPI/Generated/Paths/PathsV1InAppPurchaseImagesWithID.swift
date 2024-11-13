@@ -34,7 +34,6 @@ extension Resources.V1.InAppPurchaseImages {
             case assetToken
             case imageAsset
             case uploadOperations
-            case uploaded
             case state
             case inAppPurchase
         }

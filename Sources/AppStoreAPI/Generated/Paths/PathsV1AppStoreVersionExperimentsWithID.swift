@@ -36,7 +36,6 @@ extension Resources.V1.AppStoreVersionExperiments {
             case reviewRequired
             case startDate
             case endDate
-            case started
             case appStoreVersion
             case appStoreVersionExperimentTreatments
         }

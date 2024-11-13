@@ -45,7 +45,6 @@ extension Resources.V1.SubscriptionPromotionalOffers.WithID {
             case proceeds
             case proceedsYear2
             case territory
-            case subscription
             case equalizations
         }
 

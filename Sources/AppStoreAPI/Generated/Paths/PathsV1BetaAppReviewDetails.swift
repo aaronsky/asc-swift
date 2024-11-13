@@ -68,9 +68,7 @@ extension Resources.V1 {
             case appClips
             case appPricePoints
             case endUserLicenseAgreement
-            case preOrder
             case appPriceSchedule
-            case appAvailability
             case appAvailabilityV2
             case inAppPurchases
             case subscriptionGroups

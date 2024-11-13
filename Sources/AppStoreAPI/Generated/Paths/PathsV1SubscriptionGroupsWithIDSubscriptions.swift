@@ -107,13 +107,11 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case assetType
             case uploadOperations
             case assetDeliveryState
-            case uploaded
             case subscription
         }
 
         public enum FieldsSubscriptionGroups: String, CaseIterable, Codable, Sendable {
             case referenceName
-            case app
             case subscriptions
             case subscriptionGroupLocalizations
         }
@@ -157,8 +155,6 @@ extension Resources.V1.SubscriptionGroups.WithID {
         public enum FieldsSubscriptionPrices: String, CaseIterable, Codable, Sendable {
             case startDate
             case preserved
-            case preserveCurrentPrice
-            case subscription
             case territory
             case subscriptionPricePoint
         }
@@ -167,7 +163,6 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case visibleForAllUsers
             case enabled
             case state
-            case app
             case inAppPurchaseV2
             case subscription
             case promotionImages
@@ -175,7 +170,6 @@ extension Resources.V1.SubscriptionGroups.WithID {
 
         public enum FieldsSubscriptionAvailabilities: String, CaseIterable, Codable, Sendable {
             case availableInNewTerritories
-            case subscription
             case availableTerritories
         }
 
@@ -192,7 +186,6 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case endDate
             case priority
             case promotionIntent
-            case subscription
             case prices
         }
 
@@ -203,7 +196,6 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case assetToken
             case imageAsset
             case uploadOperations
-            case uploaded
             case state
             case subscription
         }

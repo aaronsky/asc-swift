@@ -17,32 +17,9 @@ public struct InAppPurchasePriceSchedule: Codable, Equatable, Identifiable, Send
     }
 
     public struct Relationships: Codable, Equatable, Sendable {
-        public var inAppPurchase: InAppPurchase?
         public var baseTerritory: BaseTerritory?
         public var manualPrices: ManualPrices?
         public var automaticPrices: AutomaticPrices?
-
-        public struct InAppPurchase: Codable, Equatable, Sendable {
-            public var data: Data?
-
-            public struct Data: Codable, Equatable, Identifiable, Sendable {
-                public var type: `Type`
-                public var id: String
-
-                public enum `Type`: String, CaseIterable, Codable, Sendable {
-                    case inAppPurchases
-                }
-
-                public init(type: `Type` = .inAppPurchases, id: String) {
-                    self.type = type
-                    self.id = id
-                }
-            }
-
-            public init(data: Data? = nil) {
-                self.data = data
-            }
-        }
 
         public struct BaseTerritory: Codable, Equatable, Sendable {
             public var links: RelationshipLinks?
@@ -120,8 +97,7 @@ public struct InAppPurchasePriceSchedule: Codable, Equatable, Identifiable, Send
             }
         }
 
-        public init(inAppPurchase: InAppPurchase? = nil, baseTerritory: BaseTerritory? = nil, manualPrices: ManualPrices? = nil, automaticPrices: AutomaticPrices? = nil) {
-            self.inAppPurchase = inAppPurchase
+        public init(baseTerritory: BaseTerritory? = nil, manualPrices: ManualPrices? = nil, automaticPrices: AutomaticPrices? = nil) {
             self.baseTerritory = baseTerritory
             self.manualPrices = manualPrices
             self.automaticPrices = automaticPrices

@@ -33,7 +33,6 @@ extension Resources.V1.AppClipAdvancedExperienceImages {
             case imageAsset
             case uploadOperations
             case assetDeliveryState
-            case uploaded
         }
 
         public func patch(_ body: AppStoreAPI.AppClipAdvancedExperienceImageUpdateRequest) -> Request<AppStoreAPI.AppClipAdvancedExperienceImageResponse> {

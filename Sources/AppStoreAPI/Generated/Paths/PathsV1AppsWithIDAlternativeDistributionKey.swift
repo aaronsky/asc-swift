@@ -28,7 +28,6 @@ extension Resources.V1.Apps.WithID {
 
         public enum FieldsAlternativeDistributionKeys: String, CaseIterable, Codable, Sendable {
             case publicKey
-            case app
         }
     }
 }

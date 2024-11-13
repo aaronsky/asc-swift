@@ -33,7 +33,6 @@ extension Resources.V1.SubscriptionGroups {
 
         public enum FieldsSubscriptionGroups: String, CaseIterable, Codable, Sendable {
             case referenceName
-            case app
             case subscriptions
             case subscriptionGroupLocalizations
         }

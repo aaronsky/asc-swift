@@ -56,7 +56,6 @@ extension Resources.V1.Apps.WithID {
             case purpose
             case territorySchedules
             case archivedTerritorySchedules
-            case app
             case localizations
         }
 

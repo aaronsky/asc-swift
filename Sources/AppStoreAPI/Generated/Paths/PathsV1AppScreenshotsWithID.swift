@@ -36,7 +36,6 @@ extension Resources.V1.AppScreenshots {
             case assetType
             case uploadOperations
             case assetDeliveryState
-            case uploaded
             case appScreenshotSet
         }
 

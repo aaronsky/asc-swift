@@ -30,7 +30,6 @@ extension Resources.V1.BetaAppClipInvocations {
 
         public enum FieldsBetaAppClipInvocations: String, CaseIterable, Codable, Sendable {
             case url
-            case buildBundle
             case betaAppClipInvocationLocalizations
         }
 

@@ -16,14 +16,13 @@ extension Resources.V2.InAppPurchases.WithID {
         /// Path: `/v2/inAppPurchases/{id}/iapPriceSchedule`
         public let path: String
 
-        public func get(fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]? = nil, fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, fieldsInAppPurchasePrices: [FieldsInAppPurchasePrices]? = nil, include: [Include]? = nil, limitManualPrices: Int? = nil, limitAutomaticPrices: Int? = nil) -> Request<AppStoreAPI.InAppPurchasePriceScheduleResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchasePriceSchedules, fieldsInAppPurchases, fieldsTerritories, fieldsInAppPurchasePrices, include, limitManualPrices, limitAutomaticPrices), id: "inAppPurchasesV2_iapPriceSchedule_getToOneRelated")
+        public func get(fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, fieldsInAppPurchasePrices: [FieldsInAppPurchasePrices]? = nil, include: [Include]? = nil, limitManualPrices: Int? = nil, limitAutomaticPrices: Int? = nil) -> Request<AppStoreAPI.InAppPurchasePriceScheduleResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchasePriceSchedules, fieldsTerritories, fieldsInAppPurchasePrices, include, limitManualPrices, limitAutomaticPrices), id: "inAppPurchasesV2_iapPriceSchedule_getToOneRelated")
         }
 
-        private func makeGetQuery(_ fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]?, _ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ fieldsTerritories: [FieldsTerritories]?, _ fieldsInAppPurchasePrices: [FieldsInAppPurchasePrices]?, _ include: [Include]?, _ limitManualPrices: Int?, _ limitAutomaticPrices: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]?, _ fieldsTerritories: [FieldsTerritories]?, _ fieldsInAppPurchasePrices: [FieldsInAppPurchasePrices]?, _ include: [Include]?, _ limitManualPrices: Int?, _ limitAutomaticPrices: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsInAppPurchasePriceSchedules, forKey: "fields[inAppPurchasePriceSchedules]")
-            encoder.encode(fieldsInAppPurchases, forKey: "fields[inAppPurchases]")
             encoder.encode(fieldsTerritories, forKey: "fields[territories]")
             encoder.encode(fieldsInAppPurchasePrices, forKey: "fields[inAppPurchasePrices]")
             encoder.encode(include, forKey: "include")
@@ -33,29 +32,9 @@ extension Resources.V2.InAppPurchases.WithID {
         }
 
         public enum FieldsInAppPurchasePriceSchedules: String, CaseIterable, Codable, Sendable {
-            case inAppPurchase
             case baseTerritory
             case manualPrices
             case automaticPrices
-        }
-
-        public enum FieldsInAppPurchases: String, CaseIterable, Codable, Sendable {
-            case name
-            case productID = "productId"
-            case inAppPurchaseType
-            case state
-            case reviewNote
-            case familySharable
-            case contentHosting
-            case app
-            case inAppPurchaseLocalizations
-            case pricePoints
-            case content
-            case appStoreReviewScreenshot
-            case promotedPurchase
-            case iapPriceSchedule
-            case inAppPurchaseAvailability
-            case images
         }
 
         public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
@@ -66,13 +45,11 @@ extension Resources.V2.InAppPurchases.WithID {
             case startDate
             case endDate
             case manual
-            case inAppPurchaseV2
             case inAppPurchasePricePoint
             case territory
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case inAppPurchase
             case baseTerritory
             case manualPrices
             case automaticPrices

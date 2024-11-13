@@ -31,7 +31,6 @@ extension Resources.V2.InAppPurchases.WithID {
 
         public enum FieldsInAppPurchaseAvailabilities: String, CaseIterable, Codable, Sendable {
             case availableInNewTerritories
-            case inAppPurchase
             case availableTerritories
         }
 

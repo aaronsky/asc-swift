@@ -36,6 +36,7 @@ extension Resources.V1 {
         public enum FilterPlatform: String, CaseIterable, Codable, Sendable {
             case iOS = "IOS"
             case macOS = "MAC_OS"
+            case universal = "UNIVERSAL"
         }
 
         public enum FilterStatus: String, CaseIterable, Codable, Sendable {

@@ -9,4 +9,5 @@ import AppStoreConnect
 public enum BundleIDPlatform: String, CaseIterable, Codable, Sendable {
     case iOS = "IOS"
     case macOS = "MAC_OS"
+    case universal = "UNIVERSAL"
 }

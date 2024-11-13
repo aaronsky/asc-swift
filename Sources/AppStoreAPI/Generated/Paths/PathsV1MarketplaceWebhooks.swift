@@ -29,7 +29,6 @@ extension Resources.V1 {
 
         public enum FieldsMarketplaceWebhooks: String, CaseIterable, Codable, Sendable {
             case endpointURL = "endpointUrl"
-            case secret
         }
 
         public func post(_ body: AppStoreAPI.MarketplaceWebhookCreateRequest) -> Request<AppStoreAPI.MarketplaceWebhookResponse> {

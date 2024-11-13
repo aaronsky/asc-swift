@@ -30,30 +30,7 @@ public struct SubscriptionAvailability: Codable, Equatable, Identifiable, Sendab
     }
 
     public struct Relationships: Codable, Equatable, Sendable {
-        public var subscription: Subscription?
         public var availableTerritories: AvailableTerritories?
-
-        public struct Subscription: Codable, Equatable, Sendable {
-            public var data: Data?
-
-            public struct Data: Codable, Equatable, Identifiable, Sendable {
-                public var type: `Type`
-                public var id: String
-
-                public enum `Type`: String, CaseIterable, Codable, Sendable {
-                    case subscriptions
-                }
-
-                public init(type: `Type` = .subscriptions, id: String) {
-                    self.type = type
-                    self.id = id
-                }
-            }
-
-            public init(data: Data? = nil) {
-                self.data = data
-            }
-        }
 
         public struct AvailableTerritories: Codable, Equatable, Sendable {
             public var links: RelationshipLinks?
@@ -81,8 +58,7 @@ public struct SubscriptionAvailability: Codable, Equatable, Identifiable, Sendab
             }
         }
 
-        public init(subscription: Subscription? = nil, availableTerritories: AvailableTerritories? = nil) {
-            self.subscription = subscription
+        public init(availableTerritories: AvailableTerritories? = nil) {
             self.availableTerritories = availableTerritories
         }
     }

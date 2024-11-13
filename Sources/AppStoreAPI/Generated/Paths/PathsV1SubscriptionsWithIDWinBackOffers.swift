@@ -43,7 +43,6 @@ extension Resources.V1.Subscriptions.WithID {
             case endDate
             case priority
             case promotionIntent
-            case subscription
             case prices
         }
 

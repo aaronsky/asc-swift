@@ -117,7 +117,6 @@ extension Resources.V1.AppStoreVersionLocalizations.WithID {
             case assetType
             case uploadOperations
             case assetDeliveryState
-            case uploaded
             case appScreenshotSet
         }
 

@@ -24,6 +24,7 @@ public struct AppInfo: Codable, Equatable, Identifiable, Sendable {
         public var australiaAgeRating: AustraliaAgeRating?
         public var brazilAgeRating: BrazilAgeRating?
         public var brazilAgeRatingV2: BrazilAgeRatingV2?
+        public var franceAgeRating: FranceAgeRating?
         public var koreaAgeRating: KoreaAgeRating?
         public var kidsAgeBand: KidsAgeBand?
 
@@ -60,6 +61,10 @@ public struct AppInfo: Codable, Equatable, Identifiable, Sendable {
             case officialEighteen = "OFFICIAL_EIGHTEEN"
         }
 
+        public enum FranceAgeRating: String, CaseIterable, Codable, Sendable {
+            case eighteen = "EIGHTEEN"
+        }
+
         public enum KoreaAgeRating: String, CaseIterable, Codable, Sendable {
             case all = "ALL"
             case twelve = "TWELVE"
@@ -68,13 +73,14 @@ public struct AppInfo: Codable, Equatable, Identifiable, Sendable {
             case notApplicable = "NOT_APPLICABLE"
         }
 
-        public init(appStoreState: AppStoreVersionState? = nil, state: State? = nil, appStoreAgeRating: AppStoreAgeRating? = nil, australiaAgeRating: AustraliaAgeRating? = nil, brazilAgeRating: BrazilAgeRating? = nil, brazilAgeRatingV2: BrazilAgeRatingV2? = nil, koreaAgeRating: KoreaAgeRating? = nil, kidsAgeBand: KidsAgeBand? = nil) {
+        public init(appStoreState: AppStoreVersionState? = nil, state: State? = nil, appStoreAgeRating: AppStoreAgeRating? = nil, australiaAgeRating: AustraliaAgeRating? = nil, brazilAgeRating: BrazilAgeRating? = nil, brazilAgeRatingV2: BrazilAgeRatingV2? = nil, franceAgeRating: FranceAgeRating? = nil, koreaAgeRating: KoreaAgeRating? = nil, kidsAgeBand: KidsAgeBand? = nil) {
             self.appStoreState = appStoreState
             self.state = state
             self.appStoreAgeRating = appStoreAgeRating
             self.australiaAgeRating = australiaAgeRating
             self.brazilAgeRating = brazilAgeRating
             self.brazilAgeRatingV2 = brazilAgeRatingV2
+            self.franceAgeRating = franceAgeRating
             self.koreaAgeRating = koreaAgeRating
             self.kidsAgeBand = kidsAgeBand
         }

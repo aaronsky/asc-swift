@@ -54,7 +54,6 @@ extension Resources.V1.GameCenterLeaderboardSets.WithID {
             case imageAsset
             case uploadOperations
             case assetDeliveryState
-            case uploaded
             case gameCenterLeaderboardSetLocalization
         }
 

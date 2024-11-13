@@ -47,7 +47,6 @@ extension Resources.V1.GameCenterMatchmakingRuleSets {
             case referenceName
             case minPlayers
             case maxPlayers
-            case ruleSet
         }
 
         public enum FieldsGameCenterMatchmakingRules: String, CaseIterable, Codable, Sendable {
@@ -56,7 +55,6 @@ extension Resources.V1.GameCenterMatchmakingRuleSets {
             case type
             case expression
             case weight
-            case ruleSet
         }
 
         public enum FieldsGameCenterMatchmakingQueues: String, CaseIterable, Codable, Sendable {

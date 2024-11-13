@@ -42,7 +42,6 @@ extension Resources.V1.AppClips {
             case releaseWithAppStoreVersion
             case appClipDefaultExperienceLocalizations
             case appClipAppStoreReviewDetail
-            case appClipDefaultExperienceTemplate
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

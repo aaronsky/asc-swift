@@ -149,9 +149,7 @@ extension Resources.V1.Apps.WithID {
             case appClips
             case appPricePoints
             case endUserLicenseAgreement
-            case preOrder
             case appPriceSchedule
-            case appAvailability
             case appAvailabilityV2
             case inAppPurchases
             case subscriptionGroups
@@ -239,7 +237,6 @@ extension Resources.V1.Apps.WithID {
             case startDate
             case totalPauseDuration
             case currentDayNumber
-            case appStoreVersion
         }
 
         public enum FieldsGameCenterAppVersions: String, CaseIterable, Codable, Sendable {
@@ -254,7 +251,6 @@ extension Resources.V1.Apps.WithID {
             case sourceFileChecksum
             case uploadOperations
             case assetDeliveryState
-            case uploaded
             case appStoreVersion
         }
 
@@ -281,7 +277,6 @@ extension Resources.V1.Apps.WithID {
             case releaseWithAppStoreVersion
             case appClipDefaultExperienceLocalizations
             case appClipAppStoreReviewDetail
-            case appClipDefaultExperienceTemplate
         }
 
         public enum FieldsAppStoreVersionExperiments: String, CaseIterable, Codable, Sendable {
@@ -291,7 +286,6 @@ extension Resources.V1.Apps.WithID {
             case reviewRequired
             case startDate
             case endDate
-            case started
             case appStoreVersion
             case appStoreVersionExperimentTreatments
             case platform
@@ -301,7 +295,6 @@ extension Resources.V1.Apps.WithID {
         }
 
         public enum FieldsAlternativeDistributionPackages: String, CaseIterable, Codable, Sendable {
-            case appStoreVersion
             case versions
         }
 

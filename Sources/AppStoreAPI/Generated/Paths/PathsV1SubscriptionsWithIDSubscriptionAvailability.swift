@@ -16,14 +16,13 @@ extension Resources.V1.Subscriptions.WithID {
         /// Path: `/v1/subscriptions/{id}/subscriptionAvailability`
         public let path: String
 
-        public func get(fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, include: [Include]? = nil, limitAvailableTerritories: Int? = nil) -> Request<AppStoreAPI.SubscriptionAvailabilityResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionAvailabilities, fieldsSubscriptions, fieldsTerritories, include, limitAvailableTerritories), id: "subscriptions_subscriptionAvailability_getToOneRelated")
+        public func get(fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, include: [Include]? = nil, limitAvailableTerritories: Int? = nil) -> Request<AppStoreAPI.SubscriptionAvailabilityResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionAvailabilities, fieldsTerritories, include, limitAvailableTerritories), id: "subscriptions_subscriptionAvailability_getToOneRelated")
         }
 
-        private func makeGetQuery(_ fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsTerritories: [FieldsTerritories]?, _ include: [Include]?, _ limitAvailableTerritories: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]?, _ fieldsTerritories: [FieldsTerritories]?, _ include: [Include]?, _ limitAvailableTerritories: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsSubscriptionAvailabilities, forKey: "fields[subscriptionAvailabilities]")
-            encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
             encoder.encode(fieldsTerritories, forKey: "fields[territories]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitAvailableTerritories, forKey: "limit[availableTerritories]")
@@ -32,30 +31,7 @@ extension Resources.V1.Subscriptions.WithID {
 
         public enum FieldsSubscriptionAvailabilities: String, CaseIterable, Codable, Sendable {
             case availableInNewTerritories
-            case subscription
             case availableTerritories
-        }
-
-        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
-            case name
-            case productID = "productId"
-            case familySharable
-            case state
-            case subscriptionPeriod
-            case reviewNote
-            case groupLevel
-            case subscriptionLocalizations
-            case appStoreReviewScreenshot
-            case group
-            case introductoryOffers
-            case promotionalOffers
-            case offerCodes
-            case prices
-            case pricePoints
-            case promotedPurchase
-            case subscriptionAvailability
-            case winBackOffers
-            case images
         }
 
         public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
@@ -63,7 +39,6 @@ extension Resources.V1.Subscriptions.WithID {
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
-            case subscription
             case availableTerritories
         }
     }

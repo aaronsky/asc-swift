@@ -44,7 +44,6 @@ extension Resources.V2.InAppPurchases.WithID {
             case reviewNote
             case familySharable
             case contentHosting
-            case app
             case inAppPurchaseLocalizations
             case pricePoints
             case content

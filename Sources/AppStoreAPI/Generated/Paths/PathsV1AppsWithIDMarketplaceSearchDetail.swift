@@ -28,7 +28,6 @@ extension Resources.V1.Apps.WithID {
 
         public enum FieldsMarketplaceSearchDetails: String, CaseIterable, Codable, Sendable {
             case catalogURL = "catalogUrl"
-            case app
         }
     }
 }

@@ -42,6 +42,7 @@ extension Resources.V1 {
         public enum FilterPlatform: String, CaseIterable, Codable, Sendable {
             case iOS = "IOS"
             case macOS = "MAC_OS"
+            case universal = "UNIVERSAL"
         }
 
         public enum Sort: String, CaseIterable, Codable, Sendable {
@@ -84,7 +85,6 @@ extension Resources.V1 {
         public enum FieldsBundleIDCapabilities: String, CaseIterable, Codable, Sendable {
             case capabilityType
             case settings
-            case bundleID = "bundleId"
         }
 
         public enum FieldsApps: String, CaseIterable, Codable, Sendable {
@@ -113,9 +113,7 @@ extension Resources.V1 {
             case appClips
             case appPricePoints
             case endUserLicenseAgreement
-            case preOrder
             case appPriceSchedule
-            case appAvailability
             case appAvailabilityV2
             case inAppPurchases
             case subscriptionGroups

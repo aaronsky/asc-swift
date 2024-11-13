@@ -30,7 +30,6 @@ extension Resources.V1.CiBuildRuns {
         }
 
         public enum FieldsCiBuildRuns: String, CaseIterable, Codable, Sendable {
-            case clean
             case number
             case createdDate
             case startedDate
@@ -43,7 +42,6 @@ extension Resources.V1.CiBuildRuns {
             case completionStatus
             case startReason
             case cancelReason
-            case buildRun
             case builds
             case workflow
             case product

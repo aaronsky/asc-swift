@@ -35,7 +35,6 @@ extension Resources.V2.InAppPurchases.WithID {
             case visibleForAllUsers
             case enabled
             case state
-            case app
             case inAppPurchaseV2
             case subscription
             case promotionImages
@@ -49,7 +48,6 @@ extension Resources.V2.InAppPurchases.WithID {
             case reviewNote
             case familySharable
             case contentHosting
-            case app
             case inAppPurchaseLocalizations
             case pricePoints
             case content
@@ -90,7 +88,6 @@ extension Resources.V2.InAppPurchases.WithID {
             case imageAsset
             case assetType
             case uploadOperations
-            case uploaded
             case state
             case promotedPurchase
         }

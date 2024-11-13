@@ -79,9 +79,7 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
         public var appClips: AppClips?
         public var appPricePoints: AppPricePoints?
         public var endUserLicenseAgreement: EndUserLicenseAgreement?
-        public var preOrder: PreOrder?
         public var appPriceSchedule: AppPriceSchedule?
-        public var appAvailability: AppAvailability?
         public var appAvailabilityV2: AppAvailabilityV2?
         public var inAppPurchases: InAppPurchases?
         public var subscriptionGroups: SubscriptionGroups?
@@ -420,39 +418,7 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public struct PreOrder: Codable, Equatable, Sendable {
-            public var links: RelationshipLinks?
-            public var data: Data?
-
-            public struct Data: Codable, Equatable, Identifiable, Sendable {
-                public var type: `Type`
-                public var id: String
-
-                public enum `Type`: String, CaseIterable, Codable, Sendable {
-                    case appPreOrders
-                }
-
-                public init(type: `Type` = .appPreOrders, id: String) {
-                    self.type = type
-                    self.id = id
-                }
-            }
-
-            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
-                self.links = links
-                self.data = data
-            }
-        }
-
         public struct AppPriceSchedule: Codable, Equatable, Sendable {
-            public var links: RelationshipLinks?
-
-            public init(links: RelationshipLinks? = nil) {
-                self.links = links
-            }
-        }
-
-        public struct AppAvailability: Codable, Equatable, Sendable {
             public var links: RelationshipLinks?
 
             public init(links: RelationshipLinks? = nil) {
@@ -790,7 +756,7 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(appEncryptionDeclarations: AppEncryptionDeclarations? = nil, ciProduct: CiProduct? = nil, betaTesters: BetaTesters? = nil, betaGroups: BetaGroups? = nil, appStoreVersions: AppStoreVersions? = nil, preReleaseVersions: PreReleaseVersions? = nil, betaAppLocalizations: BetaAppLocalizations? = nil, builds: Builds? = nil, betaLicenseAgreement: BetaLicenseAgreement? = nil, betaAppReviewDetail: BetaAppReviewDetail? = nil, appInfos: AppInfos? = nil, appClips: AppClips? = nil, appPricePoints: AppPricePoints? = nil, endUserLicenseAgreement: EndUserLicenseAgreement? = nil, preOrder: PreOrder? = nil, appPriceSchedule: AppPriceSchedule? = nil, appAvailability: AppAvailability? = nil, appAvailabilityV2: AppAvailabilityV2? = nil, inAppPurchases: InAppPurchases? = nil, subscriptionGroups: SubscriptionGroups? = nil, gameCenterEnabledVersions: GameCenterEnabledVersions? = nil, perfPowerMetrics: PerfPowerMetrics? = nil, appCustomProductPages: AppCustomProductPages? = nil, inAppPurchasesV2: InAppPurchasesV2? = nil, promotedPurchases: PromotedPurchases? = nil, appEvents: AppEvents? = nil, reviewSubmissions: ReviewSubmissions? = nil, subscriptionGracePeriod: SubscriptionGracePeriod? = nil, customerReviews: CustomerReviews? = nil, gameCenterDetail: GameCenterDetail? = nil, appStoreVersionExperimentsV2: AppStoreVersionExperimentsV2? = nil, alternativeDistributionKey: AlternativeDistributionKey? = nil, analyticsReportRequests: AnalyticsReportRequests? = nil, marketplaceSearchDetail: MarketplaceSearchDetail? = nil) {
+        public init(appEncryptionDeclarations: AppEncryptionDeclarations? = nil, ciProduct: CiProduct? = nil, betaTesters: BetaTesters? = nil, betaGroups: BetaGroups? = nil, appStoreVersions: AppStoreVersions? = nil, preReleaseVersions: PreReleaseVersions? = nil, betaAppLocalizations: BetaAppLocalizations? = nil, builds: Builds? = nil, betaLicenseAgreement: BetaLicenseAgreement? = nil, betaAppReviewDetail: BetaAppReviewDetail? = nil, appInfos: AppInfos? = nil, appClips: AppClips? = nil, appPricePoints: AppPricePoints? = nil, endUserLicenseAgreement: EndUserLicenseAgreement? = nil, appPriceSchedule: AppPriceSchedule? = nil, appAvailabilityV2: AppAvailabilityV2? = nil, inAppPurchases: InAppPurchases? = nil, subscriptionGroups: SubscriptionGroups? = nil, gameCenterEnabledVersions: GameCenterEnabledVersions? = nil, perfPowerMetrics: PerfPowerMetrics? = nil, appCustomProductPages: AppCustomProductPages? = nil, inAppPurchasesV2: InAppPurchasesV2? = nil, promotedPurchases: PromotedPurchases? = nil, appEvents: AppEvents? = nil, reviewSubmissions: ReviewSubmissions? = nil, subscriptionGracePeriod: SubscriptionGracePeriod? = nil, customerReviews: CustomerReviews? = nil, gameCenterDetail: GameCenterDetail? = nil, appStoreVersionExperimentsV2: AppStoreVersionExperimentsV2? = nil, alternativeDistributionKey: AlternativeDistributionKey? = nil, analyticsReportRequests: AnalyticsReportRequests? = nil, marketplaceSearchDetail: MarketplaceSearchDetail? = nil) {
             self.appEncryptionDeclarations = appEncryptionDeclarations
             self.ciProduct = ciProduct
             self.betaTesters = betaTesters
@@ -805,9 +771,7 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
             self.appClips = appClips
             self.appPricePoints = appPricePoints
             self.endUserLicenseAgreement = endUserLicenseAgreement
-            self.preOrder = preOrder
             self.appPriceSchedule = appPriceSchedule
-            self.appAvailability = appAvailability
             self.appAvailabilityV2 = appAvailabilityV2
             self.inAppPurchases = inAppPurchases
             self.subscriptionGroups = subscriptionGroups

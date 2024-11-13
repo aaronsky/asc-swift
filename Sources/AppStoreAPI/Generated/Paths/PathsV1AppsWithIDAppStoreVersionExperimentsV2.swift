@@ -54,7 +54,6 @@ extension Resources.V1.Apps.WithID {
             case reviewRequired
             case startDate
             case endDate
-            case started
             case app
             case latestControlVersion
             case controlVersions
@@ -87,9 +86,7 @@ extension Resources.V1.Apps.WithID {
             case appClips
             case appPricePoints
             case endUserLicenseAgreement
-            case preOrder
             case appPriceSchedule
-            case appAvailability
             case appAvailabilityV2
             case inAppPurchases
             case subscriptionGroups

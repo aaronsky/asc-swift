@@ -22,19 +22,23 @@ public struct AppEventVideoClip: Codable, Equatable, Identifiable, Sendable {
         public var fileName: String?
         public var previewFrameTimeCode: String?
         public var videoURL: String?
+        public var previewFrameImage: PreviewFrameImage?
         public var previewImage: ImageAsset?
         public var uploadOperations: [UploadOperation]?
         public var assetDeliveryState: AppMediaAssetState?
+        public var videoDeliveryState: AppMediaVideoState?
         public var appEventAssetType: AppEventAssetType?
 
-        public init(fileSize: Int? = nil, fileName: String? = nil, previewFrameTimeCode: String? = nil, videoURL: String? = nil, previewImage: ImageAsset? = nil, uploadOperations: [UploadOperation]? = nil, assetDeliveryState: AppMediaAssetState? = nil, appEventAssetType: AppEventAssetType? = nil) {
+        public init(fileSize: Int? = nil, fileName: String? = nil, previewFrameTimeCode: String? = nil, videoURL: String? = nil, previewFrameImage: PreviewFrameImage? = nil, previewImage: ImageAsset? = nil, uploadOperations: [UploadOperation]? = nil, assetDeliveryState: AppMediaAssetState? = nil, videoDeliveryState: AppMediaVideoState? = nil, appEventAssetType: AppEventAssetType? = nil) {
             self.fileSize = fileSize
             self.fileName = fileName
             self.previewFrameTimeCode = previewFrameTimeCode
             self.videoURL = videoURL
+            self.previewFrameImage = previewFrameImage
             self.previewImage = previewImage
             self.uploadOperations = uploadOperations
             self.assetDeliveryState = assetDeliveryState
+            self.videoDeliveryState = videoDeliveryState
             self.appEventAssetType = appEventAssetType
         }
 
@@ -43,9 +47,11 @@ public struct AppEventVideoClip: Codable, Equatable, Identifiable, Sendable {
             case fileName
             case previewFrameTimeCode
             case videoURL = "videoUrl"
+            case previewFrameImage
             case previewImage
             case uploadOperations
             case assetDeliveryState
+            case videoDeliveryState
             case appEventAssetType
         }
     }

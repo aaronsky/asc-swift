@@ -30,7 +30,6 @@ extension Resources.V1.BundleIDs.WithID {
         public enum FieldsBundleIDCapabilities: String, CaseIterable, Codable, Sendable {
             case capabilityType
             case settings
-            case bundleID = "bundleId"
         }
     }
 }

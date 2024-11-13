@@ -41,7 +41,6 @@ extension Resources.V1.GameCenterLeaderboardSetLocalizations {
             case imageAsset
             case uploadOperations
             case assetDeliveryState
-            case uploaded
             case gameCenterLeaderboardSetLocalization
         }
 

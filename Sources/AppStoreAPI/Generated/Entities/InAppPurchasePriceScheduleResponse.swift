@@ -13,22 +13,19 @@ public struct InAppPurchasePriceScheduleResponse: Codable, Equatable, Sendable {
     public var links: DocumentLinks
 
     public enum IncludedItem: Codable, Equatable, Sendable {
-        case inAppPurchaseV2(InAppPurchaseV2)
         case territory(Territory)
         case inAppPurchasePrice(InAppPurchasePrice)
 
         public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
-            if let value = try? container.decode(InAppPurchaseV2.self) {
-                self = .inAppPurchaseV2(value)
-            } else if let value = try? container.decode(Territory.self) {
+            if let value = try? container.decode(Territory.self) {
                 self = .territory(value)
             } else if let value = try? container.decode(InAppPurchasePrice.self) {
                 self = .inAppPurchasePrice(value)
             } else {
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (InAppPurchaseV2, Territory, InAppPurchasePrice)."
+                    debugDescription: "Data could not be decoded as any of the expected types (Territory, InAppPurchasePrice)."
                 )
             }
         }
@@ -36,7 +33,6 @@ public struct InAppPurchasePriceScheduleResponse: Codable, Equatable, Sendable {
         public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
-            case .inAppPurchaseV2(let value): try container.encode(value)
             case .territory(let value): try container.encode(value)
             case .inAppPurchasePrice(let value): try container.encode(value)
             }

@@ -35,7 +35,6 @@ extension Resources.V1.AppClipDefaultExperienceLocalizations.WithID {
             case imageAsset
             case uploadOperations
             case assetDeliveryState
-            case uploaded
             case appClipDefaultExperienceLocalization
         }
 

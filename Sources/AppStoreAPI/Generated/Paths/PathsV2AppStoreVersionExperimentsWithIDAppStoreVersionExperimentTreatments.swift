@@ -48,7 +48,6 @@ extension Resources.V2.AppStoreVersionExperiments.WithID {
             case reviewRequired
             case startDate
             case endDate
-            case started
             case appStoreVersion
             case appStoreVersionExperimentTreatments
             case platform

@@ -24,20 +24,24 @@ public struct AppPreview: Codable, Equatable, Identifiable, Sendable {
         public var previewFrameTimeCode: String?
         public var mimeType: String?
         public var videoURL: String?
+        public var previewFrameImage: PreviewFrameImage?
         public var previewImage: ImageAsset?
         public var uploadOperations: [UploadOperation]?
         public var assetDeliveryState: AppMediaAssetState?
+        public var videoDeliveryState: AppMediaVideoState?
 
-        public init(fileSize: Int? = nil, fileName: String? = nil, sourceFileChecksum: String? = nil, previewFrameTimeCode: String? = nil, mimeType: String? = nil, videoURL: String? = nil, previewImage: ImageAsset? = nil, uploadOperations: [UploadOperation]? = nil, assetDeliveryState: AppMediaAssetState? = nil) {
+        public init(fileSize: Int? = nil, fileName: String? = nil, sourceFileChecksum: String? = nil, previewFrameTimeCode: String? = nil, mimeType: String? = nil, videoURL: String? = nil, previewFrameImage: PreviewFrameImage? = nil, previewImage: ImageAsset? = nil, uploadOperations: [UploadOperation]? = nil, assetDeliveryState: AppMediaAssetState? = nil, videoDeliveryState: AppMediaVideoState? = nil) {
             self.fileSize = fileSize
             self.fileName = fileName
             self.sourceFileChecksum = sourceFileChecksum
             self.previewFrameTimeCode = previewFrameTimeCode
             self.mimeType = mimeType
             self.videoURL = videoURL
+            self.previewFrameImage = previewFrameImage
             self.previewImage = previewImage
             self.uploadOperations = uploadOperations
             self.assetDeliveryState = assetDeliveryState
+            self.videoDeliveryState = videoDeliveryState
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -47,9 +51,11 @@ public struct AppPreview: Codable, Equatable, Identifiable, Sendable {
             case previewFrameTimeCode
             case mimeType
             case videoURL = "videoUrl"
+            case previewFrameImage
             case previewImage
             case uploadOperations
             case assetDeliveryState
+            case videoDeliveryState
         }
     }
 

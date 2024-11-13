@@ -55,7 +55,6 @@ extension Resources.V1.Apps.WithID {
 
         public enum FieldsSubscriptionGroups: String, CaseIterable, Codable, Sendable {
             case referenceName
-            case app
             case subscriptions
             case subscriptionGroupLocalizations
         }

@@ -65,7 +65,6 @@ extension Resources.V1.AlternativeDistributionPackages.WithID {
         }
 
         public enum FieldsAlternativeDistributionPackages: String, CaseIterable, Codable, Sendable {
-            case appStoreVersion
             case versions
         }
 

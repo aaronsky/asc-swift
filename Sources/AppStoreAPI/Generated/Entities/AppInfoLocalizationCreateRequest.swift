@@ -20,13 +20,13 @@ public struct AppInfoLocalizationCreateRequest: Codable, Equatable, Sendable {
 
         public struct Attributes: Codable, Equatable, Sendable {
             public var locale: String
-            public var name: String?
+            public var name: String
             public var subtitle: String?
             public var privacyPolicyURL: String?
             public var privacyChoicesURL: String?
             public var privacyPolicyText: String?
 
-            public init(locale: String, name: String? = nil, subtitle: String? = nil, privacyPolicyURL: String? = nil, privacyChoicesURL: String? = nil, privacyPolicyText: String? = nil) {
+            public init(locale: String, name: String, subtitle: String? = nil, privacyPolicyURL: String? = nil, privacyChoicesURL: String? = nil, privacyPolicyText: String? = nil) {
                 self.locale = locale
                 self.name = name
                 self.subtitle = subtitle

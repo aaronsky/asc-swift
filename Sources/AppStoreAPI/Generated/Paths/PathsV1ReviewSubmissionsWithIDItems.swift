@@ -34,9 +34,6 @@ extension Resources.V1.ReviewSubmissions.WithID {
 
         public enum FieldsReviewSubmissionItems: String, CaseIterable, Codable, Sendable {
             case state
-            case resolved
-            case removed
-            case reviewSubmission
             case appStoreVersion
             case appCustomProductPageVersion
             case appStoreVersionExperiment
@@ -86,7 +83,6 @@ extension Resources.V1.ReviewSubmissions.WithID {
             case reviewRequired
             case startDate
             case endDate
-            case started
             case appStoreVersion
             case appStoreVersionExperimentTreatments
             case platform
@@ -106,7 +102,6 @@ extension Resources.V1.ReviewSubmissions.WithID {
             case purpose
             case territorySchedules
             case archivedTerritorySchedules
-            case app
             case localizations
         }
 

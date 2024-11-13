@@ -98,10 +98,11 @@ extension Resources.V1.AppCustomProductPageLocalizations.WithID {
             case previewFrameTimeCode
             case mimeType
             case videoURL = "videoUrl"
+            case previewFrameImage
             case previewImage
             case uploadOperations
             case assetDeliveryState
-            case uploaded
+            case videoDeliveryState
             case appPreviewSet
         }
 
