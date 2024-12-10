@@ -1,4 +1,4 @@
 .build/
-/.github/
+.github/
 .swiftpm/
-/.vscode/
+.vscode/
