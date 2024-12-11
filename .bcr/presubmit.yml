@@ -3,6 +3,7 @@ bcr_test_module:
   matrix:
     bazel:
       - 7.x
+      - 8.x
   tasks:
     verify_targets_linux:
       name: Verify Targets (Linux)
