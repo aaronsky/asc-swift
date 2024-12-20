@@ -13,7 +13,7 @@ The entire [publicly documented API surface](https://developer.apple.com/documen
 ### Uploading Files
 
 - <doc:UploadingFiles>
-- ``AppStoreConnect/AppStoreConnectClient/upload(operation:from:)``
+- ``AppStoreConnect/AppStoreConnectClient/upload(operation:from:retry:)``
 - ``UploadOperation``
 - ``HTTPHeader``
 - ``AppMediaAssetState``
