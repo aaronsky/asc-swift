@@ -16,18 +16,16 @@ extension Resources.V2.InAppPurchases.WithID {
         /// Path: `/v2/inAppPurchases/{id}/promotedPurchase`
         public let path: String
 
-        public func get(fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsPromotedPurchaseImages: [FieldsPromotedPurchaseImages]? = nil, include: [Include]? = nil, limitPromotionImages: Int? = nil) -> Request<AppStoreAPI.PromotedPurchaseResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsPromotedPurchases, fieldsInAppPurchases, fieldsSubscriptions, fieldsPromotedPurchaseImages, include, limitPromotionImages), id: "inAppPurchasesV2_promotedPurchase_getToOneRelated")
+        public func get(fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.PromotedPurchaseResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsPromotedPurchases, fieldsInAppPurchases, fieldsSubscriptions, include), id: "inAppPurchasesV2_promotedPurchase_getToOneRelated")
         }
 
-        private func makeGetQuery(_ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsPromotedPurchaseImages: [FieldsPromotedPurchaseImages]?, _ include: [Include]?, _ limitPromotionImages: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsPromotedPurchases, forKey: "fields[promotedPurchases]")
             encoder.encode(fieldsInAppPurchases, forKey: "fields[inAppPurchases]")
             encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
-            encoder.encode(fieldsPromotedPurchaseImages, forKey: "fields[promotedPurchaseImages]")
             encoder.encode(include, forKey: "include")
-            encoder.encode(limitPromotionImages, forKey: "limit[promotionImages]")
             return encoder.items
         }
 
@@ -37,7 +35,6 @@ extension Resources.V2.InAppPurchases.WithID {
             case state
             case inAppPurchaseV2
             case subscription
-            case promotionImages
         }
 
         public enum FieldsInAppPurchases: String, CaseIterable, Codable, Sendable {
@@ -80,22 +77,9 @@ extension Resources.V2.InAppPurchases.WithID {
             case images
         }
 
-        public enum FieldsPromotedPurchaseImages: String, CaseIterable, Codable, Sendable {
-            case fileSize
-            case fileName
-            case sourceFileChecksum
-            case assetToken
-            case imageAsset
-            case assetType
-            case uploadOperations
-            case state
-            case promotedPurchase
-        }
-
         public enum Include: String, CaseIterable, Codable, Sendable {
             case inAppPurchaseV2
             case subscription
-            case promotionImages
         }
     }
 }

@@ -150,9 +150,12 @@ extension Resources.V1.CiBuildRuns.WithID {
             case publicLink
             case feedbackEnabled
             case iosBuildsAvailableForAppleSiliconMac
+            case iosBuildsAvailableForAppleVision
             case app
             case builds
             case betaTesters
+            case betaRecruitmentCriteria
+            case betaRecruitmentCriterionCompatibleBuildCheck
         }
 
         public enum FieldsBetaBuildLocalizations: String, CaseIterable, Codable, Sendable {

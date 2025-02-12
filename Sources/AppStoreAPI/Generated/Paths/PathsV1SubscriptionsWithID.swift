@@ -135,7 +135,6 @@ extension Resources.V1.Subscriptions {
             case state
             case inAppPurchaseV2
             case subscription
-            case promotionImages
         }
 
         public enum FieldsSubscriptionAvailabilities: String, CaseIterable, Codable, Sendable {

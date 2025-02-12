@@ -39,9 +39,12 @@ extension Resources.V1.Apps.WithID {
             case publicLink
             case feedbackEnabled
             case iosBuildsAvailableForAppleSiliconMac
+            case iosBuildsAvailableForAppleVision
             case app
             case builds
             case betaTesters
+            case betaRecruitmentCriteria
+            case betaRecruitmentCriterionCompatibleBuildCheck
         }
     }
 }

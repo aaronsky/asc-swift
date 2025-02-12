@@ -35,6 +35,7 @@ extension Resources.V1.Profiles.WithID {
             case platform
             case expirationDate
             case certificateContent
+            case activated
         }
     }
 }

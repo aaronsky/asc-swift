@@ -16,11 +16,11 @@ extension Resources.V1 {
         /// Path: `/v1/betaGroups`
         public let path: String
 
-        public func get(filterName: [String]? = nil, filterIsInternalGroup: [String]? = nil, filterPublicLinkEnabled: [String]? = nil, filterPublicLinkLimitEnabled: [String]? = nil, filterPublicLink: [String]? = nil, filterApp: [String]? = nil, filterBuilds: [String]? = nil, filterID: [String]? = nil, sort: [Sort]? = nil, fieldsBetaGroups: [FieldsBetaGroups]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsBetaTesters: [FieldsBetaTesters]? = nil, limit: Int? = nil, include: [Include]? = nil, limitBetaTesters: Int? = nil, limitBuilds: Int? = nil) -> Request<AppStoreAPI.BetaGroupsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterName, filterIsInternalGroup, filterPublicLinkEnabled, filterPublicLinkLimitEnabled, filterPublicLink, filterApp, filterBuilds, filterID, sort, fieldsBetaGroups, fieldsApps, fieldsBuilds, fieldsBetaTesters, limit, include, limitBetaTesters, limitBuilds), id: "betaGroups_getCollection")
+        public func get(filterName: [String]? = nil, filterIsInternalGroup: [String]? = nil, filterPublicLinkEnabled: [String]? = nil, filterPublicLinkLimitEnabled: [String]? = nil, filterPublicLink: [String]? = nil, filterApp: [String]? = nil, filterBuilds: [String]? = nil, filterID: [String]? = nil, sort: [Sort]? = nil, fieldsBetaGroups: [FieldsBetaGroups]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsBetaTesters: [FieldsBetaTesters]? = nil, fieldsBetaRecruitmentCriteria: [FieldsBetaRecruitmentCriteria]? = nil, limit: Int? = nil, include: [Include]? = nil, limitBetaTesters: Int? = nil, limitBuilds: Int? = nil) -> Request<AppStoreAPI.BetaGroupsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterName, filterIsInternalGroup, filterPublicLinkEnabled, filterPublicLinkLimitEnabled, filterPublicLink, filterApp, filterBuilds, filterID, sort, fieldsBetaGroups, fieldsApps, fieldsBuilds, fieldsBetaTesters, fieldsBetaRecruitmentCriteria, limit, include, limitBetaTesters, limitBuilds), id: "betaGroups_getCollection")
         }
 
-        private func makeGetQuery(_ filterName: [String]?, _ filterIsInternalGroup: [String]?, _ filterPublicLinkEnabled: [String]?, _ filterPublicLinkLimitEnabled: [String]?, _ filterPublicLink: [String]?, _ filterApp: [String]?, _ filterBuilds: [String]?, _ filterID: [String]?, _ sort: [Sort]?, _ fieldsBetaGroups: [FieldsBetaGroups]?, _ fieldsApps: [FieldsApps]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsBetaTesters: [FieldsBetaTesters]?, _ limit: Int?, _ include: [Include]?, _ limitBetaTesters: Int?, _ limitBuilds: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterName: [String]?, _ filterIsInternalGroup: [String]?, _ filterPublicLinkEnabled: [String]?, _ filterPublicLinkLimitEnabled: [String]?, _ filterPublicLink: [String]?, _ filterApp: [String]?, _ filterBuilds: [String]?, _ filterID: [String]?, _ sort: [Sort]?, _ fieldsBetaGroups: [FieldsBetaGroups]?, _ fieldsApps: [FieldsApps]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsBetaTesters: [FieldsBetaTesters]?, _ fieldsBetaRecruitmentCriteria: [FieldsBetaRecruitmentCriteria]?, _ limit: Int?, _ include: [Include]?, _ limitBetaTesters: Int?, _ limitBuilds: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterName, forKey: "filter[name]")
             encoder.encode(filterIsInternalGroup, forKey: "filter[isInternalGroup]")
@@ -35,6 +35,7 @@ extension Resources.V1 {
             encoder.encode(fieldsApps, forKey: "fields[apps]")
             encoder.encode(fieldsBuilds, forKey: "fields[builds]")
             encoder.encode(fieldsBetaTesters, forKey: "fields[betaTesters]")
+            encoder.encode(fieldsBetaRecruitmentCriteria, forKey: "fields[betaRecruitmentCriteria]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitBetaTesters, forKey: "limit[betaTesters]")
@@ -65,9 +66,12 @@ extension Resources.V1 {
             case publicLink
             case feedbackEnabled
             case iosBuildsAvailableForAppleSiliconMac
+            case iosBuildsAvailableForAppleVision
             case app
             case builds
             case betaTesters
+            case betaRecruitmentCriteria
+            case betaRecruitmentCriterionCompatibleBuildCheck
         }
 
         public enum FieldsApps: String, CaseIterable, Codable, Sendable {
@@ -154,10 +158,16 @@ extension Resources.V1 {
             case builds
         }
 
+        public enum FieldsBetaRecruitmentCriteria: String, CaseIterable, Codable, Sendable {
+            case lastModifiedDate
+            case deviceFamilyOsVersionFilters
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case builds
             case betaTesters
+            case betaRecruitmentCriteria
         }
 
         public func post(_ body: AppStoreAPI.BetaGroupCreateRequest) -> Request<AppStoreAPI.BetaGroupResponse> {

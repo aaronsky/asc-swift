@@ -12,6 +12,7 @@ public struct CertificateCreateRequest: Codable, Equatable, Sendable {
     public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
         public var attributes: Attributes
+        public var relationships: Relationships?
 
         public enum `Type`: String, CaseIterable, Codable, Sendable {
             case certificates
@@ -27,9 +28,44 @@ public struct CertificateCreateRequest: Codable, Equatable, Sendable {
             }
         }
 
-        public init(type: `Type` = .certificates, attributes: Attributes) {
+        public struct Relationships: Codable, Equatable, Sendable {
+            public var merchantID: MerchantID?
+
+            public struct MerchantID: Codable, Equatable, Sendable {
+                public var data: Data?
+
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
+                        case merchantIDs = "merchantIds"
+                    }
+
+                    public init(type: `Type` = .merchantIDs, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: Data? = nil) {
+                    self.data = data
+                }
+            }
+
+            public init(merchantID: MerchantID? = nil) {
+                self.merchantID = merchantID
+            }
+
+            private enum CodingKeys: String, CodingKey {
+                case merchantID = "merchantId"
+            }
+        }
+
+        public init(type: `Type` = .certificates, attributes: Attributes, relationships: Relationships? = nil) {
             self.type = type
             self.attributes = attributes
+            self.relationships = relationships
         }
     }
 

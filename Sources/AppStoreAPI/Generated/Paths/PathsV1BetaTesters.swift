@@ -130,9 +130,12 @@ extension Resources.V1 {
             case publicLink
             case feedbackEnabled
             case iosBuildsAvailableForAppleSiliconMac
+            case iosBuildsAvailableForAppleVision
             case app
             case builds
             case betaTesters
+            case betaRecruitmentCriteria
+            case betaRecruitmentCriterionCompatibleBuildCheck
         }
 
         public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {

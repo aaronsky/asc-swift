@@ -45,7 +45,6 @@ public struct PromotedPurchase: Codable, Equatable, Identifiable, Sendable {
     public struct Relationships: Codable, Equatable, Sendable {
         public var inAppPurchaseV2: InAppPurchaseV2?
         public var subscription: Subscription?
-        public var promotionImages: PromotionImages?
 
         public struct InAppPurchaseV2: Codable, Equatable, Sendable {
             public var data: Data?
@@ -91,36 +90,9 @@ public struct PromotedPurchase: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public struct PromotionImages: Codable, Equatable, Sendable {
-            public var links: RelationshipLinks?
-            public var meta: PagingInformation?
-            public var data: [Datum]?
-
-            public struct Datum: Codable, Equatable, Identifiable, Sendable {
-                public var type: `Type`
-                public var id: String
-
-                public enum `Type`: String, CaseIterable, Codable, Sendable {
-                    case promotedPurchaseImages
-                }
-
-                public init(type: `Type` = .promotedPurchaseImages, id: String) {
-                    self.type = type
-                    self.id = id
-                }
-            }
-
-            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
-                self.links = links
-                self.meta = meta
-                self.data = data
-            }
-        }
-
-        public init(inAppPurchaseV2: InAppPurchaseV2? = nil, subscription: Subscription? = nil, promotionImages: PromotionImages? = nil) {
+        public init(inAppPurchaseV2: InAppPurchaseV2? = nil, subscription: Subscription? = nil) {
             self.inAppPurchaseV2 = inAppPurchaseV2
             self.subscription = subscription
-            self.promotionImages = promotionImages
         }
     }
 

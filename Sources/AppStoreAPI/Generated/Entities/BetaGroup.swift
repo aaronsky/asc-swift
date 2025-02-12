@@ -29,8 +29,9 @@ public struct BetaGroup: Codable, Equatable, Identifiable, Sendable {
         public var publicLink: String?
         public var isFeedbackEnabled: Bool?
         public var isIosBuildsAvailableForAppleSiliconMac: Bool?
+        public var isIosBuildsAvailableForAppleVision: Bool?
 
-        public init(name: String? = nil, createdDate: Date? = nil, isInternalGroup: Bool? = nil, hasAccessToAllBuilds: Bool? = nil, isPublicLinkEnabled: Bool? = nil, publicLinkID: String? = nil, isPublicLinkLimitEnabled: Bool? = nil, publicLinkLimit: Int? = nil, publicLink: String? = nil, isFeedbackEnabled: Bool? = nil, isIosBuildsAvailableForAppleSiliconMac: Bool? = nil) {
+        public init(name: String? = nil, createdDate: Date? = nil, isInternalGroup: Bool? = nil, hasAccessToAllBuilds: Bool? = nil, isPublicLinkEnabled: Bool? = nil, publicLinkID: String? = nil, isPublicLinkLimitEnabled: Bool? = nil, publicLinkLimit: Int? = nil, publicLink: String? = nil, isFeedbackEnabled: Bool? = nil, isIosBuildsAvailableForAppleSiliconMac: Bool? = nil, isIosBuildsAvailableForAppleVision: Bool? = nil) {
             self.name = name
             self.createdDate = createdDate
             self.isInternalGroup = isInternalGroup
@@ -42,6 +43,7 @@ public struct BetaGroup: Codable, Equatable, Identifiable, Sendable {
             self.publicLink = publicLink
             self.isFeedbackEnabled = isFeedbackEnabled
             self.isIosBuildsAvailableForAppleSiliconMac = isIosBuildsAvailableForAppleSiliconMac
+            self.isIosBuildsAvailableForAppleVision = isIosBuildsAvailableForAppleVision
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -56,6 +58,7 @@ public struct BetaGroup: Codable, Equatable, Identifiable, Sendable {
             case publicLink
             case isFeedbackEnabled = "feedbackEnabled"
             case isIosBuildsAvailableForAppleSiliconMac = "iosBuildsAvailableForAppleSiliconMac"
+            case isIosBuildsAvailableForAppleVision = "iosBuildsAvailableForAppleVision"
         }
     }
 
@@ -63,6 +66,8 @@ public struct BetaGroup: Codable, Equatable, Identifiable, Sendable {
         public var app: App?
         public var builds: Builds?
         public var betaTesters: BetaTesters?
+        public var betaRecruitmentCriteria: BetaRecruitmentCriteria?
+        public var betaRecruitmentCriterionCompatibleBuildCheck: BetaRecruitmentCriterionCompatibleBuildCheck?
 
         public struct App: Codable, Equatable, Sendable {
             public var links: RelationshipLinks?
@@ -140,10 +145,44 @@ public struct BetaGroup: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(app: App? = nil, builds: Builds? = nil, betaTesters: BetaTesters? = nil) {
+        public struct BetaRecruitmentCriteria: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case betaRecruitmentCriteria
+                }
+
+                public init(type: `Type` = .betaRecruitmentCriteria, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
+                self.links = links
+                self.data = data
+            }
+        }
+
+        public struct BetaRecruitmentCriterionCompatibleBuildCheck: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
+            }
+        }
+
+        public init(app: App? = nil, builds: Builds? = nil, betaTesters: BetaTesters? = nil, betaRecruitmentCriteria: BetaRecruitmentCriteria? = nil, betaRecruitmentCriterionCompatibleBuildCheck: BetaRecruitmentCriterionCompatibleBuildCheck? = nil) {
             self.app = app
             self.builds = builds
             self.betaTesters = betaTesters
+            self.betaRecruitmentCriteria = betaRecruitmentCriteria
+            self.betaRecruitmentCriterionCompatibleBuildCheck = betaRecruitmentCriterionCompatibleBuildCheck
         }
     }
 

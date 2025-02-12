@@ -34,6 +34,11 @@ extension Resources.V1.Certificates {
             case platform
             case expirationDate
             case certificateContent
+            case activated
+        }
+
+        public func patch(_ body: AppStoreAPI.CertificateUpdateRequest) -> Request<AppStoreAPI.CertificateResponse> {
+            Request(path: path, method: "PATCH", body: body, id: "certificates_updateInstance")
         }
 
         public var delete: Request<Void> {

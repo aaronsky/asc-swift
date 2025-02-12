@@ -113,6 +113,7 @@ extension Resources.V1 {
             case platform
             case expirationDate
             case certificateContent
+            case activated
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

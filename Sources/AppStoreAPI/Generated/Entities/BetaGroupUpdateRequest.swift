@@ -25,14 +25,16 @@ public struct BetaGroupUpdateRequest: Codable, Equatable, Sendable {
             public var publicLinkLimit: Int?
             public var isFeedbackEnabled: Bool?
             public var isIosBuildsAvailableForAppleSiliconMac: Bool?
+            public var isIosBuildsAvailableForAppleVision: Bool?
 
-            public init(name: String? = nil, isPublicLinkEnabled: Bool? = nil, isPublicLinkLimitEnabled: Bool? = nil, publicLinkLimit: Int? = nil, isFeedbackEnabled: Bool? = nil, isIosBuildsAvailableForAppleSiliconMac: Bool? = nil) {
+            public init(name: String? = nil, isPublicLinkEnabled: Bool? = nil, isPublicLinkLimitEnabled: Bool? = nil, publicLinkLimit: Int? = nil, isFeedbackEnabled: Bool? = nil, isIosBuildsAvailableForAppleSiliconMac: Bool? = nil, isIosBuildsAvailableForAppleVision: Bool? = nil) {
                 self.name = name
                 self.isPublicLinkEnabled = isPublicLinkEnabled
                 self.isPublicLinkLimitEnabled = isPublicLinkLimitEnabled
                 self.publicLinkLimit = publicLinkLimit
                 self.isFeedbackEnabled = isFeedbackEnabled
                 self.isIosBuildsAvailableForAppleSiliconMac = isIosBuildsAvailableForAppleSiliconMac
+                self.isIosBuildsAvailableForAppleVision = isIosBuildsAvailableForAppleVision
             }
 
             private enum CodingKeys: String, CodingKey {
@@ -42,6 +44,7 @@ public struct BetaGroupUpdateRequest: Codable, Equatable, Sendable {
                 case publicLinkLimit
                 case isFeedbackEnabled = "feedbackEnabled"
                 case isIosBuildsAvailableForAppleSiliconMac = "iosBuildsAvailableForAppleSiliconMac"
+                case isIosBuildsAvailableForAppleVision = "iosBuildsAvailableForAppleVision"
             }
         }
 

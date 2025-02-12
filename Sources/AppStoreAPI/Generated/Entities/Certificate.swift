@@ -24,8 +24,9 @@ public struct Certificate: Codable, Equatable, Identifiable, Sendable {
         public var platform: BundleIDPlatform?
         public var expirationDate: Date?
         public var certificateContent: String?
+        public var isActivated: Bool?
 
-        public init(name: String? = nil, certificateType: CertificateType? = nil, displayName: String? = nil, serialNumber: String? = nil, platform: BundleIDPlatform? = nil, expirationDate: Date? = nil, certificateContent: String? = nil) {
+        public init(name: String? = nil, certificateType: CertificateType? = nil, displayName: String? = nil, serialNumber: String? = nil, platform: BundleIDPlatform? = nil, expirationDate: Date? = nil, certificateContent: String? = nil, isActivated: Bool? = nil) {
             self.name = name
             self.certificateType = certificateType
             self.displayName = displayName
@@ -33,6 +34,18 @@ public struct Certificate: Codable, Equatable, Identifiable, Sendable {
             self.platform = platform
             self.expirationDate = expirationDate
             self.certificateContent = certificateContent
+            self.isActivated = isActivated
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case name
+            case certificateType
+            case displayName
+            case serialNumber
+            case platform
+            case expirationDate
+            case certificateContent
+            case isActivated = "activated"
         }
     }
 

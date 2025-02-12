@@ -16,16 +16,17 @@ extension Resources.V1.BetaGroups {
         /// Path: `/v1/betaGroups/{id}`
         public let path: String
 
-        public func get(fieldsBetaGroups: [FieldsBetaGroups]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsBetaTesters: [FieldsBetaTesters]? = nil, include: [Include]? = nil, limitBetaTesters: Int? = nil, limitBuilds: Int? = nil) -> Request<AppStoreAPI.BetaGroupResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaGroups, fieldsApps, fieldsBuilds, fieldsBetaTesters, include, limitBetaTesters, limitBuilds), id: "betaGroups_getInstance")
+        public func get(fieldsBetaGroups: [FieldsBetaGroups]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsBetaTesters: [FieldsBetaTesters]? = nil, fieldsBetaRecruitmentCriteria: [FieldsBetaRecruitmentCriteria]? = nil, include: [Include]? = nil, limitBetaTesters: Int? = nil, limitBuilds: Int? = nil) -> Request<AppStoreAPI.BetaGroupResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaGroups, fieldsApps, fieldsBuilds, fieldsBetaTesters, fieldsBetaRecruitmentCriteria, include, limitBetaTesters, limitBuilds), id: "betaGroups_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsBetaGroups: [FieldsBetaGroups]?, _ fieldsApps: [FieldsApps]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsBetaTesters: [FieldsBetaTesters]?, _ include: [Include]?, _ limitBetaTesters: Int?, _ limitBuilds: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsBetaGroups: [FieldsBetaGroups]?, _ fieldsApps: [FieldsApps]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsBetaTesters: [FieldsBetaTesters]?, _ fieldsBetaRecruitmentCriteria: [FieldsBetaRecruitmentCriteria]?, _ include: [Include]?, _ limitBetaTesters: Int?, _ limitBuilds: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsBetaGroups, forKey: "fields[betaGroups]")
             encoder.encode(fieldsApps, forKey: "fields[apps]")
             encoder.encode(fieldsBuilds, forKey: "fields[builds]")
             encoder.encode(fieldsBetaTesters, forKey: "fields[betaTesters]")
+            encoder.encode(fieldsBetaRecruitmentCriteria, forKey: "fields[betaRecruitmentCriteria]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitBetaTesters, forKey: "limit[betaTesters]")
             encoder.encode(limitBuilds, forKey: "limit[builds]")
@@ -44,9 +45,12 @@ extension Resources.V1.BetaGroups {
             case publicLink
             case feedbackEnabled
             case iosBuildsAvailableForAppleSiliconMac
+            case iosBuildsAvailableForAppleVision
             case app
             case builds
             case betaTesters
+            case betaRecruitmentCriteria
+            case betaRecruitmentCriterionCompatibleBuildCheck
         }
 
         public enum FieldsApps: String, CaseIterable, Codable, Sendable {
@@ -133,10 +137,16 @@ extension Resources.V1.BetaGroups {
             case builds
         }
 
+        public enum FieldsBetaRecruitmentCriteria: String, CaseIterable, Codable, Sendable {
+            case lastModifiedDate
+            case deviceFamilyOsVersionFilters
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case app
             case builds
             case betaTesters
+            case betaRecruitmentCriteria
         }
 
         public func patch(_ body: AppStoreAPI.BetaGroupUpdateRequest) -> Request<AppStoreAPI.BetaGroupResponse> {

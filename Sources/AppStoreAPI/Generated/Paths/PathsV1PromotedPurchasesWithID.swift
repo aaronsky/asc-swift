@@ -16,16 +16,14 @@ extension Resources.V1.PromotedPurchases {
         /// Path: `/v1/promotedPurchases/{id}`
         public let path: String
 
-        public func get(fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsPromotedPurchaseImages: [FieldsPromotedPurchaseImages]? = nil, include: [Include]? = nil, limitPromotionImages: Int? = nil) -> Request<AppStoreAPI.PromotedPurchaseResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsPromotedPurchases, fieldsPromotedPurchaseImages, include, limitPromotionImages), id: "promotedPurchases_getInstance")
+        public func get(fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.PromotedPurchaseResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsPromotedPurchases, include), id: "promotedPurchases_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsPromotedPurchaseImages: [FieldsPromotedPurchaseImages]?, _ include: [Include]?, _ limitPromotionImages: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsPromotedPurchases, forKey: "fields[promotedPurchases]")
-            encoder.encode(fieldsPromotedPurchaseImages, forKey: "fields[promotedPurchaseImages]")
             encoder.encode(include, forKey: "include")
-            encoder.encode(limitPromotionImages, forKey: "limit[promotionImages]")
             return encoder.items
         }
 
@@ -35,25 +33,11 @@ extension Resources.V1.PromotedPurchases {
             case state
             case inAppPurchaseV2
             case subscription
-            case promotionImages
-        }
-
-        public enum FieldsPromotedPurchaseImages: String, CaseIterable, Codable, Sendable {
-            case fileSize
-            case fileName
-            case sourceFileChecksum
-            case assetToken
-            case imageAsset
-            case assetType
-            case uploadOperations
-            case state
-            case promotedPurchase
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case inAppPurchaseV2
             case subscription
-            case promotionImages
         }
 
         public func patch(_ body: AppStoreAPI.PromotedPurchaseUpdateRequest) -> Request<AppStoreAPI.PromotedPurchaseResponse> {
