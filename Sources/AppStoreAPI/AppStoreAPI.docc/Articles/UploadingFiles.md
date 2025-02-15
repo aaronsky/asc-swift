@@ -46,7 +46,7 @@ let reserveScreenshot = try await client.send(
 )
 ```
 
-Using the screenshot response from the last step, unwrap the ``AppScreenshot/Attributes-swift.struct/uploadOperations`` array. While iterating on the array, provide the screenshot data and each operation in sequential order to ``AppStoreConnect/AppStoreConnectClient/upload(operation:from:)``. 
+Using the screenshot response from the last step, unwrap the ``AppScreenshot/Attributes-swift.struct/uploadOperations`` array. While iterating on the array, provide the screenshot data and each operation in sequential order to ``AppStoreConnect/AppStoreConnectClient/upload(operation:from:retry:)``. 
 
 ```swift
 guard let uploadOperations = reserveScreenshot.data.attributes?.uploadOperations else { return }
@@ -76,6 +76,6 @@ let committedScreenshot = try await client.send(
 
 Committing the asset will cause App Store Connect to asynchronously process the asset. It may take several minutes to complete processing. You can perform ``Resources/V1-swift.struct/AppScreenshots-swift.struct/WithID/get(fieldsAppScreenshots:include:)`` to check its processing status and catch errors, which will be stored in ``AppScreenshot/Attributes-swift.struct/assetDeliveryState``. If your asset's state is set to ``AppMediaAssetState/State-swift.enum/failed``, you will need to restart this workflow to create a new screenshot with the errors addressed.
 
-- ``AppStoreConnect/AppStoreConnectClient/upload(operation:from:)``
+- ``AppStoreConnect/AppStoreConnectClient/upload(operation:from:retry:)``
 - ``UploadOperation``
 - ``AppMediaAssetState``

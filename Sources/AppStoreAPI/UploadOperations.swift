@@ -12,8 +12,13 @@ extension AppStoreConnectClient {
     /// - Parameters:
     ///   - operation: Information about the expected size of the chunk and its upload destination.
     ///   - data: The data representation of the uploaded resource.
+    ///   - retry: Retry strategy.
     /// - Throws: An error describing the manner in which the upload failed to complete.
-    public func upload(operation: UploadOperation, from data: Data) async throws {
+    public func upload(
+        operation: UploadOperation,
+        from data: Data,
+        retry strategy: some RetryStrategy = .never
+    ) async throws {
         guard let offset = operation.offset, let length = operation.length else {
             throw UploadOperation.Error.chunkBoundsMismatch(offset: operation.offset, length: operation.length)
         }
@@ -25,7 +30,9 @@ extension AppStoreConnectClient {
             authenticator: &authenticator
         )
 
-        _ = try await transport.upload(request: urlRequest, data: dataChunk, decoder: decoder)
+        _ = try await retry(with: strategy) {
+            try await transport.upload(request: urlRequest, data: dataChunk, decoder: decoder)
+        }
     }
 }
 
