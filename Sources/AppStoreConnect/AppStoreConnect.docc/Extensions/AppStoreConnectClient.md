@@ -8,20 +8,21 @@
 
 ### Sending Requests
 
-- ``send(_:)-4zqp1``
-- ``send(_:)-5w42d``
-- ``send(_:pageAfter:)``
+- ``send(_:retry:)-4vcz8``
+- ``send(_:retry:)-5bxw3``
+- ``send(_:pageAfter:retry:)``
 
 #### Pagination
 
-- ``pages(_:)``
-- ``send(_:pageAfter:)``
+- ``pages(_:retry:)``
+- ``send(_:pageAfter:retry:)``
 
 ### Downloading Files
 
-- ``download(_:)``
+- ``download(_:retry:)``
 
 ### Error Handling
 
+- ``RetryStrategy``
 - ``Rate``
 - ``ErrorResponse``

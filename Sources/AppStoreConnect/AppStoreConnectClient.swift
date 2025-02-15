@@ -48,20 +48,38 @@ public actor AppStoreConnectClient {
     // MARK: - Requests
 
     /// Performs the given request asynchronously.
-    /// - Parameter request: A request.
+    ///
+    /// - Parameters:
+    ///   - request: A request.
+    ///   - retry: Retry strategy.
     /// - Throws: An error describing the manner in which the request failed to complete.
-    public func send(_ request: Request<Void>) async throws {
+    public func send(
+        _ request: Request<Void>,
+        retry strategy: some RetryStrategy = .never
+    ) async throws {
         let urlRequest = try URLRequest(request: request, encoder: encoder, authenticator: &authenticator)
-        _ = try await transport.send(request: urlRequest, decoder: decoder)
+
+        _ = try await retry(with: strategy) {
+            try await transport.send(request: urlRequest, decoder: decoder)
+        }
     }
 
     /// Performs the given request asynchronously.
-    /// - Parameter request: A request.
+    ///
+    /// - Parameters:
+    ///   - request: A request.
+    ///   - retry: Retry strategy.
     /// - Returns: The response from the App Store Connect API.
     /// - Throws: An error describing the manner in which the request failed to complete.
-    public func send<Response>(_ request: Request<Response>) async throws -> Response where Response: Decodable {
+    public func send<Response>(
+        _ request: Request<Response>,
+        retry strategy: some RetryStrategy = .never
+    ) async throws -> Response where Response: Decodable {
         let urlRequest = try URLRequest(request: request, encoder: encoder, authenticator: &authenticator)
-        let response = try await transport.send(request: urlRequest, decoder: decoder)
+
+        let response = try await retry(with: strategy) {
+            try await transport.send(request: urlRequest, decoder: decoder)
+        }
 
         return try response.decode(using: decoder)
     }
@@ -69,10 +87,16 @@ public actor AppStoreConnectClient {
     // MARK: - Pagination
 
     /// Convenience method for accessing a series of paged resources in a sequence asynchronously.
-    /// - Parameter request: The initial request of the sequence.
+    ///
+    /// - Parameters:
+    ///   - request: The initial request of the sequence.
+    ///   - retry: Retry strategy.
     /// - Returns: A ``PagedResponses`` sequence which will provide with each page's response asynchronously.
-    public nonisolated func pages<Response>(_ request: Request<Response>) -> PagedResponses<Response> {
-        PagedResponses(request: request, client: self)
+    public nonisolated func pages<Response>(
+        _ request: Request<Response>,
+        retry strategy: some RetryStrategy = .never
+    ) -> PagedResponses<Response> {
+        PagedResponses(request: request, client: self, retry: strategy)
     }
 
     /// Performs the request that was used to fetch the current object to fetch the next page asynchronously.
@@ -80,23 +104,29 @@ public actor AppStoreConnectClient {
     /// - Parameters:
     ///   - request: A request.
     ///   - currentPage: The API object representing the current page.
+    ///   - retry: Retry strategy.
     /// - Returns: The response from the App Store Connect API.
     /// - Throws: An error describing the manner in which the request failed to complete.
     public func send<Response>(
         _ request: Request<Response>,
-        pageAfter currentPage: Response
+        pageAfter currentPage: Response,
+        retry strategy: some RetryStrategy = .never
     ) async throws -> Response? where Response: Decodable {
         guard let nextPage = pagedDocumentLinks(currentPage)?.next else {
             return nil
         }
 
         let urlRequest = try URLRequest(url: nextPage, encoder: encoder, authenticator: &authenticator)
-        let response = try await transport.send(request: urlRequest, decoder: decoder)
+
+        let response = try await retry(with: strategy) {
+            try await transport.send(request: urlRequest, decoder: decoder)
+        }
 
         return try response.decode(using: decoder)
     }
 
     /// Performs the given request asynchronously.
+    ///
     /// - Parameter object: Some object that may contain a property of the type ``PagedDocumentLinks``.
     /// - Returns: The ``PagedDocumentLinks`` instance, if one exists.
     private nonisolated func pagedDocumentLinks<Entity>(_ object: Entity) -> PagedDocumentLinks? {
@@ -108,12 +138,21 @@ public actor AppStoreConnectClient {
     // MARK: - Downloads
 
     /// Downloads a resource asynchronously to a temporary location.
-    /// - Parameter request: A request.
+    ///
+    /// - Parameters:
+    ///   - request: A request.
+    ///   - retry: Retry strategy.
     /// - Returns: URL to the location of the resource on-disk.
     /// - Throws: An error describing the manner in which the request failed to complete.
-    public func download(_ request: Request<Data>) async throws -> URL {
+    public func download(
+        _ request: Request<Data>,
+        retry strategy: some RetryStrategy = .never
+    ) async throws -> URL {
         let urlRequest = try URLRequest(request: request, encoder: encoder, authenticator: &authenticator)
-        let response = try await transport.download(request: urlRequest)
+
+        let response = try await retry(with: strategy) {
+            try await transport.download(request: urlRequest)
+        }
 
         return try response.decode()
     }

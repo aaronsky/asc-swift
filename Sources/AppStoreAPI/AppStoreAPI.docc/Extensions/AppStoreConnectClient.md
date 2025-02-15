@@ -4,4 +4,4 @@
 
 ### Uploading Files
 
-- ``AppStoreConnect/AppStoreConnectClient/upload(operation:from:)``
+- ``AppStoreConnect/AppStoreConnectClient/upload(operation:from:retry:)``

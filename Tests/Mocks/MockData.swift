@@ -123,6 +123,16 @@ extension MockData {
     }
 
     @Sendable
+    public static func mockingServerErrorResponse(for url: URL = URL()) -> Response<Data> {
+        let json = """
+            {"errors":[{"code":"test","status":500,"title":"test","detail":"test"}]}
+            """
+            .data(using: .utf8)
+
+        return .init(data: json, response: urlResponse(for: url, statusCode: 500), statusCode: 500, rate: nil)
+    }
+
+    @Sendable
     public static func mockingError(for request: URLRequest) throws -> Response<Data> {
         throw URLError(.badURL)
     }

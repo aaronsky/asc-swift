@@ -5,7 +5,7 @@ import XCTest
 @testable import AppStoreConnect
 
 #if canImport(FoundationNetworking)
-    import FoundationNetworking
+import FoundationNetworking
 #endif
 
 final class AppStoreConnectClientTests: XCTestCase {
@@ -18,6 +18,7 @@ final class AppStoreConnectClientTests: XCTestCase {
             case badResponse
             case unsuccessfulResponse
             case noData
+            case serverError
         }
 
         var context: MockContext
@@ -51,6 +52,12 @@ final class AppStoreConnectClientTests: XCTestCase {
                 ])
             case .noData:
                 context = MockContext(responses: [])
+            case .serverError:
+                context = MockContext(responses: [
+                    .data(MockData.mockingServerErrorResponse()),
+                    .data(MockData.mockingServerErrorResponse()),
+                    .data(MockData.mockingServerErrorResponse()),
+                ])
             }
         }
     }
@@ -115,5 +122,87 @@ final class AppStoreConnectClientTests: XCTestCase {
         let testData = try TestData(testCase: .successDownload)
         let response: URL = try await testData.context.client.download(testData.context.request())
         XCTAssertEqual(testData.resources.downloadURL, response)
+    }
+
+    func testRequestWithFixedRetry() async throws {
+        let testData = try TestData(testCase: .serverError)
+        try await XCTAssertThrowsError(
+            await testData.context.client.send(
+                testData.context.request(),
+                retry: .fixedInterval(.zero, limit: 3, clock: ImmediateClock())
+            )
+        )
+    }
+
+    func testRequestWithExponentialBackoffRetry() async throws {
+        let testData = try TestData(testCase: .serverError)
+        try await XCTAssertThrowsError(
+            await testData.context.client.send(
+                testData.context.request(),
+                retry: .exponentialBackoff(interval: .zero, limit: 3, exponentialBase: 2, clock: ImmediateClock())
+            )
+        )
+    }
+
+    func testRequestWithCustomRetry() async throws {
+        struct MockRetryStrategy: RetryStrategy {
+            var limit: Int
+
+            func waitAndContinue(for error: any Error, iteration: Int) async throws -> Bool {
+                guard iteration < limit else { return false }
+
+                return true
+            }
+        }
+
+        let testData = try TestData(testCase: .serverError)
+        try await XCTAssertThrowsError(
+            await testData.context.client.send(
+                testData.context.request(),
+                retry: MockRetryStrategy(limit: 3)
+            )
+        )
+    }
+}
+
+/// Adapted from https://github.com/pointfreeco/swift-clocks/blob/2c747763e02f8d39ed1b868e1725e65d8e06950d/Sources/Clocks/ImmediateClock.swift
+fileprivate final class ImmediateClock<Duration>: Clock, @unchecked Sendable where Duration: DurationProtocol & Hashable {
+    struct Instant: InstantProtocol {
+        private let offset: Duration
+
+        init(offset: Duration = .zero) {
+            self.offset = offset
+        }
+
+        func advanced(by duration: Duration) -> Self {
+            .init(offset: self.offset + duration)
+        }
+
+        func duration(to other: Self) -> Duration {
+            other.offset - self.offset
+        }
+
+        static func < (lhs: Self, rhs: Self) -> Bool {
+            lhs.offset < rhs.offset
+        }
+    }
+
+    private(set) var now: Instant
+    private(set) var minimumResolution: Duration = .zero
+
+    public init(now: Instant = .init()) {
+        self.now = now
+    }
+
+    public func sleep(until deadline: Instant, tolerance: Duration?) async throws {
+        try Task.checkCancellation()
+        self.now = deadline
+        await Task.yield()
+    }
+}
+
+extension ImmediateClock where Duration == Swift.Duration {
+    fileprivate convenience init() {
+        self.init(now: .init())
     }
 }
