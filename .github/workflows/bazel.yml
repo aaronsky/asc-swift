@@ -5,28 +5,28 @@ on:
     branches:
       - main
     paths:
-      - '.bazelrc'
-      - '.bazelversion'
-      - '.github/workflows/bazel.yml'
-      - '**/BUILD.bazel'
-      - '**/BUILD.overlay'
-      - 'bazel/*'
-      - 'Examples/**/*.swift'
-      - 'MODULE.bazel'
-      - 'Sources/**/*.swift'
-      - 'Tests/**/*.swift'
+      - ".bazelrc"
+      - ".bazelversion"
+      - ".github/workflows/bazel.yml"
+      - "**/BUILD.bazel"
+      - "**/BUILD.overlay"
+      - "bazel/*"
+      - "Examples/**/*.swift"
+      - "MODULE.bazel"
+      - "Sources/**/*.swift"
+      - "Tests/**/*.swift"
   pull_request:
     paths:
-      - '.bazelrc'
-      - '.bazelversion'
-      - '.github/workflows/bazel.yml'
-      - '**/BUILD.bazel'
-      - '**/BUILD.overlay'
-      - 'bazel/*'
-      - 'Examples/**/*.swift'
-      - 'MODULE.bazel'
-      - 'Sources/**/*.swift'
-      - 'Tests/**/*.swift'
+      - ".bazelrc"
+      - ".bazelversion"
+      - ".github/workflows/bazel.yml"
+      - "**/BUILD.bazel"
+      - "**/BUILD.overlay"
+      - "bazel/*"
+      - "Examples/**/*.swift"
+      - "MODULE.bazel"
+      - "Sources/**/*.swift"
+      - "Tests/**/*.swift"
   workflow_dispatch: ~
 
 concurrency:
@@ -46,16 +46,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: ['6.0']
+        tag: ["6.0"]
     container:
       image: swift:${{ matrix.tag }}-focal
     steps:
       - uses: bazel-contrib/setup-bazel@0.8.5
         with:
           bazelisk-cache: true
-          bazelisk-version: 1.x
       - uses: actions/checkout@v4
-      - run: bazel test --test_output=all //Tests/AppStoreConnectTests
+      - run: bazel test //...
   bzlmod-e2e-macOS:
     runs-on: macos-15
     steps:
@@ -69,7 +68,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: ['6.0']
+        tag: ["6.0"]
     container:
       image: swift:${{ matrix.tag }}-focal
     steps:

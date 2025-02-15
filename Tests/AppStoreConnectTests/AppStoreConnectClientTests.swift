@@ -1,172 +1,147 @@
 import Foundation
 import Mocks
-import XCTest
+import Testing
 
 @testable import AppStoreConnect
 
 #if canImport(FoundationNetworking)
-import FoundationNetworking
+    import FoundationNetworking
 #endif
 
-final class AppStoreConnectClientTests: XCTestCase {
-    private struct TestData: Sendable {
-        enum Case {
-            case success
-            case successPaginated
-            case successNoContent
-            case successDownload
-            case badResponse
-            case unsuccessfulResponse
-            case noData
-            case serverError
-        }
+@Test func request() async throws {
+    let resources = MockResources()
+    let context = try MockContext(content: resources.content)
+    let response: MockResources.Content = try await context.client.send(context.request())
+    #expect(resources.content == response)
+}
 
-        var context: MockContext
-        var resources = MockResources()
+@Test func requestWithPagedResponses() async throws {
+    let resources = MockResources()
+    let context = try MockContext(
+        content: resources.pagedContentFirst,
+        resources.pagedContentNext,
+        resources.pagedContentLast
+    )
 
-        init(
-            testCase: Case
-        ) throws {
-            switch testCase {
-            case .success:
-                context = try MockContext(content: resources.content)
-            case .successPaginated:
-                context = try MockContext(
-                    content: resources.pagedContentFirst,
-                    resources.pagedContentNext,
-                    resources.pagedContentLast
-                )
-            case .successNoContent:
-                context = MockContext()
-            case .successDownload:
-                context = MockContext(responses: [
-                    .fileURL(MockData.mockingSuccessDownload(to: resources.downloadURL))
-                ])
-            case .badResponse:
-                context = MockContext(responses: [
-                    .data(MockData.mockingIncompatibleResponse())
-                ])
-            case .unsuccessfulResponse:
-                context = MockContext(responses: [
-                    .data(MockData.mockingUnsuccessfulResponse())
-                ])
-            case .noData:
-                context = MockContext(responses: [])
-            case .serverError:
-                context = MockContext(responses: [
-                    .data(MockData.mockingServerErrorResponse()),
-                    .data(MockData.mockingServerErrorResponse()),
-                    .data(MockData.mockingServerErrorResponse()),
-                ])
-            }
-        }
+    var page = 0
+    let pages = [
+        resources.pagedContentFirst,
+        resources.pagedContentNext,
+        resources.pagedContentLast,
+    ]
+    for try await response: MockResources.PagedContent in await context.client.pages(
+        context.request()
+    ) {
+        defer { page += 1 }
+        #expect(response == pages[page])
     }
 
-    func testRequest() async throws {
-        let testData = try TestData(testCase: .success)
-        let response: MockResources.Content = try await testData.context.client.send(testData.context.request())
-        XCTAssertEqual(testData.resources.content, response)
+    #expect(page == 3)
+}
+
+@Test func requestWithManualPagination() async throws {
+    let resources = MockResources()
+    let context = try MockContext(
+        content: resources.pagedContentFirst,
+        resources.pagedContentNext,
+        resources.pagedContentLast
+    )
+    var response: MockResources.PagedContent? = try await context.client.send(context.request())
+    #expect(resources.pagedContentFirst == response)
+    response = try await context.client.send(context.request(), pageAfter: #require(response))
+    #expect(resources.pagedContentNext == response)
+    response = try await context.client.send(context.request(), pageAfter: #require(response))
+    #expect(resources.pagedContentLast == response)
+    response = try await context.client.send(context.request(), pageAfter: #require(response))
+    #expect(response == nil)
+}
+
+@Test func noContentResponse() async throws {
+    let context = MockContext()
+    _ = try await context.client.send(context.request())
+}
+
+@Test func badResponse() async throws {
+    let context = MockContext(responses: [
+        .data(MockData.mockingIncompatibleResponse())
+    ])
+    await #expect(throws: (any Error).self) {
+        try await context.client.send(context.request())
     }
+}
 
-    func testRequestWithPagedResponses() async throws {
-        let testData = try TestData(testCase: .successPaginated)
-
-        var page = 0
-        let pages = [
-            testData.resources.pagedContentFirst,
-            testData.resources.pagedContentNext,
-            testData.resources.pagedContentLast,
-        ]
-        for try await response: MockResources.PagedContent in await testData.context.client.pages(
-            testData.context.request()
-        ) {
-            defer { page += 1 }
-            XCTAssertEqual(response, pages[page])
-        }
-
-        XCTAssertEqual(page, 3)
+@Test func unsuccessfulResponse() async throws {
+    let context = MockContext(responses: [
+        .data(MockData.mockingUnsuccessfulResponse())
+    ])
+    await #expect(throws: (any Error).self) {
+        try await context.client.send(context.request())
     }
+}
 
-    func testRequestWithManualPagination() async throws {
-        let testData = try TestData(testCase: .successPaginated)
-        var response: MockResources.PagedContent? = try await testData.context.client.send(testData.context.request())
-        XCTAssertEqual(testData.resources.pagedContentFirst, response)
-        response = try await testData.context.client.send(testData.context.request(), pageAfter: XCTUnwrap(response))
-        XCTAssertEqual(testData.resources.pagedContentNext, response)
-        response = try await testData.context.client.send(testData.context.request(), pageAfter: XCTUnwrap(response))
-        XCTAssertEqual(testData.resources.pagedContentLast, response)
-        response = try await testData.context.client.send(testData.context.request(), pageAfter: XCTUnwrap(response))
-        XCTAssertNil(response)
-    }
+@Test func requestDownload() async throws {
+    let resources = MockResources()
+    let context = MockContext(responses: [
+        .fileURL(MockData.mockingSuccessDownload(to: resources.downloadURL))
+    ])
+    let response: URL = try await context.client.download(context.request())
+    #expect(resources.downloadURL == response)
+}
 
-    func testNoContentResponse() async throws {
-        let testData = try TestData(testCase: .successNoContent)
-        _ = try await testData.context.client.send(testData.context.request())
-    }
-
-    func testBadResponse() async throws {
-        let testData = try TestData(testCase: .badResponse)
-        try await XCTAssertThrowsError(
-            await testData.context.client.send(testData.context.request())
+@Test func requestWithFixedRetry() async throws {
+    let context = MockContext(responses: [
+        .data(MockData.mockingServerErrorResponse()),
+        .data(MockData.mockingServerErrorResponse()),
+        .data(MockData.mockingServerErrorResponse()),
+    ])
+    await #expect(throws: (any Error).self) {
+        try await context.client.send(
+            context.request(),
+            retry: .fixedInterval(.zero, limit: 3, clock: ImmediateClock())
         )
     }
+}
 
-    func testUnsuccessfulResponse() async throws {
-        let testData = try TestData(testCase: .unsuccessfulResponse)
-        try await XCTAssertThrowsError(
-            await testData.context.client.send(testData.context.request())
+@Test func requestWithExponentialBackoffRetry() async throws {
+    let context = MockContext(responses: [
+        .data(MockData.mockingServerErrorResponse()),
+        .data(MockData.mockingServerErrorResponse()),
+        .data(MockData.mockingServerErrorResponse()),
+    ])
+    await #expect(throws: (any Error).self) {
+        try await context.client.send(
+            context.request(),
+            retry: .exponentialBackoff(interval: .zero, limit: 3, exponentialBase: 2, clock: ImmediateClock())
         )
     }
+}
 
-    func testRequestDownload() async throws {
-        let testData = try TestData(testCase: .successDownload)
-        let response: URL = try await testData.context.client.download(testData.context.request())
-        XCTAssertEqual(testData.resources.downloadURL, response)
-    }
+@Test func requestWithCustomRetry() async throws {
+    struct MockRetryStrategy: RetryStrategy {
+        var limit: Int
 
-    func testRequestWithFixedRetry() async throws {
-        let testData = try TestData(testCase: .serverError)
-        try await XCTAssertThrowsError(
-            await testData.context.client.send(
-                testData.context.request(),
-                retry: .fixedInterval(.zero, limit: 3, clock: ImmediateClock())
-            )
-        )
-    }
+        func waitAndContinue(for error: any Error, iteration: Int) async throws -> Bool {
+            guard iteration < limit else { return false }
 
-    func testRequestWithExponentialBackoffRetry() async throws {
-        let testData = try TestData(testCase: .serverError)
-        try await XCTAssertThrowsError(
-            await testData.context.client.send(
-                testData.context.request(),
-                retry: .exponentialBackoff(interval: .zero, limit: 3, exponentialBase: 2, clock: ImmediateClock())
-            )
-        )
-    }
-
-    func testRequestWithCustomRetry() async throws {
-        struct MockRetryStrategy: RetryStrategy {
-            var limit: Int
-
-            func waitAndContinue(for error: any Error, iteration: Int) async throws -> Bool {
-                guard iteration < limit else { return false }
-
-                return true
-            }
+            return true
         }
+    }
 
-        let testData = try TestData(testCase: .serverError)
-        try await XCTAssertThrowsError(
-            await testData.context.client.send(
-                testData.context.request(),
-                retry: MockRetryStrategy(limit: 3)
-            )
+    let context = MockContext(responses: [
+        .data(MockData.mockingServerErrorResponse()),
+        .data(MockData.mockingServerErrorResponse()),
+        .data(MockData.mockingServerErrorResponse()),
+    ])
+    await #expect(throws: (any Error).self) {
+        try await context.client.send(
+            context.request(),
+            retry: MockRetryStrategy(limit: 3)
         )
     }
 }
 
 /// Adapted from https://github.com/pointfreeco/swift-clocks/blob/2c747763e02f8d39ed1b868e1725e65d8e06950d/Sources/Clocks/ImmediateClock.swift
-fileprivate final class ImmediateClock<Duration>: Clock, @unchecked Sendable where Duration: DurationProtocol & Hashable {
+private final class ImmediateClock<Duration>: Clock, @unchecked Sendable where Duration: DurationProtocol & Hashable {
     struct Instant: InstantProtocol {
         private let offset: Duration
 

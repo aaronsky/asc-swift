@@ -5,18 +5,18 @@ on:
     branches:
       - main
     paths:
-      - '.github/workflows/swiftpm.yml'
-      - 'Examples/**/*.swift'
-      - 'Package*'
-      - 'Sources/**/*.swift'
-      - 'Tests/**/*.swift'
+      - ".github/workflows/swiftpm.yml"
+      - "Examples/**/*.swift"
+      - "Package*"
+      - "Sources/**/*.swift"
+      - "Tests/**/*.swift"
   pull_request:
     paths:
-      - '.github/workflows/swiftpm.yml'
-      - 'Examples/**/*.swift'
-      - 'Package*'
-      - 'Sources/**/*.swift'
-      - 'Tests/**/*.swift'
+      - ".github/workflows/swiftpm.yml"
+      - "Examples/**/*.swift"
+      - "Package*"
+      - "Sources/**/*.swift"
+      - "Tests/**/*.swift"
   workflow_dispatch: ~
 
 concurrency:
@@ -28,20 +28,20 @@ jobs:
     runs-on: macos-15
     strategy:
       matrix:
-        xcode: ['16.1']
+        xcode: ["16.2"]
     env:
       DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
     steps:
       - uses: actions/checkout@v4
       - run: swift -version
-      - run: swift test --parallel
+      - run: swift test --parallel --disable-xctest
   Linux:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: ['6.0']
+        tag: ["6.0"]
     container:
       image: swift:${{ matrix.tag }}-focal
     steps:
       - uses: actions/checkout@v4
-      - run: swift test --parallel
+      - run: swift test --parallel --disable-xctest
