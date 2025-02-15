@@ -1,6 +1,6 @@
 import Foundation
 import Mocks
-import XCTest
+import Testing
 
 @testable import AppStoreConnect
 
@@ -20,86 +20,80 @@ import XCTest
 //
 // https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api
 
-final class JWTTests: XCTestCase {
-    func testToken() throws {
-        var jwt = try JWT(
+@Test func token() throws {
+    var jwt = try JWT(
+        keyID: "TEST",
+        issuerID: "TEST",
+        expiryDuration: 20 * 60,  // 20 minutes
+        privateKey: .init(
+            pemRepresentation: """
+                -----BEGIN PRIVATE KEY-----
+                MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgg2wUxVlKtf88twNw
+                86ZrWxuzZtwOeYylHJsF4mPE4qOhRANCAAS/zi5KmzpwSba4j3y/LjgkC7hzOmez
+                gNlQxzOA98JVvq0k3iE3UtY0mBovKEW2T30AQ5VXhZh011wFgfze1xBx
+                -----END PRIVATE KEY-----
+                """
+        ),
+        date: Date(timeIntervalSince1970: 1000)
+    )
+
+    let token = try jwt.token()
+    let components = token.components(separatedBy: ".")
+    #expect(components.count == 3)
+
+    let cachedToken = try jwt.token()
+    #expect(cachedToken == token)
+}
+
+@Test func tokenBadPEM() throws {
+    #expect(throws: (any Error).self) {
+        try JWT(
             keyID: "TEST",
             issuerID: "TEST",
             expiryDuration: 20 * 60,  // 20 minutes
             privateKey: .init(
-                pemRepresentation: """
-                    -----BEGIN PRIVATE KEY-----
-                    MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgg2wUxVlKtf88twNw
-                    86ZrWxuzZtwOeYylHJsF4mPE4qOhRANCAAS/zi5KmzpwSba4j3y/LjgkC7hzOmez
-                    gNlQxzOA98JVvq0k3iE3UtY0mBovKEW2T30AQ5VXhZh011wFgfze1xBx
-                    -----END PRIVATE KEY-----
-                    """
+                pemRepresentation: "TEST"
             ),
             date: Date(timeIntervalSince1970: 1000)
         )
-
-        let token = try jwt.token()
-        let components = token.components(separatedBy: ".")
-        XCTAssertEqual(components.count, 3)
-
-        let cachedToken = try jwt.token()
-        XCTAssertEqual(cachedToken, token)
     }
+}
 
-    func testTokenBadPEM() throws {
-        XCTAssertThrowsError(
-            try JWT(
-                keyID: "TEST",
-                issuerID: "TEST",
-                expiryDuration: 20 * 60,  // 20 minutes
-                privateKey: .init(
-                    pemRepresentation: "TEST"
-                ),
-                date: Date(timeIntervalSince1970: 1000)
-            )
+@Test func decoding() throws {
+    let (header, payload) = try JWT.decode(
+        from:
+            "eyJ0eXAiOiJKV1QiLCJraWQiOiJURVNUIiwiYWxnIjoiRVMyNTYifQ.eyJhdWQiOiJhcHBzdG9yZWNvbm5lY3QtdjEiLCJpc3MiOiJURVNUIiwiZXhwIjoyMjAwfQ.8miqcPXzOqo1IP-mi86yb6LBJq4UHWd9jm5W7H64gEoHfVgExT5-qq3WqPYhIq8ZHHXivUUGco6O6I9o35kVAw"
+    )
+    #expect(header == JWT.Header(key: "TEST"))
+    #expect(
+        payload
+            == JWT.Payload(
+                audience: API.appStoreConnect.audience, issuer: "TEST", issuedAt: nil, expiry: 2200, scope: nil)
+    )
+
+    #expect(
+        throws: JWT.DecodingError.dataCorrupted(
+            .init(debugDescription: "Invalid part count: expected 3, found 2")
         )
-    }
-
-    func testDecoding() throws {
-        let (header, payload) = try JWT.decode(
+    ) {
+        try JWT.decode(
             from:
-                "eyJ0eXAiOiJKV1QiLCJraWQiOiJURVNUIiwiYWxnIjoiRVMyNTYifQ.eyJhdWQiOiJhcHBzdG9yZWNvbm5lY3QtdjEiLCJpc3MiOiJURVNUIiwiZXhwIjoyMjAwfQ.8miqcPXzOqo1IP-mi86yb6LBJq4UHWd9jm5W7H64gEoHfVgExT5-qq3WqPYhIq8ZHHXivUUGco6O6I9o35kVAw"
+                "eyJ0eXAiOiJKV1QiLCJraWQiOiJURVNUIiwiYWxnIjoiRVMyNTYifQ.eyJhdWQiOiJhcHBzdG9yZWNvbm5lY3QtdjEiLCJpc3MiOiJURVNUIiwiZXhwIjoyMjAwfQ"
         )
-        XCTAssertEqual(header, JWT.Header(key: "TEST"))
-        XCTAssertEqual(
-            payload,
-            JWT.Payload(audience: API.appStoreConnect.audience, issuer: "TEST", issuedAt: nil, expiry: 2200, scope: nil)
-        )
-
-        XCTAssertThrowsError(
-            try JWT.decode(
-                from:
-                    "eyJ0eXAiOiJKV1QiLCJraWQiOiJURVNUIiwiYWxnIjoiRVMyNTYifQ.eyJhdWQiOiJhcHBzdG9yZWNvbm5lY3QtdjEiLCJpc3MiOiJURVNUIiwiZXhwIjoyMjAwfQ"
-            )
-        ) { error in
-            XCTAssertEqual(
-                error as? JWT.DecodingError,
-                JWT.DecodingError.dataCorrupted(
-                    .init(
-                        debugDescription: "Invalid part count: expected 3, found 2"
-                    )
-                )
-            )
-        }
-
-        XCTAssertThrowsError(
-            try JWT.decode(
-                from:
-                    "h.eyJhdWQiOiJhcHBzdG9yZWNvbm5lY3QtdjEiLCJpc3MiOiJURVNUIiwiZXhwIjoyMjAwfQ.8miqcPXzOqo1IP-mi86yb6LBJq4UHWd9jm5W7H64gEoHfVgExT5-qq3WqPYhIq8ZHHXivUUGco6O6I9o35kVAw"
-            )
-        )
-        XCTAssertThrowsError(
-            try JWT.decode(
-                from:
-                    "eyJ0eXAiOiJKV1QiLCJraWQiOiJURVNUIiwiYWxnIjoiRVMyNTYifQ.h.8miqcPXzOqo1IP-mi86yb6LBJq4UHWd9jm5W7H64gEoHfVgExT5-qq3WqPYhIq8ZHHXivUUGco6O6I9o35kVAw"
-            )
-        )
-
-        XCTAssertTrue(JWT.isExpired("e.e.e", date: Date(timeIntervalSince1970: 1000)))
     }
+
+    #expect(throws: (any Error).self) {
+        try JWT.decode(
+            from:
+                "h.eyJhdWQiOiJhcHBzdG9yZWNvbm5lY3QtdjEiLCJpc3MiOiJURVNUIiwiZXhwIjoyMjAwfQ.8miqcPXzOqo1IP-mi86yb6LBJq4UHWd9jm5W7H64gEoHfVgExT5-qq3WqPYhIq8ZHHXivUUGco6O6I9o35kVAw"
+        )
+    }
+    #expect(throws: (any Error).self) {
+        try JWT.decode(
+            from:
+                "eyJ0eXAiOiJKV1QiLCJraWQiOiJURVNUIiwiYWxnIjoiRVMyNTYifQ.h.8miqcPXzOqo1IP-mi86yb6LBJq4UHWd9jm5W7H64gEoHfVgExT5-qq3WqPYhIq8ZHHXivUUGco6O6I9o35kVAw"
+        )
+    }
+
+    #expect(JWT.isExpired("e.e.e", date: Date(timeIntervalSince1970: 1000)))
 }
