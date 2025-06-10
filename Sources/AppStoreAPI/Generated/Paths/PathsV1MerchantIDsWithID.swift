@@ -44,6 +44,7 @@ extension Resources.V1.MerchantIDs {
             case expirationDate
             case certificateContent
             case activated
+            case passTypeID = "passTypeId"
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

@@ -30,6 +30,7 @@ public struct CertificateCreateRequest: Codable, Equatable, Sendable {
 
         public struct Relationships: Codable, Equatable, Sendable {
             public var merchantID: MerchantID?
+            public var passTypeID: PassTypeID?
 
             public struct MerchantID: Codable, Equatable, Sendable {
                 public var data: Data?
@@ -53,12 +54,36 @@ public struct CertificateCreateRequest: Codable, Equatable, Sendable {
                 }
             }
 
-            public init(merchantID: MerchantID? = nil) {
+            public struct PassTypeID: Codable, Equatable, Sendable {
+                public var data: Data?
+
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
+                        case passTypeIDs = "passTypeIds"
+                    }
+
+                    public init(type: `Type` = .passTypeIDs, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: Data? = nil) {
+                    self.data = data
+                }
+            }
+
+            public init(merchantID: MerchantID? = nil, passTypeID: PassTypeID? = nil) {
                 self.merchantID = merchantID
+                self.passTypeID = passTypeID
             }
 
             private enum CodingKeys: String, CodingKey {
                 case merchantID = "merchantId"
+                case passTypeID = "passTypeId"
             }
         }
 

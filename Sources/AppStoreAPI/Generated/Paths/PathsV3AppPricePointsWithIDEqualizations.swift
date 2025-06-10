@@ -40,6 +40,7 @@ extension Resources.V3.AppPricePoints.WithID {
         }
 
         public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case accessibilityURL = "accessibilityUrl"
             case name
             case bundleID = "bundleId"
             case sku
@@ -51,6 +52,7 @@ extension Resources.V3.AppPricePoints.WithID {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
             case contentRightsDeclaration
             case streamlinedPurchasingEnabled
+            case accessibilityDeclarations
             case appEncryptionDeclarations
             case ciProduct
             case betaTesters
@@ -78,11 +80,16 @@ extension Resources.V3.AppPricePoints.WithID {
             case reviewSubmissions
             case subscriptionGracePeriod
             case customerReviews
+            case customerReviewSummarizations
             case gameCenterDetail
             case appStoreVersionExperimentsV2
             case alternativeDistributionKey
             case analyticsReportRequests
             case marketplaceSearchDetail
+            case backgroundAssets
+            case betaFeedbackScreenshotSubmissions
+            case betaFeedbackCrashSubmissions
+            case webhooks
         }
 
         public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {

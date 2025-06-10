@@ -16,12 +16,13 @@ extension Resources.V1 {
         /// Path: `/v1/preReleaseVersions`
         public let path: String
 
-        public func get(filterBuildsExpired: [String]? = nil, filterBuildsProcessingState: [FilterBuildsProcessingState]? = nil, filterBuildsVersion: [String]? = nil, filterPlatform: [FilterPlatform]? = nil, filterVersion: [String]? = nil, filterApp: [String]? = nil, filterBuilds: [String]? = nil, sort: [Sort]? = nil, fieldsPreReleaseVersions: [FieldsPreReleaseVersions]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsApps: [FieldsApps]? = nil, limit: Int? = nil, include: [Include]? = nil, limitBuilds: Int? = nil) -> Request<AppStoreAPI.PreReleaseVersionsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterBuildsExpired, filterBuildsProcessingState, filterBuildsVersion, filterPlatform, filterVersion, filterApp, filterBuilds, sort, fieldsPreReleaseVersions, fieldsBuilds, fieldsApps, limit, include, limitBuilds), id: "preReleaseVersions_getCollection")
+        public func get(filterBuildsBuildAudienceType: [FilterBuildsBuildAudienceType]? = nil, filterBuildsExpired: [String]? = nil, filterBuildsProcessingState: [FilterBuildsProcessingState]? = nil, filterBuildsVersion: [String]? = nil, filterPlatform: [FilterPlatform]? = nil, filterVersion: [String]? = nil, filterApp: [String]? = nil, filterBuilds: [String]? = nil, sort: [Sort]? = nil, fieldsPreReleaseVersions: [FieldsPreReleaseVersions]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsApps: [FieldsApps]? = nil, limit: Int? = nil, include: [Include]? = nil, limitBuilds: Int? = nil) -> Request<AppStoreAPI.PreReleaseVersionsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterBuildsBuildAudienceType, filterBuildsExpired, filterBuildsProcessingState, filterBuildsVersion, filterPlatform, filterVersion, filterApp, filterBuilds, sort, fieldsPreReleaseVersions, fieldsBuilds, fieldsApps, limit, include, limitBuilds), id: "preReleaseVersions_getCollection")
         }
 
-        private func makeGetQuery(_ filterBuildsExpired: [String]?, _ filterBuildsProcessingState: [FilterBuildsProcessingState]?, _ filterBuildsVersion: [String]?, _ filterPlatform: [FilterPlatform]?, _ filterVersion: [String]?, _ filterApp: [String]?, _ filterBuilds: [String]?, _ sort: [Sort]?, _ fieldsPreReleaseVersions: [FieldsPreReleaseVersions]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsApps: [FieldsApps]?, _ limit: Int?, _ include: [Include]?, _ limitBuilds: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterBuildsBuildAudienceType: [FilterBuildsBuildAudienceType]?, _ filterBuildsExpired: [String]?, _ filterBuildsProcessingState: [FilterBuildsProcessingState]?, _ filterBuildsVersion: [String]?, _ filterPlatform: [FilterPlatform]?, _ filterVersion: [String]?, _ filterApp: [String]?, _ filterBuilds: [String]?, _ sort: [Sort]?, _ fieldsPreReleaseVersions: [FieldsPreReleaseVersions]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsApps: [FieldsApps]?, _ limit: Int?, _ include: [Include]?, _ limitBuilds: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
+            encoder.encode(filterBuildsBuildAudienceType, forKey: "filter[builds.buildAudienceType]")
             encoder.encode(filterBuildsExpired, forKey: "filter[builds.expired]")
             encoder.encode(filterBuildsProcessingState, forKey: "filter[builds.processingState]")
             encoder.encode(filterBuildsVersion, forKey: "filter[builds.version]")
@@ -37,6 +38,11 @@ extension Resources.V1 {
             encoder.encode(include, forKey: "include")
             encoder.encode(limitBuilds, forKey: "limit[builds]")
             return encoder.items
+        }
+
+        public enum FilterBuildsBuildAudienceType: String, CaseIterable, Codable, Sendable {
+            case internalOnly = "INTERNAL_ONLY"
+            case appStoreEligible = "APP_STORE_ELIGIBLE"
         }
 
         public enum FilterBuildsProcessingState: String, CaseIterable, Codable, Sendable {
@@ -73,6 +79,7 @@ extension Resources.V1 {
             case minOsVersion
             case lsMinimumSystemVersion
             case computedMinMacOsVersion
+            case computedMinVisionOsVersion
             case iconAssetToken
             case processingState
             case buildAudienceType
@@ -93,6 +100,7 @@ extension Resources.V1 {
         }
 
         public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case accessibilityURL = "accessibilityUrl"
             case name
             case bundleID = "bundleId"
             case sku
@@ -104,6 +112,7 @@ extension Resources.V1 {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
             case contentRightsDeclaration
             case streamlinedPurchasingEnabled
+            case accessibilityDeclarations
             case appEncryptionDeclarations
             case ciProduct
             case betaTesters
@@ -131,11 +140,16 @@ extension Resources.V1 {
             case reviewSubmissions
             case subscriptionGracePeriod
             case customerReviews
+            case customerReviewSummarizations
             case gameCenterDetail
             case appStoreVersionExperimentsV2
             case alternativeDistributionKey
             case analyticsReportRequests
             case marketplaceSearchDetail
+            case backgroundAssets
+            case betaFeedbackScreenshotSubmissions
+            case betaFeedbackCrashSubmissions
+            case webhooks
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

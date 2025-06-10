@@ -105,6 +105,7 @@ extension Resources.V1.Apps.WithID {
             case reviewType
             case releaseType
             case earliestReleaseDate
+            case usesIdfa
             case downloadable
             case createdDate
             case app
@@ -124,6 +125,7 @@ extension Resources.V1.Apps.WithID {
         }
 
         public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case accessibilityURL = "accessibilityUrl"
             case name
             case bundleID = "bundleId"
             case sku
@@ -135,6 +137,7 @@ extension Resources.V1.Apps.WithID {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
             case contentRightsDeclaration
             case streamlinedPurchasingEnabled
+            case accessibilityDeclarations
             case appEncryptionDeclarations
             case ciProduct
             case betaTesters
@@ -162,17 +165,21 @@ extension Resources.V1.Apps.WithID {
             case reviewSubmissions
             case subscriptionGracePeriod
             case customerReviews
+            case customerReviewSummarizations
             case gameCenterDetail
             case appStoreVersionExperimentsV2
             case alternativeDistributionKey
             case analyticsReportRequests
             case marketplaceSearchDetail
+            case backgroundAssets
+            case betaFeedbackScreenshotSubmissions
+            case betaFeedbackCrashSubmissions
+            case webhooks
         }
 
         public enum FieldsAgeRatingDeclarations: String, CaseIterable, Codable, Sendable {
             case alcoholTobaccoOrDrugUseOrReferences
             case contests
-            case gamblingAndContests
             case gambling
             case gamblingSimulated
             case kidsAgeBand
@@ -187,9 +194,7 @@ extension Resources.V1.Apps.WithID {
             case violenceCartoonOrFantasy
             case violenceRealisticProlongedGraphicOrSadistic
             case violenceRealistic
-            case ageRatingOverride
             case koreaAgeRatingOverride
-            case seventeenPlus
         }
 
         public enum FieldsAppStoreVersionLocalizations: String, CaseIterable, Codable, Sendable {
@@ -213,6 +218,7 @@ extension Resources.V1.Apps.WithID {
             case minOsVersion
             case lsMinimumSystemVersion
             case computedMinMacOsVersion
+            case computedMinVisionOsVersion
             case iconAssetToken
             case processingState
             case buildAudienceType

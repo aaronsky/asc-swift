@@ -26,6 +26,7 @@ public struct Device: Codable, Equatable, Identifiable, Sendable {
         public var addedDate: Date?
 
         public enum DeviceClass: String, CaseIterable, Codable, Sendable {
+            case appleVisionPro = "APPLE_VISION_PRO"
             case appleWatch = "APPLE_WATCH"
             case ipad = "IPAD"
             case iphone = "IPHONE"

@@ -38,11 +38,13 @@ extension Resources.V1.GameCenterAchievements {
             case showBeforeEarned
             case repeatable
             case archived
+            case activityProperties
             case gameCenterDetail
             case gameCenterGroup
             case groupAchievement
             case localizations
             case releases
+            case activity
         }
 
         public enum FieldsGameCenterAchievementLocalizations: String, CaseIterable, Codable, Sendable {
@@ -66,6 +68,7 @@ extension Resources.V1.GameCenterAchievements {
             case groupAchievement
             case localizations
             case releases
+            case activity
         }
 
         public func patch(_ body: AppStoreAPI.GameCenterAchievementUpdateRequest) -> Request<AppStoreAPI.GameCenterAchievementResponse> {

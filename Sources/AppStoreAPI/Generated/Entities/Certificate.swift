@@ -10,6 +10,7 @@ public struct Certificate: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
     public var attributes: Attributes?
+    public var relationships: Relationships?
     public var links: ResourceLinks?
 
     public enum `Type`: String, CaseIterable, Codable, Sendable {
@@ -49,10 +50,47 @@ public struct Certificate: Codable, Equatable, Identifiable, Sendable {
         }
     }
 
-    public init(type: `Type` = .certificates, id: String, attributes: Attributes? = nil, links: ResourceLinks? = nil) {
+    public struct Relationships: Codable, Equatable, Sendable {
+        public var passTypeID: PassTypeID?
+
+        public struct PassTypeID: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case passTypeIDs = "passTypeIds"
+                }
+
+                public init(type: `Type` = .passTypeIDs, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
+                self.links = links
+                self.data = data
+            }
+        }
+
+        public init(passTypeID: PassTypeID? = nil) {
+            self.passTypeID = passTypeID
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case passTypeID = "passTypeId"
+        }
+    }
+
+    public init(type: `Type` = .certificates, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes
+        self.relationships = relationships
         self.links = links
     }
 }

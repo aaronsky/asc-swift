@@ -26,6 +26,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
         public var reviewType: ReviewType?
         public var releaseType: ReleaseType?
         public var earliestReleaseDate: Date?
+        public var usesIdfa: Bool?
         public var isDownloadable: Bool?
         public var createdDate: Date?
 
@@ -40,7 +41,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
             case scheduled = "SCHEDULED"
         }
 
-        public init(platform: Platform? = nil, versionString: String? = nil, appStoreState: AppStoreVersionState? = nil, appVersionState: AppVersionState? = nil, copyright: String? = nil, reviewType: ReviewType? = nil, releaseType: ReleaseType? = nil, earliestReleaseDate: Date? = nil, isDownloadable: Bool? = nil, createdDate: Date? = nil) {
+        public init(platform: Platform? = nil, versionString: String? = nil, appStoreState: AppStoreVersionState? = nil, appVersionState: AppVersionState? = nil, copyright: String? = nil, reviewType: ReviewType? = nil, releaseType: ReleaseType? = nil, earliestReleaseDate: Date? = nil, usesIdfa: Bool? = nil, isDownloadable: Bool? = nil, createdDate: Date? = nil) {
             self.platform = platform
             self.versionString = versionString
             self.appStoreState = appStoreState
@@ -49,6 +50,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
             self.reviewType = reviewType
             self.releaseType = releaseType
             self.earliestReleaseDate = earliestReleaseDate
+            self.usesIdfa = usesIdfa
             self.isDownloadable = isDownloadable
             self.createdDate = createdDate
         }
@@ -62,6 +64,7 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
             case reviewType
             case releaseType
             case earliestReleaseDate
+            case usesIdfa
             case isDownloadable = "downloadable"
             case createdDate
         }

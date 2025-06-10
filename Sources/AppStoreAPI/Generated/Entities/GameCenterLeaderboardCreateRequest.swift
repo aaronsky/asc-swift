@@ -29,6 +29,8 @@ public struct GameCenterLeaderboardCreateRequest: Codable, Equatable, Sendable {
             public var recurrenceStartDate: Date?
             public var recurrenceDuration: String?
             public var recurrenceRule: String?
+            public var activityProperties: [String: String]?
+            public var visibility: Visibility?
 
             public enum SubmissionType: String, CaseIterable, Codable, Sendable {
                 case bestScore = "BEST_SCORE"
@@ -40,7 +42,12 @@ public struct GameCenterLeaderboardCreateRequest: Codable, Equatable, Sendable {
                 case desc = "DESC"
             }
 
-            public init(defaultFormatter: GameCenterLeaderboardFormatter, referenceName: String, vendorIdentifier: String, submissionType: SubmissionType, scoreSortType: ScoreSortType, scoreRangeStart: String? = nil, scoreRangeEnd: String? = nil, recurrenceStartDate: Date? = nil, recurrenceDuration: String? = nil, recurrenceRule: String? = nil) {
+            public enum Visibility: String, CaseIterable, Codable, Sendable {
+                case showForAll = "SHOW_FOR_ALL"
+                case hideForAll = "HIDE_FOR_ALL"
+            }
+
+            public init(defaultFormatter: GameCenterLeaderboardFormatter, referenceName: String, vendorIdentifier: String, submissionType: SubmissionType, scoreSortType: ScoreSortType, scoreRangeStart: String? = nil, scoreRangeEnd: String? = nil, recurrenceStartDate: Date? = nil, recurrenceDuration: String? = nil, recurrenceRule: String? = nil, activityProperties: [String: String]? = nil, visibility: Visibility? = nil) {
                 self.defaultFormatter = defaultFormatter
                 self.referenceName = referenceName
                 self.vendorIdentifier = vendorIdentifier
@@ -51,6 +58,8 @@ public struct GameCenterLeaderboardCreateRequest: Codable, Equatable, Sendable {
                 self.recurrenceStartDate = recurrenceStartDate
                 self.recurrenceDuration = recurrenceDuration
                 self.recurrenceRule = recurrenceRule
+                self.activityProperties = activityProperties
+                self.visibility = visibility
             }
         }
 

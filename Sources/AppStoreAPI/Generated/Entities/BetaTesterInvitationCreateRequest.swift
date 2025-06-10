@@ -18,11 +18,11 @@ public struct BetaTesterInvitationCreateRequest: Codable, Equatable, Sendable {
         }
 
         public struct Relationships: Codable, Equatable, Sendable {
-            public var betaTester: BetaTester
+            public var betaTester: BetaTester?
             public var app: App
 
             public struct BetaTester: Codable, Equatable, Sendable {
-                public var data: Data
+                public var data: Data?
 
                 public struct Data: Codable, Equatable, Identifiable, Sendable {
                     public var type: `Type`
@@ -38,7 +38,7 @@ public struct BetaTesterInvitationCreateRequest: Codable, Equatable, Sendable {
                     }
                 }
 
-                public init(data: Data) {
+                public init(data: Data? = nil) {
                     self.data = data
                 }
             }
@@ -65,7 +65,7 @@ public struct BetaTesterInvitationCreateRequest: Codable, Equatable, Sendable {
                 }
             }
 
-            public init(betaTester: BetaTester, app: App) {
+            public init(betaTester: BetaTester? = nil, app: App) {
                 self.betaTester = betaTester
                 self.app = app
             }

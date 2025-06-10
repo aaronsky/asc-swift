@@ -24,13 +24,15 @@ public struct GameCenterAchievementCreateRequest: Codable, Equatable, Sendable {
             public var points: Int
             public var isShowBeforeEarned: Bool
             public var isRepeatable: Bool
+            public var activityProperties: [String: String]?
 
-            public init(referenceName: String, vendorIdentifier: String, points: Int, isShowBeforeEarned: Bool, isRepeatable: Bool) {
+            public init(referenceName: String, vendorIdentifier: String, points: Int, isShowBeforeEarned: Bool, isRepeatable: Bool, activityProperties: [String: String]? = nil) {
                 self.referenceName = referenceName
                 self.vendorIdentifier = vendorIdentifier
                 self.points = points
                 self.isShowBeforeEarned = isShowBeforeEarned
                 self.isRepeatable = isRepeatable
+                self.activityProperties = activityProperties
             }
 
             private enum CodingKeys: String, CodingKey {
@@ -39,6 +41,7 @@ public struct GameCenterAchievementCreateRequest: Codable, Equatable, Sendable {
                 case points
                 case isShowBeforeEarned = "showBeforeEarned"
                 case isRepeatable = "repeatable"
+                case activityProperties
             }
         }
 

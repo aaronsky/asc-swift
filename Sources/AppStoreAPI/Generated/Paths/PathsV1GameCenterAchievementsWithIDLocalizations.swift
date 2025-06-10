@@ -46,11 +46,13 @@ extension Resources.V1.GameCenterAchievements.WithID {
             case showBeforeEarned
             case repeatable
             case archived
+            case activityProperties
             case gameCenterDetail
             case gameCenterGroup
             case groupAchievement
             case localizations
             case releases
+            case activity
         }
 
         public enum FieldsGameCenterAchievementImages: String, CaseIterable, Codable, Sendable {

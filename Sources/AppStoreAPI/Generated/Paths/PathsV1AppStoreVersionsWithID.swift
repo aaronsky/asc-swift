@@ -50,6 +50,7 @@ extension Resources.V1.AppStoreVersions {
             case reviewType
             case releaseType
             case earliestReleaseDate
+            case usesIdfa
             case downloadable
             case createdDate
             case app
@@ -71,7 +72,6 @@ extension Resources.V1.AppStoreVersions {
         public enum FieldsAgeRatingDeclarations: String, CaseIterable, Codable, Sendable {
             case alcoholTobaccoOrDrugUseOrReferences
             case contests
-            case gamblingAndContests
             case gambling
             case gamblingSimulated
             case kidsAgeBand
@@ -86,9 +86,7 @@ extension Resources.V1.AppStoreVersions {
             case violenceCartoonOrFantasy
             case violenceRealisticProlongedGraphicOrSadistic
             case violenceRealistic
-            case ageRatingOverride
             case koreaAgeRatingOverride
-            case seventeenPlus
         }
 
         public enum FieldsAppStoreVersionLocalizations: String, CaseIterable, Codable, Sendable {
@@ -112,6 +110,7 @@ extension Resources.V1.AppStoreVersions {
             case minOsVersion
             case lsMinimumSystemVersion
             case computedMinMacOsVersion
+            case computedMinVisionOsVersion
             case iconAssetToken
             case processingState
             case buildAudienceType

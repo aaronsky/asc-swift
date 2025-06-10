@@ -25,6 +25,7 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
         public var minOsVersion: String?
         public var lsMinimumSystemVersion: String?
         public var computedMinMacOsVersion: String?
+        public var computedMinVisionOsVersion: String?
         public var iconAssetToken: ImageAsset?
         public var processingState: ProcessingState?
         public var buildAudienceType: BuildAudienceType?
@@ -37,7 +38,7 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
             case valid = "VALID"
         }
 
-        public init(version: String? = nil, uploadedDate: Date? = nil, expirationDate: Date? = nil, isExpired: Bool? = nil, minOsVersion: String? = nil, lsMinimumSystemVersion: String? = nil, computedMinMacOsVersion: String? = nil, iconAssetToken: ImageAsset? = nil, processingState: ProcessingState? = nil, buildAudienceType: BuildAudienceType? = nil, usesNonExemptEncryption: Bool? = nil) {
+        public init(version: String? = nil, uploadedDate: Date? = nil, expirationDate: Date? = nil, isExpired: Bool? = nil, minOsVersion: String? = nil, lsMinimumSystemVersion: String? = nil, computedMinMacOsVersion: String? = nil, computedMinVisionOsVersion: String? = nil, iconAssetToken: ImageAsset? = nil, processingState: ProcessingState? = nil, buildAudienceType: BuildAudienceType? = nil, usesNonExemptEncryption: Bool? = nil) {
             self.version = version
             self.uploadedDate = uploadedDate
             self.expirationDate = expirationDate
@@ -45,6 +46,7 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
             self.minOsVersion = minOsVersion
             self.lsMinimumSystemVersion = lsMinimumSystemVersion
             self.computedMinMacOsVersion = computedMinMacOsVersion
+            self.computedMinVisionOsVersion = computedMinVisionOsVersion
             self.iconAssetToken = iconAssetToken
             self.processingState = processingState
             self.buildAudienceType = buildAudienceType
@@ -59,6 +61,7 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
             case minOsVersion
             case lsMinimumSystemVersion
             case computedMinMacOsVersion
+            case computedMinVisionOsVersion
             case iconAssetToken
             case processingState
             case buildAudienceType

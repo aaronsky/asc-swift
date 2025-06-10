@@ -47,11 +47,16 @@ extension Resources.V1.GameCenterDetails.WithID {
             case gameCenterLeaderboards
             case gameCenterLeaderboardSets
             case gameCenterAchievements
+            case gameCenterActivities
+            case gameCenterChallenges
             case defaultLeaderboard
             case defaultGroupLeaderboard
             case achievementReleases
+            case activityReleases
+            case challengeReleases
             case leaderboardReleases
             case leaderboardSetReleases
+            case challengesMinimumPlatformVersions
         }
 
         public enum FieldsGameCenterAchievements: String, CaseIterable, Codable, Sendable {
@@ -61,11 +66,13 @@ extension Resources.V1.GameCenterDetails.WithID {
             case showBeforeEarned
             case repeatable
             case archived
+            case activityProperties
             case gameCenterDetail
             case gameCenterGroup
             case groupAchievement
             case localizations
             case releases
+            case activity
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

@@ -30,11 +30,11 @@ extension Resources.V1.SubscriptionPromotionalOffers {
         }
 
         public enum FieldsSubscriptionPromotionalOffers: String, CaseIterable, Codable, Sendable {
-            case name
-            case offerCode
             case duration
-            case offerMode
+            case name
             case numberOfPeriods
+            case offerCode
+            case offerMode
             case subscription
             case prices
         }

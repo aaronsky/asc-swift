@@ -44,6 +44,7 @@ extension Resources.V1.GameCenterAppVersions {
             case reviewType
             case releaseType
             case earliestReleaseDate
+            case usesIdfa
             case downloadable
             case createdDate
             case app
