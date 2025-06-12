@@ -17,6 +17,8 @@ public struct GameCenterGroupResponse: Codable, Equatable, Sendable {
         case gameCenterLeaderboard(GameCenterLeaderboard)
         case gameCenterLeaderboardSet(GameCenterLeaderboardSet)
         case gameCenterAchievement(GameCenterAchievement)
+        case gameCenterActivity(GameCenterActivity)
+        case gameCenterChallenge(GameCenterChallenge)
 
         public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
@@ -28,10 +30,14 @@ public struct GameCenterGroupResponse: Codable, Equatable, Sendable {
                 self = .gameCenterLeaderboardSet(value)
             } else if let value = try? container.decode(GameCenterAchievement.self) {
                 self = .gameCenterAchievement(value)
+            } else if let value = try? container.decode(GameCenterActivity.self) {
+                self = .gameCenterActivity(value)
+            } else if let value = try? container.decode(GameCenterChallenge.self) {
+                self = .gameCenterChallenge(value)
             } else {
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (GameCenterDetail, GameCenterLeaderboard, GameCenterLeaderboardSet, GameCenterAchievement)."
+                    debugDescription: "Data could not be decoded as any of the expected types (GameCenterDetail, GameCenterLeaderboard, GameCenterLeaderboardSet, GameCenterAchievement, GameCenterActivity, GameCenterChallenge)."
                 )
             }
         }
@@ -43,6 +49,8 @@ public struct GameCenterGroupResponse: Codable, Equatable, Sendable {
             case .gameCenterLeaderboard(let value): try container.encode(value)
             case .gameCenterLeaderboardSet(let value): try container.encode(value)
             case .gameCenterAchievement(let value): try container.encode(value)
+            case .gameCenterActivity(let value): try container.encode(value)
+            case .gameCenterChallenge(let value): try container.encode(value)
             }
         }
     }

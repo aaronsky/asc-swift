@@ -17,14 +17,14 @@ public struct BuildIcon: Codable, Equatable, Identifiable, Sendable {
     }
 
     public struct Attributes: Codable, Equatable, Sendable {
-        public var name: String?
         public var iconAsset: ImageAsset?
         public var iconType: IconAssetType?
+        public var name: String?
 
-        public init(name: String? = nil, iconAsset: ImageAsset? = nil, iconType: IconAssetType? = nil) {
-            self.name = name
+        public init(iconAsset: ImageAsset? = nil, iconType: IconAssetType? = nil, name: String? = nil) {
             self.iconAsset = iconAsset
             self.iconType = iconType
+            self.name = name
         }
     }
 

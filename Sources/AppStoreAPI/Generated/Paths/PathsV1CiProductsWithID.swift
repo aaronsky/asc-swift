@@ -43,6 +43,7 @@ extension Resources.V1.CiProducts {
         }
 
         public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case accessibilityURL = "accessibilityUrl"
             case name
             case bundleID = "bundleId"
             case sku
@@ -54,6 +55,7 @@ extension Resources.V1.CiProducts {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
             case contentRightsDeclaration
             case streamlinedPurchasingEnabled
+            case accessibilityDeclarations
             case appEncryptionDeclarations
             case ciProduct
             case betaTesters
@@ -81,11 +83,16 @@ extension Resources.V1.CiProducts {
             case reviewSubmissions
             case subscriptionGracePeriod
             case customerReviews
+            case customerReviewSummarizations
             case gameCenterDetail
             case appStoreVersionExperimentsV2
             case alternativeDistributionKey
             case analyticsReportRequests
             case marketplaceSearchDetail
+            case backgroundAssets
+            case betaFeedbackScreenshotSubmissions
+            case betaFeedbackCrashSubmissions
+            case webhooks
         }
 
         public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {

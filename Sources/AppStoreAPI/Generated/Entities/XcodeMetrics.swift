@@ -60,6 +60,7 @@ public struct XcodeMetrics: Codable, Equatable, Sendable {
                 public struct Dataset: Codable, Equatable, Sendable {
                     public var filterCriteria: FilterCriteria?
                     public var points: [Point]?
+                    public var recommendedMetricGoal: RecommendedMetricGoal?
 
                     public struct FilterCriteria: Codable, Equatable, Sendable {
                         public var percentile: String?
@@ -99,9 +100,20 @@ public struct XcodeMetrics: Codable, Equatable, Sendable {
                         }
                     }
 
-                    public init(filterCriteria: FilterCriteria? = nil, points: [Point]? = nil) {
+                    public struct RecommendedMetricGoal: Codable, Equatable, Sendable {
+                        public var value: Double?
+                        public var detail: String?
+
+                        public init(value: Double? = nil, detail: String? = nil) {
+                            self.value = value
+                            self.detail = detail
+                        }
+                    }
+
+                    public init(filterCriteria: FilterCriteria? = nil, points: [Point]? = nil, recommendedMetricGoal: RecommendedMetricGoal? = nil) {
                         self.filterCriteria = filterCriteria
                         self.points = points
+                        self.recommendedMetricGoal = recommendedMetricGoal
                     }
                 }
 

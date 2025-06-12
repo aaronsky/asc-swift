@@ -24,13 +24,15 @@ public struct GameCenterAchievementUpdateRequest: Codable, Equatable, Sendable {
             public var isShowBeforeEarned: Bool?
             public var isRepeatable: Bool?
             public var isArchived: Bool?
+            public var activityProperties: [String: String]?
 
-            public init(referenceName: String? = nil, points: Int? = nil, isShowBeforeEarned: Bool? = nil, isRepeatable: Bool? = nil, isArchived: Bool? = nil) {
+            public init(referenceName: String? = nil, points: Int? = nil, isShowBeforeEarned: Bool? = nil, isRepeatable: Bool? = nil, isArchived: Bool? = nil, activityProperties: [String: String]? = nil) {
                 self.referenceName = referenceName
                 self.points = points
                 self.isShowBeforeEarned = isShowBeforeEarned
                 self.isRepeatable = isRepeatable
                 self.isArchived = isArchived
+                self.activityProperties = activityProperties
             }
 
             private enum CodingKeys: String, CodingKey {
@@ -39,6 +41,7 @@ public struct GameCenterAchievementUpdateRequest: Codable, Equatable, Sendable {
                 case isShowBeforeEarned = "showBeforeEarned"
                 case isRepeatable = "repeatable"
                 case isArchived = "archived"
+                case activityProperties
             }
         }
 

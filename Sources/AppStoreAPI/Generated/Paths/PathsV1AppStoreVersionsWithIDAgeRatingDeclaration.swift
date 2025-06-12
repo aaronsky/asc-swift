@@ -29,7 +29,6 @@ extension Resources.V1.AppStoreVersions.WithID {
         public enum FieldsAgeRatingDeclarations: String, CaseIterable, Codable, Sendable {
             case alcoholTobaccoOrDrugUseOrReferences
             case contests
-            case gamblingAndContests
             case gambling
             case gamblingSimulated
             case kidsAgeBand
@@ -44,9 +43,7 @@ extension Resources.V1.AppStoreVersions.WithID {
             case violenceCartoonOrFantasy
             case violenceRealisticProlongedGraphicOrSadistic
             case violenceRealistic
-            case ageRatingOverride
             case koreaAgeRatingOverride
-            case seventeenPlus
         }
     }
 }

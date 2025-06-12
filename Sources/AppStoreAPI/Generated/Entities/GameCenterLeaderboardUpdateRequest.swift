@@ -29,6 +29,8 @@ public struct GameCenterLeaderboardUpdateRequest: Codable, Equatable, Sendable {
             public var recurrenceDuration: String?
             public var recurrenceRule: String?
             public var isArchived: Bool?
+            public var activityProperties: [String: String]?
+            public var visibility: Visibility?
 
             public enum SubmissionType: String, CaseIterable, Codable, Sendable {
                 case bestScore = "BEST_SCORE"
@@ -40,7 +42,12 @@ public struct GameCenterLeaderboardUpdateRequest: Codable, Equatable, Sendable {
                 case desc = "DESC"
             }
 
-            public init(defaultFormatter: GameCenterLeaderboardFormatter? = nil, referenceName: String? = nil, submissionType: SubmissionType? = nil, scoreSortType: ScoreSortType? = nil, scoreRangeStart: String? = nil, scoreRangeEnd: String? = nil, recurrenceStartDate: Date? = nil, recurrenceDuration: String? = nil, recurrenceRule: String? = nil, isArchived: Bool? = nil) {
+            public enum Visibility: String, CaseIterable, Codable, Sendable {
+                case showForAll = "SHOW_FOR_ALL"
+                case hideForAll = "HIDE_FOR_ALL"
+            }
+
+            public init(defaultFormatter: GameCenterLeaderboardFormatter? = nil, referenceName: String? = nil, submissionType: SubmissionType? = nil, scoreSortType: ScoreSortType? = nil, scoreRangeStart: String? = nil, scoreRangeEnd: String? = nil, recurrenceStartDate: Date? = nil, recurrenceDuration: String? = nil, recurrenceRule: String? = nil, isArchived: Bool? = nil, activityProperties: [String: String]? = nil, visibility: Visibility? = nil) {
                 self.defaultFormatter = defaultFormatter
                 self.referenceName = referenceName
                 self.submissionType = submissionType
@@ -51,6 +58,8 @@ public struct GameCenterLeaderboardUpdateRequest: Codable, Equatable, Sendable {
                 self.recurrenceDuration = recurrenceDuration
                 self.recurrenceRule = recurrenceRule
                 self.isArchived = isArchived
+                self.activityProperties = activityProperties
+                self.visibility = visibility
             }
 
             private enum CodingKeys: String, CodingKey {
@@ -64,6 +73,8 @@ public struct GameCenterLeaderboardUpdateRequest: Codable, Equatable, Sendable {
                 case recurrenceDuration
                 case recurrenceRule
                 case isArchived = "archived"
+                case activityProperties
+                case visibility
             }
         }
 

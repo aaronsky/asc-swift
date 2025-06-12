@@ -55,11 +55,16 @@ extension Resources.V1.GameCenterLeaderboardSets.WithID {
             case gameCenterLeaderboards
             case gameCenterLeaderboardSets
             case gameCenterAchievements
+            case gameCenterActivities
+            case gameCenterChallenges
             case defaultLeaderboard
             case defaultGroupLeaderboard
             case achievementReleases
+            case activityReleases
+            case challengeReleases
             case leaderboardReleases
             case leaderboardSetReleases
+            case challengesMinimumPlatformVersions
         }
 
         public enum FieldsGameCenterGroups: String, CaseIterable, Codable, Sendable {
@@ -68,6 +73,8 @@ extension Resources.V1.GameCenterLeaderboardSets.WithID {
             case gameCenterLeaderboards
             case gameCenterLeaderboardSets
             case gameCenterAchievements
+            case gameCenterActivities
+            case gameCenterChallenges
         }
 
         public enum FieldsGameCenterLeaderboardSetLocalizations: String, CaseIterable, Codable, Sendable {
@@ -89,12 +96,16 @@ extension Resources.V1.GameCenterLeaderboardSets.WithID {
             case recurrenceDuration
             case recurrenceRule
             case archived
+            case activityProperties
+            case visibility
             case gameCenterDetail
             case gameCenterGroup
             case groupLeaderboard
             case gameCenterLeaderboardSets
             case localizations
             case releases
+            case activity
+            case challenge
         }
 
         public enum FieldsGameCenterLeaderboardSetReleases: String, CaseIterable, Codable, Sendable {

@@ -16,11 +16,11 @@ extension Resources.V1.MerchantIDs.WithID {
         /// Path: `/v1/merchantIds/{id}/certificates`
         public let path: String
 
-        public func get(filterDisplayName: [String]? = nil, filterCertificateType: [FilterCertificateType]? = nil, filterSerialNumber: [String]? = nil, filterID: [String]? = nil, sort: [Sort]? = nil, fieldsCertificates: [FieldsCertificates]? = nil, limit: Int? = nil) -> Request<AppStoreAPI.CertificatesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterDisplayName, filterCertificateType, filterSerialNumber, filterID, sort, fieldsCertificates, limit), id: "merchantIds_certificates_getToManyRelated")
+        public func get(filterDisplayName: [String]? = nil, filterCertificateType: [FilterCertificateType]? = nil, filterSerialNumber: [String]? = nil, filterID: [String]? = nil, sort: [Sort]? = nil, fieldsCertificates: [FieldsCertificates]? = nil, fieldsPassTypeIDs: [FieldsPassTypeIDs]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CertificatesResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterDisplayName, filterCertificateType, filterSerialNumber, filterID, sort, fieldsCertificates, fieldsPassTypeIDs, limit, include), id: "merchantIds_certificates_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterDisplayName: [String]?, _ filterCertificateType: [FilterCertificateType]?, _ filterSerialNumber: [String]?, _ filterID: [String]?, _ sort: [Sort]?, _ fieldsCertificates: [FieldsCertificates]?, _ limit: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterDisplayName: [String]?, _ filterCertificateType: [FilterCertificateType]?, _ filterSerialNumber: [String]?, _ filterID: [String]?, _ sort: [Sort]?, _ fieldsCertificates: [FieldsCertificates]?, _ fieldsPassTypeIDs: [FieldsPassTypeIDs]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterDisplayName, forKey: "filter[displayName]")
             encoder.encode(filterCertificateType, forKey: "filter[certificateType]")
@@ -28,7 +28,9 @@ extension Resources.V1.MerchantIDs.WithID {
             encoder.encode(filterID, forKey: "filter[id]")
             encoder.encode(sort, forKey: "sort")
             encoder.encode(fieldsCertificates, forKey: "fields[certificates]")
+            encoder.encode(fieldsPassTypeIDs, forKey: "fields[passTypeIds]")
             encoder.encode(limit, forKey: "limit")
+            encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
@@ -73,6 +75,17 @@ extension Resources.V1.MerchantIDs.WithID {
             case expirationDate
             case certificateContent
             case activated
+            case passTypeID = "passTypeId"
+        }
+
+        public enum FieldsPassTypeIDs: String, CaseIterable, Codable, Sendable {
+            case name
+            case identifier
+            case certificates
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case passTypeID = "passTypeId"
         }
     }
 }

@@ -18,6 +18,7 @@ public struct GameCenterAchievementResponse: Codable, Equatable, Sendable {
         case gameCenterAchievement(GameCenterAchievement)
         case gameCenterAchievementLocalization(GameCenterAchievementLocalization)
         case gameCenterAchievementRelease(GameCenterAchievementRelease)
+        case gameCenterActivity(GameCenterActivity)
 
         public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
@@ -31,10 +32,12 @@ public struct GameCenterAchievementResponse: Codable, Equatable, Sendable {
                 self = .gameCenterAchievementLocalization(value)
             } else if let value = try? container.decode(GameCenterAchievementRelease.self) {
                 self = .gameCenterAchievementRelease(value)
+            } else if let value = try? container.decode(GameCenterActivity.self) {
+                self = .gameCenterActivity(value)
             } else {
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (GameCenterDetail, GameCenterGroup, GameCenterAchievement, GameCenterAchievementLocalization, GameCenterAchievementRelease)."
+                    debugDescription: "Data could not be decoded as any of the expected types (GameCenterDetail, GameCenterGroup, GameCenterAchievement, GameCenterAchievementLocalization, GameCenterAchievementRelease, GameCenterActivity)."
                 )
             }
         }
@@ -47,6 +50,7 @@ public struct GameCenterAchievementResponse: Codable, Equatable, Sendable {
             case .gameCenterAchievement(let value): try container.encode(value)
             case .gameCenterAchievementLocalization(let value): try container.encode(value)
             case .gameCenterAchievementRelease(let value): try container.encode(value)
+            case .gameCenterActivity(let value): try container.encode(value)
             }
         }
     }

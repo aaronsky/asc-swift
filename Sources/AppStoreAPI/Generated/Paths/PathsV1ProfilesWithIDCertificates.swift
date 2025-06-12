@@ -36,6 +36,7 @@ extension Resources.V1.Profiles.WithID {
             case expirationDate
             case certificateContent
             case activated
+            case passTypeID = "passTypeId"
         }
     }
 }

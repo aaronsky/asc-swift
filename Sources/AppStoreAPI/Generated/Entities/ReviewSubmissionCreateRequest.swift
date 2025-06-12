@@ -11,7 +11,7 @@ public struct ReviewSubmissionCreateRequest: Codable, Equatable, Sendable {
 
     public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
-        public var attributes: Attributes
+        public var attributes: Attributes?
         public var relationships: Relationships
 
         public enum `Type`: String, CaseIterable, Codable, Sendable {
@@ -19,9 +19,9 @@ public struct ReviewSubmissionCreateRequest: Codable, Equatable, Sendable {
         }
 
         public struct Attributes: Codable, Equatable, Sendable {
-            public var platform: Platform
+            public var platform: Platform?
 
-            public init(platform: Platform) {
+            public init(platform: Platform? = nil) {
                 self.platform = platform
             }
         }
@@ -56,7 +56,7 @@ public struct ReviewSubmissionCreateRequest: Codable, Equatable, Sendable {
             }
         }
 
-        public init(type: `Type` = .reviewSubmissions, attributes: Attributes, relationships: Relationships) {
+        public init(type: `Type` = .reviewSubmissions, attributes: Attributes? = nil, relationships: Relationships) {
             self.type = type
             self.attributes = attributes
             self.relationships = relationships

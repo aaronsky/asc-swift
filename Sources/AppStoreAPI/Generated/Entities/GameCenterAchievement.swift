@@ -24,14 +24,16 @@ public struct GameCenterAchievement: Codable, Equatable, Identifiable, Sendable 
         public var isShowBeforeEarned: Bool?
         public var isRepeatable: Bool?
         public var isArchived: Bool?
+        public var activityProperties: [String: String]?
 
-        public init(referenceName: String? = nil, vendorIdentifier: String? = nil, points: Int? = nil, isShowBeforeEarned: Bool? = nil, isRepeatable: Bool? = nil, isArchived: Bool? = nil) {
+        public init(referenceName: String? = nil, vendorIdentifier: String? = nil, points: Int? = nil, isShowBeforeEarned: Bool? = nil, isRepeatable: Bool? = nil, isArchived: Bool? = nil, activityProperties: [String: String]? = nil) {
             self.referenceName = referenceName
             self.vendorIdentifier = vendorIdentifier
             self.points = points
             self.isShowBeforeEarned = isShowBeforeEarned
             self.isRepeatable = isRepeatable
             self.isArchived = isArchived
+            self.activityProperties = activityProperties
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -41,6 +43,7 @@ public struct GameCenterAchievement: Codable, Equatable, Identifiable, Sendable 
             case isShowBeforeEarned = "showBeforeEarned"
             case isRepeatable = "repeatable"
             case isArchived = "archived"
+            case activityProperties
         }
     }
 
@@ -50,6 +53,7 @@ public struct GameCenterAchievement: Codable, Equatable, Identifiable, Sendable 
         public var groupAchievement: GroupAchievement?
         public var localizations: Localizations?
         public var releases: Releases?
+        public var activity: Activity?
 
         public struct GameCenterDetail: Codable, Equatable, Sendable {
             public var data: Data?
@@ -171,12 +175,37 @@ public struct GameCenterAchievement: Codable, Equatable, Identifiable, Sendable 
             }
         }
 
-        public init(gameCenterDetail: GameCenterDetail? = nil, gameCenterGroup: GameCenterGroup? = nil, groupAchievement: GroupAchievement? = nil, localizations: Localizations? = nil, releases: Releases? = nil) {
+        public struct Activity: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case gameCenterActivities
+                }
+
+                public init(type: `Type` = .gameCenterActivities, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
+                self.links = links
+                self.data = data
+            }
+        }
+
+        public init(gameCenterDetail: GameCenterDetail? = nil, gameCenterGroup: GameCenterGroup? = nil, groupAchievement: GroupAchievement? = nil, localizations: Localizations? = nil, releases: Releases? = nil, activity: Activity? = nil) {
             self.gameCenterDetail = gameCenterDetail
             self.gameCenterGroup = gameCenterGroup
             self.groupAchievement = groupAchievement
             self.localizations = localizations
             self.releases = releases
+            self.activity = activity
         }
     }
 

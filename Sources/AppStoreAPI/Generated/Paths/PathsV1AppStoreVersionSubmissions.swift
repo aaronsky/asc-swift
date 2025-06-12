@@ -15,9 +15,5 @@ extension Resources.V1 {
     public struct AppStoreVersionSubmissions {
         /// Path: `/v1/appStoreVersionSubmissions`
         public let path: String
-
-        public func post(_ body: AppStoreAPI.AppStoreVersionSubmissionCreateRequest) -> Request<AppStoreAPI.AppStoreVersionSubmissionResponse> {
-            Request(path: path, method: "POST", body: body, id: "appStoreVersionSubmissions_createInstance")
-        }
     }
 }

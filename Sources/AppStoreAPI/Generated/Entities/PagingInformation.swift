@@ -12,10 +12,12 @@ public struct PagingInformation: Codable, Equatable, Sendable {
     public struct Paging: Codable, Equatable, Sendable {
         public var total: Int?
         public var limit: Int
+        public var nextCursor: String?
 
-        public init(total: Int? = nil, limit: Int) {
+        public init(total: Int? = nil, limit: Int, nextCursor: String? = nil) {
             self.total = total
             self.limit = limit
+            self.nextCursor = nextCursor
         }
     }
 

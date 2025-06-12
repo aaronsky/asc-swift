@@ -29,6 +29,8 @@ public struct GameCenterLeaderboard: Codable, Equatable, Identifiable, Sendable 
         public var recurrenceDuration: String?
         public var recurrenceRule: String?
         public var isArchived: Bool?
+        public var activityProperties: [String: String]?
+        public var visibility: Visibility?
 
         public enum SubmissionType: String, CaseIterable, Codable, Sendable {
             case bestScore = "BEST_SCORE"
@@ -40,7 +42,12 @@ public struct GameCenterLeaderboard: Codable, Equatable, Identifiable, Sendable 
             case desc = "DESC"
         }
 
-        public init(defaultFormatter: GameCenterLeaderboardFormatter? = nil, referenceName: String? = nil, vendorIdentifier: String? = nil, submissionType: SubmissionType? = nil, scoreSortType: ScoreSortType? = nil, scoreRangeStart: String? = nil, scoreRangeEnd: String? = nil, recurrenceStartDate: Date? = nil, recurrenceDuration: String? = nil, recurrenceRule: String? = nil, isArchived: Bool? = nil) {
+        public enum Visibility: String, CaseIterable, Codable, Sendable {
+            case showForAll = "SHOW_FOR_ALL"
+            case hideForAll = "HIDE_FOR_ALL"
+        }
+
+        public init(defaultFormatter: GameCenterLeaderboardFormatter? = nil, referenceName: String? = nil, vendorIdentifier: String? = nil, submissionType: SubmissionType? = nil, scoreSortType: ScoreSortType? = nil, scoreRangeStart: String? = nil, scoreRangeEnd: String? = nil, recurrenceStartDate: Date? = nil, recurrenceDuration: String? = nil, recurrenceRule: String? = nil, isArchived: Bool? = nil, activityProperties: [String: String]? = nil, visibility: Visibility? = nil) {
             self.defaultFormatter = defaultFormatter
             self.referenceName = referenceName
             self.vendorIdentifier = vendorIdentifier
@@ -52,6 +59,8 @@ public struct GameCenterLeaderboard: Codable, Equatable, Identifiable, Sendable 
             self.recurrenceDuration = recurrenceDuration
             self.recurrenceRule = recurrenceRule
             self.isArchived = isArchived
+            self.activityProperties = activityProperties
+            self.visibility = visibility
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -66,6 +75,8 @@ public struct GameCenterLeaderboard: Codable, Equatable, Identifiable, Sendable 
             case recurrenceDuration
             case recurrenceRule
             case isArchived = "archived"
+            case activityProperties
+            case visibility
         }
     }
 
@@ -76,6 +87,8 @@ public struct GameCenterLeaderboard: Codable, Equatable, Identifiable, Sendable 
         public var gameCenterLeaderboardSets: GameCenterLeaderboardSets?
         public var localizations: Localizations?
         public var releases: Releases?
+        public var activity: Activity?
+        public var challenge: Challenge?
 
         public struct GameCenterDetail: Codable, Equatable, Sendable {
             public var data: Data?
@@ -221,13 +234,63 @@ public struct GameCenterLeaderboard: Codable, Equatable, Identifiable, Sendable 
             }
         }
 
-        public init(gameCenterDetail: GameCenterDetail? = nil, gameCenterGroup: GameCenterGroup? = nil, groupLeaderboard: GroupLeaderboard? = nil, gameCenterLeaderboardSets: GameCenterLeaderboardSets? = nil, localizations: Localizations? = nil, releases: Releases? = nil) {
+        public struct Activity: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case gameCenterActivities
+                }
+
+                public init(type: `Type` = .gameCenterActivities, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
+                self.links = links
+                self.data = data
+            }
+        }
+
+        public struct Challenge: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case gameCenterChallenges
+                }
+
+                public init(type: `Type` = .gameCenterChallenges, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
+                self.links = links
+                self.data = data
+            }
+        }
+
+        public init(gameCenterDetail: GameCenterDetail? = nil, gameCenterGroup: GameCenterGroup? = nil, groupLeaderboard: GroupLeaderboard? = nil, gameCenterLeaderboardSets: GameCenterLeaderboardSets? = nil, localizations: Localizations? = nil, releases: Releases? = nil, activity: Activity? = nil, challenge: Challenge? = nil) {
             self.gameCenterDetail = gameCenterDetail
             self.gameCenterGroup = gameCenterGroup
             self.groupLeaderboard = groupLeaderboard
             self.gameCenterLeaderboardSets = gameCenterLeaderboardSets
             self.localizations = localizations
             self.releases = releases
+            self.activity = activity
+            self.challenge = challenge
         }
     }
 

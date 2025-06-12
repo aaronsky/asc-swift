@@ -30,6 +30,8 @@ public struct GameCenterGroup: Codable, Equatable, Identifiable, Sendable {
         public var gameCenterLeaderboards: GameCenterLeaderboards?
         public var gameCenterLeaderboardSets: GameCenterLeaderboardSets?
         public var gameCenterAchievements: GameCenterAchievements?
+        public var gameCenterActivities: GameCenterActivities?
+        public var gameCenterChallenges: GameCenterChallenges?
 
         public struct GameCenterDetails: Codable, Equatable, Sendable {
             public var links: RelationshipLinks?
@@ -135,11 +137,65 @@ public struct GameCenterGroup: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(gameCenterDetails: GameCenterDetails? = nil, gameCenterLeaderboards: GameCenterLeaderboards? = nil, gameCenterLeaderboardSets: GameCenterLeaderboardSets? = nil, gameCenterAchievements: GameCenterAchievements? = nil) {
+        public struct GameCenterActivities: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var meta: PagingInformation?
+            public var data: [Datum]?
+
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case gameCenterActivities
+                }
+
+                public init(type: `Type` = .gameCenterActivities, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+                self.links = links
+                self.meta = meta
+                self.data = data
+            }
+        }
+
+        public struct GameCenterChallenges: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var meta: PagingInformation?
+            public var data: [Datum]?
+
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case gameCenterChallenges
+                }
+
+                public init(type: `Type` = .gameCenterChallenges, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+                self.links = links
+                self.meta = meta
+                self.data = data
+            }
+        }
+
+        public init(gameCenterDetails: GameCenterDetails? = nil, gameCenterLeaderboards: GameCenterLeaderboards? = nil, gameCenterLeaderboardSets: GameCenterLeaderboardSets? = nil, gameCenterAchievements: GameCenterAchievements? = nil, gameCenterActivities: GameCenterActivities? = nil, gameCenterChallenges: GameCenterChallenges? = nil) {
             self.gameCenterDetails = gameCenterDetails
             self.gameCenterLeaderboards = gameCenterLeaderboards
             self.gameCenterLeaderboardSets = gameCenterLeaderboardSets
             self.gameCenterAchievements = gameCenterAchievements
+            self.gameCenterActivities = gameCenterActivities
+            self.gameCenterChallenges = gameCenterChallenges
         }
     }
 

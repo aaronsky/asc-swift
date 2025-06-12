@@ -9,10 +9,12 @@ import AppStoreConnect
 public struct CertificateResponse: Codable, Equatable, Sendable {
     /// Certificate
     public var data: Certificate
+    public var included: [PassTypeID]?
     public var links: DocumentLinks
 
-    public init(data: Certificate, links: DocumentLinks) {
+    public init(data: Certificate, included: [PassTypeID]? = nil, links: DocumentLinks) {
         self.data = data
+        self.included = included
         self.links = links
     }
 }

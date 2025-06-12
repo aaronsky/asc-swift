@@ -21,7 +21,6 @@ public struct AgeRatingDeclarationUpdateRequest: Codable, Equatable, Sendable {
         public struct Attributes: Codable, Equatable, Sendable {
             public var alcoholTobaccoOrDrugUseOrReferences: AlcoholTobaccoOrDrugUseOrReferences?
             public var contests: Contests?
-            public var isGamblingAndContests: Bool?
             public var isGambling: Bool?
             public var gamblingSimulated: GamblingSimulated?
             public var kidsAgeBand: KidsAgeBand?
@@ -36,86 +35,54 @@ public struct AgeRatingDeclarationUpdateRequest: Codable, Equatable, Sendable {
             public var violenceCartoonOrFantasy: ViolenceCartoonOrFantasy?
             public var violenceRealisticProlongedGraphicOrSadistic: ViolenceRealisticProlongedGraphicOrSadistic?
             public var violenceRealistic: ViolenceRealistic?
-            public var ageRatingOverride: AgeRatingOverride?
             public var koreaAgeRatingOverride: KoreaAgeRatingOverride?
-            public var isSeventeenPlus: Bool?
 
             public enum AlcoholTobaccoOrDrugUseOrReferences: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
-                case infrequentOrMild = "INFREQUENT_OR_MILD"
-                case frequentOrIntense = "FREQUENT_OR_INTENSE"
             }
 
             public enum Contests: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
-                case infrequentOrMild = "INFREQUENT_OR_MILD"
-                case frequentOrIntense = "FREQUENT_OR_INTENSE"
             }
 
             public enum GamblingSimulated: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
-                case infrequentOrMild = "INFREQUENT_OR_MILD"
-                case frequentOrIntense = "FREQUENT_OR_INTENSE"
             }
 
             public enum MedicalOrTreatmentInformation: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
-                case infrequentOrMild = "INFREQUENT_OR_MILD"
-                case frequentOrIntense = "FREQUENT_OR_INTENSE"
             }
 
             public enum ProfanityOrCrudeHumor: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
-                case infrequentOrMild = "INFREQUENT_OR_MILD"
-                case frequentOrIntense = "FREQUENT_OR_INTENSE"
             }
 
             public enum SexualContentGraphicAndNudity: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
-                case infrequentOrMild = "INFREQUENT_OR_MILD"
-                case frequentOrIntense = "FREQUENT_OR_INTENSE"
             }
 
             public enum SexualContentOrNudity: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
-                case infrequentOrMild = "INFREQUENT_OR_MILD"
-                case frequentOrIntense = "FREQUENT_OR_INTENSE"
             }
 
             public enum HorrorOrFearThemes: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
-                case infrequentOrMild = "INFREQUENT_OR_MILD"
-                case frequentOrIntense = "FREQUENT_OR_INTENSE"
             }
 
             public enum MatureOrSuggestiveThemes: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
-                case infrequentOrMild = "INFREQUENT_OR_MILD"
-                case frequentOrIntense = "FREQUENT_OR_INTENSE"
             }
 
             public enum ViolenceCartoonOrFantasy: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
-                case infrequentOrMild = "INFREQUENT_OR_MILD"
-                case frequentOrIntense = "FREQUENT_OR_INTENSE"
             }
 
             public enum ViolenceRealisticProlongedGraphicOrSadistic: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
-                case infrequentOrMild = "INFREQUENT_OR_MILD"
-                case frequentOrIntense = "FREQUENT_OR_INTENSE"
             }
 
             public enum ViolenceRealistic: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
-                case infrequentOrMild = "INFREQUENT_OR_MILD"
-                case frequentOrIntense = "FREQUENT_OR_INTENSE"
-            }
-
-            public enum AgeRatingOverride: String, CaseIterable, Codable, Sendable {
-                case `none` = "NONE"
-                case seventeenPlus = "SEVENTEEN_PLUS"
-                case unrated = "UNRATED"
             }
 
             public enum KoreaAgeRatingOverride: String, CaseIterable, Codable, Sendable {
@@ -124,10 +91,9 @@ public struct AgeRatingDeclarationUpdateRequest: Codable, Equatable, Sendable {
                 case nineteenPlus = "NINETEEN_PLUS"
             }
 
-            public init(alcoholTobaccoOrDrugUseOrReferences: AlcoholTobaccoOrDrugUseOrReferences? = nil, contests: Contests? = nil, isGamblingAndContests: Bool? = nil, isGambling: Bool? = nil, gamblingSimulated: GamblingSimulated? = nil, kidsAgeBand: KidsAgeBand? = nil, isLootBox: Bool? = nil, medicalOrTreatmentInformation: MedicalOrTreatmentInformation? = nil, profanityOrCrudeHumor: ProfanityOrCrudeHumor? = nil, sexualContentGraphicAndNudity: SexualContentGraphicAndNudity? = nil, sexualContentOrNudity: SexualContentOrNudity? = nil, horrorOrFearThemes: HorrorOrFearThemes? = nil, matureOrSuggestiveThemes: MatureOrSuggestiveThemes? = nil, isUnrestrictedWebAccess: Bool? = nil, violenceCartoonOrFantasy: ViolenceCartoonOrFantasy? = nil, violenceRealisticProlongedGraphicOrSadistic: ViolenceRealisticProlongedGraphicOrSadistic? = nil, violenceRealistic: ViolenceRealistic? = nil, ageRatingOverride: AgeRatingOverride? = nil, koreaAgeRatingOverride: KoreaAgeRatingOverride? = nil, isSeventeenPlus: Bool? = nil) {
+            public init(alcoholTobaccoOrDrugUseOrReferences: AlcoholTobaccoOrDrugUseOrReferences? = nil, contests: Contests? = nil, isGambling: Bool? = nil, gamblingSimulated: GamblingSimulated? = nil, kidsAgeBand: KidsAgeBand? = nil, isLootBox: Bool? = nil, medicalOrTreatmentInformation: MedicalOrTreatmentInformation? = nil, profanityOrCrudeHumor: ProfanityOrCrudeHumor? = nil, sexualContentGraphicAndNudity: SexualContentGraphicAndNudity? = nil, sexualContentOrNudity: SexualContentOrNudity? = nil, horrorOrFearThemes: HorrorOrFearThemes? = nil, matureOrSuggestiveThemes: MatureOrSuggestiveThemes? = nil, isUnrestrictedWebAccess: Bool? = nil, violenceCartoonOrFantasy: ViolenceCartoonOrFantasy? = nil, violenceRealisticProlongedGraphicOrSadistic: ViolenceRealisticProlongedGraphicOrSadistic? = nil, violenceRealistic: ViolenceRealistic? = nil, koreaAgeRatingOverride: KoreaAgeRatingOverride? = nil) {
                 self.alcoholTobaccoOrDrugUseOrReferences = alcoholTobaccoOrDrugUseOrReferences
                 self.contests = contests
-                self.isGamblingAndContests = isGamblingAndContests
                 self.isGambling = isGambling
                 self.gamblingSimulated = gamblingSimulated
                 self.kidsAgeBand = kidsAgeBand
@@ -142,15 +108,12 @@ public struct AgeRatingDeclarationUpdateRequest: Codable, Equatable, Sendable {
                 self.violenceCartoonOrFantasy = violenceCartoonOrFantasy
                 self.violenceRealisticProlongedGraphicOrSadistic = violenceRealisticProlongedGraphicOrSadistic
                 self.violenceRealistic = violenceRealistic
-                self.ageRatingOverride = ageRatingOverride
                 self.koreaAgeRatingOverride = koreaAgeRatingOverride
-                self.isSeventeenPlus = isSeventeenPlus
             }
 
             private enum CodingKeys: String, CodingKey {
                 case alcoholTobaccoOrDrugUseOrReferences
                 case contests
-                case isGamblingAndContests = "gamblingAndContests"
                 case isGambling = "gambling"
                 case gamblingSimulated
                 case kidsAgeBand
@@ -165,9 +128,7 @@ public struct AgeRatingDeclarationUpdateRequest: Codable, Equatable, Sendable {
                 case violenceCartoonOrFantasy
                 case violenceRealisticProlongedGraphicOrSadistic
                 case violenceRealistic
-                case ageRatingOverride
                 case koreaAgeRatingOverride
-                case isSeventeenPlus = "seventeenPlus"
             }
         }
 

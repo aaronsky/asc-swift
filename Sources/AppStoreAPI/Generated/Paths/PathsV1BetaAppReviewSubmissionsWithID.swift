@@ -42,6 +42,7 @@ extension Resources.V1.BetaAppReviewSubmissions {
             case minOsVersion
             case lsMinimumSystemVersion
             case computedMinMacOsVersion
+            case computedMinVisionOsVersion
             case iconAssetToken
             case processingState
             case buildAudienceType

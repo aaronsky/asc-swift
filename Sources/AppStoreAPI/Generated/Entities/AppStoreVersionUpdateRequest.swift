@@ -25,6 +25,7 @@ public struct AppStoreVersionUpdateRequest: Codable, Equatable, Sendable {
             public var reviewType: ReviewType?
             public var releaseType: ReleaseType?
             public var earliestReleaseDate: Date?
+            public var usesIdfa: Bool?
             public var isDownloadable: Bool?
 
             public enum ReviewType: String, CaseIterable, Codable, Sendable {
@@ -38,12 +39,13 @@ public struct AppStoreVersionUpdateRequest: Codable, Equatable, Sendable {
                 case scheduled = "SCHEDULED"
             }
 
-            public init(versionString: String? = nil, copyright: String? = nil, reviewType: ReviewType? = nil, releaseType: ReleaseType? = nil, earliestReleaseDate: Date? = nil, isDownloadable: Bool? = nil) {
+            public init(versionString: String? = nil, copyright: String? = nil, reviewType: ReviewType? = nil, releaseType: ReleaseType? = nil, earliestReleaseDate: Date? = nil, usesIdfa: Bool? = nil, isDownloadable: Bool? = nil) {
                 self.versionString = versionString
                 self.copyright = copyright
                 self.reviewType = reviewType
                 self.releaseType = releaseType
                 self.earliestReleaseDate = earliestReleaseDate
+                self.usesIdfa = usesIdfa
                 self.isDownloadable = isDownloadable
             }
 
@@ -53,6 +55,7 @@ public struct AppStoreVersionUpdateRequest: Codable, Equatable, Sendable {
                 case reviewType
                 case releaseType
                 case earliestReleaseDate
+                case usesIdfa
                 case isDownloadable = "downloadable"
             }
         }

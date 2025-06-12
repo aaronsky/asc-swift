@@ -19,7 +19,7 @@ public struct BuildBundle: Codable, Equatable, Identifiable, Sendable {
 
     public struct Attributes: Codable, Equatable, Sendable {
         public var bundleID: String?
-        public var bundleType: BundleType?
+        public var bundleType: BuildBundleType?
         public var sdkBuild: String?
         public var platformBuild: String?
         public var fileName: String?
@@ -35,13 +35,10 @@ public struct BuildBundle: Codable, Equatable, Identifiable, Sendable {
         public var deviceProtocols: [String]?
         public var locales: [String]?
         public var entitlements: [String: [String: String]]?
+        public var baDownloadAllowance: Int?
+        public var baMaxInstallSize: Int?
 
-        public enum BundleType: String, CaseIterable, Codable, Sendable {
-            case app = "APP"
-            case appClip = "APP_CLIP"
-        }
-
-        public init(bundleID: String? = nil, bundleType: BundleType? = nil, sdkBuild: String? = nil, platformBuild: String? = nil, fileName: String? = nil, hasSirikit: Bool? = nil, hasOnDemandResources: Bool? = nil, hasPrerenderedIcon: Bool? = nil, usesLocationServices: Bool? = nil, isIosBuildMacAppStoreCompatible: Bool? = nil, isIncludesSymbols: Bool? = nil, dSYMURL: URL? = nil, supportedArchitectures: [String]? = nil, requiredCapabilities: [String]? = nil, deviceProtocols: [String]? = nil, locales: [String]? = nil, entitlements: [String: [String: String]]? = nil) {
+        public init(bundleID: String? = nil, bundleType: BuildBundleType? = nil, sdkBuild: String? = nil, platformBuild: String? = nil, fileName: String? = nil, hasSirikit: Bool? = nil, hasOnDemandResources: Bool? = nil, hasPrerenderedIcon: Bool? = nil, usesLocationServices: Bool? = nil, isIosBuildMacAppStoreCompatible: Bool? = nil, isIncludesSymbols: Bool? = nil, dSYMURL: URL? = nil, supportedArchitectures: [String]? = nil, requiredCapabilities: [String]? = nil, deviceProtocols: [String]? = nil, locales: [String]? = nil, entitlements: [String: [String: String]]? = nil, baDownloadAllowance: Int? = nil, baMaxInstallSize: Int? = nil) {
             self.bundleID = bundleID
             self.bundleType = bundleType
             self.sdkBuild = sdkBuild
@@ -59,6 +56,8 @@ public struct BuildBundle: Codable, Equatable, Identifiable, Sendable {
             self.deviceProtocols = deviceProtocols
             self.locales = locales
             self.entitlements = entitlements
+            self.baDownloadAllowance = baDownloadAllowance
+            self.baMaxInstallSize = baMaxInstallSize
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -79,6 +78,8 @@ public struct BuildBundle: Codable, Equatable, Identifiable, Sendable {
             case deviceProtocols
             case locales
             case entitlements
+            case baDownloadAllowance
+            case baMaxInstallSize
         }
     }
 

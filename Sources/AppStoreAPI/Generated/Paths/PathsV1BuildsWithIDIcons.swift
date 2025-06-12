@@ -28,9 +28,9 @@ extension Resources.V1.Builds.WithID {
         }
 
         public enum FieldsBuildIcons: String, CaseIterable, Codable, Sendable {
-            case name
             case iconAsset
             case iconType
+            case name
         }
     }
 }

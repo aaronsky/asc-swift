@@ -19,15 +19,18 @@ public struct ReviewSubmissionUpdateRequest: Codable, Equatable, Sendable {
         }
 
         public struct Attributes: Codable, Equatable, Sendable {
+            public var platform: Platform?
             public var isSubmitted: Bool?
             public var isCanceled: Bool?
 
-            public init(isSubmitted: Bool? = nil, isCanceled: Bool? = nil) {
+            public init(platform: Platform? = nil, isSubmitted: Bool? = nil, isCanceled: Bool? = nil) {
+                self.platform = platform
                 self.isSubmitted = isSubmitted
                 self.isCanceled = isCanceled
             }
 
             private enum CodingKeys: String, CodingKey {
+                case platform
                 case isSubmitted = "submitted"
                 case isCanceled = "canceled"
             }

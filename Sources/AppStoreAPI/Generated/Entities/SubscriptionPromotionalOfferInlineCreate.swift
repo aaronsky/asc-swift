@@ -17,18 +17,18 @@ public struct SubscriptionPromotionalOfferInlineCreate: Codable, Equatable, Iden
     }
 
     public struct Attributes: Codable, Equatable, Sendable {
-        public var name: String
-        public var offerCode: String
         public var duration: SubscriptionOfferDuration
-        public var offerMode: SubscriptionOfferMode
+        public var name: String
         public var numberOfPeriods: Int
+        public var offerCode: String
+        public var offerMode: SubscriptionOfferMode
 
-        public init(name: String, offerCode: String, duration: SubscriptionOfferDuration, offerMode: SubscriptionOfferMode, numberOfPeriods: Int) {
-            self.name = name
-            self.offerCode = offerCode
+        public init(duration: SubscriptionOfferDuration, name: String, numberOfPeriods: Int, offerCode: String, offerMode: SubscriptionOfferMode) {
             self.duration = duration
-            self.offerMode = offerMode
+            self.name = name
             self.numberOfPeriods = numberOfPeriods
+            self.offerCode = offerCode
+            self.offerMode = offerMode
         }
     }
 

@@ -19,6 +19,7 @@ public struct AppUpdateRequest: Codable, Equatable, Sendable {
         }
 
         public struct Attributes: Codable, Equatable, Sendable {
+            public var accessibilityURL: URL?
             public var bundleID: String?
             public var primaryLocale: String?
             public var subscriptionStatusURL: URL?
@@ -33,7 +34,8 @@ public struct AppUpdateRequest: Codable, Equatable, Sendable {
                 case usesThirdPartyContent = "USES_THIRD_PARTY_CONTENT"
             }
 
-            public init(bundleID: String? = nil, primaryLocale: String? = nil, subscriptionStatusURL: URL? = nil, subscriptionStatusURLVersion: SubscriptionStatusURLVersion? = nil, subscriptionStatusURLForSandbox: URL? = nil, subscriptionStatusURLVersionForSandbox: SubscriptionStatusURLVersion? = nil, contentRightsDeclaration: ContentRightsDeclaration? = nil, isStreamlinedPurchasingEnabled: Bool? = nil) {
+            public init(accessibilityURL: URL? = nil, bundleID: String? = nil, primaryLocale: String? = nil, subscriptionStatusURL: URL? = nil, subscriptionStatusURLVersion: SubscriptionStatusURLVersion? = nil, subscriptionStatusURLForSandbox: URL? = nil, subscriptionStatusURLVersionForSandbox: SubscriptionStatusURLVersion? = nil, contentRightsDeclaration: ContentRightsDeclaration? = nil, isStreamlinedPurchasingEnabled: Bool? = nil) {
+                self.accessibilityURL = accessibilityURL
                 self.bundleID = bundleID
                 self.primaryLocale = primaryLocale
                 self.subscriptionStatusURL = subscriptionStatusURL
@@ -45,6 +47,7 @@ public struct AppUpdateRequest: Codable, Equatable, Sendable {
             }
 
             private enum CodingKeys: String, CodingKey {
+                case accessibilityURL = "accessibilityUrl"
                 case bundleID = "bundleId"
                 case primaryLocale
                 case subscriptionStatusURL = "subscriptionStatusUrl"

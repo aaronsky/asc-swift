@@ -16,13 +16,15 @@ extension Resources.V1.Certificates {
         /// Path: `/v1/certificates/{id}`
         public let path: String
 
-        public func get(fieldsCertificates: [FieldsCertificates]? = nil) -> Request<AppStoreAPI.CertificateResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCertificates), id: "certificates_getInstance")
+        public func get(fieldsCertificates: [FieldsCertificates]? = nil, fieldsPassTypeIDs: [FieldsPassTypeIDs]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CertificateResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCertificates, fieldsPassTypeIDs, include), id: "certificates_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsCertificates: [FieldsCertificates]?) -> [(String, String?)] {
-            let encoder = URLQueryEncoder()
-            encoder.encode(fieldsCertificates, forKey: "fields[certificates]", explode: false)
+        private func makeGetQuery(_ fieldsCertificates: [FieldsCertificates]?, _ fieldsPassTypeIDs: [FieldsPassTypeIDs]?, _ include: [Include]?) -> [(String, String?)] {
+            let encoder = URLQueryEncoder(explode: false)
+            encoder.encode(fieldsCertificates, forKey: "fields[certificates]")
+            encoder.encode(fieldsPassTypeIDs, forKey: "fields[passTypeIds]")
+            encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
@@ -35,6 +37,17 @@ extension Resources.V1.Certificates {
             case expirationDate
             case certificateContent
             case activated
+            case passTypeID = "passTypeId"
+        }
+
+        public enum FieldsPassTypeIDs: String, CaseIterable, Codable, Sendable {
+            case name
+            case identifier
+            case certificates
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
+            case passTypeID = "passTypeId"
         }
 
         public func patch(_ body: AppStoreAPI.CertificateUpdateRequest) -> Request<AppStoreAPI.CertificateResponse> {
