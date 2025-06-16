@@ -57,7 +57,7 @@ where Duration == Clock.Duration {
 
 extension RetryStrategy {
     /// The strategy that retries on a fixed interval, in seconds, until a limit is reached.
-    static func fixedInterval<Clock: _Concurrency.Clock, Duration: Swift.DurationProtocol>(
+    public static func fixedInterval<Clock: _Concurrency.Clock, Duration: Swift.DurationProtocol>(
         _ interval: Duration,
         limit: Int,
         clock: Clock
@@ -69,7 +69,7 @@ extension RetryStrategy {
 
 extension RetryStrategy where Self == FixedIntervalRetryStrategy<ContinuousClock, ContinuousClock.Duration> {
     /// The strategy that retries on a fixed interval, in seconds, until a limit is reached.
-    static func fixedInterval(
+    public static func fixedInterval(
         _ interval: ContinuousClock.Duration,
         limit: Int,
         clock: ContinuousClock = ContinuousClock()
@@ -79,7 +79,8 @@ extension RetryStrategy where Self == FixedIntervalRetryStrategy<ContinuousClock
 }
 
 /// The strategy that retries using an exponential backoff approach until a limit is reached.
-public struct ExponentialBackoffRetryStrategy<Clock: _Concurrency.Clock, Duration: Swift.DurationProtocol>: RetryStrategy
+public struct ExponentialBackoffRetryStrategy<Clock: _Concurrency.Clock, Duration: Swift.DurationProtocol>:
+    RetryStrategy
 where Duration == Clock.Duration {
     var interval: Duration
     var limit: Int
@@ -92,7 +93,6 @@ where Duration == Clock.Duration {
         self.exponentialBase = exponentialBase
         self.clock = clock
     }
-
 
     public func waitAndContinue(for error: any Error, iteration: Int) async throws -> Bool {
         guard iteration < limit else { return false }
@@ -108,7 +108,7 @@ where Duration == Clock.Duration {
 
 extension RetryStrategy {
     /// The strategy that retries using an exponential backoff approach until a limit is reached.
-    static func exponentialBackoff<Clock: _Concurrency.Clock, Duration: Swift.DurationProtocol>(
+    public static func exponentialBackoff<Clock: _Concurrency.Clock, Duration: Swift.DurationProtocol>(
         interval: Duration,
         limit: Int,
         exponentialBase: Int,
@@ -126,7 +126,7 @@ extension RetryStrategy {
 
 extension RetryStrategy where Self == ExponentialBackoffRetryStrategy<ContinuousClock, ContinuousClock.Duration> {
     /// The strategy that retries using an exponential backoff approach until a limit is reached.
-    static func exponentialBackoff(
+    public static func exponentialBackoff(
         interval: ContinuousClock.Duration,
         limit: Int,
         exponentialBase: Int,
