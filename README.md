@@ -24,7 +24,7 @@ print(apps)
 
 ## Installation
 
-This project supports Swift 5.9 and higher, and has minimum requirements of iOS 16, macOS 13, tvOS 16, and watchOS 9. It strives to be fully supported for deployment on all other platforms outlined by Swift.org [Platform Support page](https://www.swift.org/platform-support/#deployment-only), such as the various Linux flavors and Windows. App Store Connect API version 3.8 and Enterprise Program 1.0 are supported.
+This project supports Swift 5.9 and higher, and has minimum requirements of iOS 16, macOS 13, tvOS 16, and watchOS 9. It strives to be fully supported for deployment on all other platforms outlined by Swift.org [Platform Support page](https://www.swift.org/platform-support/#deployment-only), such as the various Linux flavors and Windows. App Store Connect API version 4.0 and Enterprise Program 1.0 are supported.
 
 The package defines two products: `AppStoreConnect` and `EnterpriseProgram`. Each product provides the `AppStoreConnect` module, which contains the client and authentication logic, and either the `AppStoreAPI` or `EnterpriseAPI` modules, respectively. To integrate with App Store Connect, you would add a dependency on the `"AppStoreConnect"` product. To use the Enterprise Program API, add the `"EnterpriseProgram"` product as a target dependency instead. Finally, both products can be made dependencies of the same target without significant conflict. See the [invite_user](/Examples/invite_user/InviteUser.swift) sample for a rough example of this.
 
