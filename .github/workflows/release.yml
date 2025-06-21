@@ -16,7 +16,7 @@ jobs:
   create-release:
     runs-on: ubuntu-latest
     steps:
-      - uses: bazel-contrib/setup-bazel@0.8.5
+      - uses: bazel-contrib/setup-bazel@0.15.0
         with:
           bazelisk-cache: true
       - uses: actions/checkout@v4
@@ -33,7 +33,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ inputs.tag }}
-          files: "asc_swift-*.tar.gz"
+          files: 'asc_swift-*.tar.gz'
           fail_on_unmatched_files: true
           prerelease: ${{ inputs.prerelease }}
           generate_release_notes: true

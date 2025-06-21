@@ -37,7 +37,7 @@ jobs:
   macOS:
     runs-on: macos-15
     steps:
-      - uses: bazel-contrib/setup-bazel@0.8.5
+      - uses: bazel-contrib/setup-bazel@0.15.0
         with:
           bazelisk-cache: true
       - uses: actions/checkout@v4
@@ -46,20 +46,20 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: ['6.0']
+        tag: ['6.1']
     container:
-      image: swift:${{ matrix.tag }}-focal
+      image: swift:${{ matrix.tag }}
     steps:
-      - uses: bazel-contrib/setup-bazel@0.8.5
+      - uses: bazel-contrib/setup-bazel@0.15.0
         with:
           bazelisk-cache: true
           bazelisk-version: 1.x
       - uses: actions/checkout@v4
-      - run: bazel test --test_output=all //Tests/AppStoreConnectTests
+      - run: bazel test //...
   bzlmod-e2e-macOS:
     runs-on: macos-15
     steps:
-      - uses: bazel-contrib/setup-bazel@0.8.5
+      - uses: bazel-contrib/setup-bazel@0.15.0
         with:
           bazelisk-cache: true
       - uses: actions/checkout@v4
@@ -69,11 +69,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: ['6.0']
+        tag: ['6.1']
     container:
-      image: swift:${{ matrix.tag }}-focal
+      image: swift:${{ matrix.tag }}
     steps:
-      - uses: bazel-contrib/setup-bazel@0.8.5
+      - uses: bazel-contrib/setup-bazel@0.15.0
         with:
           bazelisk-cache: true
           bazelisk-version: 1.x

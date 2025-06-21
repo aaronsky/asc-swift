@@ -28,7 +28,7 @@ jobs:
     runs-on: macos-15
     strategy:
       matrix:
-        xcode: ['16.1']
+        xcode: ['16.4']
     env:
       DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
     steps:
@@ -39,9 +39,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: ['6.0']
+        tag: ['6.1']
     container:
-      image: swift:${{ matrix.tag }}-focal
+      image: swift:${{ matrix.tag }}
     steps:
       - uses: actions/checkout@v4
       - run: swift test --parallel

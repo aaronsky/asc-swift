@@ -9,7 +9,7 @@ jobs:
   diff_spec:
     runs-on: macos-latest
     steps:
-      - uses: bazel-contrib/setup-bazel@0.8.5
+      - uses: bazel-contrib/setup-bazel@0.15.0
         with:
           bazelisk-cache: true
       - uses: actions/checkout@v4
