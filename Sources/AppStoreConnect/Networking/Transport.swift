@@ -46,23 +46,71 @@ extension URLSession: Transport {
     /// - Returns: The response from the App Store Connect API.
     /// - Throws: An error describing the manner in which the request failed to complete.
     public func send(request: URLRequest, decoder: JSONDecoder) async throws -> Response<Data> {
-        let (data, urlResponse) = try await data(for: request)
+        // These depend on swift-corelibs-foundation, which have not implemented the
+        // Task-based API for URLSession.
+        #if (os(Linux) || os(Windows))
+            return try await withCheckedThrowingContinuation { continuation in
+                send(request: request, decoder: decoder) { result in continuation.resume(with: result) }
+            }
+        #else
+            let (data, urlResponse) = try await data(for: request)
 
-        guard let urlResponse = urlResponse as? HTTPURLResponse else {
-            throw TransportError.unrecognizedResponse
+            guard let urlResponse = urlResponse as? HTTPURLResponse else {
+                throw TransportError.unrecognizedResponse
+            }
+
+            let response = Response(
+                data: data,
+                response: urlResponse,
+                statusCode: urlResponse.statusCode,
+                rate: Rate(from: urlResponse.value(forHTTPHeaderField: rateLimitHeader)),
+                decoder: decoder
+            )
+
+            try response.check()
+
+            return response
+        #endif
+    }
+
+    /// Use the old URLSessionDataTask API with a completion handler.
+    ///
+    /// Only used for backwards compatibility on swift-corelibs-foundation platforms. Made internal for testing.
+    /// - Parameters:
+    ///   - request: A request.
+    ///   - decoder: A decoder object capable of decoding an ``ErrorResponse`` object, in case one is received.
+    ///   - completion: A completion handler. Executed on an arbitrary queue.
+    func send(
+        request: URLRequest,
+        decoder: JSONDecoder,
+        completion: @escaping @Sendable (Result<Response<Data>, any Error>) -> Void
+    ) {
+        let task = dataTask(with: request) { data, urlResponse, error in
+            completion(
+                Result {
+                    if let error = error {
+                        throw error
+                    }
+
+                    guard let urlResponse = urlResponse as? HTTPURLResponse else {
+                        throw TransportError.unrecognizedResponse
+                    }
+
+                    let response = Response(
+                        data: data,
+                        response: urlResponse,
+                        statusCode: urlResponse.statusCode,
+                        rate: Rate(from: urlResponse.value(forHTTPHeaderField: rateLimitHeader)),
+                        decoder: decoder
+                    )
+
+                    try response.check()
+
+                    return response
+                }
+            )
         }
-
-        let response = Response(
-            data: data,
-            response: urlResponse,
-            statusCode: urlResponse.statusCode,
-            rate: Rate(from: urlResponse.value(forHTTPHeaderField: rateLimitHeader)),
-            decoder: decoder
-        )
-
-        try response.check()
-
-        return response
+        task.resume()
     }
 
     /// Download the requested resource and store it on-disk.
@@ -70,22 +118,67 @@ extension URLSession: Transport {
     /// - Returns: A ``Response`` that describes the location of the downloaded file.
     /// - Throws: An error describing the manner in which the request failed to complete.
     public func download(request: URLRequest) async throws -> Response<URL> {
-        let (fileURL, urlResponse) = try await download(for: request)
+        // These depend on swift-corelibs-foundation, which have not implemented the
+        // Task-based API for URLSession.
+        #if (os(Linux) || os(Windows))
+            return try await withCheckedThrowingContinuation { continuation in
+                download(request: request) { result in continuation.resume(with: result) }
+            }
+        #else
+            let (fileURL, urlResponse) = try await download(for: request)
 
-        guard let urlResponse = urlResponse as? HTTPURLResponse else {
-            throw TransportError.unrecognizedResponse
+            guard let urlResponse = urlResponse as? HTTPURLResponse else {
+                throw TransportError.unrecognizedResponse
+            }
+
+            let response = Response(
+                fileURL: fileURL,
+                response: urlResponse,
+                statusCode: urlResponse.statusCode,
+                rate: Rate(from: urlResponse.value(forHTTPHeaderField: rateLimitHeader))
+            )
+
+            try response.check()
+
+            return response
+        #endif
+    }
+
+    /// Use the old URLSessionDownloadTask API with a completion handler.
+    ///
+    /// Only used for backwards compatibility on swift-corelibs-foundation platforms. Made internal for testing.
+    /// - Parameters:
+    ///   - request: A request.
+    ///   - completion: A completion handler. Executed on an arbitrary queue.
+    func download(
+        request: URLRequest,
+        completion: @escaping @Sendable (Result<Response<URL>, any Error>) -> Void
+    ) {
+        let task = downloadTask(with: request) { fileURL, urlResponse, error in
+            completion(
+                Result {
+                    if let error = error {
+                        throw error
+                    }
+
+                    guard let urlResponse = urlResponse as? HTTPURLResponse else {
+                        throw TransportError.unrecognizedResponse
+                    }
+
+                    let response = Response(
+                        fileURL: fileURL,
+                        response: urlResponse,
+                        statusCode: urlResponse.statusCode,
+                        rate: Rate(from: urlResponse.value(forHTTPHeaderField: rateLimitHeader))
+                    )
+
+                    try response.check()
+
+                    return response
+                }
+            )
         }
-
-        let response = Response(
-            fileURL: fileURL,
-            response: urlResponse,
-            statusCode: urlResponse.statusCode,
-            rate: Rate(from: urlResponse.value(forHTTPHeaderField: rateLimitHeader))
-        )
-
-        try response.check()
-
-        return response
+        task.resume()
     }
 
     /// Upload the data using the request and receive a ``Response`` asynchronously.
@@ -96,22 +189,72 @@ extension URLSession: Transport {
     /// - Returns: The response from the App Store Connect API.
     /// - Throws: An error describing the manner in which the request failed to complete.
     public func upload(request: URLRequest, data: Data, decoder: JSONDecoder) async throws -> Response<Data> {
-        let (responseData, urlResponse) = try await upload(for: request, from: data)
+        // These depend on swift-corelibs-foundation, which have not implemented the
+        // Task-based API for URLSession.
+        #if (os(Linux) || os(Windows))
+            return try await withCheckedThrowingContinuation { continuation in
+                upload(request: request, data: data, decoder: decoder) { result in continuation.resume(with: result) }
+            }
+        #else
+            let (responseData, urlResponse) = try await upload(for: request, from: data)
 
-        guard let urlResponse = urlResponse as? HTTPURLResponse else {
-            throw TransportError.unrecognizedResponse
+            guard let urlResponse = urlResponse as? HTTPURLResponse else {
+                throw TransportError.unrecognizedResponse
+            }
+
+            let response = Response(
+                data: responseData,
+                response: urlResponse,
+                statusCode: urlResponse.statusCode,
+                rate: Rate(from: urlResponse.value(forHTTPHeaderField: rateLimitHeader)),
+                decoder: decoder
+            )
+
+            try response.check()
+
+            return response
+        #endif
+    }
+
+    /// Use the old URLSessionUploadTask API with a completion handler.
+    ///
+    /// Only used for backwards compatibility on swift-corelibs-foundation platforms. Made internal for testing.
+    /// - Parameters:
+    ///   - request: A request.
+    ///   - data: The data to upload.
+    ///   - decoder: A decoder object capable of decoding an ``ErrorResponse`` object, in case one is received.
+    ///   - completion: A completion handler. Executed on an arbitrary queue.
+    func upload(
+        request: URLRequest,
+        data: Data,
+        decoder: JSONDecoder,
+        completion: @escaping @Sendable (Result<Response<Data>, any Error>) -> Void
+    ) {
+        let task = uploadTask(with: request, from: data) { responseData, urlResponse, error in
+            completion(
+                Result {
+                    if let error = error {
+                        throw error
+                    }
+
+                    guard let urlResponse = urlResponse as? HTTPURLResponse else {
+                        throw TransportError.unrecognizedResponse
+                    }
+
+                    let response = Response(
+                        data: responseData,
+                        response: urlResponse,
+                        statusCode: urlResponse.statusCode,
+                        rate: Rate(from: urlResponse.value(forHTTPHeaderField: rateLimitHeader)),
+                        decoder: decoder
+                    )
+
+                    try response.check()
+
+                    return response
+                }
+            )
         }
-
-        let response = Response(
-            data: responseData,
-            response: urlResponse,
-            statusCode: urlResponse.statusCode,
-            rate: Rate(from: urlResponse.value(forHTTPHeaderField: rateLimitHeader)),
-            decoder: decoder
-        )
-
-        try response.check()
-
-        return response
+        task.resume()
     }
 }

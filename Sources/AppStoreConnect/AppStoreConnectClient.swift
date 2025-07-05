@@ -22,7 +22,7 @@ public actor AppStoreConnectClient {
 
     package var encoder: JSONEncoder {
         let encoder = JSONEncoder()
-        encoder.dateEncodingStrategy = .iso8601
+        encoder.dateEncodingStrategy = .custom(encodeISO8601Date(_:encoder:))
         return encoder
     }
 
@@ -30,35 +30,6 @@ public actor AppStoreConnectClient {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom(decodeISO8601Date(with:))
         return decoder
-    }
-
-    private nonisolated func decodeISO8601Date(with decoder: any Decoder) throws -> Date {
-        let container = try decoder.singleValueContainer()
-
-        let dateString = try container.decode(String.self)
-
-        if let date = try? Date(dateString, strategy: .iso8601) {
-            return date
-        } else if let date = try? Date(
-            dateString,
-            strategy: .iso8601
-                .year()
-                .month()
-                .day()
-                .dateSeparator(.dash)
-                .time(includingFractionalSeconds: true)
-                .timeSeparator(.colon)
-                .dateTimeSeparator(.standard)
-        ) {
-            return date
-        }
-
-        throw DecodingError.dataCorrupted(
-            DecodingError.Context(
-                codingPath: container.codingPath,
-                debugDescription: "Expected date string \(dateString) to be ISO8601-formatted."
-            )
-        )
     }
 
     /// Creates a session with the specified configuration, transport layer, and token provider.
