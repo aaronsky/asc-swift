@@ -28,7 +28,7 @@ jobs:
     runs-on: macos-15
     strategy:
       matrix:
-        xcode: ['16.1']
+        xcode: ['16.4']
         destination:
           - 'platform=macOS'
           - 'platform=iOS Simulator,name=iPhone 16 Pro Max'

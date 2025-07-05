@@ -8,5 +8,5 @@ local_path_override(
     path = "../..",
 )
 
-bazel_dep(name = "apple_support", version = "1.16.0")
-bazel_dep(name = "rules_swift", version = "2.1.1")
+bazel_dep(name = "apple_support", version = "1.22.1")
+bazel_dep(name = "rules_swift", version = "3.0.2")
