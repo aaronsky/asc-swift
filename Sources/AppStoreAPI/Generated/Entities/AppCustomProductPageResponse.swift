@@ -13,19 +13,28 @@ public struct AppCustomProductPageResponse: Codable, Equatable, Sendable {
     public var links: DocumentLinks
 
     public enum IncludedItem: Codable, Equatable, Sendable {
-        case app(App)
+        case appCustomProductPageLocalization(AppCustomProductPageLocalization)
         case appCustomProductPageVersion(AppCustomProductPageVersion)
+        case app(App)
 
         public init(from decoder: any Decoder) throws {
+
+            struct Discriminator: Decodable {
+                let type: String
+            }
+
             let container = try decoder.singleValueContainer()
-            if let value = try? container.decode(App.self) {
-                self = .app(value)
-            } else if let value = try? container.decode(AppCustomProductPageVersion.self) {
-                self = .appCustomProductPageVersion(value)
-            } else {
+            let discriminatorValue = try container.decode(Discriminator.self).type
+
+            switch discriminatorValue {
+            case "appCustomProductPageLocalizations": self = .appCustomProductPageLocalization(try container.decode(AppCustomProductPageLocalization.self))
+            case "appCustomProductPageVersions": self = .appCustomProductPageVersion(try container.decode(AppCustomProductPageVersion.self))
+            case "apps": self = .app(try container.decode(App.self))
+
+            default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (App, AppCustomProductPageVersion)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (appCustomProductPageLocalizations, appCustomProductPageVersions, apps)."
                 )
             }
         }
@@ -33,8 +42,9 @@ public struct AppCustomProductPageResponse: Codable, Equatable, Sendable {
         public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
-            case .app(let value): try container.encode(value)
+            case .appCustomProductPageLocalization(let value): try container.encode(value)
             case .appCustomProductPageVersion(let value): try container.encode(value)
+            case .app(let value): try container.encode(value)
             }
         }
     }

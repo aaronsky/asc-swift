@@ -59,6 +59,7 @@ extension Resources.V1.AppInfos.WithID {
             case secondaryCategory
             case secondarySubcategoryOne
             case secondarySubcategoryTwo
+            case territoryAgeRatings
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

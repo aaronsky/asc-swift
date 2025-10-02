@@ -13,19 +13,26 @@ public struct AppClipResponse: Codable, Equatable, Sendable {
     public var links: DocumentLinks
 
     public enum IncludedItem: Codable, Equatable, Sendable {
-        case app(App)
         case appClipDefaultExperience(AppClipDefaultExperience)
+        case app(App)
 
         public init(from decoder: any Decoder) throws {
+
+            struct Discriminator: Decodable {
+                let type: String
+            }
+
             let container = try decoder.singleValueContainer()
-            if let value = try? container.decode(App.self) {
-                self = .app(value)
-            } else if let value = try? container.decode(AppClipDefaultExperience.self) {
-                self = .appClipDefaultExperience(value)
-            } else {
+            let discriminatorValue = try container.decode(Discriminator.self).type
+
+            switch discriminatorValue {
+            case "appClipDefaultExperiences": self = .appClipDefaultExperience(try container.decode(AppClipDefaultExperience.self))
+            case "apps": self = .app(try container.decode(App.self))
+
+            default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (App, AppClipDefaultExperience)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (appClipDefaultExperiences, apps)."
                 )
             }
         }
@@ -33,8 +40,8 @@ public struct AppClipResponse: Codable, Equatable, Sendable {
         public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
-            case .app(let value): try container.encode(value)
             case .appClipDefaultExperience(let value): try container.encode(value)
+            case .app(let value): try container.encode(value)
             }
         }
     }

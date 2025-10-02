@@ -13,19 +13,26 @@ public struct GameCenterActivityLocalizationsResponse: Codable, Equatable, Senda
     public var meta: PagingInformation?
 
     public enum IncludedItem: Codable, Equatable, Sendable {
-        case gameCenterActivityVersion(GameCenterActivityVersion)
         case gameCenterActivityImage(GameCenterActivityImage)
+        case gameCenterActivityVersion(GameCenterActivityVersion)
 
         public init(from decoder: any Decoder) throws {
+
+            struct Discriminator: Decodable {
+                let type: String
+            }
+
             let container = try decoder.singleValueContainer()
-            if let value = try? container.decode(GameCenterActivityVersion.self) {
-                self = .gameCenterActivityVersion(value)
-            } else if let value = try? container.decode(GameCenterActivityImage.self) {
-                self = .gameCenterActivityImage(value)
-            } else {
+            let discriminatorValue = try container.decode(Discriminator.self).type
+
+            switch discriminatorValue {
+            case "gameCenterActivityImages": self = .gameCenterActivityImage(try container.decode(GameCenterActivityImage.self))
+            case "gameCenterActivityVersions": self = .gameCenterActivityVersion(try container.decode(GameCenterActivityVersion.self))
+
+            default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (GameCenterActivityVersion, GameCenterActivityImage)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (gameCenterActivityImages, gameCenterActivityVersions)."
                 )
             }
         }
@@ -33,8 +40,8 @@ public struct GameCenterActivityLocalizationsResponse: Codable, Equatable, Senda
         public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
-            case .gameCenterActivityVersion(let value): try container.encode(value)
             case .gameCenterActivityImage(let value): try container.encode(value)
+            case .gameCenterActivityVersion(let value): try container.encode(value)
             }
         }
     }

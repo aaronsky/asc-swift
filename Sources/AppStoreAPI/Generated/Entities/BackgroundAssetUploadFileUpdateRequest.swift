@@ -20,15 +20,18 @@ public struct BackgroundAssetUploadFileUpdateRequest: Codable, Equatable, Sendab
 
         public struct Attributes: Codable, Equatable, Sendable {
             public var sourceFileChecksum: String?
+            public var sourceFileChecksums: Checksums?
             public var isUploaded: Bool?
 
-            public init(sourceFileChecksum: String? = nil, isUploaded: Bool? = nil) {
+            public init(sourceFileChecksum: String? = nil, sourceFileChecksums: Checksums? = nil, isUploaded: Bool? = nil) {
                 self.sourceFileChecksum = sourceFileChecksum
+                self.sourceFileChecksums = sourceFileChecksums
                 self.isUploaded = isUploaded
             }
 
             private enum CodingKeys: String, CodingKey {
                 case sourceFileChecksum
+                case sourceFileChecksums
                 case isUploaded = "uploaded"
             }
         }

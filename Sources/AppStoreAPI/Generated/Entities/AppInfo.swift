@@ -96,6 +96,7 @@ public struct AppInfo: Codable, Equatable, Identifiable, Sendable {
         public var secondaryCategory: SecondaryCategory?
         public var secondarySubcategoryOne: SecondarySubcategoryOne?
         public var secondarySubcategoryTwo: SecondarySubcategoryTwo?
+        public var territoryAgeRatings: TerritoryAgeRatings?
 
         public struct App: Codable, Equatable, Sendable {
             public var data: Data?
@@ -313,7 +314,15 @@ public struct AppInfo: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(app: App? = nil, ageRatingDeclaration: AgeRatingDeclaration? = nil, appInfoLocalizations: AppInfoLocalizations? = nil, primaryCategory: PrimaryCategory? = nil, primarySubcategoryOne: PrimarySubcategoryOne? = nil, primarySubcategoryTwo: PrimarySubcategoryTwo? = nil, secondaryCategory: SecondaryCategory? = nil, secondarySubcategoryOne: SecondarySubcategoryOne? = nil, secondarySubcategoryTwo: SecondarySubcategoryTwo? = nil) {
+        public struct TerritoryAgeRatings: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
+            }
+        }
+
+        public init(app: App? = nil, ageRatingDeclaration: AgeRatingDeclaration? = nil, appInfoLocalizations: AppInfoLocalizations? = nil, primaryCategory: PrimaryCategory? = nil, primarySubcategoryOne: PrimarySubcategoryOne? = nil, primarySubcategoryTwo: PrimarySubcategoryTwo? = nil, secondaryCategory: SecondaryCategory? = nil, secondarySubcategoryOne: SecondarySubcategoryOne? = nil, secondarySubcategoryTwo: SecondarySubcategoryTwo? = nil, territoryAgeRatings: TerritoryAgeRatings? = nil) {
             self.app = app
             self.ageRatingDeclaration = ageRatingDeclaration
             self.appInfoLocalizations = appInfoLocalizations
@@ -323,6 +332,7 @@ public struct AppInfo: Codable, Equatable, Identifiable, Sendable {
             self.secondaryCategory = secondaryCategory
             self.secondarySubcategoryOne = secondarySubcategoryOne
             self.secondarySubcategoryTwo = secondarySubcategoryTwo
+            self.territoryAgeRatings = territoryAgeRatings
         }
     }
 

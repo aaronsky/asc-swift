@@ -87,6 +87,7 @@ extension Resources.V1 {
             case betaTesters
             case betaGroups
             case appStoreVersions
+            case appTags
             case preReleaseVersions
             case betaAppLocalizations
             case builds
@@ -115,9 +116,11 @@ extension Resources.V1 {
             case alternativeDistributionKey
             case analyticsReportRequests
             case marketplaceSearchDetail
+            case buildUploads
             case backgroundAssets
             case betaFeedbackScreenshotSubmissions
             case betaFeedbackCrashSubmissions
+            case searchKeywords
             case webhooks
         }
 

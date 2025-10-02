@@ -13,19 +13,26 @@ public struct ScmRepositoriesResponse: Codable, Equatable, Sendable {
     public var meta: PagingInformation?
 
     public enum IncludedItem: Codable, Equatable, Sendable {
-        case scmProvider(ScmProvider)
         case scmGitReference(ScmGitReference)
+        case scmProvider(ScmProvider)
 
         public init(from decoder: any Decoder) throws {
+
+            struct Discriminator: Decodable {
+                let type: String
+            }
+
             let container = try decoder.singleValueContainer()
-            if let value = try? container.decode(ScmProvider.self) {
-                self = .scmProvider(value)
-            } else if let value = try? container.decode(ScmGitReference.self) {
-                self = .scmGitReference(value)
-            } else {
+            let discriminatorValue = try container.decode(Discriminator.self).type
+
+            switch discriminatorValue {
+            case "scmGitReferences": self = .scmGitReference(try container.decode(ScmGitReference.self))
+            case "scmProviders": self = .scmProvider(try container.decode(ScmProvider.self))
+
+            default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (ScmProvider, ScmGitReference)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (scmGitReferences, scmProviders)."
                 )
             }
         }
@@ -33,8 +40,8 @@ public struct ScmRepositoriesResponse: Codable, Equatable, Sendable {
         public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
-            case .scmProvider(let value): try container.encode(value)
             case .scmGitReference(let value): try container.encode(value)
+            case .scmProvider(let value): try container.encode(value)
             }
         }
     }

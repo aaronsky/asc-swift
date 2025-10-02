@@ -13,22 +13,28 @@ public struct AppEventLocalizationResponse: Codable, Equatable, Sendable {
     public var links: DocumentLinks
 
     public enum IncludedItem: Codable, Equatable, Sendable {
-        case appEvent(AppEvent)
         case appEventScreenshot(AppEventScreenshot)
         case appEventVideoClip(AppEventVideoClip)
+        case appEvent(AppEvent)
 
         public init(from decoder: any Decoder) throws {
+
+            struct Discriminator: Decodable {
+                let type: String
+            }
+
             let container = try decoder.singleValueContainer()
-            if let value = try? container.decode(AppEvent.self) {
-                self = .appEvent(value)
-            } else if let value = try? container.decode(AppEventScreenshot.self) {
-                self = .appEventScreenshot(value)
-            } else if let value = try? container.decode(AppEventVideoClip.self) {
-                self = .appEventVideoClip(value)
-            } else {
+            let discriminatorValue = try container.decode(Discriminator.self).type
+
+            switch discriminatorValue {
+            case "appEventScreenshots": self = .appEventScreenshot(try container.decode(AppEventScreenshot.self))
+            case "appEventVideoClips": self = .appEventVideoClip(try container.decode(AppEventVideoClip.self))
+            case "appEvents": self = .appEvent(try container.decode(AppEvent.self))
+
+            default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (AppEvent, AppEventScreenshot, AppEventVideoClip)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (appEventScreenshots, appEventVideoClips, appEvents)."
                 )
             }
         }
@@ -36,9 +42,9 @@ public struct AppEventLocalizationResponse: Codable, Equatable, Sendable {
         public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
-            case .appEvent(let value): try container.encode(value)
             case .appEventScreenshot(let value): try container.encode(value)
             case .appEventVideoClip(let value): try container.encode(value)
+            case .appEvent(let value): try container.encode(value)
             }
         }
     }

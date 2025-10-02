@@ -19,12 +19,21 @@ public struct BuildIcon: Codable, Equatable, Identifiable, Sendable {
     public struct Attributes: Codable, Equatable, Sendable {
         public var iconAsset: ImageAsset?
         public var iconType: IconAssetType?
+        public var isMasked: Bool?
         public var name: String?
 
-        public init(iconAsset: ImageAsset? = nil, iconType: IconAssetType? = nil, name: String? = nil) {
+        public init(iconAsset: ImageAsset? = nil, iconType: IconAssetType? = nil, isMasked: Bool? = nil, name: String? = nil) {
             self.iconAsset = iconAsset
             self.iconType = iconType
+            self.isMasked = isMasked
             self.name = name
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case iconAsset
+            case iconType
+            case isMasked = "masked"
+            case name
         }
     }
 

@@ -81,6 +81,7 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
         public var appStoreVersion: AppStoreVersion?
         public var icons: Icons?
         public var buildBundles: BuildBundles?
+        public var buildUpload: BuildUpload?
         public var perfPowerMetrics: PerfPowerMetrics?
         public var diagnosticSignatures: DiagnosticSignatures?
 
@@ -356,6 +357,28 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
+        public struct BuildUpload: Codable, Equatable, Sendable {
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case buildUploads
+                }
+
+                public init(type: `Type` = .buildUploads, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(data: Data? = nil) {
+                self.data = data
+            }
+        }
+
         public struct PerfPowerMetrics: Codable, Equatable, Sendable {
             public var links: RelationshipLinks?
 
@@ -372,7 +395,7 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(preReleaseVersion: PreReleaseVersion? = nil, individualTesters: IndividualTesters? = nil, betaGroups: BetaGroups? = nil, betaBuildLocalizations: BetaBuildLocalizations? = nil, appEncryptionDeclaration: AppEncryptionDeclaration? = nil, betaAppReviewSubmission: BetaAppReviewSubmission? = nil, app: App? = nil, buildBetaDetail: BuildBetaDetail? = nil, appStoreVersion: AppStoreVersion? = nil, icons: Icons? = nil, buildBundles: BuildBundles? = nil, perfPowerMetrics: PerfPowerMetrics? = nil, diagnosticSignatures: DiagnosticSignatures? = nil) {
+        public init(preReleaseVersion: PreReleaseVersion? = nil, individualTesters: IndividualTesters? = nil, betaGroups: BetaGroups? = nil, betaBuildLocalizations: BetaBuildLocalizations? = nil, appEncryptionDeclaration: AppEncryptionDeclaration? = nil, betaAppReviewSubmission: BetaAppReviewSubmission? = nil, app: App? = nil, buildBetaDetail: BuildBetaDetail? = nil, appStoreVersion: AppStoreVersion? = nil, icons: Icons? = nil, buildBundles: BuildBundles? = nil, buildUpload: BuildUpload? = nil, perfPowerMetrics: PerfPowerMetrics? = nil, diagnosticSignatures: DiagnosticSignatures? = nil) {
             self.preReleaseVersion = preReleaseVersion
             self.individualTesters = individualTesters
             self.betaGroups = betaGroups
@@ -384,6 +407,7 @@ public struct Build: Codable, Equatable, Identifiable, Sendable {
             self.appStoreVersion = appStoreVersion
             self.icons = icons
             self.buildBundles = buildBundles
+            self.buildUpload = buildUpload
             self.perfPowerMetrics = perfPowerMetrics
             self.diagnosticSignatures = diagnosticSignatures
         }

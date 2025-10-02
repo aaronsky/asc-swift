@@ -85,6 +85,7 @@ extension Resources.V1.CiProducts.WithID {
             case betaTesters
             case betaGroups
             case appStoreVersions
+            case appTags
             case preReleaseVersions
             case betaAppLocalizations
             case builds
@@ -113,9 +114,11 @@ extension Resources.V1.CiProducts.WithID {
             case alternativeDistributionKey
             case analyticsReportRequests
             case marketplaceSearchDetail
+            case buildUploads
             case backgroundAssets
             case betaFeedbackScreenshotSubmissions
             case betaFeedbackCrashSubmissions
+            case searchKeywords
             case webhooks
         }
 
@@ -240,6 +243,7 @@ extension Resources.V1.CiProducts.WithID {
             case appStoreVersion
             case icons
             case buildBundles
+            case buildUpload
             case perfPowerMetrics
             case diagnosticSignatures
         }
@@ -280,6 +284,7 @@ extension Resources.V1.CiProducts.WithID {
             case secondaryCategory
             case secondarySubcategoryOne
             case secondarySubcategoryTwo
+            case territoryAgeRatings
         }
 
         public enum FieldsAppClips: String, CaseIterable, Codable, Sendable {

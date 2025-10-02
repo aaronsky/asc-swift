@@ -39,6 +39,7 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable, Sendable {
         public var appStoreVersionExperiment: AppStoreVersionExperiment?
         public var appStoreVersionExperimentV2: AppStoreVersionExperimentV2?
         public var appEvent: AppEvent?
+        public var backgroundAssetVersion: BackgroundAssetVersion?
 
         public struct AppStoreVersion: Codable, Equatable, Sendable {
             public var data: Data?
@@ -150,12 +151,35 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(appStoreVersion: AppStoreVersion? = nil, appCustomProductPageVersion: AppCustomProductPageVersion? = nil, appStoreVersionExperiment: AppStoreVersionExperiment? = nil, appStoreVersionExperimentV2: AppStoreVersionExperimentV2? = nil, appEvent: AppEvent? = nil) {
+        public struct BackgroundAssetVersion: Codable, Equatable, Sendable {
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case backgroundAssetVersions
+                }
+
+                public init(type: `Type` = .backgroundAssetVersions, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(data: Data? = nil) {
+                self.data = data
+            }
+        }
+
+        public init(appStoreVersion: AppStoreVersion? = nil, appCustomProductPageVersion: AppCustomProductPageVersion? = nil, appStoreVersionExperiment: AppStoreVersionExperiment? = nil, appStoreVersionExperimentV2: AppStoreVersionExperimentV2? = nil, appEvent: AppEvent? = nil, backgroundAssetVersion: BackgroundAssetVersion? = nil) {
             self.appStoreVersion = appStoreVersion
             self.appCustomProductPageVersion = appCustomProductPageVersion
             self.appStoreVersionExperiment = appStoreVersionExperiment
             self.appStoreVersionExperimentV2 = appStoreVersionExperimentV2
             self.appEvent = appEvent
+            self.backgroundAssetVersion = backgroundAssetVersion
         }
     }
 

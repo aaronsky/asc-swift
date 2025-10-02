@@ -23,12 +23,14 @@ public struct GameCenterLeaderboardLocalizationUpdateRequest: Codable, Equatable
             public var formatterOverride: GameCenterLeaderboardFormatter?
             public var formatterSuffix: String?
             public var formatterSuffixSingular: String?
+            public var description: String?
 
-            public init(name: String? = nil, formatterOverride: GameCenterLeaderboardFormatter? = nil, formatterSuffix: String? = nil, formatterSuffixSingular: String? = nil) {
+            public init(name: String? = nil, formatterOverride: GameCenterLeaderboardFormatter? = nil, formatterSuffix: String? = nil, formatterSuffixSingular: String? = nil, description: String? = nil) {
                 self.name = name
                 self.formatterOverride = formatterOverride
                 self.formatterSuffix = formatterSuffix
                 self.formatterSuffixSingular = formatterSuffixSingular
+                self.description = description
             }
         }
 

@@ -24,13 +24,15 @@ public struct GameCenterLeaderboardLocalizationCreateRequest: Codable, Equatable
             public var formatterOverride: GameCenterLeaderboardFormatter?
             public var formatterSuffix: String?
             public var formatterSuffixSingular: String?
+            public var description: String?
 
-            public init(locale: String, name: String, formatterOverride: GameCenterLeaderboardFormatter? = nil, formatterSuffix: String? = nil, formatterSuffixSingular: String? = nil) {
+            public init(locale: String, name: String, formatterOverride: GameCenterLeaderboardFormatter? = nil, formatterSuffix: String? = nil, formatterSuffixSingular: String? = nil, description: String? = nil) {
                 self.locale = locale
                 self.name = name
                 self.formatterOverride = formatterOverride
                 self.formatterSuffix = formatterSuffix
                 self.formatterSuffixSingular = formatterSuffixSingular
+                self.description = description
             }
         }
 

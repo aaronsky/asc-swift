@@ -16,11 +16,11 @@ extension Resources.V1.AppStoreVersionLocalizations {
         /// Path: `/v1/appStoreVersionLocalizations/{id}`
         public let path: String
 
-        public func get(fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, include: [Include]? = nil, limitAppPreviewSets: Int? = nil, limitAppScreenshotSets: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionLocalizationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionLocalizations, fieldsAppScreenshotSets, fieldsAppPreviewSets, include, limitAppPreviewSets, limitAppScreenshotSets), id: "appStoreVersionLocalizations_getInstance")
+        public func get(fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, include: [Include]? = nil, limitAppPreviewSets: Int? = nil, limitAppScreenshotSets: Int? = nil, limitSearchKeywords: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionLocalizationResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionLocalizations, fieldsAppScreenshotSets, fieldsAppPreviewSets, include, limitAppPreviewSets, limitAppScreenshotSets, limitSearchKeywords), id: "appStoreVersionLocalizations_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ include: [Include]?, _ limitAppPreviewSets: Int?, _ limitAppScreenshotSets: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ include: [Include]?, _ limitAppPreviewSets: Int?, _ limitAppScreenshotSets: Int?, _ limitSearchKeywords: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppStoreVersionLocalizations, forKey: "fields[appStoreVersionLocalizations]")
             encoder.encode(fieldsAppScreenshotSets, forKey: "fields[appScreenshotSets]")
@@ -28,6 +28,7 @@ extension Resources.V1.AppStoreVersionLocalizations {
             encoder.encode(include, forKey: "include")
             encoder.encode(limitAppPreviewSets, forKey: "limit[appPreviewSets]")
             encoder.encode(limitAppScreenshotSets, forKey: "limit[appScreenshotSets]")
+            encoder.encode(limitSearchKeywords, forKey: "limit[searchKeywords]")
             return encoder.items
         }
 
@@ -42,6 +43,7 @@ extension Resources.V1.AppStoreVersionLocalizations {
             case appStoreVersion
             case appScreenshotSets
             case appPreviewSets
+            case searchKeywords
         }
 
         public enum FieldsAppScreenshotSets: String, CaseIterable, Codable, Sendable {
@@ -64,6 +66,7 @@ extension Resources.V1.AppStoreVersionLocalizations {
             case appStoreVersion
             case appScreenshotSets
             case appPreviewSets
+            case searchKeywords
         }
 
         public func patch(_ body: AppStoreAPI.AppStoreVersionLocalizationUpdateRequest) -> Request<AppStoreAPI.AppStoreVersionLocalizationResponse> {

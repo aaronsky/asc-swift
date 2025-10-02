@@ -51,6 +51,7 @@ public struct AppStoreVersionLocalization: Codable, Equatable, Identifiable, Sen
         public var appStoreVersion: AppStoreVersion?
         public var appScreenshotSets: AppScreenshotSets?
         public var appPreviewSets: AppPreviewSets?
+        public var searchKeywords: SearchKeywords?
 
         public struct AppStoreVersion: Codable, Equatable, Sendable {
             public var data: Data?
@@ -126,10 +127,37 @@ public struct AppStoreVersionLocalization: Codable, Equatable, Identifiable, Sen
             }
         }
 
-        public init(appStoreVersion: AppStoreVersion? = nil, appScreenshotSets: AppScreenshotSets? = nil, appPreviewSets: AppPreviewSets? = nil) {
+        public struct SearchKeywords: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var meta: PagingInformation?
+            public var data: [Datum]?
+
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case appKeywords
+                }
+
+                public init(type: `Type` = .appKeywords, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+                self.links = links
+                self.meta = meta
+                self.data = data
+            }
+        }
+
+        public init(appStoreVersion: AppStoreVersion? = nil, appScreenshotSets: AppScreenshotSets? = nil, appPreviewSets: AppPreviewSets? = nil, searchKeywords: SearchKeywords? = nil) {
             self.appStoreVersion = appStoreVersion
             self.appScreenshotSets = appScreenshotSets
             self.appPreviewSets = appPreviewSets
+            self.searchKeywords = searchKeywords
         }
     }
 

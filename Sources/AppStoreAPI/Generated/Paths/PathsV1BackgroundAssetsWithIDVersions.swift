@@ -16,18 +16,23 @@ extension Resources.V1.BackgroundAssets.WithID {
         /// Path: `/v1/backgroundAssets/{id}/versions`
         public let path: String
 
-        public func get(filterState: [FilterState]? = nil, filterVersion: [String]? = nil, filterInternalBetaReleaseState: [FilterInternalBetaReleaseState]? = nil, sort: [Sort]? = nil, fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]? = nil, fieldsBackgroundAssetVersionInternalBetaReleases: [FieldsBackgroundAssetVersionInternalBetaReleases]? = nil, fieldsBackgroundAssetUploadFiles: [FieldsBackgroundAssetUploadFiles]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.BackgroundAssetVersionsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterState, filterVersion, filterInternalBetaReleaseState, sort, fieldsBackgroundAssetVersions, fieldsBackgroundAssetVersionInternalBetaReleases, fieldsBackgroundAssetUploadFiles, limit, include), id: "backgroundAssets_versions_getToManyRelated")
+        public func get(filterState: [FilterState]? = nil, filterVersion: [String]? = nil, filterInternalBetaReleaseState: [FilterInternalBetaReleaseState]? = nil, filterExternalBetaReleaseState: [FilterExternalBetaReleaseState]? = nil, filterAppStoreReleaseState: [FilterAppStoreReleaseState]? = nil, sort: [Sort]? = nil, fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]? = nil, fieldsBackgroundAssets: [FieldsBackgroundAssets]? = nil, fieldsBackgroundAssetVersionInternalBetaReleases: [FieldsBackgroundAssetVersionInternalBetaReleases]? = nil, fieldsBackgroundAssetVersionExternalBetaReleases: [FieldsBackgroundAssetVersionExternalBetaReleases]? = nil, fieldsBackgroundAssetVersionAppStoreReleases: [FieldsBackgroundAssetVersionAppStoreReleases]? = nil, fieldsBackgroundAssetUploadFiles: [FieldsBackgroundAssetUploadFiles]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.BackgroundAssetVersionsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterState, filterVersion, filterInternalBetaReleaseState, filterExternalBetaReleaseState, filterAppStoreReleaseState, sort, fieldsBackgroundAssetVersions, fieldsBackgroundAssets, fieldsBackgroundAssetVersionInternalBetaReleases, fieldsBackgroundAssetVersionExternalBetaReleases, fieldsBackgroundAssetVersionAppStoreReleases, fieldsBackgroundAssetUploadFiles, limit, include), id: "backgroundAssets_versions_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterState: [FilterState]?, _ filterVersion: [String]?, _ filterInternalBetaReleaseState: [FilterInternalBetaReleaseState]?, _ sort: [Sort]?, _ fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]?, _ fieldsBackgroundAssetVersionInternalBetaReleases: [FieldsBackgroundAssetVersionInternalBetaReleases]?, _ fieldsBackgroundAssetUploadFiles: [FieldsBackgroundAssetUploadFiles]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterState: [FilterState]?, _ filterVersion: [String]?, _ filterInternalBetaReleaseState: [FilterInternalBetaReleaseState]?, _ filterExternalBetaReleaseState: [FilterExternalBetaReleaseState]?, _ filterAppStoreReleaseState: [FilterAppStoreReleaseState]?, _ sort: [Sort]?, _ fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]?, _ fieldsBackgroundAssets: [FieldsBackgroundAssets]?, _ fieldsBackgroundAssetVersionInternalBetaReleases: [FieldsBackgroundAssetVersionInternalBetaReleases]?, _ fieldsBackgroundAssetVersionExternalBetaReleases: [FieldsBackgroundAssetVersionExternalBetaReleases]?, _ fieldsBackgroundAssetVersionAppStoreReleases: [FieldsBackgroundAssetVersionAppStoreReleases]?, _ fieldsBackgroundAssetUploadFiles: [FieldsBackgroundAssetUploadFiles]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterState, forKey: "filter[state]")
             encoder.encode(filterVersion, forKey: "filter[version]")
             encoder.encode(filterInternalBetaReleaseState, forKey: "filter[internalBetaRelease.state]")
+            encoder.encode(filterExternalBetaReleaseState, forKey: "filter[externalBetaRelease.state]")
+            encoder.encode(filterAppStoreReleaseState, forKey: "filter[appStoreRelease.state]")
             encoder.encode(sort, forKey: "sort")
             encoder.encode(fieldsBackgroundAssetVersions, forKey: "fields[backgroundAssetVersions]")
+            encoder.encode(fieldsBackgroundAssets, forKey: "fields[backgroundAssets]")
             encoder.encode(fieldsBackgroundAssetVersionInternalBetaReleases, forKey: "fields[backgroundAssetVersionInternalBetaReleases]")
+            encoder.encode(fieldsBackgroundAssetVersionExternalBetaReleases, forKey: "fields[backgroundAssetVersionExternalBetaReleases]")
+            encoder.encode(fieldsBackgroundAssetVersionAppStoreReleases, forKey: "fields[backgroundAssetVersionAppStoreReleases]")
             encoder.encode(fieldsBackgroundAssetUploadFiles, forKey: "fields[backgroundAssetUploadFiles]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
@@ -46,6 +51,28 @@ extension Resources.V1.BackgroundAssets.WithID {
             case superseded = "SUPERSEDED"
         }
 
+        public enum FilterExternalBetaReleaseState: String, CaseIterable, Codable, Sendable {
+            case readyForBetaSubmission = "READY_FOR_BETA_SUBMISSION"
+            case waitingForReview = "WAITING_FOR_REVIEW"
+            case inReview = "IN_REVIEW"
+            case rejected = "REJECTED"
+            case processingForTesting = "PROCESSING_FOR_TESTING"
+            case readyForTesting = "READY_FOR_TESTING"
+            case superseded = "SUPERSEDED"
+        }
+
+        public enum FilterAppStoreReleaseState: String, CaseIterable, Codable, Sendable {
+            case prepareForSubmission = "PREPARE_FOR_SUBMISSION"
+            case readyForReview = "READY_FOR_REVIEW"
+            case waitingForReview = "WAITING_FOR_REVIEW"
+            case inReview = "IN_REVIEW"
+            case accepted = "ACCEPTED"
+            case rejected = "REJECTED"
+            case processingForDistribution = "PROCESSING_FOR_DISTRIBUTION"
+            case readyForDistribution = "READY_FOR_DISTRIBUTION"
+            case superseded = "SUPERSEDED"
+        }
+
         public enum Sort: String, CaseIterable, Codable, Sendable {
             case version
             case minusVersion = "-version"
@@ -56,13 +83,36 @@ extension Resources.V1.BackgroundAssets.WithID {
             case platforms
             case state
             case version
+            case backgroundAsset
             case internalBetaRelease
+            case externalBetaRelease
+            case appStoreRelease
             case assetFile
             case manifestFile
             case backgroundAssetUploadFiles
         }
 
+        public enum FieldsBackgroundAssets: String, CaseIterable, Codable, Sendable {
+            case assetPackIdentifier
+            case createdDate
+            case app
+            case versions
+            case appStoreVersion
+            case internalBetaVersion
+            case externalBetaVersion
+        }
+
         public enum FieldsBackgroundAssetVersionInternalBetaReleases: String, CaseIterable, Codable, Sendable {
+            case state
+            case backgroundAssetVersion
+        }
+
+        public enum FieldsBackgroundAssetVersionExternalBetaReleases: String, CaseIterable, Codable, Sendable {
+            case state
+            case backgroundAssetVersion
+        }
+
+        public enum FieldsBackgroundAssetVersionAppStoreReleases: String, CaseIterable, Codable, Sendable {
             case state
             case backgroundAssetVersion
         }
@@ -74,11 +124,15 @@ extension Resources.V1.BackgroundAssets.WithID {
             case fileName
             case fileSize
             case sourceFileChecksum
+            case sourceFileChecksums
             case uploadOperations
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
+            case backgroundAsset
             case internalBetaRelease
+            case externalBetaRelease
+            case appStoreRelease
             case assetFile
             case manifestFile
         }

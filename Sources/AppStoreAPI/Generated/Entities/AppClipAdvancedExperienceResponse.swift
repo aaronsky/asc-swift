@@ -13,22 +13,28 @@ public struct AppClipAdvancedExperienceResponse: Codable, Equatable, Sendable {
     public var links: DocumentLinks
 
     public enum IncludedItem: Codable, Equatable, Sendable {
-        case appClip(AppClip)
         case appClipAdvancedExperienceImage(AppClipAdvancedExperienceImage)
         case appClipAdvancedExperienceLocalization(AppClipAdvancedExperienceLocalization)
+        case appClip(AppClip)
 
         public init(from decoder: any Decoder) throws {
+
+            struct Discriminator: Decodable {
+                let type: String
+            }
+
             let container = try decoder.singleValueContainer()
-            if let value = try? container.decode(AppClip.self) {
-                self = .appClip(value)
-            } else if let value = try? container.decode(AppClipAdvancedExperienceImage.self) {
-                self = .appClipAdvancedExperienceImage(value)
-            } else if let value = try? container.decode(AppClipAdvancedExperienceLocalization.self) {
-                self = .appClipAdvancedExperienceLocalization(value)
-            } else {
+            let discriminatorValue = try container.decode(Discriminator.self).type
+
+            switch discriminatorValue {
+            case "appClipAdvancedExperienceImages": self = .appClipAdvancedExperienceImage(try container.decode(AppClipAdvancedExperienceImage.self))
+            case "appClipAdvancedExperienceLocalizations": self = .appClipAdvancedExperienceLocalization(try container.decode(AppClipAdvancedExperienceLocalization.self))
+            case "appClips": self = .appClip(try container.decode(AppClip.self))
+
+            default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (AppClip, AppClipAdvancedExperienceImage, AppClipAdvancedExperienceLocalization)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (appClipAdvancedExperienceImages, appClipAdvancedExperienceLocalizations, appClips)."
                 )
             }
         }
@@ -36,9 +42,9 @@ public struct AppClipAdvancedExperienceResponse: Codable, Equatable, Sendable {
         public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
-            case .appClip(let value): try container.encode(value)
             case .appClipAdvancedExperienceImage(let value): try container.encode(value)
             case .appClipAdvancedExperienceLocalization(let value): try container.encode(value)
+            case .appClip(let value): try container.encode(value)
             }
         }
     }

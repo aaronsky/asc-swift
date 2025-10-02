@@ -30,6 +30,7 @@ extension Resources.V1.Builds.WithID {
         public enum FieldsBuildIcons: String, CaseIterable, Codable, Sendable {
             case iconAsset
             case iconType
+            case masked
             case name
         }
     }

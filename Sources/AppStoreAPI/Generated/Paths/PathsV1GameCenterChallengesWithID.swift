@@ -32,7 +32,6 @@ extension Resources.V1.GameCenterChallenges {
         public enum FieldsGameCenterChallenges: String, CaseIterable, Codable, Sendable {
             case referenceName
             case vendorIdentifier
-            case allowedDurations
             case archived
             case challengeType
             case repeatable

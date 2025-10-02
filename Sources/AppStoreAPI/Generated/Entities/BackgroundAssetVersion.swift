@@ -32,10 +32,35 @@ public struct BackgroundAssetVersion: Codable, Equatable, Identifiable, Sendable
     }
 
     public struct Relationships: Codable, Equatable, Sendable {
+        public var backgroundAsset: BackgroundAsset?
         public var internalBetaRelease: InternalBetaRelease?
+        public var externalBetaRelease: ExternalBetaRelease?
+        public var appStoreRelease: AppStoreRelease?
         public var assetFile: AssetFile?
         public var manifestFile: ManifestFile?
         public var backgroundAssetUploadFiles: BackgroundAssetUploadFiles?
+
+        public struct BackgroundAsset: Codable, Equatable, Sendable {
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case backgroundAssets
+                }
+
+                public init(type: `Type` = .backgroundAssets, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(data: Data? = nil) {
+                self.data = data
+            }
+        }
 
         public struct InternalBetaRelease: Codable, Equatable, Sendable {
             public var data: Data?
@@ -49,6 +74,50 @@ public struct BackgroundAssetVersion: Codable, Equatable, Identifiable, Sendable
                 }
 
                 public init(type: `Type` = .backgroundAssetVersionInternalBetaReleases, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(data: Data? = nil) {
+                self.data = data
+            }
+        }
+
+        public struct ExternalBetaRelease: Codable, Equatable, Sendable {
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case backgroundAssetVersionExternalBetaReleases
+                }
+
+                public init(type: `Type` = .backgroundAssetVersionExternalBetaReleases, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(data: Data? = nil) {
+                self.data = data
+            }
+        }
+
+        public struct AppStoreRelease: Codable, Equatable, Sendable {
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case backgroundAssetVersionAppStoreReleases
+                }
+
+                public init(type: `Type` = .backgroundAssetVersionAppStoreReleases, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -111,8 +180,11 @@ public struct BackgroundAssetVersion: Codable, Equatable, Identifiable, Sendable
             }
         }
 
-        public init(internalBetaRelease: InternalBetaRelease? = nil, assetFile: AssetFile? = nil, manifestFile: ManifestFile? = nil, backgroundAssetUploadFiles: BackgroundAssetUploadFiles? = nil) {
+        public init(backgroundAsset: BackgroundAsset? = nil, internalBetaRelease: InternalBetaRelease? = nil, externalBetaRelease: ExternalBetaRelease? = nil, appStoreRelease: AppStoreRelease? = nil, assetFile: AssetFile? = nil, manifestFile: ManifestFile? = nil, backgroundAssetUploadFiles: BackgroundAssetUploadFiles? = nil) {
+            self.backgroundAsset = backgroundAsset
             self.internalBetaRelease = internalBetaRelease
+            self.externalBetaRelease = externalBetaRelease
+            self.appStoreRelease = appStoreRelease
             self.assetFile = assetFile
             self.manifestFile = manifestFile
             self.backgroundAssetUploadFiles = backgroundAssetUploadFiles

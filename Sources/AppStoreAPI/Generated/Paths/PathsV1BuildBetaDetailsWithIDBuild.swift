@@ -16,11 +16,11 @@ extension Resources.V1.BuildBetaDetails.WithID {
         /// Path: `/v1/buildBetaDetails/{id}/build`
         public let path: String
 
-        public func get(fieldsBuilds: [FieldsBuilds]? = nil, fieldsPreReleaseVersions: [FieldsPreReleaseVersions]? = nil, fieldsBetaTesters: [FieldsBetaTesters]? = nil, fieldsBetaGroups: [FieldsBetaGroups]? = nil, fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]? = nil, fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]? = nil, fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBuildBetaDetails: [FieldsBuildBetaDetails]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsBuildIcons: [FieldsBuildIcons]? = nil, fieldsBuildBundles: [FieldsBuildBundles]? = nil, include: [Include]? = nil, limitIndividualTesters: Int? = nil, limitBetaGroups: Int? = nil, limitBetaBuildLocalizations: Int? = nil, limitIcons: Int? = nil, limitBuildBundles: Int? = nil) -> Request<AppStoreAPI.BuildResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBuilds, fieldsPreReleaseVersions, fieldsBetaTesters, fieldsBetaGroups, fieldsBetaBuildLocalizations, fieldsAppEncryptionDeclarations, fieldsBetaAppReviewSubmissions, fieldsApps, fieldsBuildBetaDetails, fieldsAppStoreVersions, fieldsBuildIcons, fieldsBuildBundles, include, limitIndividualTesters, limitBetaGroups, limitBetaBuildLocalizations, limitIcons, limitBuildBundles), id: "buildBetaDetails_build_getToOneRelated")
+        public func get(fieldsBuilds: [FieldsBuilds]? = nil, fieldsPreReleaseVersions: [FieldsPreReleaseVersions]? = nil, fieldsBetaTesters: [FieldsBetaTesters]? = nil, fieldsBetaGroups: [FieldsBetaGroups]? = nil, fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]? = nil, fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]? = nil, fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBuildBetaDetails: [FieldsBuildBetaDetails]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsBuildIcons: [FieldsBuildIcons]? = nil, fieldsBuildBundles: [FieldsBuildBundles]? = nil, fieldsBuildUploads: [FieldsBuildUploads]? = nil, include: [Include]? = nil, limitIndividualTesters: Int? = nil, limitBetaGroups: Int? = nil, limitBetaBuildLocalizations: Int? = nil, limitIcons: Int? = nil, limitBuildBundles: Int? = nil) -> Request<AppStoreAPI.BuildResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBuilds, fieldsPreReleaseVersions, fieldsBetaTesters, fieldsBetaGroups, fieldsBetaBuildLocalizations, fieldsAppEncryptionDeclarations, fieldsBetaAppReviewSubmissions, fieldsApps, fieldsBuildBetaDetails, fieldsAppStoreVersions, fieldsBuildIcons, fieldsBuildBundles, fieldsBuildUploads, include, limitIndividualTesters, limitBetaGroups, limitBetaBuildLocalizations, limitIcons, limitBuildBundles), id: "buildBetaDetails_build_getToOneRelated")
         }
 
-        private func makeGetQuery(_ fieldsBuilds: [FieldsBuilds]?, _ fieldsPreReleaseVersions: [FieldsPreReleaseVersions]?, _ fieldsBetaTesters: [FieldsBetaTesters]?, _ fieldsBetaGroups: [FieldsBetaGroups]?, _ fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]?, _ fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]?, _ fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]?, _ fieldsApps: [FieldsApps]?, _ fieldsBuildBetaDetails: [FieldsBuildBetaDetails]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsBuildIcons: [FieldsBuildIcons]?, _ fieldsBuildBundles: [FieldsBuildBundles]?, _ include: [Include]?, _ limitIndividualTesters: Int?, _ limitBetaGroups: Int?, _ limitBetaBuildLocalizations: Int?, _ limitIcons: Int?, _ limitBuildBundles: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsBuilds: [FieldsBuilds]?, _ fieldsPreReleaseVersions: [FieldsPreReleaseVersions]?, _ fieldsBetaTesters: [FieldsBetaTesters]?, _ fieldsBetaGroups: [FieldsBetaGroups]?, _ fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]?, _ fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]?, _ fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]?, _ fieldsApps: [FieldsApps]?, _ fieldsBuildBetaDetails: [FieldsBuildBetaDetails]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsBuildIcons: [FieldsBuildIcons]?, _ fieldsBuildBundles: [FieldsBuildBundles]?, _ fieldsBuildUploads: [FieldsBuildUploads]?, _ include: [Include]?, _ limitIndividualTesters: Int?, _ limitBetaGroups: Int?, _ limitBetaBuildLocalizations: Int?, _ limitIcons: Int?, _ limitBuildBundles: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsBuilds, forKey: "fields[builds]")
             encoder.encode(fieldsPreReleaseVersions, forKey: "fields[preReleaseVersions]")
@@ -34,6 +34,7 @@ extension Resources.V1.BuildBetaDetails.WithID {
             encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
             encoder.encode(fieldsBuildIcons, forKey: "fields[buildIcons]")
             encoder.encode(fieldsBuildBundles, forKey: "fields[buildBundles]")
+            encoder.encode(fieldsBuildUploads, forKey: "fields[buildUploads]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitIndividualTesters, forKey: "limit[individualTesters]")
             encoder.encode(limitBetaGroups, forKey: "limit[betaGroups]")
@@ -67,6 +68,7 @@ extension Resources.V1.BuildBetaDetails.WithID {
             case appStoreVersion
             case icons
             case buildBundles
+            case buildUpload
             case perfPowerMetrics
             case diagnosticSignatures
         }
@@ -160,6 +162,7 @@ extension Resources.V1.BuildBetaDetails.WithID {
             case betaTesters
             case betaGroups
             case appStoreVersions
+            case appTags
             case preReleaseVersions
             case betaAppLocalizations
             case builds
@@ -188,9 +191,11 @@ extension Resources.V1.BuildBetaDetails.WithID {
             case alternativeDistributionKey
             case analyticsReportRequests
             case marketplaceSearchDetail
+            case buildUploads
             case backgroundAssets
             case betaFeedbackScreenshotSubmissions
             case betaFeedbackCrashSubmissions
+            case searchKeywords
             case webhooks
         }
 
@@ -232,6 +237,7 @@ extension Resources.V1.BuildBetaDetails.WithID {
         public enum FieldsBuildIcons: String, CaseIterable, Codable, Sendable {
             case iconAsset
             case iconType
+            case masked
             case name
         }
 
@@ -261,6 +267,20 @@ extension Resources.V1.BuildBetaDetails.WithID {
             case buildBundleFileSizes
         }
 
+        public enum FieldsBuildUploads: String, CaseIterable, Codable, Sendable {
+            case cfBundleShortVersionString
+            case cfBundleVersion
+            case createdDate
+            case state
+            case platform
+            case uploadedDate
+            case build
+            case assetFile
+            case assetDescriptionFile
+            case assetSpiFile
+            case buildUploadFiles
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case preReleaseVersion
             case individualTesters
@@ -273,6 +293,7 @@ extension Resources.V1.BuildBetaDetails.WithID {
             case appStoreVersion
             case icons
             case buildBundles
+            case buildUpload
         }
     }
 }

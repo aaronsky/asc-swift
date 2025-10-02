@@ -16,17 +16,18 @@ extension Resources.V1.ReviewSubmissions.WithID {
         /// Path: `/v1/reviewSubmissions/{id}/items`
         public let path: String
 
-        public func get(fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]? = nil, fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAppEvents: [FieldsAppEvents]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.ReviewSubmissionItemsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsReviewSubmissionItems, fieldsAppStoreVersions, fieldsAppCustomProductPageVersions, fieldsAppStoreVersionExperiments, fieldsAppEvents, limit, include), id: "reviewSubmissions_items_getToManyRelated")
+        public func get(fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]? = nil, fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAppEvents: [FieldsAppEvents]? = nil, fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.ReviewSubmissionItemsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsReviewSubmissionItems, fieldsAppStoreVersions, fieldsAppCustomProductPageVersions, fieldsAppStoreVersionExperiments, fieldsAppEvents, fieldsBackgroundAssetVersions, limit, include), id: "reviewSubmissions_items_getToManyRelated")
         }
 
-        private func makeGetQuery(_ fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]?, _ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsAppEvents: [FieldsAppEvents]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]?, _ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsAppEvents: [FieldsAppEvents]?, _ fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsReviewSubmissionItems, forKey: "fields[reviewSubmissionItems]")
             encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
             encoder.encode(fieldsAppCustomProductPageVersions, forKey: "fields[appCustomProductPageVersions]")
             encoder.encode(fieldsAppStoreVersionExperiments, forKey: "fields[appStoreVersionExperiments]")
             encoder.encode(fieldsAppEvents, forKey: "fields[appEvents]")
+            encoder.encode(fieldsBackgroundAssetVersions, forKey: "fields[backgroundAssetVersions]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             return encoder.items
@@ -39,6 +40,7 @@ extension Resources.V1.ReviewSubmissions.WithID {
             case appStoreVersionExperiment
             case appStoreVersionExperimentV2
             case appEvent
+            case backgroundAssetVersion
         }
 
         public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
@@ -106,12 +108,27 @@ extension Resources.V1.ReviewSubmissions.WithID {
             case localizations
         }
 
+        public enum FieldsBackgroundAssetVersions: String, CaseIterable, Codable, Sendable {
+            case createdDate
+            case platforms
+            case state
+            case version
+            case backgroundAsset
+            case internalBetaRelease
+            case externalBetaRelease
+            case appStoreRelease
+            case assetFile
+            case manifestFile
+            case backgroundAssetUploadFiles
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
             case appCustomProductPageVersion
             case appStoreVersionExperiment
             case appStoreVersionExperimentV2
             case appEvent
+            case backgroundAssetVersion
         }
     }
 }

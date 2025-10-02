@@ -74,6 +74,7 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
         public var betaTesters: BetaTesters?
         public var betaGroups: BetaGroups?
         public var appStoreVersions: AppStoreVersions?
+        public var appTags: AppTags?
         public var preReleaseVersions: PreReleaseVersions?
         public var betaAppLocalizations: BetaAppLocalizations?
         public var builds: Builds?
@@ -102,9 +103,11 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
         public var alternativeDistributionKey: AlternativeDistributionKey?
         public var analyticsReportRequests: AnalyticsReportRequests?
         public var marketplaceSearchDetail: MarketplaceSearchDetail?
+        public var buildUploads: BuildUploads?
         public var backgroundAssets: BackgroundAssets?
         public var betaFeedbackScreenshotSubmissions: BetaFeedbackScreenshotSubmissions?
         public var betaFeedbackCrashSubmissions: BetaFeedbackCrashSubmissions?
+        public var searchKeywords: SearchKeywords?
         public var webhooks: Webhooks?
 
         public struct AccessibilityDeclarations: Codable, Equatable, Sendable {
@@ -222,6 +225,14 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
                 self.links = links
                 self.meta = meta
                 self.data = data
+            }
+        }
+
+        public struct AppTags: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
             }
         }
 
@@ -781,6 +792,14 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
+        public struct BuildUploads: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
+            }
+        }
+
         public struct BackgroundAssets: Codable, Equatable, Sendable {
             public var links: RelationshipLinks?
 
@@ -805,6 +824,14 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
+        public struct SearchKeywords: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
+            }
+        }
+
         public struct Webhooks: Codable, Equatable, Sendable {
             public var links: RelationshipLinks?
 
@@ -813,13 +840,14 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(accessibilityDeclarations: AccessibilityDeclarations? = nil, appEncryptionDeclarations: AppEncryptionDeclarations? = nil, ciProduct: CiProduct? = nil, betaTesters: BetaTesters? = nil, betaGroups: BetaGroups? = nil, appStoreVersions: AppStoreVersions? = nil, preReleaseVersions: PreReleaseVersions? = nil, betaAppLocalizations: BetaAppLocalizations? = nil, builds: Builds? = nil, betaLicenseAgreement: BetaLicenseAgreement? = nil, betaAppReviewDetail: BetaAppReviewDetail? = nil, appInfos: AppInfos? = nil, appClips: AppClips? = nil, appPricePoints: AppPricePoints? = nil, endUserLicenseAgreement: EndUserLicenseAgreement? = nil, appPriceSchedule: AppPriceSchedule? = nil, appAvailabilityV2: AppAvailabilityV2? = nil, inAppPurchases: InAppPurchases? = nil, subscriptionGroups: SubscriptionGroups? = nil, gameCenterEnabledVersions: GameCenterEnabledVersions? = nil, perfPowerMetrics: PerfPowerMetrics? = nil, appCustomProductPages: AppCustomProductPages? = nil, inAppPurchasesV2: InAppPurchasesV2? = nil, promotedPurchases: PromotedPurchases? = nil, appEvents: AppEvents? = nil, reviewSubmissions: ReviewSubmissions? = nil, subscriptionGracePeriod: SubscriptionGracePeriod? = nil, customerReviews: CustomerReviews? = nil, customerReviewSummarizations: CustomerReviewSummarizations? = nil, gameCenterDetail: GameCenterDetail? = nil, appStoreVersionExperimentsV2: AppStoreVersionExperimentsV2? = nil, alternativeDistributionKey: AlternativeDistributionKey? = nil, analyticsReportRequests: AnalyticsReportRequests? = nil, marketplaceSearchDetail: MarketplaceSearchDetail? = nil, backgroundAssets: BackgroundAssets? = nil, betaFeedbackScreenshotSubmissions: BetaFeedbackScreenshotSubmissions? = nil, betaFeedbackCrashSubmissions: BetaFeedbackCrashSubmissions? = nil, webhooks: Webhooks? = nil) {
+        public init(accessibilityDeclarations: AccessibilityDeclarations? = nil, appEncryptionDeclarations: AppEncryptionDeclarations? = nil, ciProduct: CiProduct? = nil, betaTesters: BetaTesters? = nil, betaGroups: BetaGroups? = nil, appStoreVersions: AppStoreVersions? = nil, appTags: AppTags? = nil, preReleaseVersions: PreReleaseVersions? = nil, betaAppLocalizations: BetaAppLocalizations? = nil, builds: Builds? = nil, betaLicenseAgreement: BetaLicenseAgreement? = nil, betaAppReviewDetail: BetaAppReviewDetail? = nil, appInfos: AppInfos? = nil, appClips: AppClips? = nil, appPricePoints: AppPricePoints? = nil, endUserLicenseAgreement: EndUserLicenseAgreement? = nil, appPriceSchedule: AppPriceSchedule? = nil, appAvailabilityV2: AppAvailabilityV2? = nil, inAppPurchases: InAppPurchases? = nil, subscriptionGroups: SubscriptionGroups? = nil, gameCenterEnabledVersions: GameCenterEnabledVersions? = nil, perfPowerMetrics: PerfPowerMetrics? = nil, appCustomProductPages: AppCustomProductPages? = nil, inAppPurchasesV2: InAppPurchasesV2? = nil, promotedPurchases: PromotedPurchases? = nil, appEvents: AppEvents? = nil, reviewSubmissions: ReviewSubmissions? = nil, subscriptionGracePeriod: SubscriptionGracePeriod? = nil, customerReviews: CustomerReviews? = nil, customerReviewSummarizations: CustomerReviewSummarizations? = nil, gameCenterDetail: GameCenterDetail? = nil, appStoreVersionExperimentsV2: AppStoreVersionExperimentsV2? = nil, alternativeDistributionKey: AlternativeDistributionKey? = nil, analyticsReportRequests: AnalyticsReportRequests? = nil, marketplaceSearchDetail: MarketplaceSearchDetail? = nil, buildUploads: BuildUploads? = nil, backgroundAssets: BackgroundAssets? = nil, betaFeedbackScreenshotSubmissions: BetaFeedbackScreenshotSubmissions? = nil, betaFeedbackCrashSubmissions: BetaFeedbackCrashSubmissions? = nil, searchKeywords: SearchKeywords? = nil, webhooks: Webhooks? = nil) {
             self.accessibilityDeclarations = accessibilityDeclarations
             self.appEncryptionDeclarations = appEncryptionDeclarations
             self.ciProduct = ciProduct
             self.betaTesters = betaTesters
             self.betaGroups = betaGroups
             self.appStoreVersions = appStoreVersions
+            self.appTags = appTags
             self.preReleaseVersions = preReleaseVersions
             self.betaAppLocalizations = betaAppLocalizations
             self.builds = builds
@@ -848,9 +876,11 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
             self.alternativeDistributionKey = alternativeDistributionKey
             self.analyticsReportRequests = analyticsReportRequests
             self.marketplaceSearchDetail = marketplaceSearchDetail
+            self.buildUploads = buildUploads
             self.backgroundAssets = backgroundAssets
             self.betaFeedbackScreenshotSubmissions = betaFeedbackScreenshotSubmissions
             self.betaFeedbackCrashSubmissions = betaFeedbackCrashSubmissions
+            self.searchKeywords = searchKeywords
             self.webhooks = webhooks
         }
     }

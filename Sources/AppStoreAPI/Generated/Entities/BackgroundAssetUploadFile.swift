@@ -23,6 +23,7 @@ public struct BackgroundAssetUploadFile: Codable, Equatable, Identifiable, Senda
         public var fileName: String?
         public var fileSize: Int64?
         public var sourceFileChecksum: String?
+        public var sourceFileChecksums: Checksums?
         public var uploadOperations: [DeliveryFileUploadOperation]?
 
         public enum AssetType: String, CaseIterable, Codable, Sendable {
@@ -30,13 +31,14 @@ public struct BackgroundAssetUploadFile: Codable, Equatable, Identifiable, Senda
             case manifest = "MANIFEST"
         }
 
-        public init(assetDeliveryState: AppMediaAssetState? = nil, assetToken: String? = nil, assetType: AssetType? = nil, fileName: String? = nil, fileSize: Int64? = nil, sourceFileChecksum: String? = nil, uploadOperations: [DeliveryFileUploadOperation]? = nil) {
+        public init(assetDeliveryState: AppMediaAssetState? = nil, assetToken: String? = nil, assetType: AssetType? = nil, fileName: String? = nil, fileSize: Int64? = nil, sourceFileChecksum: String? = nil, sourceFileChecksums: Checksums? = nil, uploadOperations: [DeliveryFileUploadOperation]? = nil) {
             self.assetDeliveryState = assetDeliveryState
             self.assetToken = assetToken
             self.assetType = assetType
             self.fileName = fileName
             self.fileSize = fileSize
             self.sourceFileChecksum = sourceFileChecksum
+            self.sourceFileChecksums = sourceFileChecksums
             self.uploadOperations = uploadOperations
         }
     }

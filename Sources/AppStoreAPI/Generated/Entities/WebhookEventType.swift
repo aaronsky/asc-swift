@@ -8,6 +8,12 @@ import AppStoreConnect
 
 public enum WebhookEventType: String, CaseIterable, Codable, Sendable {
     case appStoreVersionAppVersionStateUpdated = "APP_STORE_VERSION_APP_VERSION_STATE_UPDATED"
+    case backgroundAssetVersionAppStoreReleaseStateUpdated = "BACKGROUND_ASSET_VERSION_APP_STORE_RELEASE_STATE_UPDATED"
+    case backgroundAssetVersionExternalBetaReleaseStateUpdated = "BACKGROUND_ASSET_VERSION_EXTERNAL_BETA_RELEASE_STATE_UPDATED"
+    case backgroundAssetVersionInternalBetaReleaseCreated = "BACKGROUND_ASSET_VERSION_INTERNAL_BETA_RELEASE_CREATED"
+    case backgroundAssetVersionStateUpdated = "BACKGROUND_ASSET_VERSION_STATE_UPDATED"
     case betaFeedbackCrashSubmissionCreated = "BETA_FEEDBACK_CRASH_SUBMISSION_CREATED"
     case betaFeedbackScreenshotSubmissionCreated = "BETA_FEEDBACK_SCREENSHOT_SUBMISSION_CREATED"
+    case buildBetaDetailExternalBuildStateUpdated = "BUILD_BETA_DETAIL_EXTERNAL_BUILD_STATE_UPDATED"
+    case buildUploadStateUpdated = "BUILD_UPLOAD_STATE_UPDATED"
 }

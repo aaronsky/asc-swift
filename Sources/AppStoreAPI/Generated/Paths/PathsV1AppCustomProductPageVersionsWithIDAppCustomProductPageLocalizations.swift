@@ -16,21 +16,23 @@ extension Resources.V1.AppCustomProductPageVersions.WithID {
         /// Path: `/v1/appCustomProductPageVersions/{id}/appCustomProductPageLocalizations`
         public let path: String
 
-        public func get(filterLocale: [String]? = nil, fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]? = nil, fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, limit: Int? = nil, include: [Include]? = nil, limitAppScreenshotSets: Int? = nil, limitAppPreviewSets: Int? = nil) -> Request<AppStoreAPI.AppCustomProductPageLocalizationsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterLocale, fieldsAppCustomProductPageLocalizations, fieldsAppCustomProductPageVersions, fieldsAppScreenshotSets, fieldsAppPreviewSets, limit, include, limitAppScreenshotSets, limitAppPreviewSets), id: "appCustomProductPageVersions_appCustomProductPageLocalizations_getToManyRelated")
+        public func get(filterLocale: [String]? = nil, fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]? = nil, fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, fieldsAppKeywords: [String]? = nil, limit: Int? = nil, include: [Include]? = nil, limitAppScreenshotSets: Int? = nil, limitAppPreviewSets: Int? = nil, limitSearchKeywords: Int? = nil) -> Request<AppStoreAPI.AppCustomProductPageLocalizationsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterLocale, fieldsAppCustomProductPageLocalizations, fieldsAppCustomProductPageVersions, fieldsAppScreenshotSets, fieldsAppPreviewSets, fieldsAppKeywords, limit, include, limitAppScreenshotSets, limitAppPreviewSets, limitSearchKeywords), id: "appCustomProductPageVersions_appCustomProductPageLocalizations_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterLocale: [String]?, _ fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]?, _ fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ limit: Int?, _ include: [Include]?, _ limitAppScreenshotSets: Int?, _ limitAppPreviewSets: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterLocale: [String]?, _ fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]?, _ fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ fieldsAppKeywords: [String]?, _ limit: Int?, _ include: [Include]?, _ limitAppScreenshotSets: Int?, _ limitAppPreviewSets: Int?, _ limitSearchKeywords: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterLocale, forKey: "filter[locale]")
             encoder.encode(fieldsAppCustomProductPageLocalizations, forKey: "fields[appCustomProductPageLocalizations]")
             encoder.encode(fieldsAppCustomProductPageVersions, forKey: "fields[appCustomProductPageVersions]")
             encoder.encode(fieldsAppScreenshotSets, forKey: "fields[appScreenshotSets]")
             encoder.encode(fieldsAppPreviewSets, forKey: "fields[appPreviewSets]")
+            encoder.encode(fieldsAppKeywords, forKey: "fields[appKeywords]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitAppScreenshotSets, forKey: "limit[appScreenshotSets]")
             encoder.encode(limitAppPreviewSets, forKey: "limit[appPreviewSets]")
+            encoder.encode(limitSearchKeywords, forKey: "limit[searchKeywords]")
             return encoder.items
         }
 
@@ -40,6 +42,7 @@ extension Resources.V1.AppCustomProductPageVersions.WithID {
             case appCustomProductPageVersion
             case appScreenshotSets
             case appPreviewSets
+            case searchKeywords
         }
 
         public enum FieldsAppCustomProductPageVersions: String, CaseIterable, Codable, Sendable {
@@ -70,6 +73,7 @@ extension Resources.V1.AppCustomProductPageVersions.WithID {
             case appCustomProductPageVersion
             case appScreenshotSets
             case appPreviewSets
+            case searchKeywords
         }
     }
 }

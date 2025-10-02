@@ -34,6 +34,7 @@ extension Resources.V1.GameCenterLeaderboardLocalizations {
             case formatterOverride
             case formatterSuffix
             case formatterSuffixSingular
+            case description
             case gameCenterLeaderboard
             case gameCenterLeaderboardImage
         }

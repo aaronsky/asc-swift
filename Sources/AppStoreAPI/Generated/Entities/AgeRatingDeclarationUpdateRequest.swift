@@ -19,70 +19,154 @@ public struct AgeRatingDeclarationUpdateRequest: Codable, Equatable, Sendable {
         }
 
         public struct Attributes: Codable, Equatable, Sendable {
+            public var isAdvertising: Bool?
             public var alcoholTobaccoOrDrugUseOrReferences: AlcoholTobaccoOrDrugUseOrReferences?
             public var contests: Contests?
             public var isGambling: Bool?
             public var gamblingSimulated: GamblingSimulated?
+            public var gunsOrOtherWeapons: GunsOrOtherWeapons?
+            public var isHealthOrWellnessTopics: Bool?
             public var kidsAgeBand: KidsAgeBand?
             public var isLootBox: Bool?
             public var medicalOrTreatmentInformation: MedicalOrTreatmentInformation?
+            public var isMessagingAndChat: Bool?
+            public var isParentalControls: Bool?
             public var profanityOrCrudeHumor: ProfanityOrCrudeHumor?
+            public var isAgeAssurance: Bool?
             public var sexualContentGraphicAndNudity: SexualContentGraphicAndNudity?
             public var sexualContentOrNudity: SexualContentOrNudity?
             public var horrorOrFearThemes: HorrorOrFearThemes?
             public var matureOrSuggestiveThemes: MatureOrSuggestiveThemes?
             public var isUnrestrictedWebAccess: Bool?
+            public var isUserGeneratedContent: Bool?
             public var violenceCartoonOrFantasy: ViolenceCartoonOrFantasy?
             public var violenceRealisticProlongedGraphicOrSadistic: ViolenceRealisticProlongedGraphicOrSadistic?
             public var violenceRealistic: ViolenceRealistic?
+            public var ageRatingOverride: AgeRatingOverride?
+            public var ageRatingOverrideV2: AgeRatingOverrideV2?
             public var koreaAgeRatingOverride: KoreaAgeRatingOverride?
+            public var developerAgeRatingInfoURL: URL?
 
             public enum AlcoholTobaccoOrDrugUseOrReferences: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
+                case infrequentOrMild = "INFREQUENT_OR_MILD"
+                case frequentOrIntense = "FREQUENT_OR_INTENSE"
+                case infrequent = "INFREQUENT"
+                case frequent = "FREQUENT"
             }
 
             public enum Contests: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
+                case infrequentOrMild = "INFREQUENT_OR_MILD"
+                case frequentOrIntense = "FREQUENT_OR_INTENSE"
+                case infrequent = "INFREQUENT"
+                case frequent = "FREQUENT"
             }
 
             public enum GamblingSimulated: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
+                case infrequentOrMild = "INFREQUENT_OR_MILD"
+                case frequentOrIntense = "FREQUENT_OR_INTENSE"
+                case infrequent = "INFREQUENT"
+                case frequent = "FREQUENT"
+            }
+
+            public enum GunsOrOtherWeapons: String, CaseIterable, Codable, Sendable {
+                case `none` = "NONE"
+                case infrequentOrMild = "INFREQUENT_OR_MILD"
+                case frequentOrIntense = "FREQUENT_OR_INTENSE"
+                case infrequent = "INFREQUENT"
+                case frequent = "FREQUENT"
             }
 
             public enum MedicalOrTreatmentInformation: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
+                case infrequentOrMild = "INFREQUENT_OR_MILD"
+                case frequentOrIntense = "FREQUENT_OR_INTENSE"
+                case infrequent = "INFREQUENT"
+                case frequent = "FREQUENT"
             }
 
             public enum ProfanityOrCrudeHumor: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
+                case infrequentOrMild = "INFREQUENT_OR_MILD"
+                case frequentOrIntense = "FREQUENT_OR_INTENSE"
+                case infrequent = "INFREQUENT"
+                case frequent = "FREQUENT"
             }
 
             public enum SexualContentGraphicAndNudity: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
+                case infrequentOrMild = "INFREQUENT_OR_MILD"
+                case frequentOrIntense = "FREQUENT_OR_INTENSE"
+                case infrequent = "INFREQUENT"
+                case frequent = "FREQUENT"
             }
 
             public enum SexualContentOrNudity: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
+                case infrequentOrMild = "INFREQUENT_OR_MILD"
+                case frequentOrIntense = "FREQUENT_OR_INTENSE"
+                case infrequent = "INFREQUENT"
+                case frequent = "FREQUENT"
             }
 
             public enum HorrorOrFearThemes: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
+                case infrequentOrMild = "INFREQUENT_OR_MILD"
+                case frequentOrIntense = "FREQUENT_OR_INTENSE"
+                case infrequent = "INFREQUENT"
+                case frequent = "FREQUENT"
             }
 
             public enum MatureOrSuggestiveThemes: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
+                case infrequentOrMild = "INFREQUENT_OR_MILD"
+                case frequentOrIntense = "FREQUENT_OR_INTENSE"
+                case infrequent = "INFREQUENT"
+                case frequent = "FREQUENT"
             }
 
             public enum ViolenceCartoonOrFantasy: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
+                case infrequentOrMild = "INFREQUENT_OR_MILD"
+                case frequentOrIntense = "FREQUENT_OR_INTENSE"
+                case infrequent = "INFREQUENT"
+                case frequent = "FREQUENT"
             }
 
             public enum ViolenceRealisticProlongedGraphicOrSadistic: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
+                case infrequentOrMild = "INFREQUENT_OR_MILD"
+                case frequentOrIntense = "FREQUENT_OR_INTENSE"
+                case infrequent = "INFREQUENT"
+                case frequent = "FREQUENT"
             }
 
             public enum ViolenceRealistic: String, CaseIterable, Codable, Sendable {
                 case `none` = "NONE"
+                case infrequentOrMild = "INFREQUENT_OR_MILD"
+                case frequentOrIntense = "FREQUENT_OR_INTENSE"
+                case infrequent = "INFREQUENT"
+                case frequent = "FREQUENT"
+            }
+
+            public enum AgeRatingOverride: String, CaseIterable, Codable, Sendable {
+                case `none` = "NONE"
+                case ninePlus = "NINE_PLUS"
+                case thirteenPlus = "THIRTEEN_PLUS"
+                case sixteenPlus = "SIXTEEN_PLUS"
+                case seventeenPlus = "SEVENTEEN_PLUS"
+                case unrated = "UNRATED"
+            }
+
+            public enum AgeRatingOverrideV2: String, CaseIterable, Codable, Sendable {
+                case `none` = "NONE"
+                case ninePlus = "NINE_PLUS"
+                case thirteenPlus = "THIRTEEN_PLUS"
+                case sixteenPlus = "SIXTEEN_PLUS"
+                case eighteenPlus = "EIGHTEEN_PLUS"
+                case unrated = "UNRATED"
             }
 
             public enum KoreaAgeRatingOverride: String, CaseIterable, Codable, Sendable {
@@ -91,44 +175,64 @@ public struct AgeRatingDeclarationUpdateRequest: Codable, Equatable, Sendable {
                 case nineteenPlus = "NINETEEN_PLUS"
             }
 
-            public init(alcoholTobaccoOrDrugUseOrReferences: AlcoholTobaccoOrDrugUseOrReferences? = nil, contests: Contests? = nil, isGambling: Bool? = nil, gamblingSimulated: GamblingSimulated? = nil, kidsAgeBand: KidsAgeBand? = nil, isLootBox: Bool? = nil, medicalOrTreatmentInformation: MedicalOrTreatmentInformation? = nil, profanityOrCrudeHumor: ProfanityOrCrudeHumor? = nil, sexualContentGraphicAndNudity: SexualContentGraphicAndNudity? = nil, sexualContentOrNudity: SexualContentOrNudity? = nil, horrorOrFearThemes: HorrorOrFearThemes? = nil, matureOrSuggestiveThemes: MatureOrSuggestiveThemes? = nil, isUnrestrictedWebAccess: Bool? = nil, violenceCartoonOrFantasy: ViolenceCartoonOrFantasy? = nil, violenceRealisticProlongedGraphicOrSadistic: ViolenceRealisticProlongedGraphicOrSadistic? = nil, violenceRealistic: ViolenceRealistic? = nil, koreaAgeRatingOverride: KoreaAgeRatingOverride? = nil) {
+            public init(isAdvertising: Bool? = nil, alcoholTobaccoOrDrugUseOrReferences: AlcoholTobaccoOrDrugUseOrReferences? = nil, contests: Contests? = nil, isGambling: Bool? = nil, gamblingSimulated: GamblingSimulated? = nil, gunsOrOtherWeapons: GunsOrOtherWeapons? = nil, isHealthOrWellnessTopics: Bool? = nil, kidsAgeBand: KidsAgeBand? = nil, isLootBox: Bool? = nil, medicalOrTreatmentInformation: MedicalOrTreatmentInformation? = nil, isMessagingAndChat: Bool? = nil, isParentalControls: Bool? = nil, profanityOrCrudeHumor: ProfanityOrCrudeHumor? = nil, isAgeAssurance: Bool? = nil, sexualContentGraphicAndNudity: SexualContentGraphicAndNudity? = nil, sexualContentOrNudity: SexualContentOrNudity? = nil, horrorOrFearThemes: HorrorOrFearThemes? = nil, matureOrSuggestiveThemes: MatureOrSuggestiveThemes? = nil, isUnrestrictedWebAccess: Bool? = nil, isUserGeneratedContent: Bool? = nil, violenceCartoonOrFantasy: ViolenceCartoonOrFantasy? = nil, violenceRealisticProlongedGraphicOrSadistic: ViolenceRealisticProlongedGraphicOrSadistic? = nil, violenceRealistic: ViolenceRealistic? = nil, ageRatingOverride: AgeRatingOverride? = nil, ageRatingOverrideV2: AgeRatingOverrideV2? = nil, koreaAgeRatingOverride: KoreaAgeRatingOverride? = nil, developerAgeRatingInfoURL: URL? = nil) {
+                self.isAdvertising = isAdvertising
                 self.alcoholTobaccoOrDrugUseOrReferences = alcoholTobaccoOrDrugUseOrReferences
                 self.contests = contests
                 self.isGambling = isGambling
                 self.gamblingSimulated = gamblingSimulated
+                self.gunsOrOtherWeapons = gunsOrOtherWeapons
+                self.isHealthOrWellnessTopics = isHealthOrWellnessTopics
                 self.kidsAgeBand = kidsAgeBand
                 self.isLootBox = isLootBox
                 self.medicalOrTreatmentInformation = medicalOrTreatmentInformation
+                self.isMessagingAndChat = isMessagingAndChat
+                self.isParentalControls = isParentalControls
                 self.profanityOrCrudeHumor = profanityOrCrudeHumor
+                self.isAgeAssurance = isAgeAssurance
                 self.sexualContentGraphicAndNudity = sexualContentGraphicAndNudity
                 self.sexualContentOrNudity = sexualContentOrNudity
                 self.horrorOrFearThemes = horrorOrFearThemes
                 self.matureOrSuggestiveThemes = matureOrSuggestiveThemes
                 self.isUnrestrictedWebAccess = isUnrestrictedWebAccess
+                self.isUserGeneratedContent = isUserGeneratedContent
                 self.violenceCartoonOrFantasy = violenceCartoonOrFantasy
                 self.violenceRealisticProlongedGraphicOrSadistic = violenceRealisticProlongedGraphicOrSadistic
                 self.violenceRealistic = violenceRealistic
+                self.ageRatingOverride = ageRatingOverride
+                self.ageRatingOverrideV2 = ageRatingOverrideV2
                 self.koreaAgeRatingOverride = koreaAgeRatingOverride
+                self.developerAgeRatingInfoURL = developerAgeRatingInfoURL
             }
 
             private enum CodingKeys: String, CodingKey {
+                case isAdvertising = "advertising"
                 case alcoholTobaccoOrDrugUseOrReferences
                 case contests
                 case isGambling = "gambling"
                 case gamblingSimulated
+                case gunsOrOtherWeapons
+                case isHealthOrWellnessTopics = "healthOrWellnessTopics"
                 case kidsAgeBand
                 case isLootBox = "lootBox"
                 case medicalOrTreatmentInformation
+                case isMessagingAndChat = "messagingAndChat"
+                case isParentalControls = "parentalControls"
                 case profanityOrCrudeHumor
+                case isAgeAssurance = "ageAssurance"
                 case sexualContentGraphicAndNudity
                 case sexualContentOrNudity
                 case horrorOrFearThemes
                 case matureOrSuggestiveThemes
                 case isUnrestrictedWebAccess = "unrestrictedWebAccess"
+                case isUserGeneratedContent = "userGeneratedContent"
                 case violenceCartoonOrFantasy
                 case violenceRealisticProlongedGraphicOrSadistic
                 case violenceRealistic
+                case ageRatingOverride
+                case ageRatingOverrideV2
                 case koreaAgeRatingOverride
+                case developerAgeRatingInfoURL = "developerAgeRatingInfoUrl"
             }
         }
 

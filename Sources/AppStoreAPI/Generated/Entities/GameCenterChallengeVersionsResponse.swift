@@ -13,25 +13,30 @@ public struct GameCenterChallengeVersionsResponse: Codable, Equatable, Sendable 
     public var meta: PagingInformation?
 
     public enum IncludedItem: Codable, Equatable, Sendable {
-        case gameCenterChallenge(GameCenterChallenge)
+        case gameCenterChallengeImage(GameCenterChallengeImage)
         case gameCenterChallengeLocalization(GameCenterChallengeLocalization)
         case gameCenterChallengeVersionRelease(GameCenterChallengeVersionRelease)
-        case gameCenterChallengeImage(GameCenterChallengeImage)
+        case gameCenterChallenge(GameCenterChallenge)
 
         public init(from decoder: any Decoder) throws {
+
+            struct Discriminator: Decodable {
+                let type: String
+            }
+
             let container = try decoder.singleValueContainer()
-            if let value = try? container.decode(GameCenterChallenge.self) {
-                self = .gameCenterChallenge(value)
-            } else if let value = try? container.decode(GameCenterChallengeLocalization.self) {
-                self = .gameCenterChallengeLocalization(value)
-            } else if let value = try? container.decode(GameCenterChallengeVersionRelease.self) {
-                self = .gameCenterChallengeVersionRelease(value)
-            } else if let value = try? container.decode(GameCenterChallengeImage.self) {
-                self = .gameCenterChallengeImage(value)
-            } else {
+            let discriminatorValue = try container.decode(Discriminator.self).type
+
+            switch discriminatorValue {
+            case "gameCenterChallengeImages": self = .gameCenterChallengeImage(try container.decode(GameCenterChallengeImage.self))
+            case "gameCenterChallengeLocalizations": self = .gameCenterChallengeLocalization(try container.decode(GameCenterChallengeLocalization.self))
+            case "gameCenterChallengeVersionReleases": self = .gameCenterChallengeVersionRelease(try container.decode(GameCenterChallengeVersionRelease.self))
+            case "gameCenterChallenges": self = .gameCenterChallenge(try container.decode(GameCenterChallenge.self))
+
+            default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (GameCenterChallenge, GameCenterChallengeLocalization, GameCenterChallengeVersionRelease, GameCenterChallengeImage)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (gameCenterChallengeImages, gameCenterChallengeLocalizations, gameCenterChallengeVersionReleases, gameCenterChallenges)."
                 )
             }
         }
@@ -39,10 +44,10 @@ public struct GameCenterChallengeVersionsResponse: Codable, Equatable, Sendable 
         public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
-            case .gameCenterChallenge(let value): try container.encode(value)
+            case .gameCenterChallengeImage(let value): try container.encode(value)
             case .gameCenterChallengeLocalization(let value): try container.encode(value)
             case .gameCenterChallengeVersionRelease(let value): try container.encode(value)
-            case .gameCenterChallengeImage(let value): try container.encode(value)
+            case .gameCenterChallenge(let value): try container.encode(value)
             }
         }
     }

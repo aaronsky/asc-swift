@@ -13,25 +13,30 @@ public struct NominationResponse: Codable, Equatable, Sendable {
     public var links: DocumentLinks
 
     public enum IncludedItem: Codable, Equatable, Sendable {
-        case app(App)
         case actor(Actor)
         case appEvent(AppEvent)
+        case app(App)
         case territory(Territory)
 
         public init(from decoder: any Decoder) throws {
+
+            struct Discriminator: Decodable {
+                let type: String
+            }
+
             let container = try decoder.singleValueContainer()
-            if let value = try? container.decode(App.self) {
-                self = .app(value)
-            } else if let value = try? container.decode(Actor.self) {
-                self = .actor(value)
-            } else if let value = try? container.decode(AppEvent.self) {
-                self = .appEvent(value)
-            } else if let value = try? container.decode(Territory.self) {
-                self = .territory(value)
-            } else {
+            let discriminatorValue = try container.decode(Discriminator.self).type
+
+            switch discriminatorValue {
+            case "actors": self = .actor(try container.decode(Actor.self))
+            case "appEvents": self = .appEvent(try container.decode(AppEvent.self))
+            case "apps": self = .app(try container.decode(App.self))
+            case "territories": self = .territory(try container.decode(Territory.self))
+
+            default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (App, Actor, AppEvent, Territory)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (actors, appEvents, apps, territories)."
                 )
             }
         }
@@ -39,9 +44,9 @@ public struct NominationResponse: Codable, Equatable, Sendable {
         public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
-            case .app(let value): try container.encode(value)
             case .actor(let value): try container.encode(value)
             case .appEvent(let value): try container.encode(value)
+            case .app(let value): try container.encode(value)
             case .territory(let value): try container.encode(value)
             }
         }

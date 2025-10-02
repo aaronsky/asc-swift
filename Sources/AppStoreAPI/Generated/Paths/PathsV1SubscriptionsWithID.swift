@@ -114,6 +114,7 @@ extension Resources.V1.Subscriptions {
             case duration
             case offerMode
             case numberOfPeriods
+            case totalNumberOfCodes
             case active
             case subscription
             case oneTimeUseCodes

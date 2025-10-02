@@ -32,14 +32,20 @@ extension Resources.V1.BackgroundAssetVersions {
             case platforms
             case state
             case version
+            case backgroundAsset
             case internalBetaRelease
+            case externalBetaRelease
+            case appStoreRelease
             case assetFile
             case manifestFile
             case backgroundAssetUploadFiles
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
+            case backgroundAsset
             case internalBetaRelease
+            case externalBetaRelease
+            case appStoreRelease
             case assetFile
             case manifestFile
         }
