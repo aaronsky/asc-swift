@@ -16,21 +16,23 @@ extension Resources.V1.AppStoreVersions.WithID {
         /// Path: `/v1/appStoreVersions/{id}/appStoreVersionLocalizations`
         public let path: String
 
-        public func get(filterLocale: [String]? = nil, fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, limit: Int? = nil, include: [Include]? = nil, limitAppScreenshotSets: Int? = nil, limitAppPreviewSets: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionLocalizationsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterLocale, fieldsAppStoreVersionLocalizations, fieldsAppStoreVersions, fieldsAppScreenshotSets, fieldsAppPreviewSets, limit, include, limitAppScreenshotSets, limitAppPreviewSets), id: "appStoreVersions_appStoreVersionLocalizations_getToManyRelated")
+        public func get(filterLocale: [String]? = nil, fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, fieldsAppKeywords: [String]? = nil, limit: Int? = nil, include: [Include]? = nil, limitAppScreenshotSets: Int? = nil, limitAppPreviewSets: Int? = nil, limitSearchKeywords: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionLocalizationsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterLocale, fieldsAppStoreVersionLocalizations, fieldsAppStoreVersions, fieldsAppScreenshotSets, fieldsAppPreviewSets, fieldsAppKeywords, limit, include, limitAppScreenshotSets, limitAppPreviewSets, limitSearchKeywords), id: "appStoreVersions_appStoreVersionLocalizations_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterLocale: [String]?, _ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ limit: Int?, _ include: [Include]?, _ limitAppScreenshotSets: Int?, _ limitAppPreviewSets: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterLocale: [String]?, _ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ fieldsAppKeywords: [String]?, _ limit: Int?, _ include: [Include]?, _ limitAppScreenshotSets: Int?, _ limitAppPreviewSets: Int?, _ limitSearchKeywords: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterLocale, forKey: "filter[locale]")
             encoder.encode(fieldsAppStoreVersionLocalizations, forKey: "fields[appStoreVersionLocalizations]")
             encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
             encoder.encode(fieldsAppScreenshotSets, forKey: "fields[appScreenshotSets]")
             encoder.encode(fieldsAppPreviewSets, forKey: "fields[appPreviewSets]")
+            encoder.encode(fieldsAppKeywords, forKey: "fields[appKeywords]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitAppScreenshotSets, forKey: "limit[appScreenshotSets]")
             encoder.encode(limitAppPreviewSets, forKey: "limit[appPreviewSets]")
+            encoder.encode(limitSearchKeywords, forKey: "limit[searchKeywords]")
             return encoder.items
         }
 
@@ -45,6 +47,7 @@ extension Resources.V1.AppStoreVersions.WithID {
             case appStoreVersion
             case appScreenshotSets
             case appPreviewSets
+            case searchKeywords
         }
 
         public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
@@ -95,6 +98,7 @@ extension Resources.V1.AppStoreVersions.WithID {
             case appStoreVersion
             case appScreenshotSets
             case appPreviewSets
+            case searchKeywords
         }
     }
 }

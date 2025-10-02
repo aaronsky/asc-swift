@@ -16,11 +16,11 @@ extension Resources.V1.CiBuildRuns.WithID {
         /// Path: `/v1/ciBuildRuns/{id}/builds`
         public let path: String
 
-        public func get(filterVersion: [String]? = nil, filterExpired: [String]? = nil, filterProcessingState: [FilterProcessingState]? = nil, filterBetaAppReviewSubmissionBetaReviewState: [FilterBetaAppReviewSubmissionBetaReviewState]? = nil, filterUsesNonExemptEncryption: [String]? = nil, filterPreReleaseVersionVersion: [String]? = nil, filterPreReleaseVersionPlatform: [FilterPreReleaseVersionPlatform]? = nil, filterBuildAudienceType: [FilterBuildAudienceType]? = nil, filterPreReleaseVersion: [String]? = nil, filterApp: [String]? = nil, filterBetaGroups: [String]? = nil, filterAppStoreVersion: [String]? = nil, filterID: [String]? = nil, existsUsesNonExemptEncryption: Bool? = nil, sort: [Sort]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsPreReleaseVersions: [FieldsPreReleaseVersions]? = nil, fieldsBetaTesters: [FieldsBetaTesters]? = nil, fieldsBetaGroups: [FieldsBetaGroups]? = nil, fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]? = nil, fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]? = nil, fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBuildBetaDetails: [FieldsBuildBetaDetails]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsBuildIcons: [FieldsBuildIcons]? = nil, fieldsBuildBundles: [FieldsBuildBundles]? = nil, limit: Int? = nil, include: [Include]? = nil, limitIndividualTesters: Int? = nil, limitBetaGroups: Int? = nil, limitBetaBuildLocalizations: Int? = nil, limitIcons: Int? = nil, limitBuildBundles: Int? = nil) -> Request<AppStoreAPI.BuildsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterVersion, filterExpired, filterProcessingState, filterBetaAppReviewSubmissionBetaReviewState, filterUsesNonExemptEncryption, filterPreReleaseVersionVersion, filterPreReleaseVersionPlatform, filterBuildAudienceType, filterPreReleaseVersion, filterApp, filterBetaGroups, filterAppStoreVersion, filterID, existsUsesNonExemptEncryption, sort, fieldsBuilds, fieldsPreReleaseVersions, fieldsBetaTesters, fieldsBetaGroups, fieldsBetaBuildLocalizations, fieldsAppEncryptionDeclarations, fieldsBetaAppReviewSubmissions, fieldsApps, fieldsBuildBetaDetails, fieldsAppStoreVersions, fieldsBuildIcons, fieldsBuildBundles, limit, include, limitIndividualTesters, limitBetaGroups, limitBetaBuildLocalizations, limitIcons, limitBuildBundles), id: "ciBuildRuns_builds_getToManyRelated")
+        public func get(filterVersion: [String]? = nil, filterExpired: [String]? = nil, filterProcessingState: [FilterProcessingState]? = nil, filterBetaAppReviewSubmissionBetaReviewState: [FilterBetaAppReviewSubmissionBetaReviewState]? = nil, filterUsesNonExemptEncryption: [String]? = nil, filterPreReleaseVersionVersion: [String]? = nil, filterPreReleaseVersionPlatform: [FilterPreReleaseVersionPlatform]? = nil, filterBuildAudienceType: [FilterBuildAudienceType]? = nil, filterPreReleaseVersion: [String]? = nil, filterApp: [String]? = nil, filterBetaGroups: [String]? = nil, filterAppStoreVersion: [String]? = nil, filterID: [String]? = nil, existsUsesNonExemptEncryption: Bool? = nil, sort: [Sort]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsPreReleaseVersions: [FieldsPreReleaseVersions]? = nil, fieldsBetaTesters: [FieldsBetaTesters]? = nil, fieldsBetaGroups: [FieldsBetaGroups]? = nil, fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]? = nil, fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]? = nil, fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBuildBetaDetails: [FieldsBuildBetaDetails]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsBuildIcons: [FieldsBuildIcons]? = nil, fieldsBuildBundles: [FieldsBuildBundles]? = nil, fieldsBuildUploads: [FieldsBuildUploads]? = nil, limit: Int? = nil, include: [Include]? = nil, limitIndividualTesters: Int? = nil, limitBetaGroups: Int? = nil, limitBetaBuildLocalizations: Int? = nil, limitIcons: Int? = nil, limitBuildBundles: Int? = nil) -> Request<AppStoreAPI.BuildsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterVersion, filterExpired, filterProcessingState, filterBetaAppReviewSubmissionBetaReviewState, filterUsesNonExemptEncryption, filterPreReleaseVersionVersion, filterPreReleaseVersionPlatform, filterBuildAudienceType, filterPreReleaseVersion, filterApp, filterBetaGroups, filterAppStoreVersion, filterID, existsUsesNonExemptEncryption, sort, fieldsBuilds, fieldsPreReleaseVersions, fieldsBetaTesters, fieldsBetaGroups, fieldsBetaBuildLocalizations, fieldsAppEncryptionDeclarations, fieldsBetaAppReviewSubmissions, fieldsApps, fieldsBuildBetaDetails, fieldsAppStoreVersions, fieldsBuildIcons, fieldsBuildBundles, fieldsBuildUploads, limit, include, limitIndividualTesters, limitBetaGroups, limitBetaBuildLocalizations, limitIcons, limitBuildBundles), id: "ciBuildRuns_builds_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterVersion: [String]?, _ filterExpired: [String]?, _ filterProcessingState: [FilterProcessingState]?, _ filterBetaAppReviewSubmissionBetaReviewState: [FilterBetaAppReviewSubmissionBetaReviewState]?, _ filterUsesNonExemptEncryption: [String]?, _ filterPreReleaseVersionVersion: [String]?, _ filterPreReleaseVersionPlatform: [FilterPreReleaseVersionPlatform]?, _ filterBuildAudienceType: [FilterBuildAudienceType]?, _ filterPreReleaseVersion: [String]?, _ filterApp: [String]?, _ filterBetaGroups: [String]?, _ filterAppStoreVersion: [String]?, _ filterID: [String]?, _ existsUsesNonExemptEncryption: Bool?, _ sort: [Sort]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsPreReleaseVersions: [FieldsPreReleaseVersions]?, _ fieldsBetaTesters: [FieldsBetaTesters]?, _ fieldsBetaGroups: [FieldsBetaGroups]?, _ fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]?, _ fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]?, _ fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]?, _ fieldsApps: [FieldsApps]?, _ fieldsBuildBetaDetails: [FieldsBuildBetaDetails]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsBuildIcons: [FieldsBuildIcons]?, _ fieldsBuildBundles: [FieldsBuildBundles]?, _ limit: Int?, _ include: [Include]?, _ limitIndividualTesters: Int?, _ limitBetaGroups: Int?, _ limitBetaBuildLocalizations: Int?, _ limitIcons: Int?, _ limitBuildBundles: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterVersion: [String]?, _ filterExpired: [String]?, _ filterProcessingState: [FilterProcessingState]?, _ filterBetaAppReviewSubmissionBetaReviewState: [FilterBetaAppReviewSubmissionBetaReviewState]?, _ filterUsesNonExemptEncryption: [String]?, _ filterPreReleaseVersionVersion: [String]?, _ filterPreReleaseVersionPlatform: [FilterPreReleaseVersionPlatform]?, _ filterBuildAudienceType: [FilterBuildAudienceType]?, _ filterPreReleaseVersion: [String]?, _ filterApp: [String]?, _ filterBetaGroups: [String]?, _ filterAppStoreVersion: [String]?, _ filterID: [String]?, _ existsUsesNonExemptEncryption: Bool?, _ sort: [Sort]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsPreReleaseVersions: [FieldsPreReleaseVersions]?, _ fieldsBetaTesters: [FieldsBetaTesters]?, _ fieldsBetaGroups: [FieldsBetaGroups]?, _ fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]?, _ fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]?, _ fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]?, _ fieldsApps: [FieldsApps]?, _ fieldsBuildBetaDetails: [FieldsBuildBetaDetails]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsBuildIcons: [FieldsBuildIcons]?, _ fieldsBuildBundles: [FieldsBuildBundles]?, _ fieldsBuildUploads: [FieldsBuildUploads]?, _ limit: Int?, _ include: [Include]?, _ limitIndividualTesters: Int?, _ limitBetaGroups: Int?, _ limitBetaBuildLocalizations: Int?, _ limitIcons: Int?, _ limitBuildBundles: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterVersion, forKey: "filter[version]")
             encoder.encode(filterExpired, forKey: "filter[expired]")
@@ -49,6 +49,7 @@ extension Resources.V1.CiBuildRuns.WithID {
             encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
             encoder.encode(fieldsBuildIcons, forKey: "fields[buildIcons]")
             encoder.encode(fieldsBuildBundles, forKey: "fields[buildBundles]")
+            encoder.encode(fieldsBuildUploads, forKey: "fields[buildUploads]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitIndividualTesters, forKey: "limit[individualTesters]")
@@ -118,6 +119,7 @@ extension Resources.V1.CiBuildRuns.WithID {
             case appStoreVersion
             case icons
             case buildBundles
+            case buildUpload
             case perfPowerMetrics
             case diagnosticSignatures
         }
@@ -211,6 +213,7 @@ extension Resources.V1.CiBuildRuns.WithID {
             case betaTesters
             case betaGroups
             case appStoreVersions
+            case appTags
             case preReleaseVersions
             case betaAppLocalizations
             case builds
@@ -239,9 +242,11 @@ extension Resources.V1.CiBuildRuns.WithID {
             case alternativeDistributionKey
             case analyticsReportRequests
             case marketplaceSearchDetail
+            case buildUploads
             case backgroundAssets
             case betaFeedbackScreenshotSubmissions
             case betaFeedbackCrashSubmissions
+            case searchKeywords
             case webhooks
         }
 
@@ -283,6 +288,7 @@ extension Resources.V1.CiBuildRuns.WithID {
         public enum FieldsBuildIcons: String, CaseIterable, Codable, Sendable {
             case iconAsset
             case iconType
+            case masked
             case name
         }
 
@@ -312,6 +318,20 @@ extension Resources.V1.CiBuildRuns.WithID {
             case buildBundleFileSizes
         }
 
+        public enum FieldsBuildUploads: String, CaseIterable, Codable, Sendable {
+            case cfBundleShortVersionString
+            case cfBundleVersion
+            case createdDate
+            case state
+            case platform
+            case uploadedDate
+            case build
+            case assetFile
+            case assetDescriptionFile
+            case assetSpiFile
+            case buildUploadFiles
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case preReleaseVersion
             case individualTesters
@@ -324,6 +344,7 @@ extension Resources.V1.CiBuildRuns.WithID {
             case appStoreVersion
             case icons
             case buildBundles
+            case buildUpload
         }
     }
 }

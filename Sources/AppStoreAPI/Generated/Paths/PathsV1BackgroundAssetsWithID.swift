@@ -30,12 +30,18 @@ extension Resources.V1.BackgroundAssets {
         public enum FieldsBackgroundAssets: String, CaseIterable, Codable, Sendable {
             case assetPackIdentifier
             case createdDate
+            case app
             case versions
+            case appStoreVersion
             case internalBetaVersion
+            case externalBetaVersion
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {
+            case app
+            case appStoreVersion
             case internalBetaVersion
+            case externalBetaVersion
         }
     }
 }

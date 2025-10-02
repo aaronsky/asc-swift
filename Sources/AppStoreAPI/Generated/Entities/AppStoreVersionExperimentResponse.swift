@@ -13,19 +13,26 @@ public struct AppStoreVersionExperimentResponse: Codable, Equatable, Sendable {
     public var links: DocumentLinks
 
     public enum IncludedItem: Codable, Equatable, Sendable {
-        case appStoreVersion(AppStoreVersion)
         case appStoreVersionExperimentTreatment(AppStoreVersionExperimentTreatment)
+        case appStoreVersion(AppStoreVersion)
 
         public init(from decoder: any Decoder) throws {
+
+            struct Discriminator: Decodable {
+                let type: String
+            }
+
             let container = try decoder.singleValueContainer()
-            if let value = try? container.decode(AppStoreVersion.self) {
-                self = .appStoreVersion(value)
-            } else if let value = try? container.decode(AppStoreVersionExperimentTreatment.self) {
-                self = .appStoreVersionExperimentTreatment(value)
-            } else {
+            let discriminatorValue = try container.decode(Discriminator.self).type
+
+            switch discriminatorValue {
+            case "appStoreVersionExperimentTreatments": self = .appStoreVersionExperimentTreatment(try container.decode(AppStoreVersionExperimentTreatment.self))
+            case "appStoreVersions": self = .appStoreVersion(try container.decode(AppStoreVersion.self))
+
+            default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (AppStoreVersion, AppStoreVersionExperimentTreatment)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (appStoreVersionExperimentTreatments, appStoreVersions)."
                 )
             }
         }
@@ -33,8 +40,8 @@ public struct AppStoreVersionExperimentResponse: Codable, Equatable, Sendable {
         public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
-            case .appStoreVersion(let value): try container.encode(value)
             case .appStoreVersionExperimentTreatment(let value): try container.encode(value)
+            case .appStoreVersion(let value): try container.encode(value)
             }
         }
     }

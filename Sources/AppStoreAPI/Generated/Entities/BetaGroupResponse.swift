@@ -14,24 +14,29 @@ public struct BetaGroupResponse: Codable, Equatable, Sendable {
 
     public enum IncludedItem: Codable, Equatable, Sendable {
         case app(App)
-        case build(Build)
-        case betaTester(BetaTester)
         case betaRecruitmentCriterion(BetaRecruitmentCriterion)
+        case betaTester(BetaTester)
+        case build(Build)
 
         public init(from decoder: any Decoder) throws {
+
+            struct Discriminator: Decodable {
+                let type: String
+            }
+
             let container = try decoder.singleValueContainer()
-            if let value = try? container.decode(App.self) {
-                self = .app(value)
-            } else if let value = try? container.decode(Build.self) {
-                self = .build(value)
-            } else if let value = try? container.decode(BetaTester.self) {
-                self = .betaTester(value)
-            } else if let value = try? container.decode(BetaRecruitmentCriterion.self) {
-                self = .betaRecruitmentCriterion(value)
-            } else {
+            let discriminatorValue = try container.decode(Discriminator.self).type
+
+            switch discriminatorValue {
+            case "apps": self = .app(try container.decode(App.self))
+            case "betaRecruitmentCriteria": self = .betaRecruitmentCriterion(try container.decode(BetaRecruitmentCriterion.self))
+            case "betaTesters": self = .betaTester(try container.decode(BetaTester.self))
+            case "builds": self = .build(try container.decode(Build.self))
+
+            default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (App, Build, BetaTester, BetaRecruitmentCriterion)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (apps, betaRecruitmentCriteria, betaTesters, builds)."
                 )
             }
         }
@@ -40,9 +45,9 @@ public struct BetaGroupResponse: Codable, Equatable, Sendable {
             var container = encoder.singleValueContainer()
             switch self {
             case .app(let value): try container.encode(value)
-            case .build(let value): try container.encode(value)
-            case .betaTester(let value): try container.encode(value)
             case .betaRecruitmentCriterion(let value): try container.encode(value)
+            case .betaTester(let value): try container.encode(value)
+            case .build(let value): try container.encode(value)
             }
         }
     }

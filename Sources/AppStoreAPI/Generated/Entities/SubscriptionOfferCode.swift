@@ -24,15 +24,17 @@ public struct SubscriptionOfferCode: Codable, Equatable, Identifiable, Sendable 
         public var duration: SubscriptionOfferDuration?
         public var offerMode: SubscriptionOfferMode?
         public var numberOfPeriods: Int?
+        public var totalNumberOfCodes: Int?
         public var isActive: Bool?
 
-        public init(name: String? = nil, customerEligibilities: [SubscriptionCustomerEligibility]? = nil, offerEligibility: SubscriptionOfferEligibility? = nil, duration: SubscriptionOfferDuration? = nil, offerMode: SubscriptionOfferMode? = nil, numberOfPeriods: Int? = nil, isActive: Bool? = nil) {
+        public init(name: String? = nil, customerEligibilities: [SubscriptionCustomerEligibility]? = nil, offerEligibility: SubscriptionOfferEligibility? = nil, duration: SubscriptionOfferDuration? = nil, offerMode: SubscriptionOfferMode? = nil, numberOfPeriods: Int? = nil, totalNumberOfCodes: Int? = nil, isActive: Bool? = nil) {
             self.name = name
             self.customerEligibilities = customerEligibilities
             self.offerEligibility = offerEligibility
             self.duration = duration
             self.offerMode = offerMode
             self.numberOfPeriods = numberOfPeriods
+            self.totalNumberOfCodes = totalNumberOfCodes
             self.isActive = isActive
         }
 
@@ -43,6 +45,7 @@ public struct SubscriptionOfferCode: Codable, Equatable, Identifiable, Sendable 
             case duration
             case offerMode
             case numberOfPeriods
+            case totalNumberOfCodes
             case isActive = "active"
         }
     }

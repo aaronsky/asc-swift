@@ -11,6 +11,7 @@ public enum GameCenterVersionState: String, CaseIterable, Codable, Sendable {
     case readyForReview = "READY_FOR_REVIEW"
     case waitingForReview = "WAITING_FOR_REVIEW"
     case inReview = "IN_REVIEW"
+    case developerRejected = "DEVELOPER_REJECTED"
     case rejected = "REJECTED"
     case accepted = "ACCEPTED"
     case pendingRelease = "PENDING_RELEASE"

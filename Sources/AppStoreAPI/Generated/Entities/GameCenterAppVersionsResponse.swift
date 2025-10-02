@@ -13,19 +13,26 @@ public struct GameCenterAppVersionsResponse: Codable, Equatable, Sendable {
     public var meta: PagingInformation?
 
     public enum IncludedItem: Codable, Equatable, Sendable {
-        case gameCenterAppVersion(GameCenterAppVersion)
         case appStoreVersion(AppStoreVersion)
+        case gameCenterAppVersion(GameCenterAppVersion)
 
         public init(from decoder: any Decoder) throws {
+
+            struct Discriminator: Decodable {
+                let type: String
+            }
+
             let container = try decoder.singleValueContainer()
-            if let value = try? container.decode(GameCenterAppVersion.self) {
-                self = .gameCenterAppVersion(value)
-            } else if let value = try? container.decode(AppStoreVersion.self) {
-                self = .appStoreVersion(value)
-            } else {
+            let discriminatorValue = try container.decode(Discriminator.self).type
+
+            switch discriminatorValue {
+            case "appStoreVersions": self = .appStoreVersion(try container.decode(AppStoreVersion.self))
+            case "gameCenterAppVersions": self = .gameCenterAppVersion(try container.decode(GameCenterAppVersion.self))
+
+            default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (GameCenterAppVersion, AppStoreVersion)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (appStoreVersions, gameCenterAppVersions)."
                 )
             }
         }
@@ -33,8 +40,8 @@ public struct GameCenterAppVersionsResponse: Codable, Equatable, Sendable {
         public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
-            case .gameCenterAppVersion(let value): try container.encode(value)
             case .appStoreVersion(let value): try container.encode(value)
+            case .gameCenterAppVersion(let value): try container.encode(value)
             }
         }
     }

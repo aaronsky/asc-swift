@@ -14,21 +14,29 @@ public struct AppCustomProductPageLocalizationResponse: Codable, Equatable, Send
 
     public enum IncludedItem: Codable, Equatable, Sendable {
         case appCustomProductPageVersion(AppCustomProductPageVersion)
-        case appScreenshotSet(AppScreenshotSet)
+        case appKeyword(AppKeyword)
         case appPreviewSet(AppPreviewSet)
+        case appScreenshotSet(AppScreenshotSet)
 
         public init(from decoder: any Decoder) throws {
+
+            struct Discriminator: Decodable {
+                let type: String
+            }
+
             let container = try decoder.singleValueContainer()
-            if let value = try? container.decode(AppCustomProductPageVersion.self) {
-                self = .appCustomProductPageVersion(value)
-            } else if let value = try? container.decode(AppScreenshotSet.self) {
-                self = .appScreenshotSet(value)
-            } else if let value = try? container.decode(AppPreviewSet.self) {
-                self = .appPreviewSet(value)
-            } else {
+            let discriminatorValue = try container.decode(Discriminator.self).type
+
+            switch discriminatorValue {
+            case "appCustomProductPageVersions": self = .appCustomProductPageVersion(try container.decode(AppCustomProductPageVersion.self))
+            case "appKeywords": self = .appKeyword(try container.decode(AppKeyword.self))
+            case "appPreviewSets": self = .appPreviewSet(try container.decode(AppPreviewSet.self))
+            case "appScreenshotSets": self = .appScreenshotSet(try container.decode(AppScreenshotSet.self))
+
+            default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (AppCustomProductPageVersion, AppScreenshotSet, AppPreviewSet)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (appCustomProductPageVersions, appKeywords, appPreviewSets, appScreenshotSets)."
                 )
             }
         }
@@ -37,8 +45,9 @@ public struct AppCustomProductPageLocalizationResponse: Codable, Equatable, Send
             var container = encoder.singleValueContainer()
             switch self {
             case .appCustomProductPageVersion(let value): try container.encode(value)
-            case .appScreenshotSet(let value): try container.encode(value)
+            case .appKeyword(let value): try container.encode(value)
             case .appPreviewSet(let value): try container.encode(value)
+            case .appScreenshotSet(let value): try container.encode(value)
             }
         }
     }

@@ -13,22 +13,28 @@ public struct GameCenterMatchmakingRuleSetsResponse: Codable, Equatable, Sendabl
     public var meta: PagingInformation?
 
     public enum IncludedItem: Codable, Equatable, Sendable {
-        case gameCenterMatchmakingTeam(GameCenterMatchmakingTeam)
-        case gameCenterMatchmakingRule(GameCenterMatchmakingRule)
         case gameCenterMatchmakingQueue(GameCenterMatchmakingQueue)
+        case gameCenterMatchmakingRule(GameCenterMatchmakingRule)
+        case gameCenterMatchmakingTeam(GameCenterMatchmakingTeam)
 
         public init(from decoder: any Decoder) throws {
+
+            struct Discriminator: Decodable {
+                let type: String
+            }
+
             let container = try decoder.singleValueContainer()
-            if let value = try? container.decode(GameCenterMatchmakingTeam.self) {
-                self = .gameCenterMatchmakingTeam(value)
-            } else if let value = try? container.decode(GameCenterMatchmakingRule.self) {
-                self = .gameCenterMatchmakingRule(value)
-            } else if let value = try? container.decode(GameCenterMatchmakingQueue.self) {
-                self = .gameCenterMatchmakingQueue(value)
-            } else {
+            let discriminatorValue = try container.decode(Discriminator.self).type
+
+            switch discriminatorValue {
+            case "gameCenterMatchmakingQueues": self = .gameCenterMatchmakingQueue(try container.decode(GameCenterMatchmakingQueue.self))
+            case "gameCenterMatchmakingRules": self = .gameCenterMatchmakingRule(try container.decode(GameCenterMatchmakingRule.self))
+            case "gameCenterMatchmakingTeams": self = .gameCenterMatchmakingTeam(try container.decode(GameCenterMatchmakingTeam.self))
+
+            default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (GameCenterMatchmakingTeam, GameCenterMatchmakingRule, GameCenterMatchmakingQueue)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (gameCenterMatchmakingQueues, gameCenterMatchmakingRules, gameCenterMatchmakingTeams)."
                 )
             }
         }
@@ -36,9 +42,9 @@ public struct GameCenterMatchmakingRuleSetsResponse: Codable, Equatable, Sendabl
         public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
-            case .gameCenterMatchmakingTeam(let value): try container.encode(value)
-            case .gameCenterMatchmakingRule(let value): try container.encode(value)
             case .gameCenterMatchmakingQueue(let value): try container.encode(value)
+            case .gameCenterMatchmakingRule(let value): try container.encode(value)
+            case .gameCenterMatchmakingTeam(let value): try container.encode(value)
             }
         }
     }

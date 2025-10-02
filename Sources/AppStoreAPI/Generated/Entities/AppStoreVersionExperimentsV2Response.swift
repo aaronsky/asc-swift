@@ -13,22 +13,28 @@ public struct AppStoreVersionExperimentsV2Response: Codable, Equatable, Sendable
     public var meta: PagingInformation?
 
     public enum IncludedItem: Codable, Equatable, Sendable {
-        case app(App)
-        case appStoreVersion(AppStoreVersion)
         case appStoreVersionExperimentTreatment(AppStoreVersionExperimentTreatment)
+        case appStoreVersion(AppStoreVersion)
+        case app(App)
 
         public init(from decoder: any Decoder) throws {
+
+            struct Discriminator: Decodable {
+                let type: String
+            }
+
             let container = try decoder.singleValueContainer()
-            if let value = try? container.decode(App.self) {
-                self = .app(value)
-            } else if let value = try? container.decode(AppStoreVersion.self) {
-                self = .appStoreVersion(value)
-            } else if let value = try? container.decode(AppStoreVersionExperimentTreatment.self) {
-                self = .appStoreVersionExperimentTreatment(value)
-            } else {
+            let discriminatorValue = try container.decode(Discriminator.self).type
+
+            switch discriminatorValue {
+            case "appStoreVersionExperimentTreatments": self = .appStoreVersionExperimentTreatment(try container.decode(AppStoreVersionExperimentTreatment.self))
+            case "appStoreVersions": self = .appStoreVersion(try container.decode(AppStoreVersion.self))
+            case "apps": self = .app(try container.decode(App.self))
+
+            default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (App, AppStoreVersion, AppStoreVersionExperimentTreatment)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (appStoreVersionExperimentTreatments, appStoreVersions, apps)."
                 )
             }
         }
@@ -36,9 +42,9 @@ public struct AppStoreVersionExperimentsV2Response: Codable, Equatable, Sendable
         public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
-            case .app(let value): try container.encode(value)
-            case .appStoreVersion(let value): try container.encode(value)
             case .appStoreVersionExperimentTreatment(let value): try container.encode(value)
+            case .appStoreVersion(let value): try container.encode(value)
+            case .app(let value): try container.encode(value)
             }
         }
     }

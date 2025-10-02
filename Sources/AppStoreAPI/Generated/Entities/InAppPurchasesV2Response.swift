@@ -13,37 +13,38 @@ public struct InAppPurchasesV2Response: Codable, Equatable, Sendable {
     public var meta: PagingInformation?
 
     public enum IncludedItem: Codable, Equatable, Sendable {
+        case inAppPurchaseAppStoreReviewScreenshot(InAppPurchaseAppStoreReviewScreenshot)
+        case inAppPurchaseAvailability(InAppPurchaseAvailability)
+        case inAppPurchaseContent(InAppPurchaseContent)
+        case inAppPurchaseImage(InAppPurchaseImage)
         case inAppPurchaseLocalization(InAppPurchaseLocalization)
         case inAppPurchasePricePoint(InAppPurchasePricePoint)
-        case inAppPurchaseContent(InAppPurchaseContent)
-        case inAppPurchaseAppStoreReviewScreenshot(InAppPurchaseAppStoreReviewScreenshot)
-        case promotedPurchase(PromotedPurchase)
         case inAppPurchasePriceSchedule(InAppPurchasePriceSchedule)
-        case inAppPurchaseAvailability(InAppPurchaseAvailability)
-        case inAppPurchaseImage(InAppPurchaseImage)
+        case promotedPurchase(PromotedPurchase)
 
         public init(from decoder: any Decoder) throws {
+
+            struct Discriminator: Decodable {
+                let type: String
+            }
+
             let container = try decoder.singleValueContainer()
-            if let value = try? container.decode(InAppPurchaseLocalization.self) {
-                self = .inAppPurchaseLocalization(value)
-            } else if let value = try? container.decode(InAppPurchasePricePoint.self) {
-                self = .inAppPurchasePricePoint(value)
-            } else if let value = try? container.decode(InAppPurchaseContent.self) {
-                self = .inAppPurchaseContent(value)
-            } else if let value = try? container.decode(InAppPurchaseAppStoreReviewScreenshot.self) {
-                self = .inAppPurchaseAppStoreReviewScreenshot(value)
-            } else if let value = try? container.decode(PromotedPurchase.self) {
-                self = .promotedPurchase(value)
-            } else if let value = try? container.decode(InAppPurchasePriceSchedule.self) {
-                self = .inAppPurchasePriceSchedule(value)
-            } else if let value = try? container.decode(InAppPurchaseAvailability.self) {
-                self = .inAppPurchaseAvailability(value)
-            } else if let value = try? container.decode(InAppPurchaseImage.self) {
-                self = .inAppPurchaseImage(value)
-            } else {
+            let discriminatorValue = try container.decode(Discriminator.self).type
+
+            switch discriminatorValue {
+            case "inAppPurchaseAppStoreReviewScreenshots": self = .inAppPurchaseAppStoreReviewScreenshot(try container.decode(InAppPurchaseAppStoreReviewScreenshot.self))
+            case "inAppPurchaseAvailabilities": self = .inAppPurchaseAvailability(try container.decode(InAppPurchaseAvailability.self))
+            case "inAppPurchaseContents": self = .inAppPurchaseContent(try container.decode(InAppPurchaseContent.self))
+            case "inAppPurchaseImages": self = .inAppPurchaseImage(try container.decode(InAppPurchaseImage.self))
+            case "inAppPurchaseLocalizations": self = .inAppPurchaseLocalization(try container.decode(InAppPurchaseLocalization.self))
+            case "inAppPurchasePricePoints": self = .inAppPurchasePricePoint(try container.decode(InAppPurchasePricePoint.self))
+            case "inAppPurchasePriceSchedules": self = .inAppPurchasePriceSchedule(try container.decode(InAppPurchasePriceSchedule.self))
+            case "promotedPurchases": self = .promotedPurchase(try container.decode(PromotedPurchase.self))
+
+            default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (InAppPurchaseLocalization, InAppPurchasePricePoint, InAppPurchaseContent, InAppPurchaseAppStoreReviewScreenshot, PromotedPurchase, InAppPurchasePriceSchedule, InAppPurchaseAvailability, InAppPurchaseImage)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (inAppPurchaseAppStoreReviewScreenshots, inAppPurchaseAvailabilities, inAppPurchaseContents, inAppPurchaseImages, inAppPurchaseLocalizations, inAppPurchasePricePoints, inAppPurchasePriceSchedules, promotedPurchases)."
                 )
             }
         }
@@ -51,14 +52,14 @@ public struct InAppPurchasesV2Response: Codable, Equatable, Sendable {
         public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
+            case .inAppPurchaseAppStoreReviewScreenshot(let value): try container.encode(value)
+            case .inAppPurchaseAvailability(let value): try container.encode(value)
+            case .inAppPurchaseContent(let value): try container.encode(value)
+            case .inAppPurchaseImage(let value): try container.encode(value)
             case .inAppPurchaseLocalization(let value): try container.encode(value)
             case .inAppPurchasePricePoint(let value): try container.encode(value)
-            case .inAppPurchaseContent(let value): try container.encode(value)
-            case .inAppPurchaseAppStoreReviewScreenshot(let value): try container.encode(value)
-            case .promotedPurchase(let value): try container.encode(value)
             case .inAppPurchasePriceSchedule(let value): try container.encode(value)
-            case .inAppPurchaseAvailability(let value): try container.encode(value)
-            case .inAppPurchaseImage(let value): try container.encode(value)
+            case .promotedPurchase(let value): try container.encode(value)
             }
         }
     }

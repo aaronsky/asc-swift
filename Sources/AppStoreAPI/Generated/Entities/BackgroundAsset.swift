@@ -28,14 +28,61 @@ public struct BackgroundAsset: Codable, Equatable, Identifiable, Sendable {
     }
 
     public struct Relationships: Codable, Equatable, Sendable {
+        public var app: App?
         public var versions: Versions?
+        public var appStoreVersion: AppStoreVersion?
         public var internalBetaVersion: InternalBetaVersion?
+        public var externalBetaVersion: ExternalBetaVersion?
+
+        public struct App: Codable, Equatable, Sendable {
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case apps
+                }
+
+                public init(type: `Type` = .apps, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(data: Data? = nil) {
+                self.data = data
+            }
+        }
 
         public struct Versions: Codable, Equatable, Sendable {
             public var links: RelationshipLinks?
 
             public init(links: RelationshipLinks? = nil) {
                 self.links = links
+            }
+        }
+
+        public struct AppStoreVersion: Codable, Equatable, Sendable {
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case backgroundAssetVersions
+                }
+
+                public init(type: `Type` = .backgroundAssetVersions, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(data: Data? = nil) {
+                self.data = data
             }
         }
 
@@ -61,9 +108,34 @@ public struct BackgroundAsset: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(versions: Versions? = nil, internalBetaVersion: InternalBetaVersion? = nil) {
+        public struct ExternalBetaVersion: Codable, Equatable, Sendable {
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case backgroundAssetVersions
+                }
+
+                public init(type: `Type` = .backgroundAssetVersions, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(data: Data? = nil) {
+                self.data = data
+            }
+        }
+
+        public init(app: App? = nil, versions: Versions? = nil, appStoreVersion: AppStoreVersion? = nil, internalBetaVersion: InternalBetaVersion? = nil, externalBetaVersion: ExternalBetaVersion? = nil) {
+            self.app = app
             self.versions = versions
+            self.appStoreVersion = appStoreVersion
             self.internalBetaVersion = internalBetaVersion
+            self.externalBetaVersion = externalBetaVersion
         }
     }
 

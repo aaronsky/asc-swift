@@ -9,10 +9,46 @@ import AppStoreConnect
 public struct GameCenterMatchmakingRuleSetTestResponse: Codable, Equatable, Sendable {
     /// GameCenterMatchmakingRuleSetTest
     public var data: GameCenterMatchmakingRuleSetTest
+    public var included: [IncludedItem]?
     public var links: DocumentLinks
 
-    public init(data: GameCenterMatchmakingRuleSetTest, links: DocumentLinks) {
+    public enum IncludedItem: Codable, Equatable, Sendable {
+        case gameCenterMatchmakingTestPlayerProperty(GameCenterMatchmakingTestPlayerProperty)
+        case gameCenterMatchmakingTestRequest(GameCenterMatchmakingTestRequest)
+
+        public init(from decoder: any Decoder) throws {
+
+            struct Discriminator: Decodable {
+                let type: String
+            }
+
+            let container = try decoder.singleValueContainer()
+            let discriminatorValue = try container.decode(Discriminator.self).type
+
+            switch discriminatorValue {
+            case "gameCenterMatchmakingTestPlayerProperties": self = .gameCenterMatchmakingTestPlayerProperty(try container.decode(GameCenterMatchmakingTestPlayerProperty.self))
+            case "gameCenterMatchmakingTestRequests": self = .gameCenterMatchmakingTestRequest(try container.decode(GameCenterMatchmakingTestRequest.self))
+
+            default:
+                throw DecodingError.dataCorruptedError(
+                    in: container,
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (gameCenterMatchmakingTestPlayerProperties, gameCenterMatchmakingTestRequests)."
+                )
+            }
+        }
+
+        public func encode(to encoder: any Encoder) throws {
+            var container = encoder.singleValueContainer()
+            switch self {
+            case .gameCenterMatchmakingTestPlayerProperty(let value): try container.encode(value)
+            case .gameCenterMatchmakingTestRequest(let value): try container.encode(value)
+            }
+        }
+    }
+
+    public init(data: GameCenterMatchmakingRuleSetTest, included: [IncludedItem]? = nil, links: DocumentLinks) {
         self.data = data
+        self.included = included
         self.links = links
     }
 }

@@ -70,23 +70,33 @@ extension Resources.V1.AppStoreVersions {
         }
 
         public enum FieldsAgeRatingDeclarations: String, CaseIterable, Codable, Sendable {
+            case advertising
             case alcoholTobaccoOrDrugUseOrReferences
             case contests
             case gambling
             case gamblingSimulated
+            case gunsOrOtherWeapons
+            case healthOrWellnessTopics
             case kidsAgeBand
             case lootBox
             case medicalOrTreatmentInformation
+            case messagingAndChat
+            case parentalControls
             case profanityOrCrudeHumor
+            case ageAssurance
             case sexualContentGraphicAndNudity
             case sexualContentOrNudity
             case horrorOrFearThemes
             case matureOrSuggestiveThemes
             case unrestrictedWebAccess
+            case userGeneratedContent
             case violenceCartoonOrFantasy
             case violenceRealisticProlongedGraphicOrSadistic
             case violenceRealistic
+            case ageRatingOverride
+            case ageRatingOverrideV2
             case koreaAgeRatingOverride
+            case developerAgeRatingInfoURL = "developerAgeRatingInfoUrl"
         }
 
         public enum FieldsAppStoreVersionLocalizations: String, CaseIterable, Codable, Sendable {
@@ -100,6 +110,7 @@ extension Resources.V1.AppStoreVersions {
             case appStoreVersion
             case appScreenshotSets
             case appPreviewSets
+            case searchKeywords
         }
 
         public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
@@ -126,6 +137,7 @@ extension Resources.V1.AppStoreVersions {
             case appStoreVersion
             case icons
             case buildBundles
+            case buildUpload
             case perfPowerMetrics
             case diagnosticSignatures
         }

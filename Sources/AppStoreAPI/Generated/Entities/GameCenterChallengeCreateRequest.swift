@@ -21,24 +21,16 @@ public struct GameCenterChallengeCreateRequest: Codable, Equatable, Sendable {
         public struct Attributes: Codable, Equatable, Sendable {
             public var referenceName: String
             public var vendorIdentifier: String
-            public var allowedDurations: [AllowedDuration]?
             public var challengeType: ChallengeType
             public var isRepeatable: Bool?
-
-            public enum AllowedDuration: String, CaseIterable, Codable, Sendable {
-                case oneDay = "ONE_DAY"
-                case threeDays = "THREE_DAYS"
-                case oneWeek = "ONE_WEEK"
-            }
 
             public enum ChallengeType: String, CaseIterable, Codable, Sendable {
                 case leaderboard = "LEADERBOARD"
             }
 
-            public init(referenceName: String, vendorIdentifier: String, allowedDurations: [AllowedDuration]? = nil, challengeType: ChallengeType = .leaderboard, isRepeatable: Bool? = nil) {
+            public init(referenceName: String, vendorIdentifier: String, challengeType: ChallengeType = .leaderboard, isRepeatable: Bool? = nil) {
                 self.referenceName = referenceName
                 self.vendorIdentifier = vendorIdentifier
-                self.allowedDurations = allowedDurations
                 self.challengeType = challengeType
                 self.isRepeatable = isRepeatable
             }
@@ -46,7 +38,6 @@ public struct GameCenterChallengeCreateRequest: Codable, Equatable, Sendable {
             private enum CodingKeys: String, CodingKey {
                 case referenceName
                 case vendorIdentifier
-                case allowedDurations
                 case challengeType
                 case isRepeatable = "repeatable"
             }

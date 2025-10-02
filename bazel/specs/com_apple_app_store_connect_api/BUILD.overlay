@@ -12,14 +12,16 @@ SPEC_FILE_NAME = "app_store_connect_api_%s_openapi.json" % APP_STORE_CONNECT_API
 
 filegroup(
     name = "original_spec",
-    srcs = ["app_store_connect_api_openapi.json"],
+    srcs = ["openapi.oas.json"],
 )
 
 jq(
     name = "patch_jq",
     srcs = [":original_spec"],
     out = "openapi_patched_jq.json",
-    filter = ".",
+        filter = """\
+del(.. | select(. == []))
+""",
 )
 
 copy_file(

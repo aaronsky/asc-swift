@@ -13,22 +13,28 @@ public struct AppPriceScheduleResponse: Codable, Equatable, Sendable {
     public var links: DocumentLinks
 
     public enum IncludedItem: Codable, Equatable, Sendable {
+        case appPriceV2(AppPriceV2)
         case app(App)
         case territory(Territory)
-        case appPriceV2(AppPriceV2)
 
         public init(from decoder: any Decoder) throws {
+
+            struct Discriminator: Decodable {
+                let type: String
+            }
+
             let container = try decoder.singleValueContainer()
-            if let value = try? container.decode(App.self) {
-                self = .app(value)
-            } else if let value = try? container.decode(Territory.self) {
-                self = .territory(value)
-            } else if let value = try? container.decode(AppPriceV2.self) {
-                self = .appPriceV2(value)
-            } else {
+            let discriminatorValue = try container.decode(Discriminator.self).type
+
+            switch discriminatorValue {
+            case "appPrices": self = .appPriceV2(try container.decode(AppPriceV2.self))
+            case "apps": self = .app(try container.decode(App.self))
+            case "territories": self = .territory(try container.decode(Territory.self))
+
+            default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (App, Territory, AppPriceV2)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (appPrices, apps, territories)."
                 )
             }
         }
@@ -36,9 +42,9 @@ public struct AppPriceScheduleResponse: Codable, Equatable, Sendable {
         public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
+            case .appPriceV2(let value): try container.encode(value)
             case .app(let value): try container.encode(value)
             case .territory(let value): try container.encode(value)
-            case .appPriceV2(let value): try container.encode(value)
             }
         }
     }

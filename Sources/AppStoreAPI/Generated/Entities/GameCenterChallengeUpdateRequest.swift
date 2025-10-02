@@ -21,26 +21,17 @@ public struct GameCenterChallengeUpdateRequest: Codable, Equatable, Sendable {
 
         public struct Attributes: Codable, Equatable, Sendable {
             public var referenceName: String?
-            public var allowedDurations: [AllowedDuration]?
             public var isArchived: Bool?
             public var isRepeatable: Bool?
 
-            public enum AllowedDuration: String, CaseIterable, Codable, Sendable {
-                case oneDay = "ONE_DAY"
-                case threeDays = "THREE_DAYS"
-                case oneWeek = "ONE_WEEK"
-            }
-
-            public init(referenceName: String? = nil, allowedDurations: [AllowedDuration]? = nil, isArchived: Bool? = nil, isRepeatable: Bool? = nil) {
+            public init(referenceName: String? = nil, isArchived: Bool? = nil, isRepeatable: Bool? = nil) {
                 self.referenceName = referenceName
-                self.allowedDurations = allowedDurations
                 self.isArchived = isArchived
                 self.isRepeatable = isRepeatable
             }
 
             private enum CodingKeys: String, CodingKey {
                 case referenceName
-                case allowedDurations
                 case isArchived = "archived"
                 case isRepeatable = "repeatable"
             }

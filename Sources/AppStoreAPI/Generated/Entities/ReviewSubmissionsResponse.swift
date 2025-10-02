@@ -13,25 +13,30 @@ public struct ReviewSubmissionsResponse: Codable, Equatable, Sendable {
     public var meta: PagingInformation?
 
     public enum IncludedItem: Codable, Equatable, Sendable {
+        case actor(Actor)
+        case appStoreVersion(AppStoreVersion)
         case app(App)
         case reviewSubmissionItem(ReviewSubmissionItem)
-        case appStoreVersion(AppStoreVersion)
-        case actor(Actor)
 
         public init(from decoder: any Decoder) throws {
+
+            struct Discriminator: Decodable {
+                let type: String
+            }
+
             let container = try decoder.singleValueContainer()
-            if let value = try? container.decode(App.self) {
-                self = .app(value)
-            } else if let value = try? container.decode(ReviewSubmissionItem.self) {
-                self = .reviewSubmissionItem(value)
-            } else if let value = try? container.decode(AppStoreVersion.self) {
-                self = .appStoreVersion(value)
-            } else if let value = try? container.decode(Actor.self) {
-                self = .actor(value)
-            } else {
+            let discriminatorValue = try container.decode(Discriminator.self).type
+
+            switch discriminatorValue {
+            case "actors": self = .actor(try container.decode(Actor.self))
+            case "appStoreVersions": self = .appStoreVersion(try container.decode(AppStoreVersion.self))
+            case "apps": self = .app(try container.decode(App.self))
+            case "reviewSubmissionItems": self = .reviewSubmissionItem(try container.decode(ReviewSubmissionItem.self))
+
+            default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (App, ReviewSubmissionItem, AppStoreVersion, Actor)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (actors, appStoreVersions, apps, reviewSubmissionItems)."
                 )
             }
         }
@@ -39,10 +44,10 @@ public struct ReviewSubmissionsResponse: Codable, Equatable, Sendable {
         public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
+            case .actor(let value): try container.encode(value)
+            case .appStoreVersion(let value): try container.encode(value)
             case .app(let value): try container.encode(value)
             case .reviewSubmissionItem(let value): try container.encode(value)
-            case .appStoreVersion(let value): try container.encode(value)
-            case .actor(let value): try container.encode(value)
             }
         }
     }
