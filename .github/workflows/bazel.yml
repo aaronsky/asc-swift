@@ -40,13 +40,13 @@ jobs:
       - uses: bazel-contrib/setup-bazel@0.15.0
         with:
           bazelisk-cache: true
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: bazel test //...
   Linux:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: ['6.1']
+        tag: ['6.2']
     container:
       image: swift:${{ matrix.tag }}
     steps:
@@ -54,7 +54,7 @@ jobs:
         with:
           bazelisk-cache: true
           bazelisk-version: 1.x
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: bazel test //...
   bzlmod-e2e-macOS:
     runs-on: macos-15
@@ -62,14 +62,14 @@ jobs:
       - uses: bazel-contrib/setup-bazel@0.15.0
         with:
           bazelisk-cache: true
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: bazel build //...
         working-directory: Examples/bzlmod
   bzlmod-e2e-linux:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: ['6.1']
+        tag: ['6.2']
     container:
       image: swift:${{ matrix.tag }}
     steps:
@@ -77,6 +77,6 @@ jobs:
         with:
           bazelisk-cache: true
           bazelisk-version: 1.x
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: bazel build //...
         working-directory: Examples/bzlmod

@@ -12,6 +12,6 @@ jobs:
       - uses: bazel-contrib/setup-bazel@0.15.0
         with:
           bazelisk-cache: true
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: bazel run //:update
       - run: git diff --ignore-all-space --exit-code
