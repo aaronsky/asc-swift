@@ -18,12 +18,20 @@ public struct BackgroundAsset: Codable, Equatable, Identifiable, Sendable {
     }
 
     public struct Attributes: Codable, Equatable, Sendable {
+        public var isArchived: Bool?
         public var assetPackIdentifier: String?
         public var createdDate: Date?
 
-        public init(assetPackIdentifier: String? = nil, createdDate: Date? = nil) {
+        public init(isArchived: Bool? = nil, assetPackIdentifier: String? = nil, createdDate: Date? = nil) {
+            self.isArchived = isArchived
             self.assetPackIdentifier = assetPackIdentifier
             self.createdDate = createdDate
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case isArchived = "archived"
+            case assetPackIdentifier
+            case createdDate
         }
     }
 

@@ -145,7 +145,10 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case offerMode
             case numberOfPeriods
             case totalNumberOfCodes
+            case productionCodeCount
+            case sandboxCodeCount
             case active
+            case autoRenewEnabled
             case subscription
             case oneTimeUseCodes
             case customCodes

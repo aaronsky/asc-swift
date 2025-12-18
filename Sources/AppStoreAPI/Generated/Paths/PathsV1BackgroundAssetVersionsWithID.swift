@@ -31,6 +31,7 @@ extension Resources.V1.BackgroundAssetVersions {
             case createdDate
             case platforms
             case state
+            case stateDetails
             case version
             case backgroundAsset
             case internalBetaRelease

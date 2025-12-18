@@ -16,17 +16,19 @@ extension Resources.V1.GameCenterActivities {
         /// Path: `/v1/gameCenterActivities/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterActivities: [FieldsGameCenterActivities]? = nil, fieldsGameCenterActivityVersions: [FieldsGameCenterActivityVersions]? = nil, include: [Include]? = nil, limitAchievements: Int? = nil, limitLeaderboards: Int? = nil, limitVersions: Int? = nil) -> Request<AppStoreAPI.GameCenterActivityResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterActivities, fieldsGameCenterActivityVersions, include, limitAchievements, limitLeaderboards, limitVersions), id: "gameCenterActivities_getInstance")
+        public func get(fieldsGameCenterActivities: [FieldsGameCenterActivities]? = nil, fieldsGameCenterActivityVersions: [FieldsGameCenterActivityVersions]? = nil, include: [Include]? = nil, limitAchievements: Int? = nil, limitAchievementsV2: Int? = nil, limitLeaderboards: Int? = nil, limitLeaderboardsV2: Int? = nil, limitVersions: Int? = nil) -> Request<AppStoreAPI.GameCenterActivityResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterActivities, fieldsGameCenterActivityVersions, include, limitAchievements, limitAchievementsV2, limitLeaderboards, limitLeaderboardsV2, limitVersions), id: "gameCenterActivities_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterActivities: [FieldsGameCenterActivities]?, _ fieldsGameCenterActivityVersions: [FieldsGameCenterActivityVersions]?, _ include: [Include]?, _ limitAchievements: Int?, _ limitLeaderboards: Int?, _ limitVersions: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterActivities: [FieldsGameCenterActivities]?, _ fieldsGameCenterActivityVersions: [FieldsGameCenterActivityVersions]?, _ include: [Include]?, _ limitAchievements: Int?, _ limitAchievementsV2: Int?, _ limitLeaderboards: Int?, _ limitLeaderboardsV2: Int?, _ limitVersions: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterActivities, forKey: "fields[gameCenterActivities]")
             encoder.encode(fieldsGameCenterActivityVersions, forKey: "fields[gameCenterActivityVersions]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitAchievements, forKey: "limit[achievements]")
+            encoder.encode(limitAchievementsV2, forKey: "limit[achievementsV2]")
             encoder.encode(limitLeaderboards, forKey: "limit[leaderboards]")
+            encoder.encode(limitLeaderboardsV2, forKey: "limit[leaderboardsV2]")
             encoder.encode(limitVersions, forKey: "limit[versions]")
             return encoder.items
         }
@@ -43,7 +45,9 @@ extension Resources.V1.GameCenterActivities {
             case gameCenterDetail
             case gameCenterGroup
             case achievements
+            case achievementsV2
             case leaderboards
+            case leaderboardsV2
             case versions
         }
 
@@ -61,7 +65,9 @@ extension Resources.V1.GameCenterActivities {
             case gameCenterDetail
             case gameCenterGroup
             case achievements
+            case achievementsV2
             case leaderboards
+            case leaderboardsV2
             case versions
         }
 

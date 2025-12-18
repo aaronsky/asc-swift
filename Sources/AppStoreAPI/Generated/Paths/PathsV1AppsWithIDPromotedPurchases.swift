@@ -54,6 +54,7 @@ extension Resources.V1.Apps.WithID {
             case iapPriceSchedule
             case inAppPurchaseAvailability
             case images
+            case offerCodes
         }
 
         public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {

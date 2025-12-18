@@ -16,11 +16,11 @@ extension Resources.V1.ReviewSubmissions.WithID {
         /// Path: `/v1/reviewSubmissions/{id}/items`
         public let path: String
 
-        public func get(fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]? = nil, fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAppEvents: [FieldsAppEvents]? = nil, fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.ReviewSubmissionItemsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsReviewSubmissionItems, fieldsAppStoreVersions, fieldsAppCustomProductPageVersions, fieldsAppStoreVersionExperiments, fieldsAppEvents, fieldsBackgroundAssetVersions, limit, include), id: "reviewSubmissions_items_getToManyRelated")
+        public func get(fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]? = nil, fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAppEvents: [FieldsAppEvents]? = nil, fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]? = nil, fieldsGameCenterAchievementVersions: [FieldsGameCenterAchievementVersions]? = nil, fieldsGameCenterActivityVersions: [FieldsGameCenterActivityVersions]? = nil, fieldsGameCenterChallengeVersions: [FieldsGameCenterChallengeVersions]? = nil, fieldsGameCenterLeaderboardSetVersions: [FieldsGameCenterLeaderboardSetVersions]? = nil, fieldsGameCenterLeaderboardVersions: [FieldsGameCenterLeaderboardVersions]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.ReviewSubmissionItemsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsReviewSubmissionItems, fieldsAppStoreVersions, fieldsAppCustomProductPageVersions, fieldsAppStoreVersionExperiments, fieldsAppEvents, fieldsBackgroundAssetVersions, fieldsGameCenterAchievementVersions, fieldsGameCenterActivityVersions, fieldsGameCenterChallengeVersions, fieldsGameCenterLeaderboardSetVersions, fieldsGameCenterLeaderboardVersions, limit, include), id: "reviewSubmissions_items_getToManyRelated")
         }
 
-        private func makeGetQuery(_ fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]?, _ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsAppEvents: [FieldsAppEvents]?, _ fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]?, _ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsAppEvents: [FieldsAppEvents]?, _ fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]?, _ fieldsGameCenterAchievementVersions: [FieldsGameCenterAchievementVersions]?, _ fieldsGameCenterActivityVersions: [FieldsGameCenterActivityVersions]?, _ fieldsGameCenterChallengeVersions: [FieldsGameCenterChallengeVersions]?, _ fieldsGameCenterLeaderboardSetVersions: [FieldsGameCenterLeaderboardSetVersions]?, _ fieldsGameCenterLeaderboardVersions: [FieldsGameCenterLeaderboardVersions]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsReviewSubmissionItems, forKey: "fields[reviewSubmissionItems]")
             encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
@@ -28,6 +28,11 @@ extension Resources.V1.ReviewSubmissions.WithID {
             encoder.encode(fieldsAppStoreVersionExperiments, forKey: "fields[appStoreVersionExperiments]")
             encoder.encode(fieldsAppEvents, forKey: "fields[appEvents]")
             encoder.encode(fieldsBackgroundAssetVersions, forKey: "fields[backgroundAssetVersions]")
+            encoder.encode(fieldsGameCenterAchievementVersions, forKey: "fields[gameCenterAchievementVersions]")
+            encoder.encode(fieldsGameCenterActivityVersions, forKey: "fields[gameCenterActivityVersions]")
+            encoder.encode(fieldsGameCenterChallengeVersions, forKey: "fields[gameCenterChallengeVersions]")
+            encoder.encode(fieldsGameCenterLeaderboardSetVersions, forKey: "fields[gameCenterLeaderboardSetVersions]")
+            encoder.encode(fieldsGameCenterLeaderboardVersions, forKey: "fields[gameCenterLeaderboardVersions]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             return encoder.items
@@ -41,6 +46,11 @@ extension Resources.V1.ReviewSubmissions.WithID {
             case appStoreVersionExperimentV2
             case appEvent
             case backgroundAssetVersion
+            case gameCenterAchievementVersion
+            case gameCenterActivityVersion
+            case gameCenterChallengeVersion
+            case gameCenterLeaderboardSetVersion
+            case gameCenterLeaderboardVersion
         }
 
         public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
@@ -112,6 +122,7 @@ extension Resources.V1.ReviewSubmissions.WithID {
             case createdDate
             case platforms
             case state
+            case stateDetails
             case version
             case backgroundAsset
             case internalBetaRelease
@@ -122,6 +133,46 @@ extension Resources.V1.ReviewSubmissions.WithID {
             case backgroundAssetUploadFiles
         }
 
+        public enum FieldsGameCenterAchievementVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case state
+            case achievement
+            case localizations
+        }
+
+        public enum FieldsGameCenterActivityVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case state
+            case fallbackURL = "fallbackUrl"
+            case activity
+            case localizations
+            case defaultImage
+            case releases
+        }
+
+        public enum FieldsGameCenterChallengeVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case state
+            case challenge
+            case localizations
+            case releases
+            case defaultImage
+        }
+
+        public enum FieldsGameCenterLeaderboardSetVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case state
+            case leaderboardSet
+            case localizations
+        }
+
+        public enum FieldsGameCenterLeaderboardVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case state
+            case leaderboard
+            case localizations
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
             case appCustomProductPageVersion
@@ -129,6 +180,11 @@ extension Resources.V1.ReviewSubmissions.WithID {
             case appStoreVersionExperimentV2
             case appEvent
             case backgroundAssetVersion
+            case gameCenterAchievementVersion
+            case gameCenterActivityVersion
+            case gameCenterChallengeVersion
+            case gameCenterLeaderboardSetVersion
+            case gameCenterLeaderboardVersion
         }
     }
 }

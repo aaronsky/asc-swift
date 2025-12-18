@@ -44,7 +44,10 @@ extension Resources.V1.Subscriptions.WithID {
             case offerMode
             case numberOfPeriods
             case totalNumberOfCodes
+            case productionCodeCount
+            case sandboxCodeCount
             case active
+            case autoRenewEnabled
             case subscription
             case oneTimeUseCodes
             case customCodes
@@ -78,6 +81,7 @@ extension Resources.V1.Subscriptions.WithID {
             case createdDate
             case expirationDate
             case active
+            case environment
             case offerCode
             case values
         }

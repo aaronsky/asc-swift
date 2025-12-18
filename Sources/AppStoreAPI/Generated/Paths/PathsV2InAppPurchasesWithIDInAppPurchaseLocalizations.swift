@@ -53,6 +53,7 @@ extension Resources.V2.InAppPurchases.WithID {
             case iapPriceSchedule
             case inAppPurchaseAvailability
             case images
+            case offerCodes
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

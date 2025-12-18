@@ -39,6 +39,7 @@ extension Resources.V1.GameCenterChallenges {
             case gameCenterGroup
             case versions
             case leaderboard
+            case leaderboardV2
         }
 
         public enum FieldsGameCenterChallengeVersions: String, CaseIterable, Codable, Sendable {
@@ -55,6 +56,7 @@ extension Resources.V1.GameCenterChallenges {
             case gameCenterGroup
             case versions
             case leaderboard
+            case leaderboardV2
         }
 
         public func patch(_ body: AppStoreAPI.GameCenterChallengeUpdateRequest) -> Request<AppStoreAPI.GameCenterChallengeResponse> {

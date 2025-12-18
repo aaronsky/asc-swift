@@ -57,6 +57,7 @@ extension Resources.V1.CiProducts {
             case streamlinedPurchasingEnabled
             case accessibilityDeclarations
             case appEncryptionDeclarations
+            case appStoreIcon
             case ciProduct
             case betaTesters
             case betaGroups
@@ -96,6 +97,7 @@ extension Resources.V1.CiProducts {
             case betaFeedbackCrashSubmissions
             case searchKeywords
             case webhooks
+            case androidToIosAppMappingDetails
         }
 
         public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {

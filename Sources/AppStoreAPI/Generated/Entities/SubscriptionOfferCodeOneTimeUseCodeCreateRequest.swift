@@ -21,10 +21,12 @@ public struct SubscriptionOfferCodeOneTimeUseCodeCreateRequest: Codable, Equatab
         public struct Attributes: Codable, Equatable, Sendable {
             public var numberOfCodes: Int
             public var expirationDate: String
+            public var environment: OfferCodeEnvironment?
 
-            public init(numberOfCodes: Int, expirationDate: String) {
+            public init(numberOfCodes: Int, expirationDate: String, environment: OfferCodeEnvironment? = nil) {
                 self.numberOfCodes = numberOfCodes
                 self.expirationDate = expirationDate
+                self.environment = environment
             }
         }
 

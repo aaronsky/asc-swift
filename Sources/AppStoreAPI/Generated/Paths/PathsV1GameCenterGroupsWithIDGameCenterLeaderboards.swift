@@ -72,12 +72,17 @@ extension Resources.V1.GameCenterGroups.WithID {
             case gameCenterAppVersions
             case gameCenterGroup
             case gameCenterLeaderboards
+            case gameCenterLeaderboardsV2
             case gameCenterLeaderboardSets
+            case gameCenterLeaderboardSetsV2
             case gameCenterAchievements
+            case gameCenterAchievementsV2
             case gameCenterActivities
             case gameCenterChallenges
             case defaultLeaderboard
+            case defaultLeaderboardV2
             case defaultGroupLeaderboard
+            case defaultGroupLeaderboardV2
             case achievementReleases
             case activityReleases
             case challengeReleases
@@ -90,8 +95,11 @@ extension Resources.V1.GameCenterGroups.WithID {
             case referenceName
             case gameCenterDetails
             case gameCenterLeaderboards
+            case gameCenterLeaderboardsV2
             case gameCenterLeaderboardSets
+            case gameCenterLeaderboardSetsV2
             case gameCenterAchievements
+            case gameCenterAchievementsV2
             case gameCenterActivities
             case gameCenterChallenges
         }
@@ -136,7 +144,9 @@ extension Resources.V1.GameCenterGroups.WithID {
             case gameCenterDetail
             case gameCenterGroup
             case achievements
+            case achievementsV2
             case leaderboards
+            case leaderboardsV2
             case versions
         }
 
@@ -150,6 +160,7 @@ extension Resources.V1.GameCenterGroups.WithID {
             case gameCenterGroup
             case versions
             case leaderboard
+            case leaderboardV2
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

@@ -85,6 +85,7 @@ extension Resources.V1.Builds.WithID {
             case streamlinedPurchasingEnabled
             case accessibilityDeclarations
             case appEncryptionDeclarations
+            case appStoreIcon
             case ciProduct
             case betaTesters
             case betaGroups
@@ -124,6 +125,7 @@ extension Resources.V1.Builds.WithID {
             case betaFeedbackCrashSubmissions
             case searchKeywords
             case webhooks
+            case androidToIosAppMappingDetails
         }
 
         public enum FieldsAgeRatingDeclarations: String, CaseIterable, Codable, Sendable {
@@ -262,6 +264,7 @@ extension Resources.V1.Builds.WithID {
         }
 
         public enum FieldsAlternativeDistributionPackages: String, CaseIterable, Codable, Sendable {
+            case sourceFileChecksum
             case versions
         }
 

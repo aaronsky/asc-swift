@@ -34,7 +34,9 @@ public struct GameCenterDetailUpdateRequest: Codable, Equatable, Sendable {
         public struct Relationships: Codable, Equatable, Sendable {
             public var gameCenterGroup: GameCenterGroup?
             public var defaultLeaderboard: DefaultLeaderboard?
+            public var defaultLeaderboardV2: DefaultLeaderboardV2?
             public var defaultGroupLeaderboard: DefaultGroupLeaderboard?
+            public var defaultGroupLeaderboardV2: DefaultGroupLeaderboardV2?
 
             public struct GameCenterGroup: Codable, Equatable, Sendable {
                 public var data: Data?
@@ -80,6 +82,28 @@ public struct GameCenterDetailUpdateRequest: Codable, Equatable, Sendable {
                 }
             }
 
+            public struct DefaultLeaderboardV2: Codable, Equatable, Sendable {
+                public var data: Data?
+
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
+                        case gameCenterLeaderboards
+                    }
+
+                    public init(type: `Type` = .gameCenterLeaderboards, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: Data? = nil) {
+                    self.data = data
+                }
+            }
+
             public struct DefaultGroupLeaderboard: Codable, Equatable, Sendable {
                 public var data: Data?
 
@@ -102,10 +126,34 @@ public struct GameCenterDetailUpdateRequest: Codable, Equatable, Sendable {
                 }
             }
 
-            public init(gameCenterGroup: GameCenterGroup? = nil, defaultLeaderboard: DefaultLeaderboard? = nil, defaultGroupLeaderboard: DefaultGroupLeaderboard? = nil) {
+            public struct DefaultGroupLeaderboardV2: Codable, Equatable, Sendable {
+                public var data: Data?
+
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
+                        case gameCenterLeaderboards
+                    }
+
+                    public init(type: `Type` = .gameCenterLeaderboards, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: Data? = nil) {
+                    self.data = data
+                }
+            }
+
+            public init(gameCenterGroup: GameCenterGroup? = nil, defaultLeaderboard: DefaultLeaderboard? = nil, defaultLeaderboardV2: DefaultLeaderboardV2? = nil, defaultGroupLeaderboard: DefaultGroupLeaderboard? = nil, defaultGroupLeaderboardV2: DefaultGroupLeaderboardV2? = nil) {
                 self.gameCenterGroup = gameCenterGroup
                 self.defaultLeaderboard = defaultLeaderboard
+                self.defaultLeaderboardV2 = defaultLeaderboardV2
                 self.defaultGroupLeaderboard = defaultGroupLeaderboard
+                self.defaultGroupLeaderboardV2 = defaultGroupLeaderboardV2
             }
         }
 

@@ -23,13 +23,37 @@ public struct BetaTester: Codable, Equatable, Identifiable, Sendable {
         public var email: String?
         public var inviteType: BetaInviteType?
         public var state: BetaTesterState?
+        public var appDevices: [AppDevice]?
 
-        public init(firstName: String? = nil, lastName: String? = nil, email: String? = nil, inviteType: BetaInviteType? = nil, state: BetaTesterState? = nil) {
+        public struct AppDevice: Codable, Equatable, Sendable {
+            public var model: String?
+            public var platform: Platform?
+            public var osVersion: String?
+            public var appBuildVersion: String?
+
+            public enum Platform: String, CaseIterable, Codable, Sendable {
+                case iOS = "IOS"
+                case macOS = "MAC_OS"
+                case tvOS = "TV_OS"
+                case watchOS = "WATCH_OS"
+                case visionOS = "VISION_OS"
+            }
+
+            public init(model: String? = nil, platform: Platform? = nil, osVersion: String? = nil, appBuildVersion: String? = nil) {
+                self.model = model
+                self.platform = platform
+                self.osVersion = osVersion
+                self.appBuildVersion = appBuildVersion
+            }
+        }
+
+        public init(firstName: String? = nil, lastName: String? = nil, email: String? = nil, inviteType: BetaInviteType? = nil, state: BetaTesterState? = nil, appDevices: [AppDevice]? = nil) {
             self.firstName = firstName
             self.lastName = lastName
             self.email = email
             self.inviteType = inviteType
             self.state = state
+            self.appDevices = appDevices
         }
     }
 

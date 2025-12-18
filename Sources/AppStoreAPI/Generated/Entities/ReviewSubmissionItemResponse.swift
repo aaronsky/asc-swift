@@ -18,6 +18,11 @@ public struct ReviewSubmissionItemResponse: Codable, Equatable, Sendable {
         case appStoreVersionExperiment(AppStoreVersionExperiment)
         case appStoreVersion(AppStoreVersion)
         case backgroundAssetVersion(BackgroundAssetVersion)
+        case gameCenterAchievementVersionV2(GameCenterAchievementVersionV2)
+        case gameCenterActivityVersion(GameCenterActivityVersion)
+        case gameCenterChallengeVersion(GameCenterChallengeVersion)
+        case gameCenterLeaderboardSetVersionV2(GameCenterLeaderboardSetVersionV2)
+        case gameCenterLeaderboardVersionV2(GameCenterLeaderboardVersionV2)
 
         public init(from decoder: any Decoder) throws {
 
@@ -34,11 +39,16 @@ public struct ReviewSubmissionItemResponse: Codable, Equatable, Sendable {
             case "appStoreVersionExperiments": self = .appStoreVersionExperiment(try container.decode(AppStoreVersionExperiment.self))
             case "appStoreVersions": self = .appStoreVersion(try container.decode(AppStoreVersion.self))
             case "backgroundAssetVersions": self = .backgroundAssetVersion(try container.decode(BackgroundAssetVersion.self))
+            case "gameCenterAchievementVersions": self = .gameCenterAchievementVersionV2(try container.decode(GameCenterAchievementVersionV2.self))
+            case "gameCenterActivityVersions": self = .gameCenterActivityVersion(try container.decode(GameCenterActivityVersion.self))
+            case "gameCenterChallengeVersions": self = .gameCenterChallengeVersion(try container.decode(GameCenterChallengeVersion.self))
+            case "gameCenterLeaderboardSetVersions": self = .gameCenterLeaderboardSetVersionV2(try container.decode(GameCenterLeaderboardSetVersionV2.self))
+            case "gameCenterLeaderboardVersions": self = .gameCenterLeaderboardVersionV2(try container.decode(GameCenterLeaderboardVersionV2.self))
 
             default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (appCustomProductPageVersions, appEvents, appStoreVersionExperiments, appStoreVersions, backgroundAssetVersions)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (appCustomProductPageVersions, appEvents, appStoreVersionExperiments, appStoreVersions, backgroundAssetVersions, gameCenterAchievementVersions, gameCenterActivityVersions, gameCenterChallengeVersions, gameCenterLeaderboardSetVersions, gameCenterLeaderboardVersions)."
                 )
             }
         }
@@ -51,6 +61,11 @@ public struct ReviewSubmissionItemResponse: Codable, Equatable, Sendable {
             case .appStoreVersionExperiment(let value): try container.encode(value)
             case .appStoreVersion(let value): try container.encode(value)
             case .backgroundAssetVersion(let value): try container.encode(value)
+            case .gameCenterAchievementVersionV2(let value): try container.encode(value)
+            case .gameCenterActivityVersion(let value): try container.encode(value)
+            case .gameCenterChallengeVersion(let value): try container.encode(value)
+            case .gameCenterLeaderboardSetVersionV2(let value): try container.encode(value)
+            case .gameCenterLeaderboardVersionV2(let value): try container.encode(value)
             }
         }
     }

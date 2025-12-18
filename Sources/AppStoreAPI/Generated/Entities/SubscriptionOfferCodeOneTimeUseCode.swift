@@ -22,12 +22,14 @@ public struct SubscriptionOfferCodeOneTimeUseCode: Codable, Equatable, Identifia
         public var createdDate: Date?
         public var expirationDate: String?
         public var isActive: Bool?
+        public var environment: OfferCodeEnvironment?
 
-        public init(numberOfCodes: Int? = nil, createdDate: Date? = nil, expirationDate: String? = nil, isActive: Bool? = nil) {
+        public init(numberOfCodes: Int? = nil, createdDate: Date? = nil, expirationDate: String? = nil, isActive: Bool? = nil, environment: OfferCodeEnvironment? = nil) {
             self.numberOfCodes = numberOfCodes
             self.createdDate = createdDate
             self.expirationDate = expirationDate
             self.isActive = isActive
+            self.environment = environment
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -35,6 +37,7 @@ public struct SubscriptionOfferCodeOneTimeUseCode: Codable, Equatable, Identifia
             case createdDate
             case expirationDate
             case isActive = "active"
+            case environment
         }
     }
 

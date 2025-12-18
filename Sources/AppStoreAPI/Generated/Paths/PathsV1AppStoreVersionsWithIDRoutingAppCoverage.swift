@@ -16,13 +16,15 @@ extension Resources.V1.AppStoreVersions.WithID {
         /// Path: `/v1/appStoreVersions/{id}/routingAppCoverage`
         public let path: String
 
-        public func get(fieldsRoutingAppCoverages: [FieldsRoutingAppCoverages]? = nil) -> Request<AppStoreAPI.RoutingAppCoverageWithoutIncludesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsRoutingAppCoverages), id: "appStoreVersions_routingAppCoverage_getToOneRelated")
+        public func get(fieldsRoutingAppCoverages: [FieldsRoutingAppCoverages]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.RoutingAppCoverageResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsRoutingAppCoverages, fieldsAppStoreVersions, include), id: "appStoreVersions_routingAppCoverage_getToOneRelated")
         }
 
-        private func makeGetQuery(_ fieldsRoutingAppCoverages: [FieldsRoutingAppCoverages]?) -> [(String, String?)] {
-            let encoder = URLQueryEncoder()
-            encoder.encode(fieldsRoutingAppCoverages, forKey: "fields[routingAppCoverages]", explode: false)
+        private func makeGetQuery(_ fieldsRoutingAppCoverages: [FieldsRoutingAppCoverages]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ include: [Include]?) -> [(String, String?)] {
+            let encoder = URLQueryEncoder(explode: false)
+            encoder.encode(fieldsRoutingAppCoverages, forKey: "fields[routingAppCoverages]")
+            encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
+            encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
@@ -32,6 +34,38 @@ extension Resources.V1.AppStoreVersions.WithID {
             case sourceFileChecksum
             case uploadOperations
             case assetDeliveryState
+            case appStoreVersion
+        }
+
+        public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
+            case platform
+            case versionString
+            case appStoreState
+            case appVersionState
+            case copyright
+            case reviewType
+            case releaseType
+            case earliestReleaseDate
+            case usesIdfa
+            case downloadable
+            case createdDate
+            case app
+            case ageRatingDeclaration
+            case appStoreVersionLocalizations
+            case build
+            case appStoreVersionPhasedRelease
+            case gameCenterAppVersion
+            case routingAppCoverage
+            case appStoreReviewDetail
+            case appStoreVersionSubmission
+            case appClipDefaultExperience
+            case appStoreVersionExperiments
+            case appStoreVersionExperimentsV2
+            case customerReviews
+            case alternativeDistributionPackage
+        }
+
+        public enum Include: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
         }
     }

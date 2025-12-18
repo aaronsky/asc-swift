@@ -69,6 +69,11 @@ extension Resources.V1 {
             case appStoreVersionExperimentV2
             case appEvent
             case backgroundAssetVersion
+            case gameCenterAchievementVersion
+            case gameCenterActivityVersion
+            case gameCenterChallengeVersion
+            case gameCenterLeaderboardSetVersion
+            case gameCenterLeaderboardVersion
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

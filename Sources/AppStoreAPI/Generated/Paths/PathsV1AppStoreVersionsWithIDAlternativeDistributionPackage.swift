@@ -30,6 +30,7 @@ extension Resources.V1.AppStoreVersions.WithID {
         }
 
         public enum FieldsAlternativeDistributionPackages: String, CaseIterable, Codable, Sendable {
+            case sourceFileChecksum
             case versions
         }
 
