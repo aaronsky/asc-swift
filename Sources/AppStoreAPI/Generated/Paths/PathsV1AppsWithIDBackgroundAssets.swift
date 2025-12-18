@@ -16,12 +16,13 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/backgroundAssets`
         public let path: String
 
-        public func get(filterAssetPackIdentifier: [String]? = nil, fieldsBackgroundAssets: [FieldsBackgroundAssets]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.BackgroundAssetsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterAssetPackIdentifier, fieldsBackgroundAssets, fieldsApps, fieldsBackgroundAssetVersions, limit, include), id: "apps_backgroundAssets_getToManyRelated")
+        public func get(filterArchived: [String]? = nil, filterAssetPackIdentifier: [String]? = nil, fieldsBackgroundAssets: [FieldsBackgroundAssets]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.BackgroundAssetsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterArchived, filterAssetPackIdentifier, fieldsBackgroundAssets, fieldsApps, fieldsBackgroundAssetVersions, limit, include), id: "apps_backgroundAssets_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterAssetPackIdentifier: [String]?, _ fieldsBackgroundAssets: [FieldsBackgroundAssets]?, _ fieldsApps: [FieldsApps]?, _ fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterArchived: [String]?, _ filterAssetPackIdentifier: [String]?, _ fieldsBackgroundAssets: [FieldsBackgroundAssets]?, _ fieldsApps: [FieldsApps]?, _ fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
+            encoder.encode(filterArchived, forKey: "filter[archived]")
             encoder.encode(filterAssetPackIdentifier, forKey: "filter[assetPackIdentifier]")
             encoder.encode(fieldsBackgroundAssets, forKey: "fields[backgroundAssets]")
             encoder.encode(fieldsApps, forKey: "fields[apps]")
@@ -32,6 +33,7 @@ extension Resources.V1.Apps.WithID {
         }
 
         public enum FieldsBackgroundAssets: String, CaseIterable, Codable, Sendable {
+            case archived
             case assetPackIdentifier
             case createdDate
             case app
@@ -56,6 +58,7 @@ extension Resources.V1.Apps.WithID {
             case streamlinedPurchasingEnabled
             case accessibilityDeclarations
             case appEncryptionDeclarations
+            case appStoreIcon
             case ciProduct
             case betaTesters
             case betaGroups
@@ -95,12 +98,14 @@ extension Resources.V1.Apps.WithID {
             case betaFeedbackCrashSubmissions
             case searchKeywords
             case webhooks
+            case androidToIosAppMappingDetails
         }
 
         public enum FieldsBackgroundAssetVersions: String, CaseIterable, Codable, Sendable {
             case createdDate
             case platforms
             case state
+            case stateDetails
             case version
             case backgroundAsset
             case internalBetaRelease

@@ -235,6 +235,7 @@ public enum TerritoryCode: String, CaseIterable, Codable, Sendable {
     case vut = "VUT"
     case wlf = "WLF"
     case wsm = "WSM"
+    case xks = "XKS"
     case yem = "YEM"
     case zaf = "ZAF"
     case zmb = "ZMB"

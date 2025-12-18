@@ -82,6 +82,7 @@ extension Resources.V1.BackgroundAssets.WithID {
             case createdDate
             case platforms
             case state
+            case stateDetails
             case version
             case backgroundAsset
             case internalBetaRelease
@@ -93,6 +94,7 @@ extension Resources.V1.BackgroundAssets.WithID {
         }
 
         public enum FieldsBackgroundAssets: String, CaseIterable, Codable, Sendable {
+            case archived
             case assetPackIdentifier
             case createdDate
             case app

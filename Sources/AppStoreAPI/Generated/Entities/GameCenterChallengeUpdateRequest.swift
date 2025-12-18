@@ -39,6 +39,7 @@ public struct GameCenterChallengeUpdateRequest: Codable, Equatable, Sendable {
 
         public struct Relationships: Codable, Equatable, Sendable {
             public var leaderboard: Leaderboard?
+            public var leaderboardV2: LeaderboardV2?
 
             public struct Leaderboard: Codable, Equatable, Sendable {
                 public var data: Data?
@@ -62,8 +63,31 @@ public struct GameCenterChallengeUpdateRequest: Codable, Equatable, Sendable {
                 }
             }
 
-            public init(leaderboard: Leaderboard? = nil) {
+            public struct LeaderboardV2: Codable, Equatable, Sendable {
+                public var data: Data?
+
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
+                        case gameCenterLeaderboards
+                    }
+
+                    public init(type: `Type` = .gameCenterLeaderboards, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: Data? = nil) {
+                    self.data = data
+                }
+            }
+
+            public init(leaderboard: Leaderboard? = nil, leaderboardV2: LeaderboardV2? = nil) {
                 self.leaderboard = leaderboard
+                self.leaderboardV2 = leaderboardV2
             }
         }
 

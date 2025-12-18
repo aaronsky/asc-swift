@@ -13,6 +13,7 @@ public struct AppResponse: Codable, Equatable, Sendable {
     public var links: DocumentLinks
 
     public enum IncludedItem: Codable, Equatable, Sendable {
+        case androidToIosAppMappingDetail(AndroidToIosAppMappingDetail)
         case appClip(AppClip)
         case appCustomProductPage(AppCustomProductPage)
         case appEncryptionDeclaration(AppEncryptionDeclaration)
@@ -24,6 +25,7 @@ public struct AppResponse: Codable, Equatable, Sendable {
         case betaAppReviewDetail(BetaAppReviewDetail)
         case betaGroup(BetaGroup)
         case betaLicenseAgreement(BetaLicenseAgreement)
+        case buildIcon(BuildIcon)
         case build(Build)
         case ciProduct(CiProduct)
         case endUserLicenseAgreement(EndUserLicenseAgreement)
@@ -46,6 +48,7 @@ public struct AppResponse: Codable, Equatable, Sendable {
             let discriminatorValue = try container.decode(Discriminator.self).type
 
             switch discriminatorValue {
+            case "androidToIosAppMappingDetails": self = .androidToIosAppMappingDetail(try container.decode(AndroidToIosAppMappingDetail.self))
             case "appClips": self = .appClip(try container.decode(AppClip.self))
             case "appCustomProductPages": self = .appCustomProductPage(try container.decode(AppCustomProductPage.self))
             case "appEncryptionDeclarations": self = .appEncryptionDeclaration(try container.decode(AppEncryptionDeclaration.self))
@@ -57,6 +60,7 @@ public struct AppResponse: Codable, Equatable, Sendable {
             case "betaAppReviewDetails": self = .betaAppReviewDetail(try container.decode(BetaAppReviewDetail.self))
             case "betaGroups": self = .betaGroup(try container.decode(BetaGroup.self))
             case "betaLicenseAgreements": self = .betaLicenseAgreement(try container.decode(BetaLicenseAgreement.self))
+            case "buildIcons": self = .buildIcon(try container.decode(BuildIcon.self))
             case "builds": self = .build(try container.decode(Build.self))
             case "ciProducts": self = .ciProduct(try container.decode(CiProduct.self))
             case "endUserLicenseAgreements": self = .endUserLicenseAgreement(try container.decode(EndUserLicenseAgreement.self))
@@ -72,7 +76,7 @@ public struct AppResponse: Codable, Equatable, Sendable {
             default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (appClips, appCustomProductPages, appEncryptionDeclarations, appEvents, appInfos, appStoreVersionExperiments, appStoreVersions, betaAppLocalizations, betaAppReviewDetails, betaGroups, betaLicenseAgreements, builds, ciProducts, endUserLicenseAgreements, gameCenterDetails, gameCenterEnabledVersions, inAppPurchases, preReleaseVersions, promotedPurchases, reviewSubmissions, subscriptionGracePeriods, subscriptionGroups)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (androidToIosAppMappingDetails, appClips, appCustomProductPages, appEncryptionDeclarations, appEvents, appInfos, appStoreVersionExperiments, appStoreVersions, betaAppLocalizations, betaAppReviewDetails, betaGroups, betaLicenseAgreements, buildIcons, builds, ciProducts, endUserLicenseAgreements, gameCenterDetails, gameCenterEnabledVersions, inAppPurchases, preReleaseVersions, promotedPurchases, reviewSubmissions, subscriptionGracePeriods, subscriptionGroups)."
                 )
             }
         }
@@ -80,6 +84,7 @@ public struct AppResponse: Codable, Equatable, Sendable {
         public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
+            case .androidToIosAppMappingDetail(let value): try container.encode(value)
             case .appClip(let value): try container.encode(value)
             case .appCustomProductPage(let value): try container.encode(value)
             case .appEncryptionDeclaration(let value): try container.encode(value)
@@ -91,6 +96,7 @@ public struct AppResponse: Codable, Equatable, Sendable {
             case .betaAppReviewDetail(let value): try container.encode(value)
             case .betaGroup(let value): try container.encode(value)
             case .betaLicenseAgreement(let value): try container.encode(value)
+            case .buildIcon(let value): try container.encode(value)
             case .build(let value): try container.encode(value)
             case .ciProduct(let value): try container.encode(value)
             case .endUserLicenseAgreement(let value): try container.encode(value)

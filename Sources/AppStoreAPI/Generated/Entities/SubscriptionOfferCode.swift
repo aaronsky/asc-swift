@@ -25,9 +25,12 @@ public struct SubscriptionOfferCode: Codable, Equatable, Identifiable, Sendable 
         public var offerMode: SubscriptionOfferMode?
         public var numberOfPeriods: Int?
         public var totalNumberOfCodes: Int?
+        public var productionCodeCount: Int?
+        public var sandboxCodeCount: Int?
         public var isActive: Bool?
+        public var isAutoRenewEnabled: Bool?
 
-        public init(name: String? = nil, customerEligibilities: [SubscriptionCustomerEligibility]? = nil, offerEligibility: SubscriptionOfferEligibility? = nil, duration: SubscriptionOfferDuration? = nil, offerMode: SubscriptionOfferMode? = nil, numberOfPeriods: Int? = nil, totalNumberOfCodes: Int? = nil, isActive: Bool? = nil) {
+        public init(name: String? = nil, customerEligibilities: [SubscriptionCustomerEligibility]? = nil, offerEligibility: SubscriptionOfferEligibility? = nil, duration: SubscriptionOfferDuration? = nil, offerMode: SubscriptionOfferMode? = nil, numberOfPeriods: Int? = nil, totalNumberOfCodes: Int? = nil, productionCodeCount: Int? = nil, sandboxCodeCount: Int? = nil, isActive: Bool? = nil, isAutoRenewEnabled: Bool? = nil) {
             self.name = name
             self.customerEligibilities = customerEligibilities
             self.offerEligibility = offerEligibility
@@ -35,7 +38,10 @@ public struct SubscriptionOfferCode: Codable, Equatable, Identifiable, Sendable 
             self.offerMode = offerMode
             self.numberOfPeriods = numberOfPeriods
             self.totalNumberOfCodes = totalNumberOfCodes
+            self.productionCodeCount = productionCodeCount
+            self.sandboxCodeCount = sandboxCodeCount
             self.isActive = isActive
+            self.isAutoRenewEnabled = isAutoRenewEnabled
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -46,7 +52,10 @@ public struct SubscriptionOfferCode: Codable, Equatable, Identifiable, Sendable 
             case offerMode
             case numberOfPeriods
             case totalNumberOfCodes
+            case productionCodeCount
+            case sandboxCodeCount
             case isActive = "active"
+            case isAutoRenewEnabled = "autoRenewEnabled"
         }
     }
 

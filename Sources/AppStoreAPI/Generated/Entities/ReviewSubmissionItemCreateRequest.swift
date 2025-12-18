@@ -25,6 +25,11 @@ public struct ReviewSubmissionItemCreateRequest: Codable, Equatable, Sendable {
             public var appStoreVersionExperimentV2: AppStoreVersionExperimentV2?
             public var appEvent: AppEvent?
             public var backgroundAssetVersion: BackgroundAssetVersion?
+            public var gameCenterAchievementVersion: GameCenterAchievementVersion?
+            public var gameCenterActivityVersion: GameCenterActivityVersion?
+            public var gameCenterChallengeVersion: GameCenterChallengeVersion?
+            public var gameCenterLeaderboardSetVersion: GameCenterLeaderboardSetVersion?
+            public var gameCenterLeaderboardVersion: GameCenterLeaderboardVersion?
 
             public struct ReviewSubmission: Codable, Equatable, Sendable {
                 public var data: Data
@@ -180,7 +185,117 @@ public struct ReviewSubmissionItemCreateRequest: Codable, Equatable, Sendable {
                 }
             }
 
-            public init(reviewSubmission: ReviewSubmission, appStoreVersion: AppStoreVersion? = nil, appCustomProductPageVersion: AppCustomProductPageVersion? = nil, appStoreVersionExperiment: AppStoreVersionExperiment? = nil, appStoreVersionExperimentV2: AppStoreVersionExperimentV2? = nil, appEvent: AppEvent? = nil, backgroundAssetVersion: BackgroundAssetVersion? = nil) {
+            public struct GameCenterAchievementVersion: Codable, Equatable, Sendable {
+                public var data: Data?
+
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
+                        case gameCenterAchievementVersions
+                    }
+
+                    public init(type: `Type` = .gameCenterAchievementVersions, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: Data? = nil) {
+                    self.data = data
+                }
+            }
+
+            public struct GameCenterActivityVersion: Codable, Equatable, Sendable {
+                public var data: Data?
+
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
+                        case gameCenterActivityVersions
+                    }
+
+                    public init(type: `Type` = .gameCenterActivityVersions, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: Data? = nil) {
+                    self.data = data
+                }
+            }
+
+            public struct GameCenterChallengeVersion: Codable, Equatable, Sendable {
+                public var data: Data?
+
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
+                        case gameCenterChallengeVersions
+                    }
+
+                    public init(type: `Type` = .gameCenterChallengeVersions, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: Data? = nil) {
+                    self.data = data
+                }
+            }
+
+            public struct GameCenterLeaderboardSetVersion: Codable, Equatable, Sendable {
+                public var data: Data?
+
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
+                        case gameCenterLeaderboardSetVersions
+                    }
+
+                    public init(type: `Type` = .gameCenterLeaderboardSetVersions, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: Data? = nil) {
+                    self.data = data
+                }
+            }
+
+            public struct GameCenterLeaderboardVersion: Codable, Equatable, Sendable {
+                public var data: Data?
+
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
+                        case gameCenterLeaderboardVersions
+                    }
+
+                    public init(type: `Type` = .gameCenterLeaderboardVersions, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: Data? = nil) {
+                    self.data = data
+                }
+            }
+
+            public init(reviewSubmission: ReviewSubmission, appStoreVersion: AppStoreVersion? = nil, appCustomProductPageVersion: AppCustomProductPageVersion? = nil, appStoreVersionExperiment: AppStoreVersionExperiment? = nil, appStoreVersionExperimentV2: AppStoreVersionExperimentV2? = nil, appEvent: AppEvent? = nil, backgroundAssetVersion: BackgroundAssetVersion? = nil, gameCenterAchievementVersion: GameCenterAchievementVersion? = nil, gameCenterActivityVersion: GameCenterActivityVersion? = nil, gameCenterChallengeVersion: GameCenterChallengeVersion? = nil, gameCenterLeaderboardSetVersion: GameCenterLeaderboardSetVersion? = nil, gameCenterLeaderboardVersion: GameCenterLeaderboardVersion? = nil) {
                 self.reviewSubmission = reviewSubmission
                 self.appStoreVersion = appStoreVersion
                 self.appCustomProductPageVersion = appCustomProductPageVersion
@@ -188,6 +303,11 @@ public struct ReviewSubmissionItemCreateRequest: Codable, Equatable, Sendable {
                 self.appStoreVersionExperimentV2 = appStoreVersionExperimentV2
                 self.appEvent = appEvent
                 self.backgroundAssetVersion = backgroundAssetVersion
+                self.gameCenterAchievementVersion = gameCenterAchievementVersion
+                self.gameCenterActivityVersion = gameCenterActivityVersion
+                self.gameCenterChallengeVersion = gameCenterChallengeVersion
+                self.gameCenterLeaderboardSetVersion = gameCenterLeaderboardSetVersion
+                self.gameCenterLeaderboardVersion = gameCenterLeaderboardVersion
             }
         }
 

@@ -41,6 +41,7 @@ extension Resources.V1.PreReleaseVersions.WithID {
             case streamlinedPurchasingEnabled
             case accessibilityDeclarations
             case appEncryptionDeclarations
+            case appStoreIcon
             case ciProduct
             case betaTesters
             case betaGroups
@@ -80,6 +81,7 @@ extension Resources.V1.PreReleaseVersions.WithID {
             case betaFeedbackCrashSubmissions
             case searchKeywords
             case webhooks
+            case androidToIosAppMappingDetails
         }
     }
 }

@@ -9,11 +9,20 @@ import AppStoreConnect
 public struct AlternativeDistributionPackage: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String
+    public var attributes: Attributes?
     public var relationships: Relationships?
     public var links: ResourceLinks?
 
     public enum `Type`: String, CaseIterable, Codable, Sendable {
         case alternativeDistributionPackages
+    }
+
+    public struct Attributes: Codable, Equatable, Sendable {
+        public var sourceFileChecksum: Checksums?
+
+        public init(sourceFileChecksum: Checksums? = nil) {
+            self.sourceFileChecksum = sourceFileChecksum
+        }
     }
 
     public struct Relationships: Codable, Equatable, Sendable {
@@ -50,9 +59,10 @@ public struct AlternativeDistributionPackage: Codable, Equatable, Identifiable, 
         }
     }
 
-    public init(type: `Type` = .alternativeDistributionPackages, id: String, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
+    public init(type: `Type` = .alternativeDistributionPackages, id: String, attributes: Attributes? = nil, relationships: Relationships? = nil, links: ResourceLinks? = nil) {
         self.type = type
         self.id = id
+        self.attributes = attributes
         self.relationships = relationships
         self.links = links
     }

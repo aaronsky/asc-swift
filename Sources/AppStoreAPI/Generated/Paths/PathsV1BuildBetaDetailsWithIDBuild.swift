@@ -86,6 +86,7 @@ extension Resources.V1.BuildBetaDetails.WithID {
             case email
             case inviteType
             case state
+            case appDevices
             case apps
             case betaGroups
             case builds
@@ -158,6 +159,7 @@ extension Resources.V1.BuildBetaDetails.WithID {
             case streamlinedPurchasingEnabled
             case accessibilityDeclarations
             case appEncryptionDeclarations
+            case appStoreIcon
             case ciProduct
             case betaTesters
             case betaGroups
@@ -197,6 +199,7 @@ extension Resources.V1.BuildBetaDetails.WithID {
             case betaFeedbackCrashSubmissions
             case searchKeywords
             case webhooks
+            case androidToIosAppMappingDetails
         }
 
         public enum FieldsBuildBetaDetails: String, CaseIterable, Codable, Sendable {

@@ -26,14 +26,26 @@ public struct SubscriptionOfferCodeCreateRequest: Codable, Equatable, Sendable {
             public var duration: SubscriptionOfferDuration
             public var offerMode: SubscriptionOfferMode
             public var numberOfPeriods: Int
+            public var isAutoRenewEnabled: Bool?
 
-            public init(name: String, customerEligibilities: [SubscriptionCustomerEligibility], offerEligibility: SubscriptionOfferEligibility, duration: SubscriptionOfferDuration, offerMode: SubscriptionOfferMode, numberOfPeriods: Int) {
+            public init(name: String, customerEligibilities: [SubscriptionCustomerEligibility], offerEligibility: SubscriptionOfferEligibility, duration: SubscriptionOfferDuration, offerMode: SubscriptionOfferMode, numberOfPeriods: Int, isAutoRenewEnabled: Bool? = nil) {
                 self.name = name
                 self.customerEligibilities = customerEligibilities
                 self.offerEligibility = offerEligibility
                 self.duration = duration
                 self.offerMode = offerMode
                 self.numberOfPeriods = numberOfPeriods
+                self.isAutoRenewEnabled = isAutoRenewEnabled
+            }
+
+            private enum CodingKeys: String, CodingKey {
+                case name
+                case customerEligibilities
+                case offerEligibility
+                case duration
+                case offerMode
+                case numberOfPeriods
+                case isAutoRenewEnabled = "autoRenewEnabled"
             }
         }
 

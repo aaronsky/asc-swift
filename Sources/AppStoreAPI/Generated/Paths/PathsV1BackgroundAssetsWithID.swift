@@ -28,6 +28,7 @@ extension Resources.V1.BackgroundAssets {
         }
 
         public enum FieldsBackgroundAssets: String, CaseIterable, Codable, Sendable {
+            case archived
             case assetPackIdentifier
             case createdDate
             case app
@@ -42,6 +43,10 @@ extension Resources.V1.BackgroundAssets {
             case appStoreVersion
             case internalBetaVersion
             case externalBetaVersion
+        }
+
+        public func patch(_ body: AppStoreAPI.BackgroundAssetUpdateRequest) -> Request<AppStoreAPI.BackgroundAssetResponse> {
+            Request(path: path, method: "PATCH", body: body, id: "backgroundAssets_updateInstance")
         }
     }
 }
