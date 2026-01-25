@@ -20,7 +20,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.3.0"),
-        .package(url: "https://github.com/apple/swift-crypto.git", .upToNextMajor(from: "3.2.0")),
+        .package(url: "https://github.com/apple/swift-crypto.git", "3.8.0"..<"5.0.0"),
         .package(url: "https://github.com/CreateAPI/URLQueryEncoder.git", .upToNextMajor(from: "0.2.1")),
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.3.0"),
     ],
