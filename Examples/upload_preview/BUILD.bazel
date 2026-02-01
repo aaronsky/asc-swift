@@ -6,7 +6,7 @@ swift_binary(
     deps = [
         "//:AppStoreConnect",
         "//Examples/Utilities",
-        "@swiftpkg_swift_argument_parser//:ArgumentParser",
-        "@swiftpkg_swift_crypto//:Crypto",
+        "@com_github_apple_swift_argument_parser//:ArgumentParser",
+        "@com_github_apple_swift_crypto//:Crypto",
     ],
 )

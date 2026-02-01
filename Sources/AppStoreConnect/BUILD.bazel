@@ -8,7 +8,7 @@ swift_library(
     data = glob(["AppStoreConnect.docc/**/*.md"]),
     module_name = "AppStoreConnect",
     visibility = ["//:__subpackages__"],
-    deps = ["@swiftpkg_swift_crypto//:Crypto"],
+    deps = ["@com_github_apple_swift_crypto//:Crypto"],
 )
 
 docc_archive(

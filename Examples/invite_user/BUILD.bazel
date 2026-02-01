@@ -7,6 +7,6 @@ swift_binary(
         "//:AppStoreConnect",
         "//:EnterpriseProgram",
         "//Examples/Utilities",
-        "@swiftpkg_swift_argument_parser//:ArgumentParser",
+        "@com_github_apple_swift_argument_parser//:ArgumentParser",
     ],
 )
