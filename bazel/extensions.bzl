@@ -8,9 +8,9 @@ def _asc_swift_deps_impl(_mctx):
     http_archive(
         name = "com_github_apple_swift_crypto",
         build_file = "@asc_swift//bazel/third_party:com_github_apple_swift_crypto/BUILD.overlay",
-        sha256 = "21c93930d78d51695d1e289a965bce2f0b9a68c222937b28cd50b3b9264c0d7c",
-        strip_prefix = "swift-crypto-3.6.1",
-        url = "https://github.com/apple/swift-crypto/archive/refs/tags/3.6.1.zip",
+        sha256 = "c22c0f160baa5e6ed023588fb96c4dc58bab98b8d0afd96299c71d6940cb0636",
+        strip_prefix = "swift-crypto-4.2.0",
+        url = "https://github.com/apple/swift-crypto/archive/refs/tags/4.2.0.zip",
     )
     http_archive(
         name = "com_github_createapi_urlqueryencoder",
