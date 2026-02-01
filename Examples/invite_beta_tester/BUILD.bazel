@@ -6,6 +6,6 @@ swift_binary(
     deps = [
         "//:AppStoreConnect",
         "//Examples/Utilities",
-        "@com_github_apple_swift_argument_parser//:ArgumentParser",
+        "@swiftpkg_swift_argument_parser//:ArgumentParser",
     ],
 )

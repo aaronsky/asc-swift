@@ -10,17 +10,25 @@ module(
 bazel_dep(name = "apple_support", version = "1.23.1")
 bazel_dep(name = "platforms", version = "1.0.0")
 bazel_dep(name = "rules_apple", version = "4.0.1")
-bazel_dep(name = "rules_cc", version = "0.1.2")
+bazel_dep(name = "rules_cc", version = "0.1.5")
 bazel_dep(name = "rules_swift", version = "3.0.2", max_compatibility_level = 3)
+bazel_dep(name = "rules_swift_package_manager", version = "1.11.3")
 
 bazel_dep(name = "aspect_bazel_lib", version = "2.19.4", dev_dependency = True)
 bazel_dep(name = "rules_multirun", version = "0.12.0", dev_dependency = True)
 
-asc_swift_deps = use_extension("//bazel:extensions.bzl", "asc_swift_deps")
+swift_deps = use_extension("@rules_swift_package_manager//:extensions.bzl", "swift_deps")
+swift_deps.from_package(
+    resolved = "//:Package.resolved",
+    swift = "//:Package.swift",
+)
 use_repo(
-    asc_swift_deps,
-    "com_github_apple_swift_crypto",
-    "com_github_createapi_urlqueryencoder",
+    swift_deps,
+    "swift_package",
+    "swiftpkg_swift_argument_parser",
+    "swiftpkg_swift_crypto",
+    "swiftpkg_swift_docc_plugin",
+    "swiftpkg_urlqueryencoder",
 )
 
 asc_swift_dev_deps = use_extension("//bazel:extensions.bzl", "asc_swift_dev_deps", dev_dependency = True)
@@ -29,7 +37,6 @@ use_repo(
     "com_apple_app_store_connect_api",
     "com_apple_enterprise_program_api",
     "com_github_aaronsky_createapi",
-    "com_github_apple_swift_argument_parser",
     "com_github_cosmo_grammaticalnumber",
     "com_github_createapi_openapikit",
     "com_github_createapi_yams",

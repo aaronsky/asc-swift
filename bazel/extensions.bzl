@@ -4,22 +4,6 @@ Declares non-BCR deps used by asc-swift
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-def _asc_swift_deps_impl(_mctx):
-    http_archive(
-        name = "com_github_apple_swift_crypto",
-        build_file = "@asc_swift//bazel/third_party:com_github_apple_swift_crypto/BUILD.overlay",
-        sha256 = "c22c0f160baa5e6ed023588fb96c4dc58bab98b8d0afd96299c71d6940cb0636",
-        strip_prefix = "swift-crypto-4.2.0",
-        url = "https://github.com/apple/swift-crypto/archive/refs/tags/4.2.0.zip",
-    )
-    http_archive(
-        name = "com_github_createapi_urlqueryencoder",
-        build_file = "@asc_swift//bazel/third_party:com_github_createapi_urlqueryencoder/BUILD.overlay",
-        sha256 = "7eab6f253a455fcd799b1baba5895628fe7b5f75d27acf73df2b19378a9d9ae7",
-        strip_prefix = "URLQueryEncoder-0.2.1",
-        url = "https://github.com/CreateAPI/URLQueryEncoder/archive/refs/tags/0.2.1.zip",
-    )
-
 def _asc_swift_dev_deps_impl(_mctx):
     http_archive(
         name = "com_apple_app_store_connect_api",
@@ -39,13 +23,6 @@ def _asc_swift_dev_deps_impl(_mctx):
         sha256 = "69ae5a4822e5950dafd92ff5c07cf681adbfb1e0141ee751065289c7ed2f837d",
         strip_prefix = "CreateAPI-0.2.0-alpha.4",
         url = "https://github.com/aaronsky/CreateAPI/archive/refs/tags/0.2.0-alpha.4.zip",
-    )
-    http_archive(
-        name = "com_github_apple_swift_argument_parser",
-        build_file = "@asc_swift//bazel/third_party:com_github_apple_swift_argument_parser/BUILD.overlay",
-        sha256 = "5ae55161a5cac0da80606bb8a5a310b0660221a4bd784928d4a81b5871ac66ce",
-        strip_prefix = "swift-argument-parser-1.5.0",
-        url = "https://github.com/apple/swift-argument-parser/archive/refs/tags/1.5.0.zip",
     )
     http_archive(
         name = "com_github_liamnichols_swift_configuration_parser",
@@ -82,7 +59,5 @@ def _asc_swift_dev_deps_impl(_mctx):
         strip_prefix = "FileWatcher-0.2.3",
         url = "https://github.com/eonist/FileWatcher/archive/refs/tags/0.2.3.zip",
     )
-
-asc_swift_deps = module_extension(implementation = _asc_swift_deps_impl)
 
 asc_swift_dev_deps = module_extension(implementation = _asc_swift_dev_deps_impl)

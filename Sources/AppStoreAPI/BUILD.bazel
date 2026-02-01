@@ -12,7 +12,7 @@ swift_library(
     visibility = ["//:__subpackages__"],
     deps = [
         "//Sources/AppStoreConnect",
-        "@com_github_createapi_urlqueryencoder//:URLQueryEncoder",
+        "@swiftpkg_urlqueryencoder//:URLQueryEncoder",
     ],
 )
 
