@@ -45,6 +45,7 @@ cc_library(
             "Sources/CCryptoBoringSSL/**/*.cc",
             "Sources/CCryptoBoringSSL/**/*.h",
             "Sources/CCryptoBoringSSL/**/*.S",
+            "Sources/CCryptoBoringSSL/**/*.inc",
         ],
         exclude = [
             "Sources/CCryptoBoringSSL/include",
