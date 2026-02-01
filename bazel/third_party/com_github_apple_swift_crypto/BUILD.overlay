@@ -13,15 +13,14 @@ _crypto_non_apple_deps = [
     ":CCryptoBoringSSL",
     ":CCryptoBoringSSLShims",
     ":CryptoBoringWrapper",
+    ":CXKCP",
+    ":CXKCPShims",
 ]
 
 swift_library(
     name = "Crypto",
     srcs = glob(["Sources/Crypto/**/*.swift"]),
-    defines = [
-        "MODULE_IS_CRYPTO",
-        "CRYPTO_IN_SWIFTPM",
-    ] + select({
+    defines = ["CRYPTO_IN_SWIFTPM"] + select({
         "@platforms//os:linux": ["CRYPTO_IN_SWIFTPM_FORCE_BUILD_API"],
         "@platforms//os:android": ["CRYPTO_IN_SWIFTPM_FORCE_BUILD_API"],
         "@platforms//os:windows": ["CRYPTO_IN_SWIFTPM_FORCE_BUILD_API"],
@@ -41,21 +40,59 @@ swift_library(
 
 cc_library(
     name = "CCryptoBoringSSL",
-    srcs = glob([
-        "Sources/CCryptoBoringSSL/crypto/**/*.c",
-        "Sources/CCryptoBoringSSL/crypto/**/*.h",
-        "Sources/CCryptoBoringSSL/crypto/**/*.S",
-        "Sources/CCryptoBoringSSL/third_party/**/*.h",
-        "Sources/CCryptoBoringSSL/third_party/**/*.S",
+    srcs = glob(
+        [
+            "Sources/CCryptoBoringSSL/**/*.cc",
+            "Sources/CCryptoBoringSSL/**/*.h",
+            "Sources/CCryptoBoringSSL/**/*.S",
+        ],
+        exclude = [
+            "Sources/CCryptoBoringSSL/include",
+        ],
+    ),
+    hdrs = glob([
+        "Sources/CCryptoBoringSSL/include/*.h",
+        "Sources/CCryptoBoringSSL/include/*.inc",
     ]),
-    hdrs = glob(["Sources/CCryptoBoringSSL/include/**/*.h"]),
     aspect_hints = [":CCryptoBoringSSL_interop"],
+    copts = select({
+        "@platforms//os:windows": [
+            "-D_HAS_EXCEPTIONS=0",
+            "-DWIN32_LEAN_AND_MEAN",
+            "-DNOMINMAX",
+            "-D_CRT_SECURE_NO_WARNINGS",
+        ],
+        "@platforms//os:wasi": [
+            "-DOPENSSL_NO_THREADS_CORRUPT_MEMORY_AND_LEAK_SECRETS_IF_THREADED",
+            "-DOPENSSL_NO_ASM",
+        ],
+        "//conditions:default": [],
+    }),
     includes = ["Sources/CCryptoBoringSSL/include"],
 )
 
 swift_interop_hint(
     name = "CCryptoBoringSSL_interop",
     module_name = "CCryptoBoringSSL",
+)
+
+cc_library(
+    name = "CXKCP",
+    srcs = glob([
+        "Sources/CXKCP/FIPS202-opt64/*.c",
+        "Sources/CXKCP/FIPS202-opt64/*.h",
+    ]),
+    hdrs = glob(["Sources/CXKCP/include/CXKCP.h"]),
+    aspect_hints = [":CXKCP_interop"],
+    copts = [
+        "-DXKCP_has_KeccakP1600",
+    ],
+    includes = ["Sources/CXKCP/include"],
+)
+
+swift_interop_hint(
+    name = "CXKCP_interop",
+    module_name = "CXKCP",
 )
 
 cc_library(
@@ -70,6 +107,20 @@ cc_library(
 swift_interop_hint(
     name = "CCryptoBoringSSLShims_interop",
     module_name = "CCryptoBoringSSLShims",
+)
+
+cc_library(
+    name = "CXKCPShims",
+    srcs = ["Sources/CXKCPShims/shims.c"],
+    hdrs = ["Sources/CXKCPShims/include/CXKCPShims.h"],
+    aspect_hints = [":CXKCPShims_interop"],
+    includes = ["Sources/CXKCPShims/include"],
+    deps = [":CXKCP"],
+)
+
+swift_interop_hint(
+    name = "CXKCPShims_interop",
+    module_name = "CXKCPShims",
 )
 
 swift_library(
