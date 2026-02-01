@@ -82,7 +82,6 @@ cc_library(
         "Sources/CXKCP/FIPS202-opt64/*.c",
         "Sources/CXKCP/FIPS202-opt64/*.h",
         "Sources/CXKCP/FIPS202-opt64/*.inc",
-        "Sources/CXKCP/FIPS202-opt64/*.macros",
     ]),
     hdrs = glob(["Sources/CXKCP/include/CXKCP.h"]),
     aspect_hints = [":CXKCP_interop"],
