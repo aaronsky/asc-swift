@@ -86,6 +86,7 @@ cc_library(
     hdrs = glob(["Sources/CXKCP/include/CXKCP.h"]),
     aspect_hints = [":CXKCP_interop"],
     includes = ["Sources/CXKCP/include"],
+    textual_hdrs = glob(["Sources/CXKCP/FIPS202-opt64/*.macros"]),
 )
 
 swift_interop_hint(
