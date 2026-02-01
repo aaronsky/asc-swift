@@ -19,6 +19,7 @@ _crypto_non_apple_deps = [
 
 swift_library(
     name = "Crypto",
+    package_name = "swift-crypto",
     srcs = glob(["Sources/Crypto/**/*.swift"]),
     defines = ["CRYPTO_IN_SWIFTPM"] + select({
         "@platforms//os:linux": ["CRYPTO_IN_SWIFTPM_FORCE_BUILD_API"],
@@ -125,6 +126,7 @@ swift_interop_hint(
 
 swift_library(
     name = "CryptoBoringWrapper",
+    package_name = "swift-crypto",
     srcs = glob(["Sources/CryptoBoringWrapper/**/*.swift"]),
     module_name = "CryptoBoringWrapper",
     deps = [
