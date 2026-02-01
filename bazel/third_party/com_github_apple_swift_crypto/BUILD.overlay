@@ -81,12 +81,11 @@ cc_library(
     srcs = glob([
         "Sources/CXKCP/FIPS202-opt64/*.c",
         "Sources/CXKCP/FIPS202-opt64/*.h",
+        "Sources/CXKCP/FIPS202-opt64/*.inc",
+        "Sources/CXKCP/FIPS202-opt64/*.macros",
     ]),
     hdrs = glob(["Sources/CXKCP/include/CXKCP.h"]),
     aspect_hints = [":CXKCP_interop"],
-    copts = [
-        "-DXKCP_has_KeccakP1600",
-    ],
     includes = ["Sources/CXKCP/include"],
 )
 
