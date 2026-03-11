@@ -1,4 +1,4 @@
-load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
+load("@bazel_lib//lib:write_source_files.bzl", "write_source_files")
 load(":versions.bzl", "APP_STORE_CONNECT_API_SPEC_VERSION", "ENTERPRISE_PROGRAM_API_SPEC_VERSION")
 
 write_source_files(

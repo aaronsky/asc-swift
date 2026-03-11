@@ -4,9 +4,9 @@ so if the checksum is ever invalid, chances are we need to update.
 """
 
 load("@asc_swift//bazel/specs:versions.bzl", "ENTERPRISE_PROGRAM_API_SPEC_VERSION")
-load("@aspect_bazel_lib//lib:copy_file.bzl", "copy_file")
-load("@aspect_bazel_lib//lib:jq.bzl", "jq")
-load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_file")
+load("@bazel_lib//lib:copy_file.bzl", "copy_file")
+load("@jq.bzl//jq:jq.bzl", "jq")
+load("@bazel_lib//lib:write_source_files.bzl", "write_source_file")
 
 SPEC_FILE_NAME = "enterprise_program_api_%s_openapi.json" % ENTERPRISE_PROGRAM_API_SPEC_VERSION
 

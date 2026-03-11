@@ -1,4 +1,5 @@
-load("@aspect_bazel_lib//lib:expand_template.bzl", "expand_template")
+load("@bazel_lib//lib:expand_template.bzl", "expand_template")
+load("@rules_shell//shell:sh_binary.bzl", "sh_binary")
 load("//bazel/specs:versions.bzl", "APP_STORE_CONNECT_API_SPEC_VERSION", "ENTERPRISE_PROGRAM_API_SPEC_VERSION")
 
 expand_template(
