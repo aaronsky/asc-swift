@@ -5,18 +5,18 @@ on:
     branches:
       - main
     paths:
-      - '.github/workflows/xcodebuild.yml'
-      - 'Examples/**/*.swift'
-      - 'Package*'
-      - 'Sources/**/*.swift'
-      - 'Tests/**/*.swift'
+      - ".github/workflows/xcodebuild.yml"
+      - "Examples/**/*.swift"
+      - "Package*"
+      - "Sources/**/*.swift"
+      - "Tests/**/*.swift"
   pull_request:
     paths:
-      - '.github/workflows/xcodebuild.yml'
-      - 'Examples/**/*.swift'
-      - 'Package*'
-      - 'Sources/**/*.swift'
-      - 'Tests/**/*.swift'
+      - ".github/workflows/xcodebuild.yml"
+      - "Examples/**/*.swift"
+      - "Package*"
+      - "Sources/**/*.swift"
+      - "Tests/**/*.swift"
   workflow_dispatch: ~
 
 concurrency:
@@ -25,17 +25,17 @@ concurrency:
 
 jobs:
   xcodebuild:
-    runs-on: macos-15
+    runs-on: macos-latest
     strategy:
       matrix:
-        xcode: ['16.4']
+        xcode: ["26.2"]
         destination:
-          - 'platform=macOS'
-          - 'platform=iOS Simulator,name=iPhone 16 Pro Max'
+          - "platform=macOS"
+          - "platform=iOS Simulator,name=iPhone 17 Pro Max"
     env:
       DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: xcodebuild -version
       - name: Build with Xcode
         run: |-

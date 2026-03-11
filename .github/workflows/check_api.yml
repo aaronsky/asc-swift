@@ -3,15 +3,15 @@ name: Check for new App Store Connect API versions
 on:
   workflow_dispatch: ~
   schedule:
-    - cron: '0 12 * * *'
+    - cron: "0 12 * * *"
 
 jobs:
   diff_spec:
     runs-on: macos-latest
     steps:
-      - uses: bazel-contrib/setup-bazel@0.15.0
+      - uses: bazel-contrib/setup-bazel@0.18.0
         with:
           bazelisk-cache: true
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: bazel run //:update
       - run: git diff --ignore-all-space --exit-code

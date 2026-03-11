@@ -5,28 +5,28 @@ on:
     branches:
       - main
     paths:
-      - '.bazelrc'
-      - '.bazelversion'
-      - '.github/workflows/bazel.yml'
-      - '**/BUILD.bazel'
-      - '**/BUILD.overlay'
-      - 'bazel/*'
-      - 'Examples/**/*.swift'
-      - 'MODULE.bazel'
-      - 'Sources/**/*.swift'
-      - 'Tests/**/*.swift'
+      - ".bazelrc"
+      - ".bazelversion"
+      - ".github/workflows/bazel.yml"
+      - "**/BUILD.bazel"
+      - "**/BUILD.overlay"
+      - "bazel/*"
+      - "Examples/**/*.swift"
+      - "MODULE.bazel"
+      - "Sources/**/*.swift"
+      - "Tests/**/*.swift"
   pull_request:
     paths:
-      - '.bazelrc'
-      - '.bazelversion'
-      - '.github/workflows/bazel.yml'
-      - '**/BUILD.bazel'
-      - '**/BUILD.overlay'
-      - 'bazel/*'
-      - 'Examples/**/*.swift'
-      - 'MODULE.bazel'
-      - 'Sources/**/*.swift'
-      - 'Tests/**/*.swift'
+      - ".bazelrc"
+      - ".bazelversion"
+      - ".github/workflows/bazel.yml"
+      - "**/BUILD.bazel"
+      - "**/BUILD.overlay"
+      - "bazel/*"
+      - "Examples/**/*.swift"
+      - "MODULE.bazel"
+      - "Sources/**/*.swift"
+      - "Tests/**/*.swift"
   workflow_dispatch: ~
 
 concurrency:
@@ -35,48 +35,48 @@ concurrency:
 
 jobs:
   macOS:
-    runs-on: macos-15
+    runs-on: macos-latest
     steps:
-      - uses: bazel-contrib/setup-bazel@0.15.0
+      - uses: bazel-contrib/setup-bazel@0.18.0
         with:
           bazelisk-cache: true
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: bazel test //...
   Linux:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: ['6.1']
+        tag: ["6.2"]
     container:
       image: swift:${{ matrix.tag }}
     steps:
-      - uses: bazel-contrib/setup-bazel@0.15.0
+      - uses: bazel-contrib/setup-bazel@0.18.0
         with:
           bazelisk-cache: true
           bazelisk-version: 1.x
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: bazel test //...
   bzlmod-e2e-macOS:
-    runs-on: macos-15
+    runs-on: macos-latest
     steps:
-      - uses: bazel-contrib/setup-bazel@0.15.0
+      - uses: bazel-contrib/setup-bazel@0.18.0
         with:
           bazelisk-cache: true
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: bazel build //...
         working-directory: Examples/bzlmod
   bzlmod-e2e-linux:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: ['6.1']
+        tag: ["6.2"]
     container:
       image: swift:${{ matrix.tag }}
     steps:
-      - uses: bazel-contrib/setup-bazel@0.15.0
+      - uses: bazel-contrib/setup-bazel@0.18.0
         with:
           bazelisk-cache: true
           bazelisk-version: 1.x
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: bazel build //...
         working-directory: Examples/bzlmod
