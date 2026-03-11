@@ -16,15 +16,17 @@ extension Resources.V1 {
         /// Path: `/v1/nominations`
         public let path: String
 
-        public func get(filterType: [FilterType]? = nil, filterState: [FilterState], filterRelatedApps: [String]? = nil, sort: [Sort]? = nil, fieldsNominations: [FieldsNominations]? = nil, limit: Int? = nil, include: [Include]? = nil, limitInAppEvents: Int? = nil, limitRelatedApps: Int? = nil, limitSupportedTerritories: Int? = nil) -> Request<AppStoreAPI.NominationsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterType, filterState, filterRelatedApps, sort, fieldsNominations, limit, include, limitInAppEvents, limitRelatedApps, limitSupportedTerritories), id: "nominations_getCollection")
+        public func get(filterType: [FilterType]? = nil, filterState: [FilterState], filterHasInAppEvents: [String]? = nil, filterRelatedApps: [String]? = nil, isExistsInAppEvents: Bool? = nil, sort: [Sort]? = nil, fieldsNominations: [FieldsNominations]? = nil, limit: Int? = nil, include: [Include]? = nil, limitInAppEvents: Int? = nil, limitRelatedApps: Int? = nil, limitSupportedTerritories: Int? = nil) -> Request<AppStoreAPI.NominationsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterType, filterState, filterHasInAppEvents, filterRelatedApps, isExistsInAppEvents, sort, fieldsNominations, limit, include, limitInAppEvents, limitRelatedApps, limitSupportedTerritories), id: "nominations_getCollection")
         }
 
-        private func makeGetQuery(_ filterType: [FilterType]?, _ filterState: [FilterState], _ filterRelatedApps: [String]?, _ sort: [Sort]?, _ fieldsNominations: [FieldsNominations]?, _ limit: Int?, _ include: [Include]?, _ limitInAppEvents: Int?, _ limitRelatedApps: Int?, _ limitSupportedTerritories: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterType: [FilterType]?, _ filterState: [FilterState], _ filterHasInAppEvents: [String]?, _ filterRelatedApps: [String]?, _ isExistsInAppEvents: Bool?, _ sort: [Sort]?, _ fieldsNominations: [FieldsNominations]?, _ limit: Int?, _ include: [Include]?, _ limitInAppEvents: Int?, _ limitRelatedApps: Int?, _ limitSupportedTerritories: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterType, forKey: "filter[type]")
             encoder.encode(filterState, forKey: "filter[state]")
+            encoder.encode(filterHasInAppEvents, forKey: "filter[hasInAppEvents]")
             encoder.encode(filterRelatedApps, forKey: "filter[relatedApps]")
+            encoder.encode(isExistsInAppEvents, forKey: "exists[inAppEvents]")
             encoder.encode(sort, forKey: "sort")
             encoder.encode(fieldsNominations, forKey: "fields[nominations]")
             encoder.encode(limit, forKey: "limit")

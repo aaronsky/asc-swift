@@ -62,7 +62,6 @@ extension Resources.V1.AppClips.WithID {
             case downloadable
             case createdDate
             case app
-            case ageRatingDeclaration
             case appStoreVersionLocalizations
             case build
             case appStoreVersionPhasedRelease

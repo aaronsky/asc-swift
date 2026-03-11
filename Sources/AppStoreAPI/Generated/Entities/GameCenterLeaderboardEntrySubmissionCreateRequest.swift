@@ -25,8 +25,9 @@ public struct GameCenterLeaderboardEntrySubmissionCreateRequest: Codable, Equata
             public var score: String
             public var submittedDate: Date?
             public var vendorIdentifier: String
+            public var isPreReleased: Bool?
 
-            public init(bundleID: String, challengeIDs: [String]? = nil, context: String? = nil, scopedPlayerID: String, score: String, submittedDate: Date? = nil, vendorIdentifier: String) {
+            public init(bundleID: String, challengeIDs: [String]? = nil, context: String? = nil, scopedPlayerID: String, score: String, submittedDate: Date? = nil, vendorIdentifier: String, isPreReleased: Bool? = nil) {
                 self.bundleID = bundleID
                 self.challengeIDs = challengeIDs
                 self.context = context
@@ -34,6 +35,7 @@ public struct GameCenterLeaderboardEntrySubmissionCreateRequest: Codable, Equata
                 self.score = score
                 self.submittedDate = submittedDate
                 self.vendorIdentifier = vendorIdentifier
+                self.isPreReleased = isPreReleased
             }
 
             private enum CodingKeys: String, CodingKey {
@@ -44,6 +46,7 @@ public struct GameCenterLeaderboardEntrySubmissionCreateRequest: Codable, Equata
                 case score
                 case submittedDate
                 case vendorIdentifier
+                case isPreReleased = "preReleased"
             }
         }
 

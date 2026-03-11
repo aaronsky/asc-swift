@@ -13,10 +13,10 @@ public struct AppsBetaTesterUsagesV1MetricResponse: Codable, Equatable, Sendable
     public var included: [BetaTester]?
 
     public struct Datum: Codable, Equatable, Sendable {
-        public var dataPoints: DataPoints?
+        public var dataPoints: [DataPoint]?
         public var dimensions: Dimensions?
 
-        public struct DataPoints: Codable, Equatable, Sendable {
+        public struct DataPoint: Codable, Equatable, Sendable {
             public var start: Date?
             public var end: Date?
             public var values: Values?
@@ -68,7 +68,7 @@ public struct AppsBetaTesterUsagesV1MetricResponse: Codable, Equatable, Sendable
             }
         }
 
-        public init(dataPoints: DataPoints? = nil, dimensions: Dimensions? = nil) {
+        public init(dataPoints: [DataPoint]? = nil, dimensions: Dimensions? = nil) {
             self.dataPoints = dataPoints
             self.dimensions = dimensions
         }

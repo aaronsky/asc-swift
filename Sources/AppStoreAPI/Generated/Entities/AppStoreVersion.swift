@@ -72,7 +72,6 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
 
     public struct Relationships: Codable, Equatable, Sendable {
         public var app: App?
-        public var ageRatingDeclaration: AgeRatingDeclaration?
         public var appStoreVersionLocalizations: AppStoreVersionLocalizations?
         public var build: Build?
         public var appStoreVersionPhasedRelease: AppStoreVersionPhasedRelease?
@@ -104,30 +103,6 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
             }
 
             public init(data: Data? = nil) {
-                self.data = data
-            }
-        }
-
-        public struct AgeRatingDeclaration: Codable, Equatable, Sendable {
-            public var links: RelationshipLinks?
-            public var data: Data?
-
-            public struct Data: Codable, Equatable, Identifiable, Sendable {
-                public var type: `Type`
-                public var id: String
-
-                public enum `Type`: String, CaseIterable, Codable, Sendable {
-                    case ageRatingDeclarations
-                }
-
-                public init(type: `Type` = .ageRatingDeclarations, id: String) {
-                    self.type = type
-                    self.id = id
-                }
-            }
-
-            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
-                self.links = links
                 self.data = data
             }
         }
@@ -410,9 +385,8 @@ public struct AppStoreVersion: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(app: App? = nil, ageRatingDeclaration: AgeRatingDeclaration? = nil, appStoreVersionLocalizations: AppStoreVersionLocalizations? = nil, build: Build? = nil, appStoreVersionPhasedRelease: AppStoreVersionPhasedRelease? = nil, gameCenterAppVersion: GameCenterAppVersion? = nil, routingAppCoverage: RoutingAppCoverage? = nil, appStoreReviewDetail: AppStoreReviewDetail? = nil, appStoreVersionSubmission: AppStoreVersionSubmission? = nil, appClipDefaultExperience: AppClipDefaultExperience? = nil, appStoreVersionExperiments: AppStoreVersionExperiments? = nil, appStoreVersionExperimentsV2: AppStoreVersionExperimentsV2? = nil, customerReviews: CustomerReviews? = nil, alternativeDistributionPackage: AlternativeDistributionPackage? = nil) {
+        public init(app: App? = nil, appStoreVersionLocalizations: AppStoreVersionLocalizations? = nil, build: Build? = nil, appStoreVersionPhasedRelease: AppStoreVersionPhasedRelease? = nil, gameCenterAppVersion: GameCenterAppVersion? = nil, routingAppCoverage: RoutingAppCoverage? = nil, appStoreReviewDetail: AppStoreReviewDetail? = nil, appStoreVersionSubmission: AppStoreVersionSubmission? = nil, appClipDefaultExperience: AppClipDefaultExperience? = nil, appStoreVersionExperiments: AppStoreVersionExperiments? = nil, appStoreVersionExperimentsV2: AppStoreVersionExperimentsV2? = nil, customerReviews: CustomerReviews? = nil, alternativeDistributionPackage: AlternativeDistributionPackage? = nil) {
             self.app = app
-            self.ageRatingDeclaration = ageRatingDeclaration
             self.appStoreVersionLocalizations = appStoreVersionLocalizations
             self.build = build
             self.appStoreVersionPhasedRelease = appStoreVersionPhasedRelease

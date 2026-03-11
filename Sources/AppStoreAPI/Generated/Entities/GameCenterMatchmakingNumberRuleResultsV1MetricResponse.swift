@@ -12,11 +12,11 @@ public struct GameCenterMatchmakingNumberRuleResultsV1MetricResponse: Codable, E
     public var meta: PagingInformation?
 
     public struct Datum: Codable, Equatable, Sendable {
-        public var dataPoints: DataPoints?
+        public var dataPoints: [DataPoint]?
         public var dimensions: Dimensions?
         public var granularity: Granularity?
 
-        public struct DataPoints: Codable, Equatable, Sendable {
+        public struct DataPoint: Codable, Equatable, Sendable {
             public var start: Date?
             public var end: Date?
             public var values: Values?
@@ -76,7 +76,7 @@ public struct GameCenterMatchmakingNumberRuleResultsV1MetricResponse: Codable, E
             case pt15m = "PT15M"
         }
 
-        public init(dataPoints: DataPoints? = nil, dimensions: Dimensions? = nil, granularity: Granularity? = nil) {
+        public init(dataPoints: [DataPoint]? = nil, dimensions: Dimensions? = nil, granularity: Granularity? = nil) {
             self.dataPoints = dataPoints
             self.dimensions = dimensions
             self.granularity = granularity

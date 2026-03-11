@@ -9,4 +9,5 @@ import AppStoreConnect
 public enum BuildBundleType: String, CaseIterable, Codable, Sendable {
     case app = "APP"
     case appClip = "APP_CLIP"
+    case watchApp = "WATCH_APP"
 }

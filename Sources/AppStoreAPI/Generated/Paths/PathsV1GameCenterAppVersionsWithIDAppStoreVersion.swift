@@ -16,15 +16,14 @@ extension Resources.V1.GameCenterAppVersions.WithID {
         /// Path: `/v1/gameCenterAppVersions/{id}/appStoreVersion`
         public let path: String
 
-        public func get(fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]? = nil, fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsAppStoreVersionPhasedReleases: [FieldsAppStoreVersionPhasedReleases]? = nil, fieldsGameCenterAppVersions: [FieldsGameCenterAppVersions]? = nil, fieldsRoutingAppCoverages: [FieldsRoutingAppCoverages]? = nil, fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]? = nil, fieldsAppStoreVersionSubmissions: [FieldsAppStoreVersionSubmissions]? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAlternativeDistributionPackages: [FieldsAlternativeDistributionPackages]? = nil, include: [Include]? = nil, limitAppStoreVersionLocalizations: Int? = nil, limitAppStoreVersionExperiments: Int? = nil, limitAppStoreVersionExperimentsV2: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersions, fieldsApps, fieldsAgeRatingDeclarations, fieldsAppStoreVersionLocalizations, fieldsBuilds, fieldsAppStoreVersionPhasedReleases, fieldsGameCenterAppVersions, fieldsRoutingAppCoverages, fieldsAppStoreReviewDetails, fieldsAppStoreVersionSubmissions, fieldsAppClipDefaultExperiences, fieldsAppStoreVersionExperiments, fieldsAlternativeDistributionPackages, include, limitAppStoreVersionLocalizations, limitAppStoreVersionExperiments, limitAppStoreVersionExperimentsV2), id: "gameCenterAppVersions_appStoreVersion_getToOneRelated")
+        public func get(fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsAppStoreVersionPhasedReleases: [FieldsAppStoreVersionPhasedReleases]? = nil, fieldsGameCenterAppVersions: [FieldsGameCenterAppVersions]? = nil, fieldsRoutingAppCoverages: [FieldsRoutingAppCoverages]? = nil, fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]? = nil, fieldsAppStoreVersionSubmissions: [FieldsAppStoreVersionSubmissions]? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAlternativeDistributionPackages: [FieldsAlternativeDistributionPackages]? = nil, include: [Include]? = nil, limitAppStoreVersionLocalizations: Int? = nil, limitAppStoreVersionExperiments: Int? = nil, limitAppStoreVersionExperimentsV2: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersions, fieldsApps, fieldsAppStoreVersionLocalizations, fieldsBuilds, fieldsAppStoreVersionPhasedReleases, fieldsGameCenterAppVersions, fieldsRoutingAppCoverages, fieldsAppStoreReviewDetails, fieldsAppStoreVersionSubmissions, fieldsAppClipDefaultExperiences, fieldsAppStoreVersionExperiments, fieldsAlternativeDistributionPackages, include, limitAppStoreVersionLocalizations, limitAppStoreVersionExperiments, limitAppStoreVersionExperimentsV2), id: "gameCenterAppVersions_appStoreVersion_getToOneRelated")
         }
 
-        private func makeGetQuery(_ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsApps: [FieldsApps]?, _ fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]?, _ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsAppStoreVersionPhasedReleases: [FieldsAppStoreVersionPhasedReleases]?, _ fieldsGameCenterAppVersions: [FieldsGameCenterAppVersions]?, _ fieldsRoutingAppCoverages: [FieldsRoutingAppCoverages]?, _ fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]?, _ fieldsAppStoreVersionSubmissions: [FieldsAppStoreVersionSubmissions]?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsAlternativeDistributionPackages: [FieldsAlternativeDistributionPackages]?, _ include: [Include]?, _ limitAppStoreVersionLocalizations: Int?, _ limitAppStoreVersionExperiments: Int?, _ limitAppStoreVersionExperimentsV2: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsApps: [FieldsApps]?, _ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsAppStoreVersionPhasedReleases: [FieldsAppStoreVersionPhasedReleases]?, _ fieldsGameCenterAppVersions: [FieldsGameCenterAppVersions]?, _ fieldsRoutingAppCoverages: [FieldsRoutingAppCoverages]?, _ fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]?, _ fieldsAppStoreVersionSubmissions: [FieldsAppStoreVersionSubmissions]?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsAlternativeDistributionPackages: [FieldsAlternativeDistributionPackages]?, _ include: [Include]?, _ limitAppStoreVersionLocalizations: Int?, _ limitAppStoreVersionExperiments: Int?, _ limitAppStoreVersionExperimentsV2: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
             encoder.encode(fieldsApps, forKey: "fields[apps]")
-            encoder.encode(fieldsAgeRatingDeclarations, forKey: "fields[ageRatingDeclarations]")
             encoder.encode(fieldsAppStoreVersionLocalizations, forKey: "fields[appStoreVersionLocalizations]")
             encoder.encode(fieldsBuilds, forKey: "fields[builds]")
             encoder.encode(fieldsAppStoreVersionPhasedReleases, forKey: "fields[appStoreVersionPhasedReleases]")
@@ -55,7 +54,6 @@ extension Resources.V1.GameCenterAppVersions.WithID {
             case downloadable
             case createdDate
             case app
-            case ageRatingDeclaration
             case appStoreVersionLocalizations
             case build
             case appStoreVersionPhasedRelease
@@ -126,36 +124,6 @@ extension Resources.V1.GameCenterAppVersions.WithID {
             case searchKeywords
             case webhooks
             case androidToIosAppMappingDetails
-        }
-
-        public enum FieldsAgeRatingDeclarations: String, CaseIterable, Codable, Sendable {
-            case advertising
-            case alcoholTobaccoOrDrugUseOrReferences
-            case contests
-            case gambling
-            case gamblingSimulated
-            case gunsOrOtherWeapons
-            case healthOrWellnessTopics
-            case kidsAgeBand
-            case lootBox
-            case medicalOrTreatmentInformation
-            case messagingAndChat
-            case parentalControls
-            case profanityOrCrudeHumor
-            case ageAssurance
-            case sexualContentGraphicAndNudity
-            case sexualContentOrNudity
-            case horrorOrFearThemes
-            case matureOrSuggestiveThemes
-            case unrestrictedWebAccess
-            case userGeneratedContent
-            case violenceCartoonOrFantasy
-            case violenceRealisticProlongedGraphicOrSadistic
-            case violenceRealistic
-            case ageRatingOverride
-            case ageRatingOverrideV2
-            case koreaAgeRatingOverride
-            case developerAgeRatingInfoURL = "developerAgeRatingInfoUrl"
         }
 
         public enum FieldsAppStoreVersionLocalizations: String, CaseIterable, Codable, Sendable {
@@ -270,7 +238,6 @@ extension Resources.V1.GameCenterAppVersions.WithID {
 
         public enum Include: String, CaseIterable, Codable, Sendable {
             case app
-            case ageRatingDeclaration
             case appStoreVersionLocalizations
             case build
             case appStoreVersionPhasedRelease

@@ -8,6 +8,7 @@ import AppStoreConnect
 
 public struct GameCenterChallengeCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
+    public var included: [GameCenterChallengeVersionInlineCreate]?
 
     public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
@@ -46,6 +47,7 @@ public struct GameCenterChallengeCreateRequest: Codable, Equatable, Sendable {
         public struct Relationships: Codable, Equatable, Sendable {
             public var gameCenterDetail: GameCenterDetail?
             public var gameCenterGroup: GameCenterGroup?
+            public var versions: Versions?
             public var leaderboard: Leaderboard?
             public var leaderboardV2: LeaderboardV2?
 
@@ -89,6 +91,28 @@ public struct GameCenterChallengeCreateRequest: Codable, Equatable, Sendable {
                 }
 
                 public init(data: Data? = nil) {
+                    self.data = data
+                }
+            }
+
+            public struct Versions: Codable, Equatable, Sendable {
+                public var data: [Datum]?
+
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
+                        case gameCenterChallengeVersions
+                    }
+
+                    public init(type: `Type` = .gameCenterChallengeVersions, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: [Datum]? = nil) {
                     self.data = data
                 }
             }
@@ -137,9 +161,10 @@ public struct GameCenterChallengeCreateRequest: Codable, Equatable, Sendable {
                 }
             }
 
-            public init(gameCenterDetail: GameCenterDetail? = nil, gameCenterGroup: GameCenterGroup? = nil, leaderboard: Leaderboard? = nil, leaderboardV2: LeaderboardV2? = nil) {
+            public init(gameCenterDetail: GameCenterDetail? = nil, gameCenterGroup: GameCenterGroup? = nil, versions: Versions? = nil, leaderboard: Leaderboard? = nil, leaderboardV2: LeaderboardV2? = nil) {
                 self.gameCenterDetail = gameCenterDetail
                 self.gameCenterGroup = gameCenterGroup
+                self.versions = versions
                 self.leaderboard = leaderboard
                 self.leaderboardV2 = leaderboardV2
             }
@@ -152,7 +177,8 @@ public struct GameCenterChallengeCreateRequest: Codable, Equatable, Sendable {
         }
     }
 
-    public init(data: Data) {
+    public init(data: Data, included: [GameCenterChallengeVersionInlineCreate]? = nil) {
         self.data = data
+        self.included = included
     }
 }

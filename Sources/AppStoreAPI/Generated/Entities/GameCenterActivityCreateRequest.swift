@@ -8,6 +8,7 @@ import AppStoreConnect
 
 public struct GameCenterActivityCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
+    public var included: [GameCenterActivityVersionInlineCreate]?
 
     public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
@@ -56,6 +57,7 @@ public struct GameCenterActivityCreateRequest: Codable, Equatable, Sendable {
         public struct Relationships: Codable, Equatable, Sendable {
             public var gameCenterDetail: GameCenterDetail?
             public var gameCenterGroup: GameCenterGroup?
+            public var versions: Versions?
 
             public struct GameCenterDetail: Codable, Equatable, Sendable {
                 public var data: Data?
@@ -101,9 +103,32 @@ public struct GameCenterActivityCreateRequest: Codable, Equatable, Sendable {
                 }
             }
 
-            public init(gameCenterDetail: GameCenterDetail? = nil, gameCenterGroup: GameCenterGroup? = nil) {
+            public struct Versions: Codable, Equatable, Sendable {
+                public var data: [Datum]?
+
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
+                        case gameCenterActivityVersions
+                    }
+
+                    public init(type: `Type` = .gameCenterActivityVersions, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: [Datum]? = nil) {
+                    self.data = data
+                }
+            }
+
+            public init(gameCenterDetail: GameCenterDetail? = nil, gameCenterGroup: GameCenterGroup? = nil, versions: Versions? = nil) {
                 self.gameCenterDetail = gameCenterDetail
                 self.gameCenterGroup = gameCenterGroup
+                self.versions = versions
             }
         }
 
@@ -114,7 +139,8 @@ public struct GameCenterActivityCreateRequest: Codable, Equatable, Sendable {
         }
     }
 
-    public init(data: Data) {
+    public init(data: Data, included: [GameCenterActivityVersionInlineCreate]? = nil) {
         self.data = data
+        self.included = included
     }
 }

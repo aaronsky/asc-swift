@@ -23,14 +23,16 @@ public struct GameCenterPlayerAchievementSubmission: Codable, Equatable, Identif
         public var scopedPlayerID: String?
         public var submittedDate: Date?
         public var vendorIdentifier: String?
+        public var isPreReleased: Bool?
 
-        public init(bundleID: String? = nil, challengeIDs: [String]? = nil, percentageAchieved: Int? = nil, scopedPlayerID: String? = nil, submittedDate: Date? = nil, vendorIdentifier: String? = nil) {
+        public init(bundleID: String? = nil, challengeIDs: [String]? = nil, percentageAchieved: Int? = nil, scopedPlayerID: String? = nil, submittedDate: Date? = nil, vendorIdentifier: String? = nil, isPreReleased: Bool? = nil) {
             self.bundleID = bundleID
             self.challengeIDs = challengeIDs
             self.percentageAchieved = percentageAchieved
             self.scopedPlayerID = scopedPlayerID
             self.submittedDate = submittedDate
             self.vendorIdentifier = vendorIdentifier
+            self.isPreReleased = isPreReleased
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -40,6 +42,7 @@ public struct GameCenterPlayerAchievementSubmission: Codable, Equatable, Identif
             case scopedPlayerID = "scopedPlayerId"
             case submittedDate
             case vendorIdentifier
+            case isPreReleased = "preReleased"
         }
     }
 

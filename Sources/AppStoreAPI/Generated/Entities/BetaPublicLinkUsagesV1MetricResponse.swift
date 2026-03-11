@@ -12,9 +12,9 @@ public struct BetaPublicLinkUsagesV1MetricResponse: Codable, Equatable, Sendable
     public var meta: PagingInformation?
 
     public struct Datum: Codable, Equatable, Sendable {
-        public var dataPoints: DataPoints?
+        public var dataPoints: [DataPoint]?
 
-        public struct DataPoints: Codable, Equatable, Sendable {
+        public struct DataPoint: Codable, Equatable, Sendable {
             public var start: Date?
             public var end: Date?
             public var values: Values?
@@ -46,7 +46,7 @@ public struct BetaPublicLinkUsagesV1MetricResponse: Codable, Equatable, Sendable
             }
         }
 
-        public init(dataPoints: DataPoints? = nil) {
+        public init(dataPoints: [DataPoint]? = nil) {
             self.dataPoints = dataPoints
         }
     }

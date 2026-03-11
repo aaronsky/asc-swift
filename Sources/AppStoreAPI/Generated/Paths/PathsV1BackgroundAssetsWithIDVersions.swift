@@ -16,12 +16,13 @@ extension Resources.V1.BackgroundAssets.WithID {
         /// Path: `/v1/backgroundAssets/{id}/versions`
         public let path: String
 
-        public func get(filterState: [FilterState]? = nil, filterVersion: [String]? = nil, filterInternalBetaReleaseState: [FilterInternalBetaReleaseState]? = nil, filterExternalBetaReleaseState: [FilterExternalBetaReleaseState]? = nil, filterAppStoreReleaseState: [FilterAppStoreReleaseState]? = nil, sort: [Sort]? = nil, fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]? = nil, fieldsBackgroundAssets: [FieldsBackgroundAssets]? = nil, fieldsBackgroundAssetVersionInternalBetaReleases: [FieldsBackgroundAssetVersionInternalBetaReleases]? = nil, fieldsBackgroundAssetVersionExternalBetaReleases: [FieldsBackgroundAssetVersionExternalBetaReleases]? = nil, fieldsBackgroundAssetVersionAppStoreReleases: [FieldsBackgroundAssetVersionAppStoreReleases]? = nil, fieldsBackgroundAssetUploadFiles: [FieldsBackgroundAssetUploadFiles]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.BackgroundAssetVersionsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterState, filterVersion, filterInternalBetaReleaseState, filterExternalBetaReleaseState, filterAppStoreReleaseState, sort, fieldsBackgroundAssetVersions, fieldsBackgroundAssets, fieldsBackgroundAssetVersionInternalBetaReleases, fieldsBackgroundAssetVersionExternalBetaReleases, fieldsBackgroundAssetVersionAppStoreReleases, fieldsBackgroundAssetUploadFiles, limit, include), id: "backgroundAssets_versions_getToManyRelated")
+        public func get(filterPlatforms: [FilterPlatforms]? = nil, filterState: [FilterState]? = nil, filterVersion: [String]? = nil, filterInternalBetaReleaseState: [FilterInternalBetaReleaseState]? = nil, filterExternalBetaReleaseState: [FilterExternalBetaReleaseState]? = nil, filterAppStoreReleaseState: [FilterAppStoreReleaseState]? = nil, sort: [Sort]? = nil, fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]? = nil, fieldsBackgroundAssets: [FieldsBackgroundAssets]? = nil, fieldsBackgroundAssetVersionInternalBetaReleases: [FieldsBackgroundAssetVersionInternalBetaReleases]? = nil, fieldsBackgroundAssetVersionExternalBetaReleases: [FieldsBackgroundAssetVersionExternalBetaReleases]? = nil, fieldsBackgroundAssetVersionAppStoreReleases: [FieldsBackgroundAssetVersionAppStoreReleases]? = nil, fieldsBackgroundAssetUploadFiles: [FieldsBackgroundAssetUploadFiles]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.BackgroundAssetVersionsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterPlatforms, filterState, filterVersion, filterInternalBetaReleaseState, filterExternalBetaReleaseState, filterAppStoreReleaseState, sort, fieldsBackgroundAssetVersions, fieldsBackgroundAssets, fieldsBackgroundAssetVersionInternalBetaReleases, fieldsBackgroundAssetVersionExternalBetaReleases, fieldsBackgroundAssetVersionAppStoreReleases, fieldsBackgroundAssetUploadFiles, limit, include), id: "backgroundAssets_versions_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterState: [FilterState]?, _ filterVersion: [String]?, _ filterInternalBetaReleaseState: [FilterInternalBetaReleaseState]?, _ filterExternalBetaReleaseState: [FilterExternalBetaReleaseState]?, _ filterAppStoreReleaseState: [FilterAppStoreReleaseState]?, _ sort: [Sort]?, _ fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]?, _ fieldsBackgroundAssets: [FieldsBackgroundAssets]?, _ fieldsBackgroundAssetVersionInternalBetaReleases: [FieldsBackgroundAssetVersionInternalBetaReleases]?, _ fieldsBackgroundAssetVersionExternalBetaReleases: [FieldsBackgroundAssetVersionExternalBetaReleases]?, _ fieldsBackgroundAssetVersionAppStoreReleases: [FieldsBackgroundAssetVersionAppStoreReleases]?, _ fieldsBackgroundAssetUploadFiles: [FieldsBackgroundAssetUploadFiles]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterPlatforms: [FilterPlatforms]?, _ filterState: [FilterState]?, _ filterVersion: [String]?, _ filterInternalBetaReleaseState: [FilterInternalBetaReleaseState]?, _ filterExternalBetaReleaseState: [FilterExternalBetaReleaseState]?, _ filterAppStoreReleaseState: [FilterAppStoreReleaseState]?, _ sort: [Sort]?, _ fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]?, _ fieldsBackgroundAssets: [FieldsBackgroundAssets]?, _ fieldsBackgroundAssetVersionInternalBetaReleases: [FieldsBackgroundAssetVersionInternalBetaReleases]?, _ fieldsBackgroundAssetVersionExternalBetaReleases: [FieldsBackgroundAssetVersionExternalBetaReleases]?, _ fieldsBackgroundAssetVersionAppStoreReleases: [FieldsBackgroundAssetVersionAppStoreReleases]?, _ fieldsBackgroundAssetUploadFiles: [FieldsBackgroundAssetUploadFiles]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
+            encoder.encode(filterPlatforms, forKey: "filter[platforms]")
             encoder.encode(filterState, forKey: "filter[state]")
             encoder.encode(filterVersion, forKey: "filter[version]")
             encoder.encode(filterInternalBetaReleaseState, forKey: "filter[internalBetaRelease.state]")
@@ -37,6 +38,13 @@ extension Resources.V1.BackgroundAssets.WithID {
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             return encoder.items
+        }
+
+        public enum FilterPlatforms: String, CaseIterable, Codable, Sendable {
+            case iOS = "IOS"
+            case macOS = "MAC_OS"
+            case tvOS = "TV_OS"
+            case visionOS = "VISION_OS"
         }
 
         public enum FilterState: String, CaseIterable, Codable, Sendable {
@@ -97,6 +105,7 @@ extension Resources.V1.BackgroundAssets.WithID {
             case archived
             case assetPackIdentifier
             case createdDate
+            case usedBytes
             case app
             case versions
             case appStoreVersion

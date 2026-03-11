@@ -16,14 +16,16 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/backgroundAssets`
         public let path: String
 
-        public func get(filterArchived: [String]? = nil, filterAssetPackIdentifier: [String]? = nil, fieldsBackgroundAssets: [FieldsBackgroundAssets]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.BackgroundAssetsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterArchived, filterAssetPackIdentifier, fieldsBackgroundAssets, fieldsApps, fieldsBackgroundAssetVersions, limit, include), id: "apps_backgroundAssets_getToManyRelated")
+        public func get(filterArchived: [String]? = nil, filterAssetPackIdentifier: [String]? = nil, filterVersionsPlatforms: [FilterVersionsPlatforms]? = nil, sort: [Sort]? = nil, fieldsBackgroundAssets: [FieldsBackgroundAssets]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.BackgroundAssetsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterArchived, filterAssetPackIdentifier, filterVersionsPlatforms, sort, fieldsBackgroundAssets, fieldsApps, fieldsBackgroundAssetVersions, limit, include), id: "apps_backgroundAssets_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterArchived: [String]?, _ filterAssetPackIdentifier: [String]?, _ fieldsBackgroundAssets: [FieldsBackgroundAssets]?, _ fieldsApps: [FieldsApps]?, _ fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterArchived: [String]?, _ filterAssetPackIdentifier: [String]?, _ filterVersionsPlatforms: [FilterVersionsPlatforms]?, _ sort: [Sort]?, _ fieldsBackgroundAssets: [FieldsBackgroundAssets]?, _ fieldsApps: [FieldsApps]?, _ fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterArchived, forKey: "filter[archived]")
             encoder.encode(filterAssetPackIdentifier, forKey: "filter[assetPackIdentifier]")
+            encoder.encode(filterVersionsPlatforms, forKey: "filter[versions.platforms]")
+            encoder.encode(sort, forKey: "sort")
             encoder.encode(fieldsBackgroundAssets, forKey: "fields[backgroundAssets]")
             encoder.encode(fieldsApps, forKey: "fields[apps]")
             encoder.encode(fieldsBackgroundAssetVersions, forKey: "fields[backgroundAssetVersions]")
@@ -32,10 +34,25 @@ extension Resources.V1.Apps.WithID {
             return encoder.items
         }
 
+        public enum FilterVersionsPlatforms: String, CaseIterable, Codable, Sendable {
+            case iOS = "IOS"
+            case macOS = "MAC_OS"
+            case tvOS = "TV_OS"
+            case visionOS = "VISION_OS"
+        }
+
+        public enum Sort: String, CaseIterable, Codable, Sendable {
+            case assetPackIdentifier
+            case minusAssetPackIdentifier = "-assetPackIdentifier"
+            case createdDate
+            case minusCreatedDate = "-createdDate"
+        }
+
         public enum FieldsBackgroundAssets: String, CaseIterable, Codable, Sendable {
             case archived
             case assetPackIdentifier
             case createdDate
+            case usedBytes
             case app
             case versions
             case appStoreVersion

@@ -37,8 +37,9 @@ public struct BuildBundle: Codable, Equatable, Identifiable, Sendable {
         public var entitlements: [String: [String: String]]?
         public var baDownloadAllowance: Int?
         public var baMaxInstallSize: Int?
+        public var minimumOsVersion: String?
 
-        public init(bundleID: String? = nil, bundleType: BuildBundleType? = nil, sdkBuild: String? = nil, platformBuild: String? = nil, fileName: String? = nil, hasSirikit: Bool? = nil, hasOnDemandResources: Bool? = nil, hasPrerenderedIcon: Bool? = nil, usesLocationServices: Bool? = nil, isIosBuildMacAppStoreCompatible: Bool? = nil, isIncludesSymbols: Bool? = nil, dSYMURL: URL? = nil, supportedArchitectures: [String]? = nil, requiredCapabilities: [String]? = nil, deviceProtocols: [String]? = nil, locales: [String]? = nil, entitlements: [String: [String: String]]? = nil, baDownloadAllowance: Int? = nil, baMaxInstallSize: Int? = nil) {
+        public init(bundleID: String? = nil, bundleType: BuildBundleType? = nil, sdkBuild: String? = nil, platformBuild: String? = nil, fileName: String? = nil, hasSirikit: Bool? = nil, hasOnDemandResources: Bool? = nil, hasPrerenderedIcon: Bool? = nil, usesLocationServices: Bool? = nil, isIosBuildMacAppStoreCompatible: Bool? = nil, isIncludesSymbols: Bool? = nil, dSYMURL: URL? = nil, supportedArchitectures: [String]? = nil, requiredCapabilities: [String]? = nil, deviceProtocols: [String]? = nil, locales: [String]? = nil, entitlements: [String: [String: String]]? = nil, baDownloadAllowance: Int? = nil, baMaxInstallSize: Int? = nil, minimumOsVersion: String? = nil) {
             self.bundleID = bundleID
             self.bundleType = bundleType
             self.sdkBuild = sdkBuild
@@ -58,6 +59,7 @@ public struct BuildBundle: Codable, Equatable, Identifiable, Sendable {
             self.entitlements = entitlements
             self.baDownloadAllowance = baDownloadAllowance
             self.baMaxInstallSize = baMaxInstallSize
+            self.minimumOsVersion = minimumOsVersion
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -80,6 +82,7 @@ public struct BuildBundle: Codable, Equatable, Identifiable, Sendable {
             case entitlements
             case baDownloadAllowance
             case baMaxInstallSize
+            case minimumOsVersion
         }
     }
 
