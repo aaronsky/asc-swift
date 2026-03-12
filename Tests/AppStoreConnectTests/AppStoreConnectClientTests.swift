@@ -5,7 +5,7 @@ import XCTest
 @testable import AppStoreConnect
 
 #if canImport(FoundationNetworking)
-import FoundationNetworking
+    import FoundationNetworking
 #endif
 
 final class AppStoreConnectClientTests: XCTestCase {
@@ -166,7 +166,7 @@ final class AppStoreConnectClientTests: XCTestCase {
 }
 
 /// Adapted from https://github.com/pointfreeco/swift-clocks/blob/2c747763e02f8d39ed1b868e1725e65d8e06950d/Sources/Clocks/ImmediateClock.swift
-fileprivate final class ImmediateClock<Duration>: Clock, @unchecked Sendable where Duration: DurationProtocol & Hashable {
+private final class ImmediateClock<Duration>: Clock, @unchecked Sendable where Duration: DurationProtocol & Hashable {
     struct Instant: InstantProtocol {
         private let offset: Duration
 
