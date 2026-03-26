@@ -116,7 +116,7 @@ public actor AppStoreConnectClient {
             return nil
         }
 
-        let urlRequest = try URLRequest(url: nextPage, encoder: encoder, authenticator: &authenticator)
+        let urlRequest = try URLRequest(url: nextPage, encoder: encoder, token: authenticator.token())
 
         let response = try await retry(with: strategy) {
             try await transport.send(request: urlRequest, decoder: decoder)

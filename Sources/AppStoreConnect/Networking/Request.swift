@@ -24,7 +24,7 @@ extension URLRequest {
             headers: request.headers?.map { ($0.key, $0.value) } ?? [],
             body: request.body,
             encoder: encoder,
-            authenticator: &authenticator
+            token: authenticator.token()
         )
     }
 
@@ -43,7 +43,7 @@ extension URLRequest {
         headers: [(String, String?)] = [],
         body: (any Encodable)? = nil,
         encoder: JSONEncoder,
-        authenticator: inout any Authenticator
+        token: String? = nil
     ) throws {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method
@@ -57,8 +57,9 @@ extension URLRequest {
             urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         }
 
-        let token = try authenticator.token()
-        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        if let token {
+            urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
 
         self = urlRequest
     }
