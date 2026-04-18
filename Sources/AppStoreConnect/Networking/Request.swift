@@ -43,7 +43,35 @@ extension URLRequest {
         headers: [(String, String?)] = [],
         body: (any Encodable)? = nil,
         encoder: JSONEncoder,
-        authenticator: inout any Authenticator
+        authenticator: inout any Authenticator,
+    ) throws {
+        let token = try authenticator.token()
+        try self.init(
+            url: url,
+            method: method,
+            headers: headers,
+            body: body,
+            encoder: encoder,
+            token: token,
+        )
+    }
+
+    /// Creates a ``URLRequest`` out of a ``Request``.
+    /// - Parameters:
+    ///   - url: Request URL.
+    ///   - method: Request method.
+    ///   - headers: Request headers.
+    ///   - body: Request body.
+    ///   - encoder: An encoder.
+    ///   - token: An authentication token, if required by the request.
+    /// - Throws: An error if there is a problem retrieving an authentication token.
+    package init(
+        url: URL,
+        method: String? = nil,
+        headers: [(String, String?)] = [],
+        body: (any Encodable)? = nil,
+        encoder: JSONEncoder,
+        token: String?
     ) throws {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method
@@ -57,8 +85,9 @@ extension URLRequest {
             urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         }
 
-        let token = try authenticator.token()
-        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        if let token {
+            urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
 
         self = urlRequest
     }

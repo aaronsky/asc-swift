@@ -24,11 +24,7 @@ extension AppStoreConnectClient {
         }
 
         let dataChunk = data[offset..<(length + offset)]
-        let urlRequest = try URLRequest(
-            uploadOperation: operation,
-            encoder: encoder,
-            authenticator: &authenticator
-        )
+        let urlRequest = try URLRequest(uploadOperation: operation, encoder: encoder)
 
         _ = try await retry(with: strategy) {
             try await transport.upload(request: urlRequest, data: dataChunk, decoder: decoder)
@@ -45,11 +41,7 @@ extension UploadOperation {
 }
 
 extension URLRequest {
-    init(
-        uploadOperation: UploadOperation,
-        encoder: JSONEncoder,
-        authenticator: inout any Authenticator
-    ) throws {
+    init(uploadOperation: UploadOperation, encoder: JSONEncoder) throws {
         guard let url = uploadOperation.url.flatMap(URL.init), let method = uploadOperation.method else {
             throw UploadOperation.Error.missingDestination(url: uploadOperation.url, method: uploadOperation.method)
         }
@@ -65,7 +57,7 @@ extension URLRequest {
             headers: headers,
             body: nil,
             encoder: encoder,
-            authenticator: &authenticator
+            token: nil
         )
     }
 }

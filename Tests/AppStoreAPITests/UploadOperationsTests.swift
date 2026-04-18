@@ -46,7 +46,6 @@ final class UploadOperationsTests: XCTestCase {
     func testRequestUploadSingle() async throws {
         let someData = Data(repeating: .random(in: UInt8.min...UInt8.max), count: 64)
         let testData = try TestData(testCase: .successUploadSingle)
-        var authenticator = await testData.context.client.authenticator
         let operation = try XCTUnwrap(testData.context.uploadOperations.first)
         try XCTAssertEqual(XCTUnwrap(operation.offset) + XCTUnwrap(operation.length), someData.count)
 
@@ -58,18 +57,13 @@ final class UploadOperationsTests: XCTestCase {
         XCTAssertEqual(history.count, testData.context.uploadOperations.count)
         try XCTAssertEqual(
             history.first,
-            URLRequest(
-                uploadOperation: operation,
-                encoder: encoder,
-                authenticator: &authenticator
-            )
+            URLRequest(uploadOperation: operation, encoder: encoder)
         )
     }
 
     func testRequestUploadMultipart() async throws {
         let someData = Data(repeating: .random(in: UInt8.min...UInt8.max), count: 80)
         let testData = try TestData(testCase: .successUploadMultipart)
-        var authenticator = await testData.context.client.authenticator
         XCTAssertEqual(testData.context.uploadOperations.count, 3)
         let totalLength = testData.context.uploadOperations.reduce(0) { acc, op in
             acc + (op.length ?? 0)
@@ -86,11 +80,7 @@ final class UploadOperationsTests: XCTestCase {
         try XCTAssertEqual(
             history,
             testData.context.uploadOperations.map {
-                try URLRequest(
-                    uploadOperation: $0,
-                    encoder: encoder,
-                    authenticator: &authenticator
-                )
+                try URLRequest(uploadOperation: $0, encoder: encoder)
             }
         )
     }
