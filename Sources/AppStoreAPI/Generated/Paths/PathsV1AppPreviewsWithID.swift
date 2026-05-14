@@ -16,13 +16,14 @@ extension Resources.V1.AppPreviews {
         /// Path: `/v1/appPreviews/{id}`
         public let path: String
 
-        public func get(fieldsAppPreviews: [FieldsAppPreviews]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppPreviewResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPreviews, include), id: "appPreviews_getInstance")
+        public func get(fieldsAppPreviews: [FieldsAppPreviews]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppPreviewResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPreviews, fieldsAppPreviewSets, include), id: "appPreviews_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppPreviews: [FieldsAppPreviews]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppPreviews: [FieldsAppPreviews]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppPreviews, forKey: "fields[appPreviews]")
+            encoder.encode(fieldsAppPreviewSets, forKey: "fields[appPreviewSets]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -40,6 +41,14 @@ extension Resources.V1.AppPreviews {
             case assetDeliveryState
             case videoDeliveryState
             case appPreviewSet
+        }
+
+        public enum FieldsAppPreviewSets: String, CaseIterable, Codable, Sendable {
+            case previewType
+            case appStoreVersionLocalization
+            case appCustomProductPageLocalization
+            case appStoreVersionExperimentTreatmentLocalization
+            case appPreviews
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

@@ -16,13 +16,14 @@ extension Resources.V1.SubscriptionImages {
         /// Path: `/v1/subscriptionImages/{id}`
         public let path: String
 
-        public func get(fieldsSubscriptionImages: [FieldsSubscriptionImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionImageResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionImages, include), id: "subscriptionImages_getInstance")
+        public func get(fieldsSubscriptionImages: [FieldsSubscriptionImages]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionImageResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionImages, fieldsSubscriptions, include), id: "subscriptionImages_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsSubscriptionImages: [FieldsSubscriptionImages]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsSubscriptionImages: [FieldsSubscriptionImages]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsSubscriptionImages, forKey: "fields[subscriptionImages]")
+            encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -36,6 +37,28 @@ extension Resources.V1.SubscriptionImages {
             case uploadOperations
             case state
             case subscription
+        }
+
+        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
+            case name
+            case productID = "productId"
+            case familySharable
+            case state
+            case subscriptionPeriod
+            case reviewNote
+            case groupLevel
+            case subscriptionLocalizations
+            case appStoreReviewScreenshot
+            case group
+            case introductoryOffers
+            case promotionalOffers
+            case offerCodes
+            case prices
+            case pricePoints
+            case promotedPurchase
+            case subscriptionAvailability
+            case winBackOffers
+            case images
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

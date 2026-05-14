@@ -16,19 +16,29 @@ extension Resources.V1.GameCenterChallengeVersionReleases {
         /// Path: `/v1/gameCenterChallengeVersionReleases/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterChallengeVersionReleases: [FieldsGameCenterChallengeVersionReleases]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterChallengeVersionReleaseResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterChallengeVersionReleases, include), id: "gameCenterChallengeVersionReleases_getInstance")
+        public func get(fieldsGameCenterChallengeVersionReleases: [FieldsGameCenterChallengeVersionReleases]? = nil, fieldsGameCenterChallengeVersions: [FieldsGameCenterChallengeVersions]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterChallengeVersionReleaseResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterChallengeVersionReleases, fieldsGameCenterChallengeVersions, include), id: "gameCenterChallengeVersionReleases_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterChallengeVersionReleases: [FieldsGameCenterChallengeVersionReleases]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterChallengeVersionReleases: [FieldsGameCenterChallengeVersionReleases]?, _ fieldsGameCenterChallengeVersions: [FieldsGameCenterChallengeVersions]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterChallengeVersionReleases, forKey: "fields[gameCenterChallengeVersionReleases]")
+            encoder.encode(fieldsGameCenterChallengeVersions, forKey: "fields[gameCenterChallengeVersions]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
         public enum FieldsGameCenterChallengeVersionReleases: String, CaseIterable, Codable, Sendable {
             case version
+        }
+
+        public enum FieldsGameCenterChallengeVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case state
+            case challenge
+            case localizations
+            case releases
+            case defaultImage
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

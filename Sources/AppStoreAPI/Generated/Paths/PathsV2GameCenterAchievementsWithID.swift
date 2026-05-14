@@ -16,13 +16,16 @@ extension Resources.V2.GameCenterAchievements {
         /// Path: `/v2/gameCenterAchievements/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterAchievements: [FieldsGameCenterAchievements]? = nil, fieldsGameCenterAchievementVersions: [FieldsGameCenterAchievementVersions]? = nil, include: [Include]? = nil, limitVersions: Int? = nil) -> Request<AppStoreAPI.GameCenterAchievementV2Response> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterAchievements, fieldsGameCenterAchievementVersions, include, limitVersions), id: "gameCenterAchievementsV2_getInstance")
+        public func get(fieldsGameCenterAchievements: [FieldsGameCenterAchievements]? = nil, fieldsGameCenterDetails: [FieldsGameCenterDetails]? = nil, fieldsGameCenterGroups: [FieldsGameCenterGroups]? = nil, fieldsGameCenterActivities: [FieldsGameCenterActivities]? = nil, fieldsGameCenterAchievementVersions: [FieldsGameCenterAchievementVersions]? = nil, include: [Include]? = nil, limitVersions: Int? = nil) -> Request<AppStoreAPI.GameCenterAchievementV2Response> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterAchievements, fieldsGameCenterDetails, fieldsGameCenterGroups, fieldsGameCenterActivities, fieldsGameCenterAchievementVersions, include, limitVersions), id: "gameCenterAchievementsV2_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterAchievements: [FieldsGameCenterAchievements]?, _ fieldsGameCenterAchievementVersions: [FieldsGameCenterAchievementVersions]?, _ include: [Include]?, _ limitVersions: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterAchievements: [FieldsGameCenterAchievements]?, _ fieldsGameCenterDetails: [FieldsGameCenterDetails]?, _ fieldsGameCenterGroups: [FieldsGameCenterGroups]?, _ fieldsGameCenterActivities: [FieldsGameCenterActivities]?, _ fieldsGameCenterAchievementVersions: [FieldsGameCenterAchievementVersions]?, _ include: [Include]?, _ limitVersions: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterAchievements, forKey: "fields[gameCenterAchievements]")
+            encoder.encode(fieldsGameCenterDetails, forKey: "fields[gameCenterDetails]")
+            encoder.encode(fieldsGameCenterGroups, forKey: "fields[gameCenterGroups]")
+            encoder.encode(fieldsGameCenterActivities, forKey: "fields[gameCenterActivities]")
             encoder.encode(fieldsGameCenterAchievementVersions, forKey: "fields[gameCenterAchievementVersions]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitVersions, forKey: "limit[versions]")
@@ -40,6 +43,63 @@ extension Resources.V2.GameCenterAchievements {
             case gameCenterDetail
             case gameCenterGroup
             case activity
+            case versions
+        }
+
+        public enum FieldsGameCenterDetails: String, CaseIterable, Codable, Sendable {
+            case arcadeEnabled
+            case challengeEnabled
+            case app
+            case gameCenterAppVersions
+            case gameCenterGroup
+            case gameCenterLeaderboards
+            case gameCenterLeaderboardsV2
+            case gameCenterLeaderboardSets
+            case gameCenterLeaderboardSetsV2
+            case gameCenterAchievements
+            case gameCenterAchievementsV2
+            case gameCenterActivities
+            case gameCenterChallenges
+            case defaultLeaderboard
+            case defaultLeaderboardV2
+            case defaultGroupLeaderboard
+            case defaultGroupLeaderboardV2
+            case achievementReleases
+            case activityReleases
+            case challengeReleases
+            case leaderboardReleases
+            case leaderboardSetReleases
+            case challengesMinimumPlatformVersions
+        }
+
+        public enum FieldsGameCenterGroups: String, CaseIterable, Codable, Sendable {
+            case referenceName
+            case gameCenterDetails
+            case gameCenterLeaderboards
+            case gameCenterLeaderboardsV2
+            case gameCenterLeaderboardSets
+            case gameCenterLeaderboardSetsV2
+            case gameCenterAchievements
+            case gameCenterAchievementsV2
+            case gameCenterActivities
+            case gameCenterChallenges
+        }
+
+        public enum FieldsGameCenterActivities: String, CaseIterable, Codable, Sendable {
+            case referenceName
+            case vendorIdentifier
+            case playStyle
+            case minimumPlayersCount
+            case maximumPlayersCount
+            case supportsPartyCode
+            case archived
+            case properties
+            case gameCenterDetail
+            case gameCenterGroup
+            case achievements
+            case achievementsV2
+            case leaderboards
+            case leaderboardsV2
             case versions
         }
 

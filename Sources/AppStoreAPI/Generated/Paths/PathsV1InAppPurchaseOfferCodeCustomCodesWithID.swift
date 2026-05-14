@@ -16,13 +16,14 @@ extension Resources.V1.InAppPurchaseOfferCodeCustomCodes {
         /// Path: `/v1/inAppPurchaseOfferCodeCustomCodes/{id}`
         public let path: String
 
-        public func get(fieldsInAppPurchaseOfferCodeCustomCodes: [FieldsInAppPurchaseOfferCodeCustomCodes]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.InAppPurchaseOfferCodeCustomCodeResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchaseOfferCodeCustomCodes, include), id: "inAppPurchaseOfferCodeCustomCodes_getInstance")
+        public func get(fieldsInAppPurchaseOfferCodeCustomCodes: [FieldsInAppPurchaseOfferCodeCustomCodes]? = nil, fieldsActors: [FieldsActors]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.InAppPurchaseOfferCodeCustomCodeResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchaseOfferCodeCustomCodes, fieldsActors, include), id: "inAppPurchaseOfferCodeCustomCodes_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsInAppPurchaseOfferCodeCustomCodes: [FieldsInAppPurchaseOfferCodeCustomCodes]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsInAppPurchaseOfferCodeCustomCodes: [FieldsInAppPurchaseOfferCodeCustomCodes]?, _ fieldsActors: [FieldsActors]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsInAppPurchaseOfferCodeCustomCodes, forKey: "fields[inAppPurchaseOfferCodeCustomCodes]")
+            encoder.encode(fieldsActors, forKey: "fields[actors]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -35,6 +36,14 @@ extension Resources.V1.InAppPurchaseOfferCodeCustomCodes {
             case active
             case createdByActor
             case deactivatedByActor
+        }
+
+        public enum FieldsActors: String, CaseIterable, Codable, Sendable {
+            case actorType
+            case userFirstName
+            case userLastName
+            case userEmail
+            case apiKeyID = "apiKeyId"
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

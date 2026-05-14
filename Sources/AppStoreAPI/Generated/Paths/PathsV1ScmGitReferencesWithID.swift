@@ -16,13 +16,14 @@ extension Resources.V1.ScmGitReferences {
         /// Path: `/v1/scmGitReferences/{id}`
         public let path: String
 
-        public func get(fieldsScmGitReferences: [FieldsScmGitReferences]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.ScmGitReferenceResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsScmGitReferences, include), id: "scmGitReferences_getInstance")
+        public func get(fieldsScmGitReferences: [FieldsScmGitReferences]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.ScmGitReferenceResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsScmGitReferences, fieldsScmRepositories, include), id: "scmGitReferences_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsScmGitReferences: [FieldsScmGitReferences]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsScmGitReferences: [FieldsScmGitReferences]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsScmGitReferences, forKey: "fields[scmGitReferences]")
+            encoder.encode(fieldsScmRepositories, forKey: "fields[scmRepositories]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -33,6 +34,18 @@ extension Resources.V1.ScmGitReferences {
             case isDeleted
             case kind
             case repository
+        }
+
+        public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
+            case lastAccessedDate
+            case httpCloneURL = "httpCloneUrl"
+            case sshCloneURL = "sshCloneUrl"
+            case ownerName
+            case repositoryName
+            case scmProvider
+            case defaultBranch
+            case gitReferences
+            case pullRequests
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

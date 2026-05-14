@@ -16,13 +16,14 @@ extension Resources.V1.InAppPurchaseAppStoreReviewScreenshots {
         /// Path: `/v1/inAppPurchaseAppStoreReviewScreenshots/{id}`
         public let path: String
 
-        public func get(fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.InAppPurchaseAppStoreReviewScreenshotResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchaseAppStoreReviewScreenshots, include), id: "inAppPurchaseAppStoreReviewScreenshots_getInstance")
+        public func get(fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]? = nil, fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.InAppPurchaseAppStoreReviewScreenshotResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchaseAppStoreReviewScreenshots, fieldsInAppPurchases, include), id: "inAppPurchaseAppStoreReviewScreenshots_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]?, _ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsInAppPurchaseAppStoreReviewScreenshots, forKey: "fields[inAppPurchaseAppStoreReviewScreenshots]")
+            encoder.encode(fieldsInAppPurchases, forKey: "fields[inAppPurchases]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -37,6 +38,25 @@ extension Resources.V1.InAppPurchaseAppStoreReviewScreenshots {
             case uploadOperations
             case assetDeliveryState
             case inAppPurchaseV2
+        }
+
+        public enum FieldsInAppPurchases: String, CaseIterable, Codable, Sendable {
+            case name
+            case productID = "productId"
+            case inAppPurchaseType
+            case state
+            case reviewNote
+            case familySharable
+            case contentHosting
+            case inAppPurchaseLocalizations
+            case pricePoints
+            case content
+            case appStoreReviewScreenshot
+            case promotedPurchase
+            case iapPriceSchedule
+            case inAppPurchaseAvailability
+            case images
+            case offerCodes
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

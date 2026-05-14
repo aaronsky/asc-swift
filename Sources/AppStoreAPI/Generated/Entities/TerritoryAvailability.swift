@@ -36,6 +36,7 @@ public struct TerritoryAvailability: Codable, Equatable, Identifiable, Sendable 
             case missingRating = "MISSING_RATING"
             case cannotSellRestrictedRating = "CANNOT_SELL_RESTRICTED_RATING"
             case brazilRequiredTaxID = "BRAZIL_REQUIRED_TAX_ID"
+            case brazilGamblingNotVerified = "BRAZIL_GAMBLING_NOT_VERIFIED"
             case missingGrn = "MISSING_GRN"
             case unverifiedGrn = "UNVERIFIED_GRN"
             case icpNumberInvalid = "ICP_NUMBER_INVALID"

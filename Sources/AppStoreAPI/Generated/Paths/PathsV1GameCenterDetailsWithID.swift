@@ -16,13 +16,14 @@ extension Resources.V1.GameCenterDetails {
         /// Path: `/v1/gameCenterDetails/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterDetails: [FieldsGameCenterDetails]? = nil, fieldsGameCenterAppVersions: [FieldsGameCenterAppVersions]? = nil, fieldsGameCenterGroups: [FieldsGameCenterGroups]? = nil, fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]? = nil, fieldsGameCenterLeaderboardSets: [FieldsGameCenterLeaderboardSets]? = nil, fieldsGameCenterAchievements: [FieldsGameCenterAchievements]? = nil, fieldsGameCenterActivities: [FieldsGameCenterActivities]? = nil, fieldsGameCenterChallenges: [FieldsGameCenterChallenges]? = nil, fieldsGameCenterAchievementReleases: [FieldsGameCenterAchievementReleases]? = nil, fieldsGameCenterActivityVersionReleases: [FieldsGameCenterActivityVersionReleases]? = nil, fieldsGameCenterChallengeVersionReleases: [FieldsGameCenterChallengeVersionReleases]? = nil, fieldsGameCenterLeaderboardReleases: [FieldsGameCenterLeaderboardReleases]? = nil, fieldsGameCenterLeaderboardSetReleases: [FieldsGameCenterLeaderboardSetReleases]? = nil, include: [Include]? = nil, limitAchievementReleases: Int? = nil, limitActivityReleases: Int? = nil, limitChallengeReleases: Int? = nil, limitChallengesMinimumPlatformVersions: Int? = nil, limitGameCenterAchievements: Int? = nil, limitGameCenterAchievementsV2: Int? = nil, limitGameCenterActivities: Int? = nil, limitGameCenterAppVersions: Int? = nil, limitGameCenterChallenges: Int? = nil, limitGameCenterLeaderboardSets: Int? = nil, limitGameCenterLeaderboardSetsV2: Int? = nil, limitGameCenterLeaderboards: Int? = nil, limitGameCenterLeaderboardsV2: Int? = nil, limitLeaderboardReleases: Int? = nil, limitLeaderboardSetReleases: Int? = nil) -> Request<AppStoreAPI.GameCenterDetailResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterDetails, fieldsGameCenterAppVersions, fieldsGameCenterGroups, fieldsGameCenterLeaderboards, fieldsGameCenterLeaderboardSets, fieldsGameCenterAchievements, fieldsGameCenterActivities, fieldsGameCenterChallenges, fieldsGameCenterAchievementReleases, fieldsGameCenterActivityVersionReleases, fieldsGameCenterChallengeVersionReleases, fieldsGameCenterLeaderboardReleases, fieldsGameCenterLeaderboardSetReleases, include, limitAchievementReleases, limitActivityReleases, limitChallengeReleases, limitChallengesMinimumPlatformVersions, limitGameCenterAchievements, limitGameCenterAchievementsV2, limitGameCenterActivities, limitGameCenterAppVersions, limitGameCenterChallenges, limitGameCenterLeaderboardSets, limitGameCenterLeaderboardSetsV2, limitGameCenterLeaderboards, limitGameCenterLeaderboardsV2, limitLeaderboardReleases, limitLeaderboardSetReleases), id: "gameCenterDetails_getInstance")
+        public func get(fieldsGameCenterDetails: [FieldsGameCenterDetails]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsGameCenterAppVersions: [FieldsGameCenterAppVersions]? = nil, fieldsGameCenterGroups: [FieldsGameCenterGroups]? = nil, fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]? = nil, fieldsGameCenterLeaderboardSets: [FieldsGameCenterLeaderboardSets]? = nil, fieldsGameCenterAchievements: [FieldsGameCenterAchievements]? = nil, fieldsGameCenterActivities: [FieldsGameCenterActivities]? = nil, fieldsGameCenterChallenges: [FieldsGameCenterChallenges]? = nil, fieldsGameCenterAchievementReleases: [FieldsGameCenterAchievementReleases]? = nil, fieldsGameCenterActivityVersionReleases: [FieldsGameCenterActivityVersionReleases]? = nil, fieldsGameCenterChallengeVersionReleases: [FieldsGameCenterChallengeVersionReleases]? = nil, fieldsGameCenterLeaderboardReleases: [FieldsGameCenterLeaderboardReleases]? = nil, fieldsGameCenterLeaderboardSetReleases: [FieldsGameCenterLeaderboardSetReleases]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, include: [Include]? = nil, limitAchievementReleases: Int? = nil, limitActivityReleases: Int? = nil, limitChallengeReleases: Int? = nil, limitChallengesMinimumPlatformVersions: Int? = nil, limitGameCenterAchievements: Int? = nil, limitGameCenterAchievementsV2: Int? = nil, limitGameCenterActivities: Int? = nil, limitGameCenterAppVersions: Int? = nil, limitGameCenterChallenges: Int? = nil, limitGameCenterLeaderboardSets: Int? = nil, limitGameCenterLeaderboardSetsV2: Int? = nil, limitGameCenterLeaderboards: Int? = nil, limitGameCenterLeaderboardsV2: Int? = nil, limitLeaderboardReleases: Int? = nil, limitLeaderboardSetReleases: Int? = nil) -> Request<AppStoreAPI.GameCenterDetailResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterDetails, fieldsApps, fieldsGameCenterAppVersions, fieldsGameCenterGroups, fieldsGameCenterLeaderboards, fieldsGameCenterLeaderboardSets, fieldsGameCenterAchievements, fieldsGameCenterActivities, fieldsGameCenterChallenges, fieldsGameCenterAchievementReleases, fieldsGameCenterActivityVersionReleases, fieldsGameCenterChallengeVersionReleases, fieldsGameCenterLeaderboardReleases, fieldsGameCenterLeaderboardSetReleases, fieldsAppStoreVersions, include, limitAchievementReleases, limitActivityReleases, limitChallengeReleases, limitChallengesMinimumPlatformVersions, limitGameCenterAchievements, limitGameCenterAchievementsV2, limitGameCenterActivities, limitGameCenterAppVersions, limitGameCenterChallenges, limitGameCenterLeaderboardSets, limitGameCenterLeaderboardSetsV2, limitGameCenterLeaderboards, limitGameCenterLeaderboardsV2, limitLeaderboardReleases, limitLeaderboardSetReleases), id: "gameCenterDetails_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterDetails: [FieldsGameCenterDetails]?, _ fieldsGameCenterAppVersions: [FieldsGameCenterAppVersions]?, _ fieldsGameCenterGroups: [FieldsGameCenterGroups]?, _ fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]?, _ fieldsGameCenterLeaderboardSets: [FieldsGameCenterLeaderboardSets]?, _ fieldsGameCenterAchievements: [FieldsGameCenterAchievements]?, _ fieldsGameCenterActivities: [FieldsGameCenterActivities]?, _ fieldsGameCenterChallenges: [FieldsGameCenterChallenges]?, _ fieldsGameCenterAchievementReleases: [FieldsGameCenterAchievementReleases]?, _ fieldsGameCenterActivityVersionReleases: [FieldsGameCenterActivityVersionReleases]?, _ fieldsGameCenterChallengeVersionReleases: [FieldsGameCenterChallengeVersionReleases]?, _ fieldsGameCenterLeaderboardReleases: [FieldsGameCenterLeaderboardReleases]?, _ fieldsGameCenterLeaderboardSetReleases: [FieldsGameCenterLeaderboardSetReleases]?, _ include: [Include]?, _ limitAchievementReleases: Int?, _ limitActivityReleases: Int?, _ limitChallengeReleases: Int?, _ limitChallengesMinimumPlatformVersions: Int?, _ limitGameCenterAchievements: Int?, _ limitGameCenterAchievementsV2: Int?, _ limitGameCenterActivities: Int?, _ limitGameCenterAppVersions: Int?, _ limitGameCenterChallenges: Int?, _ limitGameCenterLeaderboardSets: Int?, _ limitGameCenterLeaderboardSetsV2: Int?, _ limitGameCenterLeaderboards: Int?, _ limitGameCenterLeaderboardsV2: Int?, _ limitLeaderboardReleases: Int?, _ limitLeaderboardSetReleases: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterDetails: [FieldsGameCenterDetails]?, _ fieldsApps: [FieldsApps]?, _ fieldsGameCenterAppVersions: [FieldsGameCenterAppVersions]?, _ fieldsGameCenterGroups: [FieldsGameCenterGroups]?, _ fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]?, _ fieldsGameCenterLeaderboardSets: [FieldsGameCenterLeaderboardSets]?, _ fieldsGameCenterAchievements: [FieldsGameCenterAchievements]?, _ fieldsGameCenterActivities: [FieldsGameCenterActivities]?, _ fieldsGameCenterChallenges: [FieldsGameCenterChallenges]?, _ fieldsGameCenterAchievementReleases: [FieldsGameCenterAchievementReleases]?, _ fieldsGameCenterActivityVersionReleases: [FieldsGameCenterActivityVersionReleases]?, _ fieldsGameCenterChallengeVersionReleases: [FieldsGameCenterChallengeVersionReleases]?, _ fieldsGameCenterLeaderboardReleases: [FieldsGameCenterLeaderboardReleases]?, _ fieldsGameCenterLeaderboardSetReleases: [FieldsGameCenterLeaderboardSetReleases]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ include: [Include]?, _ limitAchievementReleases: Int?, _ limitActivityReleases: Int?, _ limitChallengeReleases: Int?, _ limitChallengesMinimumPlatformVersions: Int?, _ limitGameCenterAchievements: Int?, _ limitGameCenterAchievementsV2: Int?, _ limitGameCenterActivities: Int?, _ limitGameCenterAppVersions: Int?, _ limitGameCenterChallenges: Int?, _ limitGameCenterLeaderboardSets: Int?, _ limitGameCenterLeaderboardSetsV2: Int?, _ limitGameCenterLeaderboards: Int?, _ limitGameCenterLeaderboardsV2: Int?, _ limitLeaderboardReleases: Int?, _ limitLeaderboardSetReleases: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterDetails, forKey: "fields[gameCenterDetails]")
+            encoder.encode(fieldsApps, forKey: "fields[apps]")
             encoder.encode(fieldsGameCenterAppVersions, forKey: "fields[gameCenterAppVersions]")
             encoder.encode(fieldsGameCenterGroups, forKey: "fields[gameCenterGroups]")
             encoder.encode(fieldsGameCenterLeaderboards, forKey: "fields[gameCenterLeaderboards]")
@@ -35,6 +36,7 @@ extension Resources.V1.GameCenterDetails {
             encoder.encode(fieldsGameCenterChallengeVersionReleases, forKey: "fields[gameCenterChallengeVersionReleases]")
             encoder.encode(fieldsGameCenterLeaderboardReleases, forKey: "fields[gameCenterLeaderboardReleases]")
             encoder.encode(fieldsGameCenterLeaderboardSetReleases, forKey: "fields[gameCenterLeaderboardSetReleases]")
+            encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitAchievementReleases, forKey: "limit[achievementReleases]")
             encoder.encode(limitActivityReleases, forKey: "limit[activityReleases]")
@@ -78,6 +80,64 @@ extension Resources.V1.GameCenterDetails {
             case leaderboardReleases
             case leaderboardSetReleases
             case challengesMinimumPlatformVersions
+        }
+
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case accessibilityURL = "accessibilityUrl"
+            case name
+            case bundleID = "bundleId"
+            case sku
+            case primaryLocale
+            case isOrEverWasMadeForKids
+            case subscriptionStatusURL = "subscriptionStatusUrl"
+            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
+            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
+            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
+            case contentRightsDeclaration
+            case streamlinedPurchasingEnabled
+            case accessibilityDeclarations
+            case appEncryptionDeclarations
+            case appStoreIcon
+            case ciProduct
+            case betaTesters
+            case betaGroups
+            case appStoreVersions
+            case appTags
+            case preReleaseVersions
+            case betaAppLocalizations
+            case builds
+            case betaLicenseAgreement
+            case betaAppReviewDetail
+            case appInfos
+            case appClips
+            case appPricePoints
+            case endUserLicenseAgreement
+            case appPriceSchedule
+            case appAvailabilityV2
+            case inAppPurchases
+            case subscriptionGroups
+            case gameCenterEnabledVersions
+            case perfPowerMetrics
+            case appCustomProductPages
+            case inAppPurchasesV2
+            case promotedPurchases
+            case appEvents
+            case reviewSubmissions
+            case subscriptionGracePeriod
+            case customerReviews
+            case customerReviewSummarizations
+            case gameCenterDetail
+            case appStoreVersionExperimentsV2
+            case alternativeDistributionKey
+            case analyticsReportRequests
+            case marketplaceSearchDetail
+            case buildUploads
+            case backgroundAssets
+            case betaFeedbackScreenshotSubmissions
+            case betaFeedbackCrashSubmissions
+            case searchKeywords
+            case webhooks
+            case androidToIosAppMappingDetails
         }
 
         public enum FieldsGameCenterAppVersions: String, CaseIterable, Codable, Sendable {
@@ -208,6 +268,33 @@ extension Resources.V1.GameCenterDetails {
             case live
             case gameCenterDetail
             case gameCenterLeaderboardSet
+        }
+
+        public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
+            case platform
+            case versionString
+            case appStoreState
+            case appVersionState
+            case copyright
+            case reviewType
+            case releaseType
+            case earliestReleaseDate
+            case usesIdfa
+            case downloadable
+            case createdDate
+            case app
+            case appStoreVersionLocalizations
+            case build
+            case appStoreVersionPhasedRelease
+            case gameCenterAppVersion
+            case routingAppCoverage
+            case appStoreReviewDetail
+            case appStoreVersionSubmission
+            case appClipDefaultExperience
+            case appStoreVersionExperiments
+            case appStoreVersionExperimentsV2
+            case customerReviews
+            case alternativeDistributionPackage
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

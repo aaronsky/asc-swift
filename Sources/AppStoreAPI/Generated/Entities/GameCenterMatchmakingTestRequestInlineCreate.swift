@@ -9,7 +9,7 @@ import AppStoreConnect
 public struct GameCenterMatchmakingTestRequestInlineCreate: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String?
-    public var attributes: Attributes
+    public var attributes: Attributes?
     public var relationships: Relationships?
 
     public enum `Type`: String, CaseIterable, Codable, Sendable {
@@ -17,16 +17,16 @@ public struct GameCenterMatchmakingTestRequestInlineCreate: Codable, Equatable, 
     }
 
     public struct Attributes: Codable, Equatable, Sendable {
-        public var requestName: String
-        public var secondsInQueue: Int
+        public var requestName: String?
+        public var secondsInQueue: Int?
         public var locale: Locale?
         public var location: Location?
         public var minPlayers: Int?
         public var maxPlayers: Int?
         public var playerCount: Int?
-        public var bundleID: String
-        public var platform: Platform
-        public var appVersion: String
+        public var bundleID: String?
+        public var platform: Platform?
+        public var appVersion: String?
 
         public enum Locale: String, CaseIterable, Codable, Sendable {
             case arSa = "AR-SA"
@@ -70,7 +70,7 @@ public struct GameCenterMatchmakingTestRequestInlineCreate: Codable, Equatable, 
             case zhHk = "ZH-HK"
         }
 
-        public init(requestName: String, secondsInQueue: Int, locale: Locale? = nil, location: Location? = nil, minPlayers: Int? = nil, maxPlayers: Int? = nil, playerCount: Int? = nil, bundleID: String, platform: Platform, appVersion: String) {
+        public init(requestName: String? = nil, secondsInQueue: Int? = nil, locale: Locale? = nil, location: Location? = nil, minPlayers: Int? = nil, maxPlayers: Int? = nil, playerCount: Int? = nil, bundleID: String? = nil, platform: Platform? = nil, appVersion: String? = nil) {
             self.requestName = requestName
             self.secondsInQueue = secondsInQueue
             self.locale = locale
@@ -127,7 +127,7 @@ public struct GameCenterMatchmakingTestRequestInlineCreate: Codable, Equatable, 
         }
     }
 
-    public init(type: `Type` = .gameCenterMatchmakingTestRequests, id: String? = nil, attributes: Attributes, relationships: Relationships? = nil) {
+    public init(type: `Type` = .gameCenterMatchmakingTestRequests, id: String? = nil, attributes: Attributes? = nil, relationships: Relationships? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

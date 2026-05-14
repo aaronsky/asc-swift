@@ -16,13 +16,14 @@ extension Resources.V1.AppStoreVersionExperimentTreatments {
         /// Path: `/v1/appStoreVersionExperimentTreatments/{id}`
         public let path: String
 
-        public func get(fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]? = nil, fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]? = nil, include: [Include]? = nil, limitAppStoreVersionExperimentTreatmentLocalizations: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionExperimentTreatmentResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionExperimentTreatments, fieldsAppStoreVersionExperimentTreatmentLocalizations, include, limitAppStoreVersionExperimentTreatmentLocalizations), id: "appStoreVersionExperimentTreatments_getInstance")
+        public func get(fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]? = nil, fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]? = nil, include: [Include]? = nil, limitAppStoreVersionExperimentTreatmentLocalizations: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionExperimentTreatmentResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionExperimentTreatments, fieldsAppStoreVersionExperiments, fieldsAppStoreVersionExperimentTreatmentLocalizations, include, limitAppStoreVersionExperimentTreatmentLocalizations), id: "appStoreVersionExperimentTreatments_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]?, _ fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]?, _ include: [Include]?, _ limitAppStoreVersionExperimentTreatmentLocalizations: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]?, _ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]?, _ include: [Include]?, _ limitAppStoreVersionExperimentTreatmentLocalizations: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppStoreVersionExperimentTreatments, forKey: "fields[appStoreVersionExperimentTreatments]")
+            encoder.encode(fieldsAppStoreVersionExperiments, forKey: "fields[appStoreVersionExperiments]")
             encoder.encode(fieldsAppStoreVersionExperimentTreatmentLocalizations, forKey: "fields[appStoreVersionExperimentTreatmentLocalizations]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitAppStoreVersionExperimentTreatmentLocalizations, forKey: "limit[appStoreVersionExperimentTreatmentLocalizations]")
@@ -37,6 +38,21 @@ extension Resources.V1.AppStoreVersionExperimentTreatments {
             case appStoreVersionExperiment
             case appStoreVersionExperimentV2
             case appStoreVersionExperimentTreatmentLocalizations
+        }
+
+        public enum FieldsAppStoreVersionExperiments: String, CaseIterable, Codable, Sendable {
+            case name
+            case trafficProportion
+            case state
+            case reviewRequired
+            case startDate
+            case endDate
+            case appStoreVersion
+            case appStoreVersionExperimentTreatments
+            case platform
+            case app
+            case latestControlVersion
+            case controlVersions
         }
 
         public enum FieldsAppStoreVersionExperimentTreatmentLocalizations: String, CaseIterable, Codable, Sendable {

@@ -16,13 +16,14 @@ extension Resources.V1.SubscriptionPricePoints {
         /// Path: `/v1/subscriptionPricePoints/{id}`
         public let path: String
 
-        public func get(fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionPricePointResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionPricePoints, include), id: "subscriptionPricePoints_getInstance")
+        public func get(fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionPricePointResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionPricePoints, fieldsTerritories, include), id: "subscriptionPricePoints_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]?, _ fieldsTerritories: [FieldsTerritories]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsSubscriptionPricePoints, forKey: "fields[subscriptionPricePoints]")
+            encoder.encode(fieldsTerritories, forKey: "fields[territories]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -33,6 +34,10 @@ extension Resources.V1.SubscriptionPricePoints {
             case proceedsYear2
             case territory
             case equalizations
+        }
+
+        public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
+            case currency
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

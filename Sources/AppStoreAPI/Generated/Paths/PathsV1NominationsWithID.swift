@@ -16,13 +16,17 @@ extension Resources.V1.Nominations {
         /// Path: `/v1/nominations/{id}`
         public let path: String
 
-        public func get(fieldsNominations: [FieldsNominations]? = nil, include: [Include]? = nil, limitInAppEvents: Int? = nil, limitRelatedApps: Int? = nil, limitSupportedTerritories: Int? = nil) -> Request<AppStoreAPI.NominationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsNominations, include, limitInAppEvents, limitRelatedApps, limitSupportedTerritories), id: "nominations_getInstance")
+        public func get(fieldsNominations: [FieldsNominations]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsActors: [FieldsActors]? = nil, fieldsAppEvents: [FieldsAppEvents]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, include: [Include]? = nil, limitInAppEvents: Int? = nil, limitRelatedApps: Int? = nil, limitSupportedTerritories: Int? = nil) -> Request<AppStoreAPI.NominationResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsNominations, fieldsApps, fieldsActors, fieldsAppEvents, fieldsTerritories, include, limitInAppEvents, limitRelatedApps, limitSupportedTerritories), id: "nominations_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsNominations: [FieldsNominations]?, _ include: [Include]?, _ limitInAppEvents: Int?, _ limitRelatedApps: Int?, _ limitSupportedTerritories: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsNominations: [FieldsNominations]?, _ fieldsApps: [FieldsApps]?, _ fieldsActors: [FieldsActors]?, _ fieldsAppEvents: [FieldsAppEvents]?, _ fieldsTerritories: [FieldsTerritories]?, _ include: [Include]?, _ limitInAppEvents: Int?, _ limitRelatedApps: Int?, _ limitSupportedTerritories: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsNominations, forKey: "fields[nominations]")
+            encoder.encode(fieldsApps, forKey: "fields[apps]")
+            encoder.encode(fieldsActors, forKey: "fields[actors]")
+            encoder.encode(fieldsAppEvents, forKey: "fields[appEvents]")
+            encoder.encode(fieldsTerritories, forKey: "fields[territories]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitInAppEvents, forKey: "limit[inAppEvents]")
             encoder.encode(limitRelatedApps, forKey: "limit[relatedApps]")
@@ -53,6 +57,90 @@ extension Resources.V1.Nominations {
             case submittedByActor
             case inAppEvents
             case supportedTerritories
+        }
+
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case accessibilityURL = "accessibilityUrl"
+            case name
+            case bundleID = "bundleId"
+            case sku
+            case primaryLocale
+            case isOrEverWasMadeForKids
+            case subscriptionStatusURL = "subscriptionStatusUrl"
+            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
+            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
+            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
+            case contentRightsDeclaration
+            case streamlinedPurchasingEnabled
+            case accessibilityDeclarations
+            case appEncryptionDeclarations
+            case appStoreIcon
+            case ciProduct
+            case betaTesters
+            case betaGroups
+            case appStoreVersions
+            case appTags
+            case preReleaseVersions
+            case betaAppLocalizations
+            case builds
+            case betaLicenseAgreement
+            case betaAppReviewDetail
+            case appInfos
+            case appClips
+            case appPricePoints
+            case endUserLicenseAgreement
+            case appPriceSchedule
+            case appAvailabilityV2
+            case inAppPurchases
+            case subscriptionGroups
+            case gameCenterEnabledVersions
+            case perfPowerMetrics
+            case appCustomProductPages
+            case inAppPurchasesV2
+            case promotedPurchases
+            case appEvents
+            case reviewSubmissions
+            case subscriptionGracePeriod
+            case customerReviews
+            case customerReviewSummarizations
+            case gameCenterDetail
+            case appStoreVersionExperimentsV2
+            case alternativeDistributionKey
+            case analyticsReportRequests
+            case marketplaceSearchDetail
+            case buildUploads
+            case backgroundAssets
+            case betaFeedbackScreenshotSubmissions
+            case betaFeedbackCrashSubmissions
+            case searchKeywords
+            case webhooks
+            case androidToIosAppMappingDetails
+        }
+
+        public enum FieldsActors: String, CaseIterable, Codable, Sendable {
+            case actorType
+            case userFirstName
+            case userLastName
+            case userEmail
+            case apiKeyID = "apiKeyId"
+        }
+
+        public enum FieldsAppEvents: String, CaseIterable, Codable, Sendable {
+            case referenceName
+            case badge
+            case eventState
+            case deepLink
+            case purchaseRequirement
+            case primaryLocale
+            case priority
+            case purpose
+            case territorySchedules
+            case archivedTerritorySchedules
+            case localizations
+        }
+
+        public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
+            case currency
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

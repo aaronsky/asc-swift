@@ -16,13 +16,14 @@ extension Resources.V1.SubscriptionGroupLocalizations {
         /// Path: `/v1/subscriptionGroupLocalizations/{id}`
         public let path: String
 
-        public func get(fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionGroupLocalizationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionGroupLocalizations, include), id: "subscriptionGroupLocalizations_getInstance")
+        public func get(fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]? = nil, fieldsSubscriptionGroups: [FieldsSubscriptionGroups]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionGroupLocalizationResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionGroupLocalizations, fieldsSubscriptionGroups, include), id: "subscriptionGroupLocalizations_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]?, _ fieldsSubscriptionGroups: [FieldsSubscriptionGroups]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsSubscriptionGroupLocalizations, forKey: "fields[subscriptionGroupLocalizations]")
+            encoder.encode(fieldsSubscriptionGroups, forKey: "fields[subscriptionGroups]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -33,6 +34,12 @@ extension Resources.V1.SubscriptionGroupLocalizations {
             case locale
             case state
             case subscriptionGroup
+        }
+
+        public enum FieldsSubscriptionGroups: String, CaseIterable, Codable, Sendable {
+            case referenceName
+            case subscriptions
+            case subscriptionGroupLocalizations
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

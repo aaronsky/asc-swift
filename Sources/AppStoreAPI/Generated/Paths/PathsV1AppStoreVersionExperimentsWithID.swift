@@ -16,13 +16,14 @@ extension Resources.V1.AppStoreVersionExperiments {
         /// Path: `/v1/appStoreVersionExperiments/{id}`
         public let path: String
 
-        public func get(fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]? = nil, include: [Include]? = nil, limitAppStoreVersionExperimentTreatments: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionExperimentResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionExperiments, fieldsAppStoreVersionExperimentTreatments, include, limitAppStoreVersionExperimentTreatments), id: "appStoreVersionExperiments_getInstance")
+        public func get(fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]? = nil, include: [Include]? = nil, limitAppStoreVersionExperimentTreatments: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionExperimentResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionExperiments, fieldsAppStoreVersions, fieldsAppStoreVersionExperimentTreatments, include, limitAppStoreVersionExperimentTreatments), id: "appStoreVersionExperiments_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]?, _ include: [Include]?, _ limitAppStoreVersionExperimentTreatments: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]?, _ include: [Include]?, _ limitAppStoreVersionExperimentTreatments: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppStoreVersionExperiments, forKey: "fields[appStoreVersionExperiments]")
+            encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
             encoder.encode(fieldsAppStoreVersionExperimentTreatments, forKey: "fields[appStoreVersionExperimentTreatments]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitAppStoreVersionExperimentTreatments, forKey: "limit[appStoreVersionExperimentTreatments]")
@@ -38,6 +39,33 @@ extension Resources.V1.AppStoreVersionExperiments {
             case endDate
             case appStoreVersion
             case appStoreVersionExperimentTreatments
+        }
+
+        public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
+            case platform
+            case versionString
+            case appStoreState
+            case appVersionState
+            case copyright
+            case reviewType
+            case releaseType
+            case earliestReleaseDate
+            case usesIdfa
+            case downloadable
+            case createdDate
+            case app
+            case appStoreVersionLocalizations
+            case build
+            case appStoreVersionPhasedRelease
+            case gameCenterAppVersion
+            case routingAppCoverage
+            case appStoreReviewDetail
+            case appStoreVersionSubmission
+            case appClipDefaultExperience
+            case appStoreVersionExperiments
+            case appStoreVersionExperimentsV2
+            case customerReviews
+            case alternativeDistributionPackage
         }
 
         public enum FieldsAppStoreVersionExperimentTreatments: String, CaseIterable, Codable, Sendable {

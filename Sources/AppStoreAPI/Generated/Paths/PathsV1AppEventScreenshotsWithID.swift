@@ -16,13 +16,14 @@ extension Resources.V1.AppEventScreenshots {
         /// Path: `/v1/appEventScreenshots/{id}`
         public let path: String
 
-        public func get(fieldsAppEventScreenshots: [FieldsAppEventScreenshots]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppEventScreenshotResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEventScreenshots, include), id: "appEventScreenshots_getInstance")
+        public func get(fieldsAppEventScreenshots: [FieldsAppEventScreenshots]? = nil, fieldsAppEventLocalizations: [FieldsAppEventLocalizations]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppEventScreenshotResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEventScreenshots, fieldsAppEventLocalizations, include), id: "appEventScreenshots_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppEventScreenshots: [FieldsAppEventScreenshots]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppEventScreenshots: [FieldsAppEventScreenshots]?, _ fieldsAppEventLocalizations: [FieldsAppEventLocalizations]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppEventScreenshots, forKey: "fields[appEventScreenshots]")
+            encoder.encode(fieldsAppEventLocalizations, forKey: "fields[appEventLocalizations]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -36,6 +37,16 @@ extension Resources.V1.AppEventScreenshots {
             case assetDeliveryState
             case appEventAssetType
             case appEventLocalization
+        }
+
+        public enum FieldsAppEventLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case name
+            case shortDescription
+            case longDescription
+            case appEvent
+            case appEventScreenshots
+            case appEventVideoClips
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

@@ -9,13 +9,65 @@ import AppStoreConnect
 public struct TerritoryAvailabilityInlineCreate: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String?
+    public var attributes: Attributes?
+    public var relationships: Relationships?
 
     public enum `Type`: String, CaseIterable, Codable, Sendable {
         case territoryAvailabilities
     }
 
-    public init(type: `Type` = .territoryAvailabilities, id: String? = nil) {
+    public struct Attributes: Codable, Equatable, Sendable {
+        public var isAvailable: Bool?
+        public var releaseDate: String?
+        public var isPreOrderEnabled: Bool?
+
+        public init(isAvailable: Bool? = nil, releaseDate: String? = nil, isPreOrderEnabled: Bool? = nil) {
+            self.isAvailable = isAvailable
+            self.releaseDate = releaseDate
+            self.isPreOrderEnabled = isPreOrderEnabled
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case isAvailable = "available"
+            case releaseDate
+            case isPreOrderEnabled = "preOrderEnabled"
+        }
+    }
+
+    public struct Relationships: Codable, Equatable, Sendable {
+        public var territory: Territory?
+
+        public struct Territory: Codable, Equatable, Sendable {
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case territories
+                }
+
+                public init(type: `Type` = .territories, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(data: Data? = nil) {
+                self.data = data
+            }
+        }
+
+        public init(territory: Territory? = nil) {
+            self.territory = territory
+        }
+    }
+
+    public init(type: `Type` = .territoryAvailabilities, id: String? = nil, attributes: Attributes? = nil, relationships: Relationships? = nil) {
         self.type = type
         self.id = id
+        self.attributes = attributes
+        self.relationships = relationships
     }
 }

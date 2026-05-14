@@ -16,13 +16,15 @@ extension Resources.V1.BetaFeedbackCrashSubmissions {
         /// Path: `/v1/betaFeedbackCrashSubmissions/{id}`
         public let path: String
 
-        public func get(fieldsBetaFeedbackCrashSubmissions: [FieldsBetaFeedbackCrashSubmissions]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.BetaFeedbackCrashSubmissionResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaFeedbackCrashSubmissions, include), id: "betaFeedbackCrashSubmissions_getInstance")
+        public func get(fieldsBetaFeedbackCrashSubmissions: [FieldsBetaFeedbackCrashSubmissions]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsBetaTesters: [FieldsBetaTesters]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.BetaFeedbackCrashSubmissionResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaFeedbackCrashSubmissions, fieldsBuilds, fieldsBetaTesters, include), id: "betaFeedbackCrashSubmissions_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsBetaFeedbackCrashSubmissions: [FieldsBetaFeedbackCrashSubmissions]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsBetaFeedbackCrashSubmissions: [FieldsBetaFeedbackCrashSubmissions]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsBetaTesters: [FieldsBetaTesters]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsBetaFeedbackCrashSubmissions, forKey: "fields[betaFeedbackCrashSubmissions]")
+            encoder.encode(fieldsBuilds, forKey: "fields[builds]")
+            encoder.encode(fieldsBetaTesters, forKey: "fields[betaTesters]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -51,6 +53,47 @@ extension Resources.V1.BetaFeedbackCrashSubmissions {
             case crashLog
             case build
             case tester
+        }
+
+        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
+            case version
+            case uploadedDate
+            case expirationDate
+            case expired
+            case minOsVersion
+            case lsMinimumSystemVersion
+            case computedMinMacOsVersion
+            case computedMinVisionOsVersion
+            case iconAssetToken
+            case processingState
+            case buildAudienceType
+            case usesNonExemptEncryption
+            case preReleaseVersion
+            case individualTesters
+            case betaGroups
+            case betaBuildLocalizations
+            case appEncryptionDeclaration
+            case betaAppReviewSubmission
+            case app
+            case buildBetaDetail
+            case appStoreVersion
+            case icons
+            case buildBundles
+            case buildUpload
+            case perfPowerMetrics
+            case diagnosticSignatures
+        }
+
+        public enum FieldsBetaTesters: String, CaseIterable, Codable, Sendable {
+            case firstName
+            case lastName
+            case email
+            case inviteType
+            case state
+            case appDevices
+            case apps
+            case betaGroups
+            case builds
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

@@ -16,13 +16,15 @@ extension Resources.V1.ScmRepositories {
         /// Path: `/v1/scmRepositories/{id}`
         public let path: String
 
-        public func get(fieldsScmRepositories: [FieldsScmRepositories]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.ScmRepositoryResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsScmRepositories, include), id: "scmRepositories_getInstance")
+        public func get(fieldsScmRepositories: [FieldsScmRepositories]? = nil, fieldsScmProviders: [FieldsScmProviders]? = nil, fieldsScmGitReferences: [FieldsScmGitReferences]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.ScmRepositoryResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsScmRepositories, fieldsScmProviders, fieldsScmGitReferences, include), id: "scmRepositories_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsScmRepositories: [FieldsScmRepositories]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsScmRepositories: [FieldsScmRepositories]?, _ fieldsScmProviders: [FieldsScmProviders]?, _ fieldsScmGitReferences: [FieldsScmGitReferences]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsScmRepositories, forKey: "fields[scmRepositories]")
+            encoder.encode(fieldsScmProviders, forKey: "fields[scmProviders]")
+            encoder.encode(fieldsScmGitReferences, forKey: "fields[scmGitReferences]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -37,6 +39,20 @@ extension Resources.V1.ScmRepositories {
             case defaultBranch
             case gitReferences
             case pullRequests
+        }
+
+        public enum FieldsScmProviders: String, CaseIterable, Codable, Sendable {
+            case scmProviderType
+            case url
+            case repositories
+        }
+
+        public enum FieldsScmGitReferences: String, CaseIterable, Codable, Sendable {
+            case name
+            case canonicalName
+            case isDeleted
+            case kind
+            case repository
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

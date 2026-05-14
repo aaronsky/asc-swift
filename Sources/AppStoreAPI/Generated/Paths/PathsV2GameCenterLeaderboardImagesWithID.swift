@@ -16,13 +16,14 @@ extension Resources.V2.GameCenterLeaderboardImages {
         /// Path: `/v2/gameCenterLeaderboardImages/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterLeaderboardImages: [FieldsGameCenterLeaderboardImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardImageV2Response> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardImages, include), id: "gameCenterLeaderboardImagesV2_getInstance")
+        public func get(fieldsGameCenterLeaderboardImages: [FieldsGameCenterLeaderboardImages]? = nil, fieldsGameCenterLeaderboardLocalizations: [FieldsGameCenterLeaderboardLocalizations]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardImageV2Response> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardImages, fieldsGameCenterLeaderboardLocalizations, include), id: "gameCenterLeaderboardImagesV2_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterLeaderboardImages: [FieldsGameCenterLeaderboardImages]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterLeaderboardImages: [FieldsGameCenterLeaderboardImages]?, _ fieldsGameCenterLeaderboardLocalizations: [FieldsGameCenterLeaderboardLocalizations]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterLeaderboardImages, forKey: "fields[gameCenterLeaderboardImages]")
+            encoder.encode(fieldsGameCenterLeaderboardLocalizations, forKey: "fields[gameCenterLeaderboardLocalizations]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -34,6 +35,17 @@ extension Resources.V2.GameCenterLeaderboardImages {
             case uploadOperations
             case assetDeliveryState
             case localization
+        }
+
+        public enum FieldsGameCenterLeaderboardLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case name
+            case formatterOverride
+            case formatterSuffix
+            case formatterSuffixSingular
+            case description
+            case version
+            case image
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

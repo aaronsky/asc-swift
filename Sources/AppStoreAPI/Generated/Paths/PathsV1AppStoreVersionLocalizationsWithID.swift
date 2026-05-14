@@ -16,13 +16,14 @@ extension Resources.V1.AppStoreVersionLocalizations {
         /// Path: `/v1/appStoreVersionLocalizations/{id}`
         public let path: String
 
-        public func get(fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, include: [Include]? = nil, limitAppPreviewSets: Int? = nil, limitAppScreenshotSets: Int? = nil, limitSearchKeywords: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionLocalizationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionLocalizations, fieldsAppScreenshotSets, fieldsAppPreviewSets, include, limitAppPreviewSets, limitAppScreenshotSets, limitSearchKeywords), id: "appStoreVersionLocalizations_getInstance")
+        public func get(fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, include: [Include]? = nil, limitAppPreviewSets: Int? = nil, limitAppScreenshotSets: Int? = nil, limitSearchKeywords: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionLocalizationResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionLocalizations, fieldsAppStoreVersions, fieldsAppScreenshotSets, fieldsAppPreviewSets, include, limitAppPreviewSets, limitAppScreenshotSets, limitSearchKeywords), id: "appStoreVersionLocalizations_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ include: [Include]?, _ limitAppPreviewSets: Int?, _ limitAppScreenshotSets: Int?, _ limitSearchKeywords: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ include: [Include]?, _ limitAppPreviewSets: Int?, _ limitAppScreenshotSets: Int?, _ limitSearchKeywords: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppStoreVersionLocalizations, forKey: "fields[appStoreVersionLocalizations]")
+            encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
             encoder.encode(fieldsAppScreenshotSets, forKey: "fields[appScreenshotSets]")
             encoder.encode(fieldsAppPreviewSets, forKey: "fields[appPreviewSets]")
             encoder.encode(include, forKey: "include")
@@ -44,6 +45,33 @@ extension Resources.V1.AppStoreVersionLocalizations {
             case appScreenshotSets
             case appPreviewSets
             case searchKeywords
+        }
+
+        public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
+            case platform
+            case versionString
+            case appStoreState
+            case appVersionState
+            case copyright
+            case reviewType
+            case releaseType
+            case earliestReleaseDate
+            case usesIdfa
+            case downloadable
+            case createdDate
+            case app
+            case appStoreVersionLocalizations
+            case build
+            case appStoreVersionPhasedRelease
+            case gameCenterAppVersion
+            case routingAppCoverage
+            case appStoreReviewDetail
+            case appStoreVersionSubmission
+            case appClipDefaultExperience
+            case appStoreVersionExperiments
+            case appStoreVersionExperimentsV2
+            case customerReviews
+            case alternativeDistributionPackage
         }
 
         public enum FieldsAppScreenshotSets: String, CaseIterable, Codable, Sendable {

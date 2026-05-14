@@ -16,14 +16,16 @@ extension Resources.V1.GameCenterChallengeVersions {
         /// Path: `/v1/gameCenterChallengeVersions/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterChallengeVersions: [FieldsGameCenterChallengeVersions]? = nil, fieldsGameCenterChallengeLocalizations: [FieldsGameCenterChallengeLocalizations]? = nil, fieldsGameCenterChallengeImages: [FieldsGameCenterChallengeImages]? = nil, include: [Include]? = nil, limitLocalizations: Int? = nil, limitReleases: Int? = nil) -> Request<AppStoreAPI.GameCenterChallengeVersionResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterChallengeVersions, fieldsGameCenterChallengeLocalizations, fieldsGameCenterChallengeImages, include, limitLocalizations, limitReleases), id: "gameCenterChallengeVersions_getInstance")
+        public func get(fieldsGameCenterChallengeVersions: [FieldsGameCenterChallengeVersions]? = nil, fieldsGameCenterChallenges: [FieldsGameCenterChallenges]? = nil, fieldsGameCenterChallengeLocalizations: [FieldsGameCenterChallengeLocalizations]? = nil, fieldsGameCenterChallengeVersionReleases: [FieldsGameCenterChallengeVersionReleases]? = nil, fieldsGameCenterChallengeImages: [FieldsGameCenterChallengeImages]? = nil, include: [Include]? = nil, limitLocalizations: Int? = nil, limitReleases: Int? = nil) -> Request<AppStoreAPI.GameCenterChallengeVersionResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterChallengeVersions, fieldsGameCenterChallenges, fieldsGameCenterChallengeLocalizations, fieldsGameCenterChallengeVersionReleases, fieldsGameCenterChallengeImages, include, limitLocalizations, limitReleases), id: "gameCenterChallengeVersions_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterChallengeVersions: [FieldsGameCenterChallengeVersions]?, _ fieldsGameCenterChallengeLocalizations: [FieldsGameCenterChallengeLocalizations]?, _ fieldsGameCenterChallengeImages: [FieldsGameCenterChallengeImages]?, _ include: [Include]?, _ limitLocalizations: Int?, _ limitReleases: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterChallengeVersions: [FieldsGameCenterChallengeVersions]?, _ fieldsGameCenterChallenges: [FieldsGameCenterChallenges]?, _ fieldsGameCenterChallengeLocalizations: [FieldsGameCenterChallengeLocalizations]?, _ fieldsGameCenterChallengeVersionReleases: [FieldsGameCenterChallengeVersionReleases]?, _ fieldsGameCenterChallengeImages: [FieldsGameCenterChallengeImages]?, _ include: [Include]?, _ limitLocalizations: Int?, _ limitReleases: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterChallengeVersions, forKey: "fields[gameCenterChallengeVersions]")
+            encoder.encode(fieldsGameCenterChallenges, forKey: "fields[gameCenterChallenges]")
             encoder.encode(fieldsGameCenterChallengeLocalizations, forKey: "fields[gameCenterChallengeLocalizations]")
+            encoder.encode(fieldsGameCenterChallengeVersionReleases, forKey: "fields[gameCenterChallengeVersionReleases]")
             encoder.encode(fieldsGameCenterChallengeImages, forKey: "fields[gameCenterChallengeImages]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitLocalizations, forKey: "limit[localizations]")
@@ -40,12 +42,29 @@ extension Resources.V1.GameCenterChallengeVersions {
             case defaultImage
         }
 
+        public enum FieldsGameCenterChallenges: String, CaseIterable, Codable, Sendable {
+            case referenceName
+            case vendorIdentifier
+            case archived
+            case challengeType
+            case repeatable
+            case gameCenterDetail
+            case gameCenterGroup
+            case versions
+            case leaderboard
+            case leaderboardV2
+        }
+
         public enum FieldsGameCenterChallengeLocalizations: String, CaseIterable, Codable, Sendable {
             case locale
             case name
             case description
             case version
             case image
+        }
+
+        public enum FieldsGameCenterChallengeVersionReleases: String, CaseIterable, Codable, Sendable {
+            case version
         }
 
         public enum FieldsGameCenterChallengeImages: String, CaseIterable, Codable, Sendable {

@@ -16,13 +16,14 @@ extension Resources.V1.SubscriptionOfferCodes {
         /// Path: `/v1/subscriptionOfferCodes/{id}`
         public let path: String
 
-        public func get(fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]? = nil, fieldsSubscriptionOfferCodeCustomCodes: [FieldsSubscriptionOfferCodeCustomCodes]? = nil, fieldsSubscriptionOfferCodePrices: [FieldsSubscriptionOfferCodePrices]? = nil, include: [Include]? = nil, limitCustomCodes: Int? = nil, limitOneTimeUseCodes: Int? = nil, limitPrices: Int? = nil) -> Request<AppStoreAPI.SubscriptionOfferCodeResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionOfferCodes, fieldsSubscriptionOfferCodeOneTimeUseCodes, fieldsSubscriptionOfferCodeCustomCodes, fieldsSubscriptionOfferCodePrices, include, limitCustomCodes, limitOneTimeUseCodes, limitPrices), id: "subscriptionOfferCodes_getInstance")
+        public func get(fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]? = nil, fieldsSubscriptionOfferCodeCustomCodes: [FieldsSubscriptionOfferCodeCustomCodes]? = nil, fieldsSubscriptionOfferCodePrices: [FieldsSubscriptionOfferCodePrices]? = nil, include: [Include]? = nil, limitCustomCodes: Int? = nil, limitOneTimeUseCodes: Int? = nil, limitPrices: Int? = nil) -> Request<AppStoreAPI.SubscriptionOfferCodeResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionOfferCodes, fieldsSubscriptions, fieldsSubscriptionOfferCodeOneTimeUseCodes, fieldsSubscriptionOfferCodeCustomCodes, fieldsSubscriptionOfferCodePrices, include, limitCustomCodes, limitOneTimeUseCodes, limitPrices), id: "subscriptionOfferCodes_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]?, _ fieldsSubscriptionOfferCodeCustomCodes: [FieldsSubscriptionOfferCodeCustomCodes]?, _ fieldsSubscriptionOfferCodePrices: [FieldsSubscriptionOfferCodePrices]?, _ include: [Include]?, _ limitCustomCodes: Int?, _ limitOneTimeUseCodes: Int?, _ limitPrices: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]?, _ fieldsSubscriptionOfferCodeCustomCodes: [FieldsSubscriptionOfferCodeCustomCodes]?, _ fieldsSubscriptionOfferCodePrices: [FieldsSubscriptionOfferCodePrices]?, _ include: [Include]?, _ limitCustomCodes: Int?, _ limitOneTimeUseCodes: Int?, _ limitPrices: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsSubscriptionOfferCodes, forKey: "fields[subscriptionOfferCodes]")
+            encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
             encoder.encode(fieldsSubscriptionOfferCodeOneTimeUseCodes, forKey: "fields[subscriptionOfferCodeOneTimeUseCodes]")
             encoder.encode(fieldsSubscriptionOfferCodeCustomCodes, forKey: "fields[subscriptionOfferCodeCustomCodes]")
             encoder.encode(fieldsSubscriptionOfferCodePrices, forKey: "fields[subscriptionOfferCodePrices]")
@@ -49,6 +50,28 @@ extension Resources.V1.SubscriptionOfferCodes {
             case oneTimeUseCodes
             case customCodes
             case prices
+        }
+
+        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
+            case name
+            case productID = "productId"
+            case familySharable
+            case state
+            case subscriptionPeriod
+            case reviewNote
+            case groupLevel
+            case subscriptionLocalizations
+            case appStoreReviewScreenshot
+            case group
+            case introductoryOffers
+            case promotionalOffers
+            case offerCodes
+            case prices
+            case pricePoints
+            case promotedPurchase
+            case subscriptionAvailability
+            case winBackOffers
+            case images
         }
 
         public enum FieldsSubscriptionOfferCodeOneTimeUseCodes: String, CaseIterable, Codable, Sendable {

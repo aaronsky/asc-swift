@@ -16,13 +16,14 @@ extension Resources.V1.GameCenterChallengeLocalizations {
         /// Path: `/v1/gameCenterChallengeLocalizations/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterChallengeLocalizations: [FieldsGameCenterChallengeLocalizations]? = nil, fieldsGameCenterChallengeImages: [FieldsGameCenterChallengeImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterChallengeLocalizationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterChallengeLocalizations, fieldsGameCenterChallengeImages, include), id: "gameCenterChallengeLocalizations_getInstance")
+        public func get(fieldsGameCenterChallengeLocalizations: [FieldsGameCenterChallengeLocalizations]? = nil, fieldsGameCenterChallengeVersions: [FieldsGameCenterChallengeVersions]? = nil, fieldsGameCenterChallengeImages: [FieldsGameCenterChallengeImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterChallengeLocalizationResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterChallengeLocalizations, fieldsGameCenterChallengeVersions, fieldsGameCenterChallengeImages, include), id: "gameCenterChallengeLocalizations_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterChallengeLocalizations: [FieldsGameCenterChallengeLocalizations]?, _ fieldsGameCenterChallengeImages: [FieldsGameCenterChallengeImages]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterChallengeLocalizations: [FieldsGameCenterChallengeLocalizations]?, _ fieldsGameCenterChallengeVersions: [FieldsGameCenterChallengeVersions]?, _ fieldsGameCenterChallengeImages: [FieldsGameCenterChallengeImages]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterChallengeLocalizations, forKey: "fields[gameCenterChallengeLocalizations]")
+            encoder.encode(fieldsGameCenterChallengeVersions, forKey: "fields[gameCenterChallengeVersions]")
             encoder.encode(fieldsGameCenterChallengeImages, forKey: "fields[gameCenterChallengeImages]")
             encoder.encode(include, forKey: "include")
             return encoder.items
@@ -34,6 +35,15 @@ extension Resources.V1.GameCenterChallengeLocalizations {
             case description
             case version
             case image
+        }
+
+        public enum FieldsGameCenterChallengeVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case state
+            case challenge
+            case localizations
+            case releases
+            case defaultImage
         }
 
         public enum FieldsGameCenterChallengeImages: String, CaseIterable, Codable, Sendable {

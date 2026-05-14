@@ -16,13 +16,14 @@ extension Resources.V1.GameCenterLeaderboardSetLocalizations {
         /// Path: `/v1/gameCenterLeaderboardSetLocalizations/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterLeaderboardSetLocalizations: [FieldsGameCenterLeaderboardSetLocalizations]? = nil, fieldsGameCenterLeaderboardSetImages: [FieldsGameCenterLeaderboardSetImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardSetLocalizationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardSetLocalizations, fieldsGameCenterLeaderboardSetImages, include), id: "gameCenterLeaderboardSetLocalizations_getInstance")
+        public func get(fieldsGameCenterLeaderboardSetLocalizations: [FieldsGameCenterLeaderboardSetLocalizations]? = nil, fieldsGameCenterLeaderboardSets: [FieldsGameCenterLeaderboardSets]? = nil, fieldsGameCenterLeaderboardSetImages: [FieldsGameCenterLeaderboardSetImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardSetLocalizationResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardSetLocalizations, fieldsGameCenterLeaderboardSets, fieldsGameCenterLeaderboardSetImages, include), id: "gameCenterLeaderboardSetLocalizations_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterLeaderboardSetLocalizations: [FieldsGameCenterLeaderboardSetLocalizations]?, _ fieldsGameCenterLeaderboardSetImages: [FieldsGameCenterLeaderboardSetImages]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterLeaderboardSetLocalizations: [FieldsGameCenterLeaderboardSetLocalizations]?, _ fieldsGameCenterLeaderboardSets: [FieldsGameCenterLeaderboardSets]?, _ fieldsGameCenterLeaderboardSetImages: [FieldsGameCenterLeaderboardSetImages]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterLeaderboardSetLocalizations, forKey: "fields[gameCenterLeaderboardSetLocalizations]")
+            encoder.encode(fieldsGameCenterLeaderboardSets, forKey: "fields[gameCenterLeaderboardSets]")
             encoder.encode(fieldsGameCenterLeaderboardSetImages, forKey: "fields[gameCenterLeaderboardSetImages]")
             encoder.encode(include, forKey: "include")
             return encoder.items
@@ -33,6 +34,17 @@ extension Resources.V1.GameCenterLeaderboardSetLocalizations {
             case name
             case gameCenterLeaderboardSet
             case gameCenterLeaderboardSetImage
+        }
+
+        public enum FieldsGameCenterLeaderboardSets: String, CaseIterable, Codable, Sendable {
+            case referenceName
+            case vendorIdentifier
+            case gameCenterDetail
+            case gameCenterGroup
+            case groupLeaderboardSet
+            case localizations
+            case gameCenterLeaderboards
+            case releases
         }
 
         public enum FieldsGameCenterLeaderboardSetImages: String, CaseIterable, Codable, Sendable {

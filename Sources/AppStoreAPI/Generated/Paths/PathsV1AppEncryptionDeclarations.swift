@@ -16,17 +16,18 @@ extension Resources.V1 {
         /// Path: `/v1/appEncryptionDeclarations`
         public let path: String
 
-        public func get(filterPlatform: [FilterPlatform]? = nil, filterApp: [String]? = nil, filterBuilds: [String]? = nil, fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsAppEncryptionDeclarationDocuments: [FieldsAppEncryptionDeclarationDocuments]? = nil, limit: Int? = nil, include: [Include]? = nil, limitBuilds: Int? = nil) -> Request<AppStoreAPI.AppEncryptionDeclarationsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterPlatform, filterApp, filterBuilds, fieldsAppEncryptionDeclarations, fieldsApps, fieldsAppEncryptionDeclarationDocuments, limit, include, limitBuilds), id: "appEncryptionDeclarations_getCollection")
+        public func get(filterPlatform: [FilterPlatform]? = nil, filterApp: [String]? = nil, filterBuilds: [String]? = nil, fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsAppEncryptionDeclarationDocuments: [FieldsAppEncryptionDeclarationDocuments]? = nil, limit: Int? = nil, include: [Include]? = nil, limitBuilds: Int? = nil) -> Request<AppStoreAPI.AppEncryptionDeclarationsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterPlatform, filterApp, filterBuilds, fieldsAppEncryptionDeclarations, fieldsApps, fieldsBuilds, fieldsAppEncryptionDeclarationDocuments, limit, include, limitBuilds), id: "appEncryptionDeclarations_getCollection")
         }
 
-        private func makeGetQuery(_ filterPlatform: [FilterPlatform]?, _ filterApp: [String]?, _ filterBuilds: [String]?, _ fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]?, _ fieldsApps: [FieldsApps]?, _ fieldsAppEncryptionDeclarationDocuments: [FieldsAppEncryptionDeclarationDocuments]?, _ limit: Int?, _ include: [Include]?, _ limitBuilds: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterPlatform: [FilterPlatform]?, _ filterApp: [String]?, _ filterBuilds: [String]?, _ fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]?, _ fieldsApps: [FieldsApps]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsAppEncryptionDeclarationDocuments: [FieldsAppEncryptionDeclarationDocuments]?, _ limit: Int?, _ include: [Include]?, _ limitBuilds: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterPlatform, forKey: "filter[platform]")
             encoder.encode(filterApp, forKey: "filter[app]")
             encoder.encode(filterBuilds, forKey: "filter[builds]")
             encoder.encode(fieldsAppEncryptionDeclarations, forKey: "fields[appEncryptionDeclarations]")
             encoder.encode(fieldsApps, forKey: "fields[apps]")
+            encoder.encode(fieldsBuilds, forKey: "fields[builds]")
             encoder.encode(fieldsAppEncryptionDeclarationDocuments, forKey: "fields[appEncryptionDeclarationDocuments]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
@@ -117,6 +118,35 @@ extension Resources.V1 {
             case searchKeywords
             case webhooks
             case androidToIosAppMappingDetails
+        }
+
+        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
+            case version
+            case uploadedDate
+            case expirationDate
+            case expired
+            case minOsVersion
+            case lsMinimumSystemVersion
+            case computedMinMacOsVersion
+            case computedMinVisionOsVersion
+            case iconAssetToken
+            case processingState
+            case buildAudienceType
+            case usesNonExemptEncryption
+            case preReleaseVersion
+            case individualTesters
+            case betaGroups
+            case betaBuildLocalizations
+            case appEncryptionDeclaration
+            case betaAppReviewSubmission
+            case app
+            case buildBetaDetail
+            case appStoreVersion
+            case icons
+            case buildBundles
+            case buildUpload
+            case perfPowerMetrics
+            case diagnosticSignatures
         }
 
         public enum FieldsAppEncryptionDeclarationDocuments: String, CaseIterable, Codable, Sendable {

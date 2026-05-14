@@ -16,13 +16,14 @@ extension Resources.V1.GameCenterAchievementImages {
         /// Path: `/v1/gameCenterAchievementImages/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterAchievementImages: [FieldsGameCenterAchievementImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterAchievementImageResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterAchievementImages, include), id: "gameCenterAchievementImages_getInstance")
+        public func get(fieldsGameCenterAchievementImages: [FieldsGameCenterAchievementImages]? = nil, fieldsGameCenterAchievementLocalizations: [FieldsGameCenterAchievementLocalizations]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterAchievementImageResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterAchievementImages, fieldsGameCenterAchievementLocalizations, include), id: "gameCenterAchievementImages_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterAchievementImages: [FieldsGameCenterAchievementImages]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterAchievementImages: [FieldsGameCenterAchievementImages]?, _ fieldsGameCenterAchievementLocalizations: [FieldsGameCenterAchievementLocalizations]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterAchievementImages, forKey: "fields[gameCenterAchievementImages]")
+            encoder.encode(fieldsGameCenterAchievementLocalizations, forKey: "fields[gameCenterAchievementLocalizations]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -34,6 +35,15 @@ extension Resources.V1.GameCenterAchievementImages {
             case uploadOperations
             case assetDeliveryState
             case gameCenterAchievementLocalization
+        }
+
+        public enum FieldsGameCenterAchievementLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case name
+            case beforeEarnedDescription
+            case afterEarnedDescription
+            case gameCenterAchievement
+            case gameCenterAchievementImage
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

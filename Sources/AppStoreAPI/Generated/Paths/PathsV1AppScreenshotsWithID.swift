@@ -16,13 +16,14 @@ extension Resources.V1.AppScreenshots {
         /// Path: `/v1/appScreenshots/{id}`
         public let path: String
 
-        public func get(fieldsAppScreenshots: [FieldsAppScreenshots]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppScreenshotResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppScreenshots, include), id: "appScreenshots_getInstance")
+        public func get(fieldsAppScreenshots: [FieldsAppScreenshots]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppScreenshotResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppScreenshots, fieldsAppScreenshotSets, include), id: "appScreenshots_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppScreenshots: [FieldsAppScreenshots]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppScreenshots: [FieldsAppScreenshots]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppScreenshots, forKey: "fields[appScreenshots]")
+            encoder.encode(fieldsAppScreenshotSets, forKey: "fields[appScreenshotSets]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -37,6 +38,14 @@ extension Resources.V1.AppScreenshots {
             case uploadOperations
             case assetDeliveryState
             case appScreenshotSet
+        }
+
+        public enum FieldsAppScreenshotSets: String, CaseIterable, Codable, Sendable {
+            case screenshotDisplayType
+            case appStoreVersionLocalization
+            case appCustomProductPageLocalization
+            case appStoreVersionExperimentTreatmentLocalization
+            case appScreenshots
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

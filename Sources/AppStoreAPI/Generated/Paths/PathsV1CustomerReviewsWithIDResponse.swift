@@ -43,6 +43,7 @@ extension Resources.V1.CustomerReviews.WithID {
             case createdDate
             case territory
             case response
+            case reviewTerritory
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

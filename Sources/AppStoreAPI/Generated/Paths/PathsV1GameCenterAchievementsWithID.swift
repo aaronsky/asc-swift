@@ -16,15 +16,18 @@ extension Resources.V1.GameCenterAchievements {
         /// Path: `/v1/gameCenterAchievements/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterAchievements: [FieldsGameCenterAchievements]? = nil, fieldsGameCenterAchievementLocalizations: [FieldsGameCenterAchievementLocalizations]? = nil, fieldsGameCenterAchievementReleases: [FieldsGameCenterAchievementReleases]? = nil, include: [Include]? = nil, limitLocalizations: Int? = nil, limitReleases: Int? = nil) -> Request<AppStoreAPI.GameCenterAchievementResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterAchievements, fieldsGameCenterAchievementLocalizations, fieldsGameCenterAchievementReleases, include, limitLocalizations, limitReleases), id: "gameCenterAchievements_getInstance")
+        public func get(fieldsGameCenterAchievements: [FieldsGameCenterAchievements]? = nil, fieldsGameCenterDetails: [FieldsGameCenterDetails]? = nil, fieldsGameCenterGroups: [FieldsGameCenterGroups]? = nil, fieldsGameCenterAchievementLocalizations: [FieldsGameCenterAchievementLocalizations]? = nil, fieldsGameCenterAchievementReleases: [FieldsGameCenterAchievementReleases]? = nil, fieldsGameCenterActivities: [FieldsGameCenterActivities]? = nil, include: [Include]? = nil, limitLocalizations: Int? = nil, limitReleases: Int? = nil) -> Request<AppStoreAPI.GameCenterAchievementResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterAchievements, fieldsGameCenterDetails, fieldsGameCenterGroups, fieldsGameCenterAchievementLocalizations, fieldsGameCenterAchievementReleases, fieldsGameCenterActivities, include, limitLocalizations, limitReleases), id: "gameCenterAchievements_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterAchievements: [FieldsGameCenterAchievements]?, _ fieldsGameCenterAchievementLocalizations: [FieldsGameCenterAchievementLocalizations]?, _ fieldsGameCenterAchievementReleases: [FieldsGameCenterAchievementReleases]?, _ include: [Include]?, _ limitLocalizations: Int?, _ limitReleases: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterAchievements: [FieldsGameCenterAchievements]?, _ fieldsGameCenterDetails: [FieldsGameCenterDetails]?, _ fieldsGameCenterGroups: [FieldsGameCenterGroups]?, _ fieldsGameCenterAchievementLocalizations: [FieldsGameCenterAchievementLocalizations]?, _ fieldsGameCenterAchievementReleases: [FieldsGameCenterAchievementReleases]?, _ fieldsGameCenterActivities: [FieldsGameCenterActivities]?, _ include: [Include]?, _ limitLocalizations: Int?, _ limitReleases: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterAchievements, forKey: "fields[gameCenterAchievements]")
+            encoder.encode(fieldsGameCenterDetails, forKey: "fields[gameCenterDetails]")
+            encoder.encode(fieldsGameCenterGroups, forKey: "fields[gameCenterGroups]")
             encoder.encode(fieldsGameCenterAchievementLocalizations, forKey: "fields[gameCenterAchievementLocalizations]")
             encoder.encode(fieldsGameCenterAchievementReleases, forKey: "fields[gameCenterAchievementReleases]")
+            encoder.encode(fieldsGameCenterActivities, forKey: "fields[gameCenterActivities]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitLocalizations, forKey: "limit[localizations]")
             encoder.encode(limitReleases, forKey: "limit[releases]")
@@ -47,6 +50,45 @@ extension Resources.V1.GameCenterAchievements {
             case activity
         }
 
+        public enum FieldsGameCenterDetails: String, CaseIterable, Codable, Sendable {
+            case arcadeEnabled
+            case challengeEnabled
+            case app
+            case gameCenterAppVersions
+            case gameCenterGroup
+            case gameCenterLeaderboards
+            case gameCenterLeaderboardsV2
+            case gameCenterLeaderboardSets
+            case gameCenterLeaderboardSetsV2
+            case gameCenterAchievements
+            case gameCenterAchievementsV2
+            case gameCenterActivities
+            case gameCenterChallenges
+            case defaultLeaderboard
+            case defaultLeaderboardV2
+            case defaultGroupLeaderboard
+            case defaultGroupLeaderboardV2
+            case achievementReleases
+            case activityReleases
+            case challengeReleases
+            case leaderboardReleases
+            case leaderboardSetReleases
+            case challengesMinimumPlatformVersions
+        }
+
+        public enum FieldsGameCenterGroups: String, CaseIterable, Codable, Sendable {
+            case referenceName
+            case gameCenterDetails
+            case gameCenterLeaderboards
+            case gameCenterLeaderboardsV2
+            case gameCenterLeaderboardSets
+            case gameCenterLeaderboardSetsV2
+            case gameCenterAchievements
+            case gameCenterAchievementsV2
+            case gameCenterActivities
+            case gameCenterChallenges
+        }
+
         public enum FieldsGameCenterAchievementLocalizations: String, CaseIterable, Codable, Sendable {
             case locale
             case name
@@ -60,6 +102,24 @@ extension Resources.V1.GameCenterAchievements {
             case live
             case gameCenterDetail
             case gameCenterAchievement
+        }
+
+        public enum FieldsGameCenterActivities: String, CaseIterable, Codable, Sendable {
+            case referenceName
+            case vendorIdentifier
+            case playStyle
+            case minimumPlayersCount
+            case maximumPlayersCount
+            case supportsPartyCode
+            case archived
+            case properties
+            case gameCenterDetail
+            case gameCenterGroup
+            case achievements
+            case achievementsV2
+            case leaderboards
+            case leaderboardsV2
+            case versions
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

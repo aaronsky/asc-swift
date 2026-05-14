@@ -16,13 +16,14 @@ extension Resources.V1.CustomerReviewResponses {
         /// Path: `/v1/customerReviewResponses/{id}`
         public let path: String
 
-        public func get(fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CustomerReviewResponseV1Response> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCustomerReviewResponses, include), id: "customerReviewResponses_getInstance")
+        public func get(fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]? = nil, fieldsCustomerReviews: [FieldsCustomerReviews]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CustomerReviewResponseV1Response> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCustomerReviewResponses, fieldsCustomerReviews, include), id: "customerReviewResponses_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]?, _ fieldsCustomerReviews: [FieldsCustomerReviews]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsCustomerReviewResponses, forKey: "fields[customerReviewResponses]")
+            encoder.encode(fieldsCustomerReviews, forKey: "fields[customerReviews]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -32,6 +33,17 @@ extension Resources.V1.CustomerReviewResponses {
             case lastModifiedDate
             case state
             case review
+        }
+
+        public enum FieldsCustomerReviews: String, CaseIterable, Codable, Sendable {
+            case rating
+            case title
+            case body
+            case reviewerNickname
+            case createdDate
+            case territory
+            case response
+            case reviewTerritory
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

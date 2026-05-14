@@ -16,19 +16,30 @@ extension Resources.V1.GameCenterActivityVersionReleases {
         /// Path: `/v1/gameCenterActivityVersionReleases/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterActivityVersionReleases: [FieldsGameCenterActivityVersionReleases]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterActivityVersionReleaseResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterActivityVersionReleases, include), id: "gameCenterActivityVersionReleases_getInstance")
+        public func get(fieldsGameCenterActivityVersionReleases: [FieldsGameCenterActivityVersionReleases]? = nil, fieldsGameCenterActivityVersions: [FieldsGameCenterActivityVersions]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterActivityVersionReleaseResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterActivityVersionReleases, fieldsGameCenterActivityVersions, include), id: "gameCenterActivityVersionReleases_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterActivityVersionReleases: [FieldsGameCenterActivityVersionReleases]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterActivityVersionReleases: [FieldsGameCenterActivityVersionReleases]?, _ fieldsGameCenterActivityVersions: [FieldsGameCenterActivityVersions]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterActivityVersionReleases, forKey: "fields[gameCenterActivityVersionReleases]")
+            encoder.encode(fieldsGameCenterActivityVersions, forKey: "fields[gameCenterActivityVersions]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
 
         public enum FieldsGameCenterActivityVersionReleases: String, CaseIterable, Codable, Sendable {
             case version
+        }
+
+        public enum FieldsGameCenterActivityVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case state
+            case fallbackURL = "fallbackUrl"
+            case activity
+            case localizations
+            case defaultImage
+            case releases
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

@@ -16,16 +16,17 @@ extension Resources.V1 {
         /// Path: `/v1/ciProducts`
         public let path: String
 
-        public func get(filterProductType: [FilterProductType]? = nil, filterApp: [String]? = nil, fieldsCiProducts: [FieldsCiProducts]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, limit: Int? = nil, include: [Include]? = nil, limitPrimaryRepositories: Int? = nil) -> Request<AppStoreAPI.CiProductsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterProductType, filterApp, fieldsCiProducts, fieldsApps, fieldsScmRepositories, limit, include, limitPrimaryRepositories), id: "ciProducts_getCollection")
+        public func get(filterProductType: [FilterProductType]? = nil, filterApp: [String]? = nil, fieldsCiProducts: [FieldsCiProducts]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBundleIDs: [FieldsBundleIDs]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, limit: Int? = nil, include: [Include]? = nil, limitPrimaryRepositories: Int? = nil) -> Request<AppStoreAPI.CiProductsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterProductType, filterApp, fieldsCiProducts, fieldsApps, fieldsBundleIDs, fieldsScmRepositories, limit, include, limitPrimaryRepositories), id: "ciProducts_getCollection")
         }
 
-        private func makeGetQuery(_ filterProductType: [FilterProductType]?, _ filterApp: [String]?, _ fieldsCiProducts: [FieldsCiProducts]?, _ fieldsApps: [FieldsApps]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ limit: Int?, _ include: [Include]?, _ limitPrimaryRepositories: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterProductType: [FilterProductType]?, _ filterApp: [String]?, _ fieldsCiProducts: [FieldsCiProducts]?, _ fieldsApps: [FieldsApps]?, _ fieldsBundleIDs: [FieldsBundleIDs]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ limit: Int?, _ include: [Include]?, _ limitPrimaryRepositories: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterProductType, forKey: "filter[productType]")
             encoder.encode(filterApp, forKey: "filter[app]")
             encoder.encode(fieldsCiProducts, forKey: "fields[ciProducts]")
             encoder.encode(fieldsApps, forKey: "fields[apps]")
+            encoder.encode(fieldsBundleIDs, forKey: "fields[bundleIds]")
             encoder.encode(fieldsScmRepositories, forKey: "fields[scmRepositories]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
@@ -106,6 +107,16 @@ extension Resources.V1 {
             case searchKeywords
             case webhooks
             case androidToIosAppMappingDetails
+        }
+
+        public enum FieldsBundleIDs: String, CaseIterable, Codable, Sendable {
+            case name
+            case platform
+            case identifier
+            case seedID = "seedId"
+            case profiles
+            case bundleIDCapabilities = "bundleIdCapabilities"
+            case app
         }
 
         public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {

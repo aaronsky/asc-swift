@@ -16,13 +16,14 @@ extension Resources.V1.AppClipAppStoreReviewDetails {
         /// Path: `/v1/appClipAppStoreReviewDetails/{id}`
         public let path: String
 
-        public func get(fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppClipAppStoreReviewDetailResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipAppStoreReviewDetails, include), id: "appClipAppStoreReviewDetails_getInstance")
+        public func get(fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppClipAppStoreReviewDetailResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipAppStoreReviewDetails, fieldsAppClipDefaultExperiences, include), id: "appClipAppStoreReviewDetails_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppClipAppStoreReviewDetails, forKey: "fields[appClipAppStoreReviewDetails]")
+            encoder.encode(fieldsAppClipDefaultExperiences, forKey: "fields[appClipDefaultExperiences]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -30,6 +31,14 @@ extension Resources.V1.AppClipAppStoreReviewDetails {
         public enum FieldsAppClipAppStoreReviewDetails: String, CaseIterable, Codable, Sendable {
             case invocationURLs = "invocationUrls"
             case appClipDefaultExperience
+        }
+
+        public enum FieldsAppClipDefaultExperiences: String, CaseIterable, Codable, Sendable {
+            case action
+            case appClip
+            case releaseWithAppStoreVersion
+            case appClipDefaultExperienceLocalizations
+            case appClipAppStoreReviewDetail
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

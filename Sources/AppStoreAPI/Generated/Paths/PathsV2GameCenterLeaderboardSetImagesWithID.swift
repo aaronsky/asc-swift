@@ -16,13 +16,14 @@ extension Resources.V2.GameCenterLeaderboardSetImages {
         /// Path: `/v2/gameCenterLeaderboardSetImages/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterLeaderboardSetImages: [FieldsGameCenterLeaderboardSetImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardSetImageV2Response> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardSetImages, include), id: "gameCenterLeaderboardSetImagesV2_getInstance")
+        public func get(fieldsGameCenterLeaderboardSetImages: [FieldsGameCenterLeaderboardSetImages]? = nil, fieldsGameCenterLeaderboardSetLocalizations: [FieldsGameCenterLeaderboardSetLocalizations]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardSetImageV2Response> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardSetImages, fieldsGameCenterLeaderboardSetLocalizations, include), id: "gameCenterLeaderboardSetImagesV2_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterLeaderboardSetImages: [FieldsGameCenterLeaderboardSetImages]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterLeaderboardSetImages: [FieldsGameCenterLeaderboardSetImages]?, _ fieldsGameCenterLeaderboardSetLocalizations: [FieldsGameCenterLeaderboardSetLocalizations]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterLeaderboardSetImages, forKey: "fields[gameCenterLeaderboardSetImages]")
+            encoder.encode(fieldsGameCenterLeaderboardSetLocalizations, forKey: "fields[gameCenterLeaderboardSetLocalizations]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -34,6 +35,13 @@ extension Resources.V2.GameCenterLeaderboardSetImages {
             case uploadOperations
             case assetDeliveryState
             case localization
+        }
+
+        public enum FieldsGameCenterLeaderboardSetLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case name
+            case version
+            case image
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

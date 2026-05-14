@@ -16,13 +16,14 @@ extension Resources.V1.BetaAppClipInvocations {
         /// Path: `/v1/betaAppClipInvocations/{id}`
         public let path: String
 
-        public func get(fieldsBetaAppClipInvocations: [FieldsBetaAppClipInvocations]? = nil, include: [Include]? = nil, limitBetaAppClipInvocationLocalizations: Int? = nil) -> Request<AppStoreAPI.BetaAppClipInvocationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaAppClipInvocations, include, limitBetaAppClipInvocationLocalizations), id: "betaAppClipInvocations_getInstance")
+        public func get(fieldsBetaAppClipInvocations: [FieldsBetaAppClipInvocations]? = nil, fieldsBetaAppClipInvocationLocalizations: [FieldsBetaAppClipInvocationLocalizations]? = nil, include: [Include]? = nil, limitBetaAppClipInvocationLocalizations: Int? = nil) -> Request<AppStoreAPI.BetaAppClipInvocationResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBetaAppClipInvocations, fieldsBetaAppClipInvocationLocalizations, include, limitBetaAppClipInvocationLocalizations), id: "betaAppClipInvocations_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsBetaAppClipInvocations: [FieldsBetaAppClipInvocations]?, _ include: [Include]?, _ limitBetaAppClipInvocationLocalizations: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsBetaAppClipInvocations: [FieldsBetaAppClipInvocations]?, _ fieldsBetaAppClipInvocationLocalizations: [FieldsBetaAppClipInvocationLocalizations]?, _ include: [Include]?, _ limitBetaAppClipInvocationLocalizations: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsBetaAppClipInvocations, forKey: "fields[betaAppClipInvocations]")
+            encoder.encode(fieldsBetaAppClipInvocationLocalizations, forKey: "fields[betaAppClipInvocationLocalizations]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitBetaAppClipInvocationLocalizations, forKey: "limit[betaAppClipInvocationLocalizations]")
             return encoder.items
@@ -31,6 +32,11 @@ extension Resources.V1.BetaAppClipInvocations {
         public enum FieldsBetaAppClipInvocations: String, CaseIterable, Codable, Sendable {
             case url
             case betaAppClipInvocationLocalizations
+        }
+
+        public enum FieldsBetaAppClipInvocationLocalizations: String, CaseIterable, Codable, Sendable {
+            case title
+            case locale
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

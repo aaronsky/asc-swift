@@ -16,13 +16,14 @@ extension Resources.V1.AppInfos {
         /// Path: `/v1/appInfos/{id}`
         public let path: String
 
-        public func get(fieldsAppInfos: [FieldsAppInfos]? = nil, fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]? = nil, fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]? = nil, fieldsAppCategories: [FieldsAppCategories]? = nil, include: [Include]? = nil, limitAppInfoLocalizations: Int? = nil) -> Request<AppStoreAPI.AppInfoResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppInfos, fieldsAgeRatingDeclarations, fieldsAppInfoLocalizations, fieldsAppCategories, include, limitAppInfoLocalizations), id: "appInfos_getInstance")
+        public func get(fieldsAppInfos: [FieldsAppInfos]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]? = nil, fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]? = nil, fieldsAppCategories: [FieldsAppCategories]? = nil, include: [Include]? = nil, limitAppInfoLocalizations: Int? = nil) -> Request<AppStoreAPI.AppInfoResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppInfos, fieldsApps, fieldsAgeRatingDeclarations, fieldsAppInfoLocalizations, fieldsAppCategories, include, limitAppInfoLocalizations), id: "appInfos_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppInfos: [FieldsAppInfos]?, _ fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]?, _ fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]?, _ fieldsAppCategories: [FieldsAppCategories]?, _ include: [Include]?, _ limitAppInfoLocalizations: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppInfos: [FieldsAppInfos]?, _ fieldsApps: [FieldsApps]?, _ fieldsAgeRatingDeclarations: [FieldsAgeRatingDeclarations]?, _ fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]?, _ fieldsAppCategories: [FieldsAppCategories]?, _ include: [Include]?, _ limitAppInfoLocalizations: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppInfos, forKey: "fields[appInfos]")
+            encoder.encode(fieldsApps, forKey: "fields[apps]")
             encoder.encode(fieldsAgeRatingDeclarations, forKey: "fields[ageRatingDeclarations]")
             encoder.encode(fieldsAppInfoLocalizations, forKey: "fields[appInfoLocalizations]")
             encoder.encode(fieldsAppCategories, forKey: "fields[appCategories]")
@@ -51,6 +52,64 @@ extension Resources.V1.AppInfos {
             case secondarySubcategoryOne
             case secondarySubcategoryTwo
             case territoryAgeRatings
+        }
+
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case accessibilityURL = "accessibilityUrl"
+            case name
+            case bundleID = "bundleId"
+            case sku
+            case primaryLocale
+            case isOrEverWasMadeForKids
+            case subscriptionStatusURL = "subscriptionStatusUrl"
+            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
+            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
+            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
+            case contentRightsDeclaration
+            case streamlinedPurchasingEnabled
+            case accessibilityDeclarations
+            case appEncryptionDeclarations
+            case appStoreIcon
+            case ciProduct
+            case betaTesters
+            case betaGroups
+            case appStoreVersions
+            case appTags
+            case preReleaseVersions
+            case betaAppLocalizations
+            case builds
+            case betaLicenseAgreement
+            case betaAppReviewDetail
+            case appInfos
+            case appClips
+            case appPricePoints
+            case endUserLicenseAgreement
+            case appPriceSchedule
+            case appAvailabilityV2
+            case inAppPurchases
+            case subscriptionGroups
+            case gameCenterEnabledVersions
+            case perfPowerMetrics
+            case appCustomProductPages
+            case inAppPurchasesV2
+            case promotedPurchases
+            case appEvents
+            case reviewSubmissions
+            case subscriptionGracePeriod
+            case customerReviews
+            case customerReviewSummarizations
+            case gameCenterDetail
+            case appStoreVersionExperimentsV2
+            case alternativeDistributionKey
+            case analyticsReportRequests
+            case marketplaceSearchDetail
+            case buildUploads
+            case backgroundAssets
+            case betaFeedbackScreenshotSubmissions
+            case betaFeedbackCrashSubmissions
+            case searchKeywords
+            case webhooks
+            case androidToIosAppMappingDetails
         }
 
         public enum FieldsAgeRatingDeclarations: String, CaseIterable, Codable, Sendable {

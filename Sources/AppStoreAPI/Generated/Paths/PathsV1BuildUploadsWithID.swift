@@ -16,13 +16,15 @@ extension Resources.V1.BuildUploads {
         /// Path: `/v1/buildUploads/{id}`
         public let path: String
 
-        public func get(fieldsBuildUploads: [FieldsBuildUploads]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.BuildUploadResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBuildUploads, include), id: "buildUploads_getInstance")
+        public func get(fieldsBuildUploads: [FieldsBuildUploads]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsBuildUploadFiles: [FieldsBuildUploadFiles]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.BuildUploadResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBuildUploads, fieldsBuilds, fieldsBuildUploadFiles, include), id: "buildUploads_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsBuildUploads: [FieldsBuildUploads]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsBuildUploads: [FieldsBuildUploads]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsBuildUploadFiles: [FieldsBuildUploadFiles]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsBuildUploads, forKey: "fields[buildUploads]")
+            encoder.encode(fieldsBuilds, forKey: "fields[builds]")
+            encoder.encode(fieldsBuildUploadFiles, forKey: "fields[buildUploadFiles]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -39,6 +41,46 @@ extension Resources.V1.BuildUploads {
             case assetDescriptionFile
             case assetSpiFile
             case buildUploadFiles
+        }
+
+        public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {
+            case version
+            case uploadedDate
+            case expirationDate
+            case expired
+            case minOsVersion
+            case lsMinimumSystemVersion
+            case computedMinMacOsVersion
+            case computedMinVisionOsVersion
+            case iconAssetToken
+            case processingState
+            case buildAudienceType
+            case usesNonExemptEncryption
+            case preReleaseVersion
+            case individualTesters
+            case betaGroups
+            case betaBuildLocalizations
+            case appEncryptionDeclaration
+            case betaAppReviewSubmission
+            case app
+            case buildBetaDetail
+            case appStoreVersion
+            case icons
+            case buildBundles
+            case buildUpload
+            case perfPowerMetrics
+            case diagnosticSignatures
+        }
+
+        public enum FieldsBuildUploadFiles: String, CaseIterable, Codable, Sendable {
+            case assetDeliveryState
+            case assetToken
+            case assetType
+            case fileName
+            case fileSize
+            case sourceFileChecksums
+            case uploadOperations
+            case uti
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

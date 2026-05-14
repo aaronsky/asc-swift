@@ -16,13 +16,14 @@ extension Resources.V2.GameCenterLeaderboardVersions {
         /// Path: `/v2/gameCenterLeaderboardVersions/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterLeaderboardVersions: [FieldsGameCenterLeaderboardVersions]? = nil, fieldsGameCenterLeaderboardLocalizations: [FieldsGameCenterLeaderboardLocalizations]? = nil, include: [Include]? = nil, limitLocalizations: Int? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardVersionV2Response> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardVersions, fieldsGameCenterLeaderboardLocalizations, include, limitLocalizations), id: "gameCenterLeaderboardVersionsV2_getInstance")
+        public func get(fieldsGameCenterLeaderboardVersions: [FieldsGameCenterLeaderboardVersions]? = nil, fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]? = nil, fieldsGameCenterLeaderboardLocalizations: [FieldsGameCenterLeaderboardLocalizations]? = nil, include: [Include]? = nil, limitLocalizations: Int? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardVersionV2Response> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardVersions, fieldsGameCenterLeaderboards, fieldsGameCenterLeaderboardLocalizations, include, limitLocalizations), id: "gameCenterLeaderboardVersionsV2_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterLeaderboardVersions: [FieldsGameCenterLeaderboardVersions]?, _ fieldsGameCenterLeaderboardLocalizations: [FieldsGameCenterLeaderboardLocalizations]?, _ include: [Include]?, _ limitLocalizations: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterLeaderboardVersions: [FieldsGameCenterLeaderboardVersions]?, _ fieldsGameCenterLeaderboards: [FieldsGameCenterLeaderboards]?, _ fieldsGameCenterLeaderboardLocalizations: [FieldsGameCenterLeaderboardLocalizations]?, _ include: [Include]?, _ limitLocalizations: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterLeaderboardVersions, forKey: "fields[gameCenterLeaderboardVersions]")
+            encoder.encode(fieldsGameCenterLeaderboards, forKey: "fields[gameCenterLeaderboards]")
             encoder.encode(fieldsGameCenterLeaderboardLocalizations, forKey: "fields[gameCenterLeaderboardLocalizations]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitLocalizations, forKey: "limit[localizations]")
@@ -34,6 +35,28 @@ extension Resources.V2.GameCenterLeaderboardVersions {
             case state
             case leaderboard
             case localizations
+        }
+
+        public enum FieldsGameCenterLeaderboards: String, CaseIterable, Codable, Sendable {
+            case defaultFormatter
+            case referenceName
+            case vendorIdentifier
+            case submissionType
+            case scoreSortType
+            case scoreRangeStart
+            case scoreRangeEnd
+            case recurrenceStartDate
+            case recurrenceDuration
+            case recurrenceRule
+            case archived
+            case activityProperties
+            case visibility
+            case gameCenterDetail
+            case gameCenterGroup
+            case gameCenterLeaderboardSets
+            case activity
+            case challenge
+            case versions
         }
 
         public enum FieldsGameCenterLeaderboardLocalizations: String, CaseIterable, Codable, Sendable {

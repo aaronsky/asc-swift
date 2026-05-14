@@ -16,13 +16,14 @@ extension Resources.V1.AppEventLocalizations {
         /// Path: `/v1/appEventLocalizations/{id}`
         public let path: String
 
-        public func get(fieldsAppEventLocalizations: [FieldsAppEventLocalizations]? = nil, fieldsAppEventScreenshots: [FieldsAppEventScreenshots]? = nil, fieldsAppEventVideoClips: [FieldsAppEventVideoClips]? = nil, include: [Include]? = nil, limitAppEventScreenshots: Int? = nil, limitAppEventVideoClips: Int? = nil) -> Request<AppStoreAPI.AppEventLocalizationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEventLocalizations, fieldsAppEventScreenshots, fieldsAppEventVideoClips, include, limitAppEventScreenshots, limitAppEventVideoClips), id: "appEventLocalizations_getInstance")
+        public func get(fieldsAppEventLocalizations: [FieldsAppEventLocalizations]? = nil, fieldsAppEvents: [FieldsAppEvents]? = nil, fieldsAppEventScreenshots: [FieldsAppEventScreenshots]? = nil, fieldsAppEventVideoClips: [FieldsAppEventVideoClips]? = nil, include: [Include]? = nil, limitAppEventScreenshots: Int? = nil, limitAppEventVideoClips: Int? = nil) -> Request<AppStoreAPI.AppEventLocalizationResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEventLocalizations, fieldsAppEvents, fieldsAppEventScreenshots, fieldsAppEventVideoClips, include, limitAppEventScreenshots, limitAppEventVideoClips), id: "appEventLocalizations_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppEventLocalizations: [FieldsAppEventLocalizations]?, _ fieldsAppEventScreenshots: [FieldsAppEventScreenshots]?, _ fieldsAppEventVideoClips: [FieldsAppEventVideoClips]?, _ include: [Include]?, _ limitAppEventScreenshots: Int?, _ limitAppEventVideoClips: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppEventLocalizations: [FieldsAppEventLocalizations]?, _ fieldsAppEvents: [FieldsAppEvents]?, _ fieldsAppEventScreenshots: [FieldsAppEventScreenshots]?, _ fieldsAppEventVideoClips: [FieldsAppEventVideoClips]?, _ include: [Include]?, _ limitAppEventScreenshots: Int?, _ limitAppEventVideoClips: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppEventLocalizations, forKey: "fields[appEventLocalizations]")
+            encoder.encode(fieldsAppEvents, forKey: "fields[appEvents]")
             encoder.encode(fieldsAppEventScreenshots, forKey: "fields[appEventScreenshots]")
             encoder.encode(fieldsAppEventVideoClips, forKey: "fields[appEventVideoClips]")
             encoder.encode(include, forKey: "include")
@@ -39,6 +40,20 @@ extension Resources.V1.AppEventLocalizations {
             case appEvent
             case appEventScreenshots
             case appEventVideoClips
+        }
+
+        public enum FieldsAppEvents: String, CaseIterable, Codable, Sendable {
+            case referenceName
+            case badge
+            case eventState
+            case deepLink
+            case purchaseRequirement
+            case primaryLocale
+            case priority
+            case purpose
+            case territorySchedules
+            case archivedTerritorySchedules
+            case localizations
         }
 
         public enum FieldsAppEventScreenshots: String, CaseIterable, Codable, Sendable {

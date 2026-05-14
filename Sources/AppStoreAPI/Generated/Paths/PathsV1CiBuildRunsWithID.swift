@@ -16,14 +16,18 @@ extension Resources.V1.CiBuildRuns {
         /// Path: `/v1/ciBuildRuns/{id}`
         public let path: String
 
-        public func get(fieldsCiBuildRuns: [FieldsCiBuildRuns]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, include: [Include]? = nil, limitBuilds: Int? = nil) -> Request<AppStoreAPI.CiBuildRunResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiBuildRuns, fieldsBuilds, include, limitBuilds), id: "ciBuildRuns_getInstance")
+        public func get(fieldsCiBuildRuns: [FieldsCiBuildRuns]? = nil, fieldsBuilds: [FieldsBuilds]? = nil, fieldsCiWorkflows: [FieldsCiWorkflows]? = nil, fieldsCiProducts: [FieldsCiProducts]? = nil, fieldsScmGitReferences: [FieldsScmGitReferences]? = nil, fieldsScmPullRequests: [FieldsScmPullRequests]? = nil, include: [Include]? = nil, limitBuilds: Int? = nil) -> Request<AppStoreAPI.CiBuildRunResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiBuildRuns, fieldsBuilds, fieldsCiWorkflows, fieldsCiProducts, fieldsScmGitReferences, fieldsScmPullRequests, include, limitBuilds), id: "ciBuildRuns_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsCiBuildRuns: [FieldsCiBuildRuns]?, _ fieldsBuilds: [FieldsBuilds]?, _ include: [Include]?, _ limitBuilds: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsCiBuildRuns: [FieldsCiBuildRuns]?, _ fieldsBuilds: [FieldsBuilds]?, _ fieldsCiWorkflows: [FieldsCiWorkflows]?, _ fieldsCiProducts: [FieldsCiProducts]?, _ fieldsScmGitReferences: [FieldsScmGitReferences]?, _ fieldsScmPullRequests: [FieldsScmPullRequests]?, _ include: [Include]?, _ limitBuilds: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsCiBuildRuns, forKey: "fields[ciBuildRuns]")
             encoder.encode(fieldsBuilds, forKey: "fields[builds]")
+            encoder.encode(fieldsCiWorkflows, forKey: "fields[ciWorkflows]")
+            encoder.encode(fieldsCiProducts, forKey: "fields[ciProducts]")
+            encoder.encode(fieldsScmGitReferences, forKey: "fields[scmGitReferences]")
+            encoder.encode(fieldsScmPullRequests, forKey: "fields[scmPullRequests]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitBuilds, forKey: "limit[builds]")
             return encoder.items
@@ -78,6 +82,64 @@ extension Resources.V1.CiBuildRuns {
             case buildUpload
             case perfPowerMetrics
             case diagnosticSignatures
+        }
+
+        public enum FieldsCiWorkflows: String, CaseIterable, Codable, Sendable {
+            case name
+            case description
+            case branchStartCondition
+            case tagStartCondition
+            case pullRequestStartCondition
+            case scheduledStartCondition
+            case manualBranchStartCondition
+            case manualTagStartCondition
+            case manualPullRequestStartCondition
+            case actions
+            case isEnabled
+            case isLockedForEditing
+            case clean
+            case containerFilePath
+            case lastModifiedDate
+            case product
+            case repository
+            case xcodeVersion
+            case macOsVersion
+            case buildRuns
+        }
+
+        public enum FieldsCiProducts: String, CaseIterable, Codable, Sendable {
+            case name
+            case createdDate
+            case productType
+            case app
+            case bundleID = "bundleId"
+            case workflows
+            case primaryRepositories
+            case additionalRepositories
+            case buildRuns
+        }
+
+        public enum FieldsScmGitReferences: String, CaseIterable, Codable, Sendable {
+            case name
+            case canonicalName
+            case isDeleted
+            case kind
+            case repository
+        }
+
+        public enum FieldsScmPullRequests: String, CaseIterable, Codable, Sendable {
+            case title
+            case number
+            case webURL = "webUrl"
+            case sourceRepositoryOwner
+            case sourceRepositoryName
+            case sourceBranchName
+            case destinationRepositoryOwner
+            case destinationRepositoryName
+            case destinationBranchName
+            case isClosed
+            case isCrossRepository
+            case repository
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

@@ -16,13 +16,15 @@ extension Resources.V3.AppPricePoints {
         /// Path: `/v3/appPricePoints/{id}`
         public let path: String
 
-        public func get(fieldsAppPricePoints: [FieldsAppPricePoints]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppPricePointV3Response> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPricePoints, include), id: "appPricePointsV3_getInstance")
+        public func get(fieldsAppPricePoints: [FieldsAppPricePoints]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppPricePointV3Response> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPricePoints, fieldsApps, fieldsTerritories, include), id: "appPricePointsV3_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppPricePoints: [FieldsAppPricePoints]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppPricePoints: [FieldsAppPricePoints]?, _ fieldsApps: [FieldsApps]?, _ fieldsTerritories: [FieldsTerritories]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppPricePoints, forKey: "fields[appPricePoints]")
+            encoder.encode(fieldsApps, forKey: "fields[apps]")
+            encoder.encode(fieldsTerritories, forKey: "fields[territories]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -33,6 +35,68 @@ extension Resources.V3.AppPricePoints {
             case app
             case equalizations
             case territory
+        }
+
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case accessibilityURL = "accessibilityUrl"
+            case name
+            case bundleID = "bundleId"
+            case sku
+            case primaryLocale
+            case isOrEverWasMadeForKids
+            case subscriptionStatusURL = "subscriptionStatusUrl"
+            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
+            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
+            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
+            case contentRightsDeclaration
+            case streamlinedPurchasingEnabled
+            case accessibilityDeclarations
+            case appEncryptionDeclarations
+            case appStoreIcon
+            case ciProduct
+            case betaTesters
+            case betaGroups
+            case appStoreVersions
+            case appTags
+            case preReleaseVersions
+            case betaAppLocalizations
+            case builds
+            case betaLicenseAgreement
+            case betaAppReviewDetail
+            case appInfos
+            case appClips
+            case appPricePoints
+            case endUserLicenseAgreement
+            case appPriceSchedule
+            case appAvailabilityV2
+            case inAppPurchases
+            case subscriptionGroups
+            case gameCenterEnabledVersions
+            case perfPowerMetrics
+            case appCustomProductPages
+            case inAppPurchasesV2
+            case promotedPurchases
+            case appEvents
+            case reviewSubmissions
+            case subscriptionGracePeriod
+            case customerReviews
+            case customerReviewSummarizations
+            case gameCenterDetail
+            case appStoreVersionExperimentsV2
+            case alternativeDistributionKey
+            case analyticsReportRequests
+            case marketplaceSearchDetail
+            case buildUploads
+            case backgroundAssets
+            case betaFeedbackScreenshotSubmissions
+            case betaFeedbackCrashSubmissions
+            case searchKeywords
+            case webhooks
+            case androidToIosAppMappingDetails
+        }
+
+        public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
+            case currency
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

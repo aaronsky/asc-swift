@@ -37,6 +37,7 @@ public struct CustomerReview: Codable, Equatable, Identifiable, Sendable {
 
     public struct Relationships: Codable, Equatable, Sendable {
         public var response: Response?
+        public var reviewTerritory: ReviewTerritory?
 
         public struct Response: Codable, Equatable, Sendable {
             public var links: RelationshipLinks?
@@ -62,8 +63,31 @@ public struct CustomerReview: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(response: Response? = nil) {
+        public struct ReviewTerritory: Codable, Equatable, Sendable {
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case territories
+                }
+
+                public init(type: `Type` = .territories, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(data: Data? = nil) {
+                self.data = data
+            }
+        }
+
+        public init(response: Response? = nil, reviewTerritory: ReviewTerritory? = nil) {
             self.response = response
+            self.reviewTerritory = reviewTerritory
         }
     }
 

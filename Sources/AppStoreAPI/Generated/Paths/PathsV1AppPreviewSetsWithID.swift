@@ -16,13 +16,16 @@ extension Resources.V1.AppPreviewSets {
         /// Path: `/v1/appPreviewSets/{id}`
         public let path: String
 
-        public func get(fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, fieldsAppPreviews: [FieldsAppPreviews]? = nil, include: [Include]? = nil, limitAppPreviews: Int? = nil) -> Request<AppStoreAPI.AppPreviewSetResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPreviewSets, fieldsAppPreviews, include, limitAppPreviews), id: "appPreviewSets_getInstance")
+        public func get(fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]? = nil, fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]? = nil, fieldsAppPreviews: [FieldsAppPreviews]? = nil, include: [Include]? = nil, limitAppPreviews: Int? = nil) -> Request<AppStoreAPI.AppPreviewSetResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppPreviewSets, fieldsAppStoreVersionLocalizations, fieldsAppCustomProductPageLocalizations, fieldsAppStoreVersionExperimentTreatmentLocalizations, fieldsAppPreviews, include, limitAppPreviews), id: "appPreviewSets_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ fieldsAppPreviews: [FieldsAppPreviews]?, _ include: [Include]?, _ limitAppPreviews: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]?, _ fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]?, _ fieldsAppPreviews: [FieldsAppPreviews]?, _ include: [Include]?, _ limitAppPreviews: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppPreviewSets, forKey: "fields[appPreviewSets]")
+            encoder.encode(fieldsAppStoreVersionLocalizations, forKey: "fields[appStoreVersionLocalizations]")
+            encoder.encode(fieldsAppCustomProductPageLocalizations, forKey: "fields[appCustomProductPageLocalizations]")
+            encoder.encode(fieldsAppStoreVersionExperimentTreatmentLocalizations, forKey: "fields[appStoreVersionExperimentTreatmentLocalizations]")
             encoder.encode(fieldsAppPreviews, forKey: "fields[appPreviews]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitAppPreviews, forKey: "limit[appPreviews]")
@@ -35,6 +38,36 @@ extension Resources.V1.AppPreviewSets {
             case appCustomProductPageLocalization
             case appStoreVersionExperimentTreatmentLocalization
             case appPreviews
+        }
+
+        public enum FieldsAppStoreVersionLocalizations: String, CaseIterable, Codable, Sendable {
+            case description
+            case locale
+            case keywords
+            case marketingURL = "marketingUrl"
+            case promotionalText
+            case supportURL = "supportUrl"
+            case whatsNew
+            case appStoreVersion
+            case appScreenshotSets
+            case appPreviewSets
+            case searchKeywords
+        }
+
+        public enum FieldsAppCustomProductPageLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case promotionalText
+            case appCustomProductPageVersion
+            case appScreenshotSets
+            case appPreviewSets
+            case searchKeywords
+        }
+
+        public enum FieldsAppStoreVersionExperimentTreatmentLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case appStoreVersionExperimentTreatment
+            case appScreenshotSets
+            case appPreviewSets
         }
 
         public enum FieldsAppPreviews: String, CaseIterable, Codable, Sendable {

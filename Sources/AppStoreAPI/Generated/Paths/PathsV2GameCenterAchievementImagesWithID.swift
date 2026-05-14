@@ -16,13 +16,14 @@ extension Resources.V2.GameCenterAchievementImages {
         /// Path: `/v2/gameCenterAchievementImages/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterAchievementImages: [FieldsGameCenterAchievementImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterAchievementImageV2Response> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterAchievementImages, include), id: "gameCenterAchievementImagesV2_getInstance")
+        public func get(fieldsGameCenterAchievementImages: [FieldsGameCenterAchievementImages]? = nil, fieldsGameCenterAchievementLocalizations: [FieldsGameCenterAchievementLocalizations]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterAchievementImageV2Response> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterAchievementImages, fieldsGameCenterAchievementLocalizations, include), id: "gameCenterAchievementImagesV2_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterAchievementImages: [FieldsGameCenterAchievementImages]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterAchievementImages: [FieldsGameCenterAchievementImages]?, _ fieldsGameCenterAchievementLocalizations: [FieldsGameCenterAchievementLocalizations]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterAchievementImages, forKey: "fields[gameCenterAchievementImages]")
+            encoder.encode(fieldsGameCenterAchievementLocalizations, forKey: "fields[gameCenterAchievementLocalizations]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -34,6 +35,15 @@ extension Resources.V2.GameCenterAchievementImages {
             case uploadOperations
             case assetDeliveryState
             case localization
+        }
+
+        public enum FieldsGameCenterAchievementLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case name
+            case beforeEarnedDescription
+            case afterEarnedDescription
+            case version
+            case image
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

@@ -16,14 +16,15 @@ extension Resources.V1.CustomerReviews {
         /// Path: `/v1/customerReviews/{id}`
         public let path: String
 
-        public func get(fieldsCustomerReviews: [FieldsCustomerReviews]? = nil, fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CustomerReviewResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCustomerReviews, fieldsCustomerReviewResponses, include), id: "customerReviews_getInstance")
+        public func get(fieldsCustomerReviews: [FieldsCustomerReviews]? = nil, fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CustomerReviewResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCustomerReviews, fieldsCustomerReviewResponses, fieldsTerritories, include), id: "customerReviews_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsCustomerReviews: [FieldsCustomerReviews]?, _ fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsCustomerReviews: [FieldsCustomerReviews]?, _ fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]?, _ fieldsTerritories: [FieldsTerritories]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsCustomerReviews, forKey: "fields[customerReviews]")
             encoder.encode(fieldsCustomerReviewResponses, forKey: "fields[customerReviewResponses]")
+            encoder.encode(fieldsTerritories, forKey: "fields[territories]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -36,6 +37,7 @@ extension Resources.V1.CustomerReviews {
             case createdDate
             case territory
             case response
+            case reviewTerritory
         }
 
         public enum FieldsCustomerReviewResponses: String, CaseIterable, Codable, Sendable {
@@ -45,8 +47,13 @@ extension Resources.V1.CustomerReviews {
             case review
         }
 
+        public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
+            case currency
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case response
+            case reviewTerritory
         }
     }
 }

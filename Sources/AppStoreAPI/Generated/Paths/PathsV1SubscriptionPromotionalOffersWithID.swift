@@ -16,13 +16,14 @@ extension Resources.V1.SubscriptionPromotionalOffers {
         /// Path: `/v1/subscriptionPromotionalOffers/{id}`
         public let path: String
 
-        public func get(fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]? = nil, fieldsSubscriptionPromotionalOfferPrices: [FieldsSubscriptionPromotionalOfferPrices]? = nil, include: [Include]? = nil, limitPrices: Int? = nil) -> Request<AppStoreAPI.SubscriptionPromotionalOfferResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionPromotionalOffers, fieldsSubscriptionPromotionalOfferPrices, include, limitPrices), id: "subscriptionPromotionalOffers_getInstance")
+        public func get(fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionPromotionalOfferPrices: [FieldsSubscriptionPromotionalOfferPrices]? = nil, include: [Include]? = nil, limitPrices: Int? = nil) -> Request<AppStoreAPI.SubscriptionPromotionalOfferResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionPromotionalOffers, fieldsSubscriptions, fieldsSubscriptionPromotionalOfferPrices, include, limitPrices), id: "subscriptionPromotionalOffers_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]?, _ fieldsSubscriptionPromotionalOfferPrices: [FieldsSubscriptionPromotionalOfferPrices]?, _ include: [Include]?, _ limitPrices: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionPromotionalOfferPrices: [FieldsSubscriptionPromotionalOfferPrices]?, _ include: [Include]?, _ limitPrices: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsSubscriptionPromotionalOffers, forKey: "fields[subscriptionPromotionalOffers]")
+            encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
             encoder.encode(fieldsSubscriptionPromotionalOfferPrices, forKey: "fields[subscriptionPromotionalOfferPrices]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitPrices, forKey: "limit[prices]")
@@ -37,6 +38,28 @@ extension Resources.V1.SubscriptionPromotionalOffers {
             case offerMode
             case subscription
             case prices
+        }
+
+        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
+            case name
+            case productID = "productId"
+            case familySharable
+            case state
+            case subscriptionPeriod
+            case reviewNote
+            case groupLevel
+            case subscriptionLocalizations
+            case appStoreReviewScreenshot
+            case group
+            case introductoryOffers
+            case promotionalOffers
+            case offerCodes
+            case prices
+            case pricePoints
+            case promotedPurchase
+            case subscriptionAvailability
+            case winBackOffers
+            case images
         }
 
         public enum FieldsSubscriptionPromotionalOfferPrices: String, CaseIterable, Codable, Sendable {

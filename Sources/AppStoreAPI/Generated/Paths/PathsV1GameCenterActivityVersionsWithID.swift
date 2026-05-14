@@ -16,15 +16,17 @@ extension Resources.V1.GameCenterActivityVersions {
         /// Path: `/v1/gameCenterActivityVersions/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterActivityVersions: [FieldsGameCenterActivityVersions]? = nil, fieldsGameCenterActivityLocalizations: [FieldsGameCenterActivityLocalizations]? = nil, fieldsGameCenterActivityImages: [FieldsGameCenterActivityImages]? = nil, include: [Include]? = nil, limitLocalizations: Int? = nil, limitReleases: Int? = nil) -> Request<AppStoreAPI.GameCenterActivityVersionResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterActivityVersions, fieldsGameCenterActivityLocalizations, fieldsGameCenterActivityImages, include, limitLocalizations, limitReleases), id: "gameCenterActivityVersions_getInstance")
+        public func get(fieldsGameCenterActivityVersions: [FieldsGameCenterActivityVersions]? = nil, fieldsGameCenterActivities: [FieldsGameCenterActivities]? = nil, fieldsGameCenterActivityLocalizations: [FieldsGameCenterActivityLocalizations]? = nil, fieldsGameCenterActivityImages: [FieldsGameCenterActivityImages]? = nil, fieldsGameCenterActivityVersionReleases: [FieldsGameCenterActivityVersionReleases]? = nil, include: [Include]? = nil, limitLocalizations: Int? = nil, limitReleases: Int? = nil) -> Request<AppStoreAPI.GameCenterActivityVersionResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterActivityVersions, fieldsGameCenterActivities, fieldsGameCenterActivityLocalizations, fieldsGameCenterActivityImages, fieldsGameCenterActivityVersionReleases, include, limitLocalizations, limitReleases), id: "gameCenterActivityVersions_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterActivityVersions: [FieldsGameCenterActivityVersions]?, _ fieldsGameCenterActivityLocalizations: [FieldsGameCenterActivityLocalizations]?, _ fieldsGameCenterActivityImages: [FieldsGameCenterActivityImages]?, _ include: [Include]?, _ limitLocalizations: Int?, _ limitReleases: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterActivityVersions: [FieldsGameCenterActivityVersions]?, _ fieldsGameCenterActivities: [FieldsGameCenterActivities]?, _ fieldsGameCenterActivityLocalizations: [FieldsGameCenterActivityLocalizations]?, _ fieldsGameCenterActivityImages: [FieldsGameCenterActivityImages]?, _ fieldsGameCenterActivityVersionReleases: [FieldsGameCenterActivityVersionReleases]?, _ include: [Include]?, _ limitLocalizations: Int?, _ limitReleases: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterActivityVersions, forKey: "fields[gameCenterActivityVersions]")
+            encoder.encode(fieldsGameCenterActivities, forKey: "fields[gameCenterActivities]")
             encoder.encode(fieldsGameCenterActivityLocalizations, forKey: "fields[gameCenterActivityLocalizations]")
             encoder.encode(fieldsGameCenterActivityImages, forKey: "fields[gameCenterActivityImages]")
+            encoder.encode(fieldsGameCenterActivityVersionReleases, forKey: "fields[gameCenterActivityVersionReleases]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitLocalizations, forKey: "limit[localizations]")
             encoder.encode(limitReleases, forKey: "limit[releases]")
@@ -41,6 +43,24 @@ extension Resources.V1.GameCenterActivityVersions {
             case releases
         }
 
+        public enum FieldsGameCenterActivities: String, CaseIterable, Codable, Sendable {
+            case referenceName
+            case vendorIdentifier
+            case playStyle
+            case minimumPlayersCount
+            case maximumPlayersCount
+            case supportsPartyCode
+            case archived
+            case properties
+            case gameCenterDetail
+            case gameCenterGroup
+            case achievements
+            case achievementsV2
+            case leaderboards
+            case leaderboardsV2
+            case versions
+        }
+
         public enum FieldsGameCenterActivityLocalizations: String, CaseIterable, Codable, Sendable {
             case locale
             case name
@@ -55,6 +75,10 @@ extension Resources.V1.GameCenterActivityVersions {
             case imageAsset
             case uploadOperations
             case assetDeliveryState
+        }
+
+        public enum FieldsGameCenterActivityVersionReleases: String, CaseIterable, Codable, Sendable {
+            case version
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

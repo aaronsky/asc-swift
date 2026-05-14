@@ -16,14 +16,17 @@ extension Resources.V1.CiWorkflows {
         /// Path: `/v1/ciWorkflows/{id}`
         public let path: String
 
-        public func get(fieldsCiWorkflows: [FieldsCiWorkflows]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CiWorkflowResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiWorkflows, fieldsScmRepositories, include), id: "ciWorkflows_getInstance")
+        public func get(fieldsCiWorkflows: [FieldsCiWorkflows]? = nil, fieldsCiProducts: [FieldsCiProducts]? = nil, fieldsScmRepositories: [FieldsScmRepositories]? = nil, fieldsCiXcodeVersions: [FieldsCiXcodeVersions]? = nil, fieldsCiMacOsVersions: [FieldsCiMacOsVersions]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CiWorkflowResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsCiWorkflows, fieldsCiProducts, fieldsScmRepositories, fieldsCiXcodeVersions, fieldsCiMacOsVersions, include), id: "ciWorkflows_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsCiWorkflows: [FieldsCiWorkflows]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsCiWorkflows: [FieldsCiWorkflows]?, _ fieldsCiProducts: [FieldsCiProducts]?, _ fieldsScmRepositories: [FieldsScmRepositories]?, _ fieldsCiXcodeVersions: [FieldsCiXcodeVersions]?, _ fieldsCiMacOsVersions: [FieldsCiMacOsVersions]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsCiWorkflows, forKey: "fields[ciWorkflows]")
+            encoder.encode(fieldsCiProducts, forKey: "fields[ciProducts]")
             encoder.encode(fieldsScmRepositories, forKey: "fields[scmRepositories]")
+            encoder.encode(fieldsCiXcodeVersions, forKey: "fields[ciXcodeVersions]")
+            encoder.encode(fieldsCiMacOsVersions, forKey: "fields[ciMacOsVersions]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -51,6 +54,18 @@ extension Resources.V1.CiWorkflows {
             case buildRuns
         }
 
+        public enum FieldsCiProducts: String, CaseIterable, Codable, Sendable {
+            case name
+            case createdDate
+            case productType
+            case app
+            case bundleID = "bundleId"
+            case workflows
+            case primaryRepositories
+            case additionalRepositories
+            case buildRuns
+        }
+
         public enum FieldsScmRepositories: String, CaseIterable, Codable, Sendable {
             case lastAccessedDate
             case httpCloneURL = "httpCloneUrl"
@@ -61,6 +76,19 @@ extension Resources.V1.CiWorkflows {
             case defaultBranch
             case gitReferences
             case pullRequests
+        }
+
+        public enum FieldsCiXcodeVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case name
+            case testDestinations
+            case macOsVersions
+        }
+
+        public enum FieldsCiMacOsVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case name
+            case xcodeVersions
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

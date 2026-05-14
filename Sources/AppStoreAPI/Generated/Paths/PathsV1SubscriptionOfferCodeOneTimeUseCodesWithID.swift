@@ -16,13 +16,14 @@ extension Resources.V1.SubscriptionOfferCodeOneTimeUseCodes {
         /// Path: `/v1/subscriptionOfferCodeOneTimeUseCodes/{id}`
         public let path: String
 
-        public func get(fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionOfferCodeOneTimeUseCodeResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionOfferCodeOneTimeUseCodes, include), id: "subscriptionOfferCodeOneTimeUseCodes_getInstance")
+        public func get(fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]? = nil, fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionOfferCodeOneTimeUseCodeResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionOfferCodeOneTimeUseCodes, fieldsSubscriptionOfferCodes, include), id: "subscriptionOfferCodeOneTimeUseCodes_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsSubscriptionOfferCodeOneTimeUseCodes: [FieldsSubscriptionOfferCodeOneTimeUseCodes]?, _ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsSubscriptionOfferCodeOneTimeUseCodes, forKey: "fields[subscriptionOfferCodeOneTimeUseCodes]")
+            encoder.encode(fieldsSubscriptionOfferCodes, forKey: "fields[subscriptionOfferCodes]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -35,6 +36,24 @@ extension Resources.V1.SubscriptionOfferCodeOneTimeUseCodes {
             case environment
             case offerCode
             case values
+        }
+
+        public enum FieldsSubscriptionOfferCodes: String, CaseIterable, Codable, Sendable {
+            case name
+            case customerEligibilities
+            case offerEligibility
+            case duration
+            case offerMode
+            case numberOfPeriods
+            case totalNumberOfCodes
+            case productionCodeCount
+            case sandboxCodeCount
+            case active
+            case autoRenewEnabled
+            case subscription
+            case oneTimeUseCodes
+            case customCodes
+            case prices
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

@@ -16,13 +16,14 @@ extension Resources.V1.GameCenterActivityLocalizations {
         /// Path: `/v1/gameCenterActivityLocalizations/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterActivityLocalizations: [FieldsGameCenterActivityLocalizations]? = nil, fieldsGameCenterActivityImages: [FieldsGameCenterActivityImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterActivityLocalizationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterActivityLocalizations, fieldsGameCenterActivityImages, include), id: "gameCenterActivityLocalizations_getInstance")
+        public func get(fieldsGameCenterActivityLocalizations: [FieldsGameCenterActivityLocalizations]? = nil, fieldsGameCenterActivityVersions: [FieldsGameCenterActivityVersions]? = nil, fieldsGameCenterActivityImages: [FieldsGameCenterActivityImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterActivityLocalizationResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterActivityLocalizations, fieldsGameCenterActivityVersions, fieldsGameCenterActivityImages, include), id: "gameCenterActivityLocalizations_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterActivityLocalizations: [FieldsGameCenterActivityLocalizations]?, _ fieldsGameCenterActivityImages: [FieldsGameCenterActivityImages]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterActivityLocalizations: [FieldsGameCenterActivityLocalizations]?, _ fieldsGameCenterActivityVersions: [FieldsGameCenterActivityVersions]?, _ fieldsGameCenterActivityImages: [FieldsGameCenterActivityImages]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterActivityLocalizations, forKey: "fields[gameCenterActivityLocalizations]")
+            encoder.encode(fieldsGameCenterActivityVersions, forKey: "fields[gameCenterActivityVersions]")
             encoder.encode(fieldsGameCenterActivityImages, forKey: "fields[gameCenterActivityImages]")
             encoder.encode(include, forKey: "include")
             return encoder.items
@@ -34,6 +35,16 @@ extension Resources.V1.GameCenterActivityLocalizations {
             case description
             case version
             case image
+        }
+
+        public enum FieldsGameCenterActivityVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case state
+            case fallbackURL = "fallbackUrl"
+            case activity
+            case localizations
+            case defaultImage
+            case releases
         }
 
         public enum FieldsGameCenterActivityImages: String, CaseIterable, Codable, Sendable {

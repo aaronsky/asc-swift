@@ -16,13 +16,14 @@ extension Resources.V2.GameCenterLeaderboardSetVersions {
         /// Path: `/v2/gameCenterLeaderboardSetVersions/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterLeaderboardSetVersions: [FieldsGameCenterLeaderboardSetVersions]? = nil, fieldsGameCenterLeaderboardSetLocalizations: [FieldsGameCenterLeaderboardSetLocalizations]? = nil, include: [Include]? = nil, limitLocalizations: Int? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardSetVersionV2Response> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardSetVersions, fieldsGameCenterLeaderboardSetLocalizations, include, limitLocalizations), id: "gameCenterLeaderboardSetVersionsV2_getInstance")
+        public func get(fieldsGameCenterLeaderboardSetVersions: [FieldsGameCenterLeaderboardSetVersions]? = nil, fieldsGameCenterLeaderboardSets: [FieldsGameCenterLeaderboardSets]? = nil, fieldsGameCenterLeaderboardSetLocalizations: [FieldsGameCenterLeaderboardSetLocalizations]? = nil, include: [Include]? = nil, limitLocalizations: Int? = nil) -> Request<AppStoreAPI.GameCenterLeaderboardSetVersionV2Response> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterLeaderboardSetVersions, fieldsGameCenterLeaderboardSets, fieldsGameCenterLeaderboardSetLocalizations, include, limitLocalizations), id: "gameCenterLeaderboardSetVersionsV2_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterLeaderboardSetVersions: [FieldsGameCenterLeaderboardSetVersions]?, _ fieldsGameCenterLeaderboardSetLocalizations: [FieldsGameCenterLeaderboardSetLocalizations]?, _ include: [Include]?, _ limitLocalizations: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterLeaderboardSetVersions: [FieldsGameCenterLeaderboardSetVersions]?, _ fieldsGameCenterLeaderboardSets: [FieldsGameCenterLeaderboardSets]?, _ fieldsGameCenterLeaderboardSetLocalizations: [FieldsGameCenterLeaderboardSetLocalizations]?, _ include: [Include]?, _ limitLocalizations: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterLeaderboardSetVersions, forKey: "fields[gameCenterLeaderboardSetVersions]")
+            encoder.encode(fieldsGameCenterLeaderboardSets, forKey: "fields[gameCenterLeaderboardSets]")
             encoder.encode(fieldsGameCenterLeaderboardSetLocalizations, forKey: "fields[gameCenterLeaderboardSetLocalizations]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitLocalizations, forKey: "limit[localizations]")
@@ -34,6 +35,15 @@ extension Resources.V2.GameCenterLeaderboardSetVersions {
             case state
             case leaderboardSet
             case localizations
+        }
+
+        public enum FieldsGameCenterLeaderboardSets: String, CaseIterable, Codable, Sendable {
+            case referenceName
+            case vendorIdentifier
+            case gameCenterDetail
+            case gameCenterGroup
+            case gameCenterLeaderboards
+            case versions
         }
 
         public enum FieldsGameCenterLeaderboardSetLocalizations: String, CaseIterable, Codable, Sendable {

@@ -16,15 +16,16 @@ extension Resources.V1.Builds {
         /// Path: `/v1/builds/{id}`
         public let path: String
 
-        public func get(fieldsBuilds: [FieldsBuilds]? = nil, fieldsPreReleaseVersions: [FieldsPreReleaseVersions]? = nil, fieldsBetaTesters: [FieldsBetaTesters]? = nil, fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]? = nil, fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]? = nil, fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBuildBetaDetails: [FieldsBuildBetaDetails]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsBuildIcons: [FieldsBuildIcons]? = nil, include: [Include]? = nil, limitBetaBuildLocalizations: Int? = nil, limitBetaGroups: Int? = nil, limitBuildBundles: Int? = nil, limitIcons: Int? = nil, limitIndividualTesters: Int? = nil) -> Request<AppStoreAPI.BuildResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsBuilds, fieldsPreReleaseVersions, fieldsBetaTesters, fieldsBetaBuildLocalizations, fieldsAppEncryptionDeclarations, fieldsBetaAppReviewSubmissions, fieldsApps, fieldsBuildBetaDetails, fieldsAppStoreVersions, fieldsBuildIcons, include, limitBetaBuildLocalizations, limitBetaGroups, limitBuildBundles, limitIcons, limitIndividualTesters), id: "builds_getInstance")
+        public func get(fieldsBuilds: [FieldsBuilds]? = nil, fieldsPreReleaseVersions: [FieldsPreReleaseVersions]? = nil, fieldsBetaTesters: [FieldsBetaTesters]? = nil, fieldsBetaGroups: [FieldsBetaGroups]? = nil, fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]? = nil, fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]? = nil, fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBuildBetaDetails: [FieldsBuildBetaDetails]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsBuildIcons: [FieldsBuildIcons]? = nil, fieldsBuildBundles: [FieldsBuildBundles]? = nil, fieldsBuildUploads: [FieldsBuildUploads]? = nil, include: [Include]? = nil, limitBetaBuildLocalizations: Int? = nil, limitBetaGroups: Int? = nil, limitBuildBundles: Int? = nil, limitIcons: Int? = nil, limitIndividualTesters: Int? = nil) -> Request<AppStoreAPI.BuildResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsBuilds, fieldsPreReleaseVersions, fieldsBetaTesters, fieldsBetaGroups, fieldsBetaBuildLocalizations, fieldsAppEncryptionDeclarations, fieldsBetaAppReviewSubmissions, fieldsApps, fieldsBuildBetaDetails, fieldsAppStoreVersions, fieldsBuildIcons, fieldsBuildBundles, fieldsBuildUploads, include, limitBetaBuildLocalizations, limitBetaGroups, limitBuildBundles, limitIcons, limitIndividualTesters), id: "builds_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsBuilds: [FieldsBuilds]?, _ fieldsPreReleaseVersions: [FieldsPreReleaseVersions]?, _ fieldsBetaTesters: [FieldsBetaTesters]?, _ fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]?, _ fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]?, _ fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]?, _ fieldsApps: [FieldsApps]?, _ fieldsBuildBetaDetails: [FieldsBuildBetaDetails]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsBuildIcons: [FieldsBuildIcons]?, _ include: [Include]?, _ limitBetaBuildLocalizations: Int?, _ limitBetaGroups: Int?, _ limitBuildBundles: Int?, _ limitIcons: Int?, _ limitIndividualTesters: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsBuilds: [FieldsBuilds]?, _ fieldsPreReleaseVersions: [FieldsPreReleaseVersions]?, _ fieldsBetaTesters: [FieldsBetaTesters]?, _ fieldsBetaGroups: [FieldsBetaGroups]?, _ fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]?, _ fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]?, _ fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]?, _ fieldsApps: [FieldsApps]?, _ fieldsBuildBetaDetails: [FieldsBuildBetaDetails]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsBuildIcons: [FieldsBuildIcons]?, _ fieldsBuildBundles: [FieldsBuildBundles]?, _ fieldsBuildUploads: [FieldsBuildUploads]?, _ include: [Include]?, _ limitBetaBuildLocalizations: Int?, _ limitBetaGroups: Int?, _ limitBuildBundles: Int?, _ limitIcons: Int?, _ limitIndividualTesters: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsBuilds, forKey: "fields[builds]")
             encoder.encode(fieldsPreReleaseVersions, forKey: "fields[preReleaseVersions]")
             encoder.encode(fieldsBetaTesters, forKey: "fields[betaTesters]")
+            encoder.encode(fieldsBetaGroups, forKey: "fields[betaGroups]")
             encoder.encode(fieldsBetaBuildLocalizations, forKey: "fields[betaBuildLocalizations]")
             encoder.encode(fieldsAppEncryptionDeclarations, forKey: "fields[appEncryptionDeclarations]")
             encoder.encode(fieldsBetaAppReviewSubmissions, forKey: "fields[betaAppReviewSubmissions]")
@@ -32,6 +33,8 @@ extension Resources.V1.Builds {
             encoder.encode(fieldsBuildBetaDetails, forKey: "fields[buildBetaDetails]")
             encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
             encoder.encode(fieldsBuildIcons, forKey: "fields[buildIcons]")
+            encoder.encode(fieldsBuildBundles, forKey: "fields[buildBundles]")
+            encoder.encode(fieldsBuildUploads, forKey: "fields[buildUploads]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitBetaBuildLocalizations, forKey: "limit[betaBuildLocalizations]")
             encoder.encode(limitBetaGroups, forKey: "limit[betaGroups]")
@@ -87,6 +90,26 @@ extension Resources.V1.Builds {
             case apps
             case betaGroups
             case builds
+        }
+
+        public enum FieldsBetaGroups: String, CaseIterable, Codable, Sendable {
+            case name
+            case createdDate
+            case isInternalGroup
+            case hasAccessToAllBuilds
+            case publicLinkEnabled
+            case publicLinkID = "publicLinkId"
+            case publicLinkLimitEnabled
+            case publicLinkLimit
+            case publicLink
+            case feedbackEnabled
+            case iosBuildsAvailableForAppleSiliconMac
+            case iosBuildsAvailableForAppleVision
+            case app
+            case builds
+            case betaTesters
+            case betaRecruitmentCriteria
+            case betaRecruitmentCriterionCompatibleBuildCheck
         }
 
         public enum FieldsBetaBuildLocalizations: String, CaseIterable, Codable, Sendable {
@@ -218,6 +241,47 @@ extension Resources.V1.Builds {
             case iconType
             case masked
             case name
+        }
+
+        public enum FieldsBuildBundles: String, CaseIterable, Codable, Sendable {
+            case bundleID = "bundleId"
+            case bundleType
+            case sdkBuild
+            case platformBuild
+            case fileName
+            case hasSirikit
+            case hasOnDemandResources
+            case hasPrerenderedIcon
+            case usesLocationServices
+            case isIosBuildMacAppStoreCompatible
+            case includesSymbols
+            case dSYMURL = "dSYMUrl"
+            case supportedArchitectures
+            case requiredCapabilities
+            case deviceProtocols
+            case locales
+            case entitlements
+            case baDownloadAllowance
+            case baMaxInstallSize
+            case minimumOsVersion
+            case appClipDomainCacheStatus
+            case appClipDomainDebugStatus
+            case betaAppClipInvocations
+            case buildBundleFileSizes
+        }
+
+        public enum FieldsBuildUploads: String, CaseIterable, Codable, Sendable {
+            case cfBundleShortVersionString
+            case cfBundleVersion
+            case createdDate
+            case state
+            case platform
+            case uploadedDate
+            case build
+            case assetFile
+            case assetDescriptionFile
+            case assetSpiFile
+            case buildUploadFiles
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

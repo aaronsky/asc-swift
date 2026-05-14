@@ -16,13 +16,14 @@ extension Resources.V2.GameCenterAchievementLocalizations {
         /// Path: `/v2/gameCenterAchievementLocalizations/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterAchievementLocalizations: [FieldsGameCenterAchievementLocalizations]? = nil, fieldsGameCenterAchievementImages: [FieldsGameCenterAchievementImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterAchievementLocalizationV2Response> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterAchievementLocalizations, fieldsGameCenterAchievementImages, include), id: "gameCenterAchievementLocalizationsV2_getInstance")
+        public func get(fieldsGameCenterAchievementLocalizations: [FieldsGameCenterAchievementLocalizations]? = nil, fieldsGameCenterAchievementVersions: [FieldsGameCenterAchievementVersions]? = nil, fieldsGameCenterAchievementImages: [FieldsGameCenterAchievementImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterAchievementLocalizationV2Response> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterAchievementLocalizations, fieldsGameCenterAchievementVersions, fieldsGameCenterAchievementImages, include), id: "gameCenterAchievementLocalizationsV2_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterAchievementLocalizations: [FieldsGameCenterAchievementLocalizations]?, _ fieldsGameCenterAchievementImages: [FieldsGameCenterAchievementImages]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterAchievementLocalizations: [FieldsGameCenterAchievementLocalizations]?, _ fieldsGameCenterAchievementVersions: [FieldsGameCenterAchievementVersions]?, _ fieldsGameCenterAchievementImages: [FieldsGameCenterAchievementImages]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterAchievementLocalizations, forKey: "fields[gameCenterAchievementLocalizations]")
+            encoder.encode(fieldsGameCenterAchievementVersions, forKey: "fields[gameCenterAchievementVersions]")
             encoder.encode(fieldsGameCenterAchievementImages, forKey: "fields[gameCenterAchievementImages]")
             encoder.encode(include, forKey: "include")
             return encoder.items
@@ -35,6 +36,13 @@ extension Resources.V2.GameCenterAchievementLocalizations {
             case afterEarnedDescription
             case version
             case image
+        }
+
+        public enum FieldsGameCenterAchievementVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case state
+            case achievement
+            case localizations
         }
 
         public enum FieldsGameCenterAchievementImages: String, CaseIterable, Codable, Sendable {

@@ -16,13 +16,14 @@ extension Resources.V1.AppCustomProductPageLocalizations {
         /// Path: `/v1/appCustomProductPageLocalizations/{id}`
         public let path: String
 
-        public func get(fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, include: [Include]? = nil, limitAppPreviewSets: Int? = nil, limitAppScreenshotSets: Int? = nil, limitSearchKeywords: Int? = nil) -> Request<AppStoreAPI.AppCustomProductPageLocalizationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppCustomProductPageLocalizations, fieldsAppScreenshotSets, fieldsAppPreviewSets, include, limitAppPreviewSets, limitAppScreenshotSets, limitSearchKeywords), id: "appCustomProductPageLocalizations_getInstance")
+        public func get(fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]? = nil, fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, include: [Include]? = nil, limitAppPreviewSets: Int? = nil, limitAppScreenshotSets: Int? = nil, limitSearchKeywords: Int? = nil) -> Request<AppStoreAPI.AppCustomProductPageLocalizationResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppCustomProductPageLocalizations, fieldsAppCustomProductPageVersions, fieldsAppScreenshotSets, fieldsAppPreviewSets, include, limitAppPreviewSets, limitAppScreenshotSets, limitSearchKeywords), id: "appCustomProductPageLocalizations_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ include: [Include]?, _ limitAppPreviewSets: Int?, _ limitAppScreenshotSets: Int?, _ limitSearchKeywords: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]?, _ fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ include: [Include]?, _ limitAppPreviewSets: Int?, _ limitAppScreenshotSets: Int?, _ limitSearchKeywords: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppCustomProductPageLocalizations, forKey: "fields[appCustomProductPageLocalizations]")
+            encoder.encode(fieldsAppCustomProductPageVersions, forKey: "fields[appCustomProductPageVersions]")
             encoder.encode(fieldsAppScreenshotSets, forKey: "fields[appScreenshotSets]")
             encoder.encode(fieldsAppPreviewSets, forKey: "fields[appPreviewSets]")
             encoder.encode(include, forKey: "include")
@@ -39,6 +40,14 @@ extension Resources.V1.AppCustomProductPageLocalizations {
             case appScreenshotSets
             case appPreviewSets
             case searchKeywords
+        }
+
+        public enum FieldsAppCustomProductPageVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case state
+            case deepLink
+            case appCustomProductPage
+            case appCustomProductPageLocalizations
         }
 
         public enum FieldsAppScreenshotSets: String, CaseIterable, Codable, Sendable {

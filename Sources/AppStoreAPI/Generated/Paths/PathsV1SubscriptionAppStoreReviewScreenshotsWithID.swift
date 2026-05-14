@@ -16,13 +16,14 @@ extension Resources.V1.SubscriptionAppStoreReviewScreenshots {
         /// Path: `/v1/subscriptionAppStoreReviewScreenshots/{id}`
         public let path: String
 
-        public func get(fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionAppStoreReviewScreenshotResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionAppStoreReviewScreenshots, include), id: "subscriptionAppStoreReviewScreenshots_getInstance")
+        public func get(fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionAppStoreReviewScreenshotResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionAppStoreReviewScreenshots, fieldsSubscriptions, include), id: "subscriptionAppStoreReviewScreenshots_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsSubscriptionAppStoreReviewScreenshots, forKey: "fields[subscriptionAppStoreReviewScreenshots]")
+            encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -37,6 +38,28 @@ extension Resources.V1.SubscriptionAppStoreReviewScreenshots {
             case uploadOperations
             case assetDeliveryState
             case subscription
+        }
+
+        public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
+            case name
+            case productID = "productId"
+            case familySharable
+            case state
+            case subscriptionPeriod
+            case reviewNote
+            case groupLevel
+            case subscriptionLocalizations
+            case appStoreReviewScreenshot
+            case group
+            case introductoryOffers
+            case promotionalOffers
+            case offerCodes
+            case prices
+            case pricePoints
+            case promotedPurchase
+            case subscriptionAvailability
+            case winBackOffers
+            case images
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

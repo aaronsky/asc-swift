@@ -16,13 +16,14 @@ extension Resources.V1.AppInfoLocalizations {
         /// Path: `/v1/appInfoLocalizations/{id}`
         public let path: String
 
-        public func get(fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppInfoLocalizationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppInfoLocalizations, include), id: "appInfoLocalizations_getInstance")
+        public func get(fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]? = nil, fieldsAppInfos: [FieldsAppInfos]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppInfoLocalizationResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppInfoLocalizations, fieldsAppInfos, include), id: "appInfoLocalizations_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppInfoLocalizations: [FieldsAppInfoLocalizations]?, _ fieldsAppInfos: [FieldsAppInfos]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppInfoLocalizations, forKey: "fields[appInfoLocalizations]")
+            encoder.encode(fieldsAppInfos, forKey: "fields[appInfos]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -35,6 +36,28 @@ extension Resources.V1.AppInfoLocalizations {
             case privacyChoicesURL = "privacyChoicesUrl"
             case privacyPolicyText
             case appInfo
+        }
+
+        public enum FieldsAppInfos: String, CaseIterable, Codable, Sendable {
+            case appStoreState
+            case state
+            case appStoreAgeRating
+            case australiaAgeRating
+            case brazilAgeRating
+            case brazilAgeRatingV2
+            case franceAgeRating
+            case koreaAgeRating
+            case kidsAgeBand
+            case app
+            case ageRatingDeclaration
+            case appInfoLocalizations
+            case primaryCategory
+            case primarySubcategoryOne
+            case primarySubcategoryTwo
+            case secondaryCategory
+            case secondarySubcategoryOne
+            case secondarySubcategoryTwo
+            case territoryAgeRatings
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

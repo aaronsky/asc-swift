@@ -16,13 +16,14 @@ extension Resources.V1.AppClipHeaderImages {
         /// Path: `/v1/appClipHeaderImages/{id}`
         public let path: String
 
-        public func get(fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppClipHeaderImageResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipHeaderImages, include), id: "appClipHeaderImages_getInstance")
+        public func get(fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]? = nil, fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppClipHeaderImageResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipHeaderImages, fieldsAppClipDefaultExperienceLocalizations, include), id: "appClipHeaderImages_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppClipHeaderImages: [FieldsAppClipHeaderImages]?, _ fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppClipHeaderImages, forKey: "fields[appClipHeaderImages]")
+            encoder.encode(fieldsAppClipDefaultExperienceLocalizations, forKey: "fields[appClipDefaultExperienceLocalizations]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -35,6 +36,13 @@ extension Resources.V1.AppClipHeaderImages {
             case uploadOperations
             case assetDeliveryState
             case appClipDefaultExperienceLocalization
+        }
+
+        public enum FieldsAppClipDefaultExperienceLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case subtitle
+            case appClipDefaultExperience
+            case appClipHeaderImage
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

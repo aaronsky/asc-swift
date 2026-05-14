@@ -16,13 +16,14 @@ extension Resources.V1.InAppPurchases {
         /// Path: `/v1/inAppPurchases/{id}`
         public let path: String
 
-        public func get(fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, include: [Include]? = nil, limitApps: Int? = nil) -> Request<AppStoreAPI.InAppPurchaseResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchases, include, limitApps), id: "inAppPurchases_getInstance")
+        public func get(fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, fieldsApps: [FieldsApps]? = nil, include: [Include]? = nil, limitApps: Int? = nil) -> Request<AppStoreAPI.InAppPurchaseResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsInAppPurchases, fieldsApps, include, limitApps), id: "inAppPurchases_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ include: [Include]?, _ limitApps: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ fieldsApps: [FieldsApps]?, _ include: [Include]?, _ limitApps: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsInAppPurchases, forKey: "fields[inAppPurchases]")
+            encoder.encode(fieldsApps, forKey: "fields[apps]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitApps, forKey: "limit[apps]")
             return encoder.items
@@ -34,6 +35,64 @@ extension Resources.V1.InAppPurchases {
             case inAppPurchaseType
             case state
             case apps
+        }
+
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case accessibilityURL = "accessibilityUrl"
+            case name
+            case bundleID = "bundleId"
+            case sku
+            case primaryLocale
+            case isOrEverWasMadeForKids
+            case subscriptionStatusURL = "subscriptionStatusUrl"
+            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
+            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
+            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
+            case contentRightsDeclaration
+            case streamlinedPurchasingEnabled
+            case accessibilityDeclarations
+            case appEncryptionDeclarations
+            case appStoreIcon
+            case ciProduct
+            case betaTesters
+            case betaGroups
+            case appStoreVersions
+            case appTags
+            case preReleaseVersions
+            case betaAppLocalizations
+            case builds
+            case betaLicenseAgreement
+            case betaAppReviewDetail
+            case appInfos
+            case appClips
+            case appPricePoints
+            case endUserLicenseAgreement
+            case appPriceSchedule
+            case appAvailabilityV2
+            case inAppPurchases
+            case subscriptionGroups
+            case gameCenterEnabledVersions
+            case perfPowerMetrics
+            case appCustomProductPages
+            case inAppPurchasesV2
+            case promotedPurchases
+            case appEvents
+            case reviewSubmissions
+            case subscriptionGracePeriod
+            case customerReviews
+            case customerReviewSummarizations
+            case gameCenterDetail
+            case appStoreVersionExperimentsV2
+            case alternativeDistributionKey
+            case analyticsReportRequests
+            case marketplaceSearchDetail
+            case buildUploads
+            case backgroundAssets
+            case betaFeedbackScreenshotSubmissions
+            case betaFeedbackCrashSubmissions
+            case searchKeywords
+            case webhooks
+            case androidToIosAppMappingDetails
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

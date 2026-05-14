@@ -16,13 +16,14 @@ extension Resources.V1.AppCustomProductPages {
         /// Path: `/v1/appCustomProductPages/{id}`
         public let path: String
 
-        public func get(fieldsAppCustomProductPages: [FieldsAppCustomProductPages]? = nil, fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]? = nil, include: [Include]? = nil, limitAppCustomProductPageVersions: Int? = nil) -> Request<AppStoreAPI.AppCustomProductPageResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppCustomProductPages, fieldsAppCustomProductPageVersions, include, limitAppCustomProductPageVersions), id: "appCustomProductPages_getInstance")
+        public func get(fieldsAppCustomProductPages: [FieldsAppCustomProductPages]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]? = nil, include: [Include]? = nil, limitAppCustomProductPageVersions: Int? = nil) -> Request<AppStoreAPI.AppCustomProductPageResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppCustomProductPages, fieldsApps, fieldsAppCustomProductPageVersions, include, limitAppCustomProductPageVersions), id: "appCustomProductPages_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppCustomProductPages: [FieldsAppCustomProductPages]?, _ fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]?, _ include: [Include]?, _ limitAppCustomProductPageVersions: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppCustomProductPages: [FieldsAppCustomProductPages]?, _ fieldsApps: [FieldsApps]?, _ fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]?, _ include: [Include]?, _ limitAppCustomProductPageVersions: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppCustomProductPages, forKey: "fields[appCustomProductPages]")
+            encoder.encode(fieldsApps, forKey: "fields[apps]")
             encoder.encode(fieldsAppCustomProductPageVersions, forKey: "fields[appCustomProductPageVersions]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitAppCustomProductPageVersions, forKey: "limit[appCustomProductPageVersions]")
@@ -35,6 +36,64 @@ extension Resources.V1.AppCustomProductPages {
             case visible
             case app
             case appCustomProductPageVersions
+        }
+
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case accessibilityURL = "accessibilityUrl"
+            case name
+            case bundleID = "bundleId"
+            case sku
+            case primaryLocale
+            case isOrEverWasMadeForKids
+            case subscriptionStatusURL = "subscriptionStatusUrl"
+            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
+            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
+            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
+            case contentRightsDeclaration
+            case streamlinedPurchasingEnabled
+            case accessibilityDeclarations
+            case appEncryptionDeclarations
+            case appStoreIcon
+            case ciProduct
+            case betaTesters
+            case betaGroups
+            case appStoreVersions
+            case appTags
+            case preReleaseVersions
+            case betaAppLocalizations
+            case builds
+            case betaLicenseAgreement
+            case betaAppReviewDetail
+            case appInfos
+            case appClips
+            case appPricePoints
+            case endUserLicenseAgreement
+            case appPriceSchedule
+            case appAvailabilityV2
+            case inAppPurchases
+            case subscriptionGroups
+            case gameCenterEnabledVersions
+            case perfPowerMetrics
+            case appCustomProductPages
+            case inAppPurchasesV2
+            case promotedPurchases
+            case appEvents
+            case reviewSubmissions
+            case subscriptionGracePeriod
+            case customerReviews
+            case customerReviewSummarizations
+            case gameCenterDetail
+            case appStoreVersionExperimentsV2
+            case alternativeDistributionKey
+            case analyticsReportRequests
+            case marketplaceSearchDetail
+            case buildUploads
+            case backgroundAssets
+            case betaFeedbackScreenshotSubmissions
+            case betaFeedbackCrashSubmissions
+            case searchKeywords
+            case webhooks
+            case androidToIosAppMappingDetails
         }
 
         public enum FieldsAppCustomProductPageVersions: String, CaseIterable, Codable, Sendable {

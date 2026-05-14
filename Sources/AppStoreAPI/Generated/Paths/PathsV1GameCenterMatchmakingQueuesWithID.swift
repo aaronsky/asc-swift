@@ -16,13 +16,14 @@ extension Resources.V1.GameCenterMatchmakingQueues {
         /// Path: `/v1/gameCenterMatchmakingQueues/{id}`
         public let path: String
 
-        public func get(fieldsGameCenterMatchmakingQueues: [FieldsGameCenterMatchmakingQueues]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterMatchmakingQueueResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterMatchmakingQueues, include), id: "gameCenterMatchmakingQueues_getInstance")
+        public func get(fieldsGameCenterMatchmakingQueues: [FieldsGameCenterMatchmakingQueues]? = nil, fieldsGameCenterMatchmakingRuleSets: [FieldsGameCenterMatchmakingRuleSets]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.GameCenterMatchmakingQueueResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsGameCenterMatchmakingQueues, fieldsGameCenterMatchmakingRuleSets, include), id: "gameCenterMatchmakingQueues_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsGameCenterMatchmakingQueues: [FieldsGameCenterMatchmakingQueues]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsGameCenterMatchmakingQueues: [FieldsGameCenterMatchmakingQueues]?, _ fieldsGameCenterMatchmakingRuleSets: [FieldsGameCenterMatchmakingRuleSets]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsGameCenterMatchmakingQueues, forKey: "fields[gameCenterMatchmakingQueues]")
+            encoder.encode(fieldsGameCenterMatchmakingRuleSets, forKey: "fields[gameCenterMatchmakingRuleSets]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -32,6 +33,16 @@ extension Resources.V1.GameCenterMatchmakingQueues {
             case classicMatchmakingBundleIDs = "classicMatchmakingBundleIds"
             case ruleSet
             case experimentRuleSet
+        }
+
+        public enum FieldsGameCenterMatchmakingRuleSets: String, CaseIterable, Codable, Sendable {
+            case referenceName
+            case ruleLanguageVersion
+            case minPlayers
+            case maxPlayers
+            case teams
+            case rules
+            case matchmakingQueues
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

@@ -16,13 +16,14 @@ extension Resources.V1.AppStoreReviewDetails {
         /// Path: `/v1/appStoreReviewDetails/{id}`
         public let path: String
 
-        public func get(fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]? = nil, fieldsAppStoreReviewAttachments: [FieldsAppStoreReviewAttachments]? = nil, include: [Include]? = nil, limitAppStoreReviewAttachments: Int? = nil) -> Request<AppStoreAPI.AppStoreReviewDetailResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreReviewDetails, fieldsAppStoreReviewAttachments, include, limitAppStoreReviewAttachments), id: "appStoreReviewDetails_getInstance")
+        public func get(fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppStoreReviewAttachments: [FieldsAppStoreReviewAttachments]? = nil, include: [Include]? = nil, limitAppStoreReviewAttachments: Int? = nil) -> Request<AppStoreAPI.AppStoreReviewDetailResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreReviewDetails, fieldsAppStoreVersions, fieldsAppStoreReviewAttachments, include, limitAppStoreReviewAttachments), id: "appStoreReviewDetails_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]?, _ fieldsAppStoreReviewAttachments: [FieldsAppStoreReviewAttachments]?, _ include: [Include]?, _ limitAppStoreReviewAttachments: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppStoreReviewAttachments: [FieldsAppStoreReviewAttachments]?, _ include: [Include]?, _ limitAppStoreReviewAttachments: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppStoreReviewDetails, forKey: "fields[appStoreReviewDetails]")
+            encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
             encoder.encode(fieldsAppStoreReviewAttachments, forKey: "fields[appStoreReviewAttachments]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitAppStoreReviewAttachments, forKey: "limit[appStoreReviewAttachments]")
@@ -40,6 +41,33 @@ extension Resources.V1.AppStoreReviewDetails {
             case notes
             case appStoreVersion
             case appStoreReviewAttachments
+        }
+
+        public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
+            case platform
+            case versionString
+            case appStoreState
+            case appVersionState
+            case copyright
+            case reviewType
+            case releaseType
+            case earliestReleaseDate
+            case usesIdfa
+            case downloadable
+            case createdDate
+            case app
+            case appStoreVersionLocalizations
+            case build
+            case appStoreVersionPhasedRelease
+            case gameCenterAppVersion
+            case routingAppCoverage
+            case appStoreReviewDetail
+            case appStoreVersionSubmission
+            case appClipDefaultExperience
+            case appStoreVersionExperiments
+            case appStoreVersionExperimentsV2
+            case customerReviews
+            case alternativeDistributionPackage
         }
 
         public enum FieldsAppStoreReviewAttachments: String, CaseIterable, Codable, Sendable {

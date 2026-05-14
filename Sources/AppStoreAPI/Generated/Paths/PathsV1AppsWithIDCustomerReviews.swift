@@ -16,18 +16,20 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/customerReviews`
         public let path: String
 
-        public func get(filterTerritory: [FilterTerritory]? = nil, filterRating: [String]? = nil, isExistsPublishedResponse: Bool? = nil, sort: [Sort]? = nil, fieldsCustomerReviews: [FieldsCustomerReviews]? = nil, fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CustomerReviewsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterTerritory, filterRating, isExistsPublishedResponse, sort, fieldsCustomerReviews, fieldsCustomerReviewResponses, limit, include), id: "apps_customerReviews_getToManyRelated")
+        public func get(filterTerritory: [FilterTerritory]? = nil, filterRating: [String]? = nil, filterReviewTerritory: [String]? = nil, isExistsPublishedResponse: Bool? = nil, sort: [Sort]? = nil, fieldsCustomerReviews: [FieldsCustomerReviews]? = nil, fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.CustomerReviewsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterTerritory, filterRating, filterReviewTerritory, isExistsPublishedResponse, sort, fieldsCustomerReviews, fieldsCustomerReviewResponses, fieldsTerritories, limit, include), id: "apps_customerReviews_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterTerritory: [FilterTerritory]?, _ filterRating: [String]?, _ isExistsPublishedResponse: Bool?, _ sort: [Sort]?, _ fieldsCustomerReviews: [FieldsCustomerReviews]?, _ fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterTerritory: [FilterTerritory]?, _ filterRating: [String]?, _ filterReviewTerritory: [String]?, _ isExistsPublishedResponse: Bool?, _ sort: [Sort]?, _ fieldsCustomerReviews: [FieldsCustomerReviews]?, _ fieldsCustomerReviewResponses: [FieldsCustomerReviewResponses]?, _ fieldsTerritories: [FieldsTerritories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterTerritory, forKey: "filter[territory]")
             encoder.encode(filterRating, forKey: "filter[rating]")
+            encoder.encode(filterReviewTerritory, forKey: "filter[reviewTerritory]")
             encoder.encode(isExistsPublishedResponse, forKey: "exists[publishedResponse]")
             encoder.encode(sort, forKey: "sort")
             encoder.encode(fieldsCustomerReviews, forKey: "fields[customerReviews]")
             encoder.encode(fieldsCustomerReviewResponses, forKey: "fields[customerReviewResponses]")
+            encoder.encode(fieldsTerritories, forKey: "fields[territories]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             return encoder.items
@@ -284,6 +286,7 @@ extension Resources.V1.Apps.WithID {
             case createdDate
             case territory
             case response
+            case reviewTerritory
         }
 
         public enum FieldsCustomerReviewResponses: String, CaseIterable, Codable, Sendable {
@@ -293,8 +296,13 @@ extension Resources.V1.Apps.WithID {
             case review
         }
 
+        public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
+            case currency
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case response
+            case reviewTerritory
         }
     }
 }

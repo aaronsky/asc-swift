@@ -16,13 +16,14 @@ extension Resources.V1.AppStoreReviewAttachments {
         /// Path: `/v1/appStoreReviewAttachments/{id}`
         public let path: String
 
-        public func get(fieldsAppStoreReviewAttachments: [FieldsAppStoreReviewAttachments]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppStoreReviewAttachmentResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreReviewAttachments, include), id: "appStoreReviewAttachments_getInstance")
+        public func get(fieldsAppStoreReviewAttachments: [FieldsAppStoreReviewAttachments]? = nil, fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppStoreReviewAttachmentResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreReviewAttachments, fieldsAppStoreReviewDetails, include), id: "appStoreReviewAttachments_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppStoreReviewAttachments: [FieldsAppStoreReviewAttachments]?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppStoreReviewAttachments: [FieldsAppStoreReviewAttachments]?, _ fieldsAppStoreReviewDetails: [FieldsAppStoreReviewDetails]?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppStoreReviewAttachments, forKey: "fields[appStoreReviewAttachments]")
+            encoder.encode(fieldsAppStoreReviewDetails, forKey: "fields[appStoreReviewDetails]")
             encoder.encode(include, forKey: "include")
             return encoder.items
         }
@@ -34,6 +35,19 @@ extension Resources.V1.AppStoreReviewAttachments {
             case uploadOperations
             case assetDeliveryState
             case appStoreReviewDetail
+        }
+
+        public enum FieldsAppStoreReviewDetails: String, CaseIterable, Codable, Sendable {
+            case contactFirstName
+            case contactLastName
+            case contactPhone
+            case contactEmail
+            case demoAccountName
+            case demoAccountPassword
+            case demoAccountRequired
+            case notes
+            case appStoreVersion
+            case appStoreReviewAttachments
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

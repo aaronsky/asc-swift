@@ -16,13 +16,16 @@ extension Resources.V1.AppClipAdvancedExperiences {
         /// Path: `/v1/appClipAdvancedExperiences/{id}`
         public let path: String
 
-        public func get(fieldsAppClipAdvancedExperiences: [FieldsAppClipAdvancedExperiences]? = nil, include: [Include]? = nil, limitLocalizations: Int? = nil) -> Request<AppStoreAPI.AppClipAdvancedExperienceResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipAdvancedExperiences, include, limitLocalizations), id: "appClipAdvancedExperiences_getInstance")
+        public func get(fieldsAppClipAdvancedExperiences: [FieldsAppClipAdvancedExperiences]? = nil, fieldsAppClips: [FieldsAppClips]? = nil, fieldsAppClipAdvancedExperienceImages: [FieldsAppClipAdvancedExperienceImages]? = nil, fieldsAppClipAdvancedExperienceLocalizations: [FieldsAppClipAdvancedExperienceLocalizations]? = nil, include: [Include]? = nil, limitLocalizations: Int? = nil) -> Request<AppStoreAPI.AppClipAdvancedExperienceResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipAdvancedExperiences, fieldsAppClips, fieldsAppClipAdvancedExperienceImages, fieldsAppClipAdvancedExperienceLocalizations, include, limitLocalizations), id: "appClipAdvancedExperiences_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppClipAdvancedExperiences: [FieldsAppClipAdvancedExperiences]?, _ include: [Include]?, _ limitLocalizations: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppClipAdvancedExperiences: [FieldsAppClipAdvancedExperiences]?, _ fieldsAppClips: [FieldsAppClips]?, _ fieldsAppClipAdvancedExperienceImages: [FieldsAppClipAdvancedExperienceImages]?, _ fieldsAppClipAdvancedExperienceLocalizations: [FieldsAppClipAdvancedExperienceLocalizations]?, _ include: [Include]?, _ limitLocalizations: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppClipAdvancedExperiences, forKey: "fields[appClipAdvancedExperiences]")
+            encoder.encode(fieldsAppClips, forKey: "fields[appClips]")
+            encoder.encode(fieldsAppClipAdvancedExperienceImages, forKey: "fields[appClipAdvancedExperienceImages]")
+            encoder.encode(fieldsAppClipAdvancedExperienceLocalizations, forKey: "fields[appClipAdvancedExperienceLocalizations]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitLocalizations, forKey: "limit[localizations]")
             return encoder.items
@@ -41,6 +44,28 @@ extension Resources.V1.AppClipAdvancedExperiences {
             case appClip
             case headerImage
             case localizations
+        }
+
+        public enum FieldsAppClips: String, CaseIterable, Codable, Sendable {
+            case bundleID = "bundleId"
+            case app
+            case appClipDefaultExperiences
+            case appClipAdvancedExperiences
+        }
+
+        public enum FieldsAppClipAdvancedExperienceImages: String, CaseIterable, Codable, Sendable {
+            case fileSize
+            case fileName
+            case sourceFileChecksum
+            case imageAsset
+            case uploadOperations
+            case assetDeliveryState
+        }
+
+        public enum FieldsAppClipAdvancedExperienceLocalizations: String, CaseIterable, Codable, Sendable {
+            case language
+            case title
+            case subtitle
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

@@ -8,11 +8,45 @@ import AppStoreConnect
 
 public struct CustomerReviewsResponse: Codable, Equatable, Sendable {
     public var data: [CustomerReview]
-    public var included: [CustomerReviewResponseV1]?
+    public var included: [IncludedItem]?
     public var links: PagedDocumentLinks
     public var meta: PagingInformation?
 
-    public init(data: [CustomerReview], included: [CustomerReviewResponseV1]? = nil, links: PagedDocumentLinks, meta: PagingInformation? = nil) {
+    public enum IncludedItem: Codable, Equatable, Sendable {
+        case customerReviewResponseV1(CustomerReviewResponseV1)
+        case territory(Territory)
+
+        public init(from decoder: any Decoder) throws {
+
+            struct Discriminator: Decodable {
+                let type: String
+            }
+
+            let container = try decoder.singleValueContainer()
+            let discriminatorValue = try container.decode(Discriminator.self).type
+
+            switch discriminatorValue {
+            case "customerReviewResponses": self = .customerReviewResponseV1(try container.decode(CustomerReviewResponseV1.self))
+            case "territories": self = .territory(try container.decode(Territory.self))
+
+            default:
+                throw DecodingError.dataCorruptedError(
+                    in: container,
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (customerReviewResponses, territories)."
+                )
+            }
+        }
+
+        public func encode(to encoder: any Encoder) throws {
+            var container = encoder.singleValueContainer()
+            switch self {
+            case .customerReviewResponseV1(let value): try container.encode(value)
+            case .territory(let value): try container.encode(value)
+            }
+        }
+    }
+
+    public init(data: [CustomerReview], included: [IncludedItem]? = nil, links: PagedDocumentLinks, meta: PagingInformation? = nil) {
         self.data = data
         self.included = included
         self.links = links

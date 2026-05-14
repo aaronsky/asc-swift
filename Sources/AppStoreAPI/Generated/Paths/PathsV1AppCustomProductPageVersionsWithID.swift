@@ -16,13 +16,14 @@ extension Resources.V1.AppCustomProductPageVersions {
         /// Path: `/v1/appCustomProductPageVersions/{id}`
         public let path: String
 
-        public func get(fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]? = nil, fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]? = nil, include: [Include]? = nil, limitAppCustomProductPageLocalizations: Int? = nil) -> Request<AppStoreAPI.AppCustomProductPageVersionResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppCustomProductPageVersions, fieldsAppCustomProductPageLocalizations, include, limitAppCustomProductPageLocalizations), id: "appCustomProductPageVersions_getInstance")
+        public func get(fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]? = nil, fieldsAppCustomProductPages: [FieldsAppCustomProductPages]? = nil, fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]? = nil, include: [Include]? = nil, limitAppCustomProductPageLocalizations: Int? = nil) -> Request<AppStoreAPI.AppCustomProductPageVersionResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppCustomProductPageVersions, fieldsAppCustomProductPages, fieldsAppCustomProductPageLocalizations, include, limitAppCustomProductPageLocalizations), id: "appCustomProductPageVersions_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]?, _ fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]?, _ include: [Include]?, _ limitAppCustomProductPageLocalizations: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]?, _ fieldsAppCustomProductPages: [FieldsAppCustomProductPages]?, _ fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]?, _ include: [Include]?, _ limitAppCustomProductPageLocalizations: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppCustomProductPageVersions, forKey: "fields[appCustomProductPageVersions]")
+            encoder.encode(fieldsAppCustomProductPages, forKey: "fields[appCustomProductPages]")
             encoder.encode(fieldsAppCustomProductPageLocalizations, forKey: "fields[appCustomProductPageLocalizations]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitAppCustomProductPageLocalizations, forKey: "limit[appCustomProductPageLocalizations]")
@@ -35,6 +36,14 @@ extension Resources.V1.AppCustomProductPageVersions {
             case deepLink
             case appCustomProductPage
             case appCustomProductPageLocalizations
+        }
+
+        public enum FieldsAppCustomProductPages: String, CaseIterable, Codable, Sendable {
+            case name
+            case url
+            case visible
+            case app
+            case appCustomProductPageVersions
         }
 
         public enum FieldsAppCustomProductPageLocalizations: String, CaseIterable, Codable, Sendable {

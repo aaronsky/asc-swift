@@ -9,13 +9,57 @@ import AppStoreConnect
 public struct AppPriceV2InlineCreate: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String?
+    public var attributes: Attributes?
+    public var relationships: Relationships?
 
     public enum `Type`: String, CaseIterable, Codable, Sendable {
         case appPrices
     }
 
-    public init(type: `Type` = .appPrices, id: String? = nil) {
+    public struct Attributes: Codable, Equatable, Sendable {
+        public var startDate: String?
+        public var endDate: String?
+
+        public init(startDate: String? = nil, endDate: String? = nil) {
+            self.startDate = startDate
+            self.endDate = endDate
+        }
+    }
+
+    public struct Relationships: Codable, Equatable, Sendable {
+        public var appPricePoint: AppPricePoint?
+
+        public struct AppPricePoint: Codable, Equatable, Sendable {
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case appPricePoints
+                }
+
+                public init(type: `Type` = .appPricePoints, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(data: Data? = nil) {
+                self.data = data
+            }
+        }
+
+        public init(appPricePoint: AppPricePoint? = nil) {
+            self.appPricePoint = appPricePoint
+        }
+    }
+
+    public init(type: `Type` = .appPrices, id: String? = nil, attributes: Attributes? = nil, relationships: Relationships? = nil) {
         self.type = type
         self.id = id
+        self.attributes = attributes
+        self.relationships = relationships
     }
 }

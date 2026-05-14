@@ -16,13 +16,14 @@ extension Resources.V1.AppClipDefaultExperiences {
         /// Path: `/v1/appClipDefaultExperiences/{id}`
         public let path: String
 
-        public func get(fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]? = nil, fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]? = nil, include: [Include]? = nil, limitAppClipDefaultExperienceLocalizations: Int? = nil) -> Request<AppStoreAPI.AppClipDefaultExperienceResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipDefaultExperiences, fieldsAppStoreVersions, fieldsAppClipDefaultExperienceLocalizations, fieldsAppClipAppStoreReviewDetails, include, limitAppClipDefaultExperienceLocalizations), id: "appClipDefaultExperiences_getInstance")
+        public func get(fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, fieldsAppClips: [FieldsAppClips]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]? = nil, fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]? = nil, include: [Include]? = nil, limitAppClipDefaultExperienceLocalizations: Int? = nil) -> Request<AppStoreAPI.AppClipDefaultExperienceResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClipDefaultExperiences, fieldsAppClips, fieldsAppStoreVersions, fieldsAppClipDefaultExperienceLocalizations, fieldsAppClipAppStoreReviewDetails, include, limitAppClipDefaultExperienceLocalizations), id: "appClipDefaultExperiences_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]?, _ fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]?, _ include: [Include]?, _ limitAppClipDefaultExperienceLocalizations: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ fieldsAppClips: [FieldsAppClips]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppClipDefaultExperienceLocalizations: [FieldsAppClipDefaultExperienceLocalizations]?, _ fieldsAppClipAppStoreReviewDetails: [FieldsAppClipAppStoreReviewDetails]?, _ include: [Include]?, _ limitAppClipDefaultExperienceLocalizations: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppClipDefaultExperiences, forKey: "fields[appClipDefaultExperiences]")
+            encoder.encode(fieldsAppClips, forKey: "fields[appClips]")
             encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
             encoder.encode(fieldsAppClipDefaultExperienceLocalizations, forKey: "fields[appClipDefaultExperienceLocalizations]")
             encoder.encode(fieldsAppClipAppStoreReviewDetails, forKey: "fields[appClipAppStoreReviewDetails]")
@@ -37,6 +38,13 @@ extension Resources.V1.AppClipDefaultExperiences {
             case releaseWithAppStoreVersion
             case appClipDefaultExperienceLocalizations
             case appClipAppStoreReviewDetail
+        }
+
+        public enum FieldsAppClips: String, CaseIterable, Codable, Sendable {
+            case bundleID = "bundleId"
+            case app
+            case appClipDefaultExperiences
+            case appClipAdvancedExperiences
         }
 
         public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {

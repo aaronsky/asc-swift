@@ -16,13 +16,14 @@ extension Resources.V1.AppClips {
         /// Path: `/v1/appClips/{id}`
         public let path: String
 
-        public func get(fieldsAppClips: [FieldsAppClips]? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, include: [Include]? = nil, limitAppClipDefaultExperiences: Int? = nil) -> Request<AppStoreAPI.AppClipResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClips, fieldsAppClipDefaultExperiences, include, limitAppClipDefaultExperiences), id: "appClips_getInstance")
+        public func get(fieldsAppClips: [FieldsAppClips]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]? = nil, include: [Include]? = nil, limitAppClipDefaultExperiences: Int? = nil) -> Request<AppStoreAPI.AppClipResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppClips, fieldsApps, fieldsAppClipDefaultExperiences, include, limitAppClipDefaultExperiences), id: "appClips_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppClips: [FieldsAppClips]?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ include: [Include]?, _ limitAppClipDefaultExperiences: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppClips: [FieldsAppClips]?, _ fieldsApps: [FieldsApps]?, _ fieldsAppClipDefaultExperiences: [FieldsAppClipDefaultExperiences]?, _ include: [Include]?, _ limitAppClipDefaultExperiences: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppClips, forKey: "fields[appClips]")
+            encoder.encode(fieldsApps, forKey: "fields[apps]")
             encoder.encode(fieldsAppClipDefaultExperiences, forKey: "fields[appClipDefaultExperiences]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitAppClipDefaultExperiences, forKey: "limit[appClipDefaultExperiences]")
@@ -34,6 +35,64 @@ extension Resources.V1.AppClips {
             case app
             case appClipDefaultExperiences
             case appClipAdvancedExperiences
+        }
+
+        public enum FieldsApps: String, CaseIterable, Codable, Sendable {
+            case accessibilityURL = "accessibilityUrl"
+            case name
+            case bundleID = "bundleId"
+            case sku
+            case primaryLocale
+            case isOrEverWasMadeForKids
+            case subscriptionStatusURL = "subscriptionStatusUrl"
+            case subscriptionStatusURLVersion = "subscriptionStatusUrlVersion"
+            case subscriptionStatusURLForSandbox = "subscriptionStatusUrlForSandbox"
+            case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
+            case contentRightsDeclaration
+            case streamlinedPurchasingEnabled
+            case accessibilityDeclarations
+            case appEncryptionDeclarations
+            case appStoreIcon
+            case ciProduct
+            case betaTesters
+            case betaGroups
+            case appStoreVersions
+            case appTags
+            case preReleaseVersions
+            case betaAppLocalizations
+            case builds
+            case betaLicenseAgreement
+            case betaAppReviewDetail
+            case appInfos
+            case appClips
+            case appPricePoints
+            case endUserLicenseAgreement
+            case appPriceSchedule
+            case appAvailabilityV2
+            case inAppPurchases
+            case subscriptionGroups
+            case gameCenterEnabledVersions
+            case perfPowerMetrics
+            case appCustomProductPages
+            case inAppPurchasesV2
+            case promotedPurchases
+            case appEvents
+            case reviewSubmissions
+            case subscriptionGracePeriod
+            case customerReviews
+            case customerReviewSummarizations
+            case gameCenterDetail
+            case appStoreVersionExperimentsV2
+            case alternativeDistributionKey
+            case analyticsReportRequests
+            case marketplaceSearchDetail
+            case buildUploads
+            case backgroundAssets
+            case betaFeedbackScreenshotSubmissions
+            case betaFeedbackCrashSubmissions
+            case searchKeywords
+            case webhooks
+            case androidToIosAppMappingDetails
         }
 
         public enum FieldsAppClipDefaultExperiences: String, CaseIterable, Codable, Sendable {

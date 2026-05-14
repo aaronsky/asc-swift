@@ -9,17 +9,17 @@ import AppStoreConnect
 public struct GameCenterMatchmakingTestPlayerPropertyInlineCreate: Codable, Equatable, Identifiable, Sendable {
     public var type: `Type`
     public var id: String?
-    public var attributes: Attributes
+    public var attributes: Attributes?
 
     public enum `Type`: String, CaseIterable, Codable, Sendable {
         case gameCenterMatchmakingTestPlayerProperties
     }
 
     public struct Attributes: Codable, Equatable, Sendable {
-        public var playerID: String
+        public var playerID: String?
         public var properties: [Property]?
 
-        public init(playerID: String, properties: [Property]? = nil) {
+        public init(playerID: String? = nil, properties: [Property]? = nil) {
             self.playerID = playerID
             self.properties = properties
         }
@@ -30,7 +30,7 @@ public struct GameCenterMatchmakingTestPlayerPropertyInlineCreate: Codable, Equa
         }
     }
 
-    public init(type: `Type` = .gameCenterMatchmakingTestPlayerProperties, id: String? = nil, attributes: Attributes) {
+    public init(type: `Type` = .gameCenterMatchmakingTestPlayerProperties, id: String? = nil, attributes: Attributes? = nil) {
         self.type = type
         self.id = id
         self.attributes = attributes

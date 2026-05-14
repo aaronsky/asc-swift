@@ -16,13 +16,16 @@ extension Resources.V1.AppScreenshotSets {
         /// Path: `/v1/appScreenshotSets/{id}`
         public let path: String
 
-        public func get(fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppScreenshots: [FieldsAppScreenshots]? = nil, include: [Include]? = nil, limitAppScreenshots: Int? = nil) -> Request<AppStoreAPI.AppScreenshotSetResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppScreenshotSets, fieldsAppScreenshots, include, limitAppScreenshots), id: "appScreenshotSets_getInstance")
+        public func get(fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]? = nil, fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]? = nil, fieldsAppScreenshots: [FieldsAppScreenshots]? = nil, include: [Include]? = nil, limitAppScreenshots: Int? = nil) -> Request<AppStoreAPI.AppScreenshotSetResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppScreenshotSets, fieldsAppStoreVersionLocalizations, fieldsAppCustomProductPageLocalizations, fieldsAppStoreVersionExperimentTreatmentLocalizations, fieldsAppScreenshots, include, limitAppScreenshots), id: "appScreenshotSets_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppScreenshots: [FieldsAppScreenshots]?, _ include: [Include]?, _ limitAppScreenshots: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]?, _ fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]?, _ fieldsAppScreenshots: [FieldsAppScreenshots]?, _ include: [Include]?, _ limitAppScreenshots: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppScreenshotSets, forKey: "fields[appScreenshotSets]")
+            encoder.encode(fieldsAppStoreVersionLocalizations, forKey: "fields[appStoreVersionLocalizations]")
+            encoder.encode(fieldsAppCustomProductPageLocalizations, forKey: "fields[appCustomProductPageLocalizations]")
+            encoder.encode(fieldsAppStoreVersionExperimentTreatmentLocalizations, forKey: "fields[appStoreVersionExperimentTreatmentLocalizations]")
             encoder.encode(fieldsAppScreenshots, forKey: "fields[appScreenshots]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitAppScreenshots, forKey: "limit[appScreenshots]")
@@ -35,6 +38,36 @@ extension Resources.V1.AppScreenshotSets {
             case appCustomProductPageLocalization
             case appStoreVersionExperimentTreatmentLocalization
             case appScreenshots
+        }
+
+        public enum FieldsAppStoreVersionLocalizations: String, CaseIterable, Codable, Sendable {
+            case description
+            case locale
+            case keywords
+            case marketingURL = "marketingUrl"
+            case promotionalText
+            case supportURL = "supportUrl"
+            case whatsNew
+            case appStoreVersion
+            case appScreenshotSets
+            case appPreviewSets
+            case searchKeywords
+        }
+
+        public enum FieldsAppCustomProductPageLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case promotionalText
+            case appCustomProductPageVersion
+            case appScreenshotSets
+            case appPreviewSets
+            case searchKeywords
+        }
+
+        public enum FieldsAppStoreVersionExperimentTreatmentLocalizations: String, CaseIterable, Codable, Sendable {
+            case locale
+            case appStoreVersionExperimentTreatment
+            case appScreenshotSets
+            case appPreviewSets
         }
 
         public enum FieldsAppScreenshots: String, CaseIterable, Codable, Sendable {
