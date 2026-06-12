@@ -82,6 +82,7 @@ public struct Subscription: Codable, Equatable, Identifiable, Sendable {
         public var subscriptionAvailability: SubscriptionAvailability?
         public var winBackOffers: WinBackOffers?
         public var images: Images?
+        public var planAvailabilities: PlanAvailabilities?
 
         public struct SubscriptionLocalizations: Codable, Equatable, Sendable {
             public var links: RelationshipLinks?
@@ -367,7 +368,33 @@ public struct Subscription: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(subscriptionLocalizations: SubscriptionLocalizations? = nil, appStoreReviewScreenshot: AppStoreReviewScreenshot? = nil, group: Group? = nil, introductoryOffers: IntroductoryOffers? = nil, promotionalOffers: PromotionalOffers? = nil, offerCodes: OfferCodes? = nil, prices: Prices? = nil, pricePoints: PricePoints? = nil, promotedPurchase: PromotedPurchase? = nil, subscriptionAvailability: SubscriptionAvailability? = nil, winBackOffers: WinBackOffers? = nil, images: Images? = nil) {
+        public struct PlanAvailabilities: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var meta: PagingInformation?
+            public var data: [Datum]?
+
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case subscriptionPlanAvailabilities
+                }
+
+                public init(type: `Type` = .subscriptionPlanAvailabilities, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+                self.links = links
+                self.meta = meta
+                self.data = data
+            }
+        }
+
+        public init(subscriptionLocalizations: SubscriptionLocalizations? = nil, appStoreReviewScreenshot: AppStoreReviewScreenshot? = nil, group: Group? = nil, introductoryOffers: IntroductoryOffers? = nil, promotionalOffers: PromotionalOffers? = nil, offerCodes: OfferCodes? = nil, prices: Prices? = nil, pricePoints: PricePoints? = nil, promotedPurchase: PromotedPurchase? = nil, subscriptionAvailability: SubscriptionAvailability? = nil, winBackOffers: WinBackOffers? = nil, images: Images? = nil, planAvailabilities: PlanAvailabilities? = nil) {
             self.subscriptionLocalizations = subscriptionLocalizations
             self.appStoreReviewScreenshot = appStoreReviewScreenshot
             self.group = group
@@ -380,6 +407,7 @@ public struct Subscription: Codable, Equatable, Identifiable, Sendable {
             self.subscriptionAvailability = subscriptionAvailability
             self.winBackOffers = winBackOffers
             self.images = images
+            self.planAvailabilities = planAvailabilities
         }
     }
 

@@ -23,13 +23,15 @@ public struct SubscriptionPromotionalOffer: Codable, Equatable, Identifiable, Se
         public var numberOfPeriods: Int?
         public var offerCode: String?
         public var offerMode: SubscriptionOfferMode?
+        public var targetSubscriptionPlanType: SubscriptionPlanType?
 
-        public init(duration: SubscriptionOfferDuration? = nil, name: String? = nil, numberOfPeriods: Int? = nil, offerCode: String? = nil, offerMode: SubscriptionOfferMode? = nil) {
+        public init(duration: SubscriptionOfferDuration? = nil, name: String? = nil, numberOfPeriods: Int? = nil, offerCode: String? = nil, offerMode: SubscriptionOfferMode? = nil, targetSubscriptionPlanType: SubscriptionPlanType? = nil) {
             self.duration = duration
             self.name = name
             self.numberOfPeriods = numberOfPeriods
             self.offerCode = offerCode
             self.offerMode = offerMode
+            self.targetSubscriptionPlanType = targetSubscriptionPlanType
         }
     }
 

@@ -46,6 +46,7 @@ extension Resources.V1.SubscriptionOfferCodes {
             case sandboxCodeCount
             case active
             case autoRenewEnabled
+            case targetSubscriptionPlanType
             case subscription
             case oneTimeUseCodes
             case customCodes
@@ -72,6 +73,7 @@ extension Resources.V1.SubscriptionOfferCodes {
             case subscriptionAvailability
             case winBackOffers
             case images
+            case planAvailabilities
         }
 
         public enum FieldsSubscriptionOfferCodeOneTimeUseCodes: String, CaseIterable, Codable, Sendable {

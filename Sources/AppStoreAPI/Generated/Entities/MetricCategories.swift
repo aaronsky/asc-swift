@@ -14,4 +14,5 @@ public enum MetricCategories: String, CaseIterable, Codable, Sendable {
     case battery = "BATTERY"
     case termination = "TERMINATION"
     case animation = "ANIMATION"
+    case storage = "STORAGE"
 }

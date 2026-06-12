@@ -60,6 +60,7 @@ extension Resources.V1.SubscriptionAppStoreReviewScreenshots {
             case subscriptionAvailability
             case winBackOffers
             case images
+            case planAvailabilities
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

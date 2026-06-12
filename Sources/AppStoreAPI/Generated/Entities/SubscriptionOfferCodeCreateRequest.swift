@@ -27,8 +27,9 @@ public struct SubscriptionOfferCodeCreateRequest: Codable, Equatable, Sendable {
             public var offerMode: SubscriptionOfferMode
             public var numberOfPeriods: Int
             public var isAutoRenewEnabled: Bool?
+            public var targetSubscriptionPlanType: SubscriptionPlanType?
 
-            public init(name: String, customerEligibilities: [SubscriptionCustomerEligibility], offerEligibility: SubscriptionOfferEligibility, duration: SubscriptionOfferDuration, offerMode: SubscriptionOfferMode, numberOfPeriods: Int, isAutoRenewEnabled: Bool? = nil) {
+            public init(name: String, customerEligibilities: [SubscriptionCustomerEligibility], offerEligibility: SubscriptionOfferEligibility, duration: SubscriptionOfferDuration, offerMode: SubscriptionOfferMode, numberOfPeriods: Int, isAutoRenewEnabled: Bool? = nil, targetSubscriptionPlanType: SubscriptionPlanType? = nil) {
                 self.name = name
                 self.customerEligibilities = customerEligibilities
                 self.offerEligibility = offerEligibility
@@ -36,6 +37,7 @@ public struct SubscriptionOfferCodeCreateRequest: Codable, Equatable, Sendable {
                 self.offerMode = offerMode
                 self.numberOfPeriods = numberOfPeriods
                 self.isAutoRenewEnabled = isAutoRenewEnabled
+                self.targetSubscriptionPlanType = targetSubscriptionPlanType
             }
 
             private enum CodingKeys: String, CodingKey {
@@ -46,6 +48,7 @@ public struct SubscriptionOfferCodeCreateRequest: Codable, Equatable, Sendable {
                 case offerMode
                 case numberOfPeriods
                 case isAutoRenewEnabled = "autoRenewEnabled"
+                case targetSubscriptionPlanType
             }
         }
 

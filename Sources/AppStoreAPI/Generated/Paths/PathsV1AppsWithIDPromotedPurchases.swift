@@ -77,6 +77,7 @@ extension Resources.V1.Apps.WithID {
             case subscriptionAvailability
             case winBackOffers
             case images
+            case planAvailabilities
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

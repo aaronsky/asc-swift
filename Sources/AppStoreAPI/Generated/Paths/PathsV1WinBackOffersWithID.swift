@@ -42,6 +42,7 @@ extension Resources.V1.WinBackOffers {
             case endDate
             case priority
             case promotionIntent
+            case targetSubscriptionPlanType
             case prices
         }
 

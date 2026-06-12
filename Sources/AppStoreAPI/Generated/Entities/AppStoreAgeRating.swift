@@ -9,6 +9,7 @@ import AppStoreConnect
 public enum AppStoreAgeRating: String, CaseIterable, Codable, Sendable {
     case l = "L"
     case all = "ALL"
+    case zeroZero = "ZERO_ZERO"
     case onePlus = "ONE_PLUS"
     case twoPlus = "TWO_PLUS"
     case threePlus = "THREE_PLUS"

@@ -50,6 +50,7 @@ extension Resources.V1.SubscriptionOfferCodeOneTimeUseCodes {
             case sandboxCodeCount
             case active
             case autoRenewEnabled
+            case targetSubscriptionPlanType
             case subscription
             case oneTimeUseCodes
             case customCodes

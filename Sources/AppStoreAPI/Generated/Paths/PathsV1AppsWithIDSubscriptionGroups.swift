@@ -79,6 +79,7 @@ extension Resources.V1.Apps.WithID {
             case subscriptionAvailability
             case winBackOffers
             case images
+            case planAvailabilities
         }
 
         public enum FieldsSubscriptionGroupLocalizations: String, CaseIterable, Codable, Sendable {

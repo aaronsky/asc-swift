@@ -29,8 +29,9 @@ public struct SubscriptionOfferCode: Codable, Equatable, Identifiable, Sendable 
         public var sandboxCodeCount: Int?
         public var isActive: Bool?
         public var isAutoRenewEnabled: Bool?
+        public var targetSubscriptionPlanType: SubscriptionPlanType?
 
-        public init(name: String? = nil, customerEligibilities: [SubscriptionCustomerEligibility]? = nil, offerEligibility: SubscriptionOfferEligibility? = nil, duration: SubscriptionOfferDuration? = nil, offerMode: SubscriptionOfferMode? = nil, numberOfPeriods: Int? = nil, totalNumberOfCodes: Int? = nil, productionCodeCount: Int? = nil, sandboxCodeCount: Int? = nil, isActive: Bool? = nil, isAutoRenewEnabled: Bool? = nil) {
+        public init(name: String? = nil, customerEligibilities: [SubscriptionCustomerEligibility]? = nil, offerEligibility: SubscriptionOfferEligibility? = nil, duration: SubscriptionOfferDuration? = nil, offerMode: SubscriptionOfferMode? = nil, numberOfPeriods: Int? = nil, totalNumberOfCodes: Int? = nil, productionCodeCount: Int? = nil, sandboxCodeCount: Int? = nil, isActive: Bool? = nil, isAutoRenewEnabled: Bool? = nil, targetSubscriptionPlanType: SubscriptionPlanType? = nil) {
             self.name = name
             self.customerEligibilities = customerEligibilities
             self.offerEligibility = offerEligibility
@@ -42,6 +43,7 @@ public struct SubscriptionOfferCode: Codable, Equatable, Identifiable, Sendable 
             self.sandboxCodeCount = sandboxCodeCount
             self.isActive = isActive
             self.isAutoRenewEnabled = isAutoRenewEnabled
+            self.targetSubscriptionPlanType = targetSubscriptionPlanType
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -56,6 +58,7 @@ public struct SubscriptionOfferCode: Codable, Equatable, Identifiable, Sendable 
             case sandboxCodeCount
             case isActive = "active"
             case isAutoRenewEnabled = "autoRenewEnabled"
+            case targetSubscriptionPlanType
         }
     }
 

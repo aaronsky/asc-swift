@@ -23,6 +23,7 @@ public struct BackgroundAssetVersion: Codable, Equatable, Identifiable, Sendable
         public var state: BackgroundAssetVersionState?
         public var stateDetails: StateDetails?
         public var version: String?
+        public var locale: String?
 
         public struct StateDetails: Codable, Equatable, Sendable {
             public var errors: [StateDetail]?
@@ -36,12 +37,13 @@ public struct BackgroundAssetVersion: Codable, Equatable, Identifiable, Sendable
             }
         }
 
-        public init(createdDate: Date? = nil, platforms: [Platform]? = nil, state: BackgroundAssetVersionState? = nil, stateDetails: StateDetails? = nil, version: String? = nil) {
+        public init(createdDate: Date? = nil, platforms: [Platform]? = nil, state: BackgroundAssetVersionState? = nil, stateDetails: StateDetails? = nil, version: String? = nil, locale: String? = nil) {
             self.createdDate = createdDate
             self.platforms = platforms
             self.state = state
             self.stateDetails = stateDetails
             self.version = version
+            self.locale = locale
         }
     }
 

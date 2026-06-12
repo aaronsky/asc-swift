@@ -123,6 +123,7 @@ extension Resources.V1.ReviewSubmissions.WithID {
             case state
             case stateDetails
             case version
+            case locale
             case backgroundAsset
             case internalBetaRelease
             case externalBetaRelease

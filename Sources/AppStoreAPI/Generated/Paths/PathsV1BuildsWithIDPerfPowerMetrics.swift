@@ -40,6 +40,7 @@ extension Resources.V1.Builds.WithID {
             case memory = "MEMORY"
             case animation = "ANIMATION"
             case termination = "TERMINATION"
+            case storage = "STORAGE"
         }
     }
 }

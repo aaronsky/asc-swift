@@ -285,7 +285,6 @@ extension Resources.V1.Apps {
             case brazilAgeRatingV2
             case franceAgeRating
             case koreaAgeRating
-            case kidsAgeBand
             case app
             case ageRatingDeclaration
             case appInfoLocalizations

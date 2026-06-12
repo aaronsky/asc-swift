@@ -16,14 +16,15 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/backgroundAssets`
         public let path: String
 
-        public func get(filterArchived: [String]? = nil, filterAssetPackIdentifier: [String]? = nil, filterVersionsPlatforms: [FilterVersionsPlatforms]? = nil, sort: [Sort]? = nil, fieldsBackgroundAssets: [FieldsBackgroundAssets]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.BackgroundAssetsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterArchived, filterAssetPackIdentifier, filterVersionsPlatforms, sort, fieldsBackgroundAssets, fieldsApps, fieldsBackgroundAssetVersions, limit, include), id: "apps_backgroundAssets_getToManyRelated")
+        public func get(filterArchived: [String]? = nil, filterAssetPackIdentifier: [String]? = nil, filterVersionsLocale: [String]? = nil, filterVersionsPlatforms: [FilterVersionsPlatforms]? = nil, sort: [Sort]? = nil, fieldsBackgroundAssets: [FieldsBackgroundAssets]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.BackgroundAssetsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterArchived, filterAssetPackIdentifier, filterVersionsLocale, filterVersionsPlatforms, sort, fieldsBackgroundAssets, fieldsApps, fieldsBackgroundAssetVersions, limit, include), id: "apps_backgroundAssets_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterArchived: [String]?, _ filterAssetPackIdentifier: [String]?, _ filterVersionsPlatforms: [FilterVersionsPlatforms]?, _ sort: [Sort]?, _ fieldsBackgroundAssets: [FieldsBackgroundAssets]?, _ fieldsApps: [FieldsApps]?, _ fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterArchived: [String]?, _ filterAssetPackIdentifier: [String]?, _ filterVersionsLocale: [String]?, _ filterVersionsPlatforms: [FilterVersionsPlatforms]?, _ sort: [Sort]?, _ fieldsBackgroundAssets: [FieldsBackgroundAssets]?, _ fieldsApps: [FieldsApps]?, _ fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterArchived, forKey: "filter[archived]")
             encoder.encode(filterAssetPackIdentifier, forKey: "filter[assetPackIdentifier]")
+            encoder.encode(filterVersionsLocale, forKey: "filter[versions.locale]")
             encoder.encode(filterVersionsPlatforms, forKey: "filter[versions.platforms]")
             encoder.encode(sort, forKey: "sort")
             encoder.encode(fieldsBackgroundAssets, forKey: "fields[backgroundAssets]")
@@ -124,6 +125,7 @@ extension Resources.V1.Apps.WithID {
             case state
             case stateDetails
             case version
+            case locale
             case backgroundAsset
             case internalBetaRelease
             case externalBetaRelease

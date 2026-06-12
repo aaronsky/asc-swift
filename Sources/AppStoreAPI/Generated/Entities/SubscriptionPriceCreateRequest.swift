@@ -21,15 +21,18 @@ public struct SubscriptionPriceCreateRequest: Codable, Equatable, Sendable {
         public struct Attributes: Codable, Equatable, Sendable {
             public var startDate: String?
             public var isPreserveCurrentPrice: Bool?
+            public var planType: SubscriptionPlanType?
 
-            public init(startDate: String? = nil, isPreserveCurrentPrice: Bool? = nil) {
+            public init(startDate: String? = nil, isPreserveCurrentPrice: Bool? = nil, planType: SubscriptionPlanType? = nil) {
                 self.startDate = startDate
                 self.isPreserveCurrentPrice = isPreserveCurrentPrice
+                self.planType = planType
             }
 
             private enum CodingKeys: String, CodingKey {
                 case startDate
                 case isPreserveCurrentPrice = "preserveCurrentPrice"
+                case planType
             }
         }
 

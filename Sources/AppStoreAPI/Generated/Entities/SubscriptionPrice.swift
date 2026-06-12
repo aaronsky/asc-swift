@@ -20,15 +20,18 @@ public struct SubscriptionPrice: Codable, Equatable, Identifiable, Sendable {
     public struct Attributes: Codable, Equatable, Sendable {
         public var startDate: String?
         public var isPreserved: Bool?
+        public var planType: SubscriptionPlanType?
 
-        public init(startDate: String? = nil, isPreserved: Bool? = nil) {
+        public init(startDate: String? = nil, isPreserved: Bool? = nil, planType: SubscriptionPlanType? = nil) {
             self.startDate = startDate
             self.isPreserved = isPreserved
+            self.planType = planType
         }
 
         private enum CodingKeys: String, CodingKey {
             case startDate
             case isPreserved = "preserved"
+            case planType
         }
     }
 
