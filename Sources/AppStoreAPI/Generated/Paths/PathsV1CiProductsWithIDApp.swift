@@ -285,6 +285,7 @@ extension Resources.V1.CiProducts.WithID {
             case brazilAgeRatingV2
             case franceAgeRating
             case koreaAgeRating
+            case kidsAgeBand
             case app
             case ageRatingDeclaration
             case appInfoLocalizations
@@ -329,12 +330,14 @@ extension Resources.V1.CiProducts.WithID {
             case inAppPurchaseAvailability
             case images
             case offerCodes
+            case versions
         }
 
         public enum FieldsSubscriptionGroups: String, CaseIterable, Codable, Sendable {
             case referenceName
             case subscriptions
             case subscriptionGroupLocalizations
+            case versions
         }
 
         public enum FieldsGameCenterEnabledVersions: String, CaseIterable, Codable, Sendable {

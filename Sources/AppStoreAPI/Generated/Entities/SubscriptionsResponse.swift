@@ -24,6 +24,7 @@ public struct SubscriptionsResponse: Codable, Equatable, Sendable {
         case subscriptionPlanAvailability(SubscriptionPlanAvailability)
         case subscriptionPrice(SubscriptionPrice)
         case subscriptionPromotionalOffer(SubscriptionPromotionalOffer)
+        case subscriptionVersion(SubscriptionVersion)
         case winBackOffer(WinBackOffer)
 
         public init(from decoder: any Decoder) throws {
@@ -47,12 +48,13 @@ public struct SubscriptionsResponse: Codable, Equatable, Sendable {
             case "subscriptionPlanAvailabilities": self = .subscriptionPlanAvailability(try container.decode(SubscriptionPlanAvailability.self))
             case "subscriptionPrices": self = .subscriptionPrice(try container.decode(SubscriptionPrice.self))
             case "subscriptionPromotionalOffers": self = .subscriptionPromotionalOffer(try container.decode(SubscriptionPromotionalOffer.self))
+            case "subscriptionVersions": self = .subscriptionVersion(try container.decode(SubscriptionVersion.self))
             case "winBackOffers": self = .winBackOffer(try container.decode(WinBackOffer.self))
 
             default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (promotedPurchases, subscriptionAppStoreReviewScreenshots, subscriptionAvailabilities, subscriptionGroups, subscriptionImages, subscriptionIntroductoryOffers, subscriptionLocalizations, subscriptionOfferCodes, subscriptionPlanAvailabilities, subscriptionPrices, subscriptionPromotionalOffers, winBackOffers)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (promotedPurchases, subscriptionAppStoreReviewScreenshots, subscriptionAvailabilities, subscriptionGroups, subscriptionImages, subscriptionIntroductoryOffers, subscriptionLocalizations, subscriptionOfferCodes, subscriptionPlanAvailabilities, subscriptionPrices, subscriptionPromotionalOffers, subscriptionVersions, winBackOffers)."
                 )
             }
         }
@@ -71,6 +73,7 @@ public struct SubscriptionsResponse: Codable, Equatable, Sendable {
             case .subscriptionPlanAvailability(let value): try container.encode(value)
             case .subscriptionPrice(let value): try container.encode(value)
             case .subscriptionPromotionalOffer(let value): try container.encode(value)
+            case .subscriptionVersion(let value): try container.encode(value)
             case .winBackOffer(let value): try container.encode(value)
             }
         }

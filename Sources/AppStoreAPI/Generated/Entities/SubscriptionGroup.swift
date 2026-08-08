@@ -28,6 +28,7 @@ public struct SubscriptionGroup: Codable, Equatable, Identifiable, Sendable {
     public struct Relationships: Codable, Equatable, Sendable {
         public var subscriptions: Subscriptions?
         public var subscriptionGroupLocalizations: SubscriptionGroupLocalizations?
+        public var versions: Versions?
 
         public struct Subscriptions: Codable, Equatable, Sendable {
             public var links: RelationshipLinks?
@@ -81,9 +82,36 @@ public struct SubscriptionGroup: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(subscriptions: Subscriptions? = nil, subscriptionGroupLocalizations: SubscriptionGroupLocalizations? = nil) {
+        public struct Versions: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var meta: PagingInformation?
+            public var data: [Datum]?
+
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case subscriptionGroupVersions
+                }
+
+                public init(type: `Type` = .subscriptionGroupVersions, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+                self.links = links
+                self.meta = meta
+                self.data = data
+            }
+        }
+
+        public init(subscriptions: Subscriptions? = nil, subscriptionGroupLocalizations: SubscriptionGroupLocalizations? = nil, versions: Versions? = nil) {
             self.subscriptions = subscriptions
             self.subscriptionGroupLocalizations = subscriptionGroupLocalizations
+            self.versions = versions
         }
     }
 

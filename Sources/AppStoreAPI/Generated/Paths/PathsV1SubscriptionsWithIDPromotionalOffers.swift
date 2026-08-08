@@ -64,6 +64,7 @@ extension Resources.V1.Subscriptions.WithID {
             case winBackOffers
             case images
             case planAvailabilities
+            case versions
         }
 
         public enum FieldsSubscriptionPromotionalOfferPrices: String, CaseIterable, Codable, Sendable {

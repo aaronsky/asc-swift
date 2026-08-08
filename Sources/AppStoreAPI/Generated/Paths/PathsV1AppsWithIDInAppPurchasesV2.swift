@@ -16,11 +16,11 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/inAppPurchasesV2`
         public let path: String
 
-        public func get(filterProductID: [String]? = nil, filterName: [String]? = nil, filterState: [FilterState]? = nil, filterInAppPurchaseType: [FilterInAppPurchaseType]? = nil, sort: [Sort]? = nil, fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, fieldsInAppPurchaseLocalizations: [FieldsInAppPurchaseLocalizations]? = nil, fieldsInAppPurchaseContents: [FieldsInAppPurchaseContents]? = nil, fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]? = nil, fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]? = nil, fieldsInAppPurchaseAvailabilities: [FieldsInAppPurchaseAvailabilities]? = nil, fieldsInAppPurchaseImages: [FieldsInAppPurchaseImages]? = nil, fieldsInAppPurchaseOfferCodes: [FieldsInAppPurchaseOfferCodes]? = nil, limit: Int? = nil, include: [Include]? = nil, limitInAppPurchaseLocalizations: Int? = nil, limitImages: Int? = nil, limitOfferCodes: Int? = nil) -> Request<AppStoreAPI.InAppPurchasesV2Response> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterProductID, filterName, filterState, filterInAppPurchaseType, sort, fieldsInAppPurchases, fieldsInAppPurchaseLocalizations, fieldsInAppPurchaseContents, fieldsInAppPurchaseAppStoreReviewScreenshots, fieldsPromotedPurchases, fieldsInAppPurchasePriceSchedules, fieldsInAppPurchaseAvailabilities, fieldsInAppPurchaseImages, fieldsInAppPurchaseOfferCodes, limit, include, limitInAppPurchaseLocalizations, limitImages, limitOfferCodes), id: "apps_inAppPurchasesV2_getToManyRelated")
+        public func get(filterProductID: [String]? = nil, filterName: [String]? = nil, filterState: [FilterState]? = nil, filterInAppPurchaseType: [FilterInAppPurchaseType]? = nil, sort: [Sort]? = nil, fieldsInAppPurchases: [FieldsInAppPurchases]? = nil, fieldsInAppPurchaseLocalizations: [FieldsInAppPurchaseLocalizations]? = nil, fieldsInAppPurchaseContents: [FieldsInAppPurchaseContents]? = nil, fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]? = nil, fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]? = nil, fieldsInAppPurchaseAvailabilities: [FieldsInAppPurchaseAvailabilities]? = nil, fieldsInAppPurchaseImages: [FieldsInAppPurchaseImages]? = nil, fieldsInAppPurchaseOfferCodes: [FieldsInAppPurchaseOfferCodes]? = nil, fieldsInAppPurchaseVersions: [FieldsInAppPurchaseVersions]? = nil, limit: Int? = nil, include: [Include]? = nil, limitInAppPurchaseLocalizations: Int? = nil, limitImages: Int? = nil, limitOfferCodes: Int? = nil, limitVersions: Int? = nil) -> Request<AppStoreAPI.InAppPurchasesV2Response> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterProductID, filterName, filterState, filterInAppPurchaseType, sort, fieldsInAppPurchases, fieldsInAppPurchaseLocalizations, fieldsInAppPurchaseContents, fieldsInAppPurchaseAppStoreReviewScreenshots, fieldsPromotedPurchases, fieldsInAppPurchasePriceSchedules, fieldsInAppPurchaseAvailabilities, fieldsInAppPurchaseImages, fieldsInAppPurchaseOfferCodes, fieldsInAppPurchaseVersions, limit, include, limitInAppPurchaseLocalizations, limitImages, limitOfferCodes, limitVersions), id: "apps_inAppPurchasesV2_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterProductID: [String]?, _ filterName: [String]?, _ filterState: [FilterState]?, _ filterInAppPurchaseType: [FilterInAppPurchaseType]?, _ sort: [Sort]?, _ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ fieldsInAppPurchaseLocalizations: [FieldsInAppPurchaseLocalizations]?, _ fieldsInAppPurchaseContents: [FieldsInAppPurchaseContents]?, _ fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]?, _ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]?, _ fieldsInAppPurchaseAvailabilities: [FieldsInAppPurchaseAvailabilities]?, _ fieldsInAppPurchaseImages: [FieldsInAppPurchaseImages]?, _ fieldsInAppPurchaseOfferCodes: [FieldsInAppPurchaseOfferCodes]?, _ limit: Int?, _ include: [Include]?, _ limitInAppPurchaseLocalizations: Int?, _ limitImages: Int?, _ limitOfferCodes: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterProductID: [String]?, _ filterName: [String]?, _ filterState: [FilterState]?, _ filterInAppPurchaseType: [FilterInAppPurchaseType]?, _ sort: [Sort]?, _ fieldsInAppPurchases: [FieldsInAppPurchases]?, _ fieldsInAppPurchaseLocalizations: [FieldsInAppPurchaseLocalizations]?, _ fieldsInAppPurchaseContents: [FieldsInAppPurchaseContents]?, _ fieldsInAppPurchaseAppStoreReviewScreenshots: [FieldsInAppPurchaseAppStoreReviewScreenshots]?, _ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsInAppPurchasePriceSchedules: [FieldsInAppPurchasePriceSchedules]?, _ fieldsInAppPurchaseAvailabilities: [FieldsInAppPurchaseAvailabilities]?, _ fieldsInAppPurchaseImages: [FieldsInAppPurchaseImages]?, _ fieldsInAppPurchaseOfferCodes: [FieldsInAppPurchaseOfferCodes]?, _ fieldsInAppPurchaseVersions: [FieldsInAppPurchaseVersions]?, _ limit: Int?, _ include: [Include]?, _ limitInAppPurchaseLocalizations: Int?, _ limitImages: Int?, _ limitOfferCodes: Int?, _ limitVersions: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterProductID, forKey: "filter[productId]")
             encoder.encode(filterName, forKey: "filter[name]")
@@ -36,11 +36,13 @@ extension Resources.V1.Apps.WithID {
             encoder.encode(fieldsInAppPurchaseAvailabilities, forKey: "fields[inAppPurchaseAvailabilities]")
             encoder.encode(fieldsInAppPurchaseImages, forKey: "fields[inAppPurchaseImages]")
             encoder.encode(fieldsInAppPurchaseOfferCodes, forKey: "fields[inAppPurchaseOfferCodes]")
+            encoder.encode(fieldsInAppPurchaseVersions, forKey: "fields[inAppPurchaseVersions]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitInAppPurchaseLocalizations, forKey: "limit[inAppPurchaseLocalizations]")
             encoder.encode(limitImages, forKey: "limit[images]")
             encoder.encode(limitOfferCodes, forKey: "limit[offerCodes]")
+            encoder.encode(limitVersions, forKey: "limit[versions]")
             return encoder.items
         }
 
@@ -89,6 +91,7 @@ extension Resources.V1.Apps.WithID {
             case inAppPurchaseAvailability
             case images
             case offerCodes
+            case versions
         }
 
         public enum FieldsInAppPurchaseLocalizations: String, CaseIterable, Codable, Sendable {
@@ -160,6 +163,15 @@ extension Resources.V1.Apps.WithID {
             case prices
         }
 
+        public enum FieldsInAppPurchaseVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case state
+            case inAppPurchase
+            case image
+            case images
+            case localizations
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case inAppPurchaseLocalizations
             case content
@@ -169,6 +181,7 @@ extension Resources.V1.Apps.WithID {
             case inAppPurchaseAvailability
             case images
             case offerCodes
+            case versions
         }
     }
 }

@@ -35,6 +35,8 @@ public struct AgeRatingDeclarationUpdateRequest: Codable, Equatable, Sendable {
             public var isAgeAssurance: Bool?
             public var sexualContentGraphicAndNudity: SexualContentGraphicAndNudity?
             public var sexualContentOrNudity: SexualContentOrNudity?
+            public var isSocialMedia: Bool?
+            public var isSocialMediaAgeRestricted: Bool?
             public var horrorOrFearThemes: HorrorOrFearThemes?
             public var matureOrSuggestiveThemes: MatureOrSuggestiveThemes?
             public var isUnrestrictedWebAccess: Bool?
@@ -175,7 +177,7 @@ public struct AgeRatingDeclarationUpdateRequest: Codable, Equatable, Sendable {
                 case nineteenPlus = "NINETEEN_PLUS"
             }
 
-            public init(isAdvertising: Bool? = nil, alcoholTobaccoOrDrugUseOrReferences: AlcoholTobaccoOrDrugUseOrReferences? = nil, contests: Contests? = nil, isGambling: Bool? = nil, gamblingSimulated: GamblingSimulated? = nil, gunsOrOtherWeapons: GunsOrOtherWeapons? = nil, isHealthOrWellnessTopics: Bool? = nil, kidsAgeBand: KidsAgeBand? = nil, isLootBox: Bool? = nil, medicalOrTreatmentInformation: MedicalOrTreatmentInformation? = nil, isMessagingAndChat: Bool? = nil, isParentalControls: Bool? = nil, profanityOrCrudeHumor: ProfanityOrCrudeHumor? = nil, isAgeAssurance: Bool? = nil, sexualContentGraphicAndNudity: SexualContentGraphicAndNudity? = nil, sexualContentOrNudity: SexualContentOrNudity? = nil, horrorOrFearThemes: HorrorOrFearThemes? = nil, matureOrSuggestiveThemes: MatureOrSuggestiveThemes? = nil, isUnrestrictedWebAccess: Bool? = nil, isUserGeneratedContent: Bool? = nil, violenceCartoonOrFantasy: ViolenceCartoonOrFantasy? = nil, violenceRealisticProlongedGraphicOrSadistic: ViolenceRealisticProlongedGraphicOrSadistic? = nil, violenceRealistic: ViolenceRealistic? = nil, ageRatingOverride: AgeRatingOverride? = nil, ageRatingOverrideV2: AgeRatingOverrideV2? = nil, koreaAgeRatingOverride: KoreaAgeRatingOverride? = nil, developerAgeRatingInfoURL: URL? = nil) {
+            public init(isAdvertising: Bool? = nil, alcoholTobaccoOrDrugUseOrReferences: AlcoholTobaccoOrDrugUseOrReferences? = nil, contests: Contests? = nil, isGambling: Bool? = nil, gamblingSimulated: GamblingSimulated? = nil, gunsOrOtherWeapons: GunsOrOtherWeapons? = nil, isHealthOrWellnessTopics: Bool? = nil, kidsAgeBand: KidsAgeBand? = nil, isLootBox: Bool? = nil, medicalOrTreatmentInformation: MedicalOrTreatmentInformation? = nil, isMessagingAndChat: Bool? = nil, isParentalControls: Bool? = nil, profanityOrCrudeHumor: ProfanityOrCrudeHumor? = nil, isAgeAssurance: Bool? = nil, sexualContentGraphicAndNudity: SexualContentGraphicAndNudity? = nil, sexualContentOrNudity: SexualContentOrNudity? = nil, isSocialMedia: Bool? = nil, isSocialMediaAgeRestricted: Bool? = nil, horrorOrFearThemes: HorrorOrFearThemes? = nil, matureOrSuggestiveThemes: MatureOrSuggestiveThemes? = nil, isUnrestrictedWebAccess: Bool? = nil, isUserGeneratedContent: Bool? = nil, violenceCartoonOrFantasy: ViolenceCartoonOrFantasy? = nil, violenceRealisticProlongedGraphicOrSadistic: ViolenceRealisticProlongedGraphicOrSadistic? = nil, violenceRealistic: ViolenceRealistic? = nil, ageRatingOverride: AgeRatingOverride? = nil, ageRatingOverrideV2: AgeRatingOverrideV2? = nil, koreaAgeRatingOverride: KoreaAgeRatingOverride? = nil, developerAgeRatingInfoURL: URL? = nil) {
                 self.isAdvertising = isAdvertising
                 self.alcoholTobaccoOrDrugUseOrReferences = alcoholTobaccoOrDrugUseOrReferences
                 self.contests = contests
@@ -192,6 +194,8 @@ public struct AgeRatingDeclarationUpdateRequest: Codable, Equatable, Sendable {
                 self.isAgeAssurance = isAgeAssurance
                 self.sexualContentGraphicAndNudity = sexualContentGraphicAndNudity
                 self.sexualContentOrNudity = sexualContentOrNudity
+                self.isSocialMedia = isSocialMedia
+                self.isSocialMediaAgeRestricted = isSocialMediaAgeRestricted
                 self.horrorOrFearThemes = horrorOrFearThemes
                 self.matureOrSuggestiveThemes = matureOrSuggestiveThemes
                 self.isUnrestrictedWebAccess = isUnrestrictedWebAccess
@@ -222,6 +226,8 @@ public struct AgeRatingDeclarationUpdateRequest: Codable, Equatable, Sendable {
                 case isAgeAssurance = "ageAssurance"
                 case sexualContentGraphicAndNudity
                 case sexualContentOrNudity
+                case isSocialMedia = "socialMedia"
+                case isSocialMediaAgeRestricted = "socialMediaAgeRestricted"
                 case horrorOrFearThemes
                 case matureOrSuggestiveThemes
                 case isUnrestrictedWebAccess = "unrestrictedWebAccess"

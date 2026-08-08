@@ -74,6 +74,7 @@ extension Resources.V1.SubscriptionOfferCodes {
             case winBackOffers
             case images
             case planAvailabilities
+            case versions
         }
 
         public enum FieldsSubscriptionOfferCodeOneTimeUseCodes: String, CaseIterable, Codable, Sendable {

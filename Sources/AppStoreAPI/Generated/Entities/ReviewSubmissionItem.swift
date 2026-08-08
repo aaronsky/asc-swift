@@ -45,6 +45,9 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable, Sendable {
         public var gameCenterChallengeVersion: GameCenterChallengeVersion?
         public var gameCenterLeaderboardSetVersion: GameCenterLeaderboardSetVersion?
         public var gameCenterLeaderboardVersion: GameCenterLeaderboardVersion?
+        public var inAppPurchaseVersion: InAppPurchaseVersion?
+        public var subscriptionVersion: SubscriptionVersion?
+        public var subscriptionGroupVersion: SubscriptionGroupVersion?
 
         public struct AppStoreVersion: Codable, Equatable, Sendable {
             public var data: Data?
@@ -288,7 +291,73 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(appStoreVersion: AppStoreVersion? = nil, appCustomProductPageVersion: AppCustomProductPageVersion? = nil, appStoreVersionExperiment: AppStoreVersionExperiment? = nil, appStoreVersionExperimentV2: AppStoreVersionExperimentV2? = nil, appEvent: AppEvent? = nil, backgroundAssetVersion: BackgroundAssetVersion? = nil, gameCenterAchievementVersion: GameCenterAchievementVersion? = nil, gameCenterActivityVersion: GameCenterActivityVersion? = nil, gameCenterChallengeVersion: GameCenterChallengeVersion? = nil, gameCenterLeaderboardSetVersion: GameCenterLeaderboardSetVersion? = nil, gameCenterLeaderboardVersion: GameCenterLeaderboardVersion? = nil) {
+        public struct InAppPurchaseVersion: Codable, Equatable, Sendable {
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case inAppPurchaseVersions
+                }
+
+                public init(type: `Type` = .inAppPurchaseVersions, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(data: Data? = nil) {
+                self.data = data
+            }
+        }
+
+        public struct SubscriptionVersion: Codable, Equatable, Sendable {
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case subscriptionVersions
+                }
+
+                public init(type: `Type` = .subscriptionVersions, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(data: Data? = nil) {
+                self.data = data
+            }
+        }
+
+        public struct SubscriptionGroupVersion: Codable, Equatable, Sendable {
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case subscriptionGroupVersions
+                }
+
+                public init(type: `Type` = .subscriptionGroupVersions, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(data: Data? = nil) {
+                self.data = data
+            }
+        }
+
+        public init(appStoreVersion: AppStoreVersion? = nil, appCustomProductPageVersion: AppCustomProductPageVersion? = nil, appStoreVersionExperiment: AppStoreVersionExperiment? = nil, appStoreVersionExperimentV2: AppStoreVersionExperimentV2? = nil, appEvent: AppEvent? = nil, backgroundAssetVersion: BackgroundAssetVersion? = nil, gameCenterAchievementVersion: GameCenterAchievementVersion? = nil, gameCenterActivityVersion: GameCenterActivityVersion? = nil, gameCenterChallengeVersion: GameCenterChallengeVersion? = nil, gameCenterLeaderboardSetVersion: GameCenterLeaderboardSetVersion? = nil, gameCenterLeaderboardVersion: GameCenterLeaderboardVersion? = nil, inAppPurchaseVersion: InAppPurchaseVersion? = nil, subscriptionVersion: SubscriptionVersion? = nil, subscriptionGroupVersion: SubscriptionGroupVersion? = nil) {
             self.appStoreVersion = appStoreVersion
             self.appCustomProductPageVersion = appCustomProductPageVersion
             self.appStoreVersionExperiment = appStoreVersionExperiment
@@ -300,6 +369,9 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable, Sendable {
             self.gameCenterChallengeVersion = gameCenterChallengeVersion
             self.gameCenterLeaderboardSetVersion = gameCenterLeaderboardSetVersion
             self.gameCenterLeaderboardVersion = gameCenterLeaderboardVersion
+            self.inAppPurchaseVersion = inAppPurchaseVersion
+            self.subscriptionVersion = subscriptionVersion
+            self.subscriptionGroupVersion = subscriptionGroupVersion
         }
     }
 

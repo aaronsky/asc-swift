@@ -57,6 +57,7 @@ extension Resources.V1.InAppPurchaseAppStoreReviewScreenshots {
             case inAppPurchaseAvailability
             case images
             case offerCodes
+            case versions
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

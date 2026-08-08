@@ -16,18 +16,20 @@ extension Resources.V1.SubscriptionGroups {
         /// Path: `/v1/subscriptionGroups/{id}`
         public let path: String
 
-        public func get(fieldsSubscriptionGroups: [FieldsSubscriptionGroups]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]? = nil, include: [Include]? = nil, limitSubscriptionGroupLocalizations: Int? = nil, limitSubscriptions: Int? = nil) -> Request<AppStoreAPI.SubscriptionGroupResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionGroups, fieldsSubscriptions, fieldsSubscriptionGroupLocalizations, include, limitSubscriptionGroupLocalizations, limitSubscriptions), id: "subscriptionGroups_getInstance")
+        public func get(fieldsSubscriptionGroups: [FieldsSubscriptionGroups]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]? = nil, fieldsSubscriptionGroupVersions: [FieldsSubscriptionGroupVersions]? = nil, include: [Include]? = nil, limitSubscriptionGroupLocalizations: Int? = nil, limitSubscriptions: Int? = nil, limitVersions: Int? = nil) -> Request<AppStoreAPI.SubscriptionGroupResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptionGroups, fieldsSubscriptions, fieldsSubscriptionGroupLocalizations, fieldsSubscriptionGroupVersions, include, limitSubscriptionGroupLocalizations, limitSubscriptions, limitVersions), id: "subscriptionGroups_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsSubscriptionGroups: [FieldsSubscriptionGroups]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]?, _ include: [Include]?, _ limitSubscriptionGroupLocalizations: Int?, _ limitSubscriptions: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsSubscriptionGroups: [FieldsSubscriptionGroups]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]?, _ fieldsSubscriptionGroupVersions: [FieldsSubscriptionGroupVersions]?, _ include: [Include]?, _ limitSubscriptionGroupLocalizations: Int?, _ limitSubscriptions: Int?, _ limitVersions: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsSubscriptionGroups, forKey: "fields[subscriptionGroups]")
             encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
             encoder.encode(fieldsSubscriptionGroupLocalizations, forKey: "fields[subscriptionGroupLocalizations]")
+            encoder.encode(fieldsSubscriptionGroupVersions, forKey: "fields[subscriptionGroupVersions]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitSubscriptionGroupLocalizations, forKey: "limit[subscriptionGroupLocalizations]")
             encoder.encode(limitSubscriptions, forKey: "limit[subscriptions]")
+            encoder.encode(limitVersions, forKey: "limit[versions]")
             return encoder.items
         }
 
@@ -35,6 +37,7 @@ extension Resources.V1.SubscriptionGroups {
             case referenceName
             case subscriptions
             case subscriptionGroupLocalizations
+            case versions
         }
 
         public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
@@ -58,6 +61,7 @@ extension Resources.V1.SubscriptionGroups {
             case winBackOffers
             case images
             case planAvailabilities
+            case versions
         }
 
         public enum FieldsSubscriptionGroupLocalizations: String, CaseIterable, Codable, Sendable {
@@ -68,9 +72,17 @@ extension Resources.V1.SubscriptionGroups {
             case subscriptionGroup
         }
 
+        public enum FieldsSubscriptionGroupVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case state
+            case subscriptionGroup
+            case localizations
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case subscriptions
             case subscriptionGroupLocalizations
+            case versions
         }
 
         public func patch(_ body: AppStoreAPI.SubscriptionGroupUpdateRequest) -> Request<AppStoreAPI.SubscriptionGroupResponse> {

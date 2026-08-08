@@ -53,6 +53,7 @@ extension Resources.V1.InAppPurchaseLocalizations {
             case inAppPurchaseAvailability
             case images
             case offerCodes
+            case versions
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

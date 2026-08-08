@@ -114,6 +114,9 @@ extension Resources.V1.ReviewSubmissions {
             case gameCenterChallengeVersion
             case gameCenterLeaderboardSetVersion
             case gameCenterLeaderboardVersion
+            case inAppPurchaseVersion
+            case subscriptionVersion
+            case subscriptionGroupVersion
         }
 
         public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {

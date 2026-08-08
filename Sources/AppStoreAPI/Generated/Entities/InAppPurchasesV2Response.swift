@@ -21,6 +21,7 @@ public struct InAppPurchasesV2Response: Codable, Equatable, Sendable {
         case inAppPurchaseOfferCode(InAppPurchaseOfferCode)
         case inAppPurchasePricePoint(InAppPurchasePricePoint)
         case inAppPurchasePriceSchedule(InAppPurchasePriceSchedule)
+        case inAppPurchaseVersion(InAppPurchaseVersion)
         case promotedPurchase(PromotedPurchase)
 
         public init(from decoder: any Decoder) throws {
@@ -41,12 +42,13 @@ public struct InAppPurchasesV2Response: Codable, Equatable, Sendable {
             case "inAppPurchaseOfferCodes": self = .inAppPurchaseOfferCode(try container.decode(InAppPurchaseOfferCode.self))
             case "inAppPurchasePricePoints": self = .inAppPurchasePricePoint(try container.decode(InAppPurchasePricePoint.self))
             case "inAppPurchasePriceSchedules": self = .inAppPurchasePriceSchedule(try container.decode(InAppPurchasePriceSchedule.self))
+            case "inAppPurchaseVersions": self = .inAppPurchaseVersion(try container.decode(InAppPurchaseVersion.self))
             case "promotedPurchases": self = .promotedPurchase(try container.decode(PromotedPurchase.self))
 
             default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (inAppPurchaseAppStoreReviewScreenshots, inAppPurchaseAvailabilities, inAppPurchaseContents, inAppPurchaseImages, inAppPurchaseLocalizations, inAppPurchaseOfferCodes, inAppPurchasePricePoints, inAppPurchasePriceSchedules, promotedPurchases)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (inAppPurchaseAppStoreReviewScreenshots, inAppPurchaseAvailabilities, inAppPurchaseContents, inAppPurchaseImages, inAppPurchaseLocalizations, inAppPurchaseOfferCodes, inAppPurchasePricePoints, inAppPurchasePriceSchedules, inAppPurchaseVersions, promotedPurchases)."
                 )
             }
         }
@@ -62,6 +64,7 @@ public struct InAppPurchasesV2Response: Codable, Equatable, Sendable {
             case .inAppPurchaseOfferCode(let value): try container.encode(value)
             case .inAppPurchasePricePoint(let value): try container.encode(value)
             case .inAppPurchasePriceSchedule(let value): try container.encode(value)
+            case .inAppPurchaseVersion(let value): try container.encode(value)
             case .promotedPurchase(let value): try container.encode(value)
             }
         }

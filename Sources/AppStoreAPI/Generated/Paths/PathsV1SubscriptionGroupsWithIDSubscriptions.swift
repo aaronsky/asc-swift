@@ -16,11 +16,11 @@ extension Resources.V1.SubscriptionGroups.WithID {
         /// Path: `/v1/subscriptionGroups/{id}/subscriptions`
         public let path: String
 
-        public func get(filterProductID: [String]? = nil, filterName: [String]? = nil, filterState: [FilterState]? = nil, sort: [Sort]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]? = nil, fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]? = nil, fieldsSubscriptionGroups: [FieldsSubscriptionGroups]? = nil, fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]? = nil, fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]? = nil, fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, fieldsSubscriptionPrices: [FieldsSubscriptionPrices]? = nil, fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]? = nil, fieldsWinBackOffers: [FieldsWinBackOffers]? = nil, fieldsSubscriptionImages: [FieldsSubscriptionImages]? = nil, fieldsSubscriptionPlanAvailabilities: [FieldsSubscriptionPlanAvailabilities]? = nil, limit: Int? = nil, include: [Include]? = nil, limitSubscriptionLocalizations: Int? = nil, limitIntroductoryOffers: Int? = nil, limitPromotionalOffers: Int? = nil, limitOfferCodes: Int? = nil, limitPrices: Int? = nil, limitWinBackOffers: Int? = nil, limitImages: Int? = nil, limitPlanAvailabilities: Int? = nil) -> Request<AppStoreAPI.SubscriptionsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterProductID, filterName, filterState, sort, fieldsSubscriptions, fieldsSubscriptionLocalizations, fieldsSubscriptionAppStoreReviewScreenshots, fieldsSubscriptionGroups, fieldsSubscriptionIntroductoryOffers, fieldsSubscriptionPromotionalOffers, fieldsSubscriptionOfferCodes, fieldsSubscriptionPrices, fieldsPromotedPurchases, fieldsSubscriptionAvailabilities, fieldsWinBackOffers, fieldsSubscriptionImages, fieldsSubscriptionPlanAvailabilities, limit, include, limitSubscriptionLocalizations, limitIntroductoryOffers, limitPromotionalOffers, limitOfferCodes, limitPrices, limitWinBackOffers, limitImages, limitPlanAvailabilities), id: "subscriptionGroups_subscriptions_getToManyRelated")
+        public func get(filterProductID: [String]? = nil, filterName: [String]? = nil, filterState: [FilterState]? = nil, sort: [Sort]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]? = nil, fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]? = nil, fieldsSubscriptionGroups: [FieldsSubscriptionGroups]? = nil, fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]? = nil, fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]? = nil, fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, fieldsSubscriptionPrices: [FieldsSubscriptionPrices]? = nil, fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]? = nil, fieldsWinBackOffers: [FieldsWinBackOffers]? = nil, fieldsSubscriptionImages: [FieldsSubscriptionImages]? = nil, fieldsSubscriptionPlanAvailabilities: [FieldsSubscriptionPlanAvailabilities]? = nil, fieldsSubscriptionVersions: [FieldsSubscriptionVersions]? = nil, limit: Int? = nil, include: [Include]? = nil, limitSubscriptionLocalizations: Int? = nil, limitIntroductoryOffers: Int? = nil, limitPromotionalOffers: Int? = nil, limitOfferCodes: Int? = nil, limitPrices: Int? = nil, limitWinBackOffers: Int? = nil, limitImages: Int? = nil, limitPlanAvailabilities: Int? = nil, limitVersions: Int? = nil) -> Request<AppStoreAPI.SubscriptionsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterProductID, filterName, filterState, sort, fieldsSubscriptions, fieldsSubscriptionLocalizations, fieldsSubscriptionAppStoreReviewScreenshots, fieldsSubscriptionGroups, fieldsSubscriptionIntroductoryOffers, fieldsSubscriptionPromotionalOffers, fieldsSubscriptionOfferCodes, fieldsSubscriptionPrices, fieldsPromotedPurchases, fieldsSubscriptionAvailabilities, fieldsWinBackOffers, fieldsSubscriptionImages, fieldsSubscriptionPlanAvailabilities, fieldsSubscriptionVersions, limit, include, limitSubscriptionLocalizations, limitIntroductoryOffers, limitPromotionalOffers, limitOfferCodes, limitPrices, limitWinBackOffers, limitImages, limitPlanAvailabilities, limitVersions), id: "subscriptionGroups_subscriptions_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterProductID: [String]?, _ filterName: [String]?, _ filterState: [FilterState]?, _ sort: [Sort]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]?, _ fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]?, _ fieldsSubscriptionGroups: [FieldsSubscriptionGroups]?, _ fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]?, _ fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]?, _ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ fieldsSubscriptionPrices: [FieldsSubscriptionPrices]?, _ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]?, _ fieldsWinBackOffers: [FieldsWinBackOffers]?, _ fieldsSubscriptionImages: [FieldsSubscriptionImages]?, _ fieldsSubscriptionPlanAvailabilities: [FieldsSubscriptionPlanAvailabilities]?, _ limit: Int?, _ include: [Include]?, _ limitSubscriptionLocalizations: Int?, _ limitIntroductoryOffers: Int?, _ limitPromotionalOffers: Int?, _ limitOfferCodes: Int?, _ limitPrices: Int?, _ limitWinBackOffers: Int?, _ limitImages: Int?, _ limitPlanAvailabilities: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterProductID: [String]?, _ filterName: [String]?, _ filterState: [FilterState]?, _ sort: [Sort]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]?, _ fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]?, _ fieldsSubscriptionGroups: [FieldsSubscriptionGroups]?, _ fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]?, _ fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]?, _ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ fieldsSubscriptionPrices: [FieldsSubscriptionPrices]?, _ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]?, _ fieldsWinBackOffers: [FieldsWinBackOffers]?, _ fieldsSubscriptionImages: [FieldsSubscriptionImages]?, _ fieldsSubscriptionPlanAvailabilities: [FieldsSubscriptionPlanAvailabilities]?, _ fieldsSubscriptionVersions: [FieldsSubscriptionVersions]?, _ limit: Int?, _ include: [Include]?, _ limitSubscriptionLocalizations: Int?, _ limitIntroductoryOffers: Int?, _ limitPromotionalOffers: Int?, _ limitOfferCodes: Int?, _ limitPrices: Int?, _ limitWinBackOffers: Int?, _ limitImages: Int?, _ limitPlanAvailabilities: Int?, _ limitVersions: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterProductID, forKey: "filter[productId]")
             encoder.encode(filterName, forKey: "filter[name]")
@@ -39,6 +39,7 @@ extension Resources.V1.SubscriptionGroups.WithID {
             encoder.encode(fieldsWinBackOffers, forKey: "fields[winBackOffers]")
             encoder.encode(fieldsSubscriptionImages, forKey: "fields[subscriptionImages]")
             encoder.encode(fieldsSubscriptionPlanAvailabilities, forKey: "fields[subscriptionPlanAvailabilities]")
+            encoder.encode(fieldsSubscriptionVersions, forKey: "fields[subscriptionVersions]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitSubscriptionLocalizations, forKey: "limit[subscriptionLocalizations]")
@@ -49,6 +50,7 @@ extension Resources.V1.SubscriptionGroups.WithID {
             encoder.encode(limitWinBackOffers, forKey: "limit[winBackOffers]")
             encoder.encode(limitImages, forKey: "limit[images]")
             encoder.encode(limitPlanAvailabilities, forKey: "limit[planAvailabilities]")
+            encoder.encode(limitVersions, forKey: "limit[versions]")
             return encoder.items
         }
 
@@ -91,6 +93,7 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case winBackOffers
             case images
             case planAvailabilities
+            case versions
         }
 
         public enum FieldsSubscriptionLocalizations: String, CaseIterable, Codable, Sendable {
@@ -117,6 +120,7 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case referenceName
             case subscriptions
             case subscriptionGroupLocalizations
+            case versions
         }
 
         public enum FieldsSubscriptionIntroductoryOffers: String, CaseIterable, Codable, Sendable {
@@ -216,6 +220,15 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case availableTerritories
         }
 
+        public enum FieldsSubscriptionVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case state
+            case subscription
+            case image
+            case images
+            case localizations
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case subscriptionLocalizations
             case appStoreReviewScreenshot
@@ -229,6 +242,7 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case winBackOffers
             case images
             case planAvailabilities
+            case versions
         }
     }
 }

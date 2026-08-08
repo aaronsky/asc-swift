@@ -41,6 +41,7 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case referenceName
             case subscriptions
             case subscriptionGroupLocalizations
+            case versions
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

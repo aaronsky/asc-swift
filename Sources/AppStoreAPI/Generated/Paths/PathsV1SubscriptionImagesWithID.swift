@@ -60,6 +60,7 @@ extension Resources.V1.SubscriptionImages {
             case winBackOffers
             case images
             case planAvailabilities
+            case versions
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

@@ -5,21 +5,21 @@ so if the checksum is ever invalid, chances are we need to update.
 
 load("@asc_swift//bazel/specs:versions.bzl", "APP_STORE_CONNECT_API_SPEC_VERSION")
 load("@bazel_lib//lib:copy_file.bzl", "copy_file")
-load("@jq.bzl//jq:jq.bzl", "jq")
 load("@bazel_lib//lib:write_source_files.bzl", "write_source_file")
+load("@jq.bzl//jq:jq.bzl", "jq")
 
 SPEC_FILE_NAME = "app_store_connect_api_%s_openapi.json" % APP_STORE_CONNECT_API_SPEC_VERSION
 
 filegroup(
     name = "original_spec",
-    srcs = ["openapi.oas.json"],
+    srcs = ["openapi.oas (2).json"],
 )
 
 jq(
     name = "patch_jq",
     srcs = [":original_spec"],
     out = "openapi_patched_jq.json",
-        filter = """\
+    filter = """\
 del(.. | select(. == []))
 """,
 )

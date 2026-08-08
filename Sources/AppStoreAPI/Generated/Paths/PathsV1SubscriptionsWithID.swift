@@ -16,11 +16,11 @@ extension Resources.V1.Subscriptions {
         /// Path: `/v1/subscriptions/{id}`
         public let path: String
 
-        public func get(fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]? = nil, fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]? = nil, fieldsSubscriptionGroups: [FieldsSubscriptionGroups]? = nil, fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]? = nil, fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]? = nil, fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, fieldsSubscriptionPrices: [FieldsSubscriptionPrices]? = nil, fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]? = nil, fieldsWinBackOffers: [FieldsWinBackOffers]? = nil, fieldsSubscriptionImages: [FieldsSubscriptionImages]? = nil, fieldsSubscriptionPlanAvailabilities: [FieldsSubscriptionPlanAvailabilities]? = nil, include: [Include]? = nil, limitImages: Int? = nil, limitIntroductoryOffers: Int? = nil, limitOfferCodes: Int? = nil, limitPlanAvailabilities: Int? = nil, limitPrices: Int? = nil, limitPromotionalOffers: Int? = nil, limitSubscriptionLocalizations: Int? = nil, limitWinBackOffers: Int? = nil) -> Request<AppStoreAPI.SubscriptionResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptions, fieldsSubscriptionLocalizations, fieldsSubscriptionAppStoreReviewScreenshots, fieldsSubscriptionGroups, fieldsSubscriptionIntroductoryOffers, fieldsSubscriptionPromotionalOffers, fieldsSubscriptionOfferCodes, fieldsSubscriptionPrices, fieldsPromotedPurchases, fieldsSubscriptionAvailabilities, fieldsWinBackOffers, fieldsSubscriptionImages, fieldsSubscriptionPlanAvailabilities, include, limitImages, limitIntroductoryOffers, limitOfferCodes, limitPlanAvailabilities, limitPrices, limitPromotionalOffers, limitSubscriptionLocalizations, limitWinBackOffers), id: "subscriptions_getInstance")
+        public func get(fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]? = nil, fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]? = nil, fieldsSubscriptionGroups: [FieldsSubscriptionGroups]? = nil, fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]? = nil, fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]? = nil, fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]? = nil, fieldsSubscriptionPrices: [FieldsSubscriptionPrices]? = nil, fieldsPromotedPurchases: [FieldsPromotedPurchases]? = nil, fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]? = nil, fieldsWinBackOffers: [FieldsWinBackOffers]? = nil, fieldsSubscriptionImages: [FieldsSubscriptionImages]? = nil, fieldsSubscriptionPlanAvailabilities: [FieldsSubscriptionPlanAvailabilities]? = nil, fieldsSubscriptionVersions: [FieldsSubscriptionVersions]? = nil, include: [Include]? = nil, limitImages: Int? = nil, limitIntroductoryOffers: Int? = nil, limitOfferCodes: Int? = nil, limitPlanAvailabilities: Int? = nil, limitPrices: Int? = nil, limitPromotionalOffers: Int? = nil, limitSubscriptionLocalizations: Int? = nil, limitVersions: Int? = nil, limitWinBackOffers: Int? = nil) -> Request<AppStoreAPI.SubscriptionResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsSubscriptions, fieldsSubscriptionLocalizations, fieldsSubscriptionAppStoreReviewScreenshots, fieldsSubscriptionGroups, fieldsSubscriptionIntroductoryOffers, fieldsSubscriptionPromotionalOffers, fieldsSubscriptionOfferCodes, fieldsSubscriptionPrices, fieldsPromotedPurchases, fieldsSubscriptionAvailabilities, fieldsWinBackOffers, fieldsSubscriptionImages, fieldsSubscriptionPlanAvailabilities, fieldsSubscriptionVersions, include, limitImages, limitIntroductoryOffers, limitOfferCodes, limitPlanAvailabilities, limitPrices, limitPromotionalOffers, limitSubscriptionLocalizations, limitVersions, limitWinBackOffers), id: "subscriptions_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]?, _ fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]?, _ fieldsSubscriptionGroups: [FieldsSubscriptionGroups]?, _ fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]?, _ fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]?, _ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ fieldsSubscriptionPrices: [FieldsSubscriptionPrices]?, _ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]?, _ fieldsWinBackOffers: [FieldsWinBackOffers]?, _ fieldsSubscriptionImages: [FieldsSubscriptionImages]?, _ fieldsSubscriptionPlanAvailabilities: [FieldsSubscriptionPlanAvailabilities]?, _ include: [Include]?, _ limitImages: Int?, _ limitIntroductoryOffers: Int?, _ limitOfferCodes: Int?, _ limitPlanAvailabilities: Int?, _ limitPrices: Int?, _ limitPromotionalOffers: Int?, _ limitSubscriptionLocalizations: Int?, _ limitWinBackOffers: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionLocalizations: [FieldsSubscriptionLocalizations]?, _ fieldsSubscriptionAppStoreReviewScreenshots: [FieldsSubscriptionAppStoreReviewScreenshots]?, _ fieldsSubscriptionGroups: [FieldsSubscriptionGroups]?, _ fieldsSubscriptionIntroductoryOffers: [FieldsSubscriptionIntroductoryOffers]?, _ fieldsSubscriptionPromotionalOffers: [FieldsSubscriptionPromotionalOffers]?, _ fieldsSubscriptionOfferCodes: [FieldsSubscriptionOfferCodes]?, _ fieldsSubscriptionPrices: [FieldsSubscriptionPrices]?, _ fieldsPromotedPurchases: [FieldsPromotedPurchases]?, _ fieldsSubscriptionAvailabilities: [FieldsSubscriptionAvailabilities]?, _ fieldsWinBackOffers: [FieldsWinBackOffers]?, _ fieldsSubscriptionImages: [FieldsSubscriptionImages]?, _ fieldsSubscriptionPlanAvailabilities: [FieldsSubscriptionPlanAvailabilities]?, _ fieldsSubscriptionVersions: [FieldsSubscriptionVersions]?, _ include: [Include]?, _ limitImages: Int?, _ limitIntroductoryOffers: Int?, _ limitOfferCodes: Int?, _ limitPlanAvailabilities: Int?, _ limitPrices: Int?, _ limitPromotionalOffers: Int?, _ limitSubscriptionLocalizations: Int?, _ limitVersions: Int?, _ limitWinBackOffers: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
             encoder.encode(fieldsSubscriptionLocalizations, forKey: "fields[subscriptionLocalizations]")
@@ -35,6 +35,7 @@ extension Resources.V1.Subscriptions {
             encoder.encode(fieldsWinBackOffers, forKey: "fields[winBackOffers]")
             encoder.encode(fieldsSubscriptionImages, forKey: "fields[subscriptionImages]")
             encoder.encode(fieldsSubscriptionPlanAvailabilities, forKey: "fields[subscriptionPlanAvailabilities]")
+            encoder.encode(fieldsSubscriptionVersions, forKey: "fields[subscriptionVersions]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitImages, forKey: "limit[images]")
             encoder.encode(limitIntroductoryOffers, forKey: "limit[introductoryOffers]")
@@ -43,6 +44,7 @@ extension Resources.V1.Subscriptions {
             encoder.encode(limitPrices, forKey: "limit[prices]")
             encoder.encode(limitPromotionalOffers, forKey: "limit[promotionalOffers]")
             encoder.encode(limitSubscriptionLocalizations, forKey: "limit[subscriptionLocalizations]")
+            encoder.encode(limitVersions, forKey: "limit[versions]")
             encoder.encode(limitWinBackOffers, forKey: "limit[winBackOffers]")
             return encoder.items
         }
@@ -68,6 +70,7 @@ extension Resources.V1.Subscriptions {
             case winBackOffers
             case images
             case planAvailabilities
+            case versions
         }
 
         public enum FieldsSubscriptionLocalizations: String, CaseIterable, Codable, Sendable {
@@ -94,6 +97,7 @@ extension Resources.V1.Subscriptions {
             case referenceName
             case subscriptions
             case subscriptionGroupLocalizations
+            case versions
         }
 
         public enum FieldsSubscriptionIntroductoryOffers: String, CaseIterable, Codable, Sendable {
@@ -193,6 +197,15 @@ extension Resources.V1.Subscriptions {
             case availableTerritories
         }
 
+        public enum FieldsSubscriptionVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case state
+            case subscription
+            case image
+            case images
+            case localizations
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case subscriptionLocalizations
             case appStoreReviewScreenshot
@@ -206,6 +219,7 @@ extension Resources.V1.Subscriptions {
             case winBackOffers
             case images
             case planAvailabilities
+            case versions
         }
 
         public func patch(_ body: AppStoreAPI.SubscriptionUpdateRequest) -> Request<AppStoreAPI.SubscriptionResponse> {

@@ -16,14 +16,16 @@ extension Resources.V1.SubscriptionPricePoints.WithID {
         /// Path: `/v1/subscriptionPricePoints/{id}/equalizations`
         public let path: String
 
-        public func get(filterTerritory: [String]? = nil, filterSubscription: [String]? = nil, fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionPricePointsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterTerritory, filterSubscription, fieldsSubscriptionPricePoints, fieldsTerritories, limit, include), id: "subscriptionPricePoints_equalizations_getToManyRelated")
+        public func get(filterTerritory: [String]? = nil, filterSubscription: [String]? = nil, filterUpfrontPricePointID: [String]? = nil, filterPlanType: [String]? = nil, fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionPricePointsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterTerritory, filterSubscription, filterUpfrontPricePointID, filterPlanType, fieldsSubscriptionPricePoints, fieldsTerritories, limit, include), id: "subscriptionPricePoints_equalizations_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterTerritory: [String]?, _ filterSubscription: [String]?, _ fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]?, _ fieldsTerritories: [FieldsTerritories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterTerritory: [String]?, _ filterSubscription: [String]?, _ filterUpfrontPricePointID: [String]?, _ filterPlanType: [String]?, _ fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]?, _ fieldsTerritories: [FieldsTerritories]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterTerritory, forKey: "filter[territory]")
             encoder.encode(filterSubscription, forKey: "filter[subscription]")
+            encoder.encode(filterUpfrontPricePointID, forKey: "filter[upfrontPricePointId]")
+            encoder.encode(filterPlanType, forKey: "filter[planType]")
             encoder.encode(fieldsSubscriptionPricePoints, forKey: "fields[subscriptionPricePoints]")
             encoder.encode(fieldsTerritories, forKey: "fields[territories]")
             encoder.encode(limit, forKey: "limit")
@@ -37,6 +39,7 @@ extension Resources.V1.SubscriptionPricePoints.WithID {
             case proceedsYear2
             case territory
             case equalizations
+            case adjustedEqualizations
         }
 
         public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {

@@ -57,6 +57,7 @@ public struct InAppPurchaseV2: Codable, Equatable, Identifiable, Sendable {
         public var inAppPurchaseAvailability: InAppPurchaseAvailability?
         public var images: Images?
         public var offerCodes: OfferCodes?
+        public var versions: Versions?
 
         public struct InAppPurchaseLocalizations: Codable, Equatable, Sendable {
             public var links: RelationshipLinks?
@@ -282,7 +283,33 @@ public struct InAppPurchaseV2: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(inAppPurchaseLocalizations: InAppPurchaseLocalizations? = nil, pricePoints: PricePoints? = nil, content: Content? = nil, appStoreReviewScreenshot: AppStoreReviewScreenshot? = nil, promotedPurchase: PromotedPurchase? = nil, iapPriceSchedule: IapPriceSchedule? = nil, inAppPurchaseAvailability: InAppPurchaseAvailability? = nil, images: Images? = nil, offerCodes: OfferCodes? = nil) {
+        public struct Versions: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var meta: PagingInformation?
+            public var data: [Datum]?
+
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case inAppPurchaseVersions
+                }
+
+                public init(type: `Type` = .inAppPurchaseVersions, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+                self.links = links
+                self.meta = meta
+                self.data = data
+            }
+        }
+
+        public init(inAppPurchaseLocalizations: InAppPurchaseLocalizations? = nil, pricePoints: PricePoints? = nil, content: Content? = nil, appStoreReviewScreenshot: AppStoreReviewScreenshot? = nil, promotedPurchase: PromotedPurchase? = nil, iapPriceSchedule: IapPriceSchedule? = nil, inAppPurchaseAvailability: InAppPurchaseAvailability? = nil, images: Images? = nil, offerCodes: OfferCodes? = nil, versions: Versions? = nil) {
             self.inAppPurchaseLocalizations = inAppPurchaseLocalizations
             self.pricePoints = pricePoints
             self.content = content
@@ -292,6 +319,7 @@ public struct InAppPurchaseV2: Codable, Equatable, Identifiable, Sendable {
             self.inAppPurchaseAvailability = inAppPurchaseAvailability
             self.images = images
             self.offerCodes = offerCodes
+            self.versions = versions
         }
     }
 

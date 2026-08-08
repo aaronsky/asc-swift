@@ -14,6 +14,7 @@ public struct SubscriptionGroupsResponse: Codable, Equatable, Sendable {
 
     public enum IncludedItem: Codable, Equatable, Sendable {
         case subscriptionGroupLocalization(SubscriptionGroupLocalization)
+        case subscriptionGroupVersion(SubscriptionGroupVersion)
         case subscription(Subscription)
 
         public init(from decoder: any Decoder) throws {
@@ -27,12 +28,13 @@ public struct SubscriptionGroupsResponse: Codable, Equatable, Sendable {
 
             switch discriminatorValue {
             case "subscriptionGroupLocalizations": self = .subscriptionGroupLocalization(try container.decode(SubscriptionGroupLocalization.self))
+            case "subscriptionGroupVersions": self = .subscriptionGroupVersion(try container.decode(SubscriptionGroupVersion.self))
             case "subscriptions": self = .subscription(try container.decode(Subscription.self))
 
             default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (subscriptionGroupLocalizations, subscriptions)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (subscriptionGroupLocalizations, subscriptionGroupVersions, subscriptions)."
                 )
             }
         }
@@ -41,6 +43,7 @@ public struct SubscriptionGroupsResponse: Codable, Equatable, Sendable {
             var container = encoder.singleValueContainer()
             switch self {
             case .subscriptionGroupLocalization(let value): try container.encode(value)
+            case .subscriptionGroupVersion(let value): try container.encode(value)
             case .subscription(let value): try container.encode(value)
             }
         }

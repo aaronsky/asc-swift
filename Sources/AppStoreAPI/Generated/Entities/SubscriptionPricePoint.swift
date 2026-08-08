@@ -32,6 +32,7 @@ public struct SubscriptionPricePoint: Codable, Equatable, Identifiable, Sendable
     public struct Relationships: Codable, Equatable, Sendable {
         public var territory: Territory?
         public var equalizations: Equalizations?
+        public var adjustedEqualizations: AdjustedEqualizations?
 
         public struct Territory: Codable, Equatable, Sendable {
             public var data: Data?
@@ -63,9 +64,18 @@ public struct SubscriptionPricePoint: Codable, Equatable, Identifiable, Sendable
             }
         }
 
-        public init(territory: Territory? = nil, equalizations: Equalizations? = nil) {
+        public struct AdjustedEqualizations: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
+            }
+        }
+
+        public init(territory: Territory? = nil, equalizations: Equalizations? = nil, adjustedEqualizations: AdjustedEqualizations? = nil) {
             self.territory = territory
             self.equalizations = equalizations
+            self.adjustedEqualizations = adjustedEqualizations
         }
     }
 

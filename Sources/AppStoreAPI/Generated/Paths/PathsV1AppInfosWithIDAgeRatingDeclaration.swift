@@ -43,6 +43,8 @@ extension Resources.V1.AppInfos.WithID {
             case ageAssurance
             case sexualContentGraphicAndNudity
             case sexualContentOrNudity
+            case socialMedia
+            case socialMediaAgeRestricted
             case horrorOrFearThemes
             case matureOrSuggestiveThemes
             case unrestrictedWebAccess

@@ -16,11 +16,11 @@ extension Resources.V1.Apps.WithID {
         /// Path: `/v1/apps/{id}/subscriptionGroups`
         public let path: String
 
-        public func get(filterReferenceName: [String]? = nil, filterSubscriptionsState: [FilterSubscriptionsState]? = nil, sort: [Sort]? = nil, fieldsSubscriptionGroups: [FieldsSubscriptionGroups]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]? = nil, limit: Int? = nil, include: [Include]? = nil, limitSubscriptions: Int? = nil, limitSubscriptionGroupLocalizations: Int? = nil) -> Request<AppStoreAPI.SubscriptionGroupsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterReferenceName, filterSubscriptionsState, sort, fieldsSubscriptionGroups, fieldsSubscriptions, fieldsSubscriptionGroupLocalizations, limit, include, limitSubscriptions, limitSubscriptionGroupLocalizations), id: "apps_subscriptionGroups_getToManyRelated")
+        public func get(filterReferenceName: [String]? = nil, filterSubscriptionsState: [FilterSubscriptionsState]? = nil, sort: [Sort]? = nil, fieldsSubscriptionGroups: [FieldsSubscriptionGroups]? = nil, fieldsSubscriptions: [FieldsSubscriptions]? = nil, fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]? = nil, fieldsSubscriptionGroupVersions: [FieldsSubscriptionGroupVersions]? = nil, limit: Int? = nil, include: [Include]? = nil, limitSubscriptions: Int? = nil, limitSubscriptionGroupLocalizations: Int? = nil, limitVersions: Int? = nil) -> Request<AppStoreAPI.SubscriptionGroupsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterReferenceName, filterSubscriptionsState, sort, fieldsSubscriptionGroups, fieldsSubscriptions, fieldsSubscriptionGroupLocalizations, fieldsSubscriptionGroupVersions, limit, include, limitSubscriptions, limitSubscriptionGroupLocalizations, limitVersions), id: "apps_subscriptionGroups_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterReferenceName: [String]?, _ filterSubscriptionsState: [FilterSubscriptionsState]?, _ sort: [Sort]?, _ fieldsSubscriptionGroups: [FieldsSubscriptionGroups]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]?, _ limit: Int?, _ include: [Include]?, _ limitSubscriptions: Int?, _ limitSubscriptionGroupLocalizations: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterReferenceName: [String]?, _ filterSubscriptionsState: [FilterSubscriptionsState]?, _ sort: [Sort]?, _ fieldsSubscriptionGroups: [FieldsSubscriptionGroups]?, _ fieldsSubscriptions: [FieldsSubscriptions]?, _ fieldsSubscriptionGroupLocalizations: [FieldsSubscriptionGroupLocalizations]?, _ fieldsSubscriptionGroupVersions: [FieldsSubscriptionGroupVersions]?, _ limit: Int?, _ include: [Include]?, _ limitSubscriptions: Int?, _ limitSubscriptionGroupLocalizations: Int?, _ limitVersions: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterReferenceName, forKey: "filter[referenceName]")
             encoder.encode(filterSubscriptionsState, forKey: "filter[subscriptions.state]")
@@ -28,10 +28,12 @@ extension Resources.V1.Apps.WithID {
             encoder.encode(fieldsSubscriptionGroups, forKey: "fields[subscriptionGroups]")
             encoder.encode(fieldsSubscriptions, forKey: "fields[subscriptions]")
             encoder.encode(fieldsSubscriptionGroupLocalizations, forKey: "fields[subscriptionGroupLocalizations]")
+            encoder.encode(fieldsSubscriptionGroupVersions, forKey: "fields[subscriptionGroupVersions]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitSubscriptions, forKey: "limit[subscriptions]")
             encoder.encode(limitSubscriptionGroupLocalizations, forKey: "limit[subscriptionGroupLocalizations]")
+            encoder.encode(limitVersions, forKey: "limit[versions]")
             return encoder.items
         }
 
@@ -57,6 +59,7 @@ extension Resources.V1.Apps.WithID {
             case referenceName
             case subscriptions
             case subscriptionGroupLocalizations
+            case versions
         }
 
         public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
@@ -80,6 +83,7 @@ extension Resources.V1.Apps.WithID {
             case winBackOffers
             case images
             case planAvailabilities
+            case versions
         }
 
         public enum FieldsSubscriptionGroupLocalizations: String, CaseIterable, Codable, Sendable {
@@ -90,9 +94,17 @@ extension Resources.V1.Apps.WithID {
             case subscriptionGroup
         }
 
+        public enum FieldsSubscriptionGroupVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case state
+            case subscriptionGroup
+            case localizations
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case subscriptions
             case subscriptionGroupLocalizations
+            case versions
         }
     }
 }

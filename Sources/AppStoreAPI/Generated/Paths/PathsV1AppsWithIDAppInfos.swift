@@ -42,6 +42,7 @@ extension Resources.V1.Apps.WithID {
             case brazilAgeRatingV2
             case franceAgeRating
             case koreaAgeRating
+            case kidsAgeBand
             case app
             case ageRatingDeclaration
             case appInfoLocalizations
@@ -129,6 +130,8 @@ extension Resources.V1.Apps.WithID {
             case ageAssurance
             case sexualContentGraphicAndNudity
             case sexualContentOrNudity
+            case socialMedia
+            case socialMediaAgeRestricted
             case horrorOrFearThemes
             case matureOrSuggestiveThemes
             case unrestrictedWebAccess

@@ -23,6 +23,9 @@ public struct ReviewSubmissionItemResponse: Codable, Equatable, Sendable {
         case gameCenterChallengeVersion(GameCenterChallengeVersion)
         case gameCenterLeaderboardSetVersionV2(GameCenterLeaderboardSetVersionV2)
         case gameCenterLeaderboardVersionV2(GameCenterLeaderboardVersionV2)
+        case inAppPurchaseVersion(InAppPurchaseVersion)
+        case subscriptionGroupVersion(SubscriptionGroupVersion)
+        case subscriptionVersion(SubscriptionVersion)
 
         public init(from decoder: any Decoder) throws {
 
@@ -44,11 +47,14 @@ public struct ReviewSubmissionItemResponse: Codable, Equatable, Sendable {
             case "gameCenterChallengeVersions": self = .gameCenterChallengeVersion(try container.decode(GameCenterChallengeVersion.self))
             case "gameCenterLeaderboardSetVersions": self = .gameCenterLeaderboardSetVersionV2(try container.decode(GameCenterLeaderboardSetVersionV2.self))
             case "gameCenterLeaderboardVersions": self = .gameCenterLeaderboardVersionV2(try container.decode(GameCenterLeaderboardVersionV2.self))
+            case "inAppPurchaseVersions": self = .inAppPurchaseVersion(try container.decode(InAppPurchaseVersion.self))
+            case "subscriptionGroupVersions": self = .subscriptionGroupVersion(try container.decode(SubscriptionGroupVersion.self))
+            case "subscriptionVersions": self = .subscriptionVersion(try container.decode(SubscriptionVersion.self))
 
             default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (appCustomProductPageVersions, appEvents, appStoreVersionExperiments, appStoreVersions, backgroundAssetVersions, gameCenterAchievementVersions, gameCenterActivityVersions, gameCenterChallengeVersions, gameCenterLeaderboardSetVersions, gameCenterLeaderboardVersions)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (appCustomProductPageVersions, appEvents, appStoreVersionExperiments, appStoreVersions, backgroundAssetVersions, gameCenterAchievementVersions, gameCenterActivityVersions, gameCenterChallengeVersions, gameCenterLeaderboardSetVersions, gameCenterLeaderboardVersions, inAppPurchaseVersions, subscriptionGroupVersions, subscriptionVersions)."
                 )
             }
         }
@@ -66,6 +72,9 @@ public struct ReviewSubmissionItemResponse: Codable, Equatable, Sendable {
             case .gameCenterChallengeVersion(let value): try container.encode(value)
             case .gameCenterLeaderboardSetVersionV2(let value): try container.encode(value)
             case .gameCenterLeaderboardVersionV2(let value): try container.encode(value)
+            case .inAppPurchaseVersion(let value): try container.encode(value)
+            case .subscriptionGroupVersion(let value): try container.encode(value)
+            case .subscriptionVersion(let value): try container.encode(value)
             }
         }
     }

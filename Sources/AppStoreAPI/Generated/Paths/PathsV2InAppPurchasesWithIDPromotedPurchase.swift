@@ -54,6 +54,7 @@ extension Resources.V2.InAppPurchases.WithID {
             case inAppPurchaseAvailability
             case images
             case offerCodes
+            case versions
         }
 
         public enum FieldsSubscriptions: String, CaseIterable, Codable, Sendable {
@@ -77,6 +78,7 @@ extension Resources.V2.InAppPurchases.WithID {
             case winBackOffers
             case images
             case planAvailabilities
+            case versions
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

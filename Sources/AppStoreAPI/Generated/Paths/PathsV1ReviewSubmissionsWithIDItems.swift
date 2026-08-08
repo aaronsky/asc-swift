@@ -16,11 +16,11 @@ extension Resources.V1.ReviewSubmissions.WithID {
         /// Path: `/v1/reviewSubmissions/{id}/items`
         public let path: String
 
-        public func get(fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]? = nil, fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAppEvents: [FieldsAppEvents]? = nil, fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]? = nil, fieldsGameCenterAchievementVersions: [FieldsGameCenterAchievementVersions]? = nil, fieldsGameCenterActivityVersions: [FieldsGameCenterActivityVersions]? = nil, fieldsGameCenterChallengeVersions: [FieldsGameCenterChallengeVersions]? = nil, fieldsGameCenterLeaderboardSetVersions: [FieldsGameCenterLeaderboardSetVersions]? = nil, fieldsGameCenterLeaderboardVersions: [FieldsGameCenterLeaderboardVersions]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.ReviewSubmissionItemsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsReviewSubmissionItems, fieldsAppStoreVersions, fieldsAppCustomProductPageVersions, fieldsAppStoreVersionExperiments, fieldsAppEvents, fieldsBackgroundAssetVersions, fieldsGameCenterAchievementVersions, fieldsGameCenterActivityVersions, fieldsGameCenterChallengeVersions, fieldsGameCenterLeaderboardSetVersions, fieldsGameCenterLeaderboardVersions, limit, include), id: "reviewSubmissions_items_getToManyRelated")
+        public func get(fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]? = nil, fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]? = nil, fieldsAppEvents: [FieldsAppEvents]? = nil, fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]? = nil, fieldsGameCenterAchievementVersions: [FieldsGameCenterAchievementVersions]? = nil, fieldsGameCenterActivityVersions: [FieldsGameCenterActivityVersions]? = nil, fieldsGameCenterChallengeVersions: [FieldsGameCenterChallengeVersions]? = nil, fieldsGameCenterLeaderboardSetVersions: [FieldsGameCenterLeaderboardSetVersions]? = nil, fieldsGameCenterLeaderboardVersions: [FieldsGameCenterLeaderboardVersions]? = nil, fieldsInAppPurchaseVersions: [FieldsInAppPurchaseVersions]? = nil, fieldsSubscriptionVersions: [FieldsSubscriptionVersions]? = nil, fieldsSubscriptionGroupVersions: [FieldsSubscriptionGroupVersions]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.ReviewSubmissionItemsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsReviewSubmissionItems, fieldsAppStoreVersions, fieldsAppCustomProductPageVersions, fieldsAppStoreVersionExperiments, fieldsAppEvents, fieldsBackgroundAssetVersions, fieldsGameCenterAchievementVersions, fieldsGameCenterActivityVersions, fieldsGameCenterChallengeVersions, fieldsGameCenterLeaderboardSetVersions, fieldsGameCenterLeaderboardVersions, fieldsInAppPurchaseVersions, fieldsSubscriptionVersions, fieldsSubscriptionGroupVersions, limit, include), id: "reviewSubmissions_items_getToManyRelated")
         }
 
-        private func makeGetQuery(_ fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]?, _ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsAppEvents: [FieldsAppEvents]?, _ fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]?, _ fieldsGameCenterAchievementVersions: [FieldsGameCenterAchievementVersions]?, _ fieldsGameCenterActivityVersions: [FieldsGameCenterActivityVersions]?, _ fieldsGameCenterChallengeVersions: [FieldsGameCenterChallengeVersions]?, _ fieldsGameCenterLeaderboardSetVersions: [FieldsGameCenterLeaderboardSetVersions]?, _ fieldsGameCenterLeaderboardVersions: [FieldsGameCenterLeaderboardVersions]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsReviewSubmissionItems: [FieldsReviewSubmissionItems]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]?, _ fieldsAppStoreVersionExperiments: [FieldsAppStoreVersionExperiments]?, _ fieldsAppEvents: [FieldsAppEvents]?, _ fieldsBackgroundAssetVersions: [FieldsBackgroundAssetVersions]?, _ fieldsGameCenterAchievementVersions: [FieldsGameCenterAchievementVersions]?, _ fieldsGameCenterActivityVersions: [FieldsGameCenterActivityVersions]?, _ fieldsGameCenterChallengeVersions: [FieldsGameCenterChallengeVersions]?, _ fieldsGameCenterLeaderboardSetVersions: [FieldsGameCenterLeaderboardSetVersions]?, _ fieldsGameCenterLeaderboardVersions: [FieldsGameCenterLeaderboardVersions]?, _ fieldsInAppPurchaseVersions: [FieldsInAppPurchaseVersions]?, _ fieldsSubscriptionVersions: [FieldsSubscriptionVersions]?, _ fieldsSubscriptionGroupVersions: [FieldsSubscriptionGroupVersions]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsReviewSubmissionItems, forKey: "fields[reviewSubmissionItems]")
             encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
@@ -33,6 +33,9 @@ extension Resources.V1.ReviewSubmissions.WithID {
             encoder.encode(fieldsGameCenterChallengeVersions, forKey: "fields[gameCenterChallengeVersions]")
             encoder.encode(fieldsGameCenterLeaderboardSetVersions, forKey: "fields[gameCenterLeaderboardSetVersions]")
             encoder.encode(fieldsGameCenterLeaderboardVersions, forKey: "fields[gameCenterLeaderboardVersions]")
+            encoder.encode(fieldsInAppPurchaseVersions, forKey: "fields[inAppPurchaseVersions]")
+            encoder.encode(fieldsSubscriptionVersions, forKey: "fields[subscriptionVersions]")
+            encoder.encode(fieldsSubscriptionGroupVersions, forKey: "fields[subscriptionGroupVersions]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             return encoder.items
@@ -51,6 +54,9 @@ extension Resources.V1.ReviewSubmissions.WithID {
             case gameCenterChallengeVersion
             case gameCenterLeaderboardSetVersion
             case gameCenterLeaderboardVersion
+            case inAppPurchaseVersion
+            case subscriptionVersion
+            case subscriptionGroupVersion
         }
 
         public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
@@ -173,6 +179,31 @@ extension Resources.V1.ReviewSubmissions.WithID {
             case localizations
         }
 
+        public enum FieldsInAppPurchaseVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case state
+            case inAppPurchase
+            case image
+            case images
+            case localizations
+        }
+
+        public enum FieldsSubscriptionVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case state
+            case subscription
+            case image
+            case images
+            case localizations
+        }
+
+        public enum FieldsSubscriptionGroupVersions: String, CaseIterable, Codable, Sendable {
+            case version
+            case state
+            case subscriptionGroup
+            case localizations
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
             case appCustomProductPageVersion
@@ -185,6 +216,9 @@ extension Resources.V1.ReviewSubmissions.WithID {
             case gameCenterChallengeVersion
             case gameCenterLeaderboardSetVersion
             case gameCenterLeaderboardVersion
+            case inAppPurchaseVersion
+            case subscriptionVersion
+            case subscriptionGroupVersion
         }
     }
 }
