@@ -16,10 +16,7 @@ jobs:
   create-release:
     runs-on: ubuntu-latest
     steps:
-      - uses: bazel-contrib/setup-bazel@0.18.0
-        with:
-          bazelisk-cache: true
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-tags: true
       - name: Prepare release
@@ -30,7 +27,7 @@ jobs:
           ARCHIVE="asc_swift-${{ inputs.tag }}.tar.gz"
           git archive --format=tar --prefix="${PREFIX}/" "${{ inputs.tag }}" | gzip > $ARCHIVE
       - name: Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ inputs.tag }}
           files: "asc_swift-*.tar.gz"

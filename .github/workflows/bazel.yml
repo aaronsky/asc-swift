@@ -39,30 +39,25 @@ jobs:
     env:
       BUILDBUDDY_API_KEY: ${{ secrets.BUILDBUDDY_API_KEY }}
     steps:
-      - uses: bazel-contrib/setup-bazel@0.18.0
+      - uses: bazel-contrib/setup-bazel@0.19.1
         with:
           bazelisk-cache: true
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - run: |
           bazel test \
             --config=cache \
             --remote_header=x-buildbuddy-api-key=${BUILDBUDDY_API_KEY} \
             //...
   Linux:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        tag: ["6.2"]
-    container:
-      image: swift:${{ matrix.tag }}
+    runs-on: ubuntu-24.04
     env:
       BUILDBUDDY_API_KEY: ${{ secrets.BUILDBUDDY_API_KEY }}
     steps:
-      - uses: bazel-contrib/setup-bazel@0.18.0
+      - uses: bazel-contrib/setup-bazel@0.19.1
         with:
           bazelisk-cache: true
           bazelisk-version: 1.x
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - run: |
           bazel test \
             --config=cache \
@@ -73,10 +68,10 @@ jobs:
     env:
       BUILDBUDDY_API_KEY: ${{ secrets.BUILDBUDDY_API_KEY }}
     steps:
-      - uses: bazel-contrib/setup-bazel@0.18.0
+      - uses: bazel-contrib/setup-bazel@0.19.1
         with:
           bazelisk-cache: true
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - run: |
           bazel build \
             --config=cache \
@@ -84,20 +79,15 @@ jobs:
             //...
         working-directory: Examples/bzlmod
   bzlmod-e2e-linux:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        tag: ["6.2"]
-    container:
-      image: swift:${{ matrix.tag }}
+    runs-on: ubuntu-24.04
     env:
       BUILDBUDDY_API_KEY: ${{ secrets.BUILDBUDDY_API_KEY }}
     steps:
-      - uses: bazel-contrib/setup-bazel@0.18.0
+      - uses: bazel-contrib/setup-bazel@0.19.1
         with:
           bazelisk-cache: true
           bazelisk-version: 1.x
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - run: |
           bazel build \
             --config=cache \
