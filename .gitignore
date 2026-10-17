@@ -23,3 +23,5 @@ xcuserdata/
 bazel-*
 MODULE.bazel.lock
 user.bazelrc
+bazel-remote-grpc.log
+execution_log.binpb.zst
