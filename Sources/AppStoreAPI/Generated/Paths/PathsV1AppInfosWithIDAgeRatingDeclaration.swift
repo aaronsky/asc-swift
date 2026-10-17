@@ -55,6 +55,7 @@ extension Resources.V1.AppInfos.WithID {
             case ageRatingOverride
             case ageRatingOverrideV2
             case koreaAgeRatingOverride
+            case gracRatingClassificationNumber
             case developerAgeRatingInfoURL = "developerAgeRatingInfoUrl"
         }
     }

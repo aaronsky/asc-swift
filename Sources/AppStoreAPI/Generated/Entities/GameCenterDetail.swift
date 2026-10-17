@@ -53,6 +53,7 @@ public struct GameCenterDetail: Codable, Equatable, Identifiable, Sendable {
         public var challengeReleases: ChallengeReleases?
         public var leaderboardReleases: LeaderboardReleases?
         public var leaderboardSetReleases: LeaderboardSetReleases?
+        public var blockedPlayers: BlockedPlayers?
         public var challengesMinimumPlatformVersions: ChallengesMinimumPlatformVersions?
 
         public struct App: Codable, Equatable, Sendable {
@@ -553,6 +554,14 @@ public struct GameCenterDetail: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
+        public struct BlockedPlayers: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
+            }
+        }
+
         public struct ChallengesMinimumPlatformVersions: Codable, Equatable, Sendable {
             public var links: RelationshipLinks?
             public var meta: PagingInformation?
@@ -579,7 +588,7 @@ public struct GameCenterDetail: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(app: App? = nil, gameCenterAppVersions: GameCenterAppVersions? = nil, gameCenterGroup: GameCenterGroup? = nil, gameCenterLeaderboards: GameCenterLeaderboards? = nil, gameCenterLeaderboardsV2: GameCenterLeaderboardsV2? = nil, gameCenterLeaderboardSets: GameCenterLeaderboardSets? = nil, gameCenterLeaderboardSetsV2: GameCenterLeaderboardSetsV2? = nil, gameCenterAchievements: GameCenterAchievements? = nil, gameCenterAchievementsV2: GameCenterAchievementsV2? = nil, gameCenterActivities: GameCenterActivities? = nil, gameCenterChallenges: GameCenterChallenges? = nil, defaultLeaderboard: DefaultLeaderboard? = nil, defaultLeaderboardV2: DefaultLeaderboardV2? = nil, defaultGroupLeaderboard: DefaultGroupLeaderboard? = nil, defaultGroupLeaderboardV2: DefaultGroupLeaderboardV2? = nil, achievementReleases: AchievementReleases? = nil, activityReleases: ActivityReleases? = nil, challengeReleases: ChallengeReleases? = nil, leaderboardReleases: LeaderboardReleases? = nil, leaderboardSetReleases: LeaderboardSetReleases? = nil, challengesMinimumPlatformVersions: ChallengesMinimumPlatformVersions? = nil) {
+        public init(app: App? = nil, gameCenterAppVersions: GameCenterAppVersions? = nil, gameCenterGroup: GameCenterGroup? = nil, gameCenterLeaderboards: GameCenterLeaderboards? = nil, gameCenterLeaderboardsV2: GameCenterLeaderboardsV2? = nil, gameCenterLeaderboardSets: GameCenterLeaderboardSets? = nil, gameCenterLeaderboardSetsV2: GameCenterLeaderboardSetsV2? = nil, gameCenterAchievements: GameCenterAchievements? = nil, gameCenterAchievementsV2: GameCenterAchievementsV2? = nil, gameCenterActivities: GameCenterActivities? = nil, gameCenterChallenges: GameCenterChallenges? = nil, defaultLeaderboard: DefaultLeaderboard? = nil, defaultLeaderboardV2: DefaultLeaderboardV2? = nil, defaultGroupLeaderboard: DefaultGroupLeaderboard? = nil, defaultGroupLeaderboardV2: DefaultGroupLeaderboardV2? = nil, achievementReleases: AchievementReleases? = nil, activityReleases: ActivityReleases? = nil, challengeReleases: ChallengeReleases? = nil, leaderboardReleases: LeaderboardReleases? = nil, leaderboardSetReleases: LeaderboardSetReleases? = nil, blockedPlayers: BlockedPlayers? = nil, challengesMinimumPlatformVersions: ChallengesMinimumPlatformVersions? = nil) {
             self.app = app
             self.gameCenterAppVersions = gameCenterAppVersions
             self.gameCenterGroup = gameCenterGroup
@@ -600,6 +609,7 @@ public struct GameCenterDetail: Codable, Equatable, Identifiable, Sendable {
             self.challengeReleases = challengeReleases
             self.leaderboardReleases = leaderboardReleases
             self.leaderboardSetReleases = leaderboardSetReleases
+            self.blockedPlayers = blockedPlayers
             self.challengesMinimumPlatformVersions = challengesMinimumPlatformVersions
         }
     }

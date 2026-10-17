@@ -32,6 +32,7 @@ public struct AppCustomProductPageLocalization: Codable, Equatable, Identifiable
         public var appScreenshotSets: AppScreenshotSets?
         public var appPreviewSets: AppPreviewSets?
         public var searchKeywords: SearchKeywords?
+        public var placements: Placements?
 
         public struct AppCustomProductPageVersion: Codable, Equatable, Sendable {
             public var data: Data?
@@ -133,11 +134,38 @@ public struct AppCustomProductPageLocalization: Codable, Equatable, Identifiable
             }
         }
 
-        public init(appCustomProductPageVersion: AppCustomProductPageVersion? = nil, appScreenshotSets: AppScreenshotSets? = nil, appPreviewSets: AppPreviewSets? = nil, searchKeywords: SearchKeywords? = nil) {
+        public struct Placements: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var meta: PagingInformation?
+            public var data: [Datum]?
+
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case appAssetLibraryPlacements
+                }
+
+                public init(type: `Type` = .appAssetLibraryPlacements, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+                self.links = links
+                self.meta = meta
+                self.data = data
+            }
+        }
+
+        public init(appCustomProductPageVersion: AppCustomProductPageVersion? = nil, appScreenshotSets: AppScreenshotSets? = nil, appPreviewSets: AppPreviewSets? = nil, searchKeywords: SearchKeywords? = nil, placements: Placements? = nil) {
             self.appCustomProductPageVersion = appCustomProductPageVersion
             self.appScreenshotSets = appScreenshotSets
             self.appPreviewSets = appPreviewSets
             self.searchKeywords = searchKeywords
+            self.placements = placements
         }
     }
 

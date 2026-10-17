@@ -16,19 +16,21 @@ extension Resources.V1.AppStoreVersionExperimentTreatmentLocalizations {
         /// Path: `/v1/appStoreVersionExperimentTreatmentLocalizations/{id}`
         public let path: String
 
-        public func get(fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]? = nil, fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, include: [Include]? = nil, limitAppPreviewSets: Int? = nil, limitAppScreenshotSets: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionExperimentTreatmentLocalizationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionExperimentTreatmentLocalizations, fieldsAppStoreVersionExperimentTreatments, fieldsAppScreenshotSets, fieldsAppPreviewSets, include, limitAppPreviewSets, limitAppScreenshotSets), id: "appStoreVersionExperimentTreatmentLocalizations_getInstance")
+        public func get(fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]? = nil, fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, fieldsAppAssetLibraryPlacements: [FieldsAppAssetLibraryPlacements]? = nil, include: [Include]? = nil, limitAppPreviewSets: Int? = nil, limitAppScreenshotSets: Int? = nil, limitPlacements: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionExperimentTreatmentLocalizationResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionExperimentTreatmentLocalizations, fieldsAppStoreVersionExperimentTreatments, fieldsAppScreenshotSets, fieldsAppPreviewSets, fieldsAppAssetLibraryPlacements, include, limitAppPreviewSets, limitAppScreenshotSets, limitPlacements), id: "appStoreVersionExperimentTreatmentLocalizations_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]?, _ fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ include: [Include]?, _ limitAppPreviewSets: Int?, _ limitAppScreenshotSets: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]?, _ fieldsAppStoreVersionExperimentTreatments: [FieldsAppStoreVersionExperimentTreatments]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ fieldsAppAssetLibraryPlacements: [FieldsAppAssetLibraryPlacements]?, _ include: [Include]?, _ limitAppPreviewSets: Int?, _ limitAppScreenshotSets: Int?, _ limitPlacements: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppStoreVersionExperimentTreatmentLocalizations, forKey: "fields[appStoreVersionExperimentTreatmentLocalizations]")
             encoder.encode(fieldsAppStoreVersionExperimentTreatments, forKey: "fields[appStoreVersionExperimentTreatments]")
             encoder.encode(fieldsAppScreenshotSets, forKey: "fields[appScreenshotSets]")
             encoder.encode(fieldsAppPreviewSets, forKey: "fields[appPreviewSets]")
+            encoder.encode(fieldsAppAssetLibraryPlacements, forKey: "fields[appAssetLibraryPlacements]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitAppPreviewSets, forKey: "limit[appPreviewSets]")
             encoder.encode(limitAppScreenshotSets, forKey: "limit[appScreenshotSets]")
+            encoder.encode(limitPlacements, forKey: "limit[placements]")
             return encoder.items
         }
 
@@ -37,6 +39,7 @@ extension Resources.V1.AppStoreVersionExperimentTreatmentLocalizations {
             case appStoreVersionExperimentTreatment
             case appScreenshotSets
             case appPreviewSets
+            case placements
         }
 
         public enum FieldsAppStoreVersionExperimentTreatments: String, CaseIterable, Codable, Sendable {
@@ -65,10 +68,27 @@ extension Resources.V1.AppStoreVersionExperimentTreatmentLocalizations {
             case appPreviews
         }
 
+        public enum FieldsAppAssetLibraryPlacements: String, CaseIterable, Codable, Sendable {
+            case mediaType
+            case placementType
+            case placementGroup
+            case createdDate
+            case lastModifiedDate
+            case state
+            case stateDetails
+            case image
+            case video
+            case appEventLocalization
+            case appStoreVersionLocalization
+            case appCustomProductPageLocalization
+            case appStoreVersionExperimentTreatmentLocalization
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case appStoreVersionExperimentTreatment
             case appScreenshotSets
             case appPreviewSets
+            case placements
         }
 
         public var delete: Request<Void> {

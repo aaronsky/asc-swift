@@ -52,6 +52,7 @@ extension Resources.V1.AppPreviewSets {
             case appScreenshotSets
             case appPreviewSets
             case searchKeywords
+            case placements
         }
 
         public enum FieldsAppCustomProductPageLocalizations: String, CaseIterable, Codable, Sendable {
@@ -61,6 +62,7 @@ extension Resources.V1.AppPreviewSets {
             case appScreenshotSets
             case appPreviewSets
             case searchKeywords
+            case placements
         }
 
         public enum FieldsAppStoreVersionExperimentTreatmentLocalizations: String, CaseIterable, Codable, Sendable {
@@ -68,6 +70,7 @@ extension Resources.V1.AppPreviewSets {
             case appStoreVersionExperimentTreatment
             case appScreenshotSets
             case appPreviewSets
+            case placements
         }
 
         public enum FieldsAppPreviews: String, CaseIterable, Codable, Sendable {

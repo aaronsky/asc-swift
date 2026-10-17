@@ -47,6 +47,8 @@ extension Resources.V1.SubscriptionImages {
             case subscriptionPeriod
             case reviewNote
             case groupLevel
+            case multiSeatStatus
+            case marketSettings
             case subscriptionLocalizations
             case appStoreReviewScreenshot
             case group

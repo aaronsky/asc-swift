@@ -30,6 +30,7 @@ public struct AppCustomProductPageLocalizationCreateRequest: Codable, Equatable,
 
         public struct Relationships: Codable, Equatable, Sendable {
             public var appCustomProductPageVersion: AppCustomProductPageVersion
+            public var placements: Placements?
 
             public struct AppCustomProductPageVersion: Codable, Equatable, Sendable {
                 public var data: Data
@@ -53,8 +54,31 @@ public struct AppCustomProductPageLocalizationCreateRequest: Codable, Equatable,
                 }
             }
 
-            public init(appCustomProductPageVersion: AppCustomProductPageVersion) {
+            public struct Placements: Codable, Equatable, Sendable {
+                public var data: [Datum]?
+
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
+                        case appAssetLibraryPlacements
+                    }
+
+                    public init(type: `Type` = .appAssetLibraryPlacements, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: [Datum]? = nil) {
+                    self.data = data
+                }
+            }
+
+            public init(appCustomProductPageVersion: AppCustomProductPageVersion, placements: Placements? = nil) {
                 self.appCustomProductPageVersion = appCustomProductPageVersion
+                self.placements = placements
             }
         }
 

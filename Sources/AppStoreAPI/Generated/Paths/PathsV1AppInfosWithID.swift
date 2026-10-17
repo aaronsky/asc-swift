@@ -41,7 +41,6 @@ extension Resources.V1.AppInfos {
             case brazilAgeRatingV2
             case franceAgeRating
             case koreaAgeRating
-            case kidsAgeBand
             case app
             case ageRatingDeclaration
             case appInfoLocalizations
@@ -89,6 +88,7 @@ extension Resources.V1.AppInfos {
             case inAppPurchases
             case subscriptionGroups
             case gameCenterEnabledVersions
+            case performanceOverviews
             case perfPowerMetrics
             case appCustomProductPages
             case inAppPurchasesV2
@@ -105,6 +105,7 @@ extension Resources.V1.AppInfos {
             case marketplaceSearchDetail
             case buildUploads
             case backgroundAssets
+            case assetLibrary
             case betaFeedbackScreenshotSubmissions
             case betaFeedbackCrashSubmissions
             case searchKeywords
@@ -141,6 +142,7 @@ extension Resources.V1.AppInfos {
             case ageRatingOverride
             case ageRatingOverrideV2
             case koreaAgeRatingOverride
+            case gracRatingClassificationNumber
             case developerAgeRatingInfoURL = "developerAgeRatingInfoUrl"
         }
 

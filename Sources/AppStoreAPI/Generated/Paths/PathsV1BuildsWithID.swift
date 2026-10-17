@@ -179,6 +179,7 @@ extension Resources.V1.Builds {
             case inAppPurchases
             case subscriptionGroups
             case gameCenterEnabledVersions
+            case performanceOverviews
             case perfPowerMetrics
             case appCustomProductPages
             case inAppPurchasesV2
@@ -195,6 +196,7 @@ extension Resources.V1.Builds {
             case marketplaceSearchDetail
             case buildUploads
             case backgroundAssets
+            case assetLibrary
             case betaFeedbackScreenshotSubmissions
             case betaFeedbackCrashSubmissions
             case searchKeywords

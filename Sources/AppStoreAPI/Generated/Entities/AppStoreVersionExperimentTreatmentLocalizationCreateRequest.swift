@@ -28,6 +28,7 @@ public struct AppStoreVersionExperimentTreatmentLocalizationCreateRequest: Codab
 
         public struct Relationships: Codable, Equatable, Sendable {
             public var appStoreVersionExperimentTreatment: AppStoreVersionExperimentTreatment
+            public var placements: Placements?
 
             public struct AppStoreVersionExperimentTreatment: Codable, Equatable, Sendable {
                 public var data: Data
@@ -51,8 +52,31 @@ public struct AppStoreVersionExperimentTreatmentLocalizationCreateRequest: Codab
                 }
             }
 
-            public init(appStoreVersionExperimentTreatment: AppStoreVersionExperimentTreatment) {
+            public struct Placements: Codable, Equatable, Sendable {
+                public var data: [Datum]?
+
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
+                        case appAssetLibraryPlacements
+                    }
+
+                    public init(type: `Type` = .appAssetLibraryPlacements, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: [Datum]? = nil) {
+                    self.data = data
+                }
+            }
+
+            public init(appStoreVersionExperimentTreatment: AppStoreVersionExperimentTreatment, placements: Placements? = nil) {
                 self.appStoreVersionExperimentTreatment = appStoreVersionExperimentTreatment
+                self.placements = placements
             }
         }
 

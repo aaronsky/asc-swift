@@ -29,6 +29,7 @@ public struct AppStoreVersionExperimentTreatmentLocalization: Codable, Equatable
         public var appStoreVersionExperimentTreatment: AppStoreVersionExperimentTreatment?
         public var appScreenshotSets: AppScreenshotSets?
         public var appPreviewSets: AppPreviewSets?
+        public var placements: Placements?
 
         public struct AppStoreVersionExperimentTreatment: Codable, Equatable, Sendable {
             public var data: Data?
@@ -104,10 +105,37 @@ public struct AppStoreVersionExperimentTreatmentLocalization: Codable, Equatable
             }
         }
 
-        public init(appStoreVersionExperimentTreatment: AppStoreVersionExperimentTreatment? = nil, appScreenshotSets: AppScreenshotSets? = nil, appPreviewSets: AppPreviewSets? = nil) {
+        public struct Placements: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var meta: PagingInformation?
+            public var data: [Datum]?
+
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case appAssetLibraryPlacements
+                }
+
+                public init(type: `Type` = .appAssetLibraryPlacements, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+                self.links = links
+                self.meta = meta
+                self.data = data
+            }
+        }
+
+        public init(appStoreVersionExperimentTreatment: AppStoreVersionExperimentTreatment? = nil, appScreenshotSets: AppScreenshotSets? = nil, appPreviewSets: AppPreviewSets? = nil, placements: Placements? = nil) {
             self.appStoreVersionExperimentTreatment = appStoreVersionExperimentTreatment
             self.appScreenshotSets = appScreenshotSets
             self.appPreviewSets = appPreviewSets
+            self.placements = placements
         }
     }
 

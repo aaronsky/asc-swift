@@ -58,6 +58,7 @@ extension Resources.V1.GameCenterAchievementReleases {
             case challengeReleases
             case leaderboardReleases
             case leaderboardSetReleases
+            case blockedPlayers
             case challengesMinimumPlatformVersions
         }
 

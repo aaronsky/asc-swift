@@ -13,6 +13,7 @@ public struct AppEventLocalizationsResponse: Codable, Equatable, Sendable {
     public var meta: PagingInformation?
 
     public enum IncludedItem: Codable, Equatable, Sendable {
+        case appAssetLibraryPlacement(AppAssetLibraryPlacement)
         case appEventScreenshot(AppEventScreenshot)
         case appEventVideoClip(AppEventVideoClip)
         case appEvent(AppEvent)
@@ -27,6 +28,7 @@ public struct AppEventLocalizationsResponse: Codable, Equatable, Sendable {
             let discriminatorValue = try container.decode(Discriminator.self).type
 
             switch discriminatorValue {
+            case "appAssetLibraryPlacements": self = .appAssetLibraryPlacement(try container.decode(AppAssetLibraryPlacement.self))
             case "appEventScreenshots": self = .appEventScreenshot(try container.decode(AppEventScreenshot.self))
             case "appEventVideoClips": self = .appEventVideoClip(try container.decode(AppEventVideoClip.self))
             case "appEvents": self = .appEvent(try container.decode(AppEvent.self))
@@ -34,7 +36,7 @@ public struct AppEventLocalizationsResponse: Codable, Equatable, Sendable {
             default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (appEventScreenshots, appEventVideoClips, appEvents)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (appAssetLibraryPlacements, appEventScreenshots, appEventVideoClips, appEvents)."
                 )
             }
         }
@@ -42,6 +44,7 @@ public struct AppEventLocalizationsResponse: Codable, Equatable, Sendable {
         public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
+            case .appAssetLibraryPlacement(let value): try container.encode(value)
             case .appEventScreenshot(let value): try container.encode(value)
             case .appEventVideoClip(let value): try container.encode(value)
             case .appEvent(let value): try container.encode(value)

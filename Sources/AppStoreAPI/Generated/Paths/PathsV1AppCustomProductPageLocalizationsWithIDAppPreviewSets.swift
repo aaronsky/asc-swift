@@ -75,6 +75,7 @@ extension Resources.V1.AppCustomProductPageLocalizations.WithID {
             case appScreenshotSets
             case appPreviewSets
             case searchKeywords
+            case placements
         }
 
         public enum FieldsAppCustomProductPageLocalizations: String, CaseIterable, Codable, Sendable {
@@ -84,6 +85,7 @@ extension Resources.V1.AppCustomProductPageLocalizations.WithID {
             case appScreenshotSets
             case appPreviewSets
             case searchKeywords
+            case placements
         }
 
         public enum FieldsAppStoreVersionExperimentTreatmentLocalizations: String, CaseIterable, Codable, Sendable {
@@ -91,6 +93,7 @@ extension Resources.V1.AppCustomProductPageLocalizations.WithID {
             case appStoreVersionExperimentTreatment
             case appScreenshotSets
             case appPreviewSets
+            case placements
         }
 
         public enum FieldsAppPreviews: String, CaseIterable, Codable, Sendable {

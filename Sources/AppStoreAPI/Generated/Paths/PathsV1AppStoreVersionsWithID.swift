@@ -103,6 +103,7 @@ extension Resources.V1.AppStoreVersions {
             case inAppPurchases
             case subscriptionGroups
             case gameCenterEnabledVersions
+            case performanceOverviews
             case perfPowerMetrics
             case appCustomProductPages
             case inAppPurchasesV2
@@ -119,6 +120,7 @@ extension Resources.V1.AppStoreVersions {
             case marketplaceSearchDetail
             case buildUploads
             case backgroundAssets
+            case assetLibrary
             case betaFeedbackScreenshotSubmissions
             case betaFeedbackCrashSubmissions
             case searchKeywords
@@ -138,6 +140,7 @@ extension Resources.V1.AppStoreVersions {
             case appScreenshotSets
             case appPreviewSets
             case searchKeywords
+            case placements
         }
 
         public enum FieldsBuilds: String, CaseIterable, Codable, Sendable {

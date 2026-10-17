@@ -26,7 +26,6 @@ public struct AppInfo: Codable, Equatable, Identifiable, Sendable {
         public var brazilAgeRatingV2: BrazilAgeRatingV2?
         public var franceAgeRating: FranceAgeRating?
         public var koreaAgeRating: KoreaAgeRating?
-        public var kidsAgeBand: KidsAgeBand?
 
         public enum State: String, CaseIterable, Codable, Sendable {
             case accepted = "ACCEPTED"
@@ -73,7 +72,7 @@ public struct AppInfo: Codable, Equatable, Identifiable, Sendable {
             case notApplicable = "NOT_APPLICABLE"
         }
 
-        public init(appStoreState: AppStoreVersionState? = nil, state: State? = nil, appStoreAgeRating: AppStoreAgeRating? = nil, australiaAgeRating: AustraliaAgeRating? = nil, brazilAgeRating: BrazilAgeRating? = nil, brazilAgeRatingV2: BrazilAgeRatingV2? = nil, franceAgeRating: FranceAgeRating? = nil, koreaAgeRating: KoreaAgeRating? = nil, kidsAgeBand: KidsAgeBand? = nil) {
+        public init(appStoreState: AppStoreVersionState? = nil, state: State? = nil, appStoreAgeRating: AppStoreAgeRating? = nil, australiaAgeRating: AustraliaAgeRating? = nil, brazilAgeRating: BrazilAgeRating? = nil, brazilAgeRatingV2: BrazilAgeRatingV2? = nil, franceAgeRating: FranceAgeRating? = nil, koreaAgeRating: KoreaAgeRating? = nil) {
             self.appStoreState = appStoreState
             self.state = state
             self.appStoreAgeRating = appStoreAgeRating
@@ -82,7 +81,6 @@ public struct AppInfo: Codable, Equatable, Identifiable, Sendable {
             self.brazilAgeRatingV2 = brazilAgeRatingV2
             self.franceAgeRating = franceAgeRating
             self.koreaAgeRating = koreaAgeRating
-            self.kidsAgeBand = kidsAgeBand
         }
     }
 

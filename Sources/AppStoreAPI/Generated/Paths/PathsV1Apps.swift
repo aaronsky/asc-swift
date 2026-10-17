@@ -191,6 +191,7 @@ extension Resources.V1 {
             case inAppPurchases
             case subscriptionGroups
             case gameCenterEnabledVersions
+            case performanceOverviews
             case perfPowerMetrics
             case appCustomProductPages
             case inAppPurchasesV2
@@ -207,6 +208,7 @@ extension Resources.V1 {
             case marketplaceSearchDetail
             case buildUploads
             case backgroundAssets
+            case assetLibrary
             case betaFeedbackScreenshotSubmissions
             case betaFeedbackCrashSubmissions
             case searchKeywords
@@ -372,7 +374,6 @@ extension Resources.V1 {
             case brazilAgeRatingV2
             case franceAgeRating
             case koreaAgeRating
-            case kidsAgeBand
             case app
             case ageRatingDeclaration
             case appInfoLocalizations
@@ -506,6 +507,7 @@ extension Resources.V1 {
             case challengeReleases
             case leaderboardReleases
             case leaderboardSetReleases
+            case blockedPlayers
             case challengesMinimumPlatformVersions
         }
 

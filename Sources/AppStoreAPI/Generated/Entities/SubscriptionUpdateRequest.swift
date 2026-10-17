@@ -26,6 +26,8 @@ public struct SubscriptionUpdateRequest: Codable, Equatable, Sendable {
             public var subscriptionPeriod: SubscriptionPeriod?
             public var reviewNote: String?
             public var groupLevel: Int?
+            public var multiSeatStatus: MultiSeatStatus?
+            public var marketSettings: [MarketSetting]?
 
             public enum SubscriptionPeriod: String, CaseIterable, Codable, Sendable {
                 case oneWeek = "ONE_WEEK"
@@ -36,12 +38,25 @@ public struct SubscriptionUpdateRequest: Codable, Equatable, Sendable {
                 case oneYear = "ONE_YEAR"
             }
 
-            public init(name: String? = nil, isFamilySharable: Bool? = nil, subscriptionPeriod: SubscriptionPeriod? = nil, reviewNote: String? = nil, groupLevel: Int? = nil) {
+            public enum MultiSeatStatus: String, CaseIterable, Codable, Sendable {
+                case enabled = "ENABLED"
+                case disabled = "DISABLED"
+            }
+
+            public enum MarketSetting: String, CaseIterable, Codable, Sendable {
+                case appleSchool = "APPLE_SCHOOL"
+                case appStore = "APP_STORE"
+                case appleBusiness = "APPLE_BUSINESS"
+            }
+
+            public init(name: String? = nil, isFamilySharable: Bool? = nil, subscriptionPeriod: SubscriptionPeriod? = nil, reviewNote: String? = nil, groupLevel: Int? = nil, multiSeatStatus: MultiSeatStatus? = nil, marketSettings: [MarketSetting]? = nil) {
                 self.name = name
                 self.isFamilySharable = isFamilySharable
                 self.subscriptionPeriod = subscriptionPeriod
                 self.reviewNote = reviewNote
                 self.groupLevel = groupLevel
+                self.multiSeatStatus = multiSeatStatus
+                self.marketSettings = marketSettings
             }
 
             private enum CodingKeys: String, CodingKey {
@@ -50,6 +65,8 @@ public struct SubscriptionUpdateRequest: Codable, Equatable, Sendable {
                 case subscriptionPeriod
                 case reviewNote
                 case groupLevel
+                case multiSeatStatus
+                case marketSettings
             }
         }
 

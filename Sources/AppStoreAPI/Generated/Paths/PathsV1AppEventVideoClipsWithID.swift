@@ -50,6 +50,7 @@ extension Resources.V1.AppEventVideoClips {
             case appEvent
             case appEventScreenshots
             case appEventVideoClips
+            case placements
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

@@ -35,6 +35,7 @@ public struct AppEventLocalization: Codable, Equatable, Identifiable, Sendable {
         public var appEvent: AppEvent?
         public var appEventScreenshots: AppEventScreenshots?
         public var appEventVideoClips: AppEventVideoClips?
+        public var placements: Placements?
 
         public struct AppEvent: Codable, Equatable, Sendable {
             public var data: Data?
@@ -110,10 +111,37 @@ public struct AppEventLocalization: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(appEvent: AppEvent? = nil, appEventScreenshots: AppEventScreenshots? = nil, appEventVideoClips: AppEventVideoClips? = nil) {
+        public struct Placements: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var meta: PagingInformation?
+            public var data: [Datum]?
+
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case appAssetLibraryPlacements
+                }
+
+                public init(type: `Type` = .appAssetLibraryPlacements, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+                self.links = links
+                self.meta = meta
+                self.data = data
+            }
+        }
+
+        public init(appEvent: AppEvent? = nil, appEventScreenshots: AppEventScreenshots? = nil, appEventVideoClips: AppEventVideoClips? = nil, placements: Placements? = nil) {
             self.appEvent = appEvent
             self.appEventScreenshots = appEventScreenshots
             self.appEventVideoClips = appEventVideoClips
+            self.placements = placements
         }
     }
 

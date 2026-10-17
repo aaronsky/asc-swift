@@ -68,6 +68,7 @@ extension Resources.V1.GameCenterDetails.WithID {
             case challengeReleases
             case leaderboardReleases
             case leaderboardSetReleases
+            case blockedPlayers
             case challengesMinimumPlatformVersions
         }
 
@@ -101,6 +102,7 @@ extension Resources.V1.GameCenterDetails.WithID {
             case gameCenterDetail
             case gameCenterGroup
             case gameCenterLeaderboardSets
+            case gameCenterScoreModerations
             case activity
             case challenge
             case versions

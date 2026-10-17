@@ -52,6 +52,7 @@ extension Resources.V2.GameCenterLeaderboards {
             case gameCenterDetail
             case gameCenterGroup
             case gameCenterLeaderboardSets
+            case gameCenterScoreModerations
             case activity
             case challenge
             case versions
@@ -80,6 +81,7 @@ extension Resources.V2.GameCenterLeaderboards {
             case challengeReleases
             case leaderboardReleases
             case leaderboardSetReleases
+            case blockedPlayers
             case challengesMinimumPlatformVersions
         }
 

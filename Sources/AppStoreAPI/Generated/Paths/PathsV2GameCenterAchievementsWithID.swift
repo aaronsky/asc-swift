@@ -69,6 +69,7 @@ extension Resources.V2.GameCenterAchievements {
             case challengeReleases
             case leaderboardReleases
             case leaderboardSetReleases
+            case blockedPlayers
             case challengesMinimumPlatformVersions
         }
 

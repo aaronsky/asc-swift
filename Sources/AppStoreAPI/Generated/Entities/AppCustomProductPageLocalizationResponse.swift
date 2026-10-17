@@ -13,6 +13,7 @@ public struct AppCustomProductPageLocalizationResponse: Codable, Equatable, Send
     public var links: DocumentLinks
 
     public enum IncludedItem: Codable, Equatable, Sendable {
+        case appAssetLibraryPlacement(AppAssetLibraryPlacement)
         case appCustomProductPageVersion(AppCustomProductPageVersion)
         case appKeyword(AppKeyword)
         case appPreviewSet(AppPreviewSet)
@@ -28,6 +29,7 @@ public struct AppCustomProductPageLocalizationResponse: Codable, Equatable, Send
             let discriminatorValue = try container.decode(Discriminator.self).type
 
             switch discriminatorValue {
+            case "appAssetLibraryPlacements": self = .appAssetLibraryPlacement(try container.decode(AppAssetLibraryPlacement.self))
             case "appCustomProductPageVersions": self = .appCustomProductPageVersion(try container.decode(AppCustomProductPageVersion.self))
             case "appKeywords": self = .appKeyword(try container.decode(AppKeyword.self))
             case "appPreviewSets": self = .appPreviewSet(try container.decode(AppPreviewSet.self))
@@ -36,7 +38,7 @@ public struct AppCustomProductPageLocalizationResponse: Codable, Equatable, Send
             default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (appCustomProductPageVersions, appKeywords, appPreviewSets, appScreenshotSets)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (appAssetLibraryPlacements, appCustomProductPageVersions, appKeywords, appPreviewSets, appScreenshotSets)."
                 )
             }
         }
@@ -44,6 +46,7 @@ public struct AppCustomProductPageLocalizationResponse: Codable, Equatable, Send
         public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
+            case .appAssetLibraryPlacement(let value): try container.encode(value)
             case .appCustomProductPageVersion(let value): try container.encode(value)
             case .appKeyword(let value): try container.encode(value)
             case .appPreviewSet(let value): try container.encode(value)

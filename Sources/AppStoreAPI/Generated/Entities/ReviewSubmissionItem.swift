@@ -39,6 +39,8 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable, Sendable {
         public var appStoreVersionExperiment: AppStoreVersionExperiment?
         public var appStoreVersionExperimentV2: AppStoreVersionExperimentV2?
         public var appEvent: AppEvent?
+        public var appAssetLibraryImage: AppAssetLibraryImage?
+        public var appAssetLibraryVideo: AppAssetLibraryVideo?
         public var backgroundAssetVersion: BackgroundAssetVersion?
         public var gameCenterAchievementVersion: GameCenterAchievementVersion?
         public var gameCenterActivityVersion: GameCenterActivityVersion?
@@ -149,6 +151,50 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable, Sendable {
                 }
 
                 public init(type: `Type` = .appEvents, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(data: Data? = nil) {
+                self.data = data
+            }
+        }
+
+        public struct AppAssetLibraryImage: Codable, Equatable, Sendable {
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case appAssetLibraryImages
+                }
+
+                public init(type: `Type` = .appAssetLibraryImages, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(data: Data? = nil) {
+                self.data = data
+            }
+        }
+
+        public struct AppAssetLibraryVideo: Codable, Equatable, Sendable {
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case appAssetLibraryVideos
+                }
+
+                public init(type: `Type` = .appAssetLibraryVideos, id: String) {
                     self.type = type
                     self.id = id
                 }
@@ -357,12 +403,14 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(appStoreVersion: AppStoreVersion? = nil, appCustomProductPageVersion: AppCustomProductPageVersion? = nil, appStoreVersionExperiment: AppStoreVersionExperiment? = nil, appStoreVersionExperimentV2: AppStoreVersionExperimentV2? = nil, appEvent: AppEvent? = nil, backgroundAssetVersion: BackgroundAssetVersion? = nil, gameCenterAchievementVersion: GameCenterAchievementVersion? = nil, gameCenterActivityVersion: GameCenterActivityVersion? = nil, gameCenterChallengeVersion: GameCenterChallengeVersion? = nil, gameCenterLeaderboardSetVersion: GameCenterLeaderboardSetVersion? = nil, gameCenterLeaderboardVersion: GameCenterLeaderboardVersion? = nil, inAppPurchaseVersion: InAppPurchaseVersion? = nil, subscriptionVersion: SubscriptionVersion? = nil, subscriptionGroupVersion: SubscriptionGroupVersion? = nil) {
+        public init(appStoreVersion: AppStoreVersion? = nil, appCustomProductPageVersion: AppCustomProductPageVersion? = nil, appStoreVersionExperiment: AppStoreVersionExperiment? = nil, appStoreVersionExperimentV2: AppStoreVersionExperimentV2? = nil, appEvent: AppEvent? = nil, appAssetLibraryImage: AppAssetLibraryImage? = nil, appAssetLibraryVideo: AppAssetLibraryVideo? = nil, backgroundAssetVersion: BackgroundAssetVersion? = nil, gameCenterAchievementVersion: GameCenterAchievementVersion? = nil, gameCenterActivityVersion: GameCenterActivityVersion? = nil, gameCenterChallengeVersion: GameCenterChallengeVersion? = nil, gameCenterLeaderboardSetVersion: GameCenterLeaderboardSetVersion? = nil, gameCenterLeaderboardVersion: GameCenterLeaderboardVersion? = nil, inAppPurchaseVersion: InAppPurchaseVersion? = nil, subscriptionVersion: SubscriptionVersion? = nil, subscriptionGroupVersion: SubscriptionGroupVersion? = nil) {
             self.appStoreVersion = appStoreVersion
             self.appCustomProductPageVersion = appCustomProductPageVersion
             self.appStoreVersionExperiment = appStoreVersionExperiment
             self.appStoreVersionExperimentV2 = appStoreVersionExperimentV2
             self.appEvent = appEvent
+            self.appAssetLibraryImage = appAssetLibraryImage
+            self.appAssetLibraryVideo = appAssetLibraryVideo
             self.backgroundAssetVersion = backgroundAssetVersion
             self.gameCenterAchievementVersion = gameCenterAchievementVersion
             self.gameCenterActivityVersion = gameCenterActivityVersion

@@ -66,6 +66,8 @@ extension Resources.V1.Apps.WithID {
             case subscriptionPeriod
             case reviewNote
             case groupLevel
+            case multiSeatStatus
+            case marketSettings
             case subscriptionLocalizations
             case appStoreReviewScreenshot
             case group

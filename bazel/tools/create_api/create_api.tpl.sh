@@ -44,11 +44,9 @@ output_files_to_merge=(
     "Entities/ErrorSourcePointer.swift"
     "Entities/PagedDocumentLinks.swift"
     "Extensions/AnyJSON.swift"
-)
-merge_to_path="$workspace_sources_dir/AppStoreConnect/Entities"
-output_files_to_delete=(
     "Extensions/StringCodingKey.swift"
 )
+merge_to_path="$workspace_sources_dir/AppStoreConnect/Entities"
 
 for index in "${!specs[@]}"; do
     spec="${specs[$index]}"
@@ -85,10 +83,6 @@ for index in "${!specs[@]}"; do
         fi
 
         mv "$src" "$dest"
-    done
-
-    for file in "${output_files_to_delete[@]}"; do
-        rm "$output_dir/$file"
     done
 
     rm -rf "$dest_dir" || true

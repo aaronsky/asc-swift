@@ -16,20 +16,22 @@ extension Resources.V1.AppEvents.WithID {
         /// Path: `/v1/appEvents/{id}/localizations`
         public let path: String
 
-        public func get(fieldsAppEventLocalizations: [FieldsAppEventLocalizations]? = nil, fieldsAppEvents: [FieldsAppEvents]? = nil, fieldsAppEventScreenshots: [FieldsAppEventScreenshots]? = nil, fieldsAppEventVideoClips: [FieldsAppEventVideoClips]? = nil, limit: Int? = nil, include: [Include]? = nil, limitAppEventScreenshots: Int? = nil, limitAppEventVideoClips: Int? = nil) -> Request<AppStoreAPI.AppEventLocalizationsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEventLocalizations, fieldsAppEvents, fieldsAppEventScreenshots, fieldsAppEventVideoClips, limit, include, limitAppEventScreenshots, limitAppEventVideoClips), id: "appEvents_localizations_getToManyRelated")
+        public func get(fieldsAppEventLocalizations: [FieldsAppEventLocalizations]? = nil, fieldsAppEvents: [FieldsAppEvents]? = nil, fieldsAppEventScreenshots: [FieldsAppEventScreenshots]? = nil, fieldsAppEventVideoClips: [FieldsAppEventVideoClips]? = nil, fieldsAppAssetLibraryPlacements: [FieldsAppAssetLibraryPlacements]? = nil, limit: Int? = nil, include: [Include]? = nil, limitAppEventScreenshots: Int? = nil, limitAppEventVideoClips: Int? = nil, limitPlacements: Int? = nil) -> Request<AppStoreAPI.AppEventLocalizationsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppEventLocalizations, fieldsAppEvents, fieldsAppEventScreenshots, fieldsAppEventVideoClips, fieldsAppAssetLibraryPlacements, limit, include, limitAppEventScreenshots, limitAppEventVideoClips, limitPlacements), id: "appEvents_localizations_getToManyRelated")
         }
 
-        private func makeGetQuery(_ fieldsAppEventLocalizations: [FieldsAppEventLocalizations]?, _ fieldsAppEvents: [FieldsAppEvents]?, _ fieldsAppEventScreenshots: [FieldsAppEventScreenshots]?, _ fieldsAppEventVideoClips: [FieldsAppEventVideoClips]?, _ limit: Int?, _ include: [Include]?, _ limitAppEventScreenshots: Int?, _ limitAppEventVideoClips: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppEventLocalizations: [FieldsAppEventLocalizations]?, _ fieldsAppEvents: [FieldsAppEvents]?, _ fieldsAppEventScreenshots: [FieldsAppEventScreenshots]?, _ fieldsAppEventVideoClips: [FieldsAppEventVideoClips]?, _ fieldsAppAssetLibraryPlacements: [FieldsAppAssetLibraryPlacements]?, _ limit: Int?, _ include: [Include]?, _ limitAppEventScreenshots: Int?, _ limitAppEventVideoClips: Int?, _ limitPlacements: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppEventLocalizations, forKey: "fields[appEventLocalizations]")
             encoder.encode(fieldsAppEvents, forKey: "fields[appEvents]")
             encoder.encode(fieldsAppEventScreenshots, forKey: "fields[appEventScreenshots]")
             encoder.encode(fieldsAppEventVideoClips, forKey: "fields[appEventVideoClips]")
+            encoder.encode(fieldsAppAssetLibraryPlacements, forKey: "fields[appAssetLibraryPlacements]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitAppEventScreenshots, forKey: "limit[appEventScreenshots]")
             encoder.encode(limitAppEventVideoClips, forKey: "limit[appEventVideoClips]")
+            encoder.encode(limitPlacements, forKey: "limit[placements]")
             return encoder.items
         }
 
@@ -41,6 +43,7 @@ extension Resources.V1.AppEvents.WithID {
             case appEvent
             case appEventScreenshots
             case appEventVideoClips
+            case placements
         }
 
         public enum FieldsAppEvents: String, CaseIterable, Codable, Sendable {
@@ -82,10 +85,27 @@ extension Resources.V1.AppEvents.WithID {
             case appEventLocalization
         }
 
+        public enum FieldsAppAssetLibraryPlacements: String, CaseIterable, Codable, Sendable {
+            case mediaType
+            case placementType
+            case placementGroup
+            case createdDate
+            case lastModifiedDate
+            case state
+            case stateDetails
+            case image
+            case video
+            case appEventLocalization
+            case appStoreVersionLocalization
+            case appCustomProductPageLocalization
+            case appStoreVersionExperimentTreatmentLocalization
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case appEvent
             case appEventScreenshots
             case appEventVideoClips
+            case placements
         }
     }
 }

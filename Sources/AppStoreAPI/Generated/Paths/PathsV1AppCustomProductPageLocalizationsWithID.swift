@@ -16,19 +16,21 @@ extension Resources.V1.AppCustomProductPageLocalizations {
         /// Path: `/v1/appCustomProductPageLocalizations/{id}`
         public let path: String
 
-        public func get(fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]? = nil, fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, include: [Include]? = nil, limitAppPreviewSets: Int? = nil, limitAppScreenshotSets: Int? = nil, limitSearchKeywords: Int? = nil) -> Request<AppStoreAPI.AppCustomProductPageLocalizationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppCustomProductPageLocalizations, fieldsAppCustomProductPageVersions, fieldsAppScreenshotSets, fieldsAppPreviewSets, include, limitAppPreviewSets, limitAppScreenshotSets, limitSearchKeywords), id: "appCustomProductPageLocalizations_getInstance")
+        public func get(fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]? = nil, fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, fieldsAppAssetLibraryPlacements: [FieldsAppAssetLibraryPlacements]? = nil, include: [Include]? = nil, limitAppPreviewSets: Int? = nil, limitAppScreenshotSets: Int? = nil, limitPlacements: Int? = nil, limitSearchKeywords: Int? = nil) -> Request<AppStoreAPI.AppCustomProductPageLocalizationResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppCustomProductPageLocalizations, fieldsAppCustomProductPageVersions, fieldsAppScreenshotSets, fieldsAppPreviewSets, fieldsAppAssetLibraryPlacements, include, limitAppPreviewSets, limitAppScreenshotSets, limitPlacements, limitSearchKeywords), id: "appCustomProductPageLocalizations_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]?, _ fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ include: [Include]?, _ limitAppPreviewSets: Int?, _ limitAppScreenshotSets: Int?, _ limitSearchKeywords: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]?, _ fieldsAppCustomProductPageVersions: [FieldsAppCustomProductPageVersions]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ fieldsAppAssetLibraryPlacements: [FieldsAppAssetLibraryPlacements]?, _ include: [Include]?, _ limitAppPreviewSets: Int?, _ limitAppScreenshotSets: Int?, _ limitPlacements: Int?, _ limitSearchKeywords: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppCustomProductPageLocalizations, forKey: "fields[appCustomProductPageLocalizations]")
             encoder.encode(fieldsAppCustomProductPageVersions, forKey: "fields[appCustomProductPageVersions]")
             encoder.encode(fieldsAppScreenshotSets, forKey: "fields[appScreenshotSets]")
             encoder.encode(fieldsAppPreviewSets, forKey: "fields[appPreviewSets]")
+            encoder.encode(fieldsAppAssetLibraryPlacements, forKey: "fields[appAssetLibraryPlacements]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitAppPreviewSets, forKey: "limit[appPreviewSets]")
             encoder.encode(limitAppScreenshotSets, forKey: "limit[appScreenshotSets]")
+            encoder.encode(limitPlacements, forKey: "limit[placements]")
             encoder.encode(limitSearchKeywords, forKey: "limit[searchKeywords]")
             return encoder.items
         }
@@ -40,6 +42,7 @@ extension Resources.V1.AppCustomProductPageLocalizations {
             case appScreenshotSets
             case appPreviewSets
             case searchKeywords
+            case placements
         }
 
         public enum FieldsAppCustomProductPageVersions: String, CaseIterable, Codable, Sendable {
@@ -66,11 +69,28 @@ extension Resources.V1.AppCustomProductPageLocalizations {
             case appPreviews
         }
 
+        public enum FieldsAppAssetLibraryPlacements: String, CaseIterable, Codable, Sendable {
+            case mediaType
+            case placementType
+            case placementGroup
+            case createdDate
+            case lastModifiedDate
+            case state
+            case stateDetails
+            case image
+            case video
+            case appEventLocalization
+            case appStoreVersionLocalization
+            case appCustomProductPageLocalization
+            case appStoreVersionExperimentTreatmentLocalization
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case appCustomProductPageVersion
             case appScreenshotSets
             case appPreviewSets
             case searchKeywords
+            case placements
         }
 
         public func patch(_ body: AppStoreAPI.AppCustomProductPageLocalizationUpdateRequest) -> Request<AppStoreAPI.AppCustomProductPageLocalizationResponse> {

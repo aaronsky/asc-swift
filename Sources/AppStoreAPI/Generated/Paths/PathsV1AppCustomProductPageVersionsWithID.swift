@@ -53,6 +53,7 @@ extension Resources.V1.AppCustomProductPageVersions {
             case appScreenshotSets
             case appPreviewSets
             case searchKeywords
+            case placements
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

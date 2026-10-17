@@ -67,6 +67,7 @@ extension Resources.V1.Apps.WithID {
             case appEvent
             case appEventScreenshots
             case appEventVideoClips
+            case placements
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

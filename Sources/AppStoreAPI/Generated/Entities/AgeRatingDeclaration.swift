@@ -45,6 +45,7 @@ public struct AgeRatingDeclaration: Codable, Equatable, Identifiable, Sendable {
         public var ageRatingOverride: AgeRatingOverride?
         public var ageRatingOverrideV2: AgeRatingOverrideV2?
         public var koreaAgeRatingOverride: KoreaAgeRatingOverride?
+        public var gracRatingClassificationNumber: String?
         public var developerAgeRatingInfoURL: URL?
 
         public enum AlcoholTobaccoOrDrugUseOrReferences: String, CaseIterable, Codable, Sendable {
@@ -171,11 +172,13 @@ public struct AgeRatingDeclaration: Codable, Equatable, Identifiable, Sendable {
 
         public enum KoreaAgeRatingOverride: String, CaseIterable, Codable, Sendable {
             case `none` = "NONE"
+            case all = "ALL"
+            case twelvePlus = "TWELVE_PLUS"
             case fifteenPlus = "FIFTEEN_PLUS"
             case nineteenPlus = "NINETEEN_PLUS"
         }
 
-        public init(isAdvertising: Bool? = nil, alcoholTobaccoOrDrugUseOrReferences: AlcoholTobaccoOrDrugUseOrReferences? = nil, contests: Contests? = nil, isGambling: Bool? = nil, gamblingSimulated: GamblingSimulated? = nil, gunsOrOtherWeapons: GunsOrOtherWeapons? = nil, isHealthOrWellnessTopics: Bool? = nil, kidsAgeBand: KidsAgeBand? = nil, isLootBox: Bool? = nil, medicalOrTreatmentInformation: MedicalOrTreatmentInformation? = nil, isMessagingAndChat: Bool? = nil, isParentalControls: Bool? = nil, profanityOrCrudeHumor: ProfanityOrCrudeHumor? = nil, isAgeAssurance: Bool? = nil, sexualContentGraphicAndNudity: SexualContentGraphicAndNudity? = nil, sexualContentOrNudity: SexualContentOrNudity? = nil, isSocialMedia: Bool? = nil, isSocialMediaAgeRestricted: Bool? = nil, horrorOrFearThemes: HorrorOrFearThemes? = nil, matureOrSuggestiveThemes: MatureOrSuggestiveThemes? = nil, isUnrestrictedWebAccess: Bool? = nil, isUserGeneratedContent: Bool? = nil, violenceCartoonOrFantasy: ViolenceCartoonOrFantasy? = nil, violenceRealisticProlongedGraphicOrSadistic: ViolenceRealisticProlongedGraphicOrSadistic? = nil, violenceRealistic: ViolenceRealistic? = nil, ageRatingOverride: AgeRatingOverride? = nil, ageRatingOverrideV2: AgeRatingOverrideV2? = nil, koreaAgeRatingOverride: KoreaAgeRatingOverride? = nil, developerAgeRatingInfoURL: URL? = nil) {
+        public init(isAdvertising: Bool? = nil, alcoholTobaccoOrDrugUseOrReferences: AlcoholTobaccoOrDrugUseOrReferences? = nil, contests: Contests? = nil, isGambling: Bool? = nil, gamblingSimulated: GamblingSimulated? = nil, gunsOrOtherWeapons: GunsOrOtherWeapons? = nil, isHealthOrWellnessTopics: Bool? = nil, kidsAgeBand: KidsAgeBand? = nil, isLootBox: Bool? = nil, medicalOrTreatmentInformation: MedicalOrTreatmentInformation? = nil, isMessagingAndChat: Bool? = nil, isParentalControls: Bool? = nil, profanityOrCrudeHumor: ProfanityOrCrudeHumor? = nil, isAgeAssurance: Bool? = nil, sexualContentGraphicAndNudity: SexualContentGraphicAndNudity? = nil, sexualContentOrNudity: SexualContentOrNudity? = nil, isSocialMedia: Bool? = nil, isSocialMediaAgeRestricted: Bool? = nil, horrorOrFearThemes: HorrorOrFearThemes? = nil, matureOrSuggestiveThemes: MatureOrSuggestiveThemes? = nil, isUnrestrictedWebAccess: Bool? = nil, isUserGeneratedContent: Bool? = nil, violenceCartoonOrFantasy: ViolenceCartoonOrFantasy? = nil, violenceRealisticProlongedGraphicOrSadistic: ViolenceRealisticProlongedGraphicOrSadistic? = nil, violenceRealistic: ViolenceRealistic? = nil, ageRatingOverride: AgeRatingOverride? = nil, ageRatingOverrideV2: AgeRatingOverrideV2? = nil, koreaAgeRatingOverride: KoreaAgeRatingOverride? = nil, gracRatingClassificationNumber: String? = nil, developerAgeRatingInfoURL: URL? = nil) {
             self.isAdvertising = isAdvertising
             self.alcoholTobaccoOrDrugUseOrReferences = alcoholTobaccoOrDrugUseOrReferences
             self.contests = contests
@@ -204,6 +207,7 @@ public struct AgeRatingDeclaration: Codable, Equatable, Identifiable, Sendable {
             self.ageRatingOverride = ageRatingOverride
             self.ageRatingOverrideV2 = ageRatingOverrideV2
             self.koreaAgeRatingOverride = koreaAgeRatingOverride
+            self.gracRatingClassificationNumber = gracRatingClassificationNumber
             self.developerAgeRatingInfoURL = developerAgeRatingInfoURL
         }
 
@@ -236,6 +240,7 @@ public struct AgeRatingDeclaration: Codable, Equatable, Identifiable, Sendable {
             case ageRatingOverride
             case ageRatingOverrideV2
             case koreaAgeRatingOverride
+            case gracRatingClassificationNumber
             case developerAgeRatingInfoURL = "developerAgeRatingInfoUrl"
         }
     }

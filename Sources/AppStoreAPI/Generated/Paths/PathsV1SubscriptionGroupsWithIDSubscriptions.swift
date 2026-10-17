@@ -80,6 +80,8 @@ extension Resources.V1.SubscriptionGroups.WithID {
             case subscriptionPeriod
             case reviewNote
             case groupLevel
+            case multiSeatStatus
+            case marketSettings
             case subscriptionLocalizations
             case appStoreReviewScreenshot
             case group

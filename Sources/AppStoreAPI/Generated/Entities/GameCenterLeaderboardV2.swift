@@ -84,6 +84,7 @@ public struct GameCenterLeaderboardV2: Codable, Equatable, Identifiable, Sendabl
         public var gameCenterDetail: GameCenterDetail?
         public var gameCenterGroup: GameCenterGroup?
         public var gameCenterLeaderboardSets: GameCenterLeaderboardSets?
+        public var gameCenterScoreModerations: GameCenterScoreModerations?
         public var activity: Activity?
         public var challenge: Challenge?
         public var versions: Versions?
@@ -153,6 +154,14 @@ public struct GameCenterLeaderboardV2: Codable, Equatable, Identifiable, Sendabl
             public init(meta: PagingInformation? = nil, data: [Datum]? = nil) {
                 self.meta = meta
                 self.data = data
+            }
+        }
+
+        public struct GameCenterScoreModerations: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+
+            public init(links: RelationshipLinks? = nil) {
+                self.links = links
             }
         }
 
@@ -230,10 +239,11 @@ public struct GameCenterLeaderboardV2: Codable, Equatable, Identifiable, Sendabl
             }
         }
 
-        public init(gameCenterDetail: GameCenterDetail? = nil, gameCenterGroup: GameCenterGroup? = nil, gameCenterLeaderboardSets: GameCenterLeaderboardSets? = nil, activity: Activity? = nil, challenge: Challenge? = nil, versions: Versions? = nil) {
+        public init(gameCenterDetail: GameCenterDetail? = nil, gameCenterGroup: GameCenterGroup? = nil, gameCenterLeaderboardSets: GameCenterLeaderboardSets? = nil, gameCenterScoreModerations: GameCenterScoreModerations? = nil, activity: Activity? = nil, challenge: Challenge? = nil, versions: Versions? = nil) {
             self.gameCenterDetail = gameCenterDetail
             self.gameCenterGroup = gameCenterGroup
             self.gameCenterLeaderboardSets = gameCenterLeaderboardSets
+            self.gameCenterScoreModerations = gameCenterScoreModerations
             self.activity = activity
             self.challenge = challenge
             self.versions = versions

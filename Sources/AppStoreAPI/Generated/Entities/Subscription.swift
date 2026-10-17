@@ -25,6 +25,8 @@ public struct Subscription: Codable, Equatable, Identifiable, Sendable {
         public var subscriptionPeriod: SubscriptionPeriod?
         public var reviewNote: String?
         public var groupLevel: Int?
+        public var multiSeatStatus: MultiSeatStatus?
+        public var marketSettings: [MarketSetting]?
 
         public enum State: String, CaseIterable, Codable, Sendable {
             case missingMetadata = "MISSING_METADATA"
@@ -48,7 +50,18 @@ public struct Subscription: Codable, Equatable, Identifiable, Sendable {
             case oneYear = "ONE_YEAR"
         }
 
-        public init(name: String? = nil, productID: String? = nil, isFamilySharable: Bool? = nil, state: State? = nil, subscriptionPeriod: SubscriptionPeriod? = nil, reviewNote: String? = nil, groupLevel: Int? = nil) {
+        public enum MultiSeatStatus: String, CaseIterable, Codable, Sendable {
+            case enabled = "ENABLED"
+            case disabled = "DISABLED"
+        }
+
+        public enum MarketSetting: String, CaseIterable, Codable, Sendable {
+            case appleSchool = "APPLE_SCHOOL"
+            case appStore = "APP_STORE"
+            case appleBusiness = "APPLE_BUSINESS"
+        }
+
+        public init(name: String? = nil, productID: String? = nil, isFamilySharable: Bool? = nil, state: State? = nil, subscriptionPeriod: SubscriptionPeriod? = nil, reviewNote: String? = nil, groupLevel: Int? = nil, multiSeatStatus: MultiSeatStatus? = nil, marketSettings: [MarketSetting]? = nil) {
             self.name = name
             self.productID = productID
             self.isFamilySharable = isFamilySharable
@@ -56,6 +69,8 @@ public struct Subscription: Codable, Equatable, Identifiable, Sendable {
             self.subscriptionPeriod = subscriptionPeriod
             self.reviewNote = reviewNote
             self.groupLevel = groupLevel
+            self.multiSeatStatus = multiSeatStatus
+            self.marketSettings = marketSettings
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -66,6 +81,8 @@ public struct Subscription: Codable, Equatable, Identifiable, Sendable {
             case subscriptionPeriod
             case reviewNote
             case groupLevel
+            case multiSeatStatus
+            case marketSettings
         }
     }
 

@@ -16,19 +16,21 @@ extension Resources.V1.AppStoreVersionLocalizations {
         /// Path: `/v1/appStoreVersionLocalizations/{id}`
         public let path: String
 
-        public func get(fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, include: [Include]? = nil, limitAppPreviewSets: Int? = nil, limitAppScreenshotSets: Int? = nil, limitSearchKeywords: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionLocalizationResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionLocalizations, fieldsAppStoreVersions, fieldsAppScreenshotSets, fieldsAppPreviewSets, include, limitAppPreviewSets, limitAppScreenshotSets, limitSearchKeywords), id: "appStoreVersionLocalizations_getInstance")
+        public func get(fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsAppScreenshotSets: [FieldsAppScreenshotSets]? = nil, fieldsAppPreviewSets: [FieldsAppPreviewSets]? = nil, fieldsAppAssetLibraryPlacements: [FieldsAppAssetLibraryPlacements]? = nil, include: [Include]? = nil, limitAppPreviewSets: Int? = nil, limitAppScreenshotSets: Int? = nil, limitPlacements: Int? = nil, limitSearchKeywords: Int? = nil) -> Request<AppStoreAPI.AppStoreVersionLocalizationResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(fieldsAppStoreVersionLocalizations, fieldsAppStoreVersions, fieldsAppScreenshotSets, fieldsAppPreviewSets, fieldsAppAssetLibraryPlacements, include, limitAppPreviewSets, limitAppScreenshotSets, limitPlacements, limitSearchKeywords), id: "appStoreVersionLocalizations_getInstance")
         }
 
-        private func makeGetQuery(_ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ include: [Include]?, _ limitAppPreviewSets: Int?, _ limitAppScreenshotSets: Int?, _ limitSearchKeywords: Int?) -> [(String, String?)] {
+        private func makeGetQuery(_ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ fieldsAppStoreVersions: [FieldsAppStoreVersions]?, _ fieldsAppScreenshotSets: [FieldsAppScreenshotSets]?, _ fieldsAppPreviewSets: [FieldsAppPreviewSets]?, _ fieldsAppAssetLibraryPlacements: [FieldsAppAssetLibraryPlacements]?, _ include: [Include]?, _ limitAppPreviewSets: Int?, _ limitAppScreenshotSets: Int?, _ limitPlacements: Int?, _ limitSearchKeywords: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(fieldsAppStoreVersionLocalizations, forKey: "fields[appStoreVersionLocalizations]")
             encoder.encode(fieldsAppStoreVersions, forKey: "fields[appStoreVersions]")
             encoder.encode(fieldsAppScreenshotSets, forKey: "fields[appScreenshotSets]")
             encoder.encode(fieldsAppPreviewSets, forKey: "fields[appPreviewSets]")
+            encoder.encode(fieldsAppAssetLibraryPlacements, forKey: "fields[appAssetLibraryPlacements]")
             encoder.encode(include, forKey: "include")
             encoder.encode(limitAppPreviewSets, forKey: "limit[appPreviewSets]")
             encoder.encode(limitAppScreenshotSets, forKey: "limit[appScreenshotSets]")
+            encoder.encode(limitPlacements, forKey: "limit[placements]")
             encoder.encode(limitSearchKeywords, forKey: "limit[searchKeywords]")
             return encoder.items
         }
@@ -45,6 +47,7 @@ extension Resources.V1.AppStoreVersionLocalizations {
             case appScreenshotSets
             case appPreviewSets
             case searchKeywords
+            case placements
         }
 
         public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {
@@ -90,11 +93,28 @@ extension Resources.V1.AppStoreVersionLocalizations {
             case appPreviews
         }
 
+        public enum FieldsAppAssetLibraryPlacements: String, CaseIterable, Codable, Sendable {
+            case mediaType
+            case placementType
+            case placementGroup
+            case createdDate
+            case lastModifiedDate
+            case state
+            case stateDetails
+            case image
+            case video
+            case appEventLocalization
+            case appStoreVersionLocalization
+            case appCustomProductPageLocalization
+            case appStoreVersionExperimentTreatmentLocalization
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case appStoreVersion
             case appScreenshotSets
             case appPreviewSets
             case searchKeywords
+            case placements
         }
 
         public func patch(_ body: AppStoreAPI.AppStoreVersionLocalizationUpdateRequest) -> Request<AppStoreAPI.AppStoreVersionLocalizationResponse> {

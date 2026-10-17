@@ -55,6 +55,7 @@ extension Resources.V2.GameCenterLeaderboards.WithID {
             case gameCenterDetail
             case gameCenterGroup
             case gameCenterLeaderboardSets
+            case gameCenterScoreModerations
             case activity
             case challenge
             case versions

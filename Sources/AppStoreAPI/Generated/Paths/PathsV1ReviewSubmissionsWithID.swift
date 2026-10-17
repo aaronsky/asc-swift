@@ -78,6 +78,7 @@ extension Resources.V1.ReviewSubmissions {
             case inAppPurchases
             case subscriptionGroups
             case gameCenterEnabledVersions
+            case performanceOverviews
             case perfPowerMetrics
             case appCustomProductPages
             case inAppPurchasesV2
@@ -94,6 +95,7 @@ extension Resources.V1.ReviewSubmissions {
             case marketplaceSearchDetail
             case buildUploads
             case backgroundAssets
+            case assetLibrary
             case betaFeedbackScreenshotSubmissions
             case betaFeedbackCrashSubmissions
             case searchKeywords
@@ -108,6 +110,8 @@ extension Resources.V1.ReviewSubmissions {
             case appStoreVersionExperiment
             case appStoreVersionExperimentV2
             case appEvent
+            case appAssetLibraryImage
+            case appAssetLibraryVideo
             case backgroundAssetVersion
             case gameCenterAchievementVersion
             case gameCenterActivityVersion

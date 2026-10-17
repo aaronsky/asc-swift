@@ -84,6 +84,7 @@ extension Resources.V1.GameCenterLeaderboards.WithID {
             case challengeReleases
             case leaderboardReleases
             case leaderboardSetReleases
+            case blockedPlayers
             case challengesMinimumPlatformVersions
         }
 
