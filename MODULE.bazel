@@ -7,16 +7,33 @@ module(
     version = "0.0.0",
 )
 
-bazel_dep(name = "apple_support", version = "2.3.0")
-bazel_dep(name = "platforms", version = "1.0.0")
-bazel_dep(name = "rules_apple", version = "4.5.0")
-bazel_dep(name = "rules_cc", version = "0.2.17")
-bazel_dep(name = "rules_swift", version = "3.5.0", max_compatibility_level = 3)
+bazel_dep(name = "apple_support", version = "2.10.1")
+bazel_dep(name = "platforms", version = "1.1.0")
+bazel_dep(name = "rules_apple", version = "5.3.1")
+bazel_dep(name = "rules_cc", version = "0.2.26")
+bazel_dep(name = "rules_swift", version = "4.2.1")
 
-bazel_dep(name = "bazel_lib", version = "3.2.2", dev_dependency = True)
-bazel_dep(name = "jq.bzl", version = "0.6.1", dev_dependency = True)
-bazel_dep(name = "rules_multirun", version = "0.13.0", dev_dependency = True)
-bazel_dep(name = "rules_shell", version = "0.6.1", dev_dependency = True)
+bazel_dep(name = "bazel_lib", version = "3.7.2", dev_dependency = True)
+bazel_dep(name = "jq.bzl", version = "0.7.1", dev_dependency = True)
+bazel_dep(name = "rules_multirun", version = "0.14.0", dev_dependency = True)
+bazel_dep(name = "rules_shell", version = "0.8.0", dev_dependency = True)
+
+swift = use_extension("@rules_swift//swift:extensions.bzl", "swift", dev_dependency = True)
+swift.toolchain(
+    name = "swift_toolchain",
+    swift_version = "6.3.3",
+)
+use_repo(
+    swift,
+    "swift_toolchain",
+    "swift_toolchain_ubuntu24.04",
+)
+
+register_toolchains(
+    "@swift_toolchain//:cc_toolchain_embedded_ubuntu24.04",
+    "@swift_toolchain//:swift_toolchain_embedded_ubuntu24.04",
+    dev_dependency = True,
+)
 
 asc_swift_deps = use_extension("//bazel:extensions.bzl", "asc_swift_deps")
 use_repo(
