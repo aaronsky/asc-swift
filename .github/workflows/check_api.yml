@@ -8,10 +8,16 @@ on:
 jobs:
   diff_spec:
     runs-on: macos-latest
+    env:
+      BUILDBUDDY_API_KEY: ${{ secrets.BUILDBUDDY_API_KEY }}
     steps:
       - uses: bazel-contrib/setup-bazel@0.18.0
         with:
           bazelisk-cache: true
       - uses: actions/checkout@v6
-      - run: bazel run //:update
+      - run: |
+          bazel run \
+            --config=cache \
+            --remote_header=x-buildbuddy-api-key=${BUILDBUDDY_API_KEY} \
+            //:update
       - run: git diff --ignore-all-space --exit-code

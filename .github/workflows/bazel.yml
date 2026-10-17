@@ -36,12 +36,18 @@ concurrency:
 jobs:
   macOS:
     runs-on: macos-latest
+    env:
+      BUILDBUDDY_API_KEY: ${{ secrets.BUILDBUDDY_API_KEY }}
     steps:
       - uses: bazel-contrib/setup-bazel@0.18.0
         with:
           bazelisk-cache: true
       - uses: actions/checkout@v6
-      - run: bazel test //...
+      - run: |
+          bazel test \
+            --config=cache \
+            --remote_header=x-buildbuddy-api-key=${BUILDBUDDY_API_KEY} \
+            //...
   Linux:
     runs-on: ubuntu-latest
     strategy:
@@ -49,21 +55,33 @@ jobs:
         tag: ["6.2"]
     container:
       image: swift:${{ matrix.tag }}
+    env:
+      BUILDBUDDY_API_KEY: ${{ secrets.BUILDBUDDY_API_KEY }}
     steps:
       - uses: bazel-contrib/setup-bazel@0.18.0
         with:
           bazelisk-cache: true
           bazelisk-version: 1.x
       - uses: actions/checkout@v6
-      - run: bazel test //...
+      - run: |
+          bazel test \
+            --config=cache \
+            --remote_header=x-buildbuddy-api-key=${BUILDBUDDY_API_KEY} \
+            //...
   bzlmod-e2e-macOS:
     runs-on: macos-latest
+    env:
+      BUILDBUDDY_API_KEY: ${{ secrets.BUILDBUDDY_API_KEY }}
     steps:
       - uses: bazel-contrib/setup-bazel@0.18.0
         with:
           bazelisk-cache: true
       - uses: actions/checkout@v6
-      - run: bazel build //...
+      - run: |
+          bazel build \
+            --config=cache \
+            --remote_header=x-buildbuddy-api-key=${BUILDBUDDY_API_KEY} \
+            //...
         working-directory: Examples/bzlmod
   bzlmod-e2e-linux:
     runs-on: ubuntu-latest
@@ -72,11 +90,17 @@ jobs:
         tag: ["6.2"]
     container:
       image: swift:${{ matrix.tag }}
+    env:
+      BUILDBUDDY_API_KEY: ${{ secrets.BUILDBUDDY_API_KEY }}
     steps:
       - uses: bazel-contrib/setup-bazel@0.18.0
         with:
           bazelisk-cache: true
           bazelisk-version: 1.x
       - uses: actions/checkout@v6
-      - run: bazel build //...
+      - run: |
+          bazel build \
+            --config=cache \
+            --remote_header=x-buildbuddy-api-key=${BUILDBUDDY_API_KEY} \
+            //...
         working-directory: Examples/bzlmod
