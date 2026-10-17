@@ -16,7 +16,6 @@ format:
 		--configuration $(SWIFT_FORMAT_CONFIG_FILE) \
 		--ignore-unparsable-files \
 		--in-place \
-		--parallel \
 		--recursive \
 		$(FORMAT_PATHS)
 
@@ -25,6 +24,5 @@ lint:
 	$(SWIFT_FORMAT_BIN) lint \
 		--configuration $(SWIFT_FORMAT_CONFIG_FILE) \
 		--ignore-unparsable-files \
-		--parallel \
 		--recursive \
 		$(FORMAT_PATHS)
