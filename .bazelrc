@@ -2,6 +2,8 @@ common --incompatible_disable_starlark_host_transitions
 
 common --enable_platform_specific_config
 
+common:linux --repo_env=CC=clang
+
 common:cache --bes_backend=grpcs://remote.buildbuddy.io
 common:cache --bes_results_url=https://app.buildbuddy.io/invocation/
 common:cache --bes_upload_mode=nowait_for_upload_complete

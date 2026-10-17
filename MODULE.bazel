@@ -32,6 +32,7 @@ use_repo(
 register_toolchains(
     "@swift_toolchain//:cc_toolchain_embedded_ubuntu24.04",
     "@swift_toolchain//:swift_toolchain_embedded_ubuntu24.04",
+    "@swift_toolchain//:swift_toolchain_exec_ubuntu24.04",
     dev_dependency = True,
 )
 
