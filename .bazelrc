@@ -1,3 +1,5 @@
+startup --experimental_remote_repo_contents_cache
+
 common --experimental_profile_include_primary_output
 common --experimental_profile_include_target_label
 common --incompatible_disable_starlark_host_transitions
@@ -10,7 +12,6 @@ common:cache --bes_results_url=https://app.buildbuddy.io/invocation/
 common:cache --bes_upload_mode=nowait_for_upload_complete
 common:cache --execution_log_compact_file=execution_log.binpb.zst
 common:cache --experimental_remote_cache_chunking
-common:cache --experimental_remote_repo_contents_cache
 common:cache --remote_cache=grpcs://remote.buildbuddy.io
 common:cache --remote_cache_compression
 common:cache --remote_download_toplevel
