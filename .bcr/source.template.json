@@ -1,5 +1,0 @@
-{
-  "integrity": "",
-  "strip_prefix": "asc_swift-{VERSION}",
-  "url": "https://github.com/{OWNER}/{REPO}/releases/download/{TAG}/asc_swift-{TAG}.tar.gz"
-}
