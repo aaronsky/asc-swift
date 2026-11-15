@@ -16,11 +16,11 @@ extension Resources.V1.AppStoreVersionLocalizations.WithID {
         /// Path: `/v1/appStoreVersionLocalizations/{id}/placements`
         public let path: String
 
-        public func get(filterPlacementType: [FilterPlacementType]? = nil, filterPlacementGroup: [String]? = nil, filterState: [FilterState]? = nil, filterImage: [String]? = nil, filterVideo: [String]? = nil, filterAppEventLocalization: [String]? = nil, filterAppCustomProductPageLocalization: [String]? = nil, filterAppStoreVersionExperimentTreatmentLocalization: [String]? = nil, filterID: [String]? = nil, sort: [Sort]? = nil, fieldsAppAssetLibraryPlacements: [FieldsAppAssetLibraryPlacements]? = nil, fieldsAppAssetLibraryImages: [FieldsAppAssetLibraryImages]? = nil, fieldsAppAssetLibraryVideos: [FieldsAppAssetLibraryVideos]? = nil, fieldsAppEventLocalizations: [FieldsAppEventLocalizations]? = nil, fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]? = nil, fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppAssetLibraryPlacementsResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterPlacementType, filterPlacementGroup, filterState, filterImage, filterVideo, filterAppEventLocalization, filterAppCustomProductPageLocalization, filterAppStoreVersionExperimentTreatmentLocalization, filterID, sort, fieldsAppAssetLibraryPlacements, fieldsAppAssetLibraryImages, fieldsAppAssetLibraryVideos, fieldsAppEventLocalizations, fieldsAppStoreVersionLocalizations, fieldsAppCustomProductPageLocalizations, fieldsAppStoreVersionExperimentTreatmentLocalizations, limit, include), id: "appStoreVersionLocalizations_placements_getToManyRelated")
+        public func get(filterPlacementType: [FilterPlacementType]? = nil, filterPlacementGroup: [String]? = nil, filterState: [FilterState]? = nil, filterImage: [String]? = nil, filterVideo: [String]? = nil, filterAppEventLocalization: [String]? = nil, filterAppCustomProductPageLocalization: [String]? = nil, filterAppStoreVersionExperimentTreatmentLocalization: [String]? = nil, filterID: [String]? = nil, sort: [Sort]? = nil, fieldsAppAssetLibraryPlacements: [FieldsAppAssetLibraryPlacements]? = nil, fieldsAppAssetLibraryImages: [FieldsAppAssetLibraryImages]? = nil, fieldsAppAssetLibraryVideos: [FieldsAppAssetLibraryVideos]? = nil, fieldsAppEventLocalizations: [FieldsAppEventLocalizations]? = nil, fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]? = nil, fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]? = nil, fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]? = nil, fieldsRetentionMessageVersions: [FieldsRetentionMessageVersions]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.AppAssetLibraryPlacementsResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterPlacementType, filterPlacementGroup, filterState, filterImage, filterVideo, filterAppEventLocalization, filterAppCustomProductPageLocalization, filterAppStoreVersionExperimentTreatmentLocalization, filterID, sort, fieldsAppAssetLibraryPlacements, fieldsAppAssetLibraryImages, fieldsAppAssetLibraryVideos, fieldsAppEventLocalizations, fieldsAppStoreVersionLocalizations, fieldsAppCustomProductPageLocalizations, fieldsAppStoreVersionExperimentTreatmentLocalizations, fieldsRetentionMessageVersions, limit, include), id: "appStoreVersionLocalizations_placements_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterPlacementType: [FilterPlacementType]?, _ filterPlacementGroup: [String]?, _ filterState: [FilterState]?, _ filterImage: [String]?, _ filterVideo: [String]?, _ filterAppEventLocalization: [String]?, _ filterAppCustomProductPageLocalization: [String]?, _ filterAppStoreVersionExperimentTreatmentLocalization: [String]?, _ filterID: [String]?, _ sort: [Sort]?, _ fieldsAppAssetLibraryPlacements: [FieldsAppAssetLibraryPlacements]?, _ fieldsAppAssetLibraryImages: [FieldsAppAssetLibraryImages]?, _ fieldsAppAssetLibraryVideos: [FieldsAppAssetLibraryVideos]?, _ fieldsAppEventLocalizations: [FieldsAppEventLocalizations]?, _ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]?, _ fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterPlacementType: [FilterPlacementType]?, _ filterPlacementGroup: [String]?, _ filterState: [FilterState]?, _ filterImage: [String]?, _ filterVideo: [String]?, _ filterAppEventLocalization: [String]?, _ filterAppCustomProductPageLocalization: [String]?, _ filterAppStoreVersionExperimentTreatmentLocalization: [String]?, _ filterID: [String]?, _ sort: [Sort]?, _ fieldsAppAssetLibraryPlacements: [FieldsAppAssetLibraryPlacements]?, _ fieldsAppAssetLibraryImages: [FieldsAppAssetLibraryImages]?, _ fieldsAppAssetLibraryVideos: [FieldsAppAssetLibraryVideos]?, _ fieldsAppEventLocalizations: [FieldsAppEventLocalizations]?, _ fieldsAppStoreVersionLocalizations: [FieldsAppStoreVersionLocalizations]?, _ fieldsAppCustomProductPageLocalizations: [FieldsAppCustomProductPageLocalizations]?, _ fieldsAppStoreVersionExperimentTreatmentLocalizations: [FieldsAppStoreVersionExperimentTreatmentLocalizations]?, _ fieldsRetentionMessageVersions: [FieldsRetentionMessageVersions]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterPlacementType, forKey: "filter[placementType]")
             encoder.encode(filterPlacementGroup, forKey: "filter[placementGroup]")
@@ -39,6 +39,7 @@ extension Resources.V1.AppStoreVersionLocalizations.WithID {
             encoder.encode(fieldsAppStoreVersionLocalizations, forKey: "fields[appStoreVersionLocalizations]")
             encoder.encode(fieldsAppCustomProductPageLocalizations, forKey: "fields[appCustomProductPageLocalizations]")
             encoder.encode(fieldsAppStoreVersionExperimentTreatmentLocalizations, forKey: "fields[appStoreVersionExperimentTreatmentLocalizations]")
+            encoder.encode(fieldsRetentionMessageVersions, forKey: "fields[retentionMessageVersions]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
             return encoder.items
@@ -90,6 +91,7 @@ extension Resources.V1.AppStoreVersionLocalizations.WithID {
             case appStoreVersionLocalization
             case appCustomProductPageLocalization
             case appStoreVersionExperimentTreatmentLocalization
+            case retentionMessageVersion
         }
 
         public enum FieldsAppAssetLibraryImages: String, CaseIterable, Codable, Sendable {
@@ -168,6 +170,13 @@ extension Resources.V1.AppStoreVersionLocalizations.WithID {
             case placements
         }
 
+        public enum FieldsRetentionMessageVersions: String, CaseIterable, Codable, Sendable {
+            case state
+            case retentionMessage
+            case localizations
+            case placement
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case image
             case video
@@ -175,6 +184,7 @@ extension Resources.V1.AppStoreVersionLocalizations.WithID {
             case appStoreVersionLocalization
             case appCustomProductPageLocalization
             case appStoreVersionExperimentTreatmentLocalization
+            case retentionMessageVersion
         }
     }
 }

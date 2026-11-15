@@ -89,6 +89,7 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
         public var appAvailabilityV2: AppAvailabilityV2?
         public var inAppPurchases: InAppPurchases?
         public var subscriptionGroups: SubscriptionGroups?
+        public var retentionMessages: RetentionMessages?
         public var gameCenterEnabledVersions: GameCenterEnabledVersions?
         public var performanceOverviews: PerformanceOverviews?
         public var perfPowerMetrics: PerfPowerMetrics?
@@ -540,6 +541,32 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
+        public struct RetentionMessages: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var meta: PagingInformation?
+            public var data: [Datum]?
+
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case retentionMessages
+                }
+
+                public init(type: `Type` = .retentionMessages, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+                self.links = links
+                self.meta = meta
+                self.data = data
+            }
+        }
+
         public struct GameCenterEnabledVersions: Codable, Equatable, Sendable {
             public var links: RelationshipLinks?
             public var meta: PagingInformation?
@@ -908,7 +935,7 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(accessibilityDeclarations: AccessibilityDeclarations? = nil, appEncryptionDeclarations: AppEncryptionDeclarations? = nil, appStoreIcon: AppStoreIcon? = nil, ciProduct: CiProduct? = nil, betaTesters: BetaTesters? = nil, betaGroups: BetaGroups? = nil, appStoreVersions: AppStoreVersions? = nil, appTags: AppTags? = nil, preReleaseVersions: PreReleaseVersions? = nil, betaAppLocalizations: BetaAppLocalizations? = nil, builds: Builds? = nil, betaLicenseAgreement: BetaLicenseAgreement? = nil, betaAppReviewDetail: BetaAppReviewDetail? = nil, appInfos: AppInfos? = nil, appClips: AppClips? = nil, appPricePoints: AppPricePoints? = nil, endUserLicenseAgreement: EndUserLicenseAgreement? = nil, appPriceSchedule: AppPriceSchedule? = nil, appAvailabilityV2: AppAvailabilityV2? = nil, inAppPurchases: InAppPurchases? = nil, subscriptionGroups: SubscriptionGroups? = nil, gameCenterEnabledVersions: GameCenterEnabledVersions? = nil, performanceOverviews: PerformanceOverviews? = nil, perfPowerMetrics: PerfPowerMetrics? = nil, appCustomProductPages: AppCustomProductPages? = nil, inAppPurchasesV2: InAppPurchasesV2? = nil, promotedPurchases: PromotedPurchases? = nil, appEvents: AppEvents? = nil, reviewSubmissions: ReviewSubmissions? = nil, subscriptionGracePeriod: SubscriptionGracePeriod? = nil, customerReviews: CustomerReviews? = nil, customerReviewSummarizations: CustomerReviewSummarizations? = nil, gameCenterDetail: GameCenterDetail? = nil, appStoreVersionExperimentsV2: AppStoreVersionExperimentsV2? = nil, alternativeDistributionKey: AlternativeDistributionKey? = nil, analyticsReportRequests: AnalyticsReportRequests? = nil, marketplaceSearchDetail: MarketplaceSearchDetail? = nil, buildUploads: BuildUploads? = nil, backgroundAssets: BackgroundAssets? = nil, assetLibrary: AssetLibrary? = nil, betaFeedbackScreenshotSubmissions: BetaFeedbackScreenshotSubmissions? = nil, betaFeedbackCrashSubmissions: BetaFeedbackCrashSubmissions? = nil, searchKeywords: SearchKeywords? = nil, webhooks: Webhooks? = nil, androidToIosAppMappingDetails: AndroidToIosAppMappingDetails? = nil) {
+        public init(accessibilityDeclarations: AccessibilityDeclarations? = nil, appEncryptionDeclarations: AppEncryptionDeclarations? = nil, appStoreIcon: AppStoreIcon? = nil, ciProduct: CiProduct? = nil, betaTesters: BetaTesters? = nil, betaGroups: BetaGroups? = nil, appStoreVersions: AppStoreVersions? = nil, appTags: AppTags? = nil, preReleaseVersions: PreReleaseVersions? = nil, betaAppLocalizations: BetaAppLocalizations? = nil, builds: Builds? = nil, betaLicenseAgreement: BetaLicenseAgreement? = nil, betaAppReviewDetail: BetaAppReviewDetail? = nil, appInfos: AppInfos? = nil, appClips: AppClips? = nil, appPricePoints: AppPricePoints? = nil, endUserLicenseAgreement: EndUserLicenseAgreement? = nil, appPriceSchedule: AppPriceSchedule? = nil, appAvailabilityV2: AppAvailabilityV2? = nil, inAppPurchases: InAppPurchases? = nil, subscriptionGroups: SubscriptionGroups? = nil, retentionMessages: RetentionMessages? = nil, gameCenterEnabledVersions: GameCenterEnabledVersions? = nil, performanceOverviews: PerformanceOverviews? = nil, perfPowerMetrics: PerfPowerMetrics? = nil, appCustomProductPages: AppCustomProductPages? = nil, inAppPurchasesV2: InAppPurchasesV2? = nil, promotedPurchases: PromotedPurchases? = nil, appEvents: AppEvents? = nil, reviewSubmissions: ReviewSubmissions? = nil, subscriptionGracePeriod: SubscriptionGracePeriod? = nil, customerReviews: CustomerReviews? = nil, customerReviewSummarizations: CustomerReviewSummarizations? = nil, gameCenterDetail: GameCenterDetail? = nil, appStoreVersionExperimentsV2: AppStoreVersionExperimentsV2? = nil, alternativeDistributionKey: AlternativeDistributionKey? = nil, analyticsReportRequests: AnalyticsReportRequests? = nil, marketplaceSearchDetail: MarketplaceSearchDetail? = nil, buildUploads: BuildUploads? = nil, backgroundAssets: BackgroundAssets? = nil, assetLibrary: AssetLibrary? = nil, betaFeedbackScreenshotSubmissions: BetaFeedbackScreenshotSubmissions? = nil, betaFeedbackCrashSubmissions: BetaFeedbackCrashSubmissions? = nil, searchKeywords: SearchKeywords? = nil, webhooks: Webhooks? = nil, androidToIosAppMappingDetails: AndroidToIosAppMappingDetails? = nil) {
             self.accessibilityDeclarations = accessibilityDeclarations
             self.appEncryptionDeclarations = appEncryptionDeclarations
             self.appStoreIcon = appStoreIcon
@@ -930,6 +957,7 @@ public struct App: Codable, Equatable, Identifiable, Sendable {
             self.appAvailabilityV2 = appAvailabilityV2
             self.inAppPurchases = inAppPurchases
             self.subscriptionGroups = subscriptionGroups
+            self.retentionMessages = retentionMessages
             self.gameCenterEnabledVersions = gameCenterEnabledVersions
             self.performanceOverviews = performanceOverviews
             self.perfPowerMetrics = perfPowerMetrics

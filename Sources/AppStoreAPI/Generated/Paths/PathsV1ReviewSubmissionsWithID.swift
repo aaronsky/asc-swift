@@ -77,6 +77,7 @@ extension Resources.V1.ReviewSubmissions {
             case appAvailabilityV2
             case inAppPurchases
             case subscriptionGroups
+            case retentionMessages
             case gameCenterEnabledVersions
             case performanceOverviews
             case perfPowerMetrics
@@ -121,6 +122,7 @@ extension Resources.V1.ReviewSubmissions {
             case inAppPurchaseVersion
             case subscriptionVersion
             case subscriptionGroupVersion
+            case retentionMessageVersion
         }
 
         public enum FieldsAppStoreVersions: String, CaseIterable, Codable, Sendable {

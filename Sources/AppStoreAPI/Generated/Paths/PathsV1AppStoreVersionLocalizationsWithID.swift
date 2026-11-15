@@ -107,6 +107,7 @@ extension Resources.V1.AppStoreVersionLocalizations {
             case appStoreVersionLocalization
             case appCustomProductPageLocalization
             case appStoreVersionExperimentTreatmentLocalization
+            case retentionMessageVersion
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

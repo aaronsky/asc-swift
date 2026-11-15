@@ -73,6 +73,7 @@ extension Resources.V1.AppPriceSchedules {
             case appAvailabilityV2
             case inAppPurchases
             case subscriptionGroups
+            case retentionMessages
             case gameCenterEnabledVersions
             case performanceOverviews
             case perfPowerMetrics

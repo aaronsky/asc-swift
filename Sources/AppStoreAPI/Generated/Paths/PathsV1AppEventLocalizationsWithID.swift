@@ -98,6 +98,7 @@ extension Resources.V1.AppEventLocalizations {
             case appStoreVersionLocalization
             case appCustomProductPageLocalization
             case appStoreVersionExperimentTreatmentLocalization
+            case retentionMessageVersion
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

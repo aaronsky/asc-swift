@@ -14,6 +14,8 @@ public struct SubscriptionsResponse: Codable, Equatable, Sendable {
 
     public enum IncludedItem: Codable, Equatable, Sendable {
         case promotedPurchase(PromotedPurchase)
+        case retentionMessage(RetentionMessage)
+        case retentionOffer(RetentionOffer)
         case subscriptionAppStoreReviewScreenshot(SubscriptionAppStoreReviewScreenshot)
         case subscriptionAvailability(SubscriptionAvailability)
         case subscriptionGroup(SubscriptionGroup)
@@ -38,6 +40,8 @@ public struct SubscriptionsResponse: Codable, Equatable, Sendable {
 
             switch discriminatorValue {
             case "promotedPurchases": self = .promotedPurchase(try container.decode(PromotedPurchase.self))
+            case "retentionMessages": self = .retentionMessage(try container.decode(RetentionMessage.self))
+            case "retentionOffers": self = .retentionOffer(try container.decode(RetentionOffer.self))
             case "subscriptionAppStoreReviewScreenshots": self = .subscriptionAppStoreReviewScreenshot(try container.decode(SubscriptionAppStoreReviewScreenshot.self))
             case "subscriptionAvailabilities": self = .subscriptionAvailability(try container.decode(SubscriptionAvailability.self))
             case "subscriptionGroups": self = .subscriptionGroup(try container.decode(SubscriptionGroup.self))
@@ -54,7 +58,7 @@ public struct SubscriptionsResponse: Codable, Equatable, Sendable {
             default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (promotedPurchases, subscriptionAppStoreReviewScreenshots, subscriptionAvailabilities, subscriptionGroups, subscriptionImages, subscriptionIntroductoryOffers, subscriptionLocalizations, subscriptionOfferCodes, subscriptionPlanAvailabilities, subscriptionPrices, subscriptionPromotionalOffers, subscriptionVersions, winBackOffers)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (promotedPurchases, retentionMessages, retentionOffers, subscriptionAppStoreReviewScreenshots, subscriptionAvailabilities, subscriptionGroups, subscriptionImages, subscriptionIntroductoryOffers, subscriptionLocalizations, subscriptionOfferCodes, subscriptionPlanAvailabilities, subscriptionPrices, subscriptionPromotionalOffers, subscriptionVersions, winBackOffers)."
                 )
             }
         }
@@ -63,6 +67,8 @@ public struct SubscriptionsResponse: Codable, Equatable, Sendable {
             var container = encoder.singleValueContainer()
             switch self {
             case .promotedPurchase(let value): try container.encode(value)
+            case .retentionMessage(let value): try container.encode(value)
+            case .retentionOffer(let value): try container.encode(value)
             case .subscriptionAppStoreReviewScreenshot(let value): try container.encode(value)
             case .subscriptionAvailability(let value): try container.encode(value)
             case .subscriptionGroup(let value): try container.encode(value)

@@ -64,6 +64,9 @@ extension Resources.V1.SubscriptionGroups {
             case images
             case planAvailabilities
             case versions
+            case retentionOffers
+            case retentionMessage
+            case retentionMessageOffers
         }
 
         public enum FieldsSubscriptionGroupLocalizations: String, CaseIterable, Codable, Sendable {

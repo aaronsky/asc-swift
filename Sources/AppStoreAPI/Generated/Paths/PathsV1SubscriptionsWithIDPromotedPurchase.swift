@@ -81,6 +81,9 @@ extension Resources.V1.Subscriptions.WithID {
             case images
             case planAvailabilities
             case versions
+            case retentionOffers
+            case retentionMessage
+            case retentionMessageOffers
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

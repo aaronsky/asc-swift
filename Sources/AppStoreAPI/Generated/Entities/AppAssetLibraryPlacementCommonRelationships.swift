@@ -11,6 +11,7 @@ public struct AppAssetLibraryPlacementCommonRelationships: Codable, Equatable, S
     public var appStoreVersionLocalization: AppStoreVersionLocalization?
     public var appCustomProductPageLocalization: AppCustomProductPageLocalization?
     public var appStoreVersionExperimentTreatmentLocalization: AppStoreVersionExperimentTreatmentLocalization?
+    public var retentionMessageVersion: RetentionMessageVersion?
 
     public struct AppEventLocalization: Codable, Equatable, Sendable {
         public var data: Data?
@@ -100,10 +101,33 @@ public struct AppAssetLibraryPlacementCommonRelationships: Codable, Equatable, S
         }
     }
 
-    public init(appEventLocalization: AppEventLocalization? = nil, appStoreVersionLocalization: AppStoreVersionLocalization? = nil, appCustomProductPageLocalization: AppCustomProductPageLocalization? = nil, appStoreVersionExperimentTreatmentLocalization: AppStoreVersionExperimentTreatmentLocalization? = nil) {
+    public struct RetentionMessageVersion: Codable, Equatable, Sendable {
+        public var data: Data?
+
+        public struct Data: Codable, Equatable, Identifiable, Sendable {
+            public var type: `Type`
+            public var id: String
+
+            public enum `Type`: String, CaseIterable, Codable, Sendable {
+                case retentionMessageVersions
+            }
+
+            public init(type: `Type` = .retentionMessageVersions, id: String) {
+                self.type = type
+                self.id = id
+            }
+        }
+
+        public init(data: Data? = nil) {
+            self.data = data
+        }
+    }
+
+    public init(appEventLocalization: AppEventLocalization? = nil, appStoreVersionLocalization: AppStoreVersionLocalization? = nil, appCustomProductPageLocalization: AppCustomProductPageLocalization? = nil, appStoreVersionExperimentTreatmentLocalization: AppStoreVersionExperimentTreatmentLocalization? = nil, retentionMessageVersion: RetentionMessageVersion? = nil) {
         self.appEventLocalization = appEventLocalization
         self.appStoreVersionLocalization = appStoreVersionLocalization
         self.appCustomProductPageLocalization = appCustomProductPageLocalization
         self.appStoreVersionExperimentTreatmentLocalization = appStoreVersionExperimentTreatmentLocalization
+        self.retentionMessageVersion = retentionMessageVersion
     }
 }

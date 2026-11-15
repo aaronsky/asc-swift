@@ -24,7 +24,7 @@ def _asc_swift_dev_deps_impl(_mctx):
     http_archive(
         name = "com_apple_app_store_connect_api",
         build_file = "@asc_swift//bazel/specs:com_apple_app_store_connect_api/BUILD.overlay",
-        sha256 = "7b826ae9ca3e45b0e7df2643cbb811c9930632640944db11a8af4586fab9db46",
+        sha256 = "f41ed4489c78bf1488cd2291f23394565364fe37b402130f48c3e3c3f5ea1acd",
         urls = ["https://developer.apple.com/sample-code/app-store-connect/app-store-connect-openapi-specification.zip"],
     )
     http_archive(

@@ -94,6 +94,7 @@ extension Resources.V1.AppAssetLibraries.WithID {
             case appStoreVersionLocalization
             case appCustomProductPageLocalization
             case appStoreVersionExperimentTreatmentLocalization
+            case retentionMessageVersion
         }
 
         public enum Include: String, CaseIterable, Codable, Sendable {

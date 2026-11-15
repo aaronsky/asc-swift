@@ -74,6 +74,7 @@ extension Resources.V1.UserInvitations {
             case appAvailabilityV2
             case inAppPurchases
             case subscriptionGroups
+            case retentionMessages
             case gameCenterEnabledVersions
             case performanceOverviews
             case perfPowerMetrics

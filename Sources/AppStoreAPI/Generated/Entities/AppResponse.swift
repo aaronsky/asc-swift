@@ -34,6 +34,7 @@ public struct AppResponse: Codable, Equatable, Sendable {
         case inAppPurchase(InAppPurchase)
         case prereleaseVersion(PrereleaseVersion)
         case promotedPurchase(PromotedPurchase)
+        case retentionMessage(RetentionMessage)
         case reviewSubmission(ReviewSubmission)
         case subscriptionGracePeriod(SubscriptionGracePeriod)
         case subscriptionGroup(SubscriptionGroup)
@@ -69,6 +70,7 @@ public struct AppResponse: Codable, Equatable, Sendable {
             case "inAppPurchases": self = .inAppPurchase(try container.decode(InAppPurchase.self))
             case "preReleaseVersions": self = .prereleaseVersion(try container.decode(PrereleaseVersion.self))
             case "promotedPurchases": self = .promotedPurchase(try container.decode(PromotedPurchase.self))
+            case "retentionMessages": self = .retentionMessage(try container.decode(RetentionMessage.self))
             case "reviewSubmissions": self = .reviewSubmission(try container.decode(ReviewSubmission.self))
             case "subscriptionGracePeriods": self = .subscriptionGracePeriod(try container.decode(SubscriptionGracePeriod.self))
             case "subscriptionGroups": self = .subscriptionGroup(try container.decode(SubscriptionGroup.self))
@@ -76,7 +78,7 @@ public struct AppResponse: Codable, Equatable, Sendable {
             default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (androidToIosAppMappingDetails, appClips, appCustomProductPages, appEncryptionDeclarations, appEvents, appInfos, appStoreVersionExperiments, appStoreVersions, betaAppLocalizations, betaAppReviewDetails, betaGroups, betaLicenseAgreements, buildIcons, builds, ciProducts, endUserLicenseAgreements, gameCenterDetails, gameCenterEnabledVersions, inAppPurchases, preReleaseVersions, promotedPurchases, reviewSubmissions, subscriptionGracePeriods, subscriptionGroups)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (androidToIosAppMappingDetails, appClips, appCustomProductPages, appEncryptionDeclarations, appEvents, appInfos, appStoreVersionExperiments, appStoreVersions, betaAppLocalizations, betaAppReviewDetails, betaGroups, betaLicenseAgreements, buildIcons, builds, ciProducts, endUserLicenseAgreements, gameCenterDetails, gameCenterEnabledVersions, inAppPurchases, preReleaseVersions, promotedPurchases, retentionMessages, reviewSubmissions, subscriptionGracePeriods, subscriptionGroups)."
                 )
             }
         }
@@ -105,6 +107,7 @@ public struct AppResponse: Codable, Equatable, Sendable {
             case .inAppPurchase(let value): try container.encode(value)
             case .prereleaseVersion(let value): try container.encode(value)
             case .promotedPurchase(let value): try container.encode(value)
+            case .retentionMessage(let value): try container.encode(value)
             case .reviewSubmission(let value): try container.encode(value)
             case .subscriptionGracePeriod(let value): try container.encode(value)
             case .subscriptionGroup(let value): try container.encode(value)

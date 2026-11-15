@@ -11,6 +11,7 @@ public struct AppAssetLibraryPlacementVideoRelationships: Codable, Equatable, Se
     public var appStoreVersionLocalization: AppStoreVersionLocalization?
     public var appCustomProductPageLocalization: AppCustomProductPageLocalization?
     public var appStoreVersionExperimentTreatmentLocalization: AppStoreVersionExperimentTreatmentLocalization?
+    public var retentionMessageVersion: RetentionMessageVersion?
     public var video: Video?
 
     public struct AppEventLocalization: Codable, Equatable, Sendable {
@@ -101,6 +102,28 @@ public struct AppAssetLibraryPlacementVideoRelationships: Codable, Equatable, Se
         }
     }
 
+    public struct RetentionMessageVersion: Codable, Equatable, Sendable {
+        public var data: Data?
+
+        public struct Data: Codable, Equatable, Identifiable, Sendable {
+            public var type: `Type`
+            public var id: String
+
+            public enum `Type`: String, CaseIterable, Codable, Sendable {
+                case retentionMessageVersions
+            }
+
+            public init(type: `Type` = .retentionMessageVersions, id: String) {
+                self.type = type
+                self.id = id
+            }
+        }
+
+        public init(data: Data? = nil) {
+            self.data = data
+        }
+    }
+
     public struct Video: Codable, Equatable, Sendable {
         public var data: Data?
 
@@ -123,11 +146,12 @@ public struct AppAssetLibraryPlacementVideoRelationships: Codable, Equatable, Se
         }
     }
 
-    public init(appEventLocalization: AppEventLocalization? = nil, appStoreVersionLocalization: AppStoreVersionLocalization? = nil, appCustomProductPageLocalization: AppCustomProductPageLocalization? = nil, appStoreVersionExperimentTreatmentLocalization: AppStoreVersionExperimentTreatmentLocalization? = nil, video: Video? = nil) {
+    public init(appEventLocalization: AppEventLocalization? = nil, appStoreVersionLocalization: AppStoreVersionLocalization? = nil, appCustomProductPageLocalization: AppCustomProductPageLocalization? = nil, appStoreVersionExperimentTreatmentLocalization: AppStoreVersionExperimentTreatmentLocalization? = nil, retentionMessageVersion: RetentionMessageVersion? = nil, video: Video? = nil) {
         self.appEventLocalization = appEventLocalization
         self.appStoreVersionLocalization = appStoreVersionLocalization
         self.appCustomProductPageLocalization = appCustomProductPageLocalization
         self.appStoreVersionExperimentTreatmentLocalization = appStoreVersionExperimentTreatmentLocalization
+        self.retentionMessageVersion = retentionMessageVersion
         self.video = video
     }
 
@@ -137,6 +161,7 @@ public struct AppAssetLibraryPlacementVideoRelationships: Codable, Equatable, Se
         self.appStoreVersionLocalization = try values.decodeIfPresent(AppStoreVersionLocalization.self, forKey: "appStoreVersionLocalization")
         self.appCustomProductPageLocalization = try values.decodeIfPresent(AppCustomProductPageLocalization.self, forKey: "appCustomProductPageLocalization")
         self.appStoreVersionExperimentTreatmentLocalization = try values.decodeIfPresent(AppStoreVersionExperimentTreatmentLocalization.self, forKey: "appStoreVersionExperimentTreatmentLocalization")
+        self.retentionMessageVersion = try values.decodeIfPresent(RetentionMessageVersion.self, forKey: "retentionMessageVersion")
         self.video = try values.decodeIfPresent(Video.self, forKey: "video")
     }
 
@@ -146,6 +171,7 @@ public struct AppAssetLibraryPlacementVideoRelationships: Codable, Equatable, Se
         try values.encodeIfPresent(appStoreVersionLocalization, forKey: "appStoreVersionLocalization")
         try values.encodeIfPresent(appCustomProductPageLocalization, forKey: "appCustomProductPageLocalization")
         try values.encodeIfPresent(appStoreVersionExperimentTreatmentLocalization, forKey: "appStoreVersionExperimentTreatmentLocalization")
+        try values.encodeIfPresent(retentionMessageVersion, forKey: "retentionMessageVersion")
         try values.encodeIfPresent(video, forKey: "video")
     }
 }

@@ -74,6 +74,8 @@ public struct SubscriptionUpdateRequest: Codable, Equatable, Sendable {
             public var introductoryOffers: IntroductoryOffers?
             public var promotionalOffers: PromotionalOffers?
             public var prices: Prices?
+            public var retentionMessage: RetentionMessage?
+            public var retentionMessageOffers: RetentionMessageOffers?
 
             public struct IntroductoryOffers: Codable, Equatable, Sendable {
                 public var data: [Datum]?
@@ -141,10 +143,56 @@ public struct SubscriptionUpdateRequest: Codable, Equatable, Sendable {
                 }
             }
 
-            public init(introductoryOffers: IntroductoryOffers? = nil, promotionalOffers: PromotionalOffers? = nil, prices: Prices? = nil) {
+            public struct RetentionMessage: Codable, Equatable, Sendable {
+                public var data: Data?
+
+                public struct Data: Codable, Equatable, Identifiable, Sendable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
+                        case retentionMessages
+                    }
+
+                    public init(type: `Type` = .retentionMessages, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: Data? = nil) {
+                    self.data = data
+                }
+            }
+
+            public struct RetentionMessageOffers: Codable, Equatable, Sendable {
+                public var data: [Datum]?
+
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
+                        case retentionOffers
+                    }
+
+                    public init(type: `Type` = .retentionOffers, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: [Datum]? = nil) {
+                    self.data = data
+                }
+            }
+
+            public init(introductoryOffers: IntroductoryOffers? = nil, promotionalOffers: PromotionalOffers? = nil, prices: Prices? = nil, retentionMessage: RetentionMessage? = nil, retentionMessageOffers: RetentionMessageOffers? = nil) {
                 self.introductoryOffers = introductoryOffers
                 self.promotionalOffers = promotionalOffers
                 self.prices = prices
+                self.retentionMessage = retentionMessage
+                self.retentionMessageOffers = retentionMessageOffers
             }
         }
 

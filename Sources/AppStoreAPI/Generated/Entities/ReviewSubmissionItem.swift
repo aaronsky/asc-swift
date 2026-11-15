@@ -50,6 +50,7 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable, Sendable {
         public var inAppPurchaseVersion: InAppPurchaseVersion?
         public var subscriptionVersion: SubscriptionVersion?
         public var subscriptionGroupVersion: SubscriptionGroupVersion?
+        public var retentionMessageVersion: RetentionMessageVersion?
 
         public struct AppStoreVersion: Codable, Equatable, Sendable {
             public var data: Data?
@@ -403,7 +404,29 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(appStoreVersion: AppStoreVersion? = nil, appCustomProductPageVersion: AppCustomProductPageVersion? = nil, appStoreVersionExperiment: AppStoreVersionExperiment? = nil, appStoreVersionExperimentV2: AppStoreVersionExperimentV2? = nil, appEvent: AppEvent? = nil, appAssetLibraryImage: AppAssetLibraryImage? = nil, appAssetLibraryVideo: AppAssetLibraryVideo? = nil, backgroundAssetVersion: BackgroundAssetVersion? = nil, gameCenterAchievementVersion: GameCenterAchievementVersion? = nil, gameCenterActivityVersion: GameCenterActivityVersion? = nil, gameCenterChallengeVersion: GameCenterChallengeVersion? = nil, gameCenterLeaderboardSetVersion: GameCenterLeaderboardSetVersion? = nil, gameCenterLeaderboardVersion: GameCenterLeaderboardVersion? = nil, inAppPurchaseVersion: InAppPurchaseVersion? = nil, subscriptionVersion: SubscriptionVersion? = nil, subscriptionGroupVersion: SubscriptionGroupVersion? = nil) {
+        public struct RetentionMessageVersion: Codable, Equatable, Sendable {
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case retentionMessageVersions
+                }
+
+                public init(type: `Type` = .retentionMessageVersions, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(data: Data? = nil) {
+                self.data = data
+            }
+        }
+
+        public init(appStoreVersion: AppStoreVersion? = nil, appCustomProductPageVersion: AppCustomProductPageVersion? = nil, appStoreVersionExperiment: AppStoreVersionExperiment? = nil, appStoreVersionExperimentV2: AppStoreVersionExperimentV2? = nil, appEvent: AppEvent? = nil, appAssetLibraryImage: AppAssetLibraryImage? = nil, appAssetLibraryVideo: AppAssetLibraryVideo? = nil, backgroundAssetVersion: BackgroundAssetVersion? = nil, gameCenterAchievementVersion: GameCenterAchievementVersion? = nil, gameCenterActivityVersion: GameCenterActivityVersion? = nil, gameCenterChallengeVersion: GameCenterChallengeVersion? = nil, gameCenterLeaderboardSetVersion: GameCenterLeaderboardSetVersion? = nil, gameCenterLeaderboardVersion: GameCenterLeaderboardVersion? = nil, inAppPurchaseVersion: InAppPurchaseVersion? = nil, subscriptionVersion: SubscriptionVersion? = nil, subscriptionGroupVersion: SubscriptionGroupVersion? = nil, retentionMessageVersion: RetentionMessageVersion? = nil) {
             self.appStoreVersion = appStoreVersion
             self.appCustomProductPageVersion = appCustomProductPageVersion
             self.appStoreVersionExperiment = appStoreVersionExperiment
@@ -420,6 +443,7 @@ public struct ReviewSubmissionItem: Codable, Equatable, Identifiable, Sendable {
             self.inAppPurchaseVersion = inAppPurchaseVersion
             self.subscriptionVersion = subscriptionVersion
             self.subscriptionGroupVersion = subscriptionGroupVersion
+            self.retentionMessageVersion = retentionMessageVersion
         }
     }
 

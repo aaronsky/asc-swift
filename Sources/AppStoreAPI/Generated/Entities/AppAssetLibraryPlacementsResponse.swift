@@ -19,6 +19,7 @@ public struct AppAssetLibraryPlacementsResponse: Codable, Equatable, Sendable {
         case appEventLocalization(AppEventLocalization)
         case appStoreVersionExperimentTreatmentLocalization(AppStoreVersionExperimentTreatmentLocalization)
         case appStoreVersionLocalization(AppStoreVersionLocalization)
+        case retentionMessageVersion(RetentionMessageVersion)
 
         public init(from decoder: any Decoder) throws {
 
@@ -36,11 +37,12 @@ public struct AppAssetLibraryPlacementsResponse: Codable, Equatable, Sendable {
             case "appEventLocalizations": self = .appEventLocalization(try container.decode(AppEventLocalization.self))
             case "appStoreVersionExperimentTreatmentLocalizations": self = .appStoreVersionExperimentTreatmentLocalization(try container.decode(AppStoreVersionExperimentTreatmentLocalization.self))
             case "appStoreVersionLocalizations": self = .appStoreVersionLocalization(try container.decode(AppStoreVersionLocalization.self))
+            case "retentionMessageVersions": self = .retentionMessageVersion(try container.decode(RetentionMessageVersion.self))
 
             default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (appAssetLibraryImages, appAssetLibraryVideos, appCustomProductPageLocalizations, appEventLocalizations, appStoreVersionExperimentTreatmentLocalizations, appStoreVersionLocalizations)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (appAssetLibraryImages, appAssetLibraryVideos, appCustomProductPageLocalizations, appEventLocalizations, appStoreVersionExperimentTreatmentLocalizations, appStoreVersionLocalizations, retentionMessageVersions)."
                 )
             }
         }
@@ -54,6 +56,7 @@ public struct AppAssetLibraryPlacementsResponse: Codable, Equatable, Sendable {
             case .appEventLocalization(let value): try container.encode(value)
             case .appStoreVersionExperimentTreatmentLocalization(let value): try container.encode(value)
             case .appStoreVersionLocalization(let value): try container.encode(value)
+            case .retentionMessageVersion(let value): try container.encode(value)
             }
         }
     }

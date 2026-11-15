@@ -18,6 +18,7 @@ public struct AppAssetLibraryPlacementCreateRequest: Codable, Equatable, Sendabl
         public var f: F?
         public var g: G?
         public var h: H?
+        public var i: I?
 
         public struct A: Codable, Equatable, Sendable {
             public var attributes: Attributes
@@ -144,6 +145,34 @@ public struct AppAssetLibraryPlacementCreateRequest: Codable, Equatable, Sendabl
             }
 
             public struct Relationships: Codable, Equatable, Sendable {
+                public var image: AnyJSON
+                public var retentionMessageVersion: AnyJSON
+
+                public init(image: AnyJSON, retentionMessageVersion: AnyJSON) {
+                    self.image = image
+                    self.retentionMessageVersion = retentionMessageVersion
+                }
+            }
+
+            public init(attributes: Attributes, relationships: Relationships) {
+                self.attributes = attributes
+                self.relationships = relationships
+            }
+        }
+
+        public struct F: Codable, Equatable, Sendable {
+            public var attributes: Attributes
+            public var relationships: Relationships
+
+            public struct Attributes: Codable, Equatable, Sendable {
+                public var placementType: AnyJSON
+
+                public init(placementType: AnyJSON) {
+                    self.placementType = placementType
+                }
+            }
+
+            public struct Relationships: Codable, Equatable, Sendable {
                 public var appEventLocalization: AnyJSON
                 public var video: AnyJSON
 
@@ -159,7 +188,7 @@ public struct AppAssetLibraryPlacementCreateRequest: Codable, Equatable, Sendabl
             }
         }
 
-        public struct F: Codable, Equatable, Sendable {
+        public struct G: Codable, Equatable, Sendable {
             public var attributes: Attributes
             public var relationships: Relationships
 
@@ -187,7 +216,7 @@ public struct AppAssetLibraryPlacementCreateRequest: Codable, Equatable, Sendabl
             }
         }
 
-        public struct G: Codable, Equatable, Sendable {
+        public struct H: Codable, Equatable, Sendable {
             public var attributes: Attributes
             public var relationships: Relationships
 
@@ -215,7 +244,7 @@ public struct AppAssetLibraryPlacementCreateRequest: Codable, Equatable, Sendabl
             }
         }
 
-        public struct H: Codable, Equatable, Sendable {
+        public struct I: Codable, Equatable, Sendable {
             public var attributes: Attributes
             public var relationships: Relationships
 
@@ -243,7 +272,7 @@ public struct AppAssetLibraryPlacementCreateRequest: Codable, Equatable, Sendabl
             }
         }
 
-        public init(a: A? = nil, b: B? = nil, c: C? = nil, d: D? = nil, e: E? = nil, f: F? = nil, g: G? = nil, h: H? = nil) {
+        public init(a: A? = nil, b: B? = nil, c: C? = nil, d: D? = nil, e: E? = nil, f: F? = nil, g: G? = nil, h: H? = nil, i: I? = nil) {
             self.a = a
             self.b = b
             self.c = c
@@ -252,6 +281,7 @@ public struct AppAssetLibraryPlacementCreateRequest: Codable, Equatable, Sendabl
             self.f = f
             self.g = g
             self.h = h
+            self.i = i
         }
 
         public init(from decoder: any Decoder) throws {
@@ -264,6 +294,7 @@ public struct AppAssetLibraryPlacementCreateRequest: Codable, Equatable, Sendabl
             self.f = try? container.decode(F.self)
             self.g = try? container.decode(G.self)
             self.h = try? container.decode(H.self)
+            self.i = try? container.decode(I.self)
         }
 
         public func encode(to encoder: any Encoder) throws {
@@ -276,6 +307,7 @@ public struct AppAssetLibraryPlacementCreateRequest: Codable, Equatable, Sendabl
             if let value = f { try container.encode(value) }
             if let value = g { try container.encode(value) }
             if let value = h { try container.encode(value) }
+            if let value = i { try container.encode(value) }
         }
     }
 

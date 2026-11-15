@@ -101,6 +101,9 @@ public struct Subscription: Codable, Equatable, Identifiable, Sendable {
         public var images: Images?
         public var planAvailabilities: PlanAvailabilities?
         public var versions: Versions?
+        public var retentionOffers: RetentionOffers?
+        public var retentionMessage: RetentionMessage?
+        public var retentionMessageOffers: RetentionMessageOffers?
 
         public struct SubscriptionLocalizations: Codable, Equatable, Sendable {
             public var links: RelationshipLinks?
@@ -438,7 +441,83 @@ public struct Subscription: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(subscriptionLocalizations: SubscriptionLocalizations? = nil, appStoreReviewScreenshot: AppStoreReviewScreenshot? = nil, group: Group? = nil, introductoryOffers: IntroductoryOffers? = nil, promotionalOffers: PromotionalOffers? = nil, offerCodes: OfferCodes? = nil, prices: Prices? = nil, pricePoints: PricePoints? = nil, promotedPurchase: PromotedPurchase? = nil, subscriptionAvailability: SubscriptionAvailability? = nil, winBackOffers: WinBackOffers? = nil, images: Images? = nil, planAvailabilities: PlanAvailabilities? = nil, versions: Versions? = nil) {
+        public struct RetentionOffers: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var meta: PagingInformation?
+            public var data: [Datum]?
+
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case retentionOffers
+                }
+
+                public init(type: `Type` = .retentionOffers, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+                self.links = links
+                self.meta = meta
+                self.data = data
+            }
+        }
+
+        public struct RetentionMessage: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var data: Data?
+
+            public struct Data: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case retentionMessages
+                }
+
+                public init(type: `Type` = .retentionMessages, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: RelationshipLinks? = nil, data: Data? = nil) {
+                self.links = links
+                self.data = data
+            }
+        }
+
+        public struct RetentionMessageOffers: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var meta: PagingInformation?
+            public var data: [Datum]?
+
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case retentionOffers
+                }
+
+                public init(type: `Type` = .retentionOffers, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+                self.links = links
+                self.meta = meta
+                self.data = data
+            }
+        }
+
+        public init(subscriptionLocalizations: SubscriptionLocalizations? = nil, appStoreReviewScreenshot: AppStoreReviewScreenshot? = nil, group: Group? = nil, introductoryOffers: IntroductoryOffers? = nil, promotionalOffers: PromotionalOffers? = nil, offerCodes: OfferCodes? = nil, prices: Prices? = nil, pricePoints: PricePoints? = nil, promotedPurchase: PromotedPurchase? = nil, subscriptionAvailability: SubscriptionAvailability? = nil, winBackOffers: WinBackOffers? = nil, images: Images? = nil, planAvailabilities: PlanAvailabilities? = nil, versions: Versions? = nil, retentionOffers: RetentionOffers? = nil, retentionMessage: RetentionMessage? = nil, retentionMessageOffers: RetentionMessageOffers? = nil) {
             self.subscriptionLocalizations = subscriptionLocalizations
             self.appStoreReviewScreenshot = appStoreReviewScreenshot
             self.group = group
@@ -453,6 +532,9 @@ public struct Subscription: Codable, Equatable, Identifiable, Sendable {
             self.images = images
             self.planAvailabilities = planAvailabilities
             self.versions = versions
+            self.retentionOffers = retentionOffers
+            self.retentionMessage = retentionMessage
+            self.retentionMessageOffers = retentionMessageOffers
         }
     }
 

@@ -89,6 +89,7 @@ extension Resources.V1.GameCenterEnabledVersions.WithID {
             case appAvailabilityV2
             case inAppPurchases
             case subscriptionGroups
+            case retentionMessages
             case gameCenterEnabledVersions
             case performanceOverviews
             case perfPowerMetrics
