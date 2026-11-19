@@ -205,13 +205,16 @@ public struct SubscriptionUpdateRequest: Codable, Equatable, Sendable {
     }
 
     public enum IncludedItem: Codable, Equatable, Sendable {
+        case subscriptionPriceTierInlineCreate(SubscriptionPriceTierInlineCreate)
         case subscriptionPromotionalOfferInlineCreate(SubscriptionPromotionalOfferInlineCreate)
         case subscriptionPriceInlineCreate(SubscriptionPriceInlineCreate)
         case subscriptionIntroductoryOfferInlineCreate(SubscriptionIntroductoryOfferInlineCreate)
 
         public init(from decoder: any Decoder) throws {
             let container = try decoder.singleValueContainer()
-            if let value = try? container.decode(SubscriptionPromotionalOfferInlineCreate.self) {
+            if let value = try? container.decode(SubscriptionPriceTierInlineCreate.self) {
+                self = .subscriptionPriceTierInlineCreate(value)
+            } else if let value = try? container.decode(SubscriptionPromotionalOfferInlineCreate.self) {
                 self = .subscriptionPromotionalOfferInlineCreate(value)
             } else if let value = try? container.decode(SubscriptionPriceInlineCreate.self) {
                 self = .subscriptionPriceInlineCreate(value)
@@ -220,7 +223,7 @@ public struct SubscriptionUpdateRequest: Codable, Equatable, Sendable {
             } else {
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Data could not be decoded as any of the expected types (SubscriptionPromotionalOfferInlineCreate, SubscriptionPriceInlineCreate, SubscriptionIntroductoryOfferInlineCreate)."
+                    debugDescription: "Data could not be decoded as any of the expected types (SubscriptionPriceTierInlineCreate, SubscriptionPromotionalOfferInlineCreate, SubscriptionPriceInlineCreate, SubscriptionIntroductoryOfferInlineCreate)."
                 )
             }
         }
@@ -228,6 +231,7 @@ public struct SubscriptionUpdateRequest: Codable, Equatable, Sendable {
         public func encode(to encoder: any Encoder) throws {
             var container = encoder.singleValueContainer()
             switch self {
+            case .subscriptionPriceTierInlineCreate(let value): try container.encode(value)
             case .subscriptionPromotionalOfferInlineCreate(let value): try container.encode(value)
             case .subscriptionPriceInlineCreate(let value): try container.encode(value)
             case .subscriptionIntroductoryOfferInlineCreate(let value): try container.encode(value)

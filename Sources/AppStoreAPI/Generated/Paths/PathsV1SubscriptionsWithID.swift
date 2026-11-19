@@ -157,6 +157,7 @@ extension Resources.V1.Subscriptions {
             case planType
             case territory
             case subscriptionPricePoint
+            case additionalPriceTiers
         }
 
         public enum FieldsPromotedPurchases: String, CaseIterable, Codable, Sendable {

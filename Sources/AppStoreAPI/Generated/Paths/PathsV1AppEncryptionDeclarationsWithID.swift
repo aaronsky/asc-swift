@@ -64,6 +64,7 @@ extension Resources.V1.AppEncryptionDeclarations {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
             case contentRightsDeclaration
             case streamlinedPurchasingEnabled
+            case groupPurchaseInvitationMode
             case accessibilityDeclarations
             case appEncryptionDeclarations
             case appStoreIcon

@@ -28,13 +28,19 @@ public struct AppUpdateRequest: Codable, Equatable, Sendable {
             public var subscriptionStatusURLVersionForSandbox: SubscriptionStatusURLVersion?
             public var contentRightsDeclaration: ContentRightsDeclaration?
             public var isStreamlinedPurchasingEnabled: Bool?
+            public var groupPurchaseInvitationMode: GroupPurchaseInvitationMode?
 
             public enum ContentRightsDeclaration: String, CaseIterable, Codable, Sendable {
                 case doesNotUseThirdPartyContent = "DOES_NOT_USE_THIRD_PARTY_CONTENT"
                 case usesThirdPartyContent = "USES_THIRD_PARTY_CONTENT"
             }
 
-            public init(accessibilityURL: URL? = nil, bundleID: String? = nil, primaryLocale: String? = nil, subscriptionStatusURL: URL? = nil, subscriptionStatusURLVersion: SubscriptionStatusURLVersion? = nil, subscriptionStatusURLForSandbox: URL? = nil, subscriptionStatusURLVersionForSandbox: SubscriptionStatusURLVersion? = nil, contentRightsDeclaration: ContentRightsDeclaration? = nil, isStreamlinedPurchasingEnabled: Bool? = nil) {
+            public enum GroupPurchaseInvitationMode: String, CaseIterable, Codable, Sendable {
+                case appleHosted = "APPLE_HOSTED"
+                case developerHosted = "DEVELOPER_HOSTED"
+            }
+
+            public init(accessibilityURL: URL? = nil, bundleID: String? = nil, primaryLocale: String? = nil, subscriptionStatusURL: URL? = nil, subscriptionStatusURLVersion: SubscriptionStatusURLVersion? = nil, subscriptionStatusURLForSandbox: URL? = nil, subscriptionStatusURLVersionForSandbox: SubscriptionStatusURLVersion? = nil, contentRightsDeclaration: ContentRightsDeclaration? = nil, isStreamlinedPurchasingEnabled: Bool? = nil, groupPurchaseInvitationMode: GroupPurchaseInvitationMode? = nil) {
                 self.accessibilityURL = accessibilityURL
                 self.bundleID = bundleID
                 self.primaryLocale = primaryLocale
@@ -44,6 +50,7 @@ public struct AppUpdateRequest: Codable, Equatable, Sendable {
                 self.subscriptionStatusURLVersionForSandbox = subscriptionStatusURLVersionForSandbox
                 self.contentRightsDeclaration = contentRightsDeclaration
                 self.isStreamlinedPurchasingEnabled = isStreamlinedPurchasingEnabled
+                self.groupPurchaseInvitationMode = groupPurchaseInvitationMode
             }
 
             private enum CodingKeys: String, CodingKey {
@@ -56,6 +63,7 @@ public struct AppUpdateRequest: Codable, Equatable, Sendable {
                 case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
                 case contentRightsDeclaration
                 case isStreamlinedPurchasingEnabled = "streamlinedPurchasingEnabled"
+                case groupPurchaseInvitationMode
             }
         }
 

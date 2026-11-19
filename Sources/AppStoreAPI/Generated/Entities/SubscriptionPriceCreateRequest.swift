@@ -8,6 +8,7 @@ import AppStoreConnect
 
 public struct SubscriptionPriceCreateRequest: Codable, Equatable, Sendable {
     public var data: Data
+    public var included: [SubscriptionPriceTierInlineCreate]?
 
     public struct Data: Codable, Equatable, Sendable {
         public var type: `Type`
@@ -40,6 +41,7 @@ public struct SubscriptionPriceCreateRequest: Codable, Equatable, Sendable {
             public var subscription: Subscription
             public var territory: Territory?
             public var subscriptionPricePoint: SubscriptionPricePoint
+            public var additionalPriceTiers: AdditionalPriceTiers?
 
             public struct Subscription: Codable, Equatable, Sendable {
                 public var data: Data
@@ -107,10 +109,33 @@ public struct SubscriptionPriceCreateRequest: Codable, Equatable, Sendable {
                 }
             }
 
-            public init(subscription: Subscription, territory: Territory? = nil, subscriptionPricePoint: SubscriptionPricePoint) {
+            public struct AdditionalPriceTiers: Codable, Equatable, Sendable {
+                public var data: [Datum]?
+
+                public struct Datum: Codable, Equatable, Identifiable, Sendable {
+                    public var type: `Type`
+                    public var id: String
+
+                    public enum `Type`: String, CaseIterable, Codable, Sendable {
+                        case subscriptionPriceTiers
+                    }
+
+                    public init(type: `Type` = .subscriptionPriceTiers, id: String) {
+                        self.type = type
+                        self.id = id
+                    }
+                }
+
+                public init(data: [Datum]? = nil) {
+                    self.data = data
+                }
+            }
+
+            public init(subscription: Subscription, territory: Territory? = nil, subscriptionPricePoint: SubscriptionPricePoint, additionalPriceTiers: AdditionalPriceTiers? = nil) {
                 self.subscription = subscription
                 self.territory = territory
                 self.subscriptionPricePoint = subscriptionPricePoint
+                self.additionalPriceTiers = additionalPriceTiers
             }
         }
 
@@ -121,7 +146,8 @@ public struct SubscriptionPriceCreateRequest: Codable, Equatable, Sendable {
         }
     }
 
-    public init(data: Data) {
+    public init(data: Data, included: [SubscriptionPriceTierInlineCreate]? = nil) {
         self.data = data
+        self.included = included
     }
 }

@@ -14,6 +14,7 @@ public struct SubscriptionPricesResponse: Codable, Equatable, Sendable {
 
     public enum IncludedItem: Codable, Equatable, Sendable {
         case subscriptionPricePoint(SubscriptionPricePoint)
+        case subscriptionPriceTier(SubscriptionPriceTier)
         case territory(Territory)
 
         public init(from decoder: any Decoder) throws {
@@ -27,12 +28,13 @@ public struct SubscriptionPricesResponse: Codable, Equatable, Sendable {
 
             switch discriminatorValue {
             case "subscriptionPricePoints": self = .subscriptionPricePoint(try container.decode(SubscriptionPricePoint.self))
+            case "subscriptionPriceTiers": self = .subscriptionPriceTier(try container.decode(SubscriptionPriceTier.self))
             case "territories": self = .territory(try container.decode(Territory.self))
 
             default:
                 throw DecodingError.dataCorruptedError(
                     in: container,
-                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (subscriptionPricePoints, territories)."
+                    debugDescription: "Discriminator value '\(discriminatorValue)' does not match any expected values (subscriptionPricePoints, subscriptionPriceTiers, territories)."
                 )
             }
         }
@@ -41,6 +43,7 @@ public struct SubscriptionPricesResponse: Codable, Equatable, Sendable {
             var container = encoder.singleValueContainer()
             switch self {
             case .subscriptionPricePoint(let value): try container.encode(value)
+            case .subscriptionPriceTier(let value): try container.encode(value)
             case .territory(let value): try container.encode(value)
             }
         }

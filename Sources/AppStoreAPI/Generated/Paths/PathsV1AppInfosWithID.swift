@@ -66,6 +66,7 @@ extension Resources.V1.AppInfos {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
             case contentRightsDeclaration
             case streamlinedPurchasingEnabled
+            case groupPurchaseInvitationMode
             case accessibilityDeclarations
             case appEncryptionDeclarations
             case appStoreIcon
@@ -118,6 +119,7 @@ extension Resources.V1.AppInfos {
             case advertising
             case alcoholTobaccoOrDrugUseOrReferences
             case contests
+            case datingAndRelationships
             case gambling
             case gamblingSimulated
             case gunsOrOtherWeapons
@@ -131,6 +133,7 @@ extension Resources.V1.AppInfos {
             case ageAssurance
             case sexualContentGraphicAndNudity
             case sexualContentOrNudity
+            case sharedLocation
             case socialMedia
             case socialMediaAgeRestricted
             case horrorOrFearThemes

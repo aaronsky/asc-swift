@@ -80,6 +80,7 @@ extension Resources.V1 {
             case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
             case contentRightsDeclaration
             case streamlinedPurchasingEnabled
+            case groupPurchaseInvitationMode
             case accessibilityDeclarations
             case appEncryptionDeclarations
             case appStoreIcon

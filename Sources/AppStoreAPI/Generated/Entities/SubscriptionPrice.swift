@@ -38,6 +38,7 @@ public struct SubscriptionPrice: Codable, Equatable, Identifiable, Sendable {
     public struct Relationships: Codable, Equatable, Sendable {
         public var territory: Territory?
         public var subscriptionPricePoint: SubscriptionPricePoint?
+        public var additionalPriceTiers: AdditionalPriceTiers?
 
         public struct Territory: Codable, Equatable, Sendable {
             public var data: Data?
@@ -83,9 +84,36 @@ public struct SubscriptionPrice: Codable, Equatable, Identifiable, Sendable {
             }
         }
 
-        public init(territory: Territory? = nil, subscriptionPricePoint: SubscriptionPricePoint? = nil) {
+        public struct AdditionalPriceTiers: Codable, Equatable, Sendable {
+            public var links: RelationshipLinks?
+            public var meta: PagingInformation?
+            public var data: [Datum]?
+
+            public struct Datum: Codable, Equatable, Identifiable, Sendable {
+                public var type: `Type`
+                public var id: String
+
+                public enum `Type`: String, CaseIterable, Codable, Sendable {
+                    case subscriptionPriceTiers
+                }
+
+                public init(type: `Type` = .subscriptionPriceTiers, id: String) {
+                    self.type = type
+                    self.id = id
+                }
+            }
+
+            public init(links: RelationshipLinks? = nil, meta: PagingInformation? = nil, data: [Datum]? = nil) {
+                self.links = links
+                self.meta = meta
+                self.data = data
+            }
+        }
+
+        public init(territory: Territory? = nil, subscriptionPricePoint: SubscriptionPricePoint? = nil, additionalPriceTiers: AdditionalPriceTiers? = nil) {
             self.territory = territory
             self.subscriptionPricePoint = subscriptionPricePoint
+            self.additionalPriceTiers = additionalPriceTiers
         }
     }
 

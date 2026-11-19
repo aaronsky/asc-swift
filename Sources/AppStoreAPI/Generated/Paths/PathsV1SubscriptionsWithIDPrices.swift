@@ -16,11 +16,11 @@ extension Resources.V1.Subscriptions.WithID {
         /// Path: `/v1/subscriptions/{id}/prices`
         public let path: String
 
-        public func get(filterPlanType: [FilterPlanType]? = nil, filterSubscriptionPricePoint: [String]? = nil, filterTerritory: [String]? = nil, fieldsSubscriptionPrices: [FieldsSubscriptionPrices]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]? = nil, limit: Int? = nil, include: [Include]? = nil) -> Request<AppStoreAPI.SubscriptionPricesResponse> {
-            Request(path: path, method: "GET", query: makeGetQuery(filterPlanType, filterSubscriptionPricePoint, filterTerritory, fieldsSubscriptionPrices, fieldsTerritories, fieldsSubscriptionPricePoints, limit, include), id: "subscriptions_prices_getToManyRelated")
+        public func get(filterPlanType: [FilterPlanType]? = nil, filterSubscriptionPricePoint: [String]? = nil, filterTerritory: [String]? = nil, fieldsSubscriptionPrices: [FieldsSubscriptionPrices]? = nil, fieldsTerritories: [FieldsTerritories]? = nil, fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]? = nil, fieldsSubscriptionPriceTiers: [FieldsSubscriptionPriceTiers]? = nil, limit: Int? = nil, include: [Include]? = nil, limitAdditionalPriceTiers: Int? = nil) -> Request<AppStoreAPI.SubscriptionPricesResponse> {
+            Request(path: path, method: "GET", query: makeGetQuery(filterPlanType, filterSubscriptionPricePoint, filterTerritory, fieldsSubscriptionPrices, fieldsTerritories, fieldsSubscriptionPricePoints, fieldsSubscriptionPriceTiers, limit, include, limitAdditionalPriceTiers), id: "subscriptions_prices_getToManyRelated")
         }
 
-        private func makeGetQuery(_ filterPlanType: [FilterPlanType]?, _ filterSubscriptionPricePoint: [String]?, _ filterTerritory: [String]?, _ fieldsSubscriptionPrices: [FieldsSubscriptionPrices]?, _ fieldsTerritories: [FieldsTerritories]?, _ fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]?, _ limit: Int?, _ include: [Include]?) -> [(String, String?)] {
+        private func makeGetQuery(_ filterPlanType: [FilterPlanType]?, _ filterSubscriptionPricePoint: [String]?, _ filterTerritory: [String]?, _ fieldsSubscriptionPrices: [FieldsSubscriptionPrices]?, _ fieldsTerritories: [FieldsTerritories]?, _ fieldsSubscriptionPricePoints: [FieldsSubscriptionPricePoints]?, _ fieldsSubscriptionPriceTiers: [FieldsSubscriptionPriceTiers]?, _ limit: Int?, _ include: [Include]?, _ limitAdditionalPriceTiers: Int?) -> [(String, String?)] {
             let encoder = URLQueryEncoder(explode: false)
             encoder.encode(filterPlanType, forKey: "filter[planType]")
             encoder.encode(filterSubscriptionPricePoint, forKey: "filter[subscriptionPricePoint]")
@@ -28,8 +28,10 @@ extension Resources.V1.Subscriptions.WithID {
             encoder.encode(fieldsSubscriptionPrices, forKey: "fields[subscriptionPrices]")
             encoder.encode(fieldsTerritories, forKey: "fields[territories]")
             encoder.encode(fieldsSubscriptionPricePoints, forKey: "fields[subscriptionPricePoints]")
+            encoder.encode(fieldsSubscriptionPriceTiers, forKey: "fields[subscriptionPriceTiers]")
             encoder.encode(limit, forKey: "limit")
             encoder.encode(include, forKey: "include")
+            encoder.encode(limitAdditionalPriceTiers, forKey: "limit[additionalPriceTiers]")
             return encoder.items
         }
 
@@ -44,6 +46,7 @@ extension Resources.V1.Subscriptions.WithID {
             case planType
             case territory
             case subscriptionPricePoint
+            case additionalPriceTiers
         }
 
         public enum FieldsTerritories: String, CaseIterable, Codable, Sendable {
@@ -59,9 +62,15 @@ extension Resources.V1.Subscriptions.WithID {
             case adjustedEqualizations
         }
 
+        public enum FieldsSubscriptionPriceTiers: String, CaseIterable, Codable, Sendable {
+            case minQuantity
+            case subscriptionPricePoint
+        }
+
         public enum Include: String, CaseIterable, Codable, Sendable {
             case territory
             case subscriptionPricePoint
+            case additionalPriceTiers
         }
     }
 }
